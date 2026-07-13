@@ -10,10 +10,12 @@ UEソースから各 MaterialExpression クラスの「ピン構成・プロパ�
 
 ## 調査場所
 
-- ヘッダ: `C:\work\unreal\UnrealEngine-release\Engine\Source\Runtime\Engine\Public\Materials\MaterialExpression<名前>.h`
-  (無い場合は `Engine\Source\Runtime\Engine` 以下を `MaterialExpression<名前>.h` で検索)
+- **ヘッダ: 各タスクファイルの表に正確なパスが書いてある**(ソース全体を機械走査した
+  `catalog/manifest.json` から生成した確定リスト。検索・推測は不要)。
+  1つのヘッダに複数クラスがある場合も表はクラス単位なので、表の行だけを処理すればよい
 - 実装: `C:\work\unreal\UnrealEngine-release\Engine\Source\Runtime\Engine\Private\Materials\MaterialExpressions.cpp`
-  (大半のクラスはこの巨大ファイル内。個別cppの場合もある。`UMaterialExpression<名前>::` で grep)
+  (Engineモジュールの大半はこの巨大ファイル内。個別cppや、Landscape・プラグインの
+  クラスはヘッダと同じモジュール内。`UMaterialExpression<名前>::` で grep)
 - 確認すべき実装箇所:
   - コンストラクタ: `Outputs` 配列を操作しているか(していなければ出力は既定1本)
   - `GetInputName` オーバーライド: ピン表示名の変更

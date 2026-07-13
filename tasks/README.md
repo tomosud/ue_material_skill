@@ -42,27 +42,39 @@ T01..T05 ───────────→ T07(SKILL.md)
 
 共通手順: [INSTRUCTIONS-catalog.md](INSTRUCTIONS-catalog.md)(スキーマ・抽出ルール)
 
+**対象クラスの確定リスト**: [../catalog/manifest.json](../catalog/manifest.json) —
+`Engine/Source` と `Engine/Plugins` の全ヘッダを機械走査した **359クラス**
+(クラス名→ヘッダパス→abstract/deprecated/plugin フラグ)。各タスクの対象表は
+ここから生成しており、**全クラスがいずれか1つのバッチに漏れなく割当済み**。
+再生成は `python tools/gen_manifest_tasks.py`(走査コマンドはスクリプト冒頭に記載)。
+
 | ID | カテゴリ | クラス数 | 優先 | status |
 |---|---|---|---|---|
-| [C01](catalog/C01.md) | 定数・パラメータ | 17 | A | TODO |
+| [C01](catalog/C01.md) | 定数・パラメータ | 15 | A | TODO |
 | [C02](catalog/C02.md) | 基本演算 | 20 | A | TODO |
-| [C03](catalog/C03.md) | 補間・条件・三角・指数 | 22 | A | TODO |
+| [C03](catalog/C03.md) | 補間・条件・三角・指数 | 21 | A | TODO |
 | [C04](catalog/C04.md) | ベクトル演算・法線 | 14 | A | TODO |
 | [C05](catalog/C05.md) | テクスチャ・UV | 13 | A | TODO |
 | [C06](catalog/C06.md) | 座標・ジオメトリデータ | 20 | A | TODO |
 | [C07](catalog/C07.md) | 時間・ユーティリティ | 18 | A | TODO |
-| [C08](catalog/C08.md) | 構造ノード・MaterialAttributes | 15 | A | TODO |
-| [C09](catalog/C09.md) | その他 Absorption〜CurveAtlas | 16 | B | TODO |
-| [C10](catalog/C10.md) | その他 CustomOutput〜FeatureLevelSwitch | 16 | B | TODO |
-| [C11](catalog/C11.md) | その他 FirstPerson〜MapARPassthrough | 16 | B | TODO |
-| [C12](catalog/C12.md) | その他 MaterialAttributeLayers〜ParticlePositionWS | 16 | B | TODO |
-| [C13](catalog/C13.md) | その他 ParticleRadius〜PrecomputedAOMask | 16 | B | TODO |
-| [C14](catalog/C14.md) | その他 PreviousFrameSwitch〜ShadingPathSwitch | 16 | B | TODO |
-| [C15](catalog/C15.md) | その他 ShadowReplace〜TemporalResponsiveness | 16 | B | TODO |
-| [C16](catalog/C16.md) | その他 TemporalSobol〜VolumetricAdvanced | 16 | B | TODO |
-| [C17](catalog/C17.md) | Substrate系(1ヘッダ複数クラス) | 多数 | B | TODO |
+| [C08](catalog/C08.md) | 構造ノード・MaterialAttributes | 17 | A | TODO |
+| [C09](catalog/C09.md) | その他(Engine) Absorption〜Convert | 16 | B | TODO |
+| [C10](catalog/C10.md) | その他(Engine) CurveAtlas〜EvalPhysicsInteger | 16 | B | TODO |
+| [C11](catalog/C11.md) | その他(Engine) EvalPhysicsScalar〜IsFirstPerson | 16 | B | TODO |
+| [C12](catalog/C12.md) | その他(Engine) IsOrthographic〜MapARPassthrough | 16 | B | TODO |
+| [C13](catalog/C13.md) | その他(Engine) MaterialAttributeLayers〜ParticleMacroUV | 16 | B | TODO |
+| [C14](catalog/C14.md) | その他(Engine) ParticleMotionBlurFade〜PreSkinnedLocalBounds | 16 | B | TODO |
+| [C15](catalog/C15.md) | その他(Engine) PreSkinnedNormal〜SamplePhysicsScalar | 16 | B | TODO |
+| [C16](catalog/C16.md) | その他(Engine) SamplePhysicsVector〜SkyLightEnvMapSample | 16 | B | TODO |
+| [C17](catalog/C17.md) | その他(Engine) Sobol〜TextureObjectFromCollection | 16 | B | TODO |
+| [C18](catalog/C18.md) | その他(Engine) TextureSampleParameter2DArray〜VolumetricCloud | 15 | B | TODO |
+| [C19](catalog/C19.md) | Substrate系(25クラス) | 25 | B | TODO |
+| [C20](catalog/C20.md) | プラグイン系 (Experimental) | 6 | B | TODO |
+| [C21](catalog/C21.md) | プラグイン系 (Interchange/MaterialX) | 29 | B | TODO |
+| [C22](catalog/C22.md) | プラグイン系 (Paper2D 等) | 2 | B | TODO |
 
-対象は全275ヘッダ中、内部ヘルパ3件(Utils / ExternalCodeBase / sToMIRCommon)を除く全クラス。
+その他(Engine)には Landscape 系ノード(LandscapeLayerBlend 等)も含まれる。
+除外は内部ヘルパのみ(Utils / sToMIRCommon。ExternalCodeBase はabstractとして収載)。
 
 ## Material Function(M系)
 

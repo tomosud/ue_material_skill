@@ -1,0 +1,3242 @@
+{
+ "(root)": {
+  "abstract": true,
+  "base": "UObject",
+  "class": "UMaterialExpression",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpression.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "Abs": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionAbs",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionAbs.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "AbsorptionMediumMaterialOutput": {
+  "abstract": false,
+  "base": "UMaterialExpressionCustomOutput",
+  "class": "UMaterialExpressionAbsorptionMediumMaterialOutput",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionAbsorptionMediumMaterialOutput.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "ActorPositionWS": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionActorPositionWS",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionActorPositionWS.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "Add": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionAdd",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionAdd.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "Aggregate": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionAggregate",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionAggregate.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "AntialiasedTextureMask": {
+  "abstract": false,
+  "base": "UMaterialExpressionTextureSampleParameter2D",
+  "class": "UMaterialExpressionAntialiasedTextureMask",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionAntialiasedTextureMask.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "AppendVector": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionAppendVector",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionAppendVector.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "Arccosine": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionArccosine",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionArccosine.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "ArccosineFast": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionArccosineFast",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionArccosineFast.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "Arcsine": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionArcsine",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionArcsine.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "ArcsineFast": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionArcsineFast",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionArcsineFast.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "Arctangent": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionArctangent",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionArctangent.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "Arctangent2": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionArctangent2",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionArctangent2.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "Arctangent2Fast": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionArctangent2Fast",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionArctangent2Fast.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "ArctangentFast": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionArctangentFast",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionArctangentFast.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "AtmosphericFogColor": {
+  "abstract": false,
+  "base": "UMaterialExpressionExternalCodeBase",
+  "class": "UMaterialExpressionAtmosphericFogColor",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionAtmosphericFogColor.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "AtmosphericLightColor": {
+  "abstract": false,
+  "base": "UMaterialExpressionExternalCodeBase",
+  "class": "UMaterialExpressionAtmosphericLightColor",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionAtmosphericLightColor.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "AtmosphericLightVector": {
+  "abstract": false,
+  "base": "UMaterialExpressionExternalCodeBase",
+  "class": "UMaterialExpressionAtmosphericLightVector",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionAtmosphericLightVector.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "BentNormalCustomOutput": {
+  "abstract": false,
+  "base": "UMaterialExpressionCustomOutput",
+  "class": "UMaterialExpressionBentNormalCustomOutput",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionBentNormalCustomOutput.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "BindlessSwitch": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionBindlessSwitch",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionBindlessSwitch.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "BlackBody": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionBlackBody",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionBlackBody.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "Blend": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionBlend",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionBlend.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "BlendMaterialAttributes": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionBlendMaterialAttributes",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionBlendMaterialAttributes.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "Bounds": {
+  "abstract": false,
+  "base": "UMaterialExpressionExternalCodeBase",
+  "class": "UMaterialExpressionBounds",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionBounds.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "BreakMaterialAttributes": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionBreakMaterialAttributes",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionBreakMaterialAttributes.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "BumpOffset": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionBumpOffset",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionBumpOffset.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "CameraPositionWS": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionCameraPositionWS",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionCameraPositionWS.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "CameraVectorWS": {
+  "abstract": false,
+  "base": "UMaterialExpressionExternalCodeBase",
+  "class": "UMaterialExpressionCameraVectorWS",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionCameraVectorWS.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "Ceil": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionCeil",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionCeil.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "ChannelMaskParameter": {
+  "abstract": false,
+  "base": "UMaterialExpressionVectorParameter",
+  "class": "UMaterialExpressionChannelMaskParameter",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionChannelMaskParameter.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "Clamp": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionClamp",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionClamp.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "ClearCoatNormalCustomOutput": {
+  "abstract": false,
+  "base": "UMaterialExpressionCustomOutput",
+  "class": "UMaterialExpressionClearCoatNormalCustomOutput",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionClearCoatNormalCustomOutput.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "CloudSampleAttribute": {
+  "abstract": false,
+  "base": "UMaterialExpressionExternalCodeBase",
+  "class": "UMaterialExpressionCloudSampleAttribute",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionCloudLayer.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "CollectionParameter": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionCollectionParameter",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionCollectionParameter.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "CollectionTransform": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionCollectionTransform",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionCollectionTransform.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "ColorRamp": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionColorRamp",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionColorRamp.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "Comment": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionComment",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionComment.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "ComponentMask": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionComponentMask",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionComponentMask.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "Composite": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionComposite",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionComposite.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "Constant": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionConstant",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionConstant.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "Constant2Vector": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionConstant2Vector",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionConstant2Vector.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "Constant3Vector": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionConstant3Vector",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionConstant3Vector.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "Constant4Vector": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionConstant4Vector",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionConstant4Vector.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "ConstantBiasScale": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionConstantBiasScale",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionConstantBiasScale.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "ConstantDouble": {
+  "abstract": false,
+  "base": "UMaterialExpressionGenericConstant",
+  "class": "UMaterialExpressionConstantDouble",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionGenericConstant.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "Convert": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionConvert",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionConvert.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "Cosine": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionCosine",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionCosine.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "CrossProduct": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionCrossProduct",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionCrossProduct.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "CurveAtlasRowParameter": {
+  "abstract": false,
+  "base": "UMaterialExpressionScalarParameter",
+  "class": "UMaterialExpressionCurveAtlasRowParameter",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionCurveAtlasRowParameter.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "Custom": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionCustom",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionCustom.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "CustomOutput": {
+  "abstract": true,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionCustomOutput",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionCustomOutput.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "DBufferTexture": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionDBufferTexture",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionDBufferTexture.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "DDX": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionDDX",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionDDX.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "DDY": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionDDY",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionDDY.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "DataDrivenShaderPlatformInfoSwitch": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionDataDrivenShaderPlatformInfoSwitch",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionDataDrivenShaderPlatformInfoSwitch.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "DecalColor": {
+  "abstract": false,
+  "base": "UMaterialExpressionExternalCodeBase",
+  "class": "UMaterialExpressionDecalColor",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionDecalColor.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "DecalDerivative": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionDecalDerivative",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionDecalDerivative.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "DecalLifetimeOpacity": {
+  "abstract": false,
+  "base": "UMaterialExpressionExternalCodeBase",
+  "class": "UMaterialExpressionDecalLifetimeOpacity",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionDecalLifetimeOpacity.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "DecalMipmapLevel": {
+  "abstract": false,
+  "base": "UMaterialExpressionExternalCodeBase",
+  "class": "UMaterialExpressionDecalMipmapLevel",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionDecalMipmapLevel.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "DeltaTime": {
+  "abstract": false,
+  "base": "UMaterialExpressionExternalCodeBase",
+  "class": "UMaterialExpressionDeltaTime",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionDeltaTime.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "DepthFade": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionDepthFade",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionDepthFade.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "DepthOfFieldFunction": {
+  "abstract": false,
+  "base": "UMaterialExpressionExternalCodeBase",
+  "class": "UMaterialExpressionDepthOfFieldFunction",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionDepthOfFieldFunction.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "DeriveNormalZ": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionDeriveNormalZ",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionDeriveNormalZ.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "Desaturation": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionDesaturation",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionDesaturation.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "Distance": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionDistance",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionDistance.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "DistanceCullFade": {
+  "abstract": false,
+  "base": "UMaterialExpressionExternalCodeBase",
+  "class": "UMaterialExpressionDistanceCullFade",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionDistanceCullFade.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "DistanceFieldApproxAO": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionDistanceFieldApproxAO",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionDistanceFieldApproxAO.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "DistanceFieldGradient": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionDistanceFieldGradient",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionDistanceFieldGradient.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "DistanceFieldsRenderingSwitch": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionDistanceFieldsRenderingSwitch",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionDistanceFieldsRenderingSwitch.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "DistanceToNearestSurface": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionDistanceToNearestSurface",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionDistanceToNearestSurface.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "Divide": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionDivide",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionDivide.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "DotProduct": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionDotProduct",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionDotProduct.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "DoubleVectorParameter": {
+  "abstract": false,
+  "base": "UMaterialExpressionParameter",
+  "class": "UMaterialExpressionDoubleVectorParameter",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionDoubleVectorParameter.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "DynamicParameter": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionDynamicParameter",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionDynamicParameter.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "EvalPhysicsIntegerField": {
+  "abstract": false,
+  "base": "UMaterialExpressionSamplePhysicsIntegerField",
+  "class": "UMaterialExpressionEvalPhysicsIntegerField",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSamplePhysicsField.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "EvalPhysicsScalarField": {
+  "abstract": false,
+  "base": "UMaterialExpressionSamplePhysicsScalarField",
+  "class": "UMaterialExpressionEvalPhysicsScalarField",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSamplePhysicsField.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "EvalPhysicsVectorField": {
+  "abstract": false,
+  "base": "UMaterialExpressionSamplePhysicsVectorField",
+  "class": "UMaterialExpressionEvalPhysicsVectorField",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSamplePhysicsField.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "Exponential": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionExponential",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionExponential.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "Exponential2": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionExponential2",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionExponential2.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "ExternalCodeBase": {
+  "abstract": true,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionExternalCodeBase",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionExternalCodeBase.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "EyeAdaptation": {
+  "abstract": false,
+  "base": "UMaterialExpressionExternalCodeBase",
+  "class": "UMaterialExpressionEyeAdaptation",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionEyeAdaptation.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "EyeAdaptationInverse": {
+  "abstract": false,
+  "base": "UMaterialExpressionExternalCodeBase",
+  "class": "UMaterialExpressionEyeAdaptationInverse",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionEyeAdaptationInverse.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "FeatureLevelSwitch": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionFeatureLevelSwitch",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionFeatureLevelSwitch.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "FirstPersonOutput": {
+  "abstract": false,
+  "base": "UMaterialExpressionCustomOutput",
+  "class": "UMaterialExpressionFirstPersonOutput",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionFirstPersonOutput.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "FloatToUInt": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionFloatToUInt",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionFloatToUInt.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "Floor": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionFloor",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionFloor.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "Fmod": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionFmod",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionFmod.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "FontSample": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionFontSample",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionFontSample.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "FontSampleParameter": {
+  "abstract": false,
+  "base": "UMaterialExpressionFontSample",
+  "class": "UMaterialExpressionFontSampleParameter",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionFontSampleParameter.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "FontSignedDistance": {
+  "abstract": false,
+  "base": "UMaterialExpressionExternalCodeBase",
+  "class": "UMaterialExpressionFontSignedDistance",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionFontSignedDistance.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "Frac": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionFrac",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionFrac.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "Fresnel": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionFresnel",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionFresnel.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "FunctionInput": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionFunctionInput",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionFunctionInput.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "FunctionOutput": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionFunctionOutput",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionFunctionOutput.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "GIReplace": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionGIReplace",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionGIReplace.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "GenericConstant": {
+  "abstract": true,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionGenericConstant",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionGenericConstant.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "GetMaterialAttributes": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionGetMaterialAttributes",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionGetMaterialAttributes.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "HairAttributes": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionHairAttributes",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionHairAttributes.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "HairColor": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionHairColor",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionHairColor.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "HeightfieldMinMaxTexture": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionHeightfieldMinMaxTexture",
+  "deprecated": false,
+  "header": "Engine/Plugins/Experimental/VirtualHeightfieldMesh/Source/VirtualHeightfieldMesh/Private/HeightfieldMinMaxTextureMaterialExpression.h",
+  "module": "Experimental",
+  "origin": "plugin"
+ },
+ "HsvToRgb": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionHsvToRgb",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionHsvToRgb.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "If": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionIf",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionIf.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "IfThenElse": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionIfThenElse",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionIfThenElse.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "InverseLinearInterpolate": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionInverseLinearInterpolate",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionInverseLinearInterpolate.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "IsFirstPerson": {
+  "abstract": false,
+  "base": "UMaterialExpressionExternalCodeBase",
+  "class": "UMaterialExpressionIsFirstPerson",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionIsFirstPerson.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "IsOrthographic": {
+  "abstract": false,
+  "base": "UMaterialExpressionExternalCodeBase",
+  "class": "UMaterialExpressionIsOrthographic",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionIsOrthographic.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "LandscapeGrassOutput": {
+  "abstract": false,
+  "base": "UMaterialExpressionCustomOutput",
+  "class": "UMaterialExpressionLandscapeGrassOutput",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Landscape/Classes/Materials/MaterialExpressionLandscapeGrassOutput.h",
+  "module": "Landscape",
+  "origin": "engine"
+ },
+ "LandscapeLayerBlend": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionLandscapeLayerBlend",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Landscape/Classes/Materials/MaterialExpressionLandscapeLayerBlend.h",
+  "module": "Landscape",
+  "origin": "engine"
+ },
+ "LandscapeLayerCoords": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionLandscapeLayerCoords",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Landscape/Classes/Materials/MaterialExpressionLandscapeLayerCoords.h",
+  "module": "Landscape",
+  "origin": "engine"
+ },
+ "LandscapeLayerSample": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionLandscapeLayerSample",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Landscape/Classes/Materials/MaterialExpressionLandscapeLayerSample.h",
+  "module": "Landscape",
+  "origin": "engine"
+ },
+ "LandscapeLayerSwitch": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionLandscapeLayerSwitch",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Landscape/Classes/Materials/MaterialExpressionLandscapeLayerSwitch.h",
+  "module": "Landscape",
+  "origin": "engine"
+ },
+ "LandscapeLayerWeight": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionLandscapeLayerWeight",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Landscape/Classes/Materials/MaterialExpressionLandscapeLayerWeight.h",
+  "module": "Landscape",
+  "origin": "engine"
+ },
+ "LandscapePhysicalMaterialOutput": {
+  "abstract": false,
+  "base": "UMaterialExpressionCustomOutput",
+  "class": "UMaterialExpressionLandscapePhysicalMaterialOutput",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Landscape/Classes/Materials/MaterialExpressionLandscapePhysicalMaterialOutput.h",
+  "module": "Landscape",
+  "origin": "engine"
+ },
+ "LandscapeVisibilityMask": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionLandscapeVisibilityMask",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Landscape/Classes/Materials/MaterialExpressionLandscapeVisibilityMask.h",
+  "module": "Landscape",
+  "origin": "engine"
+ },
+ "LayerStack": {
+  "abstract": false,
+  "base": "UMaterialExpressionMaterialAttributeLayers",
+  "class": "UMaterialExpressionLayerStack",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionLayerStack.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "LegacyBlendMaterialAttributes": {
+  "abstract": false,
+  "base": "UMaterialExpressionBlendMaterialAttributes",
+  "class": "UMaterialExpressionLegacyBlendMaterialAttributes",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionBlendMaterialAttributes.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "Length": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionLength",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionLength.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "LightVector": {
+  "abstract": false,
+  "base": "UMaterialExpressionExternalCodeBase",
+  "class": "UMaterialExpressionLightVector",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionLightVector.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "LightmapUVs": {
+  "abstract": false,
+  "base": "UMaterialExpressionExternalCodeBase",
+  "class": "UMaterialExpressionLightmapUVs",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionLightmapUVs.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "LightmassReplace": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionLightmassReplace",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionLightmassReplace.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "LinearInterpolate": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionLinearInterpolate",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionLinearInterpolate.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "LocalPosition": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionLocalPosition",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionLocalPosition.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "Logarithm": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionLogarithm",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionLogarithm.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "Logarithm10": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionLogarithm10",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionLogarithm10.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "Logarithm2": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionLogarithm2",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionLogarithm2.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "MainDirectionalLight": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionMainDirectionalLight",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionMainDirectionalLight.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "MakeMaterialAttributes": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionMakeMaterialAttributes",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionMakeMaterialAttributes.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "MapARPassthroughCameraUV": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionMapARPassthroughCameraUV",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionMapARPassthroughCameraUV.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "MaterialAttributeLayers": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionMaterialAttributeLayers",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionMaterialAttributeLayers.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "MaterialCache": {
+  "abstract": false,
+  "base": "UMaterialExpressionCustomOutput",
+  "class": "UMaterialExpressionMaterialCache",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionMaterialCache.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "MaterialFunctionCall": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionMaterialFunctionCall",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionMaterialFunctionCall.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "MaterialLayerOutput": {
+  "abstract": false,
+  "base": "UMaterialExpressionFunctionOutput",
+  "class": "UMaterialExpressionMaterialLayerOutput",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionMaterialLayerOutput.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "MaterialProxyReplace": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionMaterialProxyReplace",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionMaterialProxyReplace.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "MaterialSample": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionMaterialSample",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Internal/Materials/MaterialExpressionMaterialSample.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "MaterialXAppend3Vector": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionMaterialXAppend3Vector",
+  "deprecated": false,
+  "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionAppend3Vector.h",
+  "module": "Interchange",
+  "origin": "plugin"
+ },
+ "MaterialXAppend4Vector": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionMaterialXAppend4Vector",
+  "deprecated": false,
+  "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionAppend4Vector.h",
+  "module": "Interchange",
+  "origin": "plugin"
+ },
+ "MaterialXBurn": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionMaterialXBurn",
+  "deprecated": false,
+  "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionBurn.h",
+  "module": "Interchange",
+  "origin": "plugin"
+ },
+ "MaterialXContrast": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionMaterialXContrast",
+  "deprecated": false,
+  "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionContrast.h",
+  "module": "Interchange",
+  "origin": "plugin"
+ },
+ "MaterialXDifference": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionMaterialXDifference",
+  "deprecated": false,
+  "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionDifference.h",
+  "module": "Interchange",
+  "origin": "plugin"
+ },
+ "MaterialXDisjointOver": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionMaterialXDisjointOver",
+  "deprecated": false,
+  "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionDisjointOver.h",
+  "module": "Interchange",
+  "origin": "plugin"
+ },
+ "MaterialXDodge": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionMaterialXDodge",
+  "deprecated": false,
+  "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionDodge.h",
+  "module": "Interchange",
+  "origin": "plugin"
+ },
+ "MaterialXFractal": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionMaterialXFractal",
+  "deprecated": false,
+  "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionFractal.h",
+  "module": "Interchange",
+  "origin": "plugin"
+ },
+ "MaterialXIn": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionMaterialXIn",
+  "deprecated": false,
+  "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionIn.h",
+  "module": "Interchange",
+  "origin": "plugin"
+ },
+ "MaterialXLuminance": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionMaterialXLuminance",
+  "deprecated": false,
+  "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionLuminance.h",
+  "module": "Interchange",
+  "origin": "plugin"
+ },
+ "MaterialXMask": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionMaterialXMask",
+  "deprecated": false,
+  "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionMask.h",
+  "module": "Interchange",
+  "origin": "plugin"
+ },
+ "MaterialXMatte": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionMaterialXMatte",
+  "deprecated": false,
+  "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionMatte.h",
+  "module": "Interchange",
+  "origin": "plugin"
+ },
+ "MaterialXMinus": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionMaterialXMinus",
+  "deprecated": false,
+  "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionMinus.h",
+  "module": "Interchange",
+  "origin": "plugin"
+ },
+ "MaterialXMod": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionMaterialXMod",
+  "deprecated": false,
+  "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionMod.h",
+  "module": "Interchange",
+  "origin": "plugin"
+ },
+ "MaterialXOut": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionMaterialXOut",
+  "deprecated": false,
+  "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionOut.h",
+  "module": "Interchange",
+  "origin": "plugin"
+ },
+ "MaterialXOver": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionMaterialXOver",
+  "deprecated": false,
+  "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionOver.h",
+  "module": "Interchange",
+  "origin": "plugin"
+ },
+ "MaterialXOverlay": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionMaterialXOverlay",
+  "deprecated": false,
+  "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionOverlay.h",
+  "module": "Interchange",
+  "origin": "plugin"
+ },
+ "MaterialXPlus": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionMaterialXPlus",
+  "deprecated": false,
+  "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionPlus.h",
+  "module": "Interchange",
+  "origin": "plugin"
+ },
+ "MaterialXPremult": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionMaterialXPremult",
+  "deprecated": false,
+  "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionPremult.h",
+  "module": "Interchange",
+  "origin": "plugin"
+ },
+ "MaterialXRamp4": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionMaterialXRamp4",
+  "deprecated": false,
+  "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionRamp4.h",
+  "module": "Interchange",
+  "origin": "plugin"
+ },
+ "MaterialXRampLeftRight": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionMaterialXRampLeftRight",
+  "deprecated": false,
+  "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionRampLeftRight.h",
+  "module": "Interchange",
+  "origin": "plugin"
+ },
+ "MaterialXRampTopBottom": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionMaterialXRampTopBottom",
+  "deprecated": false,
+  "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionRampTopBottom.h",
+  "module": "Interchange",
+  "origin": "plugin"
+ },
+ "MaterialXRange": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionMaterialXRange",
+  "deprecated": false,
+  "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionRange.h",
+  "module": "Interchange",
+  "origin": "plugin"
+ },
+ "MaterialXRemap": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionMaterialXRemap",
+  "deprecated": false,
+  "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionRemap.h",
+  "module": "Interchange",
+  "origin": "plugin"
+ },
+ "MaterialXScreen": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionMaterialXScreen",
+  "deprecated": false,
+  "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionScreen.h",
+  "module": "Interchange",
+  "origin": "plugin"
+ },
+ "MaterialXSplitLeftRight": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionMaterialXSplitLeftRight",
+  "deprecated": false,
+  "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionSplitLeftRight.h",
+  "module": "Interchange",
+  "origin": "plugin"
+ },
+ "MaterialXSplitTopBottom": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionMaterialXSplitTopBottom",
+  "deprecated": false,
+  "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionSplitTopBottom.h",
+  "module": "Interchange",
+  "origin": "plugin"
+ },
+ "MaterialXTextureSampleParameterBlur": {
+  "abstract": false,
+  "base": "UMaterialExpressionTextureSampleParameter2D",
+  "class": "UMaterialExpressionMaterialXTextureSampleParameterBlur",
+  "deprecated": false,
+  "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Public/MaterialX/MaterialExpressions/MaterialExpressionTextureSampleParameterBlur.h",
+  "module": "Interchange",
+  "origin": "plugin"
+ },
+ "MaterialXUnpremult": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionMaterialXUnpremult",
+  "deprecated": false,
+  "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionUnpremult.h",
+  "module": "Interchange",
+  "origin": "plugin"
+ },
+ "Max": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionMax",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionMax.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "MeshPaintTextureCoordinateIndex": {
+  "abstract": false,
+  "base": "UMaterialExpressionExternalCodeBase",
+  "class": "UMaterialExpressionMeshPaintTextureCoordinateIndex",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionMeshPaintTextureCoordinateIndex.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "MeshPaintTextureObject": {
+  "abstract": false,
+  "base": "UMaterialExpressionExternalCodeBase",
+  "class": "UMaterialExpressionMeshPaintTextureObject",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionMeshPaintTextureObject.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "MeshPaintTextureReplace": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionMeshPaintTextureReplace",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionMeshPaintTextureReplace.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "MeshPartitionChannelSample": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionMeshPartitionChannelSample",
+  "deprecated": false,
+  "header": "Engine/Plugins/Experimental/MeshPartition/Source/MeshPartitionEditor/Public/MeshPartitionMaterialExpressionUtils.h",
+  "module": "Experimental",
+  "origin": "plugin"
+ },
+ "MeshPartitionChannelSampleIndex": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionMeshPartitionChannelSampleIndex",
+  "deprecated": false,
+  "header": "Engine/Plugins/Experimental/MeshPartition/Source/MeshPartitionEditor/Public/MeshPartitionMaterialExpressionUtils.h",
+  "module": "Experimental",
+  "origin": "plugin"
+ },
+ "MeshPartitionInspector": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionMeshPartitionInspector",
+  "deprecated": false,
+  "header": "Engine/Plugins/Experimental/MeshPartition/Source/MeshPartitionEditor/Public/MeshPartitionMaterialExpressionUtils.h",
+  "module": "Experimental",
+  "origin": "plugin"
+ },
+ "MeshPartitionResource": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionMeshPartitionResource",
+  "deprecated": false,
+  "header": "Engine/Plugins/Experimental/MeshPartition/Source/MeshPartitionEditor/Public/MeshPartitionMaterialExpressionUtils.h",
+  "module": "Experimental",
+  "origin": "plugin"
+ },
+ "MeshPartitionTexcoord": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionMeshPartitionTexcoord",
+  "deprecated": false,
+  "header": "Engine/Plugins/Experimental/MeshPartition/Source/MeshPartitionEditor/Public/MeshPartitionMaterialExpressionUtils.h",
+  "module": "Experimental",
+  "origin": "plugin"
+ },
+ "Min": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionMin",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionMin.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "Modulo": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionModulo",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionModulo.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "MotionVectorWorldOffsetOutput": {
+  "abstract": false,
+  "base": "UMaterialExpressionCustomOutput",
+  "class": "UMaterialExpressionMotionVectorWorldOffsetOutput",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionMotionVectorWorldOffsetOutput.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "Multiply": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionMultiply",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionMultiply.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "NamedRerouteBase": {
+  "abstract": true,
+  "base": "UMaterialExpressionRerouteBase",
+  "class": "UMaterialExpressionNamedRerouteBase",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionNamedReroute.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "NamedRerouteDeclaration": {
+  "abstract": false,
+  "base": "UMaterialExpressionNamedRerouteBase",
+  "class": "UMaterialExpressionNamedRerouteDeclaration",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionNamedReroute.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "NamedRerouteUsage": {
+  "abstract": false,
+  "base": "UMaterialExpressionNamedRerouteBase",
+  "class": "UMaterialExpressionNamedRerouteUsage",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionNamedReroute.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "NaniteReplace": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionNaniteReplace",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionNaniteReplace.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "NeuralNetworkInput": {
+  "abstract": false,
+  "base": "UMaterialExpressionCustomOutput",
+  "class": "UMaterialExpressionNeuralNetworkInput",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionNeuralPostProcessNode.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "NeuralNetworkOutput": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionNeuralNetworkOutput",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionNeuralPostProcessNode.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "Noise": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionNoise",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionNoise.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "Normalize": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionNormalize",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionNormalize.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "ObjectBounds": {
+  "abstract": false,
+  "base": "UMaterialExpressionExternalCodeBase",
+  "class": "UMaterialExpressionObjectBounds",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionObjectBounds.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "ObjectLocalBounds": {
+  "abstract": false,
+  "base": "UMaterialExpressionExternalCodeBase",
+  "class": "UMaterialExpressionObjectLocalBounds",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionObjectLocalBounds.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "ObjectOrientation": {
+  "abstract": false,
+  "base": "UMaterialExpressionExternalCodeBase",
+  "class": "UMaterialExpressionObjectOrientation",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionObjectOrientation.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "ObjectPositionWS": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionObjectPositionWS",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionObjectPositionWS.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "ObjectRadius": {
+  "abstract": false,
+  "base": "UMaterialExpressionExternalCodeBase",
+  "class": "UMaterialExpressionObjectRadius",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionObjectRadius.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "OneMinus": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionOneMinus",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionOneMinus.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "Operator": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionOperator",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionOperator.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "Panner": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionPanner",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionPanner.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "Parameter": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionParameter",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionParameter.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "ParticleColor": {
+  "abstract": false,
+  "base": "UMaterialExpressionExternalCodeBase",
+  "class": "UMaterialExpressionParticleColor",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionParticleColor.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "ParticleDirection": {
+  "abstract": false,
+  "base": "UMaterialExpressionExternalCodeBase",
+  "class": "UMaterialExpressionParticleDirection",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionParticleDirection.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "ParticleMacroUV": {
+  "abstract": false,
+  "base": "UMaterialExpressionExternalCodeBase",
+  "class": "UMaterialExpressionParticleMacroUV",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionParticleMacroUV.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "ParticleMotionBlurFade": {
+  "abstract": false,
+  "base": "UMaterialExpressionExternalCodeBase",
+  "class": "UMaterialExpressionParticleMotionBlurFade",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionParticleMotionBlurFade.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "ParticlePositionWS": {
+  "abstract": false,
+  "base": "UMaterialExpressionExternalCodeBase",
+  "class": "UMaterialExpressionParticlePositionWS",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionParticlePositionWS.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "ParticleRadius": {
+  "abstract": false,
+  "base": "UMaterialExpressionExternalCodeBase",
+  "class": "UMaterialExpressionParticleRadius",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionParticleRadius.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "ParticleRandom": {
+  "abstract": false,
+  "base": "UMaterialExpressionExternalCodeBase",
+  "class": "UMaterialExpressionParticleRandom",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionParticleRandom.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "ParticleRelativeTime": {
+  "abstract": false,
+  "base": "UMaterialExpressionExternalCodeBase",
+  "class": "UMaterialExpressionParticleRelativeTime",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionParticleRelativeTime.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "ParticleSize": {
+  "abstract": false,
+  "base": "UMaterialExpressionExternalCodeBase",
+  "class": "UMaterialExpressionParticleSize",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionParticleSize.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "ParticleSpeed": {
+  "abstract": false,
+  "base": "UMaterialExpressionExternalCodeBase",
+  "class": "UMaterialExpressionParticleSpeed",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionParticleSpeed.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "ParticleSpriteRotation": {
+  "abstract": false,
+  "base": "UMaterialExpressionExternalCodeBase",
+  "class": "UMaterialExpressionParticleSpriteRotation",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionParticleSpriteRotation.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "ParticleSubUV": {
+  "abstract": false,
+  "base": "UMaterialExpressionTextureSample",
+  "class": "UMaterialExpressionParticleSubUV",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionParticleSubUV.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "ParticleSubUVProperties": {
+  "abstract": false,
+  "base": "UMaterialExpressionExternalCodeBase",
+  "class": "UMaterialExpressionParticleSubUVProperties",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionParticleSubUVProperties.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "PathTracingBufferTexture": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionPathTracingBufferTexture",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionPathTracingBufferTexture.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "PathTracingQualitySwitch": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionPathTracingQualitySwitch",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionPathTracingQualitySwitch.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "PathTracingRayTypeSwitch": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionPathTracingRayTypeSwitch",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionPathTracingRayTypeSwitch.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "PerInstanceCustomData": {
+  "abstract": false,
+  "base": "UMaterialExpressionExternalCodeBase",
+  "class": "UMaterialExpressionPerInstanceCustomData",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionPerInstanceCustomData.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "PerInstanceCustomData3Vector": {
+  "abstract": false,
+  "base": "UMaterialExpressionExternalCodeBase",
+  "class": "UMaterialExpressionPerInstanceCustomData3Vector",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionPerInstanceCustomData.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "PerInstanceFadeAmount": {
+  "abstract": false,
+  "base": "UMaterialExpressionExternalCodeBase",
+  "class": "UMaterialExpressionPerInstanceFadeAmount",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionPerInstanceFadeAmount.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "PerInstanceRandom": {
+  "abstract": false,
+  "base": "UMaterialExpressionExternalCodeBase",
+  "class": "UMaterialExpressionPerInstanceRandom",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionPerInstanceRandom.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "PhysicalMaterialOutput": {
+  "abstract": false,
+  "base": "UMaterialExpressionCustomOutput",
+  "class": "UMaterialExpressionPhysicalMaterialOutput",
+  "deprecated": false,
+  "header": "Engine/Plugins/Runtime/RenderTrace/Source/Private/Materials/MaterialExpressionPhysicalMaterialOutput.h",
+  "module": "Runtime",
+  "origin": "plugin"
+ },
+ "PinBase": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionPinBase",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionPinBase.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "PixelDepth": {
+  "abstract": false,
+  "base": "UMaterialExpressionExternalCodeBase",
+  "class": "UMaterialExpressionPixelDepth",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionPixelDepth.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "PixelNormalWS": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionPixelNormalWS",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionPixelNormalWS.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "PostVolumeUserFlagTest": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionPostVolumeUserFlagTest",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionPostVolumeUserFlagTest.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "Power": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionPower",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionPower.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "PreSkinnedLocalBounds": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionPreSkinnedLocalBounds",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionPreSkinnedLocalBounds.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "PreSkinnedNormal": {
+  "abstract": false,
+  "base": "UMaterialExpressionExternalCodeBase",
+  "class": "UMaterialExpressionPreSkinnedNormal",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionPreSkinnedNormal.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "PreSkinnedPosition": {
+  "abstract": false,
+  "base": "UMaterialExpressionExternalCodeBase",
+  "class": "UMaterialExpressionPreSkinnedPosition",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionPreSkinnedPosition.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "PrecomputedAOMask": {
+  "abstract": false,
+  "base": "UMaterialExpressionExternalCodeBase",
+  "class": "UMaterialExpressionPrecomputedAOMask",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionPrecomputedAOMask.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "PreviousFrameSwitch": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionPreviousFrameSwitch",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionPreviousFrameSwitch.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "QualitySwitch": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionQualitySwitch",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionQualitySwitch.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "RayTracingQualitySwitch": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionRayTracingQualitySwitch",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionRayTracingQualitySwitch.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "RecordTextureStreamingInfo": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionRecordTextureStreamingInfo",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionRecordTextureStreamingInfo.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "ReflectionCapturePassSwitch": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionReflectionCapturePassSwitch",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionReflectionCapturePassSwitch.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "ReflectionVectorWS": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionReflectionVectorWS",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionReflectionVectorWS.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "RequiredSamplersSwitch": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionRequiredSamplersSwitch",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionRequiredSamplersSwitch.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "Reroute": {
+  "abstract": false,
+  "base": "UMaterialExpressionRerouteBase",
+  "class": "UMaterialExpressionReroute",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionReroute.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "RerouteBase": {
+  "abstract": true,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionRerouteBase",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionRerouteBase.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "RgbToHsv": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionRgbToHsv",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionRgbToHsv.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "RotateAboutAxis": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionRotateAboutAxis",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionRotateAboutAxis.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "Rotator": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionRotator",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionRotator.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "Round": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionRound",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionRound.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "RuntimeVirtualTextureCustomData": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionRuntimeVirtualTextureCustomData",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionRuntimeVirtualTextureCustomData.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "RuntimeVirtualTextureOutput": {
+  "abstract": false,
+  "base": "UMaterialExpressionCustomOutput",
+  "class": "UMaterialExpressionRuntimeVirtualTextureOutput",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionRuntimeVirtualTextureOutput.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "RuntimeVirtualTextureReplace": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionRuntimeVirtualTextureReplace",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionRuntimeVirtualTextureReplace.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "RuntimeVirtualTextureSample": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionRuntimeVirtualTextureSample",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionRuntimeVirtualTextureSample.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "RuntimeVirtualTextureSampleParameter": {
+  "abstract": false,
+  "base": "UMaterialExpressionRuntimeVirtualTextureSample",
+  "class": "UMaterialExpressionRuntimeVirtualTextureSampleParameter",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionRuntimeVirtualTextureSampleParameter.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "SRGBColorToWorkingColorSpace": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionSRGBColorToWorkingColorSpace",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSRGBColorToWorkingColorSpace.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "SamplePhysicsIntegerField": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionSamplePhysicsIntegerField",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSamplePhysicsField.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "SamplePhysicsScalarField": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionSamplePhysicsScalarField",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSamplePhysicsField.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "SamplePhysicsVectorField": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionSamplePhysicsVectorField",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSamplePhysicsField.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "Saturate": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionSaturate",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSaturate.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "ScalarBlueNoise": {
+  "abstract": false,
+  "base": "UMaterialExpressionExternalCodeBase",
+  "class": "UMaterialExpressionScalarBlueNoise",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionNoise.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "ScalarParameter": {
+  "abstract": false,
+  "base": "UMaterialExpressionParameter",
+  "class": "UMaterialExpressionScalarParameter",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionScalarParameter.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "SceneColor": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionSceneColor",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSceneColor.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "SceneDepth": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionSceneDepth",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSceneDepth.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "SceneDepthWithoutWater": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionSceneDepthWithoutWater",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSceneDepthWithoutWater.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "SceneTexelSize": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionSceneTexelSize",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSceneTexelSize.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "SceneTexture": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionSceneTexture",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSceneTexture.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "ScreenPosition": {
+  "abstract": false,
+  "base": "UMaterialExpressionExternalCodeBase",
+  "class": "UMaterialExpressionScreenPosition",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionScreenPosition.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "SetMaterialAttributes": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionSetMaterialAttributes",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSetMaterialAttributes.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "ShaderStageSwitch": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionShaderStageSwitch",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionShaderStageSwitch.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "ShadingModel": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionShadingModel",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionShadingModel.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "ShadingPathSwitch": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionShadingPathSwitch",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionShadingPathSwitch.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "ShadowReplace": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionShadowReplace",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionShadowReplace.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "Sign": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionSign",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSign.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "Sine": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionSine",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSine.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "SingleLayerWaterMaterialOutput": {
+  "abstract": false,
+  "base": "UMaterialExpressionCustomOutput",
+  "class": "UMaterialExpressionSingleLayerWaterMaterialOutput",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSingleLayerWaterMaterialOutput.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "SkyAtmosphereAerialPerspective": {
+  "abstract": false,
+  "base": "UMaterialExpressionExternalCodeBase",
+  "class": "UMaterialExpressionSkyAtmosphereAerialPerspective",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSkyAtmosphereLightIlluminance.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "SkyAtmosphereDistantLightScatteredLuminance": {
+  "abstract": false,
+  "base": "UMaterialExpressionExternalCodeBase",
+  "class": "UMaterialExpressionSkyAtmosphereDistantLightScatteredLuminance",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSkyAtmosphereLightIlluminance.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "SkyAtmosphereLightDirection": {
+  "abstract": false,
+  "base": "UMaterialExpressionExternalCodeBase",
+  "class": "UMaterialExpressionSkyAtmosphereLightDirection",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSkyAtmosphereLightDirection.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "SkyAtmosphereLightDiskLuminance": {
+  "abstract": false,
+  "base": "UMaterialExpressionExternalCodeBase",
+  "class": "UMaterialExpressionSkyAtmosphereLightDiskLuminance",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSkyAtmosphereLightIlluminance.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "SkyAtmosphereLightIlluminance": {
+  "abstract": false,
+  "base": "UMaterialExpressionExternalCodeBase",
+  "class": "UMaterialExpressionSkyAtmosphereLightIlluminance",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSkyAtmosphereLightIlluminance.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "SkyAtmosphereLightIlluminanceOnGround": {
+  "abstract": false,
+  "base": "UMaterialExpressionExternalCodeBase",
+  "class": "UMaterialExpressionSkyAtmosphereLightIlluminanceOnGround",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSkyAtmosphereLightIlluminance.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "SkyAtmosphereViewLuminance": {
+  "abstract": false,
+  "base": "UMaterialExpressionExternalCodeBase",
+  "class": "UMaterialExpressionSkyAtmosphereViewLuminance",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSkyAtmosphereViewLuminance.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "SkyLightEnvMapSample": {
+  "abstract": false,
+  "base": "UMaterialExpressionExternalCodeBase",
+  "class": "UMaterialExpressionSkyLightEnvMapSample",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSkyLightEnvMapSample.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "SmoothStep": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionSmoothStep",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSmoothStep.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "Sobol": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionSobol",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSobol.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "SparseVolumeTextureBase": {
+  "abstract": true,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionSparseVolumeTextureBase",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSparseVolumeTextureBase.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "SparseVolumeTextureObject": {
+  "abstract": false,
+  "base": "UMaterialExpressionSparseVolumeTextureBase",
+  "class": "UMaterialExpressionSparseVolumeTextureObject",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSparseVolumeTextureObject.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "SparseVolumeTextureObjectParameter": {
+  "abstract": false,
+  "base": "UMaterialExpressionSparseVolumeTextureSampleParameter",
+  "class": "UMaterialExpressionSparseVolumeTextureObjectParameter",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSparseVolumeTextureObject.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "SparseVolumeTextureSample": {
+  "abstract": false,
+  "base": "UMaterialExpressionSparseVolumeTextureBase",
+  "class": "UMaterialExpressionSparseVolumeTextureSample",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSparseVolumeTextureSample.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "SparseVolumeTextureSampleParameter": {
+  "abstract": false,
+  "base": "UMaterialExpressionSparseVolumeTextureSample",
+  "class": "UMaterialExpressionSparseVolumeTextureSampleParameter",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSparseVolumeTextureSample.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "SpeedTree": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionSpeedTree",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSpeedTree.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "SphereMask": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionSphereMask",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSphereMask.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "SphericalParticleOpacity": {
+  "abstract": false,
+  "base": "UMaterialExpressionExternalCodeBase",
+  "class": "UMaterialExpressionSphericalParticleOpacity",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSphericalParticleOpacity.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "SpriteTextureSampler": {
+  "abstract": false,
+  "base": "UMaterialExpressionTextureSampleParameter2D",
+  "class": "UMaterialExpressionSpriteTextureSampler",
+  "deprecated": false,
+  "header": "Engine/Plugins/2D/Paper2D/Source/Paper2D/Public/MaterialExpressionSpriteTextureSampler.h",
+  "module": "2D",
+  "origin": "plugin"
+ },
+ "SquareRoot": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionSquareRoot",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSquareRoot.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "StaticBool": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionStaticBool",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionStaticBool.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "StaticBoolParameter": {
+  "abstract": false,
+  "base": "UMaterialExpressionParameter",
+  "class": "UMaterialExpressionStaticBoolParameter",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionStaticBoolParameter.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "StaticComponentMaskParameter": {
+  "abstract": false,
+  "base": "UMaterialExpressionParameter",
+  "class": "UMaterialExpressionStaticComponentMaskParameter",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionStaticComponentMaskParameter.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "StaticSwitch": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionStaticSwitch",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionStaticSwitch.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "StaticSwitchParameter": {
+  "abstract": false,
+  "base": "UMaterialExpressionStaticBoolParameter",
+  "class": "UMaterialExpressionStaticSwitchParameter",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionStaticSwitchParameter.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "Step": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionStep",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionStep.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "SubstrateAdd": {
+  "abstract": false,
+  "base": "UMaterialExpressionSubstrateBSDF",
+  "class": "UMaterialExpressionSubstrateAdd",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSubstrate.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "SubstrateBSDF": {
+  "abstract": true,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionSubstrateBSDF",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSubstrate.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "SubstrateConvertMaterialAttributes": {
+  "abstract": false,
+  "base": "UMaterialExpressionSubstrateBSDF",
+  "class": "UMaterialExpressionSubstrateConvertMaterialAttributes",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSubstrate.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "SubstrateConvertToDecal": {
+  "abstract": false,
+  "base": "UMaterialExpressionSubstrateBSDF",
+  "class": "UMaterialExpressionSubstrateConvertToDecal",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSubstrate.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "SubstrateEyeBSDF": {
+  "abstract": false,
+  "base": "UMaterialExpressionSubstrateBSDF",
+  "class": "UMaterialExpressionSubstrateEyeBSDF",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSubstrate.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "SubstrateHairBSDF": {
+  "abstract": false,
+  "base": "UMaterialExpressionSubstrateBSDF",
+  "class": "UMaterialExpressionSubstrateHairBSDF",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSubstrate.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "SubstrateHazinessToSecondaryRoughness": {
+  "abstract": false,
+  "base": "UMaterialExpressionSubstrateUtilityBase",
+  "class": "UMaterialExpressionSubstrateHazinessToSecondaryRoughness",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSubstrate.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "SubstrateHorizontalMixing": {
+  "abstract": false,
+  "base": "UMaterialExpressionSubstrateBSDF",
+  "class": "UMaterialExpressionSubstrateHorizontalMixing",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSubstrate.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "SubstrateLightFunction": {
+  "abstract": false,
+  "base": "UMaterialExpressionSubstrateBSDF",
+  "class": "UMaterialExpressionSubstrateLightFunction",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSubstrate.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "SubstrateMetalnessToDiffuseAlbedoF0": {
+  "abstract": false,
+  "base": "UMaterialExpressionSubstrateUtilityBase",
+  "class": "UMaterialExpressionSubstrateMetalnessToDiffuseAlbedoF0",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSubstrate.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "SubstratePostProcess": {
+  "abstract": false,
+  "base": "UMaterialExpressionSubstrateBSDF",
+  "class": "UMaterialExpressionSubstratePostProcess",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSubstrate.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "SubstrateSelect": {
+  "abstract": false,
+  "base": "UMaterialExpressionSubstrateBSDF",
+  "class": "UMaterialExpressionSubstrateSelect",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSubstrate.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "SubstrateShadingModels": {
+  "abstract": false,
+  "base": "UMaterialExpressionSubstrateBSDF",
+  "class": "UMaterialExpressionSubstrateShadingModels",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSubstrate.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "SubstrateSimpleClearCoatBSDF": {
+  "abstract": false,
+  "base": "UMaterialExpressionSubstrateBSDF",
+  "class": "UMaterialExpressionSubstrateSimpleClearCoatBSDF",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSubstrate.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "SubstrateSingleLayerWaterBSDF": {
+  "abstract": false,
+  "base": "UMaterialExpressionSubstrateBSDF",
+  "class": "UMaterialExpressionSubstrateSingleLayerWaterBSDF",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSubstrate.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "SubstrateSlabBSDF": {
+  "abstract": false,
+  "base": "UMaterialExpressionSubstrateBSDF",
+  "class": "UMaterialExpressionSubstrateSlabBSDF",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSubstrate.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "SubstrateThinFilm": {
+  "abstract": false,
+  "base": "UMaterialExpressionSubstrateUtilityBase",
+  "class": "UMaterialExpressionSubstrateThinFilm",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSubstrate.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "SubstrateToonBSDF": {
+  "abstract": false,
+  "base": "UMaterialExpressionSubstrateBSDF",
+  "class": "UMaterialExpressionSubstrateToonBSDF",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSubstrate.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "SubstrateTransmittanceToMFP": {
+  "abstract": true,
+  "base": "UMaterialExpressionSubstrateUtilityBase",
+  "class": "UMaterialExpressionSubstrateTransmittanceToMFP",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSubstrate.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "SubstrateUI": {
+  "abstract": false,
+  "base": "UMaterialExpressionSubstrateBSDF",
+  "class": "UMaterialExpressionSubstrateUI",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSubstrate.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "SubstrateUnlitBSDF": {
+  "abstract": false,
+  "base": "UMaterialExpressionSubstrateBSDF",
+  "class": "UMaterialExpressionSubstrateUnlitBSDF",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSubstrate.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "SubstrateUtilityBase": {
+  "abstract": true,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionSubstrateUtilityBase",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSubstrate.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "SubstrateVerticalLayering": {
+  "abstract": false,
+  "base": "UMaterialExpressionSubstrateBSDF",
+  "class": "UMaterialExpressionSubstrateVerticalLayering",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSubstrate.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "SubstrateVolumetricFogCloudBSDF": {
+  "abstract": false,
+  "base": "UMaterialExpressionSubstrateBSDF",
+  "class": "UMaterialExpressionSubstrateVolumetricFogCloudBSDF",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSubstrate.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "SubstrateWeight": {
+  "abstract": false,
+  "base": "UMaterialExpressionSubstrateBSDF",
+  "class": "UMaterialExpressionSubstrateWeight",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSubstrate.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "SubsurfaceMediumMaterialOutput": {
+  "abstract": false,
+  "base": "UMaterialExpressionCustomOutput",
+  "class": "UMaterialExpressionSubsurfaceMediumMaterialOutput",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSubsurfaceMediumMaterialOutput.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "Subtract": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionSubtract",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSubtract.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "Switch": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionSwitch",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSwitch.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "Tangent": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionTangent",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionTangent.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "TangentOutput": {
+  "abstract": false,
+  "base": "UMaterialExpressionCustomOutput",
+  "class": "UMaterialExpressionTangentOutput",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionTangentOutput.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "TemporalResponsivenessOutput": {
+  "abstract": false,
+  "base": "UMaterialExpressionCustomOutput",
+  "class": "UMaterialExpressionTemporalResponsivenessOutput",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionTemporalResponsivenessOutput.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "TemporalSobol": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionTemporalSobol",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionTemporalSobol.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "TextureBase": {
+  "abstract": true,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionTextureBase",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionTextureBase.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "TextureCollection": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionTextureCollection",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionTextureCollection.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "TextureCollectionParameter": {
+  "abstract": false,
+  "base": "UMaterialExpressionTextureCollection",
+  "class": "UMaterialExpressionTextureCollectionParameter",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionTextureCollectionParameter.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "TextureCoordinate": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionTextureCoordinate",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionTextureCoordinate.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "TextureObject": {
+  "abstract": false,
+  "base": "UMaterialExpressionTextureBase",
+  "class": "UMaterialExpressionTextureObject",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionTextureObject.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "TextureObjectFromCollection": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionTextureObjectFromCollection",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionTextureObjectFromCollection.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "TextureObjectParameter": {
+  "abstract": false,
+  "base": "UMaterialExpressionTextureSampleParameter",
+  "class": "UMaterialExpressionTextureObjectParameter",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionTextureObjectParameter.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "TextureProperty": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionTextureProperty",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionTextureProperty.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "TextureSample": {
+  "abstract": false,
+  "base": "UMaterialExpressionTextureBase",
+  "class": "UMaterialExpressionTextureSample",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionTextureSample.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "TextureSampleParameter": {
+  "abstract": true,
+  "base": "UMaterialExpressionTextureSample",
+  "class": "UMaterialExpressionTextureSampleParameter",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionTextureSampleParameter.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "TextureSampleParameter2D": {
+  "abstract": false,
+  "base": "UMaterialExpressionTextureSampleParameter",
+  "class": "UMaterialExpressionTextureSampleParameter2D",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionTextureSampleParameter2D.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "TextureSampleParameter2DArray": {
+  "abstract": false,
+  "base": "UMaterialExpressionTextureSampleParameter",
+  "class": "UMaterialExpressionTextureSampleParameter2DArray",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionTextureSampleParameter2DArray.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "TextureSampleParameterCube": {
+  "abstract": false,
+  "base": "UMaterialExpressionTextureSampleParameter",
+  "class": "UMaterialExpressionTextureSampleParameterCube",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionTextureSampleParameterCube.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "TextureSampleParameterCubeArray": {
+  "abstract": false,
+  "base": "UMaterialExpressionTextureSampleParameter",
+  "class": "UMaterialExpressionTextureSampleParameterCubeArray",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionTextureSampleParameterCubeArray.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "TextureSampleParameterSubUV": {
+  "abstract": false,
+  "base": "UMaterialExpressionTextureSampleParameter2D",
+  "class": "UMaterialExpressionTextureSampleParameterSubUV",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionTextureSampleParameterSubUV.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "TextureSampleParameterVolume": {
+  "abstract": false,
+  "base": "UMaterialExpressionTextureSampleParameter",
+  "class": "UMaterialExpressionTextureSampleParameterVolume",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionTextureSampleParameterVolume.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "ThinTranslucentMaterialOutput": {
+  "abstract": false,
+  "base": "UMaterialExpressionCustomOutput",
+  "class": "UMaterialExpressionThinTranslucentMaterialOutput",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionThinTranslucentMaterialOutput.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "Time": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionTime",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionTime.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "Transform": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionTransform",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionTransform.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "TransformPosition": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionTransformPosition",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionTransformPosition.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "Truncate": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionTruncate",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionTruncate.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "TruncateLWC": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionTruncateLWC",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionTruncateLWC.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "TwoSidedSign": {
+  "abstract": false,
+  "base": "UMaterialExpressionExternalCodeBase",
+  "class": "UMaterialExpressionTwoSidedSign",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionTwoSidedSign.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "UIntToFloat": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionUIntToFloat",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionFloatToUInt.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "UserSceneTexture": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionUserSceneTexture",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionUserSceneTexture.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "VectorNoise": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionVectorNoise",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionVectorNoise.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "VectorParameter": {
+  "abstract": false,
+  "base": "UMaterialExpressionParameter",
+  "class": "UMaterialExpressionVectorParameter",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionVectorParameter.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "VertexColor": {
+  "abstract": false,
+  "base": "UMaterialExpressionExternalCodeBase",
+  "class": "UMaterialExpressionVertexColor",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionVertexColor.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "VertexInterpolator": {
+  "abstract": false,
+  "base": "UMaterialExpressionCustomOutput",
+  "class": "UMaterialExpressionVertexInterpolator",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionVertexInterpolator.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "VertexNormalWS": {
+  "abstract": false,
+  "base": "UMaterialExpressionExternalCodeBase",
+  "class": "UMaterialExpressionVertexNormalWS",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionVertexNormalWS.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "VertexTangentWS": {
+  "abstract": false,
+  "base": "UMaterialExpressionExternalCodeBase",
+  "class": "UMaterialExpressionVertexTangentWS",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionVertexTangentWS.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "ViewProperty": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionViewProperty",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionViewProperty.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "ViewSize": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionViewSize",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionViewSize.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "VirtualTextureFeatureSwitch": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionVirtualTextureFeatureSwitch",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionVirtualTextureFeatureSwitch.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "VolumetricAdvancedMaterialInput": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionVolumetricAdvancedMaterialInput",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionVolumetricAdvancedMaterialInput.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "VolumetricAdvancedMaterialOutput": {
+  "abstract": false,
+  "base": "UMaterialExpressionCustomOutput",
+  "class": "UMaterialExpressionVolumetricAdvancedMaterialOutput",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionVolumetricAdvancedMaterialOutput.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "VolumetricCloudEmptySpaceSkippingInput": {
+  "abstract": false,
+  "base": "UMaterialExpressionExternalCodeBase",
+  "class": "UMaterialExpressionVolumetricCloudEmptySpaceSkippingInput",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionVolumetricAdvancedMaterialInput.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "VolumetricCloudEmptySpaceSkippingOutput": {
+  "abstract": false,
+  "base": "UMaterialExpressionCustomOutput",
+  "class": "UMaterialExpressionVolumetricCloudEmptySpaceSkippingOutput",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionVolumetricAdvancedMaterialOutput.h",
+  "module": "Engine",
+  "origin": "engine"
+ },
+ "WorldPosition": {
+  "abstract": false,
+  "base": "UMaterialExpression",
+  "class": "UMaterialExpressionWorldPosition",
+  "deprecated": false,
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionWorldPosition.h",
+  "module": "Engine",
+  "origin": "engine"
+ }
+}

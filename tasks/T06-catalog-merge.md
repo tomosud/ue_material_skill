@@ -11,7 +11,9 @@ output: `skill/scripts/catalog_merge.py` + `skill/catalog/nodes.json`
 
 - クラス名重複の検出(後勝ちではなくエラーにして手動解決)
 - スキーマ準拠チェック(INSTRUCTIONS-catalog.md のスキーマ)
-- 統計出力: 収載クラス数 / abstract / deprecated / verified数
+- **カバレッジ検査**: `catalog/manifest.json`(全359クラスの確定リスト)と突き合わせ、
+  未収載クラス・マニフェストに無い謎クラスを列挙する
+- 統計出力: 収載クラス数 / manifest比カバレッジ% / abstract / deprecated / verified数
 - 逆引きインデックス `skill/references/nodes-index.md` の自動生成
   (desc から「やりたいこと→クラス名」の一覧表)
 
