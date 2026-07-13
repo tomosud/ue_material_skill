@@ -1,23 +1,23 @@
-# UE Material 操作 Claude Skill — 調査結果と実装計画
+# UE Material 操作 Claude Skill — 調査結果と実装計画 (v2)
 
-作成日: 2026-07-13
+作成: 2026-07-13 / v2改訂: 2026-07-14
 調査対象: `C:\work\unreal\UnrealEngine-release` (UE 5.8, branch UE5)
+
+v2の変更点: **AIはT3Dを直接読み書きしない**。コンパクトな中間フォーマット(MGJSON)で
+入出力し、T3Dへの組み立て/分解はPythonツールが行う。クリップボード連携により
+T3Dテキストは会話に一切登場しない。作業は `tasks/` 配下の小タスクに分割済み。
 
 ## 1. ゴール
 
 Claude Skill「ue-material」を作る。できること:
 
-1. **自然言語 → マテリアルノードテキスト生成**
-   「Fresnelでリムライトを作って」→ Material Editor にそのまま Ctrl+V できるテキストを返す
-2. **エディタからのコピペ解析**
-   ユーザーが Material Editor でノードをコピー(Ctrl+C)して貼ったテキストを解析し、
-   構造の説明・修正・ノード追加などを行い、ペースト可能なテキストで返す
-3. **往復編集**: 既存グラフの一部改変(パラメータ化、ノード差し替え、接続変更)
+1. **自然言語 → マテリアルノード生成**: 「Fresnelでリムライト」→ ツールがT3Dを
+   クリップボードへ書き込み → ユーザーは Material Editor で Ctrl+V するだけ
+2. **エディタからのコピー解析**: ユーザーがエディタでノードをコピー →
+   ツールがクリップボードから読んで中間JSONに要約 → Claudeが構造を理解・説明・改変
+3. **往復編集**: 既存グラフの部分改変(パラメータ化、ノード差し替え、接続変更)
 
-外部ツール・プラグイン・UE起動は不要。純粋にテキスト生成/解析で完結する
-(クリップボード形式が公開のT3Dテキストであるため)。
-
-## 2. 調査結果: クリップボード形式の仕組み
+## 2. 調査結果: クリップボード形式の仕組み(確定事項)
 
 ### 2.1 コピー/ペーストのコードパス
 
@@ -26,14 +26,14 @@ Claude Skill「ue-material」を作る。できること:
 | コピー | `FMaterialEditor::CopySelectedNodes` — MaterialEditor.cpp:6409 |
 | エクスポート | `FEdGraphUtilities::ExportNodesToText` — EdGraphUtilities.cpp:458 (`UExporter::ExportToOutputDevice`、T3D形式) |
 | ペースト | `FMaterialEditor::PasteNodesHereFromBuffer` — MaterialEditor.cpp:6572 |
-| インポート | `FEdGraphUtilities::ImportNodesFromText` — EdGraphUtilities.cpp:484 → `FGraphObjectTextFactory` (FCustomizableTextObjectFactory::ProcessBuffer — EditorFactories.cpp:5343) |
+| インポート | `FEdGraphUtilities::ImportNodesFromText` — EdGraphUtilities.cpp:484 → `FCustomizableTextObjectFactory::ProcessBuffer` — EditorFactories.cpp:5343 |
 | Pin書式 | `UEdGraphPin::ExportTextItem / ImportTextItem` — EdGraphPin.cpp:1077 / 1265 |
 | ペースト後処理 | `UMaterialGraphNode_Base::PostPasteNode / ReconstructNode` — MaterialGraphNode_Base.cpp:227 / 255 |
 | 接続の確定 | `UMaterialGraph::LinkMaterialExpressionsFromGraph` — MaterialGraph.cpp:496 |
 
 コピー時は `UMaterialGraphNode::PrepareForCopying` (MaterialGraphNode.cpp:362) が
-MaterialExpression を一時的にノードの子に Rename するため、
-クリップボードには **GraphNode の中に Expression がネストされた形** で出る。
+MaterialExpression をノードの子に Rename するため、クリップボードには
+**GraphNode の中に Expression がネストされた形** で出る。
 
 ### 2.2 テキスト形式(T3D)
 
@@ -53,146 +53,159 @@ Begin Object Class=/Script/UnrealEd.MaterialGraphNode Name="MaterialGraphNode_0"
    NodePosX=-200
    NodePosY=64
    NodeGuid=00112233445566778899AABBCCDDEEFF
-   CustomProperties Pin (PinId=<GUID32hex>,PinName="A",PinType.PinCategory="optional",LinkedTo=(MaterialGraphNode_1 <相手PinId>,),PersistentGuid=00000000000000000000000000000000,bHidden=False,bNotConnectable=False,bDefaultValueIsReadOnly=False,bDefaultValueIsIgnored=False,bAdvancedView=False,bOrphanedPin=False,)
+   CustomProperties Pin (PinId=<GUID32hex>,PinName="A",PinType.PinCategory="optional",LinkedTo=(MaterialGraphNode_1 <相手PinId>,),...)
    CustomProperties Pin (PinId=<GUID>,PinName="B",...)
    CustomProperties Pin (PinId=<GUID>,PinName="Output",Direction="EGPD_Output",...)
 End Object
 ```
 
-構文ルール(ProcessBuffer / ImportObjectProperties の実装から):
+構文ルール:
 - 先頭ブロックは `Class=` と `Name=` が必須。`ExportPath=` は省略可
-- サブオブジェクトは「`Class=`付きブロックで宣言 → `Name=`のみのブロックでプロパティ設定」の
-  2段書きがエディタ出力の形式(1段にまとめても import 側は受理する)
-- プロパティは **デフォルト値との差分のみ** 記載する形式(全部書いても害はない)
-- コメントノードは `Class=/Script/UnrealEd.MaterialGraphNode_Comment` +
-  ネストされた `MaterialExpressionComment`
+- サブオブジェクトは「`Class=`付き宣言ブロック → `Name=`のみのプロパティブロック」の2段書き
+  (エディタ出力形式。1段でもimport側は受理)
+- プロパティは **デフォルト値との差分のみ** 記載
+- コメントは `Class=/Script/UnrealEd.MaterialGraphNode_Comment` + `MaterialExpressionComment`
 
-### 2.3 実装から確定した重要な事実(Skillの生成ルールに直結)
+### 2.3 実装から確定した重要な事実
 
-1. **接続は Pin の `LinkedTo` が正**。
-   ペースト後 `UpdateMaterialAfterGraphChange` → `LinkMaterialExpressionsFromGraph` が
-   Pin のリンクから Expression の入力 (`A=(Expression=...)`) を**再構築**する。
-   Expression 側の入力プロパティはペースト時には冗長(入れても無害、エディタ出力には含まれる)。
-2. **`LinkedTo` の書式は `<相手ノード名> <相手PinのPinId>`**
-   (`UEdGraphPin::ExportText_PinReference` — EdGraphPin.cpp:2298)。
-   生成時は両ノードの PinId を自分で採番して整合させる。GUIDは32桁hexで任意の値でよい。
-3. **Pin の記載順が SourceIndex を決める**(`PostPasteNode` が登場順に連番を振る)。
-   その後 `ReconstructNode` が Expression から Pin を再生成し、
-   旧Pinを **入力は PinName → だめなら SourceIndex、出力は SourceIndex のみ** で照合して
-   リンクを引き継ぐ。
-   → **入力Pinは正しい PinName を付ける。出力Pinは全出力を正しい順序で列挙する**
-   (TextureSample のように出力が RGB/R/G/B/A と複数あるノードで順序を間違うと誤配線になる)。
-4. **PinType の中身はペースト時に捨てられ再生成される**ため最小限でよい。
-   Direction はデフォルトが入力なので、出力Pinのみ `Direction="EGPD_Output"` が必要。
-5. **NodeGuid / MaterialExpressionGuid / ParameterGuid はペースト時に再発行される**
-   (`CreateNewGuid`, `UpdateMaterialExpressionGuid`)。ユニークでありさえすればよい。
-6. **プロパティ入力ピン**: `ShowAsInputPin` メタデータ付き UPROPERTY(Constant の Value 等)も
-   入力ピンとして FExpressionInput の後に並び、SourceIndex に数えられる
-   (MaterialGraphNode.cpp:722)。カタログにはこれも含める必要がある。
-7. **アセット参照はパス文字列**:
-   `Texture=/Script/Engine.Texture2D'"/Engine/EngineResources/DefaultTexture.DefaultTexture"'`。
-   存在しないパスは None になるだけでペースト自体は成功する。
-8. ペーストできるのは選択ノード相当のみ。**最終出力ノード(Root)は貼れない**ので、
-   BaseColor 等への接続は「ユーザーが手で1本つなぐ」案内をする
-   (Root入力の接続はテキストで表現できない)。
-9. `Material=` / `Function=` プロパティはペースト側で上書きされるため省略してよい。
-10. マテリアル関数(MaterialFunctionCall)、Named Reroute、Composite(折りたたみ)にも
-    ペースト後の特殊処理があり動作する (MaterialEditor.cpp:6478 `PostPasteMaterialExpression`)。
+1. **接続は Pin の `LinkedTo` が正**。ペースト後 `LinkMaterialExpressionsFromGraph` が
+   PinリンクからExpression入力(`A=(Expression=...)`)を**再構築**する。
+   Expression側の入力プロパティはペースト時は冗長(入れても無害)。
+2. **`LinkedTo` 書式は `<相手ノード名> <相手PinId>`** (EdGraphPin.cpp:2298)。
+   PinId(32桁hex GUID)は自分で採番して両側を整合させればよい。
+3. **Pinの記載順が SourceIndex を決める**(PostPasteNodeが登場順に連番)。
+   ReconstructNode の照合は **入力=PinName優先、出力=SourceIndexのみ**。
+   → 入力Pinは正しい名前を付ける。**出力Pinは全出力を正順で列挙必須**
+   (TextureSampleのRGB/R/G/B/Aなどで誤配線防止)。
+4. **PinTypeの中身はペースト時に捨てられ再生成**されるため最小限でよい。
+   出力Pinのみ `Direction="EGPD_Output"` が必要。
+5. **NodeGuid / MaterialExpressionGuid 等はペースト時に再発行** → 任意のユニーク値でよい。
+6. **プロパティ入力ピン**(`ShowAsInputPin` メタ付きUPROPERTY)も入力ピンとして
+   FExpressionInput の後に並び SourceIndex に数えられる (MaterialGraphNode.cpp:722)。
+7. **アセット参照はパス文字列**: `Texture=/Script/Engine.Texture2D'"/Game/T_x.T_x"'`。
+   存在しないパスは None になるだけでペーストは成功する。
+8. **最終出力ノード(Root)はペースト不可** → BaseColor等への最後の1本は手動接続を案内。
+9. `Material=` / `Function=` プロパティはペースト側で上書きされるため省略可。
+10. MaterialFunctionCall / NamedReroute / Composite はペースト後の特殊処理あり
+    (MaterialEditor.cpp:6478 `PostPasteMaterialExpression`)。FunctionCallは
+    `UpdateFromFunctionResource` でMFアセットから再構築される → MFパスとピン名だけ正しければよい。
 
-### 2.4 ノードの種類
+### 2.4 ノードの規模
 
-- `MaterialExpression*.h` は **275クラス** (`Engine/Source/Runtime/Engine/Public/Materials/`)
-- 入力ピン: 各クラスの `FExpressionInput` 型 UPROPERTY(宣言順)+ ShowAsInputPin プロパティ
-- 出力ピン: 既定は1本 (`Output`)。コンストラクタで `Outputs` を上書きするクラスあり
-  (TextureSample: RGB,R,G,B,A / Panner等)
-- 入力名: 既定はプロパティ名。`GetInputName` オーバーライドで変わるクラスあり
+- `MaterialExpression*.h` は **275ヘッダ** (`Engine/Source/Runtime/Engine/Public/Materials/`)。
+  実装の大半は `Private/Materials/MaterialExpressions.cpp`(巨大)か個別cpp。
+- 入力ピン: `FExpressionInput` 型UPROPERTYの宣言順 + ShowAsInputPinプロパティ
+- 出力ピン: 既定1本。コンストラクタで `Outputs` 上書きのクラスあり(TextureSample等)
+- 入力名: 既定はプロパティ名。`GetInputName` オーバーライドあり
 
-→ ヘッダの機械抽出でカタログの大半を作れるが、
-   **正解はエディタからの実コピペサンプル**なので、主要ノードは実サンプルで検証する。
+### 2.5 環境の確認事項
 
-## 3. Skill 設計
+- PowerShell `Get-Clipboard` / `Set-Clipboard` が動作 → **ツールがクリップボードを直接読み書きできる**
+- このチェックアウトに `Engine/Content` なし → エンジン組み込みMFのuassetは参照不可。
+  MFナレッジはモデル知識+実機検証フラグで管理する
+
+## 3. アーキテクチャ v2: 中間フォーマット + 変換ツール
+
+### 3.1 判断の根拠
+
+| | T3Dを直接AIが読み書き | 中間フォーマット+ツール(採用) |
+|---|---|---|
+| トークン | 1ノード約300〜700tok(Pin行のGUIDが支配的) | 1ノード約15〜40tok。**90%以上削減** |
+| 正確性 | GUID採番・Pin順序・整合をAIが毎回間違えずに書く必要 | 機械的な部分は全てツールが保証 |
+| クリップボード | ユーザーが長文を貼る/コピーする | `Get-Clipboard`/`Set-Clipboard`で**T3Dは会話に登場しない** |
+| レイアウト | NodePosX/Yを全ノードでAIが決める | ツールが自動レイアウト(posは省略可) |
+
+結論: AIの入出力は中間フォーマット(MGJSON)に限定し、T3D変換は決定的なPythonツールに任せる。
+これは正確性の面でも優れる(GUID・ピン順序のヒューマンエラー相当が消える)。
+
+### 3.2 中間フォーマット MGJSON(仕様詳細はタスクT02)
+
+```json
+{
+  "nodes": {
+    "uv":  {"class": "TextureCoordinate", "props": {"UTiling": 2.0, "VTiling": 2.0}},
+    "tex": {"class": "TextureSampleParameter2D",
+            "props": {"ParameterName": "BaseTex", "Texture": "/Game/Textures/T_Base.T_Base"}},
+    "mul": {"class": "Multiply"}
+  },
+  "links": [
+    "uv -> tex.UVs",
+    "tex.RGB -> mul.A",
+    "tex.A -> mul.B"
+  ],
+  "pos": {"uv": [-600, 0]}
+}
+```
+
+- ノードIDは短い任意名。`class` は `MaterialExpression` を除いた短名
+- `links` は `"src[.出力名] -> dst.入力名"`。出力名省略=第1出力
+- `props` はデフォルトと違うものだけ。`pos` は省略可(ツールが左→右に自動レイアウト)
+- コメント枠: `{"class": "Comment", "props": {"Text": "...", "nodes": ["uv","tex"]}}` で包含指定
+
+### 3.3 ツール(scripts/)
+
+| ツール | 役割 |
+|---|---|
+| `build.py` | MGJSON → T3D。ピン構成はカタログ参照、GUID採番、自動レイアウト。`--to-clipboard` / stdout |
+| `parse.py` | T3D → MGJSON。`--from-clipboard` / ファイル。位置・GUID等のノイズを捨てて要約 |
+| `validate.py` | MGJSON検証(カタログ照合: クラス名/ピン名/props、リンク整合、循環検出) |
+| `catalog_merge.py` | `catalog/generated/*.json` を結合・lint して `catalog/nodes.json` を生成 |
+
+ワークフロー:
+- **生成**: Claude が MGJSON を書く → `validate.py` → `build.py --to-clipboard` →
+  「エディタで Ctrl+V してください。BaseColorへの接続だけ手動で」
+- **解析**: ユーザー「エディタでコピーした」→ `parse.py --from-clipboard` →
+  MGJSONだけがコンテキストに入る → 説明・改変 → `build.py --to-clipboard` で返す
+- フォールバック(リモート環境等): ファイル渡し(ユーザーがtxtに貼る/受け取る)
+
+### 3.4 カタログ(catalog/)
+
+ツールがピン順序・ピン名・プロパティを知るための正データ。
+`catalog/generated/<タスクID>.json`(各AIワーカーの成果物)→ merge → `catalog/nodes.json`。
+スキーマと抽出ルールは `tasks/INSTRUCTIONS-catalog.md` に固定済み(全ワーカー共通)。
+
+### 3.5 最終的なSkill構成
 
 ```
 ue-material/
-├── SKILL.md                 # 本体: トリガー条件、ワークフロー、生成ルールの要約
+├── SKILL.md                 # トリガー、ワークフロー、MGJSONの書き方要約
 ├── references/
-│   ├── format.md            # T3D形式の完全仕様(2.2/2.3の内容+実サンプル)
-│   ├── nodes-core.md        # 主要ノード詳細カタログ(実機検証済み: ピン名/順序/プロパティ/実例)
-│   ├── nodes-all.md         # 275クラスの自動生成インデックス(クラス名/入出力/主プロパティ)
-│   └── examples/            # 実エディタからコピーした完全サンプル(パターン別)
-│       ├── basic-math.txt
-│       ├── texture-uv.txt
-│       ├── parameters.txt
-│       └── comment-reroute.txt
-└── scripts/
-    ├── validate.py          # 生成テキストの検証(下記)
-    └── parse.py             # コピペテキスト → 構造JSON(ノード/接続/プロパティの要約)
+│   ├── format.md            # T3D仕様(デバッグ・未知ノード対応用)
+│   ├── mgjson.md            # 中間フォーマット仕様
+│   ├── nodes-index.md       # ノード逆引き(やりたいこと→クラス名)
+│   └── mf/*.md              # Material Functionナレッジ
+├── scripts/                 # build.py / parse.py / validate.py
+└── catalog/nodes.json       # マージ済みカタログ(scripts が参照)
 ```
 
-### SKILL.md のワークフロー
+## 4. 作業分割
 
-1. **生成**(自然言語→テキスト):
-   references のカタログからノードを選定 → 接続グラフを設計 →
-   NodePosX/Y を左→右のデータフローで自動レイアウト(列間 ~300px、行間 ~150-200px)→
-   テキスト生成 → `validate.py` で自己検証 → コードブロックで出力し
-   「全選択→コピー→Material Editor 上で Ctrl+V」の手順と Root への手動接続を案内
-2. **解析**(コピペ→理解): `parse.py` で構造化 → 日本語で構造を説明
-3. **改変**: 解析結果に対して編集 → 再生成(既存の PinId/名前をなるべく保持)
-4. **未知ノード対応**: カタログにないノードは、ユーザーに
-   「そのノードを1個エディタでコピーして貼ってください」と依頼して形式を学習(往復プロトコル)
+タスクは `tasks/` 配下に1ファイル1タスクで配置。索引と依存関係は `tasks/README.md`。
 
-### validate.py のチェック項目
+- **T01〜T08**: 基盤(仕様書、ツール実装、SKILL.md、実機検証)。T03/T04が本体
+- **C01〜C08**: ノードカタログ優先度A(主要8カテゴリ約120クラス)— **安価なAIに並列発注可**
+- **C09〜**: 残り全クラスの優先度Bバッチ — 同上
+- **M01〜M04**: MaterialFunction(呼び出し形式の調査+MFナレッジ3分割)
+- **E01**: 実機サンプル収集(ユーザー協働)
 
-- Begin/End の対応、Class=/Name= 必須項目
-- ノード名・Expression名の一意性
-- `MaterialExpression=` 参照がネスト内オブジェクトと一致
-- PinId の一意性、`LinkedTo` の相互参照整合(相手ノード名+PinIdが実在、双方向)
-- 出力Pinの `Direction="EGPD_Output"` 有無
-- カタログ照合: ピン名/順序が既知ノード定義と一致するか
-- GUID形式(32桁hex)
+並列性: C系・M02〜M04は `INSTRUCTIONS-catalog.md` 確定済みのため**今すぐ全部並列可**。
+T03(build)はC01+C02のカタログがあれば着手可。MVPパスは
+E01 → T01/T02 → T03/T04/T05 → T08(実機検証)。
 
-## 4. 実装フェーズ
-
-### Phase 1 — MVP(まずここまで)
-1. `format.md` 作成(本調査結果を仕様化)
-2. コアノード ~30種の手動カタログ + 生成テンプレート
-   - Constant / Constant2Vector / Constant3Vector / Constant4Vector
-   - ScalarParameter / VectorParameter / StaticSwitchParameter
-   - Add / Subtract / Multiply / Divide / LinearInterpolate / Clamp / Power / OneMinus
-   - TextureSample / TextureSampleParameter2D / TextureCoordinate / Panner / Rotator
-   - Fresnel / DotProduct / CrossProduct / Normalize / ComponentMask / AppendVector
-   - Time / VertexColor / WorldPosition / PixelNormalWS / Desaturation / Saturate
-   - Comment / NamedRerouteDeclaration / NamedRerouteUsage
-3. `validate.py` / `parse.py` 実装
-4. SKILL.md 作成
-5. **実機検証**: 生成テキストを実際の Material Editor に貼って動作確認
-   (単ノード → 複数ノード接続 → パラメータ → テクスチャ → コメント、の順)
-
-### Phase 2 — カタログ自動生成
-- UEソースのヘッダ275本をパースするスクリプト
-  (`FExpressionInput` 宣言順、`GetInputName`/`Outputs` オーバーライド、
-  ShowAsInputPin メタデータ、UPROPERTY既定値を抽出)→ `nodes-all.md` 生成
-- 出力ピン定義はヘッダだけでは不明なクラスがあるため cpp のコンストラクタも参照
-
-### Phase 3 — 応用
-- Material Function 呼び出し(FunctionCall)対応
-- 既存グラフの大規模リファクタ(パラメータ一括化など)
-- レイアウト品質向上(重なり回避、コメント枠での グルーピング)
-- UEバージョン差の吸収(5.x系はこの形式でほぼ安定。必要ならバージョン指定オプション)
-
-## 5. リスク・未確定事項(Phase 1 実機検証で潰す)
+## 5. リスク・未確定事項(T08実機検証で潰す)
 
 | 項目 | 内容 | 対策 |
 |---|---|---|
-| ピン順序の例外 | GetInputs をオーバーライドするクラスで宣言順と一致しない可能性 | コアノードは実コピペで検証 |
-| プロパティピンの扱い | ShowAsInputPin ピンの省略可否・順序 | 実機で省略時挙動を確認 |
-| 最小テキストの受理範囲 | Pin行の必須フィールド最小セット | 実機で削り込みテスト |
-| バージョン差 | 5.0〜5.8 での ExportPath / プロパティ差 | まず手元バージョンで固定、examples をバージョン別に |
-| Substrate | Substrate 有効環境ではノード構成が異なる | Phase 3 以降 |
+| ピン順序の例外 | GetInputsオーバーライドで宣言順と不一致の可能性 | カタログにnotes、実機round-trip検証 |
+| プロパティピン | ShowAsInputPinピンの省略可否・順序 | 実機で確認 |
+| 最小テキスト受理範囲 | Pin行の必須フィールド最小セット | 実機で削り込みテスト |
+| バージョン差 | 5.0〜5.8のプロパティ差 | 手元バージョン優先、examplesをバージョン別管理 |
+| MFナレッジの確度 | Contentが無くモデル知識ベース | unverifiedフラグ、実機検証で昇格 |
+| Substrate | 有効環境ではノード構成が異なる | 別バッチ(低優先) |
 
 ## 6. 次のアクション
 
-1. この計画の承認
-2. Phase 1 開始。最初の成果物は「Constant3Vector 1個」を貼れるテキスト → 実機確認
-3. ユーザー側でエディタからのコピペサンプル提供(数パターン)があると
-   examples/ の整備が早い
+1. E01: ユーザーがエディタからサンプル数点をコピーしてファイル保存(形式の実物確認)
+2. C01〜C08 / M02〜M04 を安価なAIへ並列発注
+3. 本体側で T01/T02 → T03/T04/T05 を実装
+4. T08 実機検証(ユーザー協働)→ カタログの verified 昇格
