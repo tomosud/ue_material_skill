@@ -1,0 +1,428 @@
+{
+  "ViewSize": {
+    "notes": "",
+    "class": "/Script/Engine.MaterialExpressionViewSize",
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "inputs": [],
+    "header": "Materials/MaterialExpressionViewSize.h",
+    "props": {},
+    "prop_pins": [],
+    "verified": false,
+    "desc": "ビューのサイズ(幅と高さ)"
+  },
+  "ActorPositionWS": {
+    "notes": "",
+    "class": "/Script/Engine.MaterialExpressionActorPositionWS",
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "inputs": [],
+    "header": "Materials/MaterialExpressionActorPositionWS.h",
+    "props": {
+      "OriginType": {
+        "default": null,
+        "type": "enum:EPositionOrigin"
+      }
+    },
+    "prop_pins": [
+      {
+        "prop": "OriginType",
+        "type": "enum:EPositionOrigin",
+        "name": "Origin",
+        "kind": "Advanced"
+      }
+    ],
+    "verified": false,
+    "desc": "アクタのワールド座標"
+  },
+  "LocalPosition": {
+    "notes": "",
+    "class": "/Script/Engine.MaterialExpressionLocalPosition",
+    "outputs": [
+      {
+        "name": "XYZ"
+      },
+      {
+        "name": "XY"
+      },
+      {
+        "name": "Z"
+      }
+    ],
+    "inputs": [],
+    "header": "Materials/MaterialExpressionLocalPosition.h",
+    "props": {
+      "IncludedOffsets": {
+        "default": "IncludeOffsets",
+        "type": "enum:EPositionIncludedOffsets"
+      },
+      "LocalOrigin": {
+        "default": "Instance",
+        "type": "enum:ELocalPositionOrigin"
+      }
+    },
+    "prop_pins": [
+      {
+        "prop": "IncludedOffsets",
+        "type": "enum:EPositionIncludedOffsets",
+        "name": "Shader Offsets",
+        "kind": "Advanced"
+      },
+      {
+        "prop": "LocalOrigin",
+        "type": "enum:ELocalPositionOrigin",
+        "name": "Local Origin",
+        "kind": "Advanced"
+      }
+    ],
+    "verified": false,
+    "desc": "ローカル座標系でのピクセル位置"
+  },
+  "ObjectOrientation": {
+    "notes": "MaterialExpressionExternalCodeBaseを継承",
+    "class": "/Script/Engine.MaterialExpressionObjectOrientation",
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "inputs": [],
+    "header": "Materials/MaterialExpressionObjectOrientation.h",
+    "props": {},
+    "prop_pins": [],
+    "verified": false,
+    "desc": "オブジェクトの向きを示すベクトル"
+  },
+  "VertexTangentWS": {
+    "notes": "MaterialExpressionExternalCodeBaseを継承",
+    "class": "/Script/Engine.MaterialExpressionVertexTangentWS",
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "inputs": [],
+    "header": "Materials/MaterialExpressionVertexTangentWS.h",
+    "props": {},
+    "prop_pins": [],
+    "verified": false,
+    "desc": "頂点の接線(ワールド座標)"
+  },
+  "ScreenPosition": {
+    "notes": "MaterialExpressionExternalCodeBaseを継承",
+    "class": "/Script/Engine.MaterialExpressionScreenPosition",
+    "outputs": [
+      {
+        "name": "ViewportUV"
+      },
+      {
+        "name": "PixelPosition"
+      }
+    ],
+    "inputs": [],
+    "header": "Materials/MaterialExpressionScreenPosition.h",
+    "props": {},
+    "prop_pins": [],
+    "verified": false,
+    "desc": "スクリーン座標系でのピクセル位置"
+  },
+  "PixelNormalWS": {
+    "notes": "",
+    "class": "/Script/Engine.MaterialExpressionPixelNormalWS",
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "inputs": [],
+    "header": "Materials/MaterialExpressionPixelNormalWS.h",
+    "props": {},
+    "prop_pins": [],
+    "verified": false,
+    "desc": "現在のピクセルの表面法線(ワールド座標)"
+  },
+  "CameraVectorWS": {
+    "notes": "MaterialExpressionExternalCodeBaseを継承",
+    "class": "/Script/Engine.MaterialExpressionCameraVectorWS",
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "inputs": [],
+    "header": "Materials/MaterialExpressionCameraVectorWS.h",
+    "props": {},
+    "prop_pins": [],
+    "verified": false,
+    "desc": "カメラから現在のピクセルへの方向ベクトル"
+  },
+  "ObjectLocalBounds": {
+    "notes": "MaterialExpressionExternalCodeBaseを継承",
+    "class": "/Script/Engine.MaterialExpressionObjectLocalBounds",
+    "outputs": [
+      {
+        "name": "Half Extents"
+      },
+      {
+        "name": "Extents"
+      },
+      {
+        "name": "Min"
+      },
+      {
+        "name": "Max"
+      }
+    ],
+    "inputs": [],
+    "header": "Materials/MaterialExpressionObjectLocalBounds.h",
+    "props": {},
+    "prop_pins": [],
+    "verified": false,
+    "desc": "オブジェクトのローカル座標系バウンディングボックス情報"
+  },
+  "WorldPosition": {
+    "notes": "",
+    "class": "/Script/Engine.MaterialExpressionWorldPosition",
+    "outputs": [
+      {
+        "name": "XYZ"
+      },
+      {
+        "name": "XY"
+      },
+      {
+        "name": "Z"
+      }
+    ],
+    "inputs": [],
+    "header": "Materials/MaterialExpressionWorldPosition.h",
+    "props": {
+      "WorldPositionShaderOffset": {
+        "default": "WPT_Default",
+        "type": "enum:EWorldPositionIncludedOffsets"
+      }
+    },
+    "prop_pins": [
+      {
+        "prop": "WorldPositionShaderOffset",
+        "type": "enum:EWorldPositionIncludedOffsets",
+        "name": "Shader Offsets",
+        "kind": "Advanced"
+      }
+    ],
+    "verified": false,
+    "desc": "ワールド座標系での現在のピクセル位置を出力"
+  },
+  "ObjectPositionWS": {
+    "notes": "",
+    "class": "/Script/Engine.MaterialExpressionObjectPositionWS",
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "inputs": [],
+    "header": "Materials/MaterialExpressionObjectPositionWS.h",
+    "props": {
+      "OriginType": {
+        "default": null,
+        "type": "enum:EPositionOrigin"
+      }
+    },
+    "prop_pins": [
+      {
+        "prop": "OriginType",
+        "type": "enum:EPositionOrigin",
+        "name": "Origin",
+        "kind": "Advanced"
+      }
+    ],
+    "verified": false,
+    "desc": "オブジェクトのワールド座標"
+  },
+  "CameraPositionWS": {
+    "notes": "",
+    "class": "/Script/Engine.MaterialExpressionCameraPositionWS",
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "inputs": [],
+    "header": "Materials/MaterialExpressionCameraPositionWS.h",
+    "props": {},
+    "prop_pins": [],
+    "verified": false,
+    "desc": "カメラのワールド座標"
+  },
+  "TwoSidedSign": {
+    "notes": "MaterialExpressionExternalCodeBaseを継承",
+    "class": "/Script/Engine.MaterialExpressionTwoSidedSign",
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "inputs": [],
+    "header": "Materials/MaterialExpressionTwoSidedSign.h",
+    "props": {},
+    "prop_pins": [],
+    "verified": false,
+    "desc": "両面マテリアル時の表裏判定値"
+  },
+  "PixelDepth": {
+    "notes": "MaterialExpressionExternalCodeBaseを継承",
+    "class": "/Script/Engine.MaterialExpressionPixelDepth",
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "inputs": [],
+    "header": "Materials/MaterialExpressionPixelDepth.h",
+    "props": {},
+    "prop_pins": [],
+    "verified": false,
+    "desc": "現在のピクセルの深度値"
+  },
+  "ObjectRadius": {
+    "notes": "MaterialExpressionExternalCodeBaseを継承",
+    "class": "/Script/Engine.MaterialExpressionObjectRadius",
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "inputs": [],
+    "header": "Materials/MaterialExpressionObjectRadius.h",
+    "props": {},
+    "prop_pins": [],
+    "verified": false,
+    "desc": "オブジェクトのバウンディングスフィアの半径"
+  },
+  "ObjectBounds": {
+    "notes": "MaterialExpressionExternalCodeBaseを継承",
+    "class": "/Script/Engine.MaterialExpressionObjectBounds",
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "inputs": [],
+    "header": "Materials/MaterialExpressionObjectBounds.h",
+    "props": {},
+    "prop_pins": [],
+    "verified": false,
+    "desc": "オブジェクトのバウンディングボックス情報"
+  },
+  "SceneTexelSize": {
+    "notes": "",
+    "class": "/Script/Engine.MaterialExpressionSceneTexelSize",
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "inputs": [],
+    "header": "Materials/MaterialExpressionSceneTexelSize.h",
+    "props": {},
+    "prop_pins": [],
+    "verified": false,
+    "desc": "シーンテクスチャのテクセルサイズ"
+  },
+  "ReflectionVectorWS": {
+    "notes": "",
+    "class": "/Script/Engine.MaterialExpressionReflectionVectorWS",
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "inputs": [
+      {
+        "prop": "CustomWorldNormal",
+        "name": "Custom World Normal",
+        "required": false,
+        "note": "未指定時はピクセル法線を使用",
+        "default_prop": null
+      }
+    ],
+    "header": "Materials/MaterialExpressionReflectionVectorWS.h",
+    "props": {
+      "bNormalizeCustomWorldNormal": {
+        "default": false,
+        "type": "bool"
+      }
+    },
+    "prop_pins": [
+      {
+        "prop": "bNormalizeCustomWorldNormal",
+        "type": "bool",
+        "name": "Normalize custom world normal",
+        "kind": "Advanced"
+      }
+    ],
+    "verified": false,
+    "desc": "反射ベクトル"
+  },
+  "SceneDepth": {
+    "notes": "GetInputNameオーバーライドあり - InputModeのenum値を表示",
+    "class": "/Script/Engine.MaterialExpressionSceneDepth",
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "inputs": [
+      {
+        "prop": "Input",
+        "name": "",
+        "required": false,
+        "note": "入力モードによって名前が変わる(GetInputName参照)",
+        "default_prop": "ConstInput"
+      }
+    ],
+    "header": "Materials/MaterialExpressionSceneDepth.h",
+    "props": {
+      "InputMode": {
+        "default": null,
+        "type": "enum:EMaterialSceneAttributeInputMode::Type"
+      },
+      "ConstInput": {
+        "default": "0.0, 0.0",
+        "type": "FVector2D"
+      }
+    },
+    "prop_pins": [
+      {
+        "prop": "InputMode",
+        "type": "enum:EMaterialSceneAttributeInputMode::Type",
+        "name": "",
+        "kind": "Advanced"
+      }
+    ],
+    "verified": false,
+    "desc": "シーンの深度値をサンプリング"
+  },
+  "VertexNormalWS": {
+    "notes": "MaterialExpressionExternalCodeBaseを継承",
+    "class": "/Script/Engine.MaterialExpressionVertexNormalWS",
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "inputs": [],
+    "header": "Materials/MaterialExpressionVertexNormalWS.h",
+    "props": {},
+    "prop_pins": [],
+    "verified": false,
+    "desc": "頂点の法線(ワールド座標)"
+  }
+}

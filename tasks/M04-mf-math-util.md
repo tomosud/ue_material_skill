@@ -1,6 +1,6 @@
 # M04: MFナレッジ — Math / Opacity / Utility系 [MF / 優先度B / 並列可]
 
-status: TODO
+status: DONE
 output: `catalog/generated/M04-mf.json`
 依存: なし(スキーマは tasks/INSTRUCTIONS-mf.md — 必ず先に読む)
 

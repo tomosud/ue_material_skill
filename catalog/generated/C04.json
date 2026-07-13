@@ -1,0 +1,492 @@
+{
+  "DotProduct": {
+    "class": "/Script/Engine.UMaterialExpressionDotProduct",
+    "header": "Materials/MaterialExpressionDotProduct.h",
+    "desc": "2つのベクトルの内積を計算",
+    "inputs": [
+      {
+        "name": "A",
+        "prop": "A",
+        "required": true,
+        "default_prop": null
+      },
+      {
+        "name": "B",
+        "prop": "B",
+        "required": true,
+        "default_prop": null
+      }
+    ],
+    "prop_pins": [],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "props": {},
+    "notes": "",
+    "verified": false
+  },
+  "CrossProduct": {
+    "class": "/Script/Engine.UMaterialExpressionCrossProduct",
+    "header": "Materials/MaterialExpressionCrossProduct.h",
+    "desc": "2つのベクトルの外積を計算",
+    "inputs": [
+      {
+        "name": "A",
+        "prop": "A",
+        "required": true,
+        "default_prop": null
+      },
+      {
+        "name": "B",
+        "prop": "B",
+        "required": true,
+        "default_prop": null
+      }
+    ],
+    "prop_pins": [],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "props": {},
+    "notes": "",
+    "verified": false
+  },
+  "Normalize": {
+    "class": "/Script/Engine.UMaterialExpressionNormalize",
+    "header": "Materials/MaterialExpressionNormalize.h",
+    "desc": "ベクトルを正規化(単位ベクトル化)",
+    "inputs": [
+      {
+        "name": "VectorInput",
+        "prop": "VectorInput",
+        "required": true,
+        "default_prop": null
+      }
+    ],
+    "prop_pins": [],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "props": {},
+    "notes": "",
+    "verified": false
+  },
+  "ComponentMask": {
+    "class": "/Script/Engine.UMaterialExpressionComponentMask",
+    "header": "Materials/MaterialExpressionComponentMask.h",
+    "desc": "ベクトルの特定のコンポーネント(R/G/B/A)を選択出力",
+    "inputs": [
+      {
+        "name": "Input",
+        "prop": "Input",
+        "required": true,
+        "default_prop": null
+      }
+    ],
+    "prop_pins": [
+      {
+        "name": "R",
+        "prop": "R",
+        "kind": "Advanced",
+        "type": "uint32"
+      },
+      {
+        "name": "G",
+        "prop": "G",
+        "kind": "Advanced",
+        "type": "uint32"
+      },
+      {
+        "name": "B",
+        "prop": "B",
+        "kind": "Advanced",
+        "type": "uint32"
+      },
+      {
+        "name": "A",
+        "prop": "A",
+        "kind": "Advanced",
+        "type": "uint32"
+      }
+    ],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "props": {},
+    "notes": "",
+    "verified": false
+  },
+  "AppendVector": {
+    "class": "/Script/Engine.UMaterialExpressionAppendVector",
+    "header": "Materials/MaterialExpressionAppendVector.h",
+    "desc": "2つのベクトル・スカラーを結合して高次元ベクトルを作成",
+    "inputs": [
+      {
+        "name": "A",
+        "prop": "A",
+        "required": true,
+        "default_prop": null
+      },
+      {
+        "name": "B",
+        "prop": "B",
+        "required": true,
+        "default_prop": null
+      }
+    ],
+    "prop_pins": [],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "props": {},
+    "notes": "",
+    "verified": false
+  },
+  "Distance": {
+    "class": "/Script/Engine.UMaterialExpressionDistance",
+    "header": "Materials/MaterialExpressionDistance.h",
+    "desc": "2点間の距離を計算",
+    "inputs": [
+      {
+        "name": "A",
+        "prop": "A",
+        "required": true,
+        "default_prop": null
+      },
+      {
+        "name": "B",
+        "prop": "B",
+        "required": true,
+        "default_prop": null
+      }
+    ],
+    "prop_pins": [],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "props": {},
+    "notes": "",
+    "verified": false
+  },
+  "Length": {
+    "class": "/Script/Engine.UMaterialExpressionLength",
+    "header": "Materials/MaterialExpressionLength.h",
+    "desc": "ベクトルの長さ・大きさを計算",
+    "inputs": [
+      {
+        "name": "Input",
+        "prop": "Input",
+        "required": true,
+        "default_prop": null
+      }
+    ],
+    "prop_pins": [],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "props": {},
+    "notes": "",
+    "verified": false
+  },
+  "Desaturation": {
+    "class": "/Script/Engine.UMaterialExpressionDesaturation",
+    "header": "Materials/MaterialExpressionDesaturation.h",
+    "desc": "色を彩度を下げて灰色化(グレースケール変換)",
+    "inputs": [
+      {
+        "name": "Input",
+        "prop": "Input",
+        "required": true,
+        "default_prop": null
+      },
+      {
+        "name": "Fraction",
+        "prop": "Fraction",
+        "required": true,
+        "default_prop": null
+      }
+    ],
+    "prop_pins": [
+      {
+        "name": "LuminanceFactors",
+        "prop": "LuminanceFactors",
+        "kind": "Advanced",
+        "type": "FLinearColor"
+      }
+    ],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "props": {},
+    "notes": "",
+    "verified": false
+  },
+  "Fresnel": {
+    "class": "/Script/Engine.UMaterialExpressionFresnel",
+    "header": "Materials/MaterialExpressionFresnel.h",
+    "desc": "フレネル効果を計算、視点角度による鏡面反射率を算出",
+    "inputs": [
+      {
+        "name": "ExponentIn",
+        "prop": "ExponentIn",
+        "required": false,
+        "default_prop": "Exponent"
+      },
+      {
+        "name": "BaseReflectFractionIn",
+        "prop": "BaseReflectFractionIn",
+        "required": false,
+        "default_prop": "BaseReflectFraction"
+      },
+      {
+        "name": "Normal",
+        "prop": "Normal",
+        "required": false,
+        "default_prop": null
+      }
+    ],
+    "prop_pins": [],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "props": {
+      "Exponent": {
+        "type": "float",
+        "default": 5.0
+      },
+      "BaseReflectFraction": {
+        "type": "float",
+        "default": 0.04
+      }
+    },
+    "notes": "",
+    "verified": false
+  },
+  "SphereMask": {
+    "class": "/Script/Engine.UMaterialExpressionSphereMask",
+    "header": "Materials/MaterialExpressionSphereMask.h",
+    "desc": "球体との距離に基づいてマスク値を生成",
+    "inputs": [
+      {
+        "name": "A",
+        "prop": "A",
+        "required": true,
+        "default_prop": null
+      },
+      {
+        "name": "B",
+        "prop": "B",
+        "required": true,
+        "default_prop": null
+      },
+      {
+        "name": "Radius",
+        "prop": "Radius",
+        "required": false,
+        "default_prop": "AttenuationRadius"
+      },
+      {
+        "name": "Hardness",
+        "prop": "Hardness",
+        "required": false,
+        "default_prop": "HardnessPercent"
+      }
+    ],
+    "prop_pins": [],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "props": {
+      "DisplayName": {
+        "type": ",",
+        "default": "\"Radius\")\n\tfloat AttenuationRadius = 256.0f"
+      },
+      "HardnessPercent": {
+        "type": "float",
+        "default": 100.0
+      }
+    },
+    "notes": "",
+    "verified": false
+  },
+  "RotateAboutAxis": {
+    "class": "/Script/Engine.UMaterialExpressionRotateAboutAxis",
+    "header": "Materials/MaterialExpressionRotateAboutAxis.h",
+    "desc": "任意の軸周りにベクトルを回転",
+    "inputs": [
+      {
+        "name": "NormalizedRotationAxis",
+        "prop": "NormalizedRotationAxis",
+        "required": true,
+        "default_prop": null
+      },
+      {
+        "name": "RotationAngle",
+        "prop": "RotationAngle",
+        "required": true,
+        "default_prop": null
+      },
+      {
+        "name": "PivotPoint",
+        "prop": "PivotPoint",
+        "required": true,
+        "default_prop": null
+      },
+      {
+        "name": "Position",
+        "prop": "Position",
+        "required": true,
+        "default_prop": null
+      }
+    ],
+    "prop_pins": [
+      {
+        "name": "Period",
+        "prop": "Period",
+        "kind": "Advanced",
+        "type": "float"
+      }
+    ],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "props": {},
+    "notes": "",
+    "verified": false
+  },
+  "DeriveNormalZ": {
+    "class": "/Script/Engine.UMaterialExpressionDeriveNormalZ",
+    "header": "Materials/MaterialExpressionDeriveNormalZ.h",
+    "desc": "法線XY成分からZ成分を復元(法線圧縮用)",
+    "inputs": [
+      {
+        "name": "InXY",
+        "prop": "InXY",
+        "required": true,
+        "default_prop": null
+      }
+    ],
+    "prop_pins": [],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "props": {},
+    "notes": "",
+    "verified": false
+  },
+  "Transform": {
+    "class": "/Script/Engine.UMaterialExpressionTransform",
+    "header": "Materials/MaterialExpressionTransform.h",
+    "desc": "ベクトルをある座標系から別の座標系に変換",
+    "inputs": [
+      {
+        "name": "Input",
+        "prop": "Input",
+        "required": true,
+        "default_prop": null
+      }
+    ],
+    "prop_pins": [
+      {
+        "name": "TransformSourceType",
+        "prop": "TransformSourceType",
+        "kind": "Advanced",
+        "type": "enum:EMaterialVectorCoordTransformSource"
+      },
+      {
+        "name": "TransformType",
+        "prop": "TransformType",
+        "kind": "Advanced",
+        "type": "enum:EMaterialVectorCoordTransform"
+      }
+    ],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "props": {},
+    "notes": "",
+    "verified": false
+  },
+  "TransformPosition": {
+    "class": "/Script/Engine.UMaterialExpressionTransformPosition",
+    "header": "Materials/MaterialExpressionTransformPosition.h",
+    "desc": "位置座標をある座標系から別の座標系に変換",
+    "inputs": [
+      {
+        "name": "Input",
+        "prop": "Input",
+        "required": true,
+        "default_prop": null
+      },
+      {
+        "name": "PeriodicWorldTileSize",
+        "prop": "PeriodicWorldTileSize",
+        "required": false,
+        "default_prop": null
+      },
+      {
+        "name": "FirstPersonInterpolationAlpha",
+        "prop": "FirstPersonInterpolationAlpha",
+        "required": false,
+        "default_prop": "ConstFirstPersonInterpolationAlpha"
+      }
+    ],
+    "prop_pins": [
+      {
+        "name": "TransformSourceType",
+        "prop": "TransformSourceType",
+        "kind": "Advanced",
+        "type": "enum:EMaterialPositionTransformSource"
+      },
+      {
+        "name": "TransformType",
+        "prop": "TransformType",
+        "kind": "Advanced",
+        "type": "enum:EMaterialPositionTransformSource"
+      }
+    ],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "props": {
+      "ConstPeriodicWorldTileSize": {
+        "type": "float",
+        "default": "32.0"
+      },
+      "ConstFirstPersonInterpolationAlpha": {
+        "type": "float",
+        "default": 1.0
+      }
+    },
+    "notes": "",
+    "verified": false
+  }
+}

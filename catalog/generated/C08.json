@@ -1,0 +1,547 @@
+{
+  "Comment": {
+    "class": "/Script/Engine.UMaterialExpressionComment",
+    "header": "Materials/MaterialExpressionComment.h",
+    "desc": "コメント用ノード。マテリアルグラフの整理に使用",
+    "inputs": [],
+    "prop_pins": [],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "props": {
+      "Text": {
+        "type": "FString",
+        "default": ""
+      },
+      "CommentColor": {
+        "type": "FLinearColor",
+        "default": null
+      },
+      "FontSize": {
+        "type": "int32",
+        "default": 18
+      },
+      "bCommentBubbleVisible_InDetailsPanel": {
+        "type": "bool",
+        "default": false
+      },
+      "bColorCommentBubble": {
+        "type": "bool",
+        "default": false
+      },
+      "bGroupMode": {
+        "type": "bool",
+        "default": true
+      }
+    },
+    "notes": "IsAllowedIn() で false を返すため、マテリアルでは使用不可",
+    "verified": false
+  },
+  "Reroute": {
+    "class": "/Script/Engine.UMaterialExpressionReroute",
+    "header": "Materials/MaterialExpressionReroute.h",
+    "desc": "入力をそのまま出力に通す。グラフの結線を整理するために使用",
+    "inputs": [
+      {
+        "name": "Input",
+        "prop": "Input",
+        "required": false
+      }
+    ],
+    "prop_pins": [],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "props": {},
+    "notes": "",
+    "verified": false
+  },
+  "RerouteBase": {
+    "class": "/Script/Engine.UMaterialExpressionRerouteBase",
+    "header": "Materials/MaterialExpressionRerouteBase.h",
+    "desc": "Reroute 系の基底クラス。複数の入力値を通す機能を提供",
+    "inputs": [],
+    "prop_pins": [],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "props": {},
+    "notes": "抽象クラス",
+    "verified": false,
+    "abstract": true
+  },
+  "NamedRerouteBase": {
+    "class": "/Script/Engine.UMaterialExpressionNamedRerouteBase",
+    "header": "Materials/MaterialExpressionNamedReroute.h",
+    "desc": "名前付き Reroute の基底クラス",
+    "inputs": [],
+    "prop_pins": [],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "props": {},
+    "notes": "抽象クラス",
+    "verified": false,
+    "abstract": true
+  },
+  "NamedRerouteDeclaration": {
+    "class": "/Script/Engine.UMaterialExpressionNamedRerouteDeclaration",
+    "header": "Materials/MaterialExpressionNamedReroute.h",
+    "desc": "名前付き変数を宣言するノード",
+    "inputs": [
+      {
+        "name": "Input",
+        "prop": "Input",
+        "required": false
+      }
+    ],
+    "prop_pins": [],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "props": {
+      "Name": {
+        "type": "FName",
+        "default": null
+      },
+      "NodeColor": {
+        "type": "FLinearColor",
+        "default": null
+      }
+    },
+    "notes": "VariableGuid で同一変数を追跡",
+    "verified": false
+  },
+  "NamedRerouteUsage": {
+    "class": "/Script/Engine.UMaterialExpressionNamedRerouteUsage",
+    "header": "Materials/MaterialExpressionNamedReroute.h",
+    "desc": "名前付き変数の使用側ノード",
+    "inputs": [],
+    "prop_pins": [],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "props": {
+      "Declaration": {
+        "type": "asset:UMaterialExpressionNamedRerouteDeclaration",
+        "default": null
+      },
+      "DeclarationGuid": {
+        "type": "FGuid",
+        "default": null
+      }
+    },
+    "notes": "meta=(MIR_OnDemandInputRequest)",
+    "verified": false
+  },
+  "Composite": {
+    "class": "/Script/Engine.UMaterialExpressionComposite",
+    "header": "Materials/MaterialExpressionComposite.h",
+    "desc": "サブグラフを組み込むノード。入出力はピンベースで管理される",
+    "inputs": [],
+    "prop_pins": [],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "props": {
+      "SubgraphName": {
+        "type": "FString",
+        "default": ""
+      }
+    },
+    "notes": "InputExpressions と OutputExpressions でピンを管理。GetInputsView/GetOutputs をオーバーライド",
+    "verified": false
+  },
+  "PinBase": {
+    "class": "/Script/Engine.UMaterialExpressionPinBase",
+    "header": "Materials/MaterialExpressionPinBase.h",
+    "desc": "ピン集約ノード。複数の Reroute ピンを管理",
+    "inputs": [],
+    "prop_pins": [],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "props": {
+      "ReroutePins": {
+        "type": "TArray<FCompositeReroute>",
+        "default": null
+      },
+      "PinDirection": {
+        "type": "enum:EEdGraphPinDirection",
+        "default": null
+      }
+    },
+    "notes": "IsAllowedIn() で false を返すため、マテリアルでは使用不可。Composite の子要素用",
+    "verified": false
+  },
+  "MaterialFunctionCall": {
+    "class": "/Script/Engine.UMaterialExpressionMaterialFunctionCall",
+    "header": "Materials/MaterialExpressionMaterialFunctionCall.h",
+    "desc": "マテリアル関数を呼び出すノード",
+    "inputs": [],
+    "prop_pins": [],
+    "outputs": [],
+    "props": {
+      "MaterialFunction": {
+        "type": "asset:UMaterialFunctionInterface",
+        "default": null
+      }
+    },
+    "notes": "FunctionInputs 配列により動的にピン数が変わる。GetInputsView/GetInputName をオーバーライド。meta=(MIR_OnDemandInputRequest)",
+    "verified": false
+  },
+  "FunctionInput": {
+    "class": "/Script/Engine.UMaterialExpressionFunctionInput",
+    "header": "Materials/MaterialExpressionFunctionInput.h",
+    "desc": "マテリアル関数の入力ピン定義",
+    "inputs": [
+      {
+        "name": "Preview",
+        "prop": "Preview",
+        "required": false
+      }
+    ],
+    "prop_pins": [],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "props": {
+      "InputName": {
+        "type": "FName",
+        "default": null
+      },
+      "Description": {
+        "type": "FString",
+        "default": ""
+      },
+      "InputType": {
+        "type": "enum:EFunctionInputType",
+        "default": "FunctionInput_Scalar"
+      },
+      "PreviewValue": {
+        "type": "FVector4f",
+        "default": null
+      },
+      "bUsePreviewValueAsDefault": {
+        "type": "bool",
+        "default": false
+      },
+      "SortPriority": {
+        "type": "int32",
+        "default": 0
+      },
+      "BlendInputRelevance": {
+        "type": "enum:EBlendInputRelevance",
+        "default": "General"
+      }
+    },
+    "notes": "meta=(MIR_OnDemandInputRequest)。IsAllowedIn() により MaterialFunction のみ",
+    "verified": false
+  },
+  "FunctionOutput": {
+    "class": "/Script/Engine.UMaterialExpressionFunctionOutput",
+    "header": "Materials/MaterialExpressionFunctionOutput.h",
+    "desc": "マテリアル関数の出力ピン定義",
+    "inputs": [
+      {
+        "name": "A",
+        "prop": "A",
+        "required": false
+      }
+    ],
+    "prop_pins": [],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "props": {
+      "OutputName": {
+        "type": "FName",
+        "default": null
+      },
+      "Description": {
+        "type": "FString",
+        "default": ""
+      },
+      "SortPriority": {
+        "type": "int32",
+        "default": 0
+      }
+    },
+    "notes": "IsAllowedIn() により MaterialFunction のみ。GetInputName は NAME_None を返す",
+    "verified": false
+  },
+  "Custom": {
+    "class": "/Script/Engine.UMaterialExpressionCustom",
+    "header": "Materials/MaterialExpressionCustom.h",
+    "desc": "HLSL コードを埋め込むノード。入出力は動的に定義される",
+    "inputs": [],
+    "prop_pins": [],
+    "outputs": [],
+    "props": {
+      "Code": {
+        "type": "FString",
+        "default": ""
+      },
+      "OutputType": {
+        "type": "enum:ECustomMaterialOutputType",
+        "default": "CMOT_Float1"
+      },
+      "Description": {
+        "type": "FString",
+        "default": ""
+      },
+      "Inputs": {
+        "type": "TArray<FCustomInput>",
+        "default": null
+      },
+      "AdditionalOutputs": {
+        "type": "TArray<FCustomOutput>",
+        "default": null
+      },
+      "AdditionalDefines": {
+        "type": "TArray<FCustomDefine>",
+        "default": null
+      },
+      "IncludeFilePaths": {
+        "type": "TArray<FString>",
+        "default": null
+      },
+      "ContainsClipInstruction": {
+        "type": "enum:ECustomMaterialClipInstruction",
+        "default": "CMCI_Search"
+      }
+    },
+    "notes": "Inputs 配列で動的にピンが追加される。GetInputsView/GetInput/GetInputName をオーバーライド。AdditionalOutputs で出力ピンが追加される",
+    "verified": false
+  },
+  "GetMaterialAttributes": {
+    "class": "/Script/Engine.UMaterialExpressionGetMaterialAttributes",
+    "header": "Materials/MaterialExpressionGetMaterialAttributes.h",
+    "desc": "MaterialAttributes 構造体から属性を抽出",
+    "inputs": [
+      {
+        "name": "MaterialAttributes",
+        "prop": "MaterialAttributes",
+        "required": true
+      }
+    ],
+    "prop_pins": [],
+    "outputs": [],
+    "props": {
+      "AttributeGetTypes": {
+        "type": "TArray<FGuid>",
+        "default": null
+      }
+    },
+    "notes": "AttributeGetTypes により動的に出力ピンが追加される。出力ピン数はこの配列のサイズに応じて変わる",
+    "verified": false
+  },
+  "SetMaterialAttributes": {
+    "class": "/Script/Engine.UMaterialExpressionSetMaterialAttributes",
+    "header": "Materials/MaterialExpressionSetMaterialAttributes.h",
+    "desc": "複数の属性を MaterialAttributes 構造体に組み込む",
+    "inputs": [],
+    "prop_pins": [],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "props": {
+      "AttributeSetTypes": {
+        "type": "TArray<FGuid>",
+        "default": null
+      }
+    },
+    "notes": "Inputs 配列で動的にピンが追加される。AttributeSetTypes により入力ピン数が変わる。GetInputsView/GetInput/GetInputName をオーバーライド",
+    "verified": false
+  },
+  "MakeMaterialAttributes": {
+    "class": "/Script/Engine.UMaterialExpressionMakeMaterialAttributes",
+    "header": "Materials/MaterialExpressionMakeMaterialAttributes.h",
+    "desc": "個別の属性入力から MaterialAttributes を構築",
+    "inputs": [
+      {
+        "name": "BaseColor",
+        "prop": "BaseColor",
+        "required": false
+      },
+      {
+        "name": "Metallic",
+        "prop": "Metallic",
+        "required": false
+      },
+      {
+        "name": "Specular",
+        "prop": "Specular",
+        "required": false
+      },
+      {
+        "name": "Roughness",
+        "prop": "Roughness",
+        "required": false
+      },
+      {
+        "name": "Anisotropy",
+        "prop": "Anisotropy",
+        "required": false
+      },
+      {
+        "name": "EmissiveColor",
+        "prop": "EmissiveColor",
+        "required": false
+      },
+      {
+        "name": "Opacity",
+        "prop": "Opacity",
+        "required": false
+      },
+      {
+        "name": "OpacityMask",
+        "prop": "OpacityMask",
+        "required": false
+      },
+      {
+        "name": "Normal",
+        "prop": "Normal",
+        "required": false
+      },
+      {
+        "name": "Tangent",
+        "prop": "Tangent",
+        "required": false
+      },
+      {
+        "name": "WorldPositionOffset",
+        "prop": "WorldPositionOffset",
+        "required": false
+      },
+      {
+        "name": "SubsurfaceColor",
+        "prop": "SubsurfaceColor",
+        "required": false
+      },
+      {
+        "name": "ClearCoat",
+        "prop": "ClearCoat",
+        "required": false
+      },
+      {
+        "name": "ClearCoatRoughness",
+        "prop": "ClearCoatRoughness",
+        "required": false
+      },
+      {
+        "name": "AmbientOcclusion",
+        "prop": "AmbientOcclusion",
+        "required": false
+      },
+      {
+        "name": "Refraction",
+        "prop": "Refraction",
+        "required": false
+      },
+      {
+        "name": "PixelDepthOffset",
+        "prop": "PixelDepthOffset",
+        "required": false
+      },
+      {
+        "name": "ShadingModel",
+        "prop": "ShadingModel",
+        "required": false
+      },
+      {
+        "name": "Displacement",
+        "prop": "Displacement",
+        "required": false
+      }
+    ],
+    "prop_pins": [],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "props": {},
+    "notes": "IsResultMaterialAttributes(0) = true。全入力ピンは任意。GetExpressionInput() で EMaterialProperty から入力ピンを取得",
+    "verified": false
+  },
+  "BreakMaterialAttributes": {
+    "class": "/Script/Engine.UMaterialExpressionBreakMaterialAttributes",
+    "header": "Materials/MaterialExpressionBreakMaterialAttributes.h",
+    "desc": "MaterialAttributes 構造体を個別の属性に分解",
+    "inputs": [
+      {
+        "name": "MaterialAttributes",
+        "prop": "MaterialAttributes",
+        "required": true
+      }
+    ],
+    "prop_pins": [],
+    "outputs": [],
+    "props": {},
+    "notes": "PropertyToIOIndexMap により出力ピン数が固定される。GetInputName で各出力の名前を取得",
+    "verified": false
+  },
+  "BlendMaterialAttributes": {
+    "class": "/Script/Engine.UMaterialExpressionBlendMaterialAttributes",
+    "header": "Materials/MaterialExpressionBlendMaterialAttributes.h",
+    "desc": "2つの MaterialAttributes を指定比率で混合",
+    "inputs": [
+      {
+        "name": "A",
+        "prop": "A",
+        "required": true
+      },
+      {
+        "name": "B",
+        "prop": "B",
+        "required": true
+      },
+      {
+        "name": "Alpha",
+        "prop": "Alpha",
+        "required": true
+      }
+    ],
+    "prop_pins": [],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "props": {
+      "PixelAttributeBlendType": {
+        "type": "enum:EMaterialAttributeBlend::Type",
+        "default": "Blend"
+      },
+      "VertexAttributeBlendType": {
+        "type": "enum:EMaterialAttributeBlend::Type",
+        "default": "Blend"
+      }
+    },
+    "notes": "IsResultMaterialAttributes(0) = true。GetInput オーバーライドで A/B/Alpha を返す",
+    "verified": false
+  }
+}

@@ -1,0 +1,663 @@
+{
+  "Constant": {
+    "class": "/Script/Engine.MaterialExpressionConstant",
+    "header": "Materials/MaterialExpressionConstant.h",
+    "desc": "定数値（float）を出力する",
+    "inputs": [],
+    "prop_pins": [
+      {
+        "name": "Value",
+        "prop": "R",
+        "kind": "Primary",
+        "type": "float"
+      }
+    ],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "props": {
+      "R": {
+        "type": "float",
+        "default": 0.0
+      }
+    },
+    "notes": "",
+    "verified": false
+  },
+  "Constant2Vector": {
+    "class": "/Script/Engine.MaterialExpressionConstant2Vector",
+    "header": "Materials/MaterialExpressionConstant2Vector.h",
+    "desc": "2要素ベクトル定数（X, Y）を出力",
+    "inputs": [],
+    "prop_pins": [
+      {
+        "name": "X",
+        "prop": "R",
+        "kind": "Primary",
+        "type": "float"
+      },
+      {
+        "name": "Y",
+        "prop": "G",
+        "kind": "Primary",
+        "type": "float"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "mask": "RG"
+      },
+      {
+        "name": "",
+        "mask": "R"
+      },
+      {
+        "name": "",
+        "mask": "G"
+      }
+    ],
+    "props": {
+      "R": {
+        "type": "float",
+        "default": 0.0
+      },
+      "G": {
+        "type": "float",
+        "default": 0.0
+      }
+    },
+    "notes": "",
+    "verified": false
+  },
+  "Constant3Vector": {
+    "class": "/Script/Engine.MaterialExpressionConstant3Vector",
+    "header": "Materials/MaterialExpressionConstant3Vector.h",
+    "desc": "3要素ベクトル定数（RGB）を出力",
+    "inputs": [],
+    "prop_pins": [
+      {
+        "name": "",
+        "prop": "Constant",
+        "kind": "Primary",
+        "type": "FLinearColor"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "mask": "RGB"
+      },
+      {
+        "name": "",
+        "mask": "R"
+      },
+      {
+        "name": "",
+        "mask": "G"
+      },
+      {
+        "name": "",
+        "mask": "B"
+      }
+    ],
+    "props": {
+      "Constant": {
+        "type": "FLinearColor",
+        "default": {
+          "r": 0.0,
+          "g": 0.0,
+          "b": 0.0
+        }
+      }
+    },
+    "notes": "meta に HideAlphaChannel が指定されている",
+    "verified": false
+  },
+  "Constant4Vector": {
+    "class": "/Script/Engine.MaterialExpressionConstant4Vector",
+    "header": "Materials/MaterialExpressionConstant4Vector.h",
+    "desc": "4要素ベクトル定数（RGBA）を出力",
+    "inputs": [],
+    "prop_pins": [
+      {
+        "name": "",
+        "prop": "Constant",
+        "kind": "Primary",
+        "type": "FLinearColor"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "RGBA",
+        "mask": "RGBA"
+      },
+      {
+        "name": "R",
+        "mask": "R"
+      },
+      {
+        "name": "G",
+        "mask": "G"
+      },
+      {
+        "name": "B",
+        "mask": "B"
+      },
+      {
+        "name": "A",
+        "mask": "A"
+      },
+      {
+        "name": "RGB",
+        "mask": "RGB"
+      }
+    ],
+    "props": {
+      "Constant": {
+        "type": "FLinearColor",
+        "default": {
+          "r": 0.0,
+          "g": 0.0,
+          "b": 0.0,
+          "a": 0.0
+        }
+      }
+    },
+    "notes": "出力ピンに名前を表示（bShowOutputNameOnPin=true）",
+    "verified": false
+  },
+  "ConstantBiasScale": {
+    "class": "/Script/Engine.MaterialExpressionConstantBiasScale",
+    "header": "Materials/MaterialExpressionConstantBiasScale.h",
+    "desc": "入力に Bias と Scale を適用: (Bias + Input) * Scale",
+    "inputs": [
+      {
+        "name": "",
+        "prop": "Input",
+        "required": true,
+        "default_prop": null
+      }
+    ],
+    "prop_pins": [
+      {
+        "name": "",
+        "prop": "Bias",
+        "kind": "Advanced",
+        "type": "float"
+      },
+      {
+        "name": "",
+        "prop": "Scale",
+        "kind": "Advanced",
+        "type": "float"
+      }
+    ],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "props": {
+      "Bias": {
+        "type": "float",
+        "default": 1.0
+      },
+      "Scale": {
+        "type": "float",
+        "default": 0.5
+      }
+    },
+    "notes": "",
+    "verified": false
+  },
+  "ScalarParameter": {
+    "class": "/Script/Engine.MaterialExpressionScalarParameter",
+    "header": "Materials/MaterialExpressionScalarParameter.h",
+    "desc": "スカラー値のパラメータ",
+    "inputs": [],
+    "prop_pins": [
+      {
+        "name": "",
+        "prop": "DefaultValue",
+        "kind": "Primary",
+        "type": "float"
+      }
+    ],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "props": {
+      "DefaultValue": {
+        "type": "float",
+        "default": 0.0
+      },
+      "ControlType": {
+        "type": "enum:EMaterialScalarParameterControlType",
+        "default": "Numeric"
+      },
+      "SliderMin": {
+        "type": "float",
+        "default": 0.0
+      },
+      "SliderMax": {
+        "type": "float",
+        "default": 0.0
+      },
+      "Enumeration": {
+        "type": "asset:UObject",
+        "default": null
+      },
+      "EnumerationIndex": {
+        "type": "uint8",
+        "default": 0
+      },
+      "bUseCustomPrimitiveData": {
+        "type": "bool",
+        "default": false
+      },
+      "PrimitiveDataIndex": {
+        "type": "uint8",
+        "default": 0
+      }
+    },
+    "is_parameter": true,
+    "notes": "",
+    "verified": false
+  },
+  "VectorParameter": {
+    "class": "/Script/Engine.MaterialExpressionVectorParameter",
+    "header": "Materials/MaterialExpressionVectorParameter.h",
+    "desc": "ベクトル値のパラメータ（RGB/RGBA）",
+    "inputs": [],
+    "prop_pins": [
+      {
+        "name": "",
+        "prop": "DefaultValue",
+        "kind": "Primary",
+        "type": "FLinearColor"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "RGB",
+        "mask": "RGB"
+      },
+      {
+        "name": "R",
+        "mask": "R"
+      },
+      {
+        "name": "G",
+        "mask": "G"
+      },
+      {
+        "name": "B",
+        "mask": "B"
+      },
+      {
+        "name": "A",
+        "mask": "A"
+      },
+      {
+        "name": "RGBA",
+        "mask": "RGBA"
+      }
+    ],
+    "props": {
+      "DefaultValue": {
+        "type": "FLinearColor",
+        "default": {
+          "r": 0.0,
+          "g": 0.0,
+          "b": 0.0,
+          "a": 1.0
+        }
+      },
+      "bUseCustomPrimitiveData": {
+        "type": "bool",
+        "default": false
+      },
+      "PrimitiveDataIndex": {
+        "type": "uint8",
+        "default": 0
+      },
+      "ChannelNames": {
+        "type": "FParameterChannelNames",
+        "default": null
+      }
+    },
+    "is_parameter": true,
+    "notes": "",
+    "verified": false
+  },
+  "DoubleVectorParameter": {
+    "class": "/Script/Engine.MaterialExpressionDoubleVectorParameter",
+    "header": "Materials/MaterialExpressionDoubleVectorParameter.h",
+    "desc": "ダブル精度ベクトルパラメータ（XYZ/XYZW）",
+    "inputs": [],
+    "prop_pins": [
+      {
+        "name": "",
+        "prop": "DefaultValue",
+        "kind": "Primary",
+        "type": "FVector4d"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "XYZ",
+        "mask": "XYZ"
+      },
+      {
+        "name": "X",
+        "mask": "X"
+      },
+      {
+        "name": "Y",
+        "mask": "Y"
+      },
+      {
+        "name": "Z",
+        "mask": "Z"
+      },
+      {
+        "name": "W",
+        "mask": "W"
+      }
+    ],
+    "props": {
+      "DefaultValue": {
+        "type": "FVector4d",
+        "default": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0,
+          "w": 0.0
+        }
+      }
+    },
+    "is_parameter": true,
+    "notes": "",
+    "verified": false
+  },
+  "StaticBool": {
+    "class": "/Script/Engine.MaterialExpressionStaticBool",
+    "header": "Materials/MaterialExpressionStaticBool.h",
+    "desc": "静的ブール定数（コンパイル時定数）",
+    "inputs": [],
+    "prop_pins": [
+      {
+        "name": "",
+        "prop": "Value",
+        "kind": "Primary",
+        "type": "bool"
+      }
+    ],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "props": {
+      "Value": {
+        "type": "bool",
+        "default": false
+      }
+    },
+    "notes": "",
+    "verified": false
+  },
+  "StaticBoolParameter": {
+    "class": "/Script/Engine.MaterialExpressionStaticBoolParameter",
+    "header": "Materials/MaterialExpressionStaticBoolParameter.h",
+    "desc": "静的ブールパラメータ（DynamicBranch で動的に変更可）",
+    "inputs": [],
+    "prop_pins": [
+      {
+        "name": "",
+        "prop": "DefaultValue",
+        "kind": "Primary",
+        "type": "bool"
+      }
+    ],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "props": {
+      "DefaultValue": {
+        "type": "bool",
+        "default": false
+      },
+      "DynamicBranch": {
+        "type": "bool",
+        "default": false
+      }
+    },
+    "is_parameter": true,
+    "notes": "DynamicBranch=true で MCT_Bool 出力（デフォルト MCT_StaticBool）",
+    "verified": false
+  },
+  "StaticSwitch": {
+    "class": "/Script/Engine.MaterialExpressionStaticSwitch",
+    "header": "Materials/MaterialExpressionStaticSwitch.h",
+    "desc": "静的条件分岐（DefaultValue が True なら A、False なら B を出力）",
+    "inputs": [
+      {
+        "name": "True",
+        "prop": "A",
+        "required": true,
+        "default_prop": null
+      },
+      {
+        "name": "False",
+        "prop": "B",
+        "required": true,
+        "default_prop": null
+      },
+      {
+        "name": "Value",
+        "prop": "Value",
+        "required": false,
+        "default_prop": "DefaultValue",
+        "note": "未接続時は DefaultValue を使用"
+      }
+    ],
+    "prop_pins": [
+      {
+        "name": "",
+        "prop": "DefaultValue",
+        "kind": "Primary",
+        "type": "bool"
+      }
+    ],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "props": {
+      "DefaultValue": {
+        "type": "bool",
+        "default": false
+      }
+    },
+    "notes": "GetInputName で「True」「False」「Value」に名前付け。meta に MIR_OnDemandInputRequest が指定",
+    "verified": false
+  },
+  "StaticSwitchParameter": {
+    "class": "/Script/Engine.MaterialExpressionStaticSwitchParameter",
+    "header": "Materials/MaterialExpressionStaticSwitchParameter.h",
+    "desc": "静的条件分岐パラメータ（DefaultValue で True/False 分岐）",
+    "inputs": [
+      {
+        "name": "True",
+        "prop": "A",
+        "required": true,
+        "default_prop": null
+      },
+      {
+        "name": "False",
+        "prop": "B",
+        "required": true,
+        "default_prop": null
+      }
+    ],
+    "prop_pins": [],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "props": {
+      "DefaultValue": {
+        "type": "bool",
+        "default": false
+      },
+      "DynamicBranch": {
+        "type": "bool",
+        "default": false
+      }
+    },
+    "is_parameter": true,
+    "notes": "UMaterialExpressionStaticBoolParameter を継承。GetInputName で「True」「False」に名前付け",
+    "verified": false
+  },
+  "StaticComponentMaskParameter": {
+    "class": "/Script/Engine.MaterialExpressionStaticComponentMaskParameter",
+    "header": "Materials/MaterialExpressionStaticComponentMaskParameter.h",
+    "desc": "静的成分マスクパラメータ（R/G/B/A から選択）",
+    "inputs": [
+      {
+        "name": "",
+        "prop": "Input",
+        "required": true,
+        "default_prop": null
+      }
+    ],
+    "prop_pins": [
+      {
+        "name": "",
+        "prop": "DefaultR",
+        "kind": "Advanced",
+        "type": "bool"
+      },
+      {
+        "name": "",
+        "prop": "DefaultG",
+        "kind": "Advanced",
+        "type": "bool"
+      },
+      {
+        "name": "",
+        "prop": "DefaultB",
+        "kind": "Advanced",
+        "type": "bool"
+      },
+      {
+        "name": "",
+        "prop": "DefaultA",
+        "kind": "Advanced",
+        "type": "bool"
+      }
+    ],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "props": {
+      "DefaultR": {
+        "type": "bool",
+        "default": false
+      },
+      "DefaultG": {
+        "type": "bool",
+        "default": false
+      },
+      "DefaultB": {
+        "type": "bool",
+        "default": false
+      },
+      "DefaultA": {
+        "type": "bool",
+        "default": false
+      }
+    },
+    "is_parameter": true,
+    "notes": "",
+    "verified": false
+  },
+  "ChannelMaskParameter": {
+    "class": "/Script/Engine.MaterialExpressionChannelMaskParameter",
+    "header": "Materials/MaterialExpressionChannelMaskParameter.h",
+    "desc": "チャネルマスクパラメータ（R/G/B/A チャネルを選択して出力）",
+    "inputs": [
+      {
+        "name": "",
+        "prop": "Input",
+        "required": true,
+        "default_prop": null
+      }
+    ],
+    "prop_pins": [],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "props": {
+      "MaskChannel": {
+        "type": "enum:EChannelMaskParameterColor",
+        "default": "Red"
+      },
+      "DefaultValue": {
+        "type": "FLinearColor",
+        "default": {
+          "r": 1.0,
+          "g": 0.0,
+          "b": 0.0,
+          "a": 0.0
+        }
+      }
+    },
+    "is_parameter": true,
+    "notes": "UMaterialExpressionVectorParameter を継承。Input が必須（IsInputConnectionRequired=true）",
+    "verified": false
+  },
+  "Parameter": {
+    "class": "/Script/Engine.MaterialExpressionParameter",
+    "header": "Materials/MaterialExpressionParameter.h",
+    "desc": "パラメータの基底クラス",
+    "abstract": true,
+    "inputs": [],
+    "prop_pins": [],
+    "outputs": [],
+    "props": {
+      "ParameterName": {
+        "type": "FName",
+        "default": null
+      },
+      "ExpressionGUID": {
+        "type": "FGuid",
+        "default": null
+      },
+      "Group": {
+        "type": "FName",
+        "default": null
+      },
+      "SortPriority": {
+        "type": "int32",
+        "default": 32
+      }
+    },
+    "notes": "IsAllowedIn() でサブクラスのみを許可（自身は使用不可）",
+    "verified": false
+  }
+}

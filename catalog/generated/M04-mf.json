@@ -1,0 +1,367 @@
+{
+  "RemapValueRange": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Math/RemapValueRange.RemapValueRange",
+    "desc": "スカラー値を元の範囲から新しい範囲に再マップする",
+    "inputs": [
+      {"name": "Value", "type": "S"},
+      {"name": "InMin", "type": "S"},
+      {"name": "InMax", "type": "S"},
+      {"name": "OutMin", "type": "S"},
+      {"name": "OutMax", "type": "S"}
+    ],
+    "outputs": [{"name": "Result", "type": "S"}],
+    "usage": "テクスチャの値域の変換、正規化値の別範囲への再マップ",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "Round": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Math/Round.Round",
+    "desc": "スカラー値を最も近い整数に四捨五入する",
+    "inputs": [{"name": "Value", "type": "S"}],
+    "outputs": [{"name": "Result", "type": "S"}],
+    "usage": "アニメーション量子化、ポスタライズ効果",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "BreakOutFloat2Components": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Math/BreakOutFloat2Components.BreakOutFloat2Components",
+    "desc": "V2ベクトルをX、Yの2つのスカラーに分割する",
+    "inputs": [{"name": "Vector2", "type": "V2"}],
+    "outputs": [
+      {"name": "X", "type": "S"},
+      {"name": "Y", "type": "S"}
+    ],
+    "usage": "UV座標の分解、2D座標の個別操作",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "BreakOutFloat3Components": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Math/BreakOutFloat3Components.BreakOutFloat3Components",
+    "desc": "V3ベクトルをX、Y、Zの3つのスカラーに分割する",
+    "inputs": [{"name": "Vector3", "type": "V3"}],
+    "outputs": [
+      {"name": "X", "type": "S"},
+      {"name": "Y", "type": "S"},
+      {"name": "Z", "type": "S"}
+    ],
+    "usage": "ワールド座標やノーマルの各成分の抽出",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "BreakOutFloat4Components": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Math/BreakOutFloat4Components.BreakOutFloat4Components",
+    "desc": "V4ベクトルをX、Y、Z、Wの4つのスカラーに分割する",
+    "inputs": [{"name": "Vector4", "type": "V4"}],
+    "outputs": [
+      {"name": "X", "type": "S"},
+      {"name": "Y", "type": "S"},
+      {"name": "Z", "type": "S"},
+      {"name": "W", "type": "S"}
+    ],
+    "usage": "RGBA値の個別チャンネル操作",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "MakeFloat2": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Math/MakeFloat2.MakeFloat2",
+    "desc": "2つのスカラー値からV2ベクトルを構築する",
+    "inputs": [
+      {"name": "X", "type": "S"},
+      {"name": "Y", "type": "S"}
+    ],
+    "outputs": [{"name": "Result", "type": "V2"}],
+    "usage": "UV座標の組み立て、2D座標の作成",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "MakeFloat3": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Math/MakeFloat3.MakeFloat3",
+    "desc": "3つのスカラー値からV3ベクトルを構築する",
+    "inputs": [
+      {"name": "X", "type": "S"},
+      {"name": "Y", "type": "S"},
+      {"name": "Z", "type": "S"}
+    ],
+    "outputs": [{"name": "Result", "type": "V3"}],
+    "usage": "カラー値やベクトル座標の作成",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "MakeFloat4": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Math/MakeFloat4.MakeFloat4",
+    "desc": "4つのスカラー値からV4ベクトルを構築する",
+    "inputs": [
+      {"name": "X", "type": "S"},
+      {"name": "Y", "type": "S"},
+      {"name": "Z", "type": "S"},
+      {"name": "W", "type": "S"}
+    ],
+    "outputs": [{"name": "Result", "type": "V4"}],
+    "usage": "RGBA値の組み立て、4要素ベクトルの作成",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "VectorLength": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Math/VectorLength.VectorLength",
+    "desc": "ベクトルの長さ（マグニチュード）を計算する",
+    "inputs": [{"name": "Vector", "type": "V3"}],
+    "outputs": [{"name": "Result", "type": "S"}],
+    "usage": "距離計算、ベクトルの大きさの取得",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "Normalize": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Math/Normalize.Normalize",
+    "desc": "ベクトルを正規化（長さ1に）する",
+    "inputs": [{"name": "Vector", "type": "V3"}],
+    "outputs": [{"name": "Result", "type": "V3"}],
+    "usage": "ノーマルマップの正規化、方向ベクトルの標準化",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "DepthFade": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Opacity/DepthFade.DepthFade",
+    "desc": "オブジェクトのエッジをカメラ深度に基づいてフェードさせる",
+    "inputs": [
+      {"name": "InFadeDistance", "type": "S"},
+      {"name": "InOpacity", "type": "S"}
+    ],
+    "outputs": [{"name": "Result", "type": "S"}],
+    "usage": "透明オブジェクトの水面交差フェード、ソフトパーティクル効果",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "CameraDepthFade": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Opacity/CameraDepthFade.CameraDepthFade",
+    "desc": "カメラからの距離に基づいてフェードしたスカラー値を生成",
+    "inputs": [
+      {"name": "FadeDistance", "type": "S"},
+      {"name": "FadeInDistance", "type": "S"}
+    ],
+    "outputs": [{"name": "Result", "type": "S"}],
+    "usage": "フォグエフェクト、距離ベースの透明度制御",
+    "verified": false,
+    "path_uncertain": true
+  },
+  "SphereMask": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Utility/SphereMask.SphereMask",
+    "desc": "球形のマスクを生成（中心から距離による減衰）",
+    "inputs": [
+      {"name": "Position", "type": "V3"},
+      {"name": "CenterPosition", "type": "V3"},
+      {"name": "Radius", "type": "S"},
+      {"name": "Hardness", "type": "S"},
+      {"name": "InvertMask", "type": "B"}
+    ],
+    "outputs": [{"name": "Result", "type": "S"}],
+    "usage": "スポットライト効果、球形影響領域の定義",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "ObjectScale": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Object/ObjectScale.ObjectScale",
+    "desc": "オブジェクトの非均一スケール値を取得",
+    "inputs": [],
+    "outputs": [{"name": "ObjectScale", "type": "V3"}],
+    "usage": "スケール依存のディテール調整、サイズ応答型エフェクト",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "ObjectRadius": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Object/ObjectRadius.ObjectRadius",
+    "desc": "オブジェクトのバウンディングスフィアの半径を取得",
+    "inputs": [],
+    "outputs": [{"name": "ObjectRadius", "type": "S"}],
+    "usage": "サイズベースのスケーリング、距離計算の正規化",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "ObjectPivotPoint": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Object/ObjectPivotPoint.ObjectPivotPoint",
+    "desc": "ワールド空間でのオブジェクトのピボットポイント位置を取得",
+    "inputs": [],
+    "outputs": [{"name": "ObjectPivot", "type": "V3"}],
+    "usage": "オブジェクト中心基準のアニメーション、放射状エフェクト",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "CameraDirection": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Utility/CameraDirection.CameraDirection",
+    "desc": "ワールド空間でのカメラの前方向ベクトル（正規化）を取得",
+    "inputs": [],
+    "outputs": [{"name": "CameraDirection", "type": "V3"}],
+    "usage": "ビルボード効果、カメラ向きの適応的アニメーション",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "FresnelFunction": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Utility/Fresnel.Fresnel",
+    "desc": "表面の法線とカメラ方向に基づくフレネル効果を計算",
+    "inputs": [
+      {"name": "Normal", "type": "V3"},
+      {"name": "Exponent", "type": "S"}
+    ],
+    "outputs": [{"name": "Result", "type": "S"}],
+    "usage": "リム照明、金属の光沢表現、視角依存の反射",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "SimpleGrassWind": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/WorldPositionOffset/SimpleGrassWind.SimpleGrassWind",
+    "desc": "単純な風アニメーション効果をワールドポジションにオフセット",
+    "inputs": [
+      {"name": "WindStrength", "type": "S"},
+      {"name": "WindSpeed", "type": "S"},
+      {"name": "WindFrequency", "type": "S"}
+    ],
+    "outputs": [{"name": "Offset", "type": "V3"}],
+    "usage": "草や植生の風による揺らぎアニメーション",
+    "verified": false,
+    "path_uncertain": true
+  },
+  "Abs": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Math/Abs.Abs",
+    "desc": "スカラーの絶対値を計算",
+    "inputs": [{"name": "Value", "type": "S"}],
+    "outputs": [{"name": "Result", "type": "S"}],
+    "usage": "負の値を正に変換、対称分布の計算",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "Clamp": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Math/Clamp.Clamp",
+    "desc": "スカラーを最小値と最大値の間に制限",
+    "inputs": [
+      {"name": "Value", "type": "S"},
+      {"name": "Min", "type": "S"},
+      {"name": "Max", "type": "S"}
+    ],
+    "outputs": [{"name": "Result", "type": "S"}],
+    "usage": "値域制限、安全な値の範囲確保",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "Sine": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Math/Sine.Sine",
+    "desc": "スカラーの正弦値を計算（入力はラジアン）",
+    "inputs": [{"name": "Value", "type": "S"}],
+    "outputs": [{"name": "Result", "type": "S"}],
+    "usage": "波状アニメーション、周期的な変動",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "Cosine": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Math/Cosine.Cosine",
+    "desc": "スカラーの余弦値を計算（入力はラジアン）",
+    "inputs": [{"name": "Value", "type": "S"}],
+    "outputs": [{"name": "Result", "type": "S"}],
+    "usage": "波状アニメーション、余弦ベースの周期効果",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "Frac": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Math/Frac.Frac",
+    "desc": "スカラーの小数部分を取得（0.0〜1.0）",
+    "inputs": [{"name": "Value", "type": "S"}],
+    "outputs": [{"name": "Result", "type": "S"}],
+    "usage": "タイリングテクスチャの周期化、サイクリングアニメーション",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "Pow": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Math/Pow.Pow",
+    "desc": "底をスカラー値で指数乗する",
+    "inputs": [
+      {"name": "Base", "type": "S"},
+      {"name": "Exponent", "type": "S"}
+    ],
+    "outputs": [{"name": "Result", "type": "S"}],
+    "usage": "コントラスト調整、非線形フェード",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "Sqrt": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Math/Sqrt.Sqrt",
+    "desc": "スカラーの平方根を計算",
+    "inputs": [{"name": "Value", "type": "S"}],
+    "outputs": [{"name": "Result", "type": "S"}],
+    "usage": "距離の逆計算、エネルギー減衰の補正",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "DotProduct": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Math/DotProduct.DotProduct",
+    "desc": "2つのV3ベクトルの内積を計算",
+    "inputs": [
+      {"name": "A", "type": "V3"},
+      {"name": "B", "type": "V3"}
+    ],
+    "outputs": [{"name": "Result", "type": "S"}],
+    "usage": "法線と光の角度計算、視角依存の効果",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "CrossProduct": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Math/CrossProduct.CrossProduct",
+    "desc": "2つのV3ベクトルの外積を計算",
+    "inputs": [
+      {"name": "A", "type": "V3"},
+      {"name": "B", "type": "V3"}
+    ],
+    "outputs": [{"name": "Result", "type": "V3"}],
+    "usage": "垂直ベクトルの生成、平面の法線計算",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "Lerp": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Math/Lerp.Lerp",
+    "desc": "2つのスカラー値を線形補間する",
+    "inputs": [
+      {"name": "A", "type": "S"},
+      {"name": "B", "type": "S"},
+      {"name": "Alpha", "type": "S"}
+    ],
+    "outputs": [{"name": "Result", "type": "S"}],
+    "usage": "段階的なアニメーション、値の平滑な遷移",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "DistanceFromPlane": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Utility/DistanceFromPlane.DistanceFromPlane",
+    "desc": "ワールド空間の点から平面までの距離を計算",
+    "inputs": [
+      {"name": "PlaneBase", "type": "V3"},
+      {"name": "PlaneNormal", "type": "V3"},
+      {"name": "Position", "type": "V3"}
+    ],
+    "outputs": [{"name": "Distance", "type": "S"}],
+    "usage": "スラッシング効果、平面切り取り、制約領域の定義",
+    "verified": false,
+    "path_uncertain": true
+  },
+  "ReflectionVector": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Utility/ReflectionVector.ReflectionVector",
+    "desc": "入射ベクトルと表面法線からリフレクションベクトルを計算",
+    "inputs": [
+      {"name": "IncidentDirection", "type": "V3"},
+      {"name": "SurfaceNormal", "type": "V3"}
+    ],
+    "outputs": [{"name": "Result", "type": "V3"}],
+    "usage": "反射効果、キューブマップサンプリング方向の決定",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "ComponentMask": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Math/ComponentMask.ComponentMask",
+    "desc": "ベクトルから指定成分のみを抽出",
+    "inputs": [{"name": "Vector", "type": "V3"}],
+    "outputs": [
+      {"name": "R", "type": "S"},
+      {"name": "G", "type": "S"},
+      {"name": "B", "type": "S"}
+    ],
+    "usage": "カラーチャンネルの分離、成分選択的操作",
+    "verified": false,
+    "path_uncertain": false
+  }
+}
