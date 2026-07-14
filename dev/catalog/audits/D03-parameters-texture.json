@@ -1,0 +1,831 @@
+{
+  "BumpOffset": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "verified"
+    },
+    "semantics": {
+      "operation": "bump_offset",
+      "formula": "bump_offset(Coordinate, Height, HeightRatioInput, HeightRatio, ReferencePlane)",
+      "unconnected_defaults": {
+        "Coordinate": "ConstCoordinate",
+        "HeightRatioInput": "HeightRatio"
+      },
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [
+        {
+          "kind": "required_input",
+          "input": "Height",
+          "failure": "compile_error"
+        }
+      ],
+      "unresolved": []
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionBumpOffset.h",
+        "symbol": "UMaterialExpressionBumpOffset",
+        "claims": ["declaration", "schema", "restrictions"],
+        "source_hash": "6064b2fb870e2c44274ac3f754ba156ffdf43fb37c21bd2806796cdc0a0adb1b"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpressionBumpOffset::Compile",
+        "claims": ["schema", "description", "restrictions"],
+        "source_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionBumpOffset::Build",
+        "claims": ["description", "restrictions"],
+        "source_hash": "a40f549263684674f2b154ffdf2b4bf336527786ca7ed983cb4507987ba9d2e8"
+      }
+    ]
+  },
+  "ChannelMaskParameter": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "verified"
+    },
+    "semantics": {
+      "operation": "dot_product",
+      "formula": "channel_mask_parameter(Input, ParameterName, DefaultValue, bUseCustomPrimitiveData, PrimitiveDataIndex)",
+      "unconnected_defaults": {},
+      "value_domain": "float1",
+      "restrictions": [
+        {
+          "kind": "required_input",
+          "input": "Input",
+          "failure": "compile_error"
+        },
+        {
+          "kind": "backend_ignores_property",
+          "property": "bUseCustomPrimitiveData",
+          "backend": "legacy",
+          "when": "always"
+        },
+        {
+          "kind": "backend_ignores_property",
+          "property": "PrimitiveDataIndex",
+          "backend": "legacy",
+          "when": "custom_primitive_data_enabled"
+        }
+      ],
+      "unresolved": []
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionChannelMaskParameter.h",
+        "symbol": "UMaterialExpressionChannelMaskParameter",
+        "claims": ["declaration", "schema", "restrictions"],
+        "source_hash": "00dbeea05b4d1aac4c00fba3483ac44738f970adc2463f9157dea775f32f98b9"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionVectorParameter.h",
+        "symbol": "UMaterialExpressionVectorParameter",
+        "claims": ["schema", "description", "restrictions"],
+        "source_hash": "cc97f37791b7659c0d446f76f9660126cee5fe7fe9b3875f28046fb7d7f3c6cb"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpressionChannelMaskParameter::UMaterialExpressionChannelMaskParameter / Compile / PostEditChangeProperty",
+        "claims": ["schema", "description", "restrictions"],
+        "source_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionChannelMaskParameter::Build / BuildPrimitiveUniformMaterialParameter",
+        "claims": ["description", "restrictions"],
+        "source_hash": "a40f549263684674f2b154ffdf2b4bf336527786ca7ed983cb4507987ba9d2e8"
+      }
+    ]
+  },
+  "DoubleVectorParameter": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "not_applicable"
+    },
+    "semantics": {
+      "operation": "parameter",
+      "formula": "double_vector_parameter(ParameterName, DefaultValue)",
+      "unconnected_defaults": {},
+      "value_domain": "double3",
+      "restrictions": [],
+      "unresolved": []
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionDoubleVectorParameter.h",
+        "symbol": "UMaterialExpressionDoubleVectorParameter",
+        "claims": ["declaration", "schema"],
+        "source_hash": "a86540ad50adbc7b4264d1c1433b1c210108ee368c64ef6c25740227fd0e39ed"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionParameter.h",
+        "symbol": "UMaterialExpressionParameter",
+        "claims": ["schema", "description"],
+        "source_hash": "501a874633b523cc209b4b6ea1ebc73decbed64b2942b78b73cffac47eaa3dc3"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpressionDoubleVectorParameter::UMaterialExpressionDoubleVectorParameter / Compile",
+        "claims": ["schema", "description"],
+        "source_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionDoubleVectorParameter::Build / BuildPrimitiveUniformMaterialParameter",
+        "claims": ["description"],
+        "source_hash": "a40f549263684674f2b154ffdf2b4bf336527786ca7ed983cb4507987ba9d2e8"
+      }
+    ]
+  },
+  "Panner": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "verified"
+    },
+    "semantics": {
+      "operation": "coordinate_panner",
+      "formula": "pan(Coordinate, Time, Speed, SpeedX, SpeedY, bFractionalPart)",
+      "unconnected_defaults": {
+        "Coordinate": "ConstCoordinate",
+        "Time": "$game_time",
+        "Speed": "$speed_properties"
+      },
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [
+        {
+          "kind": "backend_ignores_property",
+          "property": "ConstCoordinate",
+          "backend": "mir",
+          "when": "coordinate_unconnected"
+        }
+      ],
+      "unresolved": []
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionPanner.h",
+        "symbol": "UMaterialExpressionPanner",
+        "claims": ["declaration", "schema"],
+        "source_hash": "ec9433e3dd5208fdc5c65e27ca3a489c799433d75a035f823ca0831a4fe527e1"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpressionPanner::Compile",
+        "claims": ["schema", "description", "restrictions"],
+        "source_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionPanner::Build / MaterialToMIR::EmitTexCoord",
+        "claims": ["description", "restrictions"],
+        "source_hash": "a40f549263684674f2b154ffdf2b4bf336527786ca7ed983cb4507987ba9d2e8"
+      }
+    ]
+  },
+  "Rotator": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "not_applicable"
+    },
+    "semantics": {
+      "operation": "coordinate_rotator",
+      "formula": "rotate_uv(Coordinate, Time, CenterX, CenterY, Speed)",
+      "unconnected_defaults": {
+        "Coordinate": "ConstCoordinate",
+        "Time": "$game_time"
+      },
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [],
+      "unresolved": []
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionRotator.h",
+        "symbol": "UMaterialExpressionRotator",
+        "claims": ["declaration", "schema"],
+        "source_hash": "5715e8914de2deb2a90ca1f97c4d47054d3f110afdd176dfdea1eb89d9ce9fee"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpressionRotator::Compile",
+        "claims": ["schema", "description"],
+        "source_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionRotator::Build",
+        "claims": ["description"],
+        "source_hash": "a40f549263684674f2b154ffdf2b4bf336527786ca7ed983cb4507987ba9d2e8"
+      }
+    ]
+  },
+  "StaticBool": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "not_applicable"
+    },
+    "semantics": {
+      "operation": "static_bool",
+      "formula": "static_bool(Value)",
+      "unconnected_defaults": {},
+      "value_domain": "boolean",
+      "restrictions": [],
+      "unresolved": []
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionStaticBool.h",
+        "symbol": "UMaterialExpressionStaticBool",
+        "claims": ["declaration", "schema", "description"],
+        "source_hash": "fea15ce0879b54b65d5be88e7d8bc8ee5ffc6df5911c4ac3671149e79c56625c"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpressionStaticBool::Compile",
+        "claims": ["description"],
+        "source_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionStaticBool::Build",
+        "claims": ["description"],
+        "source_hash": "a40f549263684674f2b154ffdf2b4bf336527786ca7ed983cb4507987ba9d2e8"
+      }
+    ]
+  },
+  "StaticBoolParameter": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "verified"
+    },
+    "semantics": {
+      "operation": "static_bool",
+      "formula": "static_bool_parameter(ParameterName, DefaultValue, DynamicBranch)",
+      "unconnected_defaults": {},
+      "value_domain": "boolean",
+      "restrictions": [
+        {
+          "kind": "mir_unsupported",
+          "properties": ["DynamicBranch"],
+          "active_value": true
+        }
+      ],
+      "unresolved": []
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionStaticBoolParameter.h",
+        "symbol": "UMaterialExpressionStaticBoolParameter",
+        "claims": ["declaration", "schema", "restrictions"],
+        "source_hash": "8d7a4249d04bf7a11d3ec80994ed44647e0c878c36893faad921aa7428b81052"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionParameter.h",
+        "symbol": "UMaterialExpressionParameter",
+        "claims": ["schema", "description"],
+        "source_hash": "501a874633b523cc209b4b6ea1ebc73decbed64b2942b78b73cffac47eaa3dc3"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpressionStaticBoolParameter::Compile",
+        "claims": ["description", "restrictions"],
+        "source_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionStaticBoolParameter::Build / GetMaterialExpressionParameterMetadata",
+        "claims": ["description", "restrictions"],
+        "source_hash": "a40f549263684674f2b154ffdf2b4bf336527786ca7ed983cb4507987ba9d2e8"
+      }
+    ]
+  },
+  "StaticComponentMaskParameter": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "verified"
+    },
+    "semantics": {
+      "operation": "component_mask",
+      "formula": "static_component_mask_parameter(Input, ParameterName, DefaultR, DefaultG, DefaultB, DefaultA)",
+      "unconnected_defaults": {},
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [
+        {
+          "kind": "required_input",
+          "input": "Input",
+          "failure": "compile_error"
+        },
+        {
+          "kind": "selected_component_count",
+          "minimum": 1,
+          "maximum": 4
+        },
+        {
+          "kind": "selected_components_exist",
+          "input": "Input",
+          "components": ["R", "G", "B", "A"]
+        }
+      ],
+      "unresolved": [
+        "static_component_mask.scalar_channel_legacy_mir_consistency"
+      ]
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionStaticComponentMaskParameter.h",
+        "symbol": "UMaterialExpressionStaticComponentMaskParameter",
+        "claims": ["declaration", "schema", "restrictions"],
+        "source_hash": "f63cf6c0ac53e2df83d2f50dfef3b905a958a1b03a658ca47500f17e24557347"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionParameter.h",
+        "symbol": "UMaterialExpressionParameter",
+        "claims": ["schema", "description"],
+        "source_hash": "501a874633b523cc209b4b6ea1ebc73decbed64b2942b78b73cffac47eaa3dc3"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpressionStaticComponentMaskParameter::Compile",
+        "claims": ["schema", "description", "restrictions"],
+        "source_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionStaticComponentMaskParameter::Build / GetMaterialExpressionParameterMetadata",
+        "claims": ["description", "restrictions"],
+        "source_hash": "a40f549263684674f2b154ffdf2b4bf336527786ca7ed983cb4507987ba9d2e8"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/HLSLMaterialTranslator.cpp",
+        "symbol": "FHLSLMaterialTranslator::StaticComponentMask / ComponentMask",
+        "claims": ["description", "restrictions"],
+        "source_hash": "285cf264324db9e0146fff797568bf0c873791e20bca843fe9fbb19f95794077"
+      }
+    ]
+  },
+  "StaticSwitch": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "verified"
+    },
+    "semantics": {
+      "operation": "static_switch",
+      "formula": "select(Value, True, False)",
+      "unconnected_defaults": {
+        "Value": "DefaultValue"
+      },
+      "value_domain": "user_defined",
+      "restrictions": [
+        {
+          "kind": "selected_input_required",
+          "selector": "Value",
+          "true_input": "True",
+          "false_input": "False",
+          "failure": "compile_error"
+        },
+        {
+          "kind": "dynamic_bool_input_unsupported",
+          "input": "Value",
+          "backend": "mir"
+        }
+      ],
+      "unresolved": [
+        "substrate.static_switch_topology_mir_unimplemented"
+      ]
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionStaticSwitch.h",
+        "symbol": "UMaterialExpressionStaticSwitch",
+        "claims": ["declaration", "schema", "restrictions"],
+        "source_hash": "b1bd208487805ee3ad7c0e5137dc07883a366891dce644703111e898136470e4"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpressionStaticSwitch::Compile / GetInputName / SubstrateGenerateMaterialTopologyTree",
+        "claims": ["schema", "description", "restrictions"],
+        "source_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionStaticSwitch::Build",
+        "claims": ["description", "restrictions"],
+        "source_hash": "a40f549263684674f2b154ffdf2b4bf336527786ca7ed983cb4507987ba9d2e8"
+      }
+    ]
+  },
+  "StaticSwitchParameter": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "verified"
+    },
+    "semantics": {
+      "operation": "static_switch",
+      "formula": "select(static_bool_parameter(ParameterName, DefaultValue, DynamicBranch), True, False)",
+      "unconnected_defaults": {},
+      "value_domain": "user_defined",
+      "restrictions": [
+        {
+          "kind": "required_input",
+          "input": "True",
+          "failure": "compile_error"
+        },
+        {
+          "kind": "required_input",
+          "input": "False",
+          "failure": "compile_error"
+        },
+        {
+          "kind": "mir_unsupported",
+          "properties": ["DynamicBranch"],
+          "active_value": true
+        }
+      ],
+      "unresolved": [
+        "substrate.dynamic_branch_topology_unsupported"
+      ]
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionStaticSwitchParameter.h",
+        "symbol": "UMaterialExpressionStaticSwitchParameter",
+        "claims": ["declaration", "schema", "restrictions"],
+        "source_hash": "03bf28faf9465a83e0ad911d7487544c90c517146c86bd478310be16e60dface"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionStaticBoolParameter.h",
+        "symbol": "UMaterialExpressionStaticBoolParameter",
+        "claims": ["schema", "description", "restrictions"],
+        "source_hash": "8d7a4249d04bf7a11d3ec80994ed44647e0c878c36893faad921aa7428b81052"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpressionStaticSwitchParameter::Compile / GetEffectiveInput / GetInputName / SubstrateGenerateMaterialTopologyTree",
+        "claims": ["schema", "description", "restrictions"],
+        "source_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionStaticSwitchParameter::Build / GetMaterialExpressionParameterMetadata / MaterialToMIR::CheckInputIsConnected",
+        "claims": ["description", "restrictions"],
+        "source_hash": "a40f549263684674f2b154ffdf2b4bf336527786ca7ed983cb4507987ba9d2e8"
+      }
+    ]
+  },
+  "TextureObject": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "verified"
+    },
+    "semantics": {
+      "operation": "texture_object",
+      "formula": "texture_uniform(Texture, SamplerType)",
+      "unconnected_defaults": {},
+      "value_domain": "texture_object",
+      "restrictions": [
+        {
+          "kind": "required_property",
+          "property": "Texture",
+          "failure": "missing_texture"
+        }
+      ],
+      "unresolved": []
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionTextureObject.h",
+        "symbol": "UMaterialExpressionTextureObject",
+        "claims": ["declaration", "schema"],
+        "source_hash": "3a591a956d42ee341e42999784618c233186ce9e3592fd9ecda9776ef221f7b1"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionTextureBase.h",
+        "symbol": "UMaterialExpressionTextureBase / SamplerType",
+        "claims": ["schema", "description"],
+        "source_hash": "47c7f204f3835b9fc2c6297ebdeb090f10c56f91ee3ee7dd0c06a87215e7ddbb"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpressionTextureObject::UMaterialExpressionTextureObject / Compile / GetOutputValueType",
+        "claims": ["schema", "description", "restrictions"],
+        "source_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionTextureObject::Build",
+        "claims": ["description", "restrictions"],
+        "source_hash": "a40f549263684674f2b154ffdf2b4bf336527786ca7ed983cb4507987ba9d2e8"
+      }
+    ]
+  },
+  "TextureObjectParameter": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "verified"
+    },
+    "semantics": {
+      "operation": "texture_object",
+      "formula": "texture_parameter(ParameterName, Texture, SamplerType)",
+      "unconnected_defaults": {},
+      "value_domain": "texture_object",
+      "restrictions": [
+        {
+          "kind": "required_property",
+          "property": "Texture",
+          "failure": "missing_texture"
+        }
+      ],
+      "unresolved": []
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionTextureObjectParameter.h",
+        "symbol": "UMaterialExpressionTextureObjectParameter",
+        "claims": ["declaration", "schema"],
+        "source_hash": "c6e906f1d8e0166d3a5c694e3fe5b1bbdb92a695724c9c217c106e7b207022e1"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionTextureSampleParameter.h",
+        "symbol": "UMaterialExpressionTextureSampleParameter",
+        "claims": ["schema", "description"],
+        "source_hash": "94401ac8c4e77911b60efac4951b0ff3abe5ac1e28eb491063be111987c0be6d"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionTextureBase.h",
+        "symbol": "UMaterialExpressionTextureBase / SamplerType",
+        "claims": ["schema"],
+        "source_hash": "47c7f204f3835b9fc2c6297ebdeb090f10c56f91ee3ee7dd0c06a87215e7ddbb"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpressionTextureObjectParameter::UMaterialExpressionTextureObjectParameter / Compile / TextureIsValid",
+        "claims": ["schema", "description", "restrictions"],
+        "source_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionTextureObjectParameter::Build / GetMaterialExpressionParameterMetadata",
+        "claims": ["description", "restrictions"],
+        "source_hash": "a40f549263684674f2b154ffdf2b4bf336527786ca7ed983cb4507987ba9d2e8"
+      }
+    ]
+  },
+  "TextureProperty": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "verified"
+    },
+    "semantics": {
+      "operation": "texture_property",
+      "formula": "texture_property(TextureObject, Property)",
+      "unconnected_defaults": {},
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [
+        {
+          "kind": "required_input",
+          "input": "TextureObject",
+          "failure": "missing_texture_object"
+        }
+      ],
+      "unresolved": []
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionTextureProperty.h",
+        "symbol": "EMaterialExposedTextureProperty / UMaterialExpressionTextureProperty",
+        "claims": ["declaration", "schema", "restrictions"],
+        "source_hash": "7cb46c0ccf71266bab9033559f9ff293aa1d31a8ceb79b79c60e7dc98302c76d"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpressionTextureProperty::Compile / GetInputValueType",
+        "claims": ["schema", "description", "restrictions"],
+        "source_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionTextureProperty::Build",
+        "claims": ["description", "restrictions"],
+        "source_hash": "a40f549263684674f2b154ffdf2b4bf336527786ca7ed983cb4507987ba9d2e8"
+      }
+    ]
+  },
+  "TextureSampleParameter2D": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "verified"
+    },
+    "semantics": {
+      "operation": "texture_sample",
+      "formula": "sample(texture_parameter(ParameterName, Texture, SamplerType), Coordinates)",
+      "unconnected_defaults": {
+        "Coordinates": "ConstCoordinate",
+        "MipValue": "$const_mip_value",
+        "Apply View MipBias": "$automatic_view_mip_bias"
+      },
+      "value_domain": "texture_sample_value",
+      "restrictions": [
+        {
+          "kind": "required_property",
+          "property": "Texture",
+          "failure": "missing_texture"
+        },
+        {
+          "kind": "texture_type_required",
+          "property": "Texture",
+          "texture_types": ["texture_2d", "texture_external", "texture_virtual"]
+        },
+        {
+          "kind": "derivative_inputs_required",
+          "mode_selector": "MipValueMode",
+          "mode": "TMVM_Derivative",
+          "inputs": ["CoordinatesDX", "CoordinatesDY"]
+        },
+        {
+          "kind": "backend_ignores_property",
+          "property": "GatherMode",
+          "backend": "legacy",
+          "when": "always"
+        },
+        {
+          "kind": "backend_ignores_input",
+          "input": "Apply View MipBias",
+          "backend": "legacy",
+          "when": "always"
+        }
+      ],
+      "unresolved": [
+        "editor_schema.channel_names_dynamic_output_labels",
+        "editor_schema.mip_mode_dynamic_input_names_and_presence"
+      ]
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionTextureSampleParameter2D.h",
+        "symbol": "UMaterialExpressionTextureSampleParameter2D",
+        "claims": ["declaration", "restrictions"],
+        "source_hash": "837d340f9827e76c212e08f9526a4d8628df1381003fed571e16a77b7c7955b8"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionTextureSampleParameter.h",
+        "symbol": "UMaterialExpressionTextureSampleParameter",
+        "claims": ["schema", "description"],
+        "source_hash": "94401ac8c4e77911b60efac4951b0ff3abe5ac1e28eb491063be111987c0be6d"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionTextureSample.h",
+        "symbol": "UMaterialExpressionTextureSample",
+        "claims": ["schema", "restrictions"],
+        "source_hash": "afe6e54686c5451f2e907474ac942010934c048818da3b3fe931adaf3d2d779c"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionTextureBase.h",
+        "symbol": "UMaterialExpressionTextureBase / SamplerType",
+        "claims": ["schema"],
+        "source_hash": "47c7f204f3835b9fc2c6297ebdeb090f10c56f91ee3ee7dd0c06a87215e7ddbb"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpressionTextureSampleParameter2D::TextureIsValid / UMaterialExpressionTextureSampleParameter::Compile / UMaterialExpressionTextureSample::GetInput / GetInputName / ApplyChannelNames / CompileTextureSample",
+        "claims": ["schema", "description", "restrictions"],
+        "source_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionTextureSampleParameter::Build / BuildTextureSampleParameter / BuildTextureSampleExpression / BuildTextureSample",
+        "claims": ["description", "restrictions"],
+        "source_hash": "a40f549263684674f2b154ffdf2b4bf336527786ca7ed983cb4507987ba9d2e8"
+      }
+    ]
+  },
+  "TextureSampleParameterCube": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "verified"
+    },
+    "semantics": {
+      "operation": "texture_sample",
+      "formula": "sample(texture_parameter(ParameterName, Texture, SamplerType), Coordinates)",
+      "unconnected_defaults": {
+        "MipValue": "$const_mip_value",
+        "Apply View MipBias": "$automatic_view_mip_bias"
+      },
+      "value_domain": "texture_sample_value",
+      "restrictions": [
+        {
+          "kind": "required_property",
+          "property": "Texture",
+          "failure": "missing_texture"
+        },
+        {
+          "kind": "texture_type_required",
+          "property": "Texture",
+          "texture_types": ["texture_cube"]
+        },
+        {
+          "kind": "required_input",
+          "input": "Coordinates",
+          "failure": "missing_coordinates"
+        },
+        {
+          "kind": "derivative_inputs_required",
+          "mode_selector": "MipValueMode",
+          "mode": "TMVM_Derivative",
+          "inputs": ["CoordinatesDX", "CoordinatesDY"]
+        },
+        {
+          "kind": "automatic_view_mip_bias_disabled",
+          "texture_types": ["texture_cube"],
+          "backend": "mir"
+        },
+        {
+          "kind": "backend_ignores_property",
+          "property": "GatherMode",
+          "backend": "legacy",
+          "when": "always"
+        },
+        {
+          "kind": "backend_ignores_input",
+          "input": "Apply View MipBias",
+          "backend": "legacy",
+          "when": "always"
+        }
+      ],
+      "unresolved": [
+        "editor_schema.channel_names_dynamic_output_labels",
+        "editor_schema.mip_mode_dynamic_input_names_and_presence"
+      ]
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionTextureSampleParameterCube.h",
+        "symbol": "UMaterialExpressionTextureSampleParameterCube",
+        "claims": ["declaration", "restrictions"],
+        "source_hash": "cf1f216c8a6ad6b843f9e2648bfd5b9dab14fd662825c4b927399c65c09c71ee"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionTextureSampleParameter.h",
+        "symbol": "UMaterialExpressionTextureSampleParameter",
+        "claims": ["schema", "description"],
+        "source_hash": "94401ac8c4e77911b60efac4951b0ff3abe5ac1e28eb491063be111987c0be6d"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionTextureSample.h",
+        "symbol": "UMaterialExpressionTextureSample",
+        "claims": ["schema", "restrictions"],
+        "source_hash": "afe6e54686c5451f2e907474ac942010934c048818da3b3fe931adaf3d2d779c"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionTextureBase.h",
+        "symbol": "UMaterialExpressionTextureBase / SamplerType",
+        "claims": ["schema"],
+        "source_hash": "47c7f204f3835b9fc2c6297ebdeb090f10c56f91ee3ee7dd0c06a87215e7ddbb"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpressionTextureSampleParameterCube::Compile / TextureIsValid / UMaterialExpressionTextureSampleParameter::Compile / UMaterialExpressionTextureSample::GetInput / GetInputName / ApplyChannelNames / CompileTextureSample",
+        "claims": ["schema", "description", "restrictions"],
+        "source_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionTextureSampleParameterCube::Build / BuildTextureSampleParameterWithCoordinatesInput / BuildTextureSampleParameter / BuildTextureSampleExpression / BuildTextureSample",
+        "claims": ["description", "restrictions"],
+        "source_hash": "a40f549263684674f2b154ffdf2b4bf336527786ca7ed983cb4507987ba9d2e8"
+      }
+    ]
+  }
+}

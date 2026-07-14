@@ -41,6 +41,12 @@
   ],
   "prop_pins": [
    {
+    "name": "SamplerType",
+    "prop": "SamplerType",
+    "kind": "Advanced",
+    "type": "enum:EMaterialSamplerType"
+   },
+   {
     "name": "MipValueMode",
     "prop": "MipValueMode",
     "kind": "Advanced",
@@ -100,6 +106,10 @@
     "type": "enum:ETextureMipValueMode",
     "default": "TMVM_None"
    },
+   "SamplerSource": {
+    "type": "enum:ESamplerSourceMode",
+    "default": "SSM_FromTextureAsset"
+   },
    "AutomaticViewMipBias": {
     "type": "bool",
     "default": true
@@ -127,11 +137,6 @@
     "default_prop": "ConstCoordinate"
    },
    {
-    "name": "TextureObject",
-    "prop": "TextureObject",
-    "required": false
-   },
-   {
     "name": "MipValue",
     "prop": "MipValue",
     "required": false
@@ -153,6 +158,12 @@
    }
   ],
   "prop_pins": [
+   {
+    "name": "SamplerType",
+    "prop": "SamplerType",
+    "kind": "Advanced",
+    "type": "enum:EMaterialSamplerType"
+   },
    {
     "name": "MipValueMode",
     "prop": "MipValueMode",
@@ -229,6 +240,10 @@
     "type": "enum:ETextureMipValueMode",
     "default": "TMVM_None"
    },
+   "SamplerSource": {
+    "type": "enum:ESamplerSourceMode",
+    "default": "SSM_FromTextureAsset"
+   },
    "AutomaticViewMipBias": {
     "type": "bool",
     "default": true
@@ -236,6 +251,10 @@
    "GatherMode": {
     "type": "enum:ETextureGatherMode",
     "default": "TGM_None"
+   },
+   "ChannelNames": {
+    "type": "FParameterChannelNames",
+    "default": null
    }
   },
   "is_parameter": true,
@@ -246,7 +265,14 @@
   "header": "Materials/MaterialExpressionTextureObject.h",
   "desc": "",
   "inputs": [],
-  "prop_pins": [],
+  "prop_pins": [
+   {
+    "name": "SamplerType",
+    "prop": "SamplerType",
+    "kind": "Advanced",
+    "type": "enum:EMaterialSamplerType"
+   }
+  ],
   "outputs": [
    {
     "name": ""
@@ -273,7 +299,14 @@
   "header": "Materials/MaterialExpressionTextureObjectParameter.h",
   "desc": "",
   "inputs": [],
-  "prop_pins": [],
+  "prop_pins": [
+   {
+    "name": "SamplerType",
+    "prop": "SamplerType",
+    "kind": "Advanced",
+    "type": "enum:EMaterialSamplerType"
+   }
+  ],
   "outputs": [
    {
     "name": ""
@@ -588,11 +621,6 @@
     "default_prop": "ConstCoordinate"
    },
    {
-    "name": "TextureObject",
-    "prop": "TextureObject",
-    "required": false
-   },
-   {
     "name": "MipValue",
     "prop": "MipValue",
     "required": false
@@ -614,6 +642,12 @@
    }
   ],
   "prop_pins": [
+   {
+    "name": "SamplerType",
+    "prop": "SamplerType",
+    "kind": "Advanced",
+    "type": "enum:EMaterialSamplerType"
+   },
    {
     "name": "MipValueMode",
     "prop": "MipValueMode",
@@ -690,6 +724,10 @@
     "type": "enum:ETextureMipValueMode",
     "default": "TMVM_None"
    },
+   "SamplerSource": {
+    "type": "enum:ESamplerSourceMode",
+    "default": "SSM_FromTextureAsset"
+   },
    "AutomaticViewMipBias": {
     "type": "bool",
     "default": true
@@ -697,6 +735,10 @@
    "GatherMode": {
     "type": "enum:ETextureGatherMode",
     "default": "TGM_None"
+   },
+   "ChannelNames": {
+    "type": "FParameterChannelNames",
+    "default": null
    }
   },
   "is_parameter": true,
@@ -712,11 +754,6 @@
     "prop": "Coordinates",
     "required": false,
     "default_prop": "ConstCoordinate"
-   },
-   {
-    "name": "TextureObject",
-    "prop": "TextureObject",
-    "required": false
    },
    {
     "name": "MipValue",
@@ -740,6 +777,12 @@
    }
   ],
   "prop_pins": [
+   {
+    "name": "SamplerType",
+    "prop": "SamplerType",
+    "kind": "Advanced",
+    "type": "enum:EMaterialSamplerType"
+   },
    {
     "name": "MipValueMode",
     "prop": "MipValueMode",
@@ -824,6 +867,10 @@
     "type": "enum:ETextureMipValueMode",
     "default": "TMVM_None"
    },
+   "SamplerSource": {
+    "type": "enum:ESamplerSourceMode",
+    "default": "SSM_FromTextureAsset"
+   },
    "AutomaticViewMipBias": {
     "type": "bool",
     "default": true
@@ -831,6 +878,10 @@
    "GatherMode": {
     "type": "enum:ETextureGatherMode",
     "default": "TGM_None"
+   },
+   "ChannelNames": {
+    "type": "FParameterChannelNames",
+    "default": null
    }
   },
   "is_parameter": true,
@@ -884,11 +935,6 @@
     "default_prop": "ConstCoordinate"
    },
    {
-    "name": "TextureObject",
-    "prop": "TextureObject",
-    "required": false
-   },
-   {
     "name": "MipValue",
     "prop": "MipValue",
     "required": false
@@ -910,6 +956,12 @@
    }
   ],
   "prop_pins": [
+   {
+    "name": "SamplerType",
+    "prop": "SamplerType",
+    "kind": "Advanced",
+    "type": "enum:EMaterialSamplerType"
+   },
    {
     "name": "MipValueMode",
     "prop": "MipValueMode",
@@ -986,6 +1038,10 @@
     "type": "enum:ETextureMipValueMode",
     "default": "TMVM_None"
    },
+   "SamplerSource": {
+    "type": "enum:ESamplerSourceMode",
+    "default": "SSM_FromTextureAsset"
+   },
    "AutomaticViewMipBias": {
     "type": "bool",
     "default": true
@@ -993,6 +1049,10 @@
    "GatherMode": {
     "type": "enum:ETextureGatherMode",
     "default": "TGM_None"
+   },
+   "ChannelNames": {
+    "type": "FParameterChannelNames",
+    "default": null
    }
   },
   "is_parameter": true,

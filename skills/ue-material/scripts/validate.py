@@ -248,6 +248,16 @@ def _provenance_diagnostics(
                 f"class {class_name!r} has an incomplete source audit ({', '.join(incomplete)}); "
                 "inspect the configured UE source before treating catalog facts as authoritative"))
 
+    semantics = record.get("semantics") if isinstance(record, dict) else None
+    unresolved = semantics.get("unresolved") if isinstance(semantics, dict) else None
+    if isinstance(unresolved, list) and unresolved:
+        unresolved_ids = ", ".join(repr(item) for item in unresolved)
+        diagnostics.append(Diagnostic(
+            "warning", path,
+            f"class {class_name!r} has unresolved semantic behavior ({unresolved_ids}); "
+            "verify these items against the configured UE source or an Unreal Editor sample "
+            "before relying on them"))
+
     classes = editor_evidence.get("classes")
     editor = classes.get(class_name) if isinstance(classes, dict) else None
     if not isinstance(editor, dict):

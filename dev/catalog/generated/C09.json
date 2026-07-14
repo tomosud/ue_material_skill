@@ -54,7 +54,7 @@
   "desc": "",
   "inputs": [
    {
-    "name": "WorldPosition",
+    "name": "World Position",
     "prop": "WorldPosition",
     "required": false
    }

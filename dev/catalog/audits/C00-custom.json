@@ -6,6 +6,24 @@
       "description": "verified",
       "restrictions": "verified"
     },
+    "semantics": {
+      "operation": "custom_code",
+      "formula": null,
+      "unconnected_defaults": {},
+      "value_domain": "user_defined",
+      "restrictions": [
+        {
+          "kind": "max_function_parameters",
+          "value": 32
+        },
+        {
+          "kind": "property_defined_inputs_and_outputs"
+        }
+      ],
+      "unresolved": [
+        "custom.user_code_result"
+      ]
+    },
     "references": [
       {
         "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionCustom.h",

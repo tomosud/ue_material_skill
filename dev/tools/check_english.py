@@ -2,8 +2,10 @@
 """Enforce the reviewed CJK-debt baseline for active skill content.
 
 Unreal identifiers are not translated. Fixtures and the inactive legacy prose
-quarantine are outside the active skill scope. A reviewed English conversion
-must run this tool with --update-baseline so the allowed debt only decreases.
+quarantine are outside the active skill scope. Japanese values in the generated
+``nodes.json`` alias arrays are search metadata and are ignored; every factual
+field remains in scope. A reviewed English conversion must run this tool with
+--update-baseline so the allowed debt only decreases.
 """
 
 from __future__ import annotations
@@ -19,6 +21,7 @@ REPOSITORY_ROOT = Path(__file__).resolve().parents[2]
 SKILL_ROOT = REPOSITORY_ROOT / "skills" / "ue-material"
 DEFAULT_BASELINE = REPOSITORY_ROOT / "dev" / "catalog" / "language-baseline.json"
 EXEMPT_FILES = {SKILL_ROOT / "catalog" / "legacy-node-prose.json"}
+ALIAS_CATALOG = SKILL_ROOT / "catalog" / "nodes.json"
 TEXT_SUFFIXES = {".json", ".md", ".py", ".yaml", ".yml"}
 CJK_RE = re.compile(
     "["
@@ -48,6 +51,13 @@ def scan() -> dict[str, dict[str, int]]:
     result: dict[str, dict[str, int]] = {}
     for path in active_files():
         text = path.read_text(encoding="utf-8-sig")
+        if path == ALIAS_CATALOG:
+            document = json.loads(text)
+            if isinstance(document, dict):
+                for entry in document.values():
+                    if isinstance(entry, dict):
+                        entry["aliases"] = []
+                text = json.dumps(document, ensure_ascii=False)
         matching_lines = sum(bool(CJK_RE.search(line)) for line in text.splitlines())
         matching_chars = len(CJK_RE.findall(text))
         if matching_chars:
@@ -74,7 +84,10 @@ def main() -> int:
                 "debt and must only decrease through reviewed English conversions."
             ),
             "scope": "skills/ue-material/**/*.{json,md,py,yaml,yml}",
-            "exemptions": ["skills/ue-material/catalog/legacy-node-prose.json"],
+            "exemptions": [
+                "skills/ue-material/catalog/legacy-node-prose.json",
+                "skills/ue-material/catalog/nodes.json aliases values",
+            ],
             "files": current,
         }
         args.baseline.parent.mkdir(parents=True, exist_ok=True)

@@ -1,0 +1,13 @@
+{
+  "skill_version": "1.0.0",
+  "ue_version": "5.8.0",
+  "ue_branch": "UE5",
+  "generated_at": "2026-07-15T00:00:00Z",
+  "catalog_hashes": {
+    "editor-evidence.json": "beecaa3aac17021ed4a46bfb840eb1b3c53b1088f39ffb542f24caba749a18e3",
+    "functions.json": "b00f4105f19c0bc0741c0eba1c89883796a53acba161d324f254c7d120deb6dc",
+    "legacy-node-prose.json": "df3f2d14e7659e6d305ff91d50b94b7d6404b19565c9d7d9f3041228252f62b4",
+    "node-evidence.json": "c25e74c24e83570edc41034a51a2488adccbc8fdaab4d58db03eb3bb695dd4fe",
+    "nodes.json": "ebd4dafec647b7d585648c37449ac28a4ba60e38242538938367ad8cf8e7b95c"
+  }
+}

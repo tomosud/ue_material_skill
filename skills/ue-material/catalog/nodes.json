@@ -18,6 +18,9 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "絶対値"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -37,6 +40,20 @@
     "outputs": [],
     "props": {},
     "notes": "",
+    "aliases": [
+      "透光距離",
+      "パストレーサー用固体屈折性ガラス",
+      "吸収特性",
+      "設定する出力",
+      "屈折",
+      "単位時の透光色を入力",
+      "単位時",
+      "透光色",
+      "入力",
+      "色",
+      "で出力ピンなし",
+      "出力ピンなし"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -66,6 +83,13 @@
       }
     ],
     "desc": "",
+    "aliases": [
+      "アクタのワールド座標",
+      "アクタ",
+      "ワールド座標",
+      "座標",
+      "ワールド"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -73,7 +97,7 @@
   "Add": {
     "class": "/Script/Engine.MaterialExpressionAdd",
     "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionAdd.h",
-    "desc": "Adds A and B; an unconnected input uses its ConstA or ConstB value.",
+    "desc": "Computes A + B componentwise as a scalar or vector numeric value. A uses ConstA when unconnected; B uses ConstB when unconnected.",
     "inputs": [
       {
         "name": "A",
@@ -105,9 +129,27 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "対応",
+      "次元は大きい方に合わせられる",
+      "次元",
+      "大きい方",
+      "合わせられる"
+    ],
     "abstract": false,
     "deprecated": false,
-    "plugin": false
+    "plugin": false,
+    "semantics": {
+      "operation": "componentwise_binary",
+      "formula": "A + B",
+      "unconnected_defaults": {
+        "A": "ConstA",
+        "B": "ConstB"
+      },
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [],
+      "unresolved": []
+    }
   },
   "Aggregate": {
     "class": "/Script/Engine.MaterialExpressionAggregate",
@@ -141,6 +183,20 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "マテリアル属性",
+      "ユーザー定義アグリゲート",
+      "複数入力",
+      "めて",
+      "マテリアル",
+      "属性",
+      "つの出力に",
+      "出力",
+      "で初期化",
+      "初期化",
+      "は動的に生成される",
+      "動的"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -155,11 +211,6 @@
         "prop": "Coordinates",
         "required": false,
         "default_prop": "ConstCoordinate"
-      },
-      {
-        "name": "TextureObject",
-        "prop": "TextureObject",
-        "required": false
       },
       {
         "name": "MipValue",
@@ -183,6 +234,12 @@
       }
     ],
     "prop_pins": [
+      {
+        "name": "SamplerType",
+        "prop": "SamplerType",
+        "kind": "Advanced",
+        "type": "enum:EMaterialSamplerType"
+      },
       {
         "name": "MipValueMode",
         "prop": "MipValueMode",
@@ -233,7 +290,7 @@
       },
       "ParameterName": {
         "type": "FName",
-        "default": ""
+        "default": "Param"
       },
       "ExpressionGUID": {
         "type": "FGuid",
@@ -267,6 +324,10 @@
         "type": "enum:ETextureMipValueMode",
         "default": "TMVM_None"
       },
+      "SamplerSource": {
+        "type": "enum:ESamplerSourceMode",
+        "default": "SSM_FromTextureAsset"
+      },
       "AutomaticViewMipBias": {
         "type": "bool",
         "default": true
@@ -274,10 +335,22 @@
       "GatherMode": {
         "type": "enum:ETextureGatherMode",
         "default": "TGM_None"
+      },
+      "ChannelNames": {
+        "type": "FParameterChannelNames",
+        "default": null
       }
     },
     "is_parameter": true,
     "notes": "",
+    "aliases": [
+      "マスク",
+      "アンチエイリアスされたテクスチャマスク",
+      "テクスチャ",
+      "単一チャンネルの高精度マスク出力",
+      "単一チャンネル",
+      "高精度マスク出力"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -285,7 +358,7 @@
   "AppendVector": {
     "class": "/Script/Engine.MaterialExpressionAppendVector",
     "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionAppendVector.h",
-    "desc": "",
+    "desc": "Appends input components using append(A, B), producing a scalar or vector numeric value.",
     "inputs": [
       {
         "name": "A",
@@ -308,9 +381,35 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "ベクトル・スカラー",
+      "結合して高次元ベクトル",
+      "作成",
+      "ベクトル",
+      "スカラー"
+    ],
     "abstract": false,
     "deprecated": false,
-    "plugin": false
+    "plugin": false,
+    "semantics": {
+      "operation": "append_vector",
+      "formula": "append(A, B)",
+      "unconnected_defaults": {},
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [
+        {
+          "kind": "component_count_sum",
+          "inputs": [
+            "A",
+            "B"
+          ],
+          "maximum": 4
+        }
+      ],
+      "unresolved": [
+        "append_vector.missing_b_legacy_mir_consistency"
+      ]
+    }
   },
   "Arccosine": {
     "class": "/Script/Engine.MaterialExpressionArccosine",
@@ -327,13 +426,30 @@
         "name": ""
       }
     ],
-    "desc": "",
+    "desc": "Computes acos(Input) componentwise as a scalar or vector numeric value.",
     "prop_pins": [],
     "props": {},
     "notes": "",
+    "aliases": [],
     "abstract": false,
     "deprecated": false,
-    "plugin": false
+    "plugin": false,
+    "semantics": {
+      "operation": "componentwise_unary",
+      "formula": "acos(Input)",
+      "unconnected_defaults": {},
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [
+        {
+          "kind": "required_input",
+          "input": "Input",
+          "failure": "compile_error"
+        }
+      ],
+      "unresolved": [
+        "arccosine.uniform_vector_output_legacy_mir_consistency"
+      ]
+    }
   },
   "ArccosineFast": {
     "class": "/Script/Engine.MaterialExpressionArccosineFast",
@@ -354,6 +470,7 @@
     "prop_pins": [],
     "props": {},
     "notes": "",
+    "aliases": [],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -373,13 +490,30 @@
         "name": ""
       }
     ],
-    "desc": "",
+    "desc": "Computes asin(Input) componentwise as a scalar or vector numeric value.",
     "prop_pins": [],
     "props": {},
     "notes": "",
+    "aliases": [],
     "abstract": false,
     "deprecated": false,
-    "plugin": false
+    "plugin": false,
+    "semantics": {
+      "operation": "componentwise_unary",
+      "formula": "asin(Input)",
+      "unconnected_defaults": {},
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [
+        {
+          "kind": "required_input",
+          "input": "Input",
+          "failure": "compile_error"
+        }
+      ],
+      "unresolved": [
+        "arcsine.uniform_vector_output_legacy_mir_consistency"
+      ]
+    }
   },
   "ArcsineFast": {
     "class": "/Script/Engine.MaterialExpressionArcsineFast",
@@ -400,6 +534,7 @@
     "prop_pins": [],
     "props": {},
     "notes": "",
+    "aliases": [],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -419,13 +554,30 @@
         "name": ""
       }
     ],
-    "desc": "",
+    "desc": "Computes atan(Input) componentwise as a scalar or vector numeric value.",
     "prop_pins": [],
     "props": {},
     "notes": "",
+    "aliases": [],
     "abstract": false,
     "deprecated": false,
-    "plugin": false
+    "plugin": false,
+    "semantics": {
+      "operation": "componentwise_unary",
+      "formula": "atan(Input)",
+      "unconnected_defaults": {},
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [
+        {
+          "kind": "required_input",
+          "input": "Input",
+          "failure": "compile_error"
+        }
+      ],
+      "unresolved": [
+        "arctangent.uniform_vector_output_legacy_mir_consistency"
+      ]
+    }
   },
   "Arctangent2": {
     "class": "/Script/Engine.MaterialExpressionArctangent2",
@@ -447,13 +599,35 @@
         "name": ""
       }
     ],
-    "desc": "",
+    "desc": "Computes atan2(Y, X) componentwise as a scalar or vector numeric value.",
     "prop_pins": [],
     "props": {},
     "notes": "",
+    "aliases": [],
     "abstract": false,
     "deprecated": false,
-    "plugin": false
+    "plugin": false,
+    "semantics": {
+      "operation": "componentwise_binary",
+      "formula": "atan2(Y, X)",
+      "unconnected_defaults": {},
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [
+        {
+          "kind": "required_input",
+          "input": "Y",
+          "failure": "compile_error"
+        },
+        {
+          "kind": "required_input",
+          "input": "X",
+          "failure": "compile_error"
+        }
+      ],
+      "unresolved": [
+        "arctangent2.output_shape_legacy_mir_consistency"
+      ]
+    }
   },
   "Arctangent2Fast": {
     "class": "/Script/Engine.MaterialExpressionArctangent2Fast",
@@ -479,6 +653,7 @@
     "prop_pins": [],
     "props": {},
     "notes": "",
+    "aliases": [],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -502,6 +677,7 @@
     "prop_pins": [],
     "props": {},
     "notes": "",
+    "aliases": [],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -531,6 +707,19 @@
     },
     "notes": "",
     "deprecated": false,
+    "aliases": [
+      "非推奨",
+      "プラグイン推奨",
+      "大気フォグの色を計算",
+      "大気フォグ",
+      "計算",
+      "色",
+      "オーバーライドで入力名を動的に設定",
+      "オーバーライド",
+      "入力名",
+      "動的",
+      "設定"
+    ],
     "abstract": false,
     "plugin": false
   },
@@ -547,6 +736,15 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "継承",
+      "入力ピンなし",
+      "大気中の太陽光の地表照度を計算",
+      "大気中",
+      "太陽光",
+      "地表照度",
+      "計算"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -564,6 +762,15 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "継承",
+      "入力ピンなし",
+      "大気中の太陽光ベクトルを計算",
+      "大気中",
+      "太陽光ベクトル",
+      "計算",
+      "ベクトル"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -583,6 +790,20 @@
     "outputs": [],
     "props": {},
     "notes": "",
+    "aliases": [
+      "法線",
+      "ベント法線のカスタム出力",
+      "ベント法線",
+      "カスタム出力",
+      "パストレーサー用の湾曲法線情報を設定",
+      "パストレーサー用",
+      "湾曲法線情報",
+      "設定",
+      "で出力ピンなし",
+      "出力ピンなし",
+      "を返すがエディタ上では非表示",
+      "返す"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -613,6 +834,20 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "入力",
+      "バインドレス対応時",
+      "使用",
+      "バインドレス対応とデフォルト実装を条件分岐",
+      "バインドレス対応",
+      "デフォルト実装",
+      "条件分岐",
+      "バインドレス対応時は",
+      "非対応時は",
+      "非対応時",
+      "入力を選択",
+      "選択"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -636,6 +871,16 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "色",
+      "温度から黒体放射の色を計算",
+      "温度",
+      "黒体放射",
+      "計算",
+      "物理的に正確な色温度表現",
+      "物理的",
+      "正確な色温度表現"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -678,6 +923,19 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "ピクセル",
+      "頂点",
+      "マテリアル属性",
+      "マテリアル",
+      "属性",
+      "線形補間",
+      "マテリアル属性専用ノード",
+      "つの入力間で",
+      "入力間",
+      "により線形補間",
+      "補間"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -720,6 +978,16 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "つの",
+      "を指定比率で混合",
+      "指定比率",
+      "混合",
+      "オーバーライドで",
+      "オーバーライド",
+      "を返す",
+      "返す"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -758,6 +1026,20 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "出力",
+      "ローカル座標",
+      "座標",
+      "全幅",
+      "最小点",
+      "最大点",
+      "すべてローカル座標",
+      "メッシュのバウンディングボックス情報",
+      "メッシュ",
+      "バウンディングボックス情報",
+      "を出力",
+      "タイプにより出力が異なる"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -777,6 +1059,20 @@
     "outputs": [],
     "props": {},
     "notes": "",
+    "aliases": [
+      "属性",
+      "構造体を個別の属性に分解",
+      "構造体",
+      "個別",
+      "分解",
+      "により出力ピン数が固定される",
+      "出力ピン数",
+      "固定される",
+      "で各出力の名前を取得",
+      "各出力",
+      "名前",
+      "取得"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -784,7 +1080,7 @@
   "BumpOffset": {
     "class": "/Script/Engine.MaterialExpressionBumpOffset",
     "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionBumpOffset.h",
-    "desc": "",
+    "desc": "Offsets texture coordinates using bump_offset(Coordinate, Height, HeightRatioInput, HeightRatio, ReferencePlane), producing a scalar or vector numeric value. Coordinate uses ConstCoordinate when unconnected; HeightRatioInput uses HeightRatio when unconnected.",
     "inputs": [
       {
         "name": "Coordinate",
@@ -825,9 +1121,35 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "バンプオフセット",
+      "視差マッピング効果",
+      "高さマップに基づいて座標をシフト",
+      "高さマップ",
+      "基づいて座標",
+      "シフト",
+      "座標"
+    ],
     "abstract": false,
     "deprecated": false,
-    "plugin": false
+    "plugin": false,
+    "semantics": {
+      "operation": "bump_offset",
+      "formula": "bump_offset(Coordinate, Height, HeightRatioInput, HeightRatio, ReferencePlane)",
+      "unconnected_defaults": {
+        "Coordinate": "ConstCoordinate",
+        "HeightRatioInput": "HeightRatio"
+      },
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [
+        {
+          "kind": "required_input",
+          "input": "Height",
+          "failure": "compile_error"
+        }
+      ],
+      "unresolved": []
+    }
   },
   "CameraPositionWS": {
     "notes": "",
@@ -842,6 +1164,13 @@
     "props": {},
     "prop_pins": [],
     "desc": "",
+    "aliases": [
+      "カメラ",
+      "カメラのワールド座標",
+      "ワールド座標",
+      "座標",
+      "ワールド"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -859,6 +1188,16 @@
     "props": {},
     "prop_pins": [],
     "desc": "",
+    "aliases": [
+      "カメラ",
+      "ピクセル",
+      "カメラから現在のピクセルへの方向ベクトル",
+      "現在",
+      "方向ベクトル",
+      "ベクトル",
+      "を継承",
+      "継承"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -866,7 +1205,7 @@
   "Ceil": {
     "class": "/Script/Engine.MaterialExpressionCeil",
     "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionCeil.h",
-    "desc": "",
+    "desc": "Computes ceil(Input) componentwise as a scalar or vector numeric value.",
     "inputs": [
       {
         "name": "Input",
@@ -882,17 +1221,35 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "天井関数",
+      "切り上げ"
+    ],
     "abstract": false,
     "deprecated": false,
-    "plugin": false
+    "plugin": false,
+    "semantics": {
+      "operation": "componentwise_unary",
+      "formula": "ceil(Input)",
+      "unconnected_defaults": {},
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [
+        {
+          "kind": "required_input",
+          "input": "Input",
+          "failure": "compile_error"
+        }
+      ],
+      "unresolved": []
+    }
   },
   "ChannelMaskParameter": {
     "class": "/Script/Engine.MaterialExpressionChannelMaskParameter",
     "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionChannelMaskParameter.h",
-    "desc": "",
+    "desc": "Computes the dot product using channel_mask_parameter(Input, ParameterName, DefaultValue, bUseCustomPrimitiveData, PrimitiveDataIndex), producing a scalar float.",
     "inputs": [
       {
-        "name": "",
+        "name": "Input",
         "prop": "Input",
         "required": true,
         "default_prop": null
@@ -919,9 +1276,25 @@
           "a": 0.0
         }
       },
+      "bUseCustomPrimitiveData": {
+        "type": "bool",
+        "default": false
+      },
+      "PrimitiveDataIndex": {
+        "type": "uint8",
+        "default": 0
+      },
+      "ChannelNames": {
+        "type": "FParameterChannelNames",
+        "default": null
+      },
       "ParameterName": {
         "type": "FName",
-        "default": ""
+        "default": "Param"
+      },
+      "ExpressionGUID": {
+        "type": "FGuid",
+        "default": null
       },
       "Group": {
         "type": "FName",
@@ -934,14 +1307,52 @@
     },
     "is_parameter": true,
     "notes": "",
+    "aliases": [
+      "チャネルマスクパラメータ",
+      "パラメータ",
+      "マスク",
+      "チャネルを選択して出力",
+      "チャネル",
+      "選択して出力",
+      "を継承",
+      "継承",
+      "が必須",
+      "必須"
+    ],
     "abstract": false,
     "deprecated": false,
-    "plugin": false
+    "plugin": false,
+    "semantics": {
+      "operation": "dot_product",
+      "formula": "channel_mask_parameter(Input, ParameterName, DefaultValue, bUseCustomPrimitiveData, PrimitiveDataIndex)",
+      "unconnected_defaults": {},
+      "value_domain": "float1",
+      "restrictions": [
+        {
+          "kind": "required_input",
+          "input": "Input",
+          "failure": "compile_error"
+        },
+        {
+          "kind": "backend_ignores_property",
+          "property": "bUseCustomPrimitiveData",
+          "backend": "legacy",
+          "when": "always"
+        },
+        {
+          "kind": "backend_ignores_property",
+          "property": "PrimitiveDataIndex",
+          "backend": "legacy",
+          "when": "custom_primitive_data_enabled"
+        }
+      ],
+      "unresolved": []
+    }
   },
   "Clamp": {
     "class": "/Script/Engine.MaterialExpressionClamp",
     "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionClamp.h",
-    "desc": "",
+    "desc": "Clamps the input using clamp_mode(Input, Min, Max, ClampMode), producing a scalar or vector numeric value. Min uses MinDefault when unconnected; Max uses MaxDefault when unconnected.",
     "inputs": [
       {
         "name": "Input",
@@ -989,9 +1400,33 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "値を範囲内に制限",
+      "範囲内",
+      "制限"
+    ],
     "abstract": false,
     "deprecated": false,
-    "plugin": false
+    "plugin": false,
+    "semantics": {
+      "operation": "clamp",
+      "formula": "clamp_mode(Input, Min, Max, ClampMode)",
+      "unconnected_defaults": {
+        "Min": "MinDefault",
+        "Max": "MaxDefault"
+      },
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [
+        {
+          "kind": "clamp_mode",
+          "property": "ClampMode",
+          "both_bounds": "CMODE_Clamp",
+          "minimum_only": "CMODE_ClampMin",
+          "maximum_only": "CMODE_ClampMax"
+        }
+      ],
+      "unresolved": []
+    }
   },
   "ClearCoatNormalCustomOutput": {
     "class": "/Script/Engine.MaterialExpressionClearCoatNormalCustomOutput",
@@ -1008,6 +1443,14 @@
     "outputs": [],
     "props": {},
     "notes": "",
+    "aliases": [
+      "クリアコート底面法線のカスタム出力",
+      "クリアコート底面法線",
+      "カスタム出力",
+      "法線",
+      "で出力ピンなし",
+      "出力ピンなし"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -1034,6 +1477,20 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "高度",
+      "レイヤー内位置",
+      "正規化高度",
+      "シャドウ距離",
+      "継承",
+      "クラウドレイヤーのサンプル属性を取得",
+      "クラウドレイヤー",
+      "サンプル属性",
+      "取得",
+      "サンプル",
+      "属性",
+      "つの出力ピン"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -1056,7 +1513,7 @@
       },
       "ParameterName": {
         "type": "FName",
-        "default": ""
+        "default": "Param"
       },
       "ExpressionGUID": {
         "type": "FGuid",
@@ -1077,6 +1534,18 @@
     },
     "notes": "",
     "is_parameter": true,
+    "aliases": [
+      "パラメータ",
+      "パラメータノード",
+      "マテリアルパラメータコレクション",
+      "単一パラメータ",
+      "参照",
+      "マテリアル",
+      "パラメータ名変更時は",
+      "パラメータ名変更時",
+      "で追跡",
+      "追跡"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -1105,7 +1574,7 @@
       },
       "ParameterName": {
         "type": "FName",
-        "default": ""
+        "default": "Param"
       },
       "ParameterId": {
         "type": "FGuid",
@@ -1114,6 +1583,10 @@
       "TransformType": {
         "type": "enum:EParameterCollectionTransformType",
         "default": "Position"
+      },
+      "ExpressionGUID": {
+        "type": "FGuid",
+        "default": null
       },
       "Group": {
         "type": "FName",
@@ -1126,6 +1599,20 @@
     },
     "notes": "",
     "is_parameter": true,
+    "aliases": [
+      "パラメータ",
+      "パラメータノード",
+      "位置行列",
+      "回転行列",
+      "射影行列",
+      "マテリアルパラメータコレクション内の連続",
+      "連続",
+      "マテリアル",
+      "ベクトル要素を変換行列として使用",
+      "ベクトル要素",
+      "変換行列",
+      "使用"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -1159,6 +1646,18 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "サンプリング",
+      "入力値",
+      "基づいて曲線",
+      "リニアカラー",
+      "サンプル",
+      "で白",
+      "黒グラデーションの初期カラーカーブを作成",
+      "黒グラデーション",
+      "初期カラーカーブ",
+      "作成"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -1201,6 +1700,20 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "コメント用ノード",
+      "マテリアルグラフの整理に使用",
+      "マテリアルグラフ",
+      "整理",
+      "使用",
+      "マテリアル",
+      "単体は",
+      "単体",
+      "経由の",
+      "経由",
+      "生成・往復を",
+      "生成・往復"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -1208,7 +1721,7 @@
   "ComponentMask": {
     "class": "/Script/Engine.MaterialExpressionComponentMask",
     "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionComponentMask.h",
-    "desc": "",
+    "desc": "Selects components using mask(Input, R, G, B, A), producing a scalar or vector numeric value.",
     "inputs": [
       {
         "name": "Input",
@@ -1250,9 +1763,43 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "ベクトル",
+      "ベクトルの特定のコンポーネント",
+      "特定",
+      "コンポーネント",
+      "を選択出力",
+      "選択出力"
+    ],
     "abstract": false,
     "deprecated": false,
-    "plugin": false
+    "plugin": false,
+    "semantics": {
+      "operation": "component_mask",
+      "formula": "mask(Input, R, G, B, A)",
+      "unconnected_defaults": {},
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [
+        {
+          "kind": "selected_component_count",
+          "minimum": 1,
+          "maximum": 4
+        },
+        {
+          "kind": "selected_components_exist",
+          "input": "Input",
+          "components": [
+            "R",
+            "G",
+            "B",
+            "A"
+          ]
+        }
+      ],
+      "unresolved": [
+        "component_mask.scalar_channel_legacy_mir_consistency"
+      ]
+    }
   },
   "Composite": {
     "class": "/Script/Engine.MaterialExpressionComposite",
@@ -1268,6 +1815,20 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "確認済",
+      "サブグラフを組み込むノード",
+      "サブグラフ",
+      "組み込むノード",
+      "入出力はピンベースで管理される",
+      "入出力",
+      "ピンベース",
+      "管理される",
+      "でピンを管理",
+      "ピン",
+      "管理",
+      "をオーバーライド"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -1275,7 +1836,7 @@
   "Constant": {
     "class": "/Script/Engine.MaterialExpressionConstant",
     "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionConstant.h",
-    "desc": "Outputs the scalar value stored in R.",
+    "desc": "Outputs R as a scalar float.",
     "inputs": [],
     "prop_pins": [
       {
@@ -1297,14 +1858,27 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "定数値",
+      "を出力する",
+      "出力する"
+    ],
     "abstract": false,
     "deprecated": false,
-    "plugin": false
+    "plugin": false,
+    "semantics": {
+      "operation": "constant",
+      "formula": "R",
+      "unconnected_defaults": {},
+      "value_domain": "float1",
+      "restrictions": [],
+      "unresolved": []
+    }
   },
   "Constant2Vector": {
     "class": "/Script/Engine.MaterialExpressionConstant2Vector",
     "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionConstant2Vector.h",
-    "desc": "Outputs a two-component constant formed from R and G, followed by separate R and G component outputs.",
+    "desc": "Outputs float2(R, G) as a two-component float vector.",
     "inputs": [],
     "prop_pins": [
       {
@@ -1345,14 +1919,28 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "要素ベクトル定数",
+      "ベクトル",
+      "を出力",
+      "出力"
+    ],
     "abstract": false,
     "deprecated": false,
-    "plugin": false
+    "plugin": false,
+    "semantics": {
+      "operation": "constant",
+      "formula": "float2(R, G)",
+      "unconnected_defaults": {},
+      "value_domain": "float2",
+      "restrictions": [],
+      "unresolved": []
+    }
   },
   "Constant3Vector": {
     "class": "/Script/Engine.MaterialExpressionConstant3Vector",
     "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionConstant3Vector.h",
-    "desc": "Outputs a three-component constant formed from Constant.RGB, followed by separate R, G, and B component outputs.",
+    "desc": "Outputs rgb(Constant) as a three-component float vector.",
     "inputs": [],
     "prop_pins": [
       {
@@ -1391,18 +1979,34 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "要素ベクトル定数",
+      "ベクトル",
+      "を出力",
+      "出力",
+      "が指定されている",
+      "指定されている"
+    ],
     "abstract": false,
     "deprecated": false,
-    "plugin": false
+    "plugin": false,
+    "semantics": {
+      "operation": "constant",
+      "formula": "rgb(Constant)",
+      "unconnected_defaults": {},
+      "value_domain": "float3",
+      "restrictions": [],
+      "unresolved": []
+    }
   },
   "Constant4Vector": {
     "class": "/Script/Engine.MaterialExpressionConstant4Vector",
     "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionConstant4Vector.h",
-    "desc": "",
+    "desc": "Outputs Constant as a four-component float vector.",
     "inputs": [],
     "prop_pins": [
       {
-        "name": "",
+        "name": "Constant",
         "prop": "Constant",
         "kind": "Primary",
         "type": "FLinearColor"
@@ -1446,17 +2050,37 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "要素ベクトル定数",
+      "ベクトル",
+      "を出力",
+      "出力",
+      "出力ピンに名前を表示",
+      "出力ピン",
+      "名前",
+      "表示"
+    ],
     "abstract": false,
     "deprecated": false,
-    "plugin": false
+    "plugin": false,
+    "semantics": {
+      "operation": "constant",
+      "formula": "Constant",
+      "unconnected_defaults": {},
+      "value_domain": "float4",
+      "restrictions": [],
+      "unresolved": [
+        "legacy_mir.rgb_output_emission_difference"
+      ]
+    }
   },
   "ConstantBiasScale": {
     "class": "/Script/Engine.MaterialExpressionConstantBiasScale",
     "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionConstantBiasScale.h",
-    "desc": "",
+    "desc": "Computes (Input + Bias) * Scale componentwise as a scalar or vector numeric value.",
     "inputs": [
       {
-        "name": "",
+        "name": "Input",
         "prop": "Input",
         "required": true,
         "default_prop": null
@@ -1464,13 +2088,13 @@
     ],
     "prop_pins": [
       {
-        "name": "",
+        "name": "Bias",
         "prop": "Bias",
         "kind": "Advanced",
         "type": "float"
       },
       {
-        "name": "",
+        "name": "Scale",
         "prop": "Scale",
         "kind": "Advanced",
         "type": "float"
@@ -1492,9 +2116,29 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "入力に",
+      "入力",
+      "を適用",
+      "適用"
+    ],
     "abstract": false,
     "deprecated": false,
-    "plugin": false
+    "plugin": false,
+    "semantics": {
+      "operation": "componentwise_unary",
+      "formula": "(Input + Bias) * Scale",
+      "unconnected_defaults": {},
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [
+        {
+          "kind": "required_input",
+          "input": "Input",
+          "failure": "compile_error"
+        }
+      ],
+      "unresolved": []
+    }
   },
   "ConstantDouble": {
     "class": "/Script/Engine.MaterialExpressionConstantDouble",
@@ -1521,6 +2165,12 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "継承",
+      "倍精度浮動小数点定数値を出力",
+      "倍精度浮動小数点定数値",
+      "出力"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -1551,6 +2201,20 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "動的入出力型コンバージョンノード",
+      "入出力",
+      "複数の型変換と成分マッピングに対応",
+      "複数",
+      "型変換",
+      "成分マッピング",
+      "対応",
+      "入出力が動的",
+      "動的",
+      "をオーバーライド",
+      "オーバーライド",
+      "で入出力を再生成"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -1584,16 +2248,40 @@
         "default": 1.0
       }
     },
-    "desc": "",
+    "desc": "Computes cos(Input * 2 * PI / Period) componentwise as a scalar or vector numeric value.",
     "notes": "",
+    "aliases": [],
     "abstract": false,
     "deprecated": false,
-    "plugin": false
+    "plugin": false,
+    "semantics": {
+      "operation": "componentwise_unary",
+      "formula": "cos(Input * 2 * PI / Period)",
+      "unconnected_defaults": {},
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [
+        {
+          "kind": "required_input",
+          "input": "Input",
+          "failure": "compile_error"
+        },
+        {
+          "kind": "period_zero_result",
+          "selector": "cosine",
+          "period_property": "Period",
+          "value": 1.0,
+          "backend": "legacy"
+        }
+      ],
+      "unresolved": [
+        "legacy_mir.nonpositive_period_behavior_difference"
+      ]
+    }
   },
   "CrossProduct": {
     "class": "/Script/Engine.MaterialExpressionCrossProduct",
     "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionCrossProduct.h",
-    "desc": "",
+    "desc": "Computes the cross product using cross(A, B), producing a three-component float vector.",
     "inputs": [
       {
         "name": "A",
@@ -1616,9 +2304,36 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "ベクトル",
+      "つのベクトルの外積を計算",
+      "外積",
+      "計算"
+    ],
     "abstract": false,
     "deprecated": false,
-    "plugin": false
+    "plugin": false,
+    "semantics": {
+      "operation": "cross_product",
+      "formula": "cross(A, B)",
+      "unconnected_defaults": {},
+      "value_domain": "float3",
+      "restrictions": [
+        {
+          "kind": "required_input",
+          "input": "A",
+          "failure": "compile_error"
+        },
+        {
+          "kind": "required_input",
+          "input": "B",
+          "failure": "compile_error"
+        }
+      ],
+      "unresolved": [
+        "legacy_mir.input_dimension_validation_difference"
+      ]
+    }
   },
   "CurveAtlasRowParameter": {
     "class": "/Script/Engine.MaterialExpressionCurveAtlasRowParameter",
@@ -1665,7 +2380,7 @@
       },
       "ParameterName": {
         "type": "FName",
-        "default": ""
+        "default": "Param"
       },
       "Group": {
         "type": "FName",
@@ -1675,6 +2390,10 @@
         "type": "float",
         "default": 0.0
       },
+      "ExpressionGUID": {
+        "type": "FGuid",
+        "default": null
+      },
       "SortPriority": {
         "type": "int32",
         "default": 32
@@ -1682,6 +2401,20 @@
     },
     "notes": "",
     "is_parameter": true,
+    "aliases": [
+      "継承元",
+      "スカラーパラメータ",
+      "曲線アトラス",
+      "行位置",
+      "使用し",
+      "スカラー",
+      "パラメータ",
+      "時間入力で値をサンプリングする",
+      "時間入力",
+      "サンプリングする",
+      "サンプリング",
+      "時間"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -1689,7 +2422,7 @@
   "Custom": {
     "class": "/Script/Engine.MaterialExpressionCustom",
     "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionCustom.h",
-    "desc": "Embeds user HLSL in a generated material function with property-defined dynamic inputs and outputs.",
+    "desc": "Evaluates the supplied custom code, producing a user-defined value.",
     "inputs": [],
     "prop_pins": [],
     "outputs": [],
@@ -1782,9 +2515,28 @@
     },
     "notes": "Inputs and outputs are dynamic. RebuildOutputs creates one unnamed output without AdditionalOutputs, otherwise 'return' followed by named outputs. Pin LinkedTo records own connections; FCustomInput.Input is reconstructed. UE 5.8 defaults are Description='Custom', OutputType=CMOT_Float3, and one unnamed input. Material IR permits at most 32 named inputs plus named additional outputs. The LumaSplit fixture has generated paste/copy-back evidence.",
     "dynamic_pins": true,
+    "aliases": [],
     "abstract": false,
     "deprecated": false,
-    "plugin": false
+    "plugin": false,
+    "semantics": {
+      "operation": "custom_code",
+      "formula": null,
+      "unconnected_defaults": {},
+      "value_domain": "user_defined",
+      "restrictions": [
+        {
+          "kind": "max_function_parameters",
+          "value": 32
+        },
+        {
+          "kind": "property_defined_inputs_and_outputs"
+        }
+      ],
+      "unresolved": [
+        "custom.user_code_result"
+      ]
+    }
   },
   "CustomOutput": {
     "class": "/Script/Engine.MaterialExpressionCustomOutput",
@@ -1796,6 +2548,12 @@
     "outputs": [],
     "props": {},
     "notes": "",
+    "aliases": [
+      "抽象",
+      "カスタム出力の基底クラス",
+      "カスタム出力",
+      "基底クラス"
+    ],
     "deprecated": false,
     "plugin": false
   },
@@ -1832,6 +2590,16 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "テクスチャ",
+      "テクスチャから値を取得する",
+      "取得する",
+      "のいずれかを選択してサンプリング",
+      "いずれか",
+      "選択してサンプリング",
+      "サンプリング",
+      "サンプル"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -1855,6 +2623,14 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "入力値の水平方向の偏微分",
+      "入力値",
+      "水平方向",
+      "偏微分",
+      "を計算する",
+      "計算する"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -1878,6 +2654,14 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "入力値の垂直方向の偏微分",
+      "入力値",
+      "垂直方向",
+      "偏微分",
+      "を計算する",
+      "計算する"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -1911,6 +2695,19 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "シェーダプラットフォーム情報に基づいて条件分岐し",
+      "シェーダプラットフォーム情報",
+      "基づいて条件分岐し",
+      "つの入力から選択する",
+      "入力",
+      "選択する",
+      "で動的に条件文字列を組立てて入力名を決定する",
+      "動的",
+      "条件文字列",
+      "組立てて入力名",
+      "決定する"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -1949,6 +2746,16 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "実装コード生成型",
+      "デカール受信サーフェスのベースカラーを取得する",
+      "デカール受信サーフェス",
+      "ベースカラー",
+      "取得する",
+      "スカラー",
+      "を継承",
+      "継承"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -1969,6 +2776,18 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "マスク情報なし",
+      "デカール受信サーフェスの偏微分",
+      "デカール受信サーフェス",
+      "偏微分",
+      "を取得する",
+      "取得する",
+      "形式で名前のみ",
+      "形式",
+      "名前",
+      "マスク"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -1986,6 +2805,14 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "デカール",
+      "ライフタイム",
+      "基づいた不透明度",
+      "取得する",
+      "を継承",
+      "継承"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -2023,6 +2850,15 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "テクスチャサイズからミップマップレベルを計算する",
+      "テクスチャサイズ",
+      "ミップマップレベル",
+      "計算する",
+      "テクスチャ",
+      "を継承",
+      "継承"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -2040,6 +2876,13 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "前フレームからの経過時間を出力",
+      "前フレーム",
+      "経過時間",
+      "出力",
+      "時間"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -2079,6 +2922,20 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "オブジェクト",
+      "オーバーライド有り",
+      "シーン深度に基づいて半透明のフェードを適用",
+      "シーン深度",
+      "基づいて半透明",
+      "フェード",
+      "適用",
+      "深度",
+      "オブジェクトが別のオブジェクトに接近時に透明化",
+      "接近時",
+      "透明化",
+      "を返す"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -2107,6 +2964,20 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "深度",
+      "ピント",
+      "近景",
+      "遠景",
+      "深度から被写界深度関連の値を計算する",
+      "被写界深度関連",
+      "計算する",
+      "円盤の混乱など",
+      "円盤",
+      "混乱など",
+      "を継承",
+      "継承"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -2131,6 +3002,14 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "法線",
+      "成分",
+      "法線圧縮用",
+      "成分から",
+      "成分を復元",
+      "復元"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -2138,7 +3017,7 @@
   "Desaturation": {
     "class": "/Script/Engine.MaterialExpressionDesaturation",
     "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionDesaturation.h",
-    "desc": "",
+    "desc": "Desaturates the input using desaturate(Input, Fraction, LuminanceFactors), producing a three-component float vector. Fraction uses $one when unconnected.",
     "inputs": [
       {
         "name": "Input",
@@ -2166,16 +3045,46 @@
         "name": ""
       }
     ],
-    "props": {},
+    "props": {
+      "LuminanceFactors": {
+        "type": "FLinearColor",
+        "default": null
+      }
+    },
     "notes": "",
+    "aliases": [
+      "グレースケール変換",
+      "色を彩度を下げて灰色化",
+      "彩度",
+      "下げて灰色化",
+      "色"
+    ],
     "abstract": false,
     "deprecated": false,
-    "plugin": false
+    "plugin": false,
+    "semantics": {
+      "operation": "desaturation",
+      "formula": "desaturate(Input, Fraction, LuminanceFactors)",
+      "unconnected_defaults": {
+        "Fraction": "$one"
+      },
+      "value_domain": "float3",
+      "restrictions": [
+        {
+          "kind": "required_input",
+          "input": "Input",
+          "failure": "compile_error"
+        }
+      ],
+      "unresolved": [
+        "runtime.luminance_factors_initialization_value"
+      ]
+    }
   },
   "Distance": {
     "class": "/Script/Engine.MaterialExpressionDistance",
     "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionDistance.h",
-    "desc": "",
+    "desc": "Computes distance using distance(A, B), producing a scalar float.",
     "inputs": [
       {
         "name": "A",
@@ -2198,9 +3107,34 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "点間の距離を計算",
+      "点間",
+      "距離",
+      "計算"
+    ],
     "abstract": false,
     "deprecated": false,
-    "plugin": false
+    "plugin": false,
+    "semantics": {
+      "operation": "distance",
+      "formula": "distance(A, B)",
+      "unconnected_defaults": {},
+      "value_domain": "float1",
+      "restrictions": [
+        {
+          "kind": "required_input",
+          "input": "A",
+          "failure": "compile_error"
+        },
+        {
+          "kind": "required_input",
+          "input": "B",
+          "failure": "compile_error"
+        }
+      ],
+      "unresolved": []
+    }
   },
   "DistanceCullFade": {
     "class": "/Script/Engine.MaterialExpressionDistanceCullFade",
@@ -2215,6 +3149,15 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "カメラ",
+      "カメラからの距離に基づいてフェード",
+      "距離",
+      "基づいてフェード",
+      "遠距離カリングに使用",
+      "遠距離カリング",
+      "使用"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -2305,6 +3248,13 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "ディスタンスフィールドを用いた環境遮蔽",
+      "ディスタンスフィールド",
+      "用いた環境遮蔽",
+      "を近似計算する",
+      "近似計算する"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -2333,6 +3283,19 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "法線",
+      "ディスタンスフィールドの勾配",
+      "ディスタンスフィールド",
+      "勾配",
+      "を取得する",
+      "取得する",
+      "の入力名は",
+      "入力名",
+      "に基づいて動的に決定される",
+      "基づいて動的",
+      "決定される"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -2361,6 +3324,14 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "サポートされているか",
+      "条件分岐する",
+      "で動的に入力が決定される",
+      "動的",
+      "入力",
+      "決定される"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -2389,6 +3360,17 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "最も近いサーフェスまでの距離を取得する",
+      "最も近いサーフェス",
+      "距離",
+      "取得する",
+      "の入力名は",
+      "入力名",
+      "に基づいて動的に決定される",
+      "基づいて動的",
+      "決定される"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -2396,7 +3378,7 @@
   "Divide": {
     "class": "/Script/Engine.MaterialExpressionDivide",
     "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionDivide.h",
-    "desc": "",
+    "desc": "Computes A / B componentwise as a scalar or vector numeric value. A uses ConstA when unconnected; B uses ConstB when unconnected.",
     "inputs": [
       {
         "name": "A",
@@ -2428,14 +3410,28 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "対応"
+    ],
     "abstract": false,
     "deprecated": false,
-    "plugin": false
+    "plugin": false,
+    "semantics": {
+      "operation": "componentwise_binary",
+      "formula": "A / B",
+      "unconnected_defaults": {
+        "A": "ConstA",
+        "B": "ConstB"
+      },
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [],
+      "unresolved": []
+    }
   },
   "DotProduct": {
     "class": "/Script/Engine.MaterialExpressionDotProduct",
     "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionDotProduct.h",
-    "desc": "",
+    "desc": "Computes the dot product using dot(A, B), producing a scalar float.",
     "inputs": [
       {
         "name": "A",
@@ -2458,14 +3454,41 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "ベクトル",
+      "つのベクトルの内積を計算",
+      "内積",
+      "計算"
+    ],
     "abstract": false,
     "deprecated": false,
-    "plugin": false
+    "plugin": false,
+    "semantics": {
+      "operation": "dot_product",
+      "formula": "dot(A, B)",
+      "unconnected_defaults": {},
+      "value_domain": "float1",
+      "restrictions": [
+        {
+          "kind": "required_input",
+          "input": "A",
+          "failure": "compile_error"
+        },
+        {
+          "kind": "required_input",
+          "input": "B",
+          "failure": "compile_error"
+        }
+      ],
+      "unresolved": [
+        "legacy_mir.mixed_dimension_coercion_difference"
+      ]
+    }
   },
   "DoubleVectorParameter": {
     "class": "/Script/Engine.MaterialExpressionDoubleVectorParameter",
     "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionDoubleVectorParameter.h",
-    "desc": "",
+    "desc": "Outputs the parameter value double_vector_parameter(ParameterName, DefaultValue) as a three-component double vector.",
     "inputs": [],
     "prop_pins": [
       {
@@ -2509,7 +3532,11 @@
       },
       "ParameterName": {
         "type": "FName",
-        "default": ""
+        "default": "Param"
+      },
+      "ExpressionGUID": {
+        "type": "FGuid",
+        "default": null
       },
       "Group": {
         "type": "FName",
@@ -2522,9 +3549,22 @@
     },
     "is_parameter": true,
     "notes": "",
+    "aliases": [
+      "ダブル精度ベクトルパラメータ",
+      "ベクトル",
+      "パラメータ"
+    ],
     "abstract": false,
     "deprecated": false,
-    "plugin": false
+    "plugin": false,
+    "semantics": {
+      "operation": "parameter",
+      "formula": "double_vector_parameter(ParameterName, DefaultValue)",
+      "unconnected_defaults": {},
+      "value_domain": "double3",
+      "restrictions": [],
+      "unresolved": []
+    }
   },
   "DynamicParameter": {
     "class": "/Script/Engine.MaterialExpressionDynamicParameter",
@@ -2586,6 +3626,20 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "ベクトル",
+      "オーバーライド有り",
+      "確認済",
+      "出力",
+      "パーティクルシステム",
+      "動的パラメータ",
+      "受け取る",
+      "パラメータ",
+      "つまでのベクトルを出力可能",
+      "出力可能",
+      "動的に出力ピンを生成",
+      "動的"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -2625,6 +3679,20 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "グローバルフィジックスフィールド",
+      "整数値",
+      "サンプリングする",
+      "サンプリング",
+      "サンプル",
+      "を継承",
+      "継承",
+      "の入力名は",
+      "入力名",
+      "で動的に決定される",
+      "動的",
+      "決定される"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -2671,6 +3739,13 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "サンプリング",
+      "グローバルフィジクスフィールド",
+      "スカラー値",
+      "スカラー",
+      "サンプル"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -2717,6 +3792,13 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "サンプリング",
+      "グローバルフィジクスフィールド",
+      "ベクトル値",
+      "ベクトル",
+      "サンプル"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -2736,13 +3818,28 @@
         "name": ""
       }
     ],
-    "desc": "",
+    "desc": "Computes exp(Input) componentwise as a scalar or vector numeric value.",
     "prop_pins": [],
     "props": {},
     "notes": "",
+    "aliases": [],
     "abstract": false,
     "deprecated": false,
-    "plugin": false
+    "plugin": false,
+    "semantics": {
+      "operation": "componentwise_unary",
+      "formula": "exp(Input)",
+      "unconnected_defaults": {},
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [
+        {
+          "kind": "required_input",
+          "input": "Input",
+          "failure": "compile_error"
+        }
+      ],
+      "unresolved": []
+    }
   },
   "Exponential2": {
     "class": "/Script/Engine.MaterialExpressionExponential2",
@@ -2759,13 +3856,28 @@
         "name": ""
       }
     ],
-    "desc": "",
+    "desc": "Computes exp2(Input) componentwise as a scalar or vector numeric value.",
     "prop_pins": [],
     "props": {},
     "notes": "",
+    "aliases": [],
     "abstract": false,
     "deprecated": false,
-    "plugin": false
+    "plugin": false,
+    "semantics": {
+      "operation": "componentwise_unary",
+      "formula": "exp2(Input)",
+      "unconnected_defaults": {},
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [
+        {
+          "kind": "required_input",
+          "input": "Input",
+          "failure": "compile_error"
+        }
+      ],
+      "unresolved": []
+    }
   },
   "ExternalCodeBase": {
     "abstract": true,
@@ -2777,6 +3889,12 @@
     "prop_pins": [],
     "outputs": [],
     "props": {},
+    "aliases": [
+      "外部",
+      "コードを挿入するベースクラス",
+      "コード",
+      "挿入するベースクラス"
+    ],
     "deprecated": false,
     "plugin": false
   },
@@ -2793,6 +3911,14 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "露出補正",
+      "目の順応",
+      "順応",
+      "の現在値を参照",
+      "現在値",
+      "参照"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -2821,6 +3947,11 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "逆変換を適用",
+      "逆変換",
+      "適用"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -2869,6 +4000,12 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "フィーチャーレベルに応じて異なる入力を選択",
+      "フィーチャーレベル",
+      "応じて異なる入力",
+      "選択"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -2898,6 +4035,11 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "一人称視点レンダリング用のカスタム出力",
+      "一人称視点レンダリング用",
+      "カスタム出力"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -2926,6 +4068,12 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "浮動小数点数を符号なし整数に変換",
+      "浮動小数点数",
+      "符号なし整数",
+      "変換"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -2933,7 +4081,7 @@
   "Floor": {
     "class": "/Script/Engine.MaterialExpressionFloor",
     "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionFloor.h",
-    "desc": "",
+    "desc": "Computes floor(Input) componentwise as a scalar or vector numeric value.",
     "inputs": [
       {
         "name": "Input",
@@ -2949,9 +4097,27 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "床関数",
+      "切り下げ"
+    ],
     "abstract": false,
     "deprecated": false,
-    "plugin": false
+    "plugin": false,
+    "semantics": {
+      "operation": "componentwise_unary",
+      "formula": "floor(Input)",
+      "unconnected_defaults": {},
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [
+        {
+          "kind": "required_input",
+          "input": "Input",
+          "failure": "compile_error"
+        }
+      ],
+      "unresolved": []
+    }
   },
   "Fmod": {
     "class": "/Script/Engine.MaterialExpressionFmod",
@@ -2977,6 +4143,11 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "浮動小数点数のモジュロ",
+      "浮動小数点数",
+      "モジュロ"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -3015,6 +4186,13 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "サンプリング",
+      "フォントテクスチャをサンプリング",
+      "フォントテクスチャ",
+      "テクスチャ",
+      "サンプル"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -3053,7 +4231,7 @@
       },
       "ParameterName": {
         "type": "FName",
-        "default": ""
+        "default": "Param"
       },
       "Group": {
         "type": "FName",
@@ -3062,10 +4240,21 @@
       "SortPriority": {
         "type": "int32",
         "default": 32
+      },
+      "ExpressionGUID": {
+        "type": "FGuid",
+        "default": null
       }
     },
     "notes": "",
     "is_parameter": true,
+    "aliases": [
+      "パラメータ化されたフォントテクスチャサンプリング",
+      "テクスチャ",
+      "サンプリング",
+      "パラメータ",
+      "サンプル"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -3096,6 +4285,12 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "サンプリング",
+      "フォント署名距離フィールドのサンプリング",
+      "フォント署名距離フィールド",
+      "サンプル"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -3103,7 +4298,7 @@
   "Frac": {
     "class": "/Script/Engine.MaterialExpressionFrac",
     "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionFrac.h",
-    "desc": "",
+    "desc": "Computes frac(Input) componentwise as a scalar or vector numeric value.",
     "inputs": [
       {
         "name": "Input",
@@ -3119,14 +4314,31 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "小数部取得"
+    ],
     "abstract": false,
     "deprecated": false,
-    "plugin": false
+    "plugin": false,
+    "semantics": {
+      "operation": "componentwise_unary",
+      "formula": "frac(Input)",
+      "unconnected_defaults": {},
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [
+        {
+          "kind": "required_input",
+          "input": "Input",
+          "failure": "compile_error"
+        }
+      ],
+      "unresolved": []
+    }
   },
   "Fresnel": {
     "class": "/Script/Engine.MaterialExpressionFresnel",
     "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionFresnel.h",
-    "desc": "",
+    "desc": "Computes the Fresnel term using pow(max(abs(1 - max(0, dot(Normal, CameraVector))), KindaSmallNumber), ExponentIn) * (1 - BaseReflectFractionIn) + BaseReflectFractionIn, producing a scalar or vector numeric value. ExponentIn uses Exponent when unconnected; BaseReflectFractionIn uses BaseReflectFraction when unconnected; Normal uses $pixel_normal_ws when unconnected.",
     "inputs": [
       {
         "name": "ExponentIn",
@@ -3164,9 +4376,31 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "フレネル効果を計算",
+      "フレネル効果",
+      "計算",
+      "視点角度による鏡面反射率を算出",
+      "視点角度",
+      "鏡面反射率",
+      "算出",
+      "反射"
+    ],
     "abstract": false,
     "deprecated": false,
-    "plugin": false
+    "plugin": false,
+    "semantics": {
+      "operation": "fresnel",
+      "formula": "pow(max(abs(1 - max(0, dot(Normal, CameraVector))), KindaSmallNumber), ExponentIn) * (1 - BaseReflectFractionIn) + BaseReflectFractionIn",
+      "unconnected_defaults": {
+        "ExponentIn": "Exponent",
+        "BaseReflectFractionIn": "BaseReflectFraction",
+        "Normal": "$pixel_normal_ws"
+      },
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [],
+      "unresolved": []
+    }
   },
   "FunctionInput": {
     "class": "/Script/Engine.MaterialExpressionFunctionInput",
@@ -3216,6 +4450,14 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "マテリアル関数の入力ピン定義",
+      "マテリアル関数",
+      "入力ピン定義",
+      "マテリアル",
+      "により",
+      "のみ"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -3252,6 +4494,16 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "マテリアル関数の出力ピン定義",
+      "マテリアル関数",
+      "出力ピン定義",
+      "マテリアル",
+      "により",
+      "のみ",
+      "を返す",
+      "返す"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -3285,6 +4537,12 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "計算方式によって異なる入力を選択",
+      "計算方式",
+      "よって異なる入力",
+      "選択"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -3299,6 +4557,9 @@
     "prop_pins": [],
     "outputs": [],
     "props": {},
+    "aliases": [
+      "汎用定数値ベースクラス"
+    ],
     "deprecated": false,
     "plugin": false
   },
@@ -3322,6 +4583,20 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "属性",
+      "構造体から属性を抽出",
+      "構造体",
+      "抽出",
+      "により動的に出力ピンが追加される",
+      "動的",
+      "出力ピン",
+      "追加される",
+      "出力ピン数はこの配列のサイズに応じて変わる",
+      "出力ピン数",
+      "配列",
+      "サイズ"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -3405,6 +4680,12 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "髪属性へのアクセス",
+      "髪属性",
+      "アクセス",
+      "属性"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -3438,6 +4719,13 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "メラニン濃度から髪色を生成",
+      "メラニン濃度",
+      "髪色",
+      "生成",
+      "色"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -3464,6 +4752,18 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "オブジェクトに含まれるテクスチャを出力",
+      "オブジェクト",
+      "含まれるテクスチャ",
+      "出力",
+      "テクスチャ",
+      "から自動選択される",
+      "自動選択される",
+      "プラグイン有効時のみ使用可能",
+      "プラグイン有効時",
+      "み使用可能"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": true
@@ -3487,6 +4787,13 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "色空間",
+      "色",
+      "色空間から",
+      "色空間に変換",
+      "変換"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -3503,7 +4810,8 @@
       {
         "name": "B",
         "prop": "B",
-        "required": false
+        "required": false,
+        "default_prop": "ConstB"
       },
       {
         "name": "AGreaterThanB",
@@ -3542,10 +4850,15 @@
       "ConstB": {
         "type": "float",
         "default": 0.0
+      },
+      "ConstAEqualsB_DEPRECATED": {
+        "type": "float",
+        "default": null
       }
     },
     "desc": "",
     "notes": "",
+    "aliases": [],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -3579,6 +4892,12 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "条件によって異なる値を選択",
+      "条件",
+      "よって異なる値",
+      "選択"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -3629,6 +4948,7 @@
     "desc": "",
     "prop_pins": [],
     "notes": "",
+    "aliases": [],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -3646,6 +4966,11 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "一人称視点かどうかを判定",
+      "一人称視点かどうか",
+      "判定"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -3663,6 +4988,17 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "カメラ",
+      "正投影",
+      "透視投影",
+      "派生",
+      "入力なし",
+      "現在のカメラが正投影かどうかを出力",
+      "現在",
+      "正投影かどうか",
+      "出力"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -3681,6 +5017,20 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "派生",
+      "オーバーライドあり",
+      "ランドスケープ上の草タイプごとの密度を出力",
+      "ランドスケープ上",
+      "草タイプご",
+      "密度",
+      "出力",
+      "入力は",
+      "入力",
+      "配列の各要素の",
+      "配列",
+      "各要素"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -3703,6 +5053,20 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "オーバーライドあり",
+      "複数のランドスケープレイヤーをブレンド",
+      "複数",
+      "ランドスケープレイヤー",
+      "ブレンド",
+      "配列に応じた動的入力",
+      "配列",
+      "応じた動的入力",
+      "の場合のみ",
+      "場合",
+      "を返す",
+      "返す"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -3745,6 +5109,19 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "座標",
+      "入力なし",
+      "ランドスケープレイヤーのテクスチャ座標を取得",
+      "ランドスケープレイヤー",
+      "テクスチャ座標",
+      "取得",
+      "テクスチャ",
+      "プロパティベースの設定で座標を生成",
+      "プロパティベース",
+      "設定",
+      "生成"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -3763,11 +5140,15 @@
     "props": {
       "ParameterName": {
         "type": "FName",
-        "default": ""
+        "default": "Param"
       },
       "PreviewWeight": {
         "type": "float",
         "default": 0.0
+      },
+      "ExpressionGUID": {
+        "type": "FGuid",
+        "default": null
       },
       "Group": {
         "type": "FName",
@@ -3780,6 +5161,17 @@
     },
     "notes": "",
     "is_parameter": true,
+    "aliases": [
+      "サンプリング",
+      "入力なし",
+      "指定ランドスケープレイヤー",
+      "ウェイト値",
+      "サンプル",
+      "で指定されたレイヤーの重みを返す",
+      "指定されたレイヤー",
+      "重み",
+      "返す"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -3809,11 +5201,15 @@
     "props": {
       "ParameterName": {
         "type": "FName",
-        "default": ""
+        "default": "Param"
       },
       "PreviewUsed": {
         "type": "uint32",
         "default": 0
+      },
+      "ExpressionGUID": {
+        "type": "FGuid",
+        "default": null
       },
       "Group": {
         "type": "FName",
@@ -3826,6 +5222,14 @@
     },
     "notes": "",
     "is_parameter": true,
+    "aliases": [
+      "対応",
+      "オーバーライドあり",
+      "ランドスケープレイヤー",
+      "使用されているか",
+      "出力",
+      "切り替え"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -3856,7 +5260,7 @@
     "props": {
       "ParameterName": {
         "type": "FName",
-        "default": ""
+        "default": "Param"
       },
       "PreviewWeight": {
         "type": "float",
@@ -3870,6 +5274,10 @@
           "z": 0.0
         }
       },
+      "ExpressionGUID": {
+        "type": "FGuid",
+        "default": null
+      },
       "Group": {
         "type": "FName",
         "default": ""
@@ -3881,6 +5289,20 @@
     },
     "notes": "",
     "is_parameter": true,
+    "aliases": [
+      "対応",
+      "ランドスケープレイヤーの重みに応じて",
+      "ランドスケープレイヤー",
+      "重み",
+      "応じて",
+      "から",
+      "にブレンド",
+      "ブレンド",
+      "未接続時は",
+      "未接続時",
+      "を使用",
+      "使用"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -3899,6 +5321,20 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "派生",
+      "ランドスケープ上の各位置での物理マテリアルを出力",
+      "ランドスケープ上",
+      "各位置",
+      "物理マテリアル",
+      "出力",
+      "マテリアル",
+      "入力は",
+      "入力",
+      "配列の各要素の",
+      "配列",
+      "各要素"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -3916,6 +5352,18 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "入力なし",
+      "ランドスケープの可視性マスク",
+      "ランドスケープ",
+      "可視性マスク",
+      "マスク",
+      "非表示レイヤーを検出",
+      "非表示レイヤー",
+      "検出",
+      "に固定",
+      "固定"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -3946,6 +5394,17 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "実験的機能",
+      "派生",
+      "オーバーライドあり",
+      "マテリアルレイヤー関数スタックを処理",
+      "マテリアルレイヤー関数スタック",
+      "処理",
+      "マテリアル",
+      "は動的入力",
+      "動的入力"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -4013,6 +5472,18 @@
     },
     "notes": "",
     "deprecated": false,
+    "aliases": [
+      "廃止予定",
+      "派生",
+      "マテリアル属性のレガシーブレンド",
+      "マテリアル属性",
+      "レガシーブレンド",
+      "マテリアル",
+      "属性",
+      "つの追加入力を持つ",
+      "追加入力",
+      "持つ"
+    ],
     "abstract": false,
     "plugin": false
   },
@@ -4036,6 +5507,12 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "ベクトル",
+      "ベクトルの長さ・大きさを計算",
+      "長さ・大きさ",
+      "計算"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -4053,6 +5530,14 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "派生",
+      "入力なし",
+      "ライト方向ベクトルを出力",
+      "ライト方向ベクトル",
+      "出力",
+      "ベクトル"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -4071,6 +5556,17 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "座標",
+      "派生",
+      "入力なし",
+      "出力マスク",
+      "ライトマップの",
+      "ライトマップ",
+      "座標を出力",
+      "出力",
+      "マスク"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -4099,6 +5595,17 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "オーバーライドなし",
+      "ライトマスレンダリング時と実行時で異なる値を使用",
+      "ライトマスレンダリング時",
+      "実行時",
+      "異なる値",
+      "使用",
+      "入力は両方とも",
+      "入力",
+      "両方"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -4110,16 +5617,19 @@
       {
         "name": "A",
         "prop": "A",
+        "default_prop": "ConstA",
         "required": false
       },
       {
         "name": "B",
         "prop": "B",
+        "default_prop": "ConstB",
         "required": false
       },
       {
         "name": "Alpha",
         "prop": "Alpha",
+        "default_prop": "ConstAlpha",
         "required": false
       }
     ],
@@ -4142,12 +5652,27 @@
         "default": 0.5
       }
     },
-    "desc": "",
+    "desc": "Linearly interpolates inputs using lerp(A, B, Alpha), producing a scalar or vector numeric value. A uses ConstA when unconnected; B uses ConstB when unconnected; Alpha uses ConstAlpha when unconnected.",
     "prop_pins": [],
     "notes": "",
+    "aliases": [
+      "lerp"
+    ],
     "abstract": false,
     "deprecated": false,
-    "plugin": false
+    "plugin": false,
+    "semantics": {
+      "operation": "linear_interpolate",
+      "formula": "lerp(A, B, Alpha)",
+      "unconnected_defaults": {
+        "A": "ConstA",
+        "B": "ConstB",
+        "Alpha": "ConstAlpha"
+      },
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [],
+      "unresolved": []
+    }
   },
   "LocalPosition": {
     "notes": "",
@@ -4190,6 +5715,13 @@
       }
     ],
     "desc": "",
+    "aliases": [
+      "ローカル座標系でのピクセル位置",
+      "ローカル座標系",
+      "ピクセル位置",
+      "座標",
+      "ピクセル"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -4209,13 +5741,30 @@
         "name": ""
       }
     ],
-    "desc": "",
+    "desc": "Computes log(Input) componentwise as a scalar or vector numeric value.",
     "prop_pins": [],
     "props": {},
     "notes": "",
+    "aliases": [],
     "abstract": false,
     "deprecated": false,
-    "plugin": false
+    "plugin": false,
+    "semantics": {
+      "operation": "componentwise_unary",
+      "formula": "log(Input)",
+      "unconnected_defaults": {},
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [
+        {
+          "kind": "required_input",
+          "input": "Input",
+          "failure": "compile_error"
+        }
+      ],
+      "unresolved": [
+        "logarithm.constant_nonpositive_legacy_mir_consistency"
+      ]
+    }
   },
   "Logarithm10": {
     "class": "/Script/Engine.MaterialExpressionLogarithm10",
@@ -4232,13 +5781,30 @@
         "name": ""
       }
     ],
-    "desc": "",
+    "desc": "Computes log10(X) componentwise as a scalar or vector numeric value.",
     "prop_pins": [],
     "props": {},
     "notes": "",
+    "aliases": [],
     "abstract": false,
     "deprecated": false,
-    "plugin": false
+    "plugin": false,
+    "semantics": {
+      "operation": "componentwise_unary",
+      "formula": "log10(X)",
+      "unconnected_defaults": {},
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [
+        {
+          "kind": "required_input",
+          "input": "X",
+          "failure": "compile_error"
+        }
+      ],
+      "unresolved": [
+        "logarithm10.constant_nonpositive_legacy_mir_consistency"
+      ]
+    }
   },
   "Logarithm2": {
     "class": "/Script/Engine.MaterialExpressionLogarithm2",
@@ -4255,13 +5821,30 @@
         "name": ""
       }
     ],
-    "desc": "",
+    "desc": "Computes log2(X) componentwise as a scalar or vector numeric value.",
     "prop_pins": [],
     "props": {},
     "notes": "",
+    "aliases": [],
     "abstract": false,
     "deprecated": false,
-    "plugin": false
+    "plugin": false,
+    "semantics": {
+      "operation": "componentwise_unary",
+      "formula": "log2(X)",
+      "unconnected_defaults": {},
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [
+        {
+          "kind": "required_input",
+          "input": "X",
+          "failure": "compile_error"
+        }
+      ],
+      "unresolved": [
+        "logarithm2.constant_nonpositive_legacy_mir_consistency"
+      ]
+    }
   },
   "MainDirectionalLight": {
     "class": "/Script/Engine.MaterialExpressionMainDirectionalLight",
@@ -4279,6 +5862,19 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "出力",
+      "入力なし",
+      "オーバーライドあり",
+      "メインの指向性ライトの情報を出力",
+      "メイン",
+      "指向性ライト",
+      "情報",
+      "照度と方向ベクトル",
+      "照度",
+      "方向ベクトル",
+      "ベクトル"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -4392,6 +5988,20 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "個別の属性入力から",
+      "個別",
+      "属性入力",
+      "属性",
+      "を構築",
+      "構築",
+      "全入力ピンは任意",
+      "全入力ピン",
+      "任意",
+      "から入力ピンを取得",
+      "入力ピン",
+      "取得"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -4415,6 +6025,20 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "ビューポート",
+      "透視カメラ",
+      "カメラ",
+      "にマッピング",
+      "マッピング",
+      "アスペクト比とデバイス回転を考慮",
+      "アスペクト比",
+      "デバイス回転",
+      "考慮",
+      "入力は",
+      "入力",
+      "向けの座標変換"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -4443,6 +6067,20 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "属性",
+      "マテリアル属性レイヤーの構成と合成",
+      "マテリアル属性レイヤー",
+      "構成",
+      "合成",
+      "マテリアル",
+      "複数のレイヤーとブレンド関数を使用して属性を結合",
+      "複数",
+      "レイヤー",
+      "ブレンド関数",
+      "使用して属性",
+      "結合"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -4476,6 +6114,20 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "マテリアルキャッシュの読み書き",
+      "マテリアルキャッシュ",
+      "読み書き",
+      "マテリアル",
+      "キャッシュタグと属性レイアウトの動的管理",
+      "キャッシュタグ",
+      "属性レイアウト",
+      "動的管理",
+      "属性",
+      "出力は",
+      "出力",
+      "で動的に生成される"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -4494,6 +6146,19 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "マテリアル関数を呼び出すノード",
+      "マテリアル関数",
+      "呼び出すノード",
+      "マテリアル",
+      "配列により動的にピン数が変わる",
+      "配列",
+      "動的",
+      "ピン数",
+      "変わる",
+      "をオーバーライド",
+      "オーバーライド"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -4511,6 +6176,19 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "マテリアルレイヤー出力",
+      "マテリアル",
+      "レイヤーグラフの終端ノード",
+      "レイヤーグラフ",
+      "終端ノード",
+      "を継承",
+      "継承",
+      "コンストラクタで",
+      "コンストラクタ",
+      "を設定",
+      "設定"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -4539,6 +6217,17 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "リアルタイム",
+      "マテリアルプロキシの切り替え",
+      "マテリアルプロキシ",
+      "切り替え",
+      "マテリアル",
+      "出力値タイプは",
+      "出力値タイプ",
+      "で処理",
+      "処理"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -4561,6 +6250,19 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "マテリアル",
+      "プロトタイプ段階",
+      "別のマテリアルの機能出力を参照",
+      "機能出力",
+      "参照",
+      "フラグが",
+      "フラグ",
+      "の状態では",
+      "状態",
+      "は実装されていない",
+      "実装されていない"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -4594,6 +6296,11 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "にて有効化時のみ使用可能なノード",
+      "て有効化時",
+      "み使用可能なノード"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": true
@@ -4632,6 +6339,11 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "にて有効化時のみ使用可能なノード",
+      "て有効化時",
+      "み使用可能なノード"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": true
@@ -4671,6 +6383,11 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "にて有効化時のみ使用可能なノード",
+      "て有効化時",
+      "み使用可能なノード"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": true
@@ -4713,6 +6430,11 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "にて有効化時のみ使用可能なノード",
+      "て有効化時",
+      "み使用可能なノード"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": true
@@ -4752,6 +6474,11 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "にて有効化時のみ使用可能なノード",
+      "て有効化時",
+      "み使用可能なノード"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": true
@@ -4791,6 +6518,11 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "にて有効化時のみ使用可能なノード",
+      "て有効化時",
+      "み使用可能なノード"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": true
@@ -4830,6 +6562,11 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "にて有効化時のみ使用可能なノード",
+      "て有効化時",
+      "み使用可能なノード"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": true
@@ -4888,6 +6625,11 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "にて有効化時のみ使用可能なノード",
+      "て有効化時",
+      "み使用可能なノード"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": true
@@ -4927,6 +6669,11 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "にて有効化時のみ使用可能なノード",
+      "て有効化時",
+      "み使用可能なノード"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": true
@@ -4957,6 +6704,11 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "にて有効化時のみ使用可能なノード",
+      "て有効化時",
+      "み使用可能なノード"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": true
@@ -4996,6 +6748,11 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "にて有効化時のみ使用可能なノード",
+      "て有効化時",
+      "み使用可能なノード"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": true
@@ -5035,6 +6792,11 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "にて有効化時のみ使用可能なノード",
+      "て有効化時",
+      "み使用可能なノード"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": true
@@ -5074,6 +6836,11 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "にて有効化時のみ使用可能なノード",
+      "て有効化時",
+      "み使用可能なノード"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": true
@@ -5108,6 +6875,11 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "にて有効化時のみ使用可能なノード",
+      "て有効化時",
+      "み使用可能なノード"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": true
@@ -5147,6 +6919,11 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "にて有効化時のみ使用可能なノード",
+      "て有効化時",
+      "み使用可能なノード"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": true
@@ -5186,6 +6963,11 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "にて有効化時のみ使用可能なノード",
+      "て有効化時",
+      "み使用可能なノード"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": true
@@ -5225,6 +7007,11 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "にて有効化時のみ使用可能なノード",
+      "て有効化時",
+      "み使用可能なノード"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": true
@@ -5264,6 +7051,11 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "にて有効化時のみ使用可能なノード",
+      "て有効化時",
+      "み使用可能なノード"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": true
@@ -5287,6 +7079,11 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "にて有効化時のみ使用可能なノード",
+      "て有効化時",
+      "み使用可能なノード"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": true
@@ -5335,6 +7132,11 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "にて有効化時のみ使用可能なノード",
+      "て有効化時",
+      "み使用可能なノード"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": true
@@ -5373,6 +7175,11 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "にて有効化時のみ使用可能なノード",
+      "て有効化時",
+      "み使用可能なノード"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": true
@@ -5411,6 +7218,11 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "にて有効化時のみ使用可能なノード",
+      "て有効化時",
+      "み使用可能なノード"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": true
@@ -5484,6 +7296,11 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "にて有効化時のみ使用可能なノード",
+      "て有効化時",
+      "み使用可能なノード"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": true
@@ -5541,6 +7358,11 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "にて有効化時のみ使用可能なノード",
+      "て有効化時",
+      "み使用可能なノード"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": true
@@ -5580,6 +7402,11 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "にて有効化時のみ使用可能なノード",
+      "て有効化時",
+      "み使用可能なノード"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": true
@@ -5626,6 +7453,11 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "にて有効化時のみ使用可能なノード",
+      "て有効化時",
+      "み使用可能なノード"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": true
@@ -5672,6 +7504,11 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "にて有効化時のみ使用可能なノード",
+      "て有効化時",
+      "み使用可能なノード"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": true
@@ -5704,6 +7541,11 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "にて有効化時のみ使用可能なノード",
+      "て有効化時",
+      "み使用可能なノード"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": true
@@ -5727,6 +7569,11 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "にて有効化時のみ使用可能なノード",
+      "て有効化時",
+      "み使用可能なノード"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": true
@@ -5734,7 +7581,7 @@
   "Max": {
     "class": "/Script/Engine.MaterialExpressionMax",
     "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionMax.h",
-    "desc": "",
+    "desc": "Computes max(A, B) componentwise as a scalar or vector numeric value. A uses ConstA when unconnected; B uses ConstB when unconnected.",
     "inputs": [
       {
         "name": "A",
@@ -5766,9 +7613,25 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "最大値"
+    ],
     "abstract": false,
     "deprecated": false,
-    "plugin": false
+    "plugin": false,
+    "semantics": {
+      "operation": "componentwise_binary",
+      "formula": "max(A, B)",
+      "unconnected_defaults": {
+        "A": "ConstA",
+        "B": "ConstB"
+      },
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [],
+      "unresolved": [
+        "legacy_mir.mixed_type_coercion_difference"
+      ]
+    }
   },
   "MeshPaintTextureCoordinateIndex": {
     "class": "/Script/Engine.MaterialExpressionMeshPaintTextureCoordinateIndex",
@@ -5783,6 +7646,19 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "して",
+      "メッシュペイント用テクスチャ座標インデックス",
+      "テクスチャ",
+      "座標",
+      "のラッパー",
+      "ラッパー",
+      "コンストラクタで",
+      "コンストラクタ",
+      "つの空出力を追加",
+      "空出力",
+      "追加"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -5800,6 +7676,20 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "して",
+      "メッシュペイント用テクスチャオブジェクト",
+      "テクスチャ",
+      "のラッパー",
+      "ラッパー",
+      "コンストラクタで",
+      "コンストラクタ",
+      "つの空出力を追加",
+      "空出力",
+      "追加",
+      "をオーバーライド",
+      "オーバーライド"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -5828,6 +7718,20 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "デフォルト",
+      "メッシュペイント入力",
+      "して",
+      "メッシュペイントテクスチャの切り替え",
+      "メッシュペイントテクスチャ",
+      "切り替え",
+      "テクスチャ",
+      "コンストラクタで",
+      "コンストラクタ",
+      "つの空出力を追加",
+      "空出力",
+      "追加"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -5860,6 +7764,20 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "で指定されたチャネルをテクスチャ座標から取得",
+      "指定されたチャネル",
+      "テクスチャ座標",
+      "取得",
+      "テクスチャ",
+      "座標",
+      "プラグイン有効時のみ使用可能",
+      "プラグイン有効時",
+      "み使用可能",
+      "入力は",
+      "入力",
+      "から接続必須"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": true
@@ -5894,6 +7812,20 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "インデックスで指定された",
+      "インデックス",
+      "指定された",
+      "チャネルをテクスチャ座標から取得",
+      "チャネル",
+      "テクスチャ座標",
+      "取得",
+      "テクスチャ",
+      "座標",
+      "プラグイン有効時のみ使用可能",
+      "プラグイン有効時",
+      "み使用可能"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": true
@@ -5917,6 +7849,20 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "チャネルの検査・可視化用",
+      "チャネル",
+      "検査・可視化用",
+      "全チャネルをランダムカラーで表示",
+      "全チャネル",
+      "ランダムカラー",
+      "表示",
+      "プラグイン有効時のみ使用可能",
+      "プラグイン有効時",
+      "み使用可能",
+      "デバッグ用の検査・可視化ノード",
+      "デバッグ用"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": true
@@ -5934,6 +7880,20 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "他の",
+      "の共有テクスチャリソースパラメータ",
+      "共有テクスチャリソースパラメータ",
+      "テクスチャ",
+      "パラメータ",
+      "表現式から参照される",
+      "表現式",
+      "参照される",
+      "プラグイン有効時のみ使用可能",
+      "プラグイン有効時",
+      "み使用可能",
+      "ノードで参照される共有リソース"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": true
@@ -5954,6 +7914,20 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "出力",
+      "チャネルのテクスチャ座標を出力",
+      "チャネル",
+      "テクスチャ座標",
+      "テクスチャ",
+      "座標",
+      "単位の",
+      "単位",
+      "つの出力を提供",
+      "提供",
+      "プラグイン有効時のみ使用可能",
+      "プラグイン有効時"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": true
@@ -5961,7 +7935,7 @@
   "Min": {
     "class": "/Script/Engine.MaterialExpressionMin",
     "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionMin.h",
-    "desc": "",
+    "desc": "Computes min(A, B) componentwise as a scalar or vector numeric value. A uses ConstA when unconnected; B uses ConstB when unconnected.",
     "inputs": [
       {
         "name": "A",
@@ -5993,9 +7967,25 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "最小値"
+    ],
     "abstract": false,
     "deprecated": false,
-    "plugin": false
+    "plugin": false,
+    "semantics": {
+      "operation": "componentwise_binary",
+      "formula": "min(A, B)",
+      "unconnected_defaults": {
+        "A": "ConstA",
+        "B": "ConstB"
+      },
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [],
+      "unresolved": [
+        "legacy_mir.mixed_type_coercion_difference"
+      ]
+    }
   },
   "Modulo": {
     "class": "/Script/Engine.MaterialExpressionModulo",
@@ -6021,6 +8011,11 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "整数演算のモジュロ",
+      "整数演算",
+      "モジュロ"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -6040,6 +8035,18 @@
     "outputs": [],
     "props": {},
     "notes": "",
+    "aliases": [
+      "ベクトル",
+      "モーションベクトル世界オフセット出力",
+      "ピクセル単位のモーションベクトルオフセット",
+      "ピクセル単位",
+      "モーションベクトルオフセット",
+      "ピクセル",
+      "を継承",
+      "継承",
+      "コンストラクタで",
+      "コンストラクタ"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -6047,7 +8054,7 @@
   "Multiply": {
     "class": "/Script/Engine.MaterialExpressionMultiply",
     "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionMultiply.h",
-    "desc": "Multiplies A and B; an unconnected input uses its ConstA or ConstB value.",
+    "desc": "Computes A * B componentwise as a scalar or vector numeric value. A uses ConstA when unconnected; B uses ConstB when unconnected.",
     "inputs": [
       {
         "name": "A",
@@ -6079,9 +8086,23 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "対応"
+    ],
     "abstract": false,
     "deprecated": false,
-    "plugin": false
+    "plugin": false,
+    "semantics": {
+      "operation": "componentwise_binary",
+      "formula": "A * B",
+      "unconnected_defaults": {
+        "A": "ConstA",
+        "B": "ConstB"
+      },
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [],
+      "unresolved": []
+    }
   },
   "NamedRerouteBase": {
     "class": "/Script/Engine.MaterialExpressionNamedRerouteBase",
@@ -6097,6 +8118,12 @@
     "props": {},
     "notes": "",
     "abstract": true,
+    "aliases": [
+      "名前付き",
+      "抽象クラス",
+      "の基底クラス",
+      "基底クラス"
+    ],
     "deprecated": false,
     "plugin": false
   },
@@ -6132,6 +8159,17 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "実機",
+      "名前付き変数を宣言するノード",
+      "名前付き変数",
+      "宣言するノード",
+      "で同一変数を追跡",
+      "同一変数",
+      "追跡",
+      "を確認",
+      "確認"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -6158,6 +8196,14 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "実機",
+      "名前付き変数の使用側ノード",
+      "名前付き変数",
+      "使用側ノード",
+      "を確認",
+      "確認"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -6186,6 +8232,20 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "デフォルト",
+      "デフォルト出力",
+      "ナナイトレンダリング時の置き換え",
+      "ナナイトレンダリング時",
+      "置き換え",
+      "ナナイト入力で切り替え",
+      "ナナイト入力",
+      "切り替え",
+      "コンストラクタで",
+      "コンストラクタ",
+      "を明示的に修正しない",
+      "明示的"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -6220,6 +8280,20 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "ニューラルネットワーク入力ノード",
+      "ニューラルポストプロセスの入力",
+      "ニューラルポストプロセス",
+      "入力",
+      "を継承",
+      "継承",
+      "で動的に出力数を返す",
+      "動的",
+      "出力数",
+      "返す",
+      "コンストラクタで",
+      "コンストラクタ"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -6249,6 +8323,18 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "ニューラルネットワーク出力ノード",
+      "ニューラルポストプロセスの出力",
+      "ニューラルポストプロセス",
+      "出力",
+      "を直接継承",
+      "直接継承",
+      "コンストラクタで",
+      "コンストラクタ",
+      "に設定",
+      "設定"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -6331,6 +8417,20 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "オーバーライド有り",
+      "パラメータ",
+      "手法",
+      "ノイズ",
+      "生成",
+      "次元位置から自動生成",
+      "次元位置",
+      "自動生成",
+      "のピン名は",
+      "ピン名",
+      "パラメータに依存",
+      "依存"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -6338,7 +8438,7 @@
   "Normalize": {
     "class": "/Script/Engine.MaterialExpressionNormalize",
     "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionNormalize.h",
-    "desc": "",
+    "desc": "Normalizes the input using normalize(VectorInput), producing a scalar or vector numeric value.",
     "inputs": [
       {
         "name": "VectorInput",
@@ -6355,9 +8455,32 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "ベクトル",
+      "単位ベクトル化",
+      "ベクトルを正規化",
+      "正規化"
+    ],
     "abstract": false,
     "deprecated": false,
-    "plugin": false
+    "plugin": false,
+    "semantics": {
+      "operation": "normalize",
+      "formula": "normalize(VectorInput)",
+      "unconnected_defaults": {},
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [
+        {
+          "kind": "required_input",
+          "input": "VectorInput",
+          "failure": "compile_error"
+        }
+      ],
+      "unresolved": [
+        "legacy_mir.scalar_normalization_difference",
+        "legacy_mir.zero_vector_normalization_consistency"
+      ]
+    }
   },
   "ObjectBounds": {
     "notes": "",
@@ -6372,6 +8495,13 @@
     "props": {},
     "prop_pins": [],
     "desc": "",
+    "aliases": [
+      "オブジェクトのバウンディングボックス情報",
+      "オブジェクト",
+      "バウンディングボックス情報",
+      "を継承",
+      "継承"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -6398,6 +8528,12 @@
     "props": {},
     "prop_pins": [],
     "desc": "",
+    "aliases": [
+      "オブジェクト",
+      "座標",
+      "を継承",
+      "継承"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -6415,6 +8551,15 @@
     "props": {},
     "prop_pins": [],
     "desc": "",
+    "aliases": [
+      "オブジェクトの向きを示すベクトル",
+      "オブジェクト",
+      "向き",
+      "示すベクトル",
+      "ベクトル",
+      "を継承",
+      "継承"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -6444,6 +8589,13 @@
       }
     ],
     "desc": "",
+    "aliases": [
+      "オブジェクトのワールド座標",
+      "オブジェクト",
+      "ワールド座標",
+      "座標",
+      "ワールド"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -6461,6 +8613,14 @@
     "props": {},
     "prop_pins": [],
     "desc": "",
+    "aliases": [
+      "オブジェクトのバウンディングスフィアの半径",
+      "オブジェクト",
+      "バウンディングスフィア",
+      "半径",
+      "を継承",
+      "継承"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -6468,7 +8628,7 @@
   "OneMinus": {
     "class": "/Script/Engine.MaterialExpressionOneMinus",
     "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionOneMinus.h",
-    "desc": "",
+    "desc": "Computes 1 - Input componentwise as a scalar or vector numeric value.",
     "inputs": [
       {
         "name": "Input",
@@ -6484,9 +8644,22 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "補数"
+    ],
     "abstract": false,
     "deprecated": false,
-    "plugin": false
+    "plugin": false,
+    "semantics": {
+      "operation": "componentwise_unary",
+      "formula": "1 - Input",
+      "unconnected_defaults": {},
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [],
+      "unresolved": [
+        "one_minus.missing_input_legacy_mir_consistency"
+      ]
+    }
   },
   "Operator": {
     "class": "/Script/Engine.MaterialExpressionOperator",
@@ -6510,6 +8683,20 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "演算ノード",
+      "単項",
+      "二項",
+      "三項演算を動的にサポート",
+      "三項演算",
+      "動的",
+      "サポート",
+      "で入力名を生成",
+      "入力名",
+      "生成",
+      "をオーバーライド",
+      "オーバーライド"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -6517,7 +8704,7 @@
   "Panner": {
     "class": "/Script/Engine.MaterialExpressionPanner",
     "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionPanner.h",
-    "desc": "",
+    "desc": "Pans texture coordinates using pan(Coordinate, Time, Speed, SpeedX, SpeedY, bFractionalPart), producing a scalar or vector numeric value. Coordinate uses ConstCoordinate when unconnected; Time uses $game_time when unconnected; Speed uses $speed_properties when unconnected.",
     "inputs": [
       {
         "name": "Coordinate",
@@ -6576,9 +8763,38 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "座標",
+      "移動",
+      "時間",
+      "座標をパン",
+      "パン",
+      "時間に基づいて座標をシフト",
+      "基づいて座標",
+      "シフト"
+    ],
     "abstract": false,
     "deprecated": false,
-    "plugin": false
+    "plugin": false,
+    "semantics": {
+      "operation": "coordinate_panner",
+      "formula": "pan(Coordinate, Time, Speed, SpeedX, SpeedY, bFractionalPart)",
+      "unconnected_defaults": {
+        "Coordinate": "ConstCoordinate",
+        "Time": "$game_time",
+        "Speed": "$speed_properties"
+      },
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [
+        {
+          "kind": "backend_ignores_property",
+          "property": "ConstCoordinate",
+          "backend": "mir",
+          "when": "coordinate_unconnected"
+        }
+      ],
+      "unresolved": []
+    }
   },
   "Parameter": {
     "class": "/Script/Engine.MaterialExpressionParameter",
@@ -6607,6 +8823,17 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "パラメータ",
+      "パラメータの基底クラス",
+      "基底クラス",
+      "でサブクラスのみを許可",
+      "サブクラス",
+      "許可",
+      "自身は使用不可",
+      "自身",
+      "使用不可"
+    ],
     "deprecated": false,
     "plugin": false
   },
@@ -6644,6 +8871,17 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "出力",
+      "パーティクルカラー",
+      "ブロック内",
+      "を継承",
+      "継承",
+      "コンストラクタで",
+      "コンストラクタ",
+      "つの出力を設定",
+      "設定"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -6661,6 +8899,20 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "パーティクル方向",
+      "デフォルト出力",
+      "パーティクルの移動方向ベクトル",
+      "パーティクル",
+      "移動方向ベクトル",
+      "ベクトル",
+      "を継承",
+      "継承",
+      "コンストラクタで出力を明示的に修正しない",
+      "コンストラクタ",
+      "出力",
+      "明示的"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -6678,6 +8930,20 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "パーティクルマクロ",
+      "座標生成",
+      "デフォルト出力",
+      "パーティクルシステムの",
+      "パーティクルシステム",
+      "を使用した",
+      "使用した",
+      "座標",
+      "を継承",
+      "継承",
+      "コンストラクタで出力を明示的に修正しない",
+      "コンストラクタ"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -6695,6 +8961,15 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "派生",
+      "入力なし",
+      "出力",
+      "パーティクルのモーションブラーフェード値を公開",
+      "パーティクル",
+      "モーションブラーフェード値",
+      "公開"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -6724,6 +8999,14 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "パーティクルのワールド座標位置を取得",
+      "パーティクル",
+      "ワールド座標位置",
+      "取得",
+      "座標",
+      "ワールド"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -6741,6 +9024,12 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "パーティクルの半径を取得",
+      "パーティクル",
+      "半径",
+      "取得"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -6758,6 +9047,12 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "パーティクルのランダム値を取得",
+      "パーティクル",
+      "ランダム値",
+      "取得"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -6775,6 +9070,13 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "パーティクルの相対時間を取得",
+      "パーティクル",
+      "相対時間",
+      "取得",
+      "時間"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -6792,6 +9094,12 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "パーティクルのサイズを取得",
+      "パーティクル",
+      "サイズ",
+      "取得"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -6809,6 +9117,12 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "パーティクルの速度を取得",
+      "パーティクル",
+      "速度",
+      "取得"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -6829,6 +9143,19 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "ラジアン",
+      "度数法",
+      "パーティクルのスプライト回転を取得",
+      "パーティクル",
+      "スプライト回転",
+      "取得",
+      "コンストラクタで",
+      "コンストラクタ",
+      "つの出力を定義",
+      "出力",
+      "定義"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -6872,6 +9199,20 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "テクスチャ",
+      "サンプリング",
+      "ブレンド設定あり",
+      "パーティクルのサブ",
+      "パーティクル",
+      "サブ",
+      "テクスチャをサンプリング",
+      "サンプル",
+      "を継承",
+      "継承",
+      "つの出力ピン",
+      "出力ピン"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -6895,6 +9236,18 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "パーティクルの",
+      "パーティクル",
+      "プロパティへのダイレクトアクセス",
+      "プロパティ",
+      "ダイレクトアクセス",
+      "コンストラクタで",
+      "コンストラクタ",
+      "つの出力を定義",
+      "出力",
+      "定義"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -6934,6 +9287,20 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "ポストプロセスマテリアル専用",
+      "パストレーシングバッファテクスチャをルックアップ",
+      "ルックアップ",
+      "テクスチャ",
+      "コンストラクタで",
+      "コンストラクタ",
+      "つの出力を定義",
+      "出力",
+      "定義",
+      "マテリアル",
+      "未接続時は無視される",
+      "未接続時"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -6962,6 +9329,17 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "パストレーシング品質に応じて値を切り替え",
+      "パストレーシング品質",
+      "応じて値",
+      "切り替え",
+      "非パストレーシング用とパストレーサー用の",
+      "非パストレーシング用",
+      "パストレーサー用",
+      "つの入力",
+      "入力"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -7005,6 +9383,20 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "カメラ",
+      "レイタイプ",
+      "シャドウ",
+      "間接拡散",
+      "間接鏡面反射",
+      "間接ボリューム",
+      "パストレーシングのレイタイプに応じて値を切り替え",
+      "パストレーシング",
+      "応じて値",
+      "切り替え",
+      "つのレイタイプに対応した入力",
+      "対応した入力"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -7045,6 +9437,14 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "インスタンスごとのカスタムデータを参照",
+      "インスタンスご",
+      "カスタムデータ",
+      "参照",
+      "値を出力",
+      "出力"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -7085,6 +9485,13 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "ベクトル",
+      "インスタンスカスタムデータ",
+      "入力ピン",
+      "を取得",
+      "取得"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -7102,6 +9509,12 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "インスタンスごとのフェード量を出力",
+      "インスタンスご",
+      "フェード量",
+      "出力"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -7119,6 +9532,12 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "インスタンスごとのランダム値を出力",
+      "インスタンスご",
+      "ランダム値",
+      "出力"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -7137,6 +9556,20 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "物理マテリアル",
+      "マテリアル",
+      "配列",
+      "派生",
+      "返す",
+      "物理マテリアルの重みを出力するカスタム出力ノード",
+      "重み",
+      "出力するカスタム出力ノード",
+      "複数の物理マテリアルと入力値の配列で構成",
+      "複数",
+      "入力値",
+      "構成"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": true
@@ -7159,6 +9592,20 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "ピン集約ノード",
+      "マテリアル",
+      "確認済",
+      "複数の",
+      "複数",
+      "ピンを管理",
+      "ピン",
+      "管理",
+      "を返すため",
+      "返すため",
+      "マテリアルでは使用不可",
+      "使用不可"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -7177,6 +9624,15 @@
     "props": {},
     "prop_pins": [],
     "desc": "",
+    "aliases": [
+      "ピクセル",
+      "現在のピクセルの深度値",
+      "現在",
+      "深度値",
+      "深度",
+      "を継承",
+      "継承"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -7194,6 +9650,16 @@
     "props": {},
     "prop_pins": [],
     "desc": "",
+    "aliases": [
+      "ピクセル",
+      "ワールド座標",
+      "現在のピクセルの表面法線",
+      "現在",
+      "表面法線",
+      "法線",
+      "座標",
+      "ワールド"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -7223,6 +9689,14 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "ポストボリュームユーザーフラグをテスト",
+      "ポストボリュームユーザーフラグ",
+      "テスト",
+      "をデフォルト値として参照",
+      "デフォルト値",
+      "参照"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -7230,7 +9704,7 @@
   "Power": {
     "class": "/Script/Engine.MaterialExpressionPower",
     "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionPower.h",
-    "desc": "",
+    "desc": "Raises the base to the exponent using pow(Base, Exponent), producing a scalar or vector numeric value. Exponent uses ConstExponent when unconnected.",
     "inputs": [
       {
         "name": "Base",
@@ -7257,9 +9731,30 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "べき乗"
+    ],
     "abstract": false,
     "deprecated": false,
-    "plugin": false
+    "plugin": false,
+    "semantics": {
+      "operation": "power",
+      "formula": "pow(Base, Exponent)",
+      "unconnected_defaults": {
+        "Exponent": "ConstExponent"
+      },
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [
+        {
+          "kind": "positive_clamped_base",
+          "base_at_or_below": 2.980233e-08,
+          "result": 0.0
+        }
+      ],
+      "unresolved": [
+        "power.vector_exponent_legacy_mir_consistency"
+      ]
+    }
   },
   "PreSkinnedLocalBounds": {
     "class": "/Script/Engine.MaterialExpressionPreSkinnedLocalBounds",
@@ -7283,6 +9778,19 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "スキニング前",
+      "取得",
+      "コンストラクタで",
+      "コンストラクタ",
+      "つの出力を定義",
+      "出力",
+      "定義",
+      "スケルタルメッシュのバウンドボックス情報を提供",
+      "スケルタルメッシュ",
+      "バウンドボックス情報",
+      "提供"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -7300,6 +9808,18 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "スキニング前のローカル法線を返す",
+      "スキニング前",
+      "ローカル法線",
+      "返す",
+      "法線",
+      "スケルタルメッシュの頂点シェーダでのみ使用可能",
+      "スケルタルメッシュ",
+      "頂点シェーダ",
+      "み使用可能",
+      "頂点"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -7318,6 +9838,15 @@
     "props": {},
     "notes": "",
     "deprecated": false,
+    "aliases": [
+      "非推奨",
+      "スキニング前のローカル位置を返す",
+      "スキニング前",
+      "ローカル位置",
+      "返す",
+      "にマージされた",
+      "マージされた"
+    ],
     "abstract": false,
     "plugin": false
   },
@@ -7334,6 +9863,14 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "マスク",
+      "設定で生成された事前計算",
+      "設定",
+      "生成された事前計算",
+      "マスクにアクセス",
+      "アクセス"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -7364,6 +9901,12 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "現在フレーム",
+      "前フレーム",
+      "いずれか",
+      "選択するスイッチ"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -7412,6 +9955,18 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "必須",
+      "品質レベルに基づいて異なる入力を選択するスイッチ",
+      "品質レベル",
+      "基づいて異なる入力",
+      "選択するスイッチ",
+      "配列の要素数は",
+      "配列",
+      "要素数",
+      "で定義",
+      "定義"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -7442,6 +9997,11 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "レイトレーシング対応かどうか",
+      "基づいて異なる入力",
+      "選択するスイッチ"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -7472,6 +10032,18 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "テクスチャ",
+      "テクスチャの",
+      "スケール情報を自動ストリーミングシステム用に記録",
+      "スケール情報",
+      "自動ストリーミングシステム用",
+      "記録",
+      "を処理",
+      "処理",
+      "を返す",
+      "返す"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -7502,6 +10074,10 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "特殊な挙動",
+      "定義するスイッチ"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -7539,6 +10115,17 @@
       }
     ],
     "desc": "",
+    "aliases": [
+      "反射ベクトル",
+      "ベクトル",
+      "反射",
+      "未指定時はピクセル法線を使用",
+      "未指定時",
+      "ピクセル法線",
+      "使用",
+      "法線",
+      "ピクセル"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -7574,6 +10161,15 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "プラットフォーム",
+      "サンプラー数制限",
+      "基づいてロジック",
+      "切り替えるスイッチ",
+      "で入力ピン名を返す",
+      "入力ピン名",
+      "返す"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -7597,6 +10193,17 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "入力をそのまま出力に通す",
+      "入力",
+      "まま出力",
+      "通す",
+      "グラフの結線を整理するために使用",
+      "グラフ",
+      "結線",
+      "整理するため",
+      "使用"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -7615,6 +10222,16 @@
     "props": {},
     "notes": "",
     "abstract": true,
+    "aliases": [
+      "抽象クラス",
+      "系の基底クラス",
+      "基底クラス",
+      "複数の入力値を通す機能を提供",
+      "複数",
+      "入力値",
+      "通す機能",
+      "提供"
+    ],
     "deprecated": false,
     "plugin": false
   },
@@ -7637,6 +10254,13 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "色空間",
+      "色",
+      "色空間から",
+      "色空間に変換",
+      "変換"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -7684,8 +10308,20 @@
         "name": ""
       }
     ],
-    "props": {},
+    "props": {
+      "Period": {
+        "type": "float",
+        "default": 1.0
+      }
+    },
     "notes": "",
+    "aliases": [
+      "ベクトル",
+      "任意の軸周りにベクトルを回転",
+      "任意",
+      "軸周り",
+      "回転"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -7693,7 +10329,7 @@
   "Rotator": {
     "class": "/Script/Engine.MaterialExpressionRotator",
     "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionRotator.h",
-    "desc": "",
+    "desc": "Rotates texture coordinates using rotate_uv(Coordinate, Time, CenterX, CenterY, Speed), producing a scalar or vector numeric value. Coordinate uses ConstCoordinate when unconnected; Time uses $game_time when unconnected.",
     "inputs": [
       {
         "name": "Coordinate",
@@ -7751,14 +10387,35 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "座標",
+      "時間",
+      "座標を回転",
+      "回転",
+      "中心点を基準に時間に基づいて回転",
+      "中心点",
+      "基準",
+      "基づいて回転"
+    ],
     "abstract": false,
     "deprecated": false,
-    "plugin": false
+    "plugin": false,
+    "semantics": {
+      "operation": "coordinate_rotator",
+      "formula": "rotate_uv(Coordinate, Time, CenterX, CenterY, Speed)",
+      "unconnected_defaults": {
+        "Coordinate": "ConstCoordinate",
+        "Time": "$game_time"
+      },
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [],
+      "unresolved": []
+    }
   },
   "Round": {
     "class": "/Script/Engine.MaterialExpressionRound",
     "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionRound.h",
-    "desc": "",
+    "desc": "Computes round(Input) componentwise as a scalar or vector numeric value.",
     "inputs": [
       {
         "name": "Input",
@@ -7774,9 +10431,28 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "四捨五入"
+    ],
     "abstract": false,
     "deprecated": false,
-    "plugin": false
+    "plugin": false,
+    "semantics": {
+      "operation": "componentwise_unary",
+      "formula": "round(Input)",
+      "unconnected_defaults": {},
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [
+        {
+          "kind": "required_input",
+          "input": "Input",
+          "failure": "compile_error"
+        }
+      ],
+      "unresolved": [
+        "round.uint_output_legacy_mir_consistency"
+      ]
+    }
   },
   "RuntimeVirtualTextureCustomData": {
     "class": "/Script/Engine.MaterialExpressionRuntimeVirtualTextureCustomData",
@@ -7791,6 +10467,12 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "ランタイム仮想テクスチャ",
+      "カスタムデータ",
+      "アクセス",
+      "テクスチャ"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -7859,6 +10541,20 @@
     "outputs": [],
     "props": {},
     "notes": "",
+    "aliases": [
+      "ノード",
+      "ランタイム仮想テクスチャ",
+      "複数",
+      "マテリアル属性",
+      "出力",
+      "テクスチャ",
+      "マテリアル",
+      "属性",
+      "で動的に出力数を決定",
+      "動的",
+      "出力数",
+      "決定"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -7889,6 +10585,14 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "仮想テクスチャレンダリングパス時",
+      "ロジック切り替え",
+      "テクスチャ",
+      "により入力を選択",
+      "入力",
+      "選択"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -7991,6 +10695,20 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "サンプリング",
+      "出力ピン",
+      "ランタイム仮想テクスチャからサンプリング",
+      "ランタイム仮想テクスチャ",
+      "テクスチャ",
+      "複数の出力ピンを持つ",
+      "複数",
+      "持つ",
+      "サンプル",
+      "で出力ピンを動的に生成",
+      "動的",
+      "生成"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -8093,7 +10811,7 @@
       },
       "ParameterName": {
         "type": "FName",
-        "default": ""
+        "default": "Param"
       },
       "ExpressionGUID": {
         "type": "FGuid",
@@ -8110,6 +10828,19 @@
     },
     "notes": "",
     "is_parameter": true,
+    "aliases": [
+      "パラメータ",
+      "パラメータ版",
+      "テクスチャ",
+      "サンプリング",
+      "サンプル",
+      "を継承",
+      "継承",
+      "パラメータ版なので参照用プロパティを追加",
+      "パラメータ版な",
+      "参照用プロパティ",
+      "追加"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -8133,6 +10864,13 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "色空間からワーキング色空間に変換",
+      "色空間",
+      "ワーキング色空間",
+      "変換",
+      "色"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -8173,6 +10911,18 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "サンプリング",
+      "グローバルフィジックスフィールド",
+      "整数値",
+      "サンプル",
+      "の表示名を動的に生成",
+      "表示名",
+      "動的",
+      "生成",
+      "で変更可能",
+      "変更可能"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -8213,6 +10963,19 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "サンプリング",
+      "グローバルフィジックスフィールド",
+      "スカラー値",
+      "スカラー",
+      "サンプル",
+      "の表示名を動的に生成",
+      "表示名",
+      "動的",
+      "生成",
+      "で変更可能",
+      "変更可能"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -8260,6 +11023,13 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "サンプリング",
+      "物理フィールドベクトル値をサンプリング",
+      "物理フィールドベクトル値",
+      "ベクトル",
+      "サンプル"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -8267,7 +11037,7 @@
   "Saturate": {
     "class": "/Script/Engine.MaterialExpressionSaturate",
     "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSaturate.h",
-    "desc": "",
+    "desc": "Clamps the input using saturate(Input), producing a scalar or vector numeric value.",
     "inputs": [
       {
         "name": "Input",
@@ -8283,9 +11053,27 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "に制限",
+      "制限"
+    ],
     "abstract": false,
     "deprecated": false,
-    "plugin": false
+    "plugin": false,
+    "semantics": {
+      "operation": "clamp",
+      "formula": "saturate(Input)",
+      "unconnected_defaults": {},
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [
+        {
+          "kind": "required_input",
+          "input": "Input",
+          "failure": "compile_error"
+        }
+      ],
+      "unresolved": []
+    }
   },
   "ScalarBlueNoise": {
     "class": "/Script/Engine.MaterialExpressionScalarBlueNoise",
@@ -8300,6 +11088,13 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "サンプリング",
+      "スカラーブルーノイズをサンプリング",
+      "スカラーブルーノイズ",
+      "スカラー",
+      "サンプル"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -8307,7 +11102,7 @@
   "ScalarParameter": {
     "class": "/Script/Engine.MaterialExpressionScalarParameter",
     "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionScalarParameter.h",
-    "desc": "",
+    "desc": "Outputs the parameter value parameter_or_custom_primitive_data(ParameterName, DefaultValue, bUseCustomPrimitiveData, PrimitiveDataIndex) as a scalar float.",
     "inputs": [],
     "prop_pins": [
       {
@@ -8357,7 +11152,11 @@
       },
       "ParameterName": {
         "type": "FName",
-        "default": ""
+        "default": "Param"
+      },
+      "ExpressionGUID": {
+        "type": "FGuid",
+        "default": null
       },
       "Group": {
         "type": "FName",
@@ -8370,9 +11169,38 @@
     },
     "is_parameter": true,
     "notes": "",
+    "aliases": [
+      "パラメータ",
+      "スカラー値のパラメータ",
+      "スカラー値",
+      "スカラー"
+    ],
     "abstract": false,
     "deprecated": false,
-    "plugin": false
+    "plugin": false,
+    "semantics": {
+      "operation": "parameter",
+      "formula": "parameter_or_custom_primitive_data(ParameterName, DefaultValue, bUseCustomPrimitiveData, PrimitiveDataIndex)",
+      "unconnected_defaults": {},
+      "value_domain": "float1",
+      "restrictions": [
+        {
+          "kind": "custom_primitive_data_mode",
+          "selector": "bUseCustomPrimitiveData",
+          "index_property": "PrimitiveDataIndex",
+          "component_count": 1
+        },
+        {
+          "kind": "material_domain_unsupported",
+          "domain": "MD_UI",
+          "when": "bUseCustomPrimitiveData",
+          "backend": "legacy"
+        }
+      ],
+      "unresolved": [
+        "legacy_mir.ui_domain_validation_equivalence"
+      ]
+    }
   },
   "SceneColor": {
     "class": "/Script/Engine.MaterialExpressionSceneColor",
@@ -8418,6 +11246,20 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "サンプリング",
+      "オーバーライド有り",
+      "確認済",
+      "出力",
+      "画面座標からシーンカラーをサンプリング",
+      "画面座標",
+      "シーンカラー",
+      "座標",
+      "サンプル",
+      "により入力の解釈が変わる",
+      "入力",
+      "解釈"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -8460,6 +11302,20 @@
       }
     ],
     "desc": "",
+    "aliases": [
+      "サンプリング",
+      "オーバーライドあり",
+      "参照",
+      "シーンの深度値をサンプリング",
+      "シーン",
+      "深度値",
+      "深度",
+      "サンプル",
+      "値を表示",
+      "表示",
+      "入力モードによって名前が変わる",
+      "入力モード"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -8515,6 +11371,12 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "水を除いたシーン深度値を取得",
+      "除いたシーン深度値",
+      "取得",
+      "深度"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -8532,6 +11394,12 @@
     "props": {},
     "prop_pins": [],
     "desc": "",
+    "aliases": [
+      "シーンテクスチャのテクセルサイズ",
+      "シーンテクスチャ",
+      "テクセルサイズ",
+      "テクスチャ"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -8584,6 +11452,18 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "深度",
+      "画面配置テクスチャ",
+      "法線など",
+      "サンプリング",
+      "確認済",
+      "出力",
+      "テクスチャ",
+      "法線",
+      "をサンプリング",
+      "サンプル"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -8604,6 +11484,15 @@
     "props": {},
     "prop_pins": [],
     "desc": "",
+    "aliases": [
+      "スクリーン座標系でのピクセル位置",
+      "スクリーン座標系",
+      "ピクセル位置",
+      "座標",
+      "ピクセル",
+      "を継承",
+      "継承"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -8626,6 +11515,20 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "属性",
+      "複数の属性を",
+      "複数",
+      "構造体に組み込む",
+      "構造体",
+      "組み込む",
+      "配列で動的にピンが追加される",
+      "配列",
+      "動的",
+      "ピン",
+      "追加される",
+      "により入力ピン数が変わる"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -8658,6 +11561,14 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "ピクセル",
+      "頂点シェーダステージで異なる入力を選択",
+      "頂点シェーダステージ",
+      "異なる入力",
+      "選択",
+      "頂点"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -8687,6 +11598,11 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "シェーディングモデルを指定",
+      "シェーディングモデル",
+      "指定"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -8712,6 +11628,12 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "シェーディングパスに応じて異なる入力を選択",
+      "シェーディングパス",
+      "応じて異なる入力",
+      "選択"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -8744,6 +11666,12 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "影マップレンダリング時に別の入力を使用",
+      "影マップレンダリング時",
+      "入力",
+      "使用"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -8751,7 +11679,7 @@
   "Sign": {
     "class": "/Script/Engine.MaterialExpressionSign",
     "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSign.h",
-    "desc": "",
+    "desc": "Computes sign(Input) componentwise as a scalar or vector numeric value.",
     "inputs": [
       {
         "name": "Input",
@@ -8767,9 +11695,26 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "符号"
+    ],
     "abstract": false,
     "deprecated": false,
-    "plugin": false
+    "plugin": false,
+    "semantics": {
+      "operation": "componentwise_unary",
+      "formula": "sign(Input)",
+      "unconnected_defaults": {},
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [
+        {
+          "kind": "required_input",
+          "input": "Input",
+          "failure": "compile_error"
+        }
+      ],
+      "unresolved": []
+    }
   },
   "Sine": {
     "class": "/Script/Engine.MaterialExpressionSine",
@@ -8800,11 +11745,28 @@
         "default": 1.0
       }
     },
-    "desc": "",
+    "desc": "Computes sin(Input * 2 * PI / Period) componentwise as a scalar or vector numeric value.",
     "notes": "",
+    "aliases": [],
     "abstract": false,
     "deprecated": false,
-    "plugin": false
+    "plugin": false,
+    "semantics": {
+      "operation": "componentwise_unary",
+      "formula": "sin(Input * 2 * PI / Period)",
+      "unconnected_defaults": {},
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [
+        {
+          "kind": "required_input",
+          "input": "Input",
+          "failure": "compile_error"
+        }
+      ],
+      "unresolved": [
+        "semantics.nonpositive_period_branch_representation"
+      ]
+    }
   },
   "SingleLayerWaterMaterialOutput": {
     "class": "/Script/Engine.MaterialExpressionSingleLayerWaterMaterialOutput",
@@ -8857,6 +11819,10 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "単層水マテリアル出力",
+      "マテリアル"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -8894,6 +11860,12 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "サンプリング",
+      "大気エアリアルパースペクティブをサンプリング",
+      "大気エアリアルパースペクティブ",
+      "サンプル"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -8911,6 +11883,11 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "大気遠距離光の散乱ルミナンス",
+      "大気遠距離光",
+      "散乱ルミナンス"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -8940,6 +11917,12 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "大気光の方向を取得",
+      "大気光",
+      "方向",
+      "取得"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -8977,6 +11960,11 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "大気光ディスクのルミナンス",
+      "大気光ディスク",
+      "ルミナンス"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -9024,6 +12012,11 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "大気光の照度",
+      "大気光",
+      "照度"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -9053,6 +12046,11 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "地上の大気光照度",
+      "地上",
+      "大気光照度"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -9078,6 +12076,11 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "ビュー方向での大気ルミナンス",
+      "ビュー方向",
+      "大気ルミナンス"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -9110,6 +12113,12 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "サンプリング",
+      "スカイライトキューブマップをサンプリング",
+      "スカイライトキューブマップ",
+      "サンプル"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -9121,17 +12130,20 @@
       {
         "name": "Min",
         "prop": "Min",
-        "required": false
+        "required": false,
+        "default_prop": "ConstMin"
       },
       {
         "name": "Max",
         "prop": "Max",
-        "required": false
+        "required": false,
+        "default_prop": "ConstMax"
       },
       {
         "name": "Value",
         "prop": "Value",
-        "required": false
+        "required": false,
+        "default_prop": "ConstValue"
       }
     ],
     "outputs": [
@@ -9156,6 +12168,7 @@
     "desc": "",
     "prop_pins": [],
     "notes": "",
+    "aliases": [],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -9203,6 +12216,15 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "準ランダム数列サンプラー",
+      "格子セルと点番号から準ランダム座標を生成",
+      "格子セル",
+      "点番号",
+      "準ランダム座標",
+      "生成",
+      "座標"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -9217,6 +12239,12 @@
     "prop_pins": [],
     "outputs": [],
     "props": {},
+    "aliases": [
+      "スパースボリュームテクスチャのベースクラス",
+      "スパースボリュームテクスチャ",
+      "ベースクラス",
+      "テクスチャ"
+    ],
     "deprecated": false,
     "plugin": false
   },
@@ -9238,6 +12266,15 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "出力",
+      "つ設定",
+      "スパースボリュームテクスチャオブジェクトを出力",
+      "テクスチャ",
+      "コンストラクタで出力を明示的に",
+      "コンストラクタ",
+      "明示的"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -9261,7 +12298,7 @@
       },
       "ParameterName": {
         "type": "FName",
-        "default": ""
+        "default": "Param"
       },
       "ExpressionGUID": {
         "type": "FGuid",
@@ -9277,6 +12314,14 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "テクスチャ",
+      "パラメータ",
+      "を継承して出力を",
+      "継承して出力",
+      "つに制限",
+      "制限"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -9358,6 +12403,20 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "サンプリング",
+      "参照",
+      "スパースボリュームテクスチャをサンプリング",
+      "スパースボリュームテクスチャ",
+      "テクスチャ",
+      "つの属性出力を持つ",
+      "属性出力",
+      "持つ",
+      "属性",
+      "サンプル",
+      "によって入力ピンが変わる",
+      "よって入力ピン"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -9438,7 +12497,7 @@
       },
       "ParameterName": {
         "type": "FName",
-        "default": ""
+        "default": "Param"
       },
       "ExpressionGUID": {
         "type": "FGuid",
@@ -9454,6 +12513,15 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "パラメータ",
+      "パラメータ化されたバージョン",
+      "テクスチャ",
+      "サンプリング",
+      "サンプル",
+      "を継承",
+      "継承"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -9519,6 +12587,12 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "制御",
+      "アセット用のジオメトリ・風・",
+      "アセット用",
+      "ジオメトリ・風・"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -9560,9 +12634,9 @@
       }
     ],
     "props": {
-      "DisplayName": {
-        "type": ",",
-        "default": "\"Radius\")\n\tfloat AttenuationRadius = 256.0f"
+      "AttenuationRadius": {
+        "type": "float",
+        "default": 256.0
       },
       "HardnessPercent": {
         "type": "float",
@@ -9570,6 +12644,14 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "球体との距離に基づいてマスク値を生成",
+      "球体",
+      "距離",
+      "基づいてマスク値",
+      "生成",
+      "マスク"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -9599,6 +12681,12 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "球形パーティクルの不透明度を計算",
+      "球形パーティクル",
+      "不透明度",
+      "計算"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -9686,10 +12774,28 @@
       "SortPriority": {
         "type": "int32",
         "default": 32
+      },
+      "ExpressionGUID": {
+        "type": "FGuid",
+        "default": null
       }
     },
     "notes": "",
     "is_parameter": true,
+    "aliases": [
+      "サンプリング",
+      "派生",
+      "スプライト用のテクスチャサンプラー",
+      "スプライト用",
+      "テクスチャサンプラー",
+      "テクスチャ",
+      "またはペーパー",
+      "ペーパー",
+      "スプライトの",
+      "スプライト",
+      "をサンプリング",
+      "サンプル"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": true
@@ -9697,7 +12803,7 @@
   "SquareRoot": {
     "class": "/Script/Engine.MaterialExpressionSquareRoot",
     "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSquareRoot.h",
-    "desc": "",
+    "desc": "Computes sqrt(Input) componentwise as a scalar or vector numeric value.",
     "inputs": [
       {
         "name": "Input",
@@ -9713,14 +12819,33 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "平方根"
+    ],
     "abstract": false,
     "deprecated": false,
-    "plugin": false
+    "plugin": false,
+    "semantics": {
+      "operation": "componentwise_unary",
+      "formula": "sqrt(Input)",
+      "unconnected_defaults": {},
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [
+        {
+          "kind": "required_input",
+          "input": "Input",
+          "failure": "compile_error"
+        }
+      ],
+      "unresolved": [
+        "square_root.constant_negative_legacy_mir_consistency"
+      ]
+    }
   },
   "StaticBool": {
     "class": "/Script/Engine.MaterialExpressionStaticBool",
     "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionStaticBool.h",
-    "desc": "",
+    "desc": "Outputs static_bool(Value) as a static Boolean value.",
     "inputs": [],
     "prop_pins": [
       {
@@ -9742,14 +12867,26 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "静的ブール定数",
+      "コンパイル時定数"
+    ],
     "abstract": false,
     "deprecated": false,
-    "plugin": false
+    "plugin": false,
+    "semantics": {
+      "operation": "static_bool",
+      "formula": "static_bool(Value)",
+      "unconnected_defaults": {},
+      "value_domain": "boolean",
+      "restrictions": [],
+      "unresolved": []
+    }
   },
   "StaticBoolParameter": {
     "class": "/Script/Engine.MaterialExpressionStaticBoolParameter",
     "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionStaticBoolParameter.h",
-    "desc": "",
+    "desc": "Outputs static_bool_parameter(ParameterName, DefaultValue, DynamicBranch) as a static Boolean value.",
     "inputs": [],
     "prop_pins": [
       {
@@ -9775,7 +12912,11 @@
       },
       "ParameterName": {
         "type": "FName",
-        "default": ""
+        "default": "Param"
+      },
+      "ExpressionGUID": {
+        "type": "FGuid",
+        "default": null
       },
       "Group": {
         "type": "FName",
@@ -9788,17 +12929,42 @@
     },
     "is_parameter": true,
     "notes": "",
+    "aliases": [
+      "静的ブールパラメータ",
+      "出力",
+      "デフォルト",
+      "パラメータ",
+      "で動的に変更可",
+      "動的",
+      "変更可"
+    ],
     "abstract": false,
     "deprecated": false,
-    "plugin": false
+    "plugin": false,
+    "semantics": {
+      "operation": "static_bool",
+      "formula": "static_bool_parameter(ParameterName, DefaultValue, DynamicBranch)",
+      "unconnected_defaults": {},
+      "value_domain": "boolean",
+      "restrictions": [
+        {
+          "kind": "mir_unsupported",
+          "properties": [
+            "DynamicBranch"
+          ],
+          "active_value": true
+        }
+      ],
+      "unresolved": []
+    }
   },
   "StaticComponentMaskParameter": {
     "class": "/Script/Engine.MaterialExpressionStaticComponentMaskParameter",
     "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionStaticComponentMaskParameter.h",
-    "desc": "",
+    "desc": "Selects components using static_component_mask_parameter(Input, ParameterName, DefaultR, DefaultG, DefaultB, DefaultA), producing a scalar or vector numeric value.",
     "inputs": [
       {
-        "name": "",
+        "name": "Input",
         "prop": "Input",
         "required": true,
         "default_prop": null
@@ -9854,7 +13020,11 @@
       },
       "ParameterName": {
         "type": "FName",
-        "default": ""
+        "default": "Param"
+      },
+      "ExpressionGUID": {
+        "type": "FGuid",
+        "default": null
       },
       "Group": {
         "type": "FName",
@@ -9867,14 +13037,52 @@
     },
     "is_parameter": true,
     "notes": "",
+    "aliases": [
+      "静的成分マスクパラメータ",
+      "パラメータ",
+      "マスク",
+      "から選択",
+      "選択"
+    ],
     "abstract": false,
     "deprecated": false,
-    "plugin": false
+    "plugin": false,
+    "semantics": {
+      "operation": "component_mask",
+      "formula": "static_component_mask_parameter(Input, ParameterName, DefaultR, DefaultG, DefaultB, DefaultA)",
+      "unconnected_defaults": {},
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [
+        {
+          "kind": "required_input",
+          "input": "Input",
+          "failure": "compile_error"
+        },
+        {
+          "kind": "selected_component_count",
+          "minimum": 1,
+          "maximum": 4
+        },
+        {
+          "kind": "selected_components_exist",
+          "input": "Input",
+          "components": [
+            "R",
+            "G",
+            "B",
+            "A"
+          ]
+        }
+      ],
+      "unresolved": [
+        "static_component_mask.scalar_channel_legacy_mir_consistency"
+      ]
+    }
   },
   "StaticSwitch": {
     "class": "/Script/Engine.MaterialExpressionStaticSwitch",
     "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionStaticSwitch.h",
-    "desc": "",
+    "desc": "Selects a branch using select(Value, True, False), producing a user-defined value. Value uses DefaultValue when unconnected.",
     "inputs": [
       {
         "name": "True",
@@ -9916,14 +13124,53 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "なら",
+      "静的条件分岐",
+      "を出力",
+      "出力",
+      "に名前付け",
+      "名前付け",
+      "が指定",
+      "指定",
+      "未接続時は",
+      "未接続時",
+      "を使用",
+      "使用"
+    ],
     "abstract": false,
     "deprecated": false,
-    "plugin": false
+    "plugin": false,
+    "semantics": {
+      "operation": "static_switch",
+      "formula": "select(Value, True, False)",
+      "unconnected_defaults": {
+        "Value": "DefaultValue"
+      },
+      "value_domain": "user_defined",
+      "restrictions": [
+        {
+          "kind": "selected_input_required",
+          "selector": "Value",
+          "true_input": "True",
+          "false_input": "False",
+          "failure": "compile_error"
+        },
+        {
+          "kind": "dynamic_bool_input_unsupported",
+          "input": "Value",
+          "backend": "mir"
+        }
+      ],
+      "unresolved": [
+        "substrate.static_switch_topology_mir_unimplemented"
+      ]
+    }
   },
   "StaticSwitchParameter": {
     "class": "/Script/Engine.MaterialExpressionStaticSwitchParameter",
     "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionStaticSwitchParameter.h",
-    "desc": "",
+    "desc": "Selects a branch using select(static_bool_parameter(ParameterName, DefaultValue, DynamicBranch), True, False), producing a user-defined value.",
     "inputs": [
       {
         "name": "True",
@@ -9955,7 +13202,11 @@
       },
       "ParameterName": {
         "type": "FName",
-        "default": ""
+        "default": "Param"
+      },
+      "ExpressionGUID": {
+        "type": "FGuid",
+        "default": null
       },
       "Group": {
         "type": "FName",
@@ -9968,9 +13219,46 @@
     },
     "is_parameter": true,
     "notes": "",
+    "aliases": [
+      "静的条件分岐パラメータ",
+      "分岐",
+      "パラメータ",
+      "を継承",
+      "継承",
+      "に名前付け",
+      "名前付け"
+    ],
     "abstract": false,
     "deprecated": false,
-    "plugin": false
+    "plugin": false,
+    "semantics": {
+      "operation": "static_switch",
+      "formula": "select(static_bool_parameter(ParameterName, DefaultValue, DynamicBranch), True, False)",
+      "unconnected_defaults": {},
+      "value_domain": "user_defined",
+      "restrictions": [
+        {
+          "kind": "required_input",
+          "input": "True",
+          "failure": "compile_error"
+        },
+        {
+          "kind": "required_input",
+          "input": "False",
+          "failure": "compile_error"
+        },
+        {
+          "kind": "mir_unsupported",
+          "properties": [
+            "DynamicBranch"
+          ],
+          "active_value": true
+        }
+      ],
+      "unresolved": [
+        "substrate.dynamic_branch_topology_unsupported"
+      ]
+    }
   },
   "Step": {
     "class": "/Script/Engine.MaterialExpressionStep",
@@ -9979,12 +13267,14 @@
       {
         "name": "Y",
         "prop": "Y",
-        "required": false
+        "required": false,
+        "default_prop": "ConstY"
       },
       {
         "name": "X",
         "prop": "X",
-        "required": false
+        "required": false,
+        "default_prop": "ConstX"
       }
     ],
     "outputs": [
@@ -10002,12 +13292,24 @@
         "default": 1.0
       }
     },
-    "desc": "",
+    "desc": "Computes step(Y, X) componentwise as a scalar or vector numeric value. Y uses ConstY when unconnected; X uses ConstX when unconnected.",
     "prop_pins": [],
     "notes": "",
+    "aliases": [],
     "abstract": false,
     "deprecated": false,
-    "plugin": false
+    "plugin": false,
+    "semantics": {
+      "operation": "componentwise_binary",
+      "formula": "step(Y, X)",
+      "unconnected_defaults": {
+        "Y": "ConstY",
+        "X": "ConstX"
+      },
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [],
+      "unresolved": []
+    }
   },
   "SubstrateAdd": {
     "class": "/Script/Engine.MaterialExpressionSubstrateAdd",
@@ -10032,6 +13334,7 @@
     "notes": "",
     "prop_pins": [],
     "props": {},
+    "aliases": [],
     "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSubstrate.h",
     "abstract": false,
     "deprecated": false,
@@ -10050,6 +13353,7 @@
     "abstract": true,
     "prop_pins": [],
     "props": {},
+    "aliases": [],
     "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSubstrate.h",
     "deprecated": false,
     "plugin": false
@@ -10087,6 +13391,7 @@
     "notes": "",
     "prop_pins": [],
     "props": {},
+    "aliases": [],
     "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSubstrate.h",
     "abstract": false,
     "deprecated": false,
@@ -10115,6 +13420,7 @@
     "notes": "",
     "prop_pins": [],
     "props": {},
+    "aliases": [],
     "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSubstrate.h",
     "abstract": false,
     "deprecated": false,
@@ -10173,6 +13479,7 @@
     "notes": "",
     "prop_pins": [],
     "props": {},
+    "aliases": [],
     "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSubstrate.h",
     "abstract": false,
     "deprecated": false,
@@ -10226,6 +13533,7 @@
     "notes": "",
     "prop_pins": [],
     "props": {},
+    "aliases": [],
     "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSubstrate.h",
     "abstract": false,
     "deprecated": false,
@@ -10257,6 +13565,7 @@
     "notes": "",
     "prop_pins": [],
     "props": {},
+    "aliases": [],
     "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSubstrate.h",
     "abstract": false,
     "deprecated": false,
@@ -10290,6 +13599,7 @@
     "notes": "",
     "prop_pins": [],
     "props": {},
+    "aliases": [],
     "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSubstrate.h",
     "abstract": false,
     "deprecated": false,
@@ -10313,6 +13623,7 @@
     "notes": "",
     "prop_pins": [],
     "props": {},
+    "aliases": [],
     "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSubstrate.h",
     "abstract": false,
     "deprecated": false,
@@ -10349,6 +13660,7 @@
     "notes": "",
     "prop_pins": [],
     "props": {},
+    "aliases": [],
     "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSubstrate.h",
     "abstract": false,
     "deprecated": false,
@@ -10377,6 +13689,7 @@
     "notes": "",
     "prop_pins": [],
     "props": {},
+    "aliases": [],
     "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSubstrate.h",
     "abstract": false,
     "deprecated": false,
@@ -10410,6 +13723,7 @@
     "notes": "",
     "prop_pins": [],
     "props": {},
+    "aliases": [],
     "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSubstrate.h",
     "abstract": false,
     "deprecated": false,
@@ -10528,6 +13842,7 @@
     "notes": "",
     "prop_pins": [],
     "props": {},
+    "aliases": [],
     "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSubstrate.h",
     "abstract": false,
     "deprecated": false,
@@ -10586,6 +13901,7 @@
     "notes": "",
     "prop_pins": [],
     "props": {},
+    "aliases": [],
     "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSubstrate.h",
     "abstract": false,
     "deprecated": false,
@@ -10659,6 +13975,7 @@
     "notes": "",
     "prop_pins": [],
     "props": {},
+    "aliases": [],
     "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSubstrate.h",
     "abstract": false,
     "deprecated": false,
@@ -10767,6 +14084,7 @@
     "notes": "",
     "prop_pins": [],
     "props": {},
+    "aliases": [],
     "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSubstrate.h",
     "abstract": false,
     "deprecated": false,
@@ -10813,6 +14131,7 @@
     "notes": "",
     "prop_pins": [],
     "props": {},
+    "aliases": [],
     "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSubstrate.h",
     "abstract": false,
     "deprecated": false,
@@ -10876,6 +14195,7 @@
     "notes": "",
     "prop_pins": [],
     "props": {},
+    "aliases": [],
     "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSubstrate.h",
     "abstract": false,
     "deprecated": false,
@@ -10908,6 +14228,7 @@
     "abstract": true,
     "prop_pins": [],
     "props": {},
+    "aliases": [],
     "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSubstrate.h",
     "deprecated": false,
     "plugin": false
@@ -10935,6 +14256,7 @@
     "notes": "",
     "prop_pins": [],
     "props": {},
+    "aliases": [],
     "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSubstrate.h",
     "abstract": false,
     "deprecated": false,
@@ -10968,6 +14290,7 @@
     "notes": "",
     "prop_pins": [],
     "props": {},
+    "aliases": [],
     "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSubstrate.h",
     "abstract": false,
     "deprecated": false,
@@ -10986,6 +14309,7 @@
     "abstract": true,
     "prop_pins": [],
     "props": {},
+    "aliases": [],
     "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSubstrate.h",
     "deprecated": false,
     "plugin": false
@@ -11018,6 +14342,7 @@
     "notes": "",
     "prop_pins": [],
     "props": {},
+    "aliases": [],
     "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSubstrate.h",
     "abstract": false,
     "deprecated": false,
@@ -11056,6 +14381,7 @@
     "notes": "",
     "prop_pins": [],
     "props": {},
+    "aliases": [],
     "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSubstrate.h",
     "abstract": false,
     "deprecated": false,
@@ -11084,6 +14410,7 @@
     "notes": "",
     "prop_pins": [],
     "props": {},
+    "aliases": [],
     "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSubstrate.h",
     "abstract": false,
     "deprecated": false,
@@ -11109,6 +14436,16 @@
     "outputs": [],
     "props": {},
     "notes": "",
+    "aliases": [
+      "パストレーサー専用",
+      "カスタムアウトプット",
+      "出力ピンなし",
+      "サブサーフェス媒質の平均自由光路と散乱分布を設定",
+      "サブサーフェス媒質",
+      "平均自由光路",
+      "散乱分布",
+      "設定"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -11116,7 +14453,7 @@
   "Subtract": {
     "class": "/Script/Engine.MaterialExpressionSubtract",
     "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSubtract.h",
-    "desc": "",
+    "desc": "Computes A - B componentwise as a scalar or vector numeric value. A uses ConstA when unconnected; B uses ConstB when unconnected.",
     "inputs": [
       {
         "name": "A",
@@ -11148,9 +14485,23 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "対応"
+    ],
     "abstract": false,
     "deprecated": false,
-    "plugin": false
+    "plugin": false,
+    "semantics": {
+      "operation": "componentwise_binary",
+      "formula": "A - B",
+      "unconnected_defaults": {
+        "A": "ConstA",
+        "B": "ConstB"
+      },
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [],
+      "unresolved": []
+    }
   },
   "Switch": {
     "class": "/Script/Engine.MaterialExpressionSwitch",
@@ -11195,6 +14546,20 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "条件値に基づいて複数の入力から",
+      "条件値",
+      "基づいて複数",
+      "入力",
+      "つを選択",
+      "選択",
+      "動的入力配列を持つ",
+      "動的入力配列",
+      "持つ",
+      "で動的に処理される",
+      "動的",
+      "処理される"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -11228,11 +14593,35 @@
         "default": 1.0
       }
     },
-    "desc": "",
+    "desc": "Computes tan(Input * 2 * PI / Period) componentwise as a scalar or vector numeric value.",
     "notes": "",
+    "aliases": [],
     "abstract": false,
     "deprecated": false,
-    "plugin": false
+    "plugin": false,
+    "semantics": {
+      "operation": "componentwise_unary",
+      "formula": "tan(Input * 2 * PI / Period)",
+      "unconnected_defaults": {},
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [
+        {
+          "kind": "required_input",
+          "input": "Input",
+          "failure": "compile_error"
+        },
+        {
+          "kind": "period_zero_result",
+          "selector": "tangent",
+          "period_property": "Period",
+          "value": 0.0,
+          "backend": "legacy"
+        }
+      ],
+      "unresolved": [
+        "legacy_mir.nonpositive_period_behavior_difference"
+      ]
+    }
   },
   "TangentOutput": {
     "class": "/Script/Engine.MaterialExpressionTangentOutput",
@@ -11249,6 +14638,11 @@
     "outputs": [],
     "props": {},
     "notes": "",
+    "aliases": [
+      "カスタムアイタンジェント出力",
+      "カスタムアウトプット",
+      "出力ピンなし"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -11268,6 +14662,18 @@
     "outputs": [],
     "props": {},
     "notes": "",
+    "aliases": [
+      "実験的",
+      "カスタムアウトプット",
+      "出力ピンなし",
+      "テンポラルアキュムレーションの応答性を制御",
+      "テンポラルアキュムレーション",
+      "応答性",
+      "制御",
+      "は基本パスのみサポート",
+      "基本パス",
+      "みサポート"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -11310,6 +14716,10 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "テンポラル対応",
+      "準ランダム数列サンプラー"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -11348,6 +14758,11 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "基底クラス",
+      "テクスチャ",
+      "サンプル"
+    ],
     "deprecated": false,
     "plugin": false
   },
@@ -11372,6 +14787,19 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "テクスチャ",
+      "出力",
+      "テクスチャコレクションを参照",
+      "テクスチャコレクション",
+      "参照",
+      "テクスチャコレクションオブジェクトと数を出力",
+      "コンストラクタで",
+      "コンストラクタ",
+      "つの出力を明示的に設定",
+      "明示的",
+      "設定"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -11398,7 +14826,7 @@
       },
       "ParameterName": {
         "type": "FName",
-        "default": ""
+        "default": "Param"
       },
       "ExpressionGUID": {
         "type": "FGuid",
@@ -11414,6 +14842,14 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "テクスチャコレクションパラメータ",
+      "パラメータ",
+      "パラメータ化されたバージョン",
+      "テクスチャ",
+      "を継承",
+      "継承"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -11421,7 +14857,7 @@
   "TextureCoordinate": {
     "class": "/Script/Engine.MaterialExpressionTextureCoordinate",
     "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionTextureCoordinate.h",
-    "desc": "",
+    "desc": "Produces texture coordinates using texcoord(CoordinateIndex) * float2(UTiling, VTiling) as a two-component float vector.",
     "inputs": [],
     "prop_pins": [
       {
@@ -11483,16 +14919,49 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "テクスチャ座標",
+      "出力",
+      "タイリングやミラーリング設定対応",
+      "テクスチャ",
+      "座標"
+    ],
     "abstract": false,
     "deprecated": false,
-    "plugin": false
+    "plugin": false,
+    "semantics": {
+      "operation": "texture_coordinate",
+      "formula": "texcoord(CoordinateIndex) * float2(UTiling, VTiling)",
+      "unconnected_defaults": {},
+      "value_domain": "float2",
+      "restrictions": [
+        {
+          "kind": "mir_unsupported",
+          "properties": [
+            "UnMirrorU",
+            "UnMirrorV"
+          ],
+          "active_value": true
+        }
+      ],
+      "unresolved": [
+        "legacy_mir.unmirror_behavior_differs"
+      ]
+    }
   },
   "TextureObject": {
     "class": "/Script/Engine.MaterialExpressionTextureObject",
     "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionTextureObject.h",
-    "desc": "",
+    "desc": "Outputs texture_uniform(Texture, SamplerType) as a texture object reference.",
     "inputs": [],
-    "prop_pins": [],
+    "prop_pins": [
+      {
+        "name": "SamplerType",
+        "prop": "SamplerType",
+        "kind": "Advanced",
+        "type": "enum:EMaterialSamplerType"
+      }
+    ],
     "outputs": [
       {
         "name": ""
@@ -11513,9 +14982,32 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "テクスチャオブジェクト出力",
+      "サンプリングなし",
+      "マテリアル関数用プレビュー値",
+      "テクスチャ",
+      "サンプリング",
+      "マテリアル",
+      "サンプル"
+    ],
     "abstract": false,
     "deprecated": false,
-    "plugin": false
+    "plugin": false,
+    "semantics": {
+      "operation": "texture_object",
+      "formula": "texture_uniform(Texture, SamplerType)",
+      "unconnected_defaults": {},
+      "value_domain": "texture_object",
+      "restrictions": [
+        {
+          "kind": "required_property",
+          "property": "Texture",
+          "failure": "missing_texture"
+        }
+      ],
+      "unresolved": []
+    }
   },
   "TextureObjectFromCollection": {
     "class": "/Script/Engine.MaterialExpressionTextureObjectFromCollection",
@@ -11555,6 +15047,12 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "テクスチャコレクション",
+      "テクスチャオブジェクト",
+      "取得",
+      "テクスチャ"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -11562,9 +15060,16 @@
   "TextureObjectParameter": {
     "class": "/Script/Engine.MaterialExpressionTextureObjectParameter",
     "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionTextureObjectParameter.h",
-    "desc": "",
+    "desc": "Outputs texture_parameter(ParameterName, Texture, SamplerType) as a texture object reference.",
     "inputs": [],
-    "prop_pins": [],
+    "prop_pins": [
+      {
+        "name": "SamplerType",
+        "prop": "SamplerType",
+        "kind": "Advanced",
+        "type": "enum:EMaterialSamplerType"
+      }
+    ],
     "outputs": [
       {
         "name": ""
@@ -11581,7 +15086,7 @@
       },
       "ParameterName": {
         "type": "FName",
-        "default": ""
+        "default": "Param"
       },
       "ExpressionGUID": {
         "type": "FGuid",
@@ -11598,14 +15103,36 @@
     },
     "is_parameter": true,
     "notes": "",
+    "aliases": [
+      "テクスチャオブジェクトパラメータ",
+      "サンプリングなし",
+      "テクスチャ",
+      "パラメータ",
+      "サンプリング",
+      "サンプル"
+    ],
     "abstract": false,
     "deprecated": false,
-    "plugin": false
+    "plugin": false,
+    "semantics": {
+      "operation": "texture_object",
+      "formula": "texture_parameter(ParameterName, Texture, SamplerType)",
+      "unconnected_defaults": {},
+      "value_domain": "texture_object",
+      "restrictions": [
+        {
+          "kind": "required_property",
+          "property": "Texture",
+          "failure": "missing_texture"
+        }
+      ],
+      "unresolved": []
+    }
   },
   "TextureProperty": {
     "class": "/Script/Engine.MaterialExpressionTextureProperty",
     "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionTextureProperty.h",
-    "desc": "",
+    "desc": "Queries a texture property using texture_property(TextureObject, Property), producing a scalar or vector numeric value.",
     "inputs": [
       {
         "name": "TextureObject",
@@ -11633,14 +15160,33 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "テクスチャプロパティ出力",
+      "テクスチャ",
+      "テクスチャサイズなど"
+    ],
     "abstract": false,
     "deprecated": false,
-    "plugin": false
+    "plugin": false,
+    "semantics": {
+      "operation": "texture_property",
+      "formula": "texture_property(TextureObject, Property)",
+      "unconnected_defaults": {},
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [
+        {
+          "kind": "required_input",
+          "input": "TextureObject",
+          "failure": "missing_texture_object"
+        }
+      ],
+      "unresolved": []
+    }
   },
   "TextureSample": {
     "class": "/Script/Engine.MaterialExpressionTextureSample",
     "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionTextureSample.h",
-    "desc": "",
+    "desc": "Samples a texture using sample(resolve_texture(TextureObject, Texture), Coordinates), producing a sampled texture value. Coordinates uses ConstCoordinate when unconnected; TextureObject uses $texture_property when unconnected; MipValue uses $const_mip_value when unconnected; Apply View MipBias uses $automatic_view_mip_bias when unconnected.",
     "inputs": [
       {
         "name": "Coordinates",
@@ -11679,6 +15225,12 @@
     ],
     "prop_pins": [
       {
+        "name": "SamplerType",
+        "prop": "SamplerType",
+        "kind": "Advanced",
+        "type": "enum:EMaterialSamplerType"
+      },
+      {
         "name": "MipValueMode",
         "prop": "MipValueMode",
         "kind": "Advanced",
@@ -11737,6 +15289,10 @@
       "MipValueMode": {
         "type": "enum:ETextureMipValueMode",
         "default": "TMVM_None"
+      },
+      "SamplerSource": {
+        "type": "enum:ESamplerSourceMode",
+        "default": "SSM_FromTextureAsset"
       },
       "AutomaticViewMipBias": {
         "type": "bool",
@@ -11752,9 +15308,88 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "テクスチャ",
+      "サンプリング",
+      "複数出力対応",
+      "デフォルト",
+      "時のみ",
+      "テクスチャをサンプリング",
+      "サンプル",
+      "に応じて入力ピンが変動",
+      "応じて入力ピン",
+      "変動",
+      "でダイナミックに返される",
+      "ダイナミック",
+      "テクスチャ サンプル"
+    ],
     "abstract": false,
     "deprecated": false,
-    "plugin": false
+    "plugin": false,
+    "semantics": {
+      "operation": "texture_sample",
+      "formula": "sample(resolve_texture(TextureObject, Texture), Coordinates)",
+      "unconnected_defaults": {
+        "Coordinates": "ConstCoordinate",
+        "TextureObject": "$texture_property",
+        "MipValue": "$const_mip_value",
+        "Apply View MipBias": "$automatic_view_mip_bias"
+      },
+      "value_domain": "texture_sample_value",
+      "restrictions": [
+        {
+          "kind": "texture_required",
+          "input": "TextureObject",
+          "fallback_property": "Texture"
+        },
+        {
+          "kind": "coordinate_required_by_texture_type",
+          "input": "Coordinates",
+          "texture_types": [
+            "texture_cube",
+            "volume_texture",
+            "texture_2d_array",
+            "texture_cube_array"
+          ]
+        },
+        {
+          "kind": "derivative_inputs_required",
+          "mode_selector": "MipValueMode",
+          "mode": "TMVM_Derivative",
+          "inputs": [
+            "CoordinatesDX",
+            "CoordinatesDY"
+          ]
+        },
+        {
+          "kind": "gather_mip_override_unsupported",
+          "gather_selector": "GatherMode",
+          "mip_selector": "MipValueMode",
+          "backend": "mir"
+        },
+        {
+          "kind": "sampler_source_forbidden",
+          "texture_types": [
+            "texture_collection"
+          ],
+          "selector": "SamplerSource",
+          "value": "SSM_FromTextureAsset"
+        },
+        {
+          "kind": "automatic_view_mip_bias_disabled",
+          "texture_types": [
+            "texture_cube",
+            "volume_texture",
+            "texture_2d_array",
+            "texture_cube_array"
+          ],
+          "backend": "mir"
+        }
+      ],
+      "unresolved": [
+        "legacy_mir.gather_mip_override_validation_equivalence"
+      ]
+    }
   },
   "TextureSampleParameter": {
     "abstract": true,
@@ -11769,11 +15404,6 @@
         "default_prop": "ConstCoordinate"
       },
       {
-        "name": "TextureObject",
-        "prop": "TextureObject",
-        "required": false
-      },
-      {
         "name": "MipValue",
         "prop": "MipValue",
         "required": false
@@ -11795,6 +15425,12 @@
       }
     ],
     "prop_pins": [
+      {
+        "name": "SamplerType",
+        "prop": "SamplerType",
+        "kind": "Advanced",
+        "type": "enum:EMaterialSamplerType"
+      },
       {
         "name": "MipValueMode",
         "prop": "MipValueMode",
@@ -11845,7 +15481,7 @@
       },
       "ParameterName": {
         "type": "FName",
-        "default": ""
+        "default": "Param"
       },
       "ExpressionGUID": {
         "type": "FGuid",
@@ -11871,6 +15507,10 @@
         "type": "enum:ETextureMipValueMode",
         "default": "TMVM_None"
       },
+      "SamplerSource": {
+        "type": "enum:ESamplerSourceMode",
+        "default": "SSM_FromTextureAsset"
+      },
       "AutomaticViewMipBias": {
         "type": "bool",
         "default": true
@@ -11878,17 +15518,29 @@
       "GatherMode": {
         "type": "enum:ETextureGatherMode",
         "default": "TGM_None"
+      },
+      "ChannelNames": {
+        "type": "FParameterChannelNames",
+        "default": null
       }
     },
     "is_parameter": true,
     "notes": "",
+    "aliases": [
+      "テクスチャサンプルパラメータの基底クラス",
+      "テクスチャサンプルパラメータ",
+      "基底クラス",
+      "テクスチャ",
+      "サンプル",
+      "パラメータ"
+    ],
     "deprecated": false,
     "plugin": false
   },
   "TextureSampleParameter2D": {
     "class": "/Script/Engine.MaterialExpressionTextureSampleParameter2D",
     "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionTextureSampleParameter2D.h",
-    "desc": "",
+    "desc": "Samples a texture using sample(texture_parameter(ParameterName, Texture, SamplerType), Coordinates), producing a sampled texture value. Coordinates uses ConstCoordinate when unconnected; MipValue uses $const_mip_value when unconnected; Apply View MipBias uses $automatic_view_mip_bias when unconnected.",
     "inputs": [
       {
         "name": "Coordinates",
@@ -11897,11 +15549,6 @@
         "default_prop": "ConstCoordinate"
       },
       {
-        "name": "TextureObject",
-        "prop": "TextureObject",
-        "required": false
-      },
-      {
         "name": "MipValue",
         "prop": "MipValue",
         "required": false
@@ -11923,6 +15570,12 @@
       }
     ],
     "prop_pins": [
+      {
+        "name": "SamplerType",
+        "prop": "SamplerType",
+        "kind": "Advanced",
+        "type": "enum:EMaterialSamplerType"
+      },
       {
         "name": "MipValueMode",
         "prop": "MipValueMode",
@@ -11973,7 +15626,7 @@
       },
       "ParameterName": {
         "type": "FName",
-        "default": ""
+        "default": "Param"
       },
       "ExpressionGUID": {
         "type": "FGuid",
@@ -11999,6 +15652,10 @@
         "type": "enum:ETextureMipValueMode",
         "default": "TMVM_None"
       },
+      "SamplerSource": {
+        "type": "enum:ESamplerSourceMode",
+        "default": "SSM_FromTextureAsset"
+      },
       "AutomaticViewMipBias": {
         "type": "bool",
         "default": true
@@ -12006,13 +15663,74 @@
       "GatherMode": {
         "type": "enum:ETextureGatherMode",
         "default": "TGM_None"
+      },
+      "ChannelNames": {
+        "type": "FParameterChannelNames",
+        "default": null
       }
     },
     "is_parameter": true,
     "notes": "",
+    "aliases": [
+      "テクスチャパラメータ",
+      "専用版",
+      "テクスチャ",
+      "パラメータ"
+    ],
     "abstract": false,
     "deprecated": false,
-    "plugin": false
+    "plugin": false,
+    "semantics": {
+      "operation": "texture_sample",
+      "formula": "sample(texture_parameter(ParameterName, Texture, SamplerType), Coordinates)",
+      "unconnected_defaults": {
+        "Coordinates": "ConstCoordinate",
+        "MipValue": "$const_mip_value",
+        "Apply View MipBias": "$automatic_view_mip_bias"
+      },
+      "value_domain": "texture_sample_value",
+      "restrictions": [
+        {
+          "kind": "required_property",
+          "property": "Texture",
+          "failure": "missing_texture"
+        },
+        {
+          "kind": "texture_type_required",
+          "property": "Texture",
+          "texture_types": [
+            "texture_2d",
+            "texture_external",
+            "texture_virtual"
+          ]
+        },
+        {
+          "kind": "derivative_inputs_required",
+          "mode_selector": "MipValueMode",
+          "mode": "TMVM_Derivative",
+          "inputs": [
+            "CoordinatesDX",
+            "CoordinatesDY"
+          ]
+        },
+        {
+          "kind": "backend_ignores_property",
+          "property": "GatherMode",
+          "backend": "legacy",
+          "when": "always"
+        },
+        {
+          "kind": "backend_ignores_input",
+          "input": "Apply View MipBias",
+          "backend": "legacy",
+          "when": "always"
+        }
+      ],
+      "unresolved": [
+        "editor_schema.channel_names_dynamic_output_labels",
+        "editor_schema.mip_mode_dynamic_input_names_and_presence"
+      ]
+    }
   },
   "TextureSampleParameter2DArray": {
     "class": "/Script/Engine.MaterialExpressionTextureSampleParameter2DArray",
@@ -12123,10 +15841,24 @@
       "GatherMode": {
         "type": "enum:ETextureGatherMode",
         "default": "TGM_None"
+      },
+      "ExpressionGUID": {
+        "type": "FGuid",
+        "default": null
       }
     },
     "is_parameter": true,
     "notes": "",
+    "aliases": [
+      "テクスチャ配列",
+      "配列",
+      "サンプリング",
+      "パラメータ化可能",
+      "テクスチャ",
+      "をサンプリング",
+      "パラメータ",
+      "サンプル"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -12134,18 +15866,13 @@
   "TextureSampleParameterCube": {
     "class": "/Script/Engine.MaterialExpressionTextureSampleParameterCube",
     "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionTextureSampleParameterCube.h",
-    "desc": "",
+    "desc": "Samples a texture using sample(texture_parameter(ParameterName, Texture, SamplerType), Coordinates), producing a sampled texture value. MipValue uses $const_mip_value when unconnected; Apply View MipBias uses $automatic_view_mip_bias when unconnected.",
     "inputs": [
       {
         "name": "Coordinates",
         "prop": "Coordinates",
         "required": false,
         "default_prop": "ConstCoordinate"
-      },
-      {
-        "name": "TextureObject",
-        "prop": "TextureObject",
-        "required": false
       },
       {
         "name": "MipValue",
@@ -12169,6 +15896,12 @@
       }
     ],
     "prop_pins": [
+      {
+        "name": "SamplerType",
+        "prop": "SamplerType",
+        "kind": "Advanced",
+        "type": "enum:EMaterialSamplerType"
+      },
       {
         "name": "MipValueMode",
         "prop": "MipValueMode",
@@ -12219,7 +15952,7 @@
       },
       "ParameterName": {
         "type": "FName",
-        "default": ""
+        "default": "Param"
       },
       "ExpressionGUID": {
         "type": "FGuid",
@@ -12245,6 +15978,10 @@
         "type": "enum:ETextureMipValueMode",
         "default": "TMVM_None"
       },
+      "SamplerSource": {
+        "type": "enum:ESamplerSourceMode",
+        "default": "SSM_FromTextureAsset"
+      },
       "AutomaticViewMipBias": {
         "type": "bool",
         "default": true
@@ -12252,13 +15989,84 @@
       "GatherMode": {
         "type": "enum:ETextureGatherMode",
         "default": "TGM_None"
+      },
+      "ChannelNames": {
+        "type": "FParameterChannelNames",
+        "default": null
       }
     },
     "is_parameter": true,
     "notes": "",
+    "aliases": [
+      "サンプリング",
+      "キューブマップテクスチャパラメータ",
+      "テクスチャ",
+      "パラメータ",
+      "サンプル"
+    ],
     "abstract": false,
     "deprecated": false,
-    "plugin": false
+    "plugin": false,
+    "semantics": {
+      "operation": "texture_sample",
+      "formula": "sample(texture_parameter(ParameterName, Texture, SamplerType), Coordinates)",
+      "unconnected_defaults": {
+        "MipValue": "$const_mip_value",
+        "Apply View MipBias": "$automatic_view_mip_bias"
+      },
+      "value_domain": "texture_sample_value",
+      "restrictions": [
+        {
+          "kind": "required_property",
+          "property": "Texture",
+          "failure": "missing_texture"
+        },
+        {
+          "kind": "texture_type_required",
+          "property": "Texture",
+          "texture_types": [
+            "texture_cube"
+          ]
+        },
+        {
+          "kind": "required_input",
+          "input": "Coordinates",
+          "failure": "missing_coordinates"
+        },
+        {
+          "kind": "derivative_inputs_required",
+          "mode_selector": "MipValueMode",
+          "mode": "TMVM_Derivative",
+          "inputs": [
+            "CoordinatesDX",
+            "CoordinatesDY"
+          ]
+        },
+        {
+          "kind": "automatic_view_mip_bias_disabled",
+          "texture_types": [
+            "texture_cube"
+          ],
+          "backend": "mir"
+        },
+        {
+          "kind": "backend_ignores_property",
+          "property": "GatherMode",
+          "backend": "legacy",
+          "when": "always"
+        },
+        {
+          "kind": "backend_ignores_input",
+          "input": "Apply View MipBias",
+          "backend": "legacy",
+          "when": "always"
+        }
+      ],
+      "unresolved": [
+        "editor_schema.channel_names_dynamic_output_labels",
+        "editor_schema.mip_mode_dynamic_input_names_and_presence"
+      ]
+    }
   },
   "TextureSampleParameterCubeArray": {
     "class": "/Script/Engine.MaterialExpressionTextureSampleParameterCubeArray",
@@ -12369,10 +16177,22 @@
       "GatherMode": {
         "type": "enum:ETextureGatherMode",
         "default": "TGM_None"
+      },
+      "ExpressionGUID": {
+        "type": "FGuid",
+        "default": null
       }
     },
     "is_parameter": true,
     "notes": "",
+    "aliases": [
+      "サンプリング",
+      "パラメータ化可能",
+      "キューブマップ配列をサンプリング",
+      "キューブマップ配列",
+      "パラメータ",
+      "サンプル"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -12490,10 +16310,24 @@
       "GatherMode": {
         "type": "enum:ETextureGatherMode",
         "default": "TGM_None"
+      },
+      "ExpressionGUID": {
+        "type": "FGuid",
+        "default": null
       }
     },
     "is_parameter": true,
     "notes": "",
+    "aliases": [
+      "テクスチャ",
+      "サンプリング",
+      "パラメータ化可能",
+      "アニメーション対応の",
+      "アニメーション対応",
+      "テクスチャをサンプリング",
+      "パラメータ",
+      "サンプル"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -12607,10 +16441,23 @@
       "GatherMode": {
         "type": "enum:ETextureGatherMode",
         "default": "TGM_None"
+      },
+      "ExpressionGUID": {
+        "type": "FGuid",
+        "default": null
       }
     },
     "is_parameter": true,
     "notes": "",
+    "aliases": [
+      "サンプリング",
+      "パラメータ化可能",
+      "ボリュームテクスチャをサンプリング",
+      "ボリュームテクスチャ",
+      "テクスチャ",
+      "パラメータ",
+      "サンプル"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -12642,6 +16489,15 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "出力",
+      "ベース",
+      "薄型透光材料の透過率と表面被覆率を出力",
+      "薄型透光材料",
+      "透過率",
+      "表面被覆率",
+      "出力は"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -12649,7 +16505,7 @@
   "Time": {
     "class": "/Script/Engine.MaterialExpressionTime",
     "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionTime.h",
-    "desc": "",
+    "desc": "Outputs time using time(bIgnorePause, bOverride_Period, Period) as a scalar float.",
     "inputs": [],
     "prop_pins": [],
     "outputs": [
@@ -12672,9 +16528,45 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "時間値を出力",
+      "時間値",
+      "出力",
+      "時間",
+      "で時刻をループさせることが可能",
+      "時刻",
+      "ループさせるこ",
+      "可能",
+      "で一時停止を無視可能",
+      "一時停止",
+      "無視可能"
+    ],
     "abstract": false,
     "deprecated": false,
-    "plugin": false
+    "plugin": false,
+    "semantics": {
+      "operation": "time",
+      "formula": "time(bIgnorePause, bOverride_Period, Period)",
+      "unconnected_defaults": {},
+      "value_domain": "float1",
+      "restrictions": [
+        {
+          "kind": "editor_minimum",
+          "property": "Period",
+          "minimum": 0.0
+        },
+        {
+          "kind": "period_zero_result",
+          "selector": "bOverride_Period",
+          "period_property": "Period",
+          "value": 0.0,
+          "backend": "mir"
+        }
+      ],
+      "unresolved": [
+        "legacy_mir.period_zero_behavior_equivalence"
+      ]
+    }
   },
   "Transform": {
     "class": "/Script/Engine.MaterialExpressionTransform",
@@ -12690,13 +16582,13 @@
     ],
     "prop_pins": [
       {
-        "name": "TransformSourceType",
+        "name": "Source",
         "prop": "TransformSourceType",
         "kind": "Advanced",
         "type": "enum:EMaterialVectorCoordTransformSource"
       },
       {
-        "name": "TransformType",
+        "name": "Destination",
         "prop": "TransformType",
         "kind": "Advanced",
         "type": "enum:EMaterialVectorCoordTransform"
@@ -12707,8 +16599,25 @@
         "name": ""
       }
     ],
-    "props": {},
+    "props": {
+      "TransformSourceType": {
+        "type": "enum:EMaterialVectorCoordTransformSource",
+        "default": "TRANSFORMSOURCE_Tangent"
+      },
+      "TransformType": {
+        "type": "enum:EMaterialVectorCoordTransform",
+        "default": "TRANSFORM_World"
+      }
+    },
     "notes": "",
+    "aliases": [
+      "ベクトル",
+      "ベクトルをある座標系から別の座標系に変換",
+      "ある座標系",
+      "座標系",
+      "変換",
+      "座標"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -12725,13 +16634,13 @@
         "default_prop": null
       },
       {
-        "name": "PeriodicWorldTileSize",
+        "name": "Periodic World Tile Size",
         "prop": "PeriodicWorldTileSize",
         "required": false,
-        "default_prop": null
+        "default_prop": "ConstPeriodicWorldTileSize"
       },
       {
-        "name": "FirstPersonInterpolationAlpha",
+        "name": "First Person Interpolation Alpha",
         "prop": "FirstPersonInterpolationAlpha",
         "required": false,
         "default_prop": "ConstFirstPersonInterpolationAlpha"
@@ -12739,13 +16648,13 @@
     ],
     "prop_pins": [
       {
-        "name": "TransformSourceType",
+        "name": "Source",
         "prop": "TransformSourceType",
         "kind": "Advanced",
         "type": "enum:EMaterialPositionTransformSource"
       },
       {
-        "name": "TransformType",
+        "name": "Destination",
         "prop": "TransformType",
         "kind": "Advanced",
         "type": "enum:EMaterialPositionTransformSource"
@@ -12757,16 +16666,40 @@
       }
     ],
     "props": {
+      "TransformSourceType": {
+        "type": "enum:EMaterialPositionTransformSource",
+        "default": "TRANSFORMPOSSOURCE_Local"
+      },
+      "TransformType": {
+        "type": "enum:EMaterialPositionTransformSource",
+        "default": "TRANSFORMPOSSOURCE_Local"
+      },
       "ConstPeriodicWorldTileSize": {
         "type": "float",
-        "default": "32.0"
+        "default": 32.0
       },
       "ConstFirstPersonInterpolationAlpha": {
         "type": "float",
         "default": 1.0
+      },
+      "bUsesPeriodicWorldPosition": {
+        "type": "bool",
+        "default": false
+      },
+      "bUsesFirstPersonInterpolationAlpha": {
+        "type": "bool",
+        "default": false
       }
     },
     "notes": "",
+    "aliases": [
+      "位置座標をある座標系から別の座標系に変換",
+      "位置座標",
+      "ある座標系",
+      "座標系",
+      "変換",
+      "座標"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -12774,7 +16707,7 @@
   "Truncate": {
     "class": "/Script/Engine.MaterialExpressionTruncate",
     "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionTruncate.h",
-    "desc": "",
+    "desc": "Computes trunc(Input) componentwise as a scalar or vector numeric value.",
     "inputs": [
       {
         "name": "Input",
@@ -12790,9 +16723,28 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "小数部切り捨て"
+    ],
     "abstract": false,
     "deprecated": false,
-    "plugin": false
+    "plugin": false,
+    "semantics": {
+      "operation": "componentwise_unary",
+      "formula": "trunc(Input)",
+      "unconnected_defaults": {},
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [
+        {
+          "kind": "required_input",
+          "input": "Input",
+          "failure": "compile_error"
+        }
+      ],
+      "unresolved": [
+        "truncate.uint_output_legacy_mir_consistency"
+      ]
+    }
   },
   "TruncateLWC": {
     "class": "/Script/Engine.MaterialExpressionTruncateLWC",
@@ -12813,6 +16765,11 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "値の整数部を抽出",
+      "整数部",
+      "抽出"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -12830,6 +16787,14 @@
     "props": {},
     "prop_pins": [],
     "desc": "",
+    "aliases": [
+      "両面マテリアル時の表裏判定値",
+      "両面マテリアル時",
+      "表裏判定値",
+      "マテリアル",
+      "を継承",
+      "継承"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -12853,6 +16818,11 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "値を",
+      "に変換",
+      "変換"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -12914,6 +16884,14 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "サンプリング",
+      "ユーザー指定のシーンテクスチャをサンプリング",
+      "ユーザー指定",
+      "シーンテクスチャ",
+      "テクスチャ",
+      "サンプル"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -12979,6 +16957,16 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "セルノイズ",
+      "パーリンノイズ勾配など対応",
+      "オーバーライド有り",
+      "次元ベクトルとしてノイズを出力",
+      "次元ベクトル",
+      "ノイズ",
+      "出力",
+      "ベクトル"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -12986,7 +16974,7 @@
   "VectorParameter": {
     "class": "/Script/Engine.MaterialExpressionVectorParameter",
     "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionVectorParameter.h",
-    "desc": "",
+    "desc": "Outputs the parameter value parameter_or_custom_primitive_data(ParameterName, DefaultValue, bUseCustomPrimitiveData, PrimitiveDataIndex) as a four-component float vector.",
     "inputs": [],
     "prop_pins": [
       {
@@ -13046,7 +17034,11 @@
       },
       "ParameterName": {
         "type": "FName",
-        "default": ""
+        "default": "Param"
+      },
+      "ExpressionGUID": {
+        "type": "FGuid",
+        "default": null
       },
       "Group": {
         "type": "FName",
@@ -13059,9 +17051,38 @@
     },
     "is_parameter": true,
     "notes": "",
+    "aliases": [
+      "パラメータ",
+      "ベクトル値のパラメータ",
+      "ベクトル値",
+      "ベクトル"
+    ],
     "abstract": false,
     "deprecated": false,
-    "plugin": false
+    "plugin": false,
+    "semantics": {
+      "operation": "parameter",
+      "formula": "parameter_or_custom_primitive_data(ParameterName, DefaultValue, bUseCustomPrimitiveData, PrimitiveDataIndex)",
+      "unconnected_defaults": {},
+      "value_domain": "float4",
+      "restrictions": [
+        {
+          "kind": "custom_primitive_data_mode",
+          "selector": "bUseCustomPrimitiveData",
+          "index_property": "PrimitiveDataIndex",
+          "component_count": 4
+        },
+        {
+          "kind": "material_domain_unsupported",
+          "domain": "MD_UI",
+          "when": "bUseCustomPrimitiveData",
+          "backend": "legacy"
+        }
+      ],
+      "unresolved": [
+        "legacy_mir.ui_domain_validation_equivalence"
+      ]
+    }
   },
   "VertexColor": {
     "class": "/Script/Engine.MaterialExpressionVertexColor",
@@ -13093,6 +17114,14 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "出力",
+      "確認済",
+      "メッシュの頂点カラーを出力",
+      "メッシュ",
+      "頂点カラー",
+      "頂点"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -13116,6 +17145,18 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "ベース",
+      "頂点シェーダーの値をピクセルシェーダーに補間転送",
+      "頂点シェーダー",
+      "ピクセルシェーダー",
+      "補間転送",
+      "補間",
+      "ピクセル",
+      "頂点",
+      "に表示",
+      "表示"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -13133,6 +17174,16 @@
     "props": {},
     "prop_pins": [],
     "desc": "",
+    "aliases": [
+      "頂点",
+      "法線",
+      "ワールド座標",
+      "頂点の法線",
+      "座標",
+      "ワールド",
+      "を継承",
+      "継承"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -13150,6 +17201,16 @@
     "props": {},
     "prop_pins": [],
     "desc": "",
+    "aliases": [
+      "頂点",
+      "ワールド座標",
+      "頂点の接線",
+      "接線",
+      "座標",
+      "ワールド",
+      "を継承",
+      "継承"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -13182,6 +17243,16 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "解像度",
+      "カメラ位置等",
+      "ビュー関連のプロパティ",
+      "ビュー関連",
+      "プロパティ",
+      "カメラ",
+      "を取得",
+      "取得"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -13199,6 +17270,13 @@
     "props": {},
     "prop_pins": [],
     "desc": "",
+    "aliases": [
+      "ビューのサイズ",
+      "ビュー",
+      "サイズ",
+      "幅と高さ",
+      "高さ"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -13227,6 +17305,16 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "仮想テクスチャサポートの有無で分岐",
+      "仮想テクスチャサポート",
+      "有無",
+      "分岐",
+      "テクスチャ",
+      "により条件分岐で入力ピン選択",
+      "条件分岐",
+      "入力ピン選択"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -13247,6 +17335,9 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "ボリューメトリッククラウド詳細材質入力"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -13373,6 +17464,15 @@
       }
     },
     "notes": "",
+    "aliases": [
+      "位相関数",
+      "ベース",
+      "ボリューメトリッククラウド詳細材質出力",
+      "散乱パラメータ等を設定",
+      "散乱パラメータ等",
+      "設定",
+      "パラメータ"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -13393,6 +17493,14 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "中心",
+      "半径",
+      "ベース",
+      "球体情報",
+      "を出力",
+      "出力"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -13416,6 +17524,14 @@
     ],
     "props": {},
     "notes": "",
+    "aliases": [
+      "ベース",
+      "ボリューメトリッククラウド空白スキップ出力",
+      "物質が存在するか否かを示す",
+      "物質",
+      "存在するか否か",
+      "示す"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false
@@ -13451,6 +17567,16 @@
       }
     ],
     "desc": "",
+    "aliases": [
+      "ワールド座標系での現在のピクセル位置を出力",
+      "ワールド座標系",
+      "現在",
+      "ピクセル位置",
+      "出力",
+      "座標",
+      "ワールド",
+      "ピクセル"
+    ],
     "abstract": false,
     "deprecated": false,
     "plugin": false

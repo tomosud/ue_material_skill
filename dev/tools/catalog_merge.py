@@ -8,6 +8,7 @@ through manifest data, but reports every normalization on stderr.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import re
 import sys
@@ -15,8 +16,20 @@ from collections import OrderedDict
 from pathlib import Path
 from typing import Any
 
+from extract_node_aliases import AliasError, extract_alias_map, load_legacy
+from semantics_schema import (
+    SemanticsError,
+    render_description,
+    validate_formula_references,
+    validate_semantics,
+)
 
-AUDIT_STATES = {"pending", "verified", "partial", "not_applicable"}
+
+AUDIT_STATES = {"pending", "verified", "stale", "not_applicable"}
+SKILL_VERSION = "1.0.0"
+UE_VERSION = "5.8.0"
+UE_BRANCH = "UE5"
+GENERATED_AT = "2026-07-15T00:00:00Z"
 
 
 class CatalogError(Exception):
@@ -41,6 +54,68 @@ def load_json(path: Path) -> dict[str, Any]:
     if not isinstance(value, dict):
         raise CatalogError(f"{path}: top-level value must be an object")
     return value
+
+
+def load_audits(directory: Path) -> dict[str, Any]:
+    """Load maintained audit fragments, rejecting duplicate class ownership."""
+
+    if not directory.is_dir():
+        raise CatalogError(f"audit directory does not exist: {directory}")
+    audits: dict[str, Any] = {}
+    for path in sorted(directory.glob("*.json")):
+        for class_name, record in load_json(path).items():
+            if class_name in audits:
+                raise CatalogError(f"duplicate audit for {class_name} in {path}")
+            audits[class_name] = record
+    return audits
+
+
+def _reference_identities(record: Any) -> list[tuple[str, str, tuple[str, ...]]]:
+    if not isinstance(record, dict) or not isinstance(record.get("references"), list):
+        return []
+    identities = []
+    for reference in record["references"]:
+        if not isinstance(reference, dict):
+            continue
+        claims = reference.get("claims")
+        identities.append(
+            (
+                str(reference.get("path", "")),
+                str(reference.get("symbol", "")),
+                tuple(sorted(str(claim) for claim in claims))
+                if isinstance(claims, list)
+                else (),
+            )
+        )
+    return identities
+
+
+def validate_audit_sync(audits: dict[str, Any], evidence: dict[str, Any]) -> list[str]:
+    """Ensure maintained audits and the packaged evidence cannot silently drift."""
+
+    errors: list[str] = []
+    for class_name, audit_record in sorted(audits.items()):
+        evidence_record = evidence.get(class_name)
+        if not isinstance(audit_record, dict):
+            errors.append(f"audit:{class_name}: expected object")
+            continue
+        if not isinstance(evidence_record, dict):
+            errors.append(f"audit:{class_name}: missing from node evidence")
+            continue
+        for field in ("audit", "semantics"):
+            if audit_record.get(field) != evidence_record.get(field):
+                errors.append(f"audit:{class_name}.{field}: differs from node evidence")
+        audit_identities = _reference_identities(audit_record)
+        evidence_identities = [
+            identity
+            for identity in _reference_identities(evidence_record)
+            if identity[2] != ("declaration",)
+        ]
+        if audit_identities != evidence_identities:
+            errors.append(
+                f"audit:{class_name}.references: identity differs from node evidence"
+            )
+    return errors
 
 
 def strip_cpp_prefix(name: str) -> str:
@@ -146,6 +221,12 @@ def validate_node_entry(key: str, entry: Any, source: Path) -> list[str]:
                 errors.append(f"{prop_path}.type: required non-empty string")
     if "notes" in entry and not isinstance(entry.get("notes"), str):
         errors.append(f"{base}.notes: expected string")
+    aliases = entry.get("aliases")
+    if aliases is not None and (
+        not isinstance(aliases, list)
+        or any(not isinstance(alias, str) or not alias for alias in aliases)
+    ):
+        errors.append(f"{base}.aliases: expected an array of non-empty strings")
     return errors
 
 
@@ -171,10 +252,12 @@ def normalize_node_entry(
     default("outputs", [])
     default("props", {})
     default("notes", "")
+    default("aliases", [])
     props = entry.get("props") if isinstance(entry.get("props"), dict) else {}
     if entry.get("is_parameter") and isinstance(props, dict):
         inherited_parameter_props = {
-            "ParameterName": {"type": "FName", "default": ""},
+            "ParameterName": {"type": "FName", "default": "Param"},
+            "ExpressionGUID": {"type": "FGuid", "default": None},
             "Group": {"type": "FName", "default": ""},
             "SortPriority": {"type": "int32", "default": 32},
         }
@@ -184,6 +267,9 @@ def normalize_node_entry(
                 warnings.append(
                     f"{source.name}:{key}: inherited parameter prop {prop_name}"
                 )
+        parameter_name = props.get("ParameterName")
+        if isinstance(parameter_name, dict) and parameter_name.get("default") == "":
+            parameter_name["default"] = "Param"
         entry["props"] = props
     for field in ("inputs", "prop_pins"):
         pins = entry.get(field)
@@ -259,7 +345,10 @@ def validate_function_entry(key: str, entry: Any, source: Path) -> list[str]:
 
 
 def merge_nodes(
-    files: list[Path], manifest: dict[str, Any]
+    files: list[Path],
+    manifest: dict[str, Any],
+    evidence: dict[str, Any],
+    aliases: dict[str, list[str]] | None = None,
 ) -> tuple[OrderedDict[str, Any], list[str], list[str]]:
     merged: dict[str, Any] = {}
     warnings: list[str] = []
@@ -290,6 +379,43 @@ def merge_nodes(
             entry["abstract"] = bool(manifest[key].get("abstract", entry.get("abstract", False)))
             entry["deprecated"] = bool(manifest[key].get("deprecated", entry.get("deprecated", False)))
             entry["plugin"] = manifest[key].get("origin") == "plugin"
+            entry["aliases"] = list((aliases or {}).get(key, []))
+            evidence_record = evidence.get(key)
+            semantics = (
+                evidence_record.get("semantics")
+                if isinstance(evidence_record, dict)
+                else None
+            )
+            if semantics is not None:
+                try:
+                    validate_semantics(semantics)
+                    input_pins = [
+                        pin
+                        for pin in entry.get("inputs", [])
+                        if isinstance(pin, dict)
+                    ]
+                    input_order = [
+                        pin["name"]
+                        for pin in input_pins
+                        if isinstance(pin.get("name"), str)
+                    ]
+                    formula_input_names = input_order + [
+                        pin["prop"]
+                        for pin in input_pins
+                        if isinstance(pin.get("prop"), str)
+                    ]
+                    property_names = (
+                        entry.get("props", {}).keys()
+                        if isinstance(entry.get("props"), dict)
+                        else ()
+                    )
+                    validate_formula_references(
+                        semantics["formula"], formula_input_names, property_names
+                    )
+                    entry["semantics"] = semantics
+                    entry["desc"] = render_description(semantics, input_order)
+                except SemanticsError as exc:
+                    errors.append(f"node evidence:{key}.semantics: {exc}")
             entry.pop("verified", None)
             merged[key] = entry
     expected = set(manifest) - {"(root)"}
@@ -339,6 +465,32 @@ def write_json(path: Path, value: Any) -> None:
     path.write_text(text, encoding="utf-8", newline="\n")
 
 
+def sha256_file(path: Path) -> str:
+    """Hash canonical LF bytes so Git checkout policy cannot change release identity."""
+    content = path.read_bytes().replace(b"\r\n", b"\n").replace(b"\r", b"\n")
+    return hashlib.sha256(content).hexdigest()
+
+
+def build_metadata(catalog_root: Path, meta_path: Path) -> OrderedDict[str, Any]:
+    hashes = OrderedDict(
+        (path.relative_to(catalog_root).as_posix(), sha256_file(path))
+        for path in sorted(
+            catalog_root.rglob("*.json"),
+            key=lambda item: item.relative_to(catalog_root).as_posix(),
+        )
+        if path.resolve() != meta_path.resolve()
+    )
+    return OrderedDict(
+        (
+            ("skill_version", SKILL_VERSION),
+            ("ue_version", UE_VERSION),
+            ("ue_branch", UE_BRANCH),
+            ("generated_at", GENERATED_AT),
+            ("catalog_hashes", hashes),
+        )
+    )
+
+
 def validate_evidence(
     evidence: dict[str, Any], manifest: dict[str, Any]
 ) -> tuple[dict[str, Any], list[str]]:
@@ -369,6 +521,16 @@ def validate_evidence(
                 )
         if audit.get("declaration") != "verified":
             errors.append(f"node evidence:{key}: declaration must be verified")
+        semantics = record.get("semantics")
+        if semantics is not None:
+            try:
+                validate_semantics(semantics)
+            except SemanticsError as exc:
+                errors.append(f"node evidence:{key}.semantics: {exc}")
+        elif audit.get("description") == "verified":
+            errors.append(
+                f"node evidence:{key}: verified description requires semantics"
+            )
         if not isinstance(references, list) or not references:
             errors.append(f"node evidence:{key}.references: required non-empty array")
             continue
@@ -421,8 +583,21 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--manifest", type=Path, default=dev_root / "catalog" / "manifest.json")
     parser.add_argument("--output", type=Path, default=skill_root / "catalog" / "nodes.json")
     parser.add_argument("--functions-output", type=Path, default=skill_root / "catalog" / "functions.json")
+    parser.add_argument("--meta-output", type=Path, default=skill_root / "catalog" / "meta.json")
     parser.add_argument("--index", type=Path, default=skill_root / "references" / "nodes-index.md")
     parser.add_argument("--evidence", type=Path, default=skill_root / "catalog" / "node-evidence.json")
+    parser.add_argument(
+        "--audits-dir",
+        type=Path,
+        default=dev_root / "catalog" / "audits",
+        help="Maintained audit fragments which must match packaged node evidence",
+    )
+    parser.add_argument(
+        "--legacy-prose",
+        type=Path,
+        default=skill_root / "catalog" / "legacy-node-prose.json",
+        help="Inactive legacy prose used only to derive deterministic search aliases",
+    )
     parser.add_argument("--quiet", action="store_true")
     return parser.parse_args(argv)
 
@@ -431,15 +606,20 @@ def main(argv: list[str] | None = None) -> int:
     args = parse_args(argv)
     try:
         manifest = load_json(args.manifest)
+        aliases = extract_alias_map(load_legacy(args.legacy_prose))
         evidence_document = load_json(args.evidence)
         evidence, evidence_errors = validate_evidence(evidence_document, manifest)
+        audits = load_audits(args.audits_dir)
+        audit_sync_errors = validate_audit_sync(audits, evidence)
         node_files = sorted(args.generated_dir.glob("C[0-9][0-9].json"))
         function_files = sorted(args.generated_dir.glob("M[0-9][0-9]-mf.json"))
         if not node_files:
             raise CatalogError(f"no CXX.json files found in {args.generated_dir}")
-        nodes, warnings, node_errors = merge_nodes(node_files, manifest)
+        nodes, warnings, node_errors = merge_nodes(
+            node_files, manifest, evidence, aliases
+        )
         functions, function_errors = merge_functions(function_files, warnings)
-        errors = node_errors + function_errors + evidence_errors
+        errors = node_errors + function_errors + evidence_errors + audit_sync_errors
         if not args.quiet:
             for warning in warnings:
                 print(f"warning: {warning}", file=sys.stderr)
@@ -451,6 +631,7 @@ def main(argv: list[str] | None = None) -> int:
         write_json(args.output, nodes)
         write_json(args.functions_output, functions)
         write_index(args.index, nodes)
+        write_json(args.meta_output, build_metadata(args.meta_output.parent, args.meta_output))
         if not args.quiet:
             total = len(nodes)
             expected = len(manifest) - (1 if "(root)" in manifest else 0)
@@ -476,8 +657,9 @@ def main(argv: list[str] | None = None) -> int:
             print(f"wrote {args.output}")
             print(f"wrote {args.functions_output}")
             print(f"wrote {args.index}")
+            print(f"wrote {args.meta_output}")
         return 0
-    except CatalogError as exc:
+    except (CatalogError, AliasError, SemanticsError) as exc:
         print(f"error: {exc}", file=sys.stderr)
         return 1
 

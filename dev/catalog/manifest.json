@@ -5,6 +5,7 @@
   "class": "UMaterialExpression",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpression.h",
+  "header_hash": "94fbcf4803b6cfed921a2095922b77ba5e8c999bf53b4425daaaa5df0915d5c5",
   "module": "Engine",
   "origin": "engine"
  },
@@ -14,6 +15,7 @@
   "class": "UMaterialExpressionAbs",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionAbs.h",
+  "header_hash": "88e1e233d35a4fcd53c606fcb60163b4cea89cf7b8fe444f49f0b8f2b11ade8c",
   "module": "Engine",
   "origin": "engine"
  },
@@ -23,6 +25,7 @@
   "class": "UMaterialExpressionAbsorptionMediumMaterialOutput",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionAbsorptionMediumMaterialOutput.h",
+  "header_hash": "605a3e3b4b0d2d4c223c166f9d8dae90336e74caedfd086c8a77226fba9bea06",
   "module": "Engine",
   "origin": "engine"
  },
@@ -32,6 +35,7 @@
   "class": "UMaterialExpressionActorPositionWS",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionActorPositionWS.h",
+  "header_hash": "94da9c38cd148de8a320efceda026b9168d5ed3ff9a69e09623a664ac2790f59",
   "module": "Engine",
   "origin": "engine"
  },
@@ -41,6 +45,7 @@
   "class": "UMaterialExpressionAdd",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionAdd.h",
+  "header_hash": "a72c2310951bcd7488c62856eccf173ac2997995f6a59737f76eba2e2011782c",
   "module": "Engine",
   "origin": "engine"
  },
@@ -50,6 +55,7 @@
   "class": "UMaterialExpressionAggregate",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionAggregate.h",
+  "header_hash": "30d394b041bfe257eaf7f1c937be71459cce8fb1f4c25479f50a9aac1265ead7",
   "module": "Engine",
   "origin": "engine"
  },
@@ -59,6 +65,7 @@
   "class": "UMaterialExpressionAntialiasedTextureMask",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionAntialiasedTextureMask.h",
+  "header_hash": "0cdaf3248aad4911c7e7cf4175321596b6d6656a95bcc0a8efe2a9f1396b2aa4",
   "module": "Engine",
   "origin": "engine"
  },
@@ -68,6 +75,7 @@
   "class": "UMaterialExpressionAppendVector",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionAppendVector.h",
+  "header_hash": "a94e6315896783da94433bc55dba98d07cb10f46a9875f4f1444f36d095c2556",
   "module": "Engine",
   "origin": "engine"
  },
@@ -77,6 +85,7 @@
   "class": "UMaterialExpressionArccosine",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionArccosine.h",
+  "header_hash": "f8d4c45935172ac044b0fdeda88865d3578ad9596bab00e8fdd659424beb414d",
   "module": "Engine",
   "origin": "engine"
  },
@@ -86,6 +95,7 @@
   "class": "UMaterialExpressionArccosineFast",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionArccosineFast.h",
+  "header_hash": "65c4e6173a839dd58ec51295d60e6151b87ce80c02ff7ede7df3d7aee3b06cc1",
   "module": "Engine",
   "origin": "engine"
  },
@@ -95,6 +105,7 @@
   "class": "UMaterialExpressionArcsine",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionArcsine.h",
+  "header_hash": "3e35f962ced33cceac2b36b5e1e6683abe00e42555cb3017b4e400075b95a980",
   "module": "Engine",
   "origin": "engine"
  },
@@ -104,6 +115,7 @@
   "class": "UMaterialExpressionArcsineFast",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionArcsineFast.h",
+  "header_hash": "96046a3682d63a69ba67943e8d6aafe4d74a9373eceb93da46d5f6706080c8e9",
   "module": "Engine",
   "origin": "engine"
  },
@@ -113,6 +125,7 @@
   "class": "UMaterialExpressionArctangent",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionArctangent.h",
+  "header_hash": "c4ca7e66f18d24e36c2b55b35e9b699c82ffa6683444eae7ed2b46bfa919c2cb",
   "module": "Engine",
   "origin": "engine"
  },
@@ -122,6 +135,7 @@
   "class": "UMaterialExpressionArctangent2",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionArctangent2.h",
+  "header_hash": "d888cfe51bba6153dcb560b11932d79590f2c0cbc8d02380b9a2760c6742b74f",
   "module": "Engine",
   "origin": "engine"
  },
@@ -131,6 +145,7 @@
   "class": "UMaterialExpressionArctangent2Fast",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionArctangent2Fast.h",
+  "header_hash": "4c244c3c9f09132e63b33414cb5fd68abaf3b6dc6d4f68c1e856fe018d1f6a1c",
   "module": "Engine",
   "origin": "engine"
  },
@@ -140,6 +155,7 @@
   "class": "UMaterialExpressionArctangentFast",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionArctangentFast.h",
+  "header_hash": "1f8b0ec03994876e680c09dc0ee544dc0db014ba2d5525c4bdd3e3a262a69c5d",
   "module": "Engine",
   "origin": "engine"
  },
@@ -149,6 +165,7 @@
   "class": "UMaterialExpressionAtmosphericFogColor",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionAtmosphericFogColor.h",
+  "header_hash": "8af857fbe8b1b5d8a867842bafcf81ec6abaad3797ccf91075414e804808d9c7",
   "module": "Engine",
   "origin": "engine"
  },
@@ -158,6 +175,9 @@
   "class": "UMaterialExpressionAtmosphericLightColor",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionAtmosphericLightColor.h",
+  "header_hash": "30763ac659a620312ecab1510f7f0c2728c84e66c0567caf8e9733a07e7cec85",
+  "impl": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+  "impl_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371",
   "module": "Engine",
   "origin": "engine"
  },
@@ -167,6 +187,9 @@
   "class": "UMaterialExpressionAtmosphericLightVector",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionAtmosphericLightVector.h",
+  "header_hash": "143f1736873d6eeabee969de64029c6552f4742d685b9effae995285f1560f6a",
+  "impl": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+  "impl_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371",
   "module": "Engine",
   "origin": "engine"
  },
@@ -176,6 +199,7 @@
   "class": "UMaterialExpressionBentNormalCustomOutput",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionBentNormalCustomOutput.h",
+  "header_hash": "e79ddc7da5d23c41be73feead1cd8822e0a45b0ac4e04ddd17c7a25d0a143bb6",
   "module": "Engine",
   "origin": "engine"
  },
@@ -185,6 +209,7 @@
   "class": "UMaterialExpressionBindlessSwitch",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionBindlessSwitch.h",
+  "header_hash": "8b3146df0bbf4914d3f2f000bf3790ce8d6b5b333c6500a8da8b6252c30e2bad",
   "module": "Engine",
   "origin": "engine"
  },
@@ -194,6 +219,7 @@
   "class": "UMaterialExpressionBlackBody",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionBlackBody.h",
+  "header_hash": "b2b68984e986991835ad4ca74c13593a748408cbaa189bd36ff5daebc0ae9139",
   "module": "Engine",
   "origin": "engine"
  },
@@ -203,6 +229,7 @@
   "class": "UMaterialExpressionBlend",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionBlend.h",
+  "header_hash": "4c4455b3fe15af872eec4260efd7cb5287d7ce95899f05408351606304ca56ba",
   "module": "Engine",
   "origin": "engine"
  },
@@ -212,6 +239,7 @@
   "class": "UMaterialExpressionBlendMaterialAttributes",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionBlendMaterialAttributes.h",
+  "header_hash": "0e7ae95032ae6a1cc9b0cd078d7d6aabd31fcc31bd276b7d4feb7a5d736e9ddd",
   "module": "Engine",
   "origin": "engine"
  },
@@ -221,6 +249,7 @@
   "class": "UMaterialExpressionBounds",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionBounds.h",
+  "header_hash": "2aea2982c6a18472246657bb8ed9cd038e12a8304716b1f75deb693955bd5ff1",
   "module": "Engine",
   "origin": "engine"
  },
@@ -230,6 +259,7 @@
   "class": "UMaterialExpressionBreakMaterialAttributes",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionBreakMaterialAttributes.h",
+  "header_hash": "872928250100a9d86cd9eced9c835a852aaf31062ffec557d05848cca1bdba47",
   "module": "Engine",
   "origin": "engine"
  },
@@ -239,6 +269,7 @@
   "class": "UMaterialExpressionBumpOffset",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionBumpOffset.h",
+  "header_hash": "6064b2fb870e2c44274ac3f754ba156ffdf43fb37c21bd2806796cdc0a0adb1b",
   "module": "Engine",
   "origin": "engine"
  },
@@ -248,6 +279,7 @@
   "class": "UMaterialExpressionCameraPositionWS",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionCameraPositionWS.h",
+  "header_hash": "b8d6c7822d35e22d5397ee2c604058e71098e5f6d6bb2aa1c51c684b0ee5af31",
   "module": "Engine",
   "origin": "engine"
  },
@@ -257,6 +289,9 @@
   "class": "UMaterialExpressionCameraVectorWS",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionCameraVectorWS.h",
+  "header_hash": "b8aa321ed0ad118deebf641d8951099be864dc4586b6541d7886d8009b095195",
+  "impl": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+  "impl_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371",
   "module": "Engine",
   "origin": "engine"
  },
@@ -266,6 +301,7 @@
   "class": "UMaterialExpressionCeil",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionCeil.h",
+  "header_hash": "d2cd75d83ddcce3d48882ceba06de5bdbb3412a8296ef3f24629de222a060710",
   "module": "Engine",
   "origin": "engine"
  },
@@ -275,6 +311,7 @@
   "class": "UMaterialExpressionChannelMaskParameter",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionChannelMaskParameter.h",
+  "header_hash": "00dbeea05b4d1aac4c00fba3483ac44738f970adc2463f9157dea775f32f98b9",
   "module": "Engine",
   "origin": "engine"
  },
@@ -284,6 +321,7 @@
   "class": "UMaterialExpressionClamp",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionClamp.h",
+  "header_hash": "bcf69564e0646dd9dfaea85693e367dda6b0551602b1bbada5e01f827863f6fb",
   "module": "Engine",
   "origin": "engine"
  },
@@ -293,6 +331,7 @@
   "class": "UMaterialExpressionClearCoatNormalCustomOutput",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionClearCoatNormalCustomOutput.h",
+  "header_hash": "71aff3703758e21abb05d0556ba0299828d3d7cab6e0e06bcfe3104fbf2692e8",
   "module": "Engine",
   "origin": "engine"
  },
@@ -302,6 +341,9 @@
   "class": "UMaterialExpressionCloudSampleAttribute",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionCloudLayer.h",
+  "header_hash": "9618e398577290a569b2e61ce171f42712578c1341f44819cd36195658356277",
+  "impl": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+  "impl_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371",
   "module": "Engine",
   "origin": "engine"
  },
@@ -311,6 +353,7 @@
   "class": "UMaterialExpressionCollectionParameter",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionCollectionParameter.h",
+  "header_hash": "ec14dd45d3cf02eb9cd37cac261094d37530d83bbc6d86cb494b2852b7f00e38",
   "module": "Engine",
   "origin": "engine"
  },
@@ -320,6 +363,7 @@
   "class": "UMaterialExpressionCollectionTransform",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionCollectionTransform.h",
+  "header_hash": "c9b4ce3988bcf5b8182e59ae10199fbe5ca5499f671825ab0c79a414c0281fc3",
   "module": "Engine",
   "origin": "engine"
  },
@@ -329,6 +373,7 @@
   "class": "UMaterialExpressionColorRamp",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionColorRamp.h",
+  "header_hash": "a4e195426bfba624c0d5966d1b89cc7e2e85ef6b384ff26afe7ee7d8094781d4",
   "module": "Engine",
   "origin": "engine"
  },
@@ -338,6 +383,9 @@
   "class": "UMaterialExpressionComment",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionComment.h",
+  "header_hash": "cc4a23914aae39d568342de74c8444bc6d1fe63ffb04f6258518c62abdff4c04",
+  "impl": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+  "impl_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371",
   "module": "Engine",
   "origin": "engine"
  },
@@ -347,6 +395,7 @@
   "class": "UMaterialExpressionComponentMask",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionComponentMask.h",
+  "header_hash": "2e0cb9fef3476c3b93bdd4680bf043a7cd61a6c11eb123325e99cb7567073762",
   "module": "Engine",
   "origin": "engine"
  },
@@ -356,6 +405,9 @@
   "class": "UMaterialExpressionComposite",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionComposite.h",
+  "header_hash": "2d289f79121756d8bdb2427ba26a1e2fa7973953b4a4b495f7a1ad511fce46d1",
+  "impl": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+  "impl_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371",
   "module": "Engine",
   "origin": "engine"
  },
@@ -365,6 +417,7 @@
   "class": "UMaterialExpressionConstant",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionConstant.h",
+  "header_hash": "dfda49018a4251d0a8a2f2ec29046e192e802fd04ae91e5d8ef532e73f2a6ddb",
   "module": "Engine",
   "origin": "engine"
  },
@@ -374,6 +427,7 @@
   "class": "UMaterialExpressionConstant2Vector",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionConstant2Vector.h",
+  "header_hash": "3da659da530fb7b52f6c7b69e981b9e259f6b14841f44569304771b9648bb5ae",
   "module": "Engine",
   "origin": "engine"
  },
@@ -383,6 +437,7 @@
   "class": "UMaterialExpressionConstant3Vector",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionConstant3Vector.h",
+  "header_hash": "b46af647bb1dafc9e14f7666eb4a67a45c2f8b5c1b2084e5b6fc191141379832",
   "module": "Engine",
   "origin": "engine"
  },
@@ -392,6 +447,7 @@
   "class": "UMaterialExpressionConstant4Vector",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionConstant4Vector.h",
+  "header_hash": "75d535a4c197ace20519fcafdd215407d7af9d090f98bb0ffd99c494d05623aa",
   "module": "Engine",
   "origin": "engine"
  },
@@ -401,6 +457,7 @@
   "class": "UMaterialExpressionConstantBiasScale",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionConstantBiasScale.h",
+  "header_hash": "759caab81b81352ff4aa81b03a5a09d004bc9357a4f47801dcb9fae50206bf66",
   "module": "Engine",
   "origin": "engine"
  },
@@ -410,6 +467,9 @@
   "class": "UMaterialExpressionConstantDouble",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionGenericConstant.h",
+  "header_hash": "91b947856d2c39b6ffedbfa202dfdfa1a361cc6fdfdd7dcbb5b92a71c13728a2",
+  "impl": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+  "impl_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371",
   "module": "Engine",
   "origin": "engine"
  },
@@ -419,6 +479,7 @@
   "class": "UMaterialExpressionConvert",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionConvert.h",
+  "header_hash": "107a973d6da531758b630981e364c7bbb3691402c3ee00de5a59546e723038c7",
   "module": "Engine",
   "origin": "engine"
  },
@@ -428,6 +489,7 @@
   "class": "UMaterialExpressionCosine",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionCosine.h",
+  "header_hash": "b948753705581686367308d191dd35b688fc9c0a12911401da19038fe25f6166",
   "module": "Engine",
   "origin": "engine"
  },
@@ -437,6 +499,7 @@
   "class": "UMaterialExpressionCrossProduct",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionCrossProduct.h",
+  "header_hash": "20193fdccf17bc816d10ea4db2dec3d8ecd2cb8507250606b35f90a72daa8b94",
   "module": "Engine",
   "origin": "engine"
  },
@@ -446,6 +509,7 @@
   "class": "UMaterialExpressionCurveAtlasRowParameter",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionCurveAtlasRowParameter.h",
+  "header_hash": "d9528a96e83875bc126609ddbd4dbf634b65db99a1d37082f4c20d351387946a",
   "module": "Engine",
   "origin": "engine"
  },
@@ -455,6 +519,7 @@
   "class": "UMaterialExpressionCustom",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionCustom.h",
+  "header_hash": "4e48ef82e9fb2fffe3734096aa6f104f43754737d68143af6b480997c150ca7d",
   "module": "Engine",
   "origin": "engine"
  },
@@ -464,6 +529,7 @@
   "class": "UMaterialExpressionCustomOutput",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionCustomOutput.h",
+  "header_hash": "2ab19c07e6b5bf094b844fa24d7d5961ed532a6afd9cd47d2e71e246d807fc8e",
   "module": "Engine",
   "origin": "engine"
  },
@@ -473,6 +539,7 @@
   "class": "UMaterialExpressionDBufferTexture",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionDBufferTexture.h",
+  "header_hash": "a04d398046edfade438e9ee616b316c646193863ed2f894c0a6ad75427345e60",
   "module": "Engine",
   "origin": "engine"
  },
@@ -482,6 +549,7 @@
   "class": "UMaterialExpressionDDX",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionDDX.h",
+  "header_hash": "94717a9f229622d9e276ce95a96394cee74454dce24c361ddd5dd9bafc3bfb32",
   "module": "Engine",
   "origin": "engine"
  },
@@ -491,6 +559,7 @@
   "class": "UMaterialExpressionDDY",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionDDY.h",
+  "header_hash": "67c6eec81cdc8ef5354ae803f3311f6721d51f2e30a19e6f80c1cebb44257171",
   "module": "Engine",
   "origin": "engine"
  },
@@ -500,6 +569,7 @@
   "class": "UMaterialExpressionDataDrivenShaderPlatformInfoSwitch",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionDataDrivenShaderPlatformInfoSwitch.h",
+  "header_hash": "525d40eff530c248027f7457e1f605026b4ceb088ebca857607383f6145a681c",
   "module": "Engine",
   "origin": "engine"
  },
@@ -509,6 +579,9 @@
   "class": "UMaterialExpressionDecalColor",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionDecalColor.h",
+  "header_hash": "a5c0dfc7b6f29b648bd5f9f79150c14f74401e5a2457b5e26a7bd85f4724254f",
+  "impl": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+  "impl_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371",
   "module": "Engine",
   "origin": "engine"
  },
@@ -518,6 +591,7 @@
   "class": "UMaterialExpressionDecalDerivative",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionDecalDerivative.h",
+  "header_hash": "01883d5aaa4f15e3f25c2871080a8c95a284b820e56d21b37cec23b55c02febd",
   "module": "Engine",
   "origin": "engine"
  },
@@ -527,6 +601,9 @@
   "class": "UMaterialExpressionDecalLifetimeOpacity",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionDecalLifetimeOpacity.h",
+  "header_hash": "32d4a67f59dad6b6dd037fa100400aa6b291bf41cd0798e1271fd9ab653dcc76",
+  "impl": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+  "impl_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371",
   "module": "Engine",
   "origin": "engine"
  },
@@ -536,6 +613,7 @@
   "class": "UMaterialExpressionDecalMipmapLevel",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionDecalMipmapLevel.h",
+  "header_hash": "e4d53ffbad76e641bfe9bd3ee6818a64212a2eebd13a872641ef2c2ac5398aae",
   "module": "Engine",
   "origin": "engine"
  },
@@ -545,6 +623,9 @@
   "class": "UMaterialExpressionDeltaTime",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionDeltaTime.h",
+  "header_hash": "1ee5c8cd76646172c495ae7d183c845c6be0519f5f8ee6653dd78a2613a29d9d",
+  "impl": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+  "impl_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371",
   "module": "Engine",
   "origin": "engine"
  },
@@ -554,6 +635,7 @@
   "class": "UMaterialExpressionDepthFade",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionDepthFade.h",
+  "header_hash": "e09608748f88469e2e5ae6df987098d125ecf649fc0de89296ae33bbeef9a11b",
   "module": "Engine",
   "origin": "engine"
  },
@@ -563,6 +645,7 @@
   "class": "UMaterialExpressionDepthOfFieldFunction",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionDepthOfFieldFunction.h",
+  "header_hash": "c77ca352383ef2d84b13b6f4860bb8ecc32729cef00f42cc1eb4bbe20ec991c7",
   "module": "Engine",
   "origin": "engine"
  },
@@ -572,6 +655,7 @@
   "class": "UMaterialExpressionDeriveNormalZ",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionDeriveNormalZ.h",
+  "header_hash": "726982efc303392645072790a4dc861bcbb225eed6a5dc91736866aeb672f8d8",
   "module": "Engine",
   "origin": "engine"
  },
@@ -581,6 +665,7 @@
   "class": "UMaterialExpressionDesaturation",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionDesaturation.h",
+  "header_hash": "6256d296f7ea7ab038fffbe14198d5bb6606cb27a43d2a8e816844ac423a6d3b",
   "module": "Engine",
   "origin": "engine"
  },
@@ -590,6 +675,7 @@
   "class": "UMaterialExpressionDistance",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionDistance.h",
+  "header_hash": "5742677b773366bc072cda4db4580885649162119fe5fe0f7e3c7a076668ddd2",
   "module": "Engine",
   "origin": "engine"
  },
@@ -599,6 +685,7 @@
   "class": "UMaterialExpressionDistanceCullFade",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionDistanceCullFade.h",
+  "header_hash": "ac116a0b56924ca5d371883c0d6d5a5263273b015a4c65f038b55ac943b702b8",
   "module": "Engine",
   "origin": "engine"
  },
@@ -608,6 +695,7 @@
   "class": "UMaterialExpressionDistanceFieldApproxAO",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionDistanceFieldApproxAO.h",
+  "header_hash": "ed42470a5a520b4a26db0a00532d83db7eb304a198ec96f12964603e97baa653",
   "module": "Engine",
   "origin": "engine"
  },
@@ -617,6 +705,7 @@
   "class": "UMaterialExpressionDistanceFieldGradient",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionDistanceFieldGradient.h",
+  "header_hash": "f5021f316474c85d63102834fccc72205ac4eab777e1f0c8d8349dbcc1cadcf8",
   "module": "Engine",
   "origin": "engine"
  },
@@ -626,6 +715,7 @@
   "class": "UMaterialExpressionDistanceFieldsRenderingSwitch",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionDistanceFieldsRenderingSwitch.h",
+  "header_hash": "835ffe95ce6f7aefcba454bc9beaaff441723666fcce75b6bc17139e4202ed74",
   "module": "Engine",
   "origin": "engine"
  },
@@ -635,6 +725,7 @@
   "class": "UMaterialExpressionDistanceToNearestSurface",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionDistanceToNearestSurface.h",
+  "header_hash": "59d80420694feb37ce254388f61d20c73cfe0e3c6cdf67bec9d8808c01a0a812",
   "module": "Engine",
   "origin": "engine"
  },
@@ -644,6 +735,7 @@
   "class": "UMaterialExpressionDivide",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionDivide.h",
+  "header_hash": "eb19c4aadef79ebd5423e6261ce7ca4a6c159285f484729fda49203a2e1c05d3",
   "module": "Engine",
   "origin": "engine"
  },
@@ -653,6 +745,7 @@
   "class": "UMaterialExpressionDotProduct",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionDotProduct.h",
+  "header_hash": "1fc96397cda7a9c2b0ec18e5db22255c809f9f1d4a4d206ec2a775af546ea46f",
   "module": "Engine",
   "origin": "engine"
  },
@@ -662,6 +755,7 @@
   "class": "UMaterialExpressionDoubleVectorParameter",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionDoubleVectorParameter.h",
+  "header_hash": "a86540ad50adbc7b4264d1c1433b1c210108ee368c64ef6c25740227fd0e39ed",
   "module": "Engine",
   "origin": "engine"
  },
@@ -671,6 +765,7 @@
   "class": "UMaterialExpressionDynamicParameter",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionDynamicParameter.h",
+  "header_hash": "38a5f69c103e63baaab55aae43a9ef2d44f77aaccba363714bc87b53ba321ad5",
   "module": "Engine",
   "origin": "engine"
  },
@@ -680,6 +775,7 @@
   "class": "UMaterialExpressionEvalPhysicsIntegerField",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSamplePhysicsField.h",
+  "header_hash": "a0d3f85a41eee9788fa90459e60ac645434b4d440e9fe3fed1747e9a94bed9c6",
   "module": "Engine",
   "origin": "engine"
  },
@@ -689,6 +785,7 @@
   "class": "UMaterialExpressionEvalPhysicsScalarField",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSamplePhysicsField.h",
+  "header_hash": "a0d3f85a41eee9788fa90459e60ac645434b4d440e9fe3fed1747e9a94bed9c6",
   "module": "Engine",
   "origin": "engine"
  },
@@ -698,6 +795,7 @@
   "class": "UMaterialExpressionEvalPhysicsVectorField",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSamplePhysicsField.h",
+  "header_hash": "a0d3f85a41eee9788fa90459e60ac645434b4d440e9fe3fed1747e9a94bed9c6",
   "module": "Engine",
   "origin": "engine"
  },
@@ -707,6 +805,7 @@
   "class": "UMaterialExpressionExponential",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionExponential.h",
+  "header_hash": "3f9e7c636d1975502e7c3b8ee8fa76fc2ca9c29b285833246d3d175778737557",
   "module": "Engine",
   "origin": "engine"
  },
@@ -716,6 +815,7 @@
   "class": "UMaterialExpressionExponential2",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionExponential2.h",
+  "header_hash": "68667bd666ff2bfe36719180f661045a372522c56b8909a9ec4e437300e659de",
   "module": "Engine",
   "origin": "engine"
  },
@@ -725,6 +825,7 @@
   "class": "UMaterialExpressionExternalCodeBase",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionExternalCodeBase.h",
+  "header_hash": "791dda298690e72777aa3b4d83bc473e0b43607a0b2f08cf0fc49f47de413e7a",
   "module": "Engine",
   "origin": "engine"
  },
@@ -734,6 +835,9 @@
   "class": "UMaterialExpressionEyeAdaptation",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionEyeAdaptation.h",
+  "header_hash": "503147f9e2de0713df42ae6046001c6495c54de7013be3e0b830704aaa22aeb3",
+  "impl": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+  "impl_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371",
   "module": "Engine",
   "origin": "engine"
  },
@@ -743,6 +847,7 @@
   "class": "UMaterialExpressionEyeAdaptationInverse",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionEyeAdaptationInverse.h",
+  "header_hash": "a7eb10baed9cbfaba32226d0c0a151d61eb59feeb312aeb8a191bc7576c67423",
   "module": "Engine",
   "origin": "engine"
  },
@@ -752,6 +857,7 @@
   "class": "UMaterialExpressionFeatureLevelSwitch",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionFeatureLevelSwitch.h",
+  "header_hash": "e0b727384f3b14eeaefef863d757d2f2131b9a323f7e6065dab76d49339ff478",
   "module": "Engine",
   "origin": "engine"
  },
@@ -761,6 +867,7 @@
   "class": "UMaterialExpressionFirstPersonOutput",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionFirstPersonOutput.h",
+  "header_hash": "1fcb2c6dfa3a49ba8520c5460a632b52f170c7bfcca99e67d1fb71d7be5174f3",
   "module": "Engine",
   "origin": "engine"
  },
@@ -770,6 +877,7 @@
   "class": "UMaterialExpressionFloatToUInt",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionFloatToUInt.h",
+  "header_hash": "644963dc94b38ade2c08cfc98061ec65c65acaa4ac7dbf4b85ac714517a62e02",
   "module": "Engine",
   "origin": "engine"
  },
@@ -779,6 +887,7 @@
   "class": "UMaterialExpressionFloor",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionFloor.h",
+  "header_hash": "5f54df979dc21d5dbea8235d50d6077261ee4e60fa78b7cbd6174d9a4e12c7b0",
   "module": "Engine",
   "origin": "engine"
  },
@@ -788,6 +897,7 @@
   "class": "UMaterialExpressionFmod",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionFmod.h",
+  "header_hash": "ec6bb8036e14f1c1b429f3cdddc441627909f08e5d0664d807f316ef100f6116",
   "module": "Engine",
   "origin": "engine"
  },
@@ -797,6 +907,7 @@
   "class": "UMaterialExpressionFontSample",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionFontSample.h",
+  "header_hash": "fe70de82a209f6fb92a8237f3172970a86a4b4c4f419657ed05e435d8be25769",
   "module": "Engine",
   "origin": "engine"
  },
@@ -806,6 +917,7 @@
   "class": "UMaterialExpressionFontSampleParameter",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionFontSampleParameter.h",
+  "header_hash": "12e9ffff8fdd06b228aa4cb3068daf8ef5b4aed83156be2b9475ea158bb67781",
   "module": "Engine",
   "origin": "engine"
  },
@@ -815,6 +927,9 @@
   "class": "UMaterialExpressionFontSignedDistance",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionFontSignedDistance.h",
+  "header_hash": "e77161668c30185166cd2e904d80f250fa91e5e5df08465147663571e6ef1d3a",
+  "impl": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+  "impl_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371",
   "module": "Engine",
   "origin": "engine"
  },
@@ -824,6 +939,7 @@
   "class": "UMaterialExpressionFrac",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionFrac.h",
+  "header_hash": "8ad27a8361640fe626c175311fab018b940e22c0cb3cb1523d4cce8d1508ee0a",
   "module": "Engine",
   "origin": "engine"
  },
@@ -833,6 +949,7 @@
   "class": "UMaterialExpressionFresnel",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionFresnel.h",
+  "header_hash": "76ccab75398e2ad3a4b5aa42d212348f2308a5db003217531ea82fa7ca09b822",
   "module": "Engine",
   "origin": "engine"
  },
@@ -842,6 +959,7 @@
   "class": "UMaterialExpressionFunctionInput",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionFunctionInput.h",
+  "header_hash": "755174dc451fd9eccbc48e221e950bcc015dd41955c6cf75eb78178b0d15ef82",
   "module": "Engine",
   "origin": "engine"
  },
@@ -851,6 +969,7 @@
   "class": "UMaterialExpressionFunctionOutput",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionFunctionOutput.h",
+  "header_hash": "38202f45f41f33660780cec6470cfb2d1c7e455b376e7d7945762132784fa6c0",
   "module": "Engine",
   "origin": "engine"
  },
@@ -860,6 +979,7 @@
   "class": "UMaterialExpressionGIReplace",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionGIReplace.h",
+  "header_hash": "db578be34ecbd5d55d0096f5df2af5af01d2f3bf91a7a2df24b4b0e40130ccd1",
   "module": "Engine",
   "origin": "engine"
  },
@@ -869,6 +989,7 @@
   "class": "UMaterialExpressionGenericConstant",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionGenericConstant.h",
+  "header_hash": "91b947856d2c39b6ffedbfa202dfdfa1a361cc6fdfdd7dcbb5b92a71c13728a2",
   "module": "Engine",
   "origin": "engine"
  },
@@ -878,6 +999,7 @@
   "class": "UMaterialExpressionGetMaterialAttributes",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionGetMaterialAttributes.h",
+  "header_hash": "563c27f2ff68d53a060393b5fe0e5efcd0cfd73f1438f1cfe7c537c796e14c2a",
   "module": "Engine",
   "origin": "engine"
  },
@@ -887,6 +1009,7 @@
   "class": "UMaterialExpressionHairAttributes",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionHairAttributes.h",
+  "header_hash": "b746e897f2231d4736729e3a4ac1b8ffc19aaf7cb1ff551ee52ab1edf370b64f",
   "module": "Engine",
   "origin": "engine"
  },
@@ -896,6 +1019,7 @@
   "class": "UMaterialExpressionHairColor",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionHairColor.h",
+  "header_hash": "56aeb525c4eb5fe16ef9e9906c7c19b659480317ef7cd0ca7986470025ec1f63",
   "module": "Engine",
   "origin": "engine"
  },
@@ -905,6 +1029,9 @@
   "class": "UMaterialExpressionHeightfieldMinMaxTexture",
   "deprecated": false,
   "header": "Engine/Plugins/Experimental/VirtualHeightfieldMesh/Source/VirtualHeightfieldMesh/Private/HeightfieldMinMaxTextureMaterialExpression.h",
+  "header_hash": "b478f24611ea11cb22fe9e7f3289422b26cb0a4af6194a945278aa9a93fb36a9",
+  "impl": "Engine/Plugins/Experimental/VirtualHeightfieldMesh/Source/VirtualHeightfieldMesh/Private/HeightfieldMinMaxTextureMaterialExpression.cpp",
+  "impl_hash": "ebb41ff9faefcab6214c21ce49825ece730798fcecfe517871d229ca63282135",
   "module": "VirtualHeightfieldMesh",
   "origin": "plugin"
  },
@@ -914,6 +1041,7 @@
   "class": "UMaterialExpressionHsvToRgb",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionHsvToRgb.h",
+  "header_hash": "477f3094a61d1d774b1e2fdfb265bd11cfd374cb694deecf45422abd188bae95",
   "module": "Engine",
   "origin": "engine"
  },
@@ -923,6 +1051,7 @@
   "class": "UMaterialExpressionIf",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionIf.h",
+  "header_hash": "3c765bcc6b25784b470b19d4f18cf1c52b88255ed788b46f7005e7154194d2cb",
   "module": "Engine",
   "origin": "engine"
  },
@@ -932,6 +1061,7 @@
   "class": "UMaterialExpressionIfThenElse",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionIfThenElse.h",
+  "header_hash": "74cdd0ddea13817b5139d23edfe53bbcbe2c39b7bc75dd810a96dc811cb423ba",
   "module": "Engine",
   "origin": "engine"
  },
@@ -941,6 +1071,7 @@
   "class": "UMaterialExpressionInverseLinearInterpolate",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionInverseLinearInterpolate.h",
+  "header_hash": "cc5d5f1e1ce59ab2f989678a68c4afade321a3fc3723c05fbb4262f246ae7ee5",
   "module": "Engine",
   "origin": "engine"
  },
@@ -950,6 +1081,9 @@
   "class": "UMaterialExpressionIsFirstPerson",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionIsFirstPerson.h",
+  "header_hash": "13d8309e85cc08f7929bf3b06e1e8a8bd2a31f2165fe81aa1687c49c35b9f772",
+  "impl": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+  "impl_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371",
   "module": "Engine",
   "origin": "engine"
  },
@@ -959,6 +1093,9 @@
   "class": "UMaterialExpressionIsOrthographic",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionIsOrthographic.h",
+  "header_hash": "2dc6efd12654770877874034ba947d380f75143461fadfb8f29d9aa15585bf24",
+  "impl": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+  "impl_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371",
   "module": "Engine",
   "origin": "engine"
  },
@@ -968,6 +1105,7 @@
   "class": "UMaterialExpressionLandscapeGrassOutput",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Landscape/Classes/Materials/MaterialExpressionLandscapeGrassOutput.h",
+  "header_hash": "51cdb6c51b3e5d5a3227b39df73f35224e585a969a65aa6d99db9dfd6dddaa12",
   "module": "Landscape",
   "origin": "engine"
  },
@@ -977,6 +1115,9 @@
   "class": "UMaterialExpressionLandscapeLayerBlend",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Landscape/Classes/Materials/MaterialExpressionLandscapeLayerBlend.h",
+  "header_hash": "4bc8e99a1f93a3398b465502e7c94e3875fd0bd57519016c3c96af776c311172",
+  "impl": "Engine/Source/Runtime/Landscape/Private/Materials/MaterialExpressionLandscapeLayerBlend.cpp",
+  "impl_hash": "432614ec7877a8409e04b85a2aa906bf761e09eaa49721e503854dc2a1f4373c",
   "module": "Landscape",
   "origin": "engine"
  },
@@ -986,6 +1127,9 @@
   "class": "UMaterialExpressionLandscapeLayerCoords",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Landscape/Classes/Materials/MaterialExpressionLandscapeLayerCoords.h",
+  "header_hash": "a9e990f59115df5ff28b3c8771045dabd9d65174725a7f80042054aac1ba9d37",
+  "impl": "Engine/Source/Runtime/Landscape/Private/Materials/MaterialExpressionLandscapeLayerCoords.cpp",
+  "impl_hash": "0a72826e0216fa95b450a31308391735ccba871fe738bdac0671fe6c8497eab8",
   "module": "Landscape",
   "origin": "engine"
  },
@@ -995,6 +1139,9 @@
   "class": "UMaterialExpressionLandscapeLayerSample",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Landscape/Classes/Materials/MaterialExpressionLandscapeLayerSample.h",
+  "header_hash": "adb3756923fedb3d7a5c9bc3091da1328ee327df431fbf548a024c8258df402a",
+  "impl": "Engine/Source/Runtime/Landscape/Private/Materials/MaterialExpressionLandscapeLayerSample.cpp",
+  "impl_hash": "5ad08bc4c156f5a92975e78798a4396de5e3e1738a04541573bd97d955c9092d",
   "module": "Landscape",
   "origin": "engine"
  },
@@ -1004,6 +1151,9 @@
   "class": "UMaterialExpressionLandscapeLayerSwitch",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Landscape/Classes/Materials/MaterialExpressionLandscapeLayerSwitch.h",
+  "header_hash": "51edf498bf49a5850e300332b1e831e630d46d75dac8b71febbc2be73e92843f",
+  "impl": "Engine/Source/Runtime/Landscape/Private/Materials/MaterialExpressionLandscapeLayerSwitch.cpp",
+  "impl_hash": "0a2aee12523305faf17fdd8cb9b8a7d7adca531dbcd8228b31ae47b5123f3a54",
   "module": "Landscape",
   "origin": "engine"
  },
@@ -1013,6 +1163,9 @@
   "class": "UMaterialExpressionLandscapeLayerWeight",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Landscape/Classes/Materials/MaterialExpressionLandscapeLayerWeight.h",
+  "header_hash": "2d2f94ad8aec4273501f303d114febc465efd095a5afe7044390cc175e6bc18f",
+  "impl": "Engine/Source/Runtime/Landscape/Private/Materials/MaterialExpressionLandscapeLayerWeight.cpp",
+  "impl_hash": "b6007091919f671eca90a602d91394c3cf27625acb287655c2e0e51955ad7bd5",
   "module": "Landscape",
   "origin": "engine"
  },
@@ -1022,6 +1175,9 @@
   "class": "UMaterialExpressionLandscapePhysicalMaterialOutput",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Landscape/Classes/Materials/MaterialExpressionLandscapePhysicalMaterialOutput.h",
+  "header_hash": "9eece28c9594def11cb0dcf9554308a46f8e5c329534b91be46643317e3a2dfb",
+  "impl": "Engine/Source/Runtime/Landscape/Private/Materials/MaterialExpressionLandscapePhysicalMaterialOutput.cpp",
+  "impl_hash": "1f0c3340354a994f8b981616dac6d1231ecc4663cfb6a5fa44b9f5cd105d50a2",
   "module": "Landscape",
   "origin": "engine"
  },
@@ -1031,6 +1187,7 @@
   "class": "UMaterialExpressionLandscapeVisibilityMask",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Landscape/Classes/Materials/MaterialExpressionLandscapeVisibilityMask.h",
+  "header_hash": "b1f4589e3fdcd9eea763000da4eac34718fa8492145af68e6b618d22e85b79ed",
   "module": "Landscape",
   "origin": "engine"
  },
@@ -1040,6 +1197,7 @@
   "class": "UMaterialExpressionLayerStack",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionLayerStack.h",
+  "header_hash": "224717c4b80174dbac3b469ff9f6c5e34a4d1f658501d236456d1932e9923830",
   "module": "Engine",
   "origin": "engine"
  },
@@ -1049,6 +1207,9 @@
   "class": "UMaterialExpressionLegacyBlendMaterialAttributes",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionBlendMaterialAttributes.h",
+  "header_hash": "0e7ae95032ae6a1cc9b0cd078d7d6aabd31fcc31bd276b7d4feb7a5d736e9ddd",
+  "impl": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+  "impl_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371",
   "module": "Engine",
   "origin": "engine"
  },
@@ -1058,6 +1219,7 @@
   "class": "UMaterialExpressionLength",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionLength.h",
+  "header_hash": "236fde9449d3b3fcd90d305b340388f9336fcc5dea952d4d93201fd193efdde2",
   "module": "Engine",
   "origin": "engine"
  },
@@ -1067,6 +1229,9 @@
   "class": "UMaterialExpressionLightVector",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionLightVector.h",
+  "header_hash": "31e0b7e392a23f5c139161123b641358bb87cbad0d189ba3561abf7e2b77441e",
+  "impl": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+  "impl_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371",
   "module": "Engine",
   "origin": "engine"
  },
@@ -1076,6 +1241,9 @@
   "class": "UMaterialExpressionLightmapUVs",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionLightmapUVs.h",
+  "header_hash": "a9e4f1c89b9a369ec98baf7ecfeb5a786104baf77e20c364829bf19469b19e47",
+  "impl": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+  "impl_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371",
   "module": "Engine",
   "origin": "engine"
  },
@@ -1085,6 +1253,7 @@
   "class": "UMaterialExpressionLightmassReplace",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionLightmassReplace.h",
+  "header_hash": "7c1bb07201fd647720a5dbbd290d155bede45fed800dc5b7bdbeb0156a11cc48",
   "module": "Engine",
   "origin": "engine"
  },
@@ -1094,6 +1263,7 @@
   "class": "UMaterialExpressionLinearInterpolate",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionLinearInterpolate.h",
+  "header_hash": "37de96a57aed02c8365e1102a2d5db8699279382e12115d2464d01d405868c62",
   "module": "Engine",
   "origin": "engine"
  },
@@ -1103,6 +1273,7 @@
   "class": "UMaterialExpressionLocalPosition",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionLocalPosition.h",
+  "header_hash": "04bbf9281e246a7a447b52be8d96e504fe1e3bdc727215eb5fc6aecdf703b63b",
   "module": "Engine",
   "origin": "engine"
  },
@@ -1112,6 +1283,7 @@
   "class": "UMaterialExpressionLogarithm",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionLogarithm.h",
+  "header_hash": "936c89489b1b40308af2c6b7452aa210c4e84ff9a8859004f0f6da7052e0d485",
   "module": "Engine",
   "origin": "engine"
  },
@@ -1121,6 +1293,7 @@
   "class": "UMaterialExpressionLogarithm10",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionLogarithm10.h",
+  "header_hash": "732efc72c6ee4d9e09443d615d131ea021c845923d2745bcd9152163d7870521",
   "module": "Engine",
   "origin": "engine"
  },
@@ -1130,6 +1303,7 @@
   "class": "UMaterialExpressionLogarithm2",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionLogarithm2.h",
+  "header_hash": "5546e4115fcd901ed877cfcadd8ab5df0c7d02f45ecd0369e9f235462a3478d1",
   "module": "Engine",
   "origin": "engine"
  },
@@ -1139,6 +1313,9 @@
   "class": "UMaterialExpressionMainDirectionalLight",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionMainDirectionalLight.h",
+  "header_hash": "cfea2a6abf26ed8c8a2c1cb40659ae371e7804f7ed536694dd90ec46f0bbba42",
+  "impl": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+  "impl_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371",
   "module": "Engine",
   "origin": "engine"
  },
@@ -1148,6 +1325,7 @@
   "class": "UMaterialExpressionMakeMaterialAttributes",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionMakeMaterialAttributes.h",
+  "header_hash": "0f7152f91a322f65ab9900473fab0a4df9b1e10341cbfcee8645197db84e792c",
   "module": "Engine",
   "origin": "engine"
  },
@@ -1157,6 +1335,7 @@
   "class": "UMaterialExpressionMapARPassthroughCameraUV",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionMapARPassthroughCameraUV.h",
+  "header_hash": "b6cd00a5f646fb579f4e5606447e8859b4a754251adfde743a129791289b1e07",
   "module": "Engine",
   "origin": "engine"
  },
@@ -1166,6 +1345,7 @@
   "class": "UMaterialExpressionMaterialAttributeLayers",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionMaterialAttributeLayers.h",
+  "header_hash": "c2dca19903897857760a68fb0adc7535a4d1351f8e91cfe4b65e566dfa095189",
   "module": "Engine",
   "origin": "engine"
  },
@@ -1175,6 +1355,7 @@
   "class": "UMaterialExpressionMaterialCache",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionMaterialCache.h",
+  "header_hash": "d374b014d24dd4a741af931a2c495033415f357a6b835c35b5e8120f284bff22",
   "module": "Engine",
   "origin": "engine"
  },
@@ -1184,6 +1365,7 @@
   "class": "UMaterialExpressionMaterialFunctionCall",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionMaterialFunctionCall.h",
+  "header_hash": "af50d07788587f4ef39ced6729c476e0fb9ad3e27b954451102fd43d5fbcaa6a",
   "module": "Engine",
   "origin": "engine"
  },
@@ -1193,6 +1375,9 @@
   "class": "UMaterialExpressionMaterialLayerOutput",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionMaterialLayerOutput.h",
+  "header_hash": "db1ce163fccfe0d53c856b1f5d7eb0a2d1e571e7dde7682391ad75f06162145b",
+  "impl": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+  "impl_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371",
   "module": "Engine",
   "origin": "engine"
  },
@@ -1202,6 +1387,7 @@
   "class": "UMaterialExpressionMaterialProxyReplace",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionMaterialProxyReplace.h",
+  "header_hash": "830efe9d2ea1d6a4296b44d29e52079d4b3b4b92fc29e97a2c9d229effc261f1",
   "module": "Engine",
   "origin": "engine"
  },
@@ -1211,6 +1397,9 @@
   "class": "UMaterialExpressionMaterialSample",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Internal/Materials/MaterialExpressionMaterialSample.h",
+  "header_hash": "bc175538f0996318992fddcc6a86ceb58979d7107d7b4cf815f93250d836e6c1",
+  "impl": "Engine/Source/Runtime/Engine/Internal/Materials/MaterialExpressionMaterialSample.cpp",
+  "impl_hash": "e2a0d327aada3b79ea814e50c056f4456681ad5d4eb13c887de6f2996e56ecfa",
   "module": "Engine",
   "origin": "engine"
  },
@@ -1220,6 +1409,9 @@
   "class": "UMaterialExpressionMaterialXAppend3Vector",
   "deprecated": false,
   "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionAppend3Vector.h",
+  "header_hash": "892c1e15b11383ec225e56f90ee58566a822aafaae4212bddd3fb9ca3054317c",
+  "impl": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionAppend3Vector.cpp",
+  "impl_hash": "4318d290fe8d803b7b56f4bca8a6e64a5564bb2cd5d6c2b93ac7d0e748c55b4b",
   "module": "Import",
   "origin": "plugin"
  },
@@ -1229,6 +1421,9 @@
   "class": "UMaterialExpressionMaterialXAppend4Vector",
   "deprecated": false,
   "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionAppend4Vector.h",
+  "header_hash": "a433d38abd67c2f2fea6171fb084ddaae401df13cc60fe5ce8ab8078040ca284",
+  "impl": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionAppend4Vector.cpp",
+  "impl_hash": "f4bdb78916de9d5752c7d61d94f71dae29662929849c4a0fd77c4b83c5114579",
   "module": "Import",
   "origin": "plugin"
  },
@@ -1238,6 +1433,9 @@
   "class": "UMaterialExpressionMaterialXBurn",
   "deprecated": false,
   "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionBurn.h",
+  "header_hash": "3b7f86e61ce817f1b3f801395648a70d31d8628d3b0cf09577df9dae5a9b7d02",
+  "impl": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionBurn.cpp",
+  "impl_hash": "fa7bd4ba2588edbdb48dd8e27ecc8babd0da78c4f45dfd5411b4cbb673c52601",
   "module": "Import",
   "origin": "plugin"
  },
@@ -1247,6 +1445,9 @@
   "class": "UMaterialExpressionMaterialXContrast",
   "deprecated": false,
   "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionContrast.h",
+  "header_hash": "0fc4812453e881ae8df7e9aa675f2fda57e132b72fe04149ff9bd185f3a99723",
+  "impl": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionContrast.cpp",
+  "impl_hash": "07c4cabf5a8a8549363846d1488a7e25a2a500a8b145e4e20dfca763116a5574",
   "module": "Import",
   "origin": "plugin"
  },
@@ -1256,6 +1457,9 @@
   "class": "UMaterialExpressionMaterialXDifference",
   "deprecated": false,
   "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionDifference.h",
+  "header_hash": "b03de99c374ca2f910375d80f79860e670a6facd1695337c83610eed33d64bbd",
+  "impl": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionDifference.cpp",
+  "impl_hash": "3ff5b8bbf8a26d80665c893697b3033616ce130ff78e49e8d0dd78cc28c5dc13",
   "module": "Import",
   "origin": "plugin"
  },
@@ -1265,6 +1469,9 @@
   "class": "UMaterialExpressionMaterialXDisjointOver",
   "deprecated": false,
   "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionDisjointOver.h",
+  "header_hash": "5fc80c284db38c58a5b671b25a3aed6a592404f05e40459c38d01bc12d7c13e0",
+  "impl": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionDisjointOver.cpp",
+  "impl_hash": "2939e870f2251c44e261d567d8c301b39b1cd4a81bc49ce4c0d386453e7c0332",
   "module": "Import",
   "origin": "plugin"
  },
@@ -1274,6 +1481,9 @@
   "class": "UMaterialExpressionMaterialXDodge",
   "deprecated": false,
   "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionDodge.h",
+  "header_hash": "0903c7baef837f58d30a3c854bb23f60b72ebb78abd2bd684dad63d4f2fe7de2",
+  "impl": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionDodge.cpp",
+  "impl_hash": "6f71343fffe9c7ad0c3a5a6655e0900ea76739ea929981b6eb8476f053226fdf",
   "module": "Import",
   "origin": "plugin"
  },
@@ -1283,6 +1493,9 @@
   "class": "UMaterialExpressionMaterialXFractal",
   "deprecated": false,
   "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionFractal.h",
+  "header_hash": "9052cff37c33c8b5dabb94bc8c684158d217383b1671fb056acd035b6535a983",
+  "impl": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionFractal.cpp",
+  "impl_hash": "4cdb7c77a47f4977d20b547d65cf962a2118518dcc6137ea61bb09b9dcb24a11",
   "module": "Import",
   "origin": "plugin"
  },
@@ -1292,6 +1505,9 @@
   "class": "UMaterialExpressionMaterialXIn",
   "deprecated": false,
   "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionIn.h",
+  "header_hash": "a2a3171df558142f0dc866f60fe0de6c4db9aea65848614f3175970784cb7564",
+  "impl": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionIn.cpp",
+  "impl_hash": "169664f8d506ed281ddafd6d879f7db2ef4b27e76974bb2220fcc3b830da973f",
   "module": "Import",
   "origin": "plugin"
  },
@@ -1301,6 +1517,9 @@
   "class": "UMaterialExpressionMaterialXLuminance",
   "deprecated": false,
   "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionLuminance.h",
+  "header_hash": "c6805b4457c2cf38e1cc76f9a88c4a8afbf2272fde072c77b25146fc1687aaa8",
+  "impl": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionLuminance.cpp",
+  "impl_hash": "71e6419e2c59ed121bd32b2fb292db8e31e82cf8eb9fa4c30ba5a366d1a80b56",
   "module": "Import",
   "origin": "plugin"
  },
@@ -1310,6 +1529,9 @@
   "class": "UMaterialExpressionMaterialXMask",
   "deprecated": false,
   "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionMask.h",
+  "header_hash": "7c359a44529cedcdb1669d59c4005d9a50991b4f1d2def6fb5122956cd79204a",
+  "impl": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionMask.cpp",
+  "impl_hash": "17c67434210c6afd8eea0dad143c8a681af17f9787c607025e3c1bdc2092539b",
   "module": "Import",
   "origin": "plugin"
  },
@@ -1319,6 +1541,9 @@
   "class": "UMaterialExpressionMaterialXMatte",
   "deprecated": false,
   "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionMatte.h",
+  "header_hash": "eb258b32891cf9477097fbe973a8227e40326a9bba881385135f18ceb0bbc790",
+  "impl": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionMatte.cpp",
+  "impl_hash": "6051ec2d69e07ebe5feb220cae27add8891e6bb083816e660832ee00517782a4",
   "module": "Import",
   "origin": "plugin"
  },
@@ -1328,6 +1553,9 @@
   "class": "UMaterialExpressionMaterialXMinus",
   "deprecated": false,
   "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionMinus.h",
+  "header_hash": "58b5487ba5d50637c2996dd18f0a67377c273a5700b5de14b3132e138199a7aa",
+  "impl": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionMinus.cpp",
+  "impl_hash": "d87274d425487f6575851fc922b6f030262549f45106586b474cf60be52997a1",
   "module": "Import",
   "origin": "plugin"
  },
@@ -1337,6 +1565,9 @@
   "class": "UMaterialExpressionMaterialXMod",
   "deprecated": false,
   "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionMod.h",
+  "header_hash": "2a6b870dd77fd2a0b4d5f3862d972096ec93a5e56cffc9735ad735eda137485b",
+  "impl": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionMod.cpp",
+  "impl_hash": "7de37263814f05ac4f06716a4973b414e529fd661d697053f1cf060244ecf52f",
   "module": "Import",
   "origin": "plugin"
  },
@@ -1346,6 +1577,9 @@
   "class": "UMaterialExpressionMaterialXOut",
   "deprecated": false,
   "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionOut.h",
+  "header_hash": "687783dbb0001d88af46a3f2018889c2627a2e24428bc3c8f241f9aa1ca56a6e",
+  "impl": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionOut.cpp",
+  "impl_hash": "00d31c977b4d03d1a5c62058c7f938cc3646d6ba12c241e57b2b2850bcd942fb",
   "module": "Import",
   "origin": "plugin"
  },
@@ -1355,6 +1589,9 @@
   "class": "UMaterialExpressionMaterialXOver",
   "deprecated": false,
   "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionOver.h",
+  "header_hash": "e18176f11c7072c4981d0bed90a751736b27781047c71a5602cd104c80a55171",
+  "impl": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionOver.cpp",
+  "impl_hash": "f5c1b05d3a2c614ea2bbc0f77169166803aacd0146a9ff49c065ffe8a22a4fab",
   "module": "Import",
   "origin": "plugin"
  },
@@ -1364,6 +1601,9 @@
   "class": "UMaterialExpressionMaterialXOverlay",
   "deprecated": false,
   "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionOverlay.h",
+  "header_hash": "6a676e2dc00b7e44588ef8b825891d04905e5d442799c02c614d13356c41f5ea",
+  "impl": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionOverlay.cpp",
+  "impl_hash": "a7b6a3b1f4d262bd856721410c4e4e5c388c405a67d46b31b1eca06cd4ac6b88",
   "module": "Import",
   "origin": "plugin"
  },
@@ -1373,6 +1613,9 @@
   "class": "UMaterialExpressionMaterialXPlus",
   "deprecated": false,
   "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionPlus.h",
+  "header_hash": "34a9ef54898eafe5d3d251aa7041a69bfde5e5f08dc1bde8413ea5401be58944",
+  "impl": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionPlus.cpp",
+  "impl_hash": "3b6687540766bc987c4e0c681db14d7ed422057a5384c97e292ef94779cbf653",
   "module": "Import",
   "origin": "plugin"
  },
@@ -1382,6 +1625,9 @@
   "class": "UMaterialExpressionMaterialXPremult",
   "deprecated": false,
   "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionPremult.h",
+  "header_hash": "4edfad67f22345f8407f2a4df695fd3d55c1ba9c9c4f0e945c44925703e7169b",
+  "impl": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionPremult.cpp",
+  "impl_hash": "02065e3654f535a18ff56af16e5822907a9b296152f4e1b0f282f9b3c425f979",
   "module": "Import",
   "origin": "plugin"
  },
@@ -1391,6 +1637,9 @@
   "class": "UMaterialExpressionMaterialXRamp4",
   "deprecated": false,
   "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionRamp4.h",
+  "header_hash": "351c1954dde151dfbc38abaf35e3f41ff801def61b711289c63ffd7498e5264f",
+  "impl": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionRamp4.cpp",
+  "impl_hash": "eb86a4e1cb3d9c3a412b8c06e649db19fdd614c5e90bd8d5fea375a2fb0faf0f",
   "module": "Import",
   "origin": "plugin"
  },
@@ -1400,6 +1649,9 @@
   "class": "UMaterialExpressionMaterialXRampLeftRight",
   "deprecated": false,
   "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionRampLeftRight.h",
+  "header_hash": "b3ade5a8dd51b1f243f7fb8441a3ee2bf3c971014694c071dbb1890c1d637434",
+  "impl": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionRampLeftRight.cpp",
+  "impl_hash": "235a1d723057ef5009670da9c1ae90cf2983cca52f7ffed1997edd3be1402a98",
   "module": "Import",
   "origin": "plugin"
  },
@@ -1409,6 +1661,9 @@
   "class": "UMaterialExpressionMaterialXRampTopBottom",
   "deprecated": false,
   "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionRampTopBottom.h",
+  "header_hash": "e5b82f8deb45dc1efd7e2d11f6e36c7b9ebe4f42f390f15ad9211421ab3ccf5c",
+  "impl": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionRampTopBottom.cpp",
+  "impl_hash": "c8a9e6723af209785ffebe59364892501519b9271c8cc0036369aead2e771726",
   "module": "Import",
   "origin": "plugin"
  },
@@ -1418,6 +1673,9 @@
   "class": "UMaterialExpressionMaterialXRange",
   "deprecated": false,
   "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionRange.h",
+  "header_hash": "6e6b026c5c92af850ee6db58656553bb5c9ede063cf76b4b6fc7dd3ed1f6b872",
+  "impl": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionRange.cpp",
+  "impl_hash": "7cf7e311e9b6b2b1a3c7b0f1fcb1140afe992e4d2a40e5f81af6b732e46346f7",
   "module": "Import",
   "origin": "plugin"
  },
@@ -1427,6 +1685,9 @@
   "class": "UMaterialExpressionMaterialXRemap",
   "deprecated": false,
   "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionRemap.h",
+  "header_hash": "675246ed10210d0bf8637575bed768a4eba3fcd130917121355eb2ce159564c2",
+  "impl": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionRemap.cpp",
+  "impl_hash": "9f0c18ee52bdfbf22a987feeebc7a86e55ab9db8eec71f6fc7c665cd438dcb31",
   "module": "Import",
   "origin": "plugin"
  },
@@ -1436,6 +1697,9 @@
   "class": "UMaterialExpressionMaterialXScreen",
   "deprecated": false,
   "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionScreen.h",
+  "header_hash": "758696b644af4ee7f265c62bd26404e2a810194d596983b918bc95b5a81ba22f",
+  "impl": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionScreen.cpp",
+  "impl_hash": "a002823363f9e9566a87d599b62993ce920519bc9b195de7558790c32abf0943",
   "module": "Import",
   "origin": "plugin"
  },
@@ -1445,6 +1709,9 @@
   "class": "UMaterialExpressionMaterialXSplitLeftRight",
   "deprecated": false,
   "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionSplitLeftRight.h",
+  "header_hash": "43c7a1fbd452b0888cc67249b6329f0e4ab4539c4fd0876f74e9616a4fade766",
+  "impl": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionSplitLeftRight.cpp",
+  "impl_hash": "d3ea47c9eb1b014170b25f24005ba43236ef1aa7e2c5660205d8732b29b77843",
   "module": "Import",
   "origin": "plugin"
  },
@@ -1454,6 +1721,9 @@
   "class": "UMaterialExpressionMaterialXSplitTopBottom",
   "deprecated": false,
   "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionSplitTopBottom.h",
+  "header_hash": "82e73e7de97419a509c2ba23fc89f0c7509ef60470334fb6f7cb74efced359ea",
+  "impl": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionSplitTopBottom.cpp",
+  "impl_hash": "bd2b18cdf92c0b03fd6264d0480f90a1266a82222a504c4f9e39a0a696d36477",
   "module": "Import",
   "origin": "plugin"
  },
@@ -1463,6 +1733,9 @@
   "class": "UMaterialExpressionMaterialXTextureSampleParameterBlur",
   "deprecated": false,
   "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Public/MaterialX/MaterialExpressions/MaterialExpressionTextureSampleParameterBlur.h",
+  "header_hash": "c5bfb25c3988540dcadcb8285c07088df878164d0d4bf38960b2082828cb737e",
+  "impl": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionTextureSampleParameterBlur.cpp",
+  "impl_hash": "9c10f3772f02fe96e48cfaf0fac6fdbe4b82434ebcbff754445d44a4db335ea0",
   "module": "Import",
   "origin": "plugin"
  },
@@ -1472,6 +1745,9 @@
   "class": "UMaterialExpressionMaterialXUnpremult",
   "deprecated": false,
   "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionUnpremult.h",
+  "header_hash": "f850808f14d78d1c129dd0e60a85e4178c6fbfaa2b24230fe0550d83f6d0c224",
+  "impl": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionUnpremult.cpp",
+  "impl_hash": "077509f4695088d0bf8579ffa3564986e1f5521362c26e2873fee7debeadafc2",
   "module": "Import",
   "origin": "plugin"
  },
@@ -1481,6 +1757,7 @@
   "class": "UMaterialExpressionMax",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionMax.h",
+  "header_hash": "db263dd6ce8dda49a9ce090f92ce9f52f854d86dad812d1e53706ca091469be3",
   "module": "Engine",
   "origin": "engine"
  },
@@ -1490,6 +1767,9 @@
   "class": "UMaterialExpressionMeshPaintTextureCoordinateIndex",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionMeshPaintTextureCoordinateIndex.h",
+  "header_hash": "52d0f06a0a9b739992224ea5b38b6dfc109a41ada2b36930a389b14afafe5d68",
+  "impl": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+  "impl_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371",
   "module": "Engine",
   "origin": "engine"
  },
@@ -1499,6 +1779,7 @@
   "class": "UMaterialExpressionMeshPaintTextureObject",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionMeshPaintTextureObject.h",
+  "header_hash": "0aa6bf34d0baec39c0b1bad17e6e4976298e551bccc8cfe072acfa93e15990cd",
   "module": "Engine",
   "origin": "engine"
  },
@@ -1508,6 +1789,7 @@
   "class": "UMaterialExpressionMeshPaintTextureReplace",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionMeshPaintTextureReplace.h",
+  "header_hash": "1ed9c1fa11a39594c5bdb55dac7d95a38fb59c48034d77f5e72208c3b1bed35e",
   "module": "Engine",
   "origin": "engine"
  },
@@ -1517,6 +1799,9 @@
   "class": "UMaterialExpressionMeshPartitionChannelSample",
   "deprecated": false,
   "header": "Engine/Plugins/Experimental/MeshPartition/Source/MeshPartitionEditor/Public/MeshPartitionMaterialExpressionUtils.h",
+  "header_hash": "097d217992c1cb0e075b8e9d5125ef291145d8e1f3b7e56d33bb3048e68a1293",
+  "impl": "Engine/Plugins/Experimental/MeshPartition/Source/MeshPartitionEditor/Private/MeshPartitionMaterialExpressionUtils.cpp",
+  "impl_hash": "3b517ce60397cd295a5a114cc5bbf5d86c69e4896c79eb67c5934937eb329646",
   "module": "MeshPartitionEditor",
   "origin": "plugin"
  },
@@ -1526,6 +1811,9 @@
   "class": "UMaterialExpressionMeshPartitionChannelSampleIndex",
   "deprecated": false,
   "header": "Engine/Plugins/Experimental/MeshPartition/Source/MeshPartitionEditor/Public/MeshPartitionMaterialExpressionUtils.h",
+  "header_hash": "097d217992c1cb0e075b8e9d5125ef291145d8e1f3b7e56d33bb3048e68a1293",
+  "impl": "Engine/Plugins/Experimental/MeshPartition/Source/MeshPartitionEditor/Private/MeshPartitionMaterialExpressionUtils.cpp",
+  "impl_hash": "3b517ce60397cd295a5a114cc5bbf5d86c69e4896c79eb67c5934937eb329646",
   "module": "MeshPartitionEditor",
   "origin": "plugin"
  },
@@ -1535,6 +1823,9 @@
   "class": "UMaterialExpressionMeshPartitionInspector",
   "deprecated": false,
   "header": "Engine/Plugins/Experimental/MeshPartition/Source/MeshPartitionEditor/Public/MeshPartitionMaterialExpressionUtils.h",
+  "header_hash": "097d217992c1cb0e075b8e9d5125ef291145d8e1f3b7e56d33bb3048e68a1293",
+  "impl": "Engine/Plugins/Experimental/MeshPartition/Source/MeshPartitionEditor/Private/MeshPartitionMaterialExpressionUtils.cpp",
+  "impl_hash": "3b517ce60397cd295a5a114cc5bbf5d86c69e4896c79eb67c5934937eb329646",
   "module": "MeshPartitionEditor",
   "origin": "plugin"
  },
@@ -1544,6 +1835,9 @@
   "class": "UMaterialExpressionMeshPartitionResource",
   "deprecated": false,
   "header": "Engine/Plugins/Experimental/MeshPartition/Source/MeshPartitionEditor/Public/MeshPartitionMaterialExpressionUtils.h",
+  "header_hash": "097d217992c1cb0e075b8e9d5125ef291145d8e1f3b7e56d33bb3048e68a1293",
+  "impl": "Engine/Plugins/Experimental/MeshPartition/Source/MeshPartitionEditor/Private/MeshPartitionMaterialExpressionUtils.cpp",
+  "impl_hash": "3b517ce60397cd295a5a114cc5bbf5d86c69e4896c79eb67c5934937eb329646",
   "module": "MeshPartitionEditor",
   "origin": "plugin"
  },
@@ -1553,6 +1847,9 @@
   "class": "UMaterialExpressionMeshPartitionTexcoord",
   "deprecated": false,
   "header": "Engine/Plugins/Experimental/MeshPartition/Source/MeshPartitionEditor/Public/MeshPartitionMaterialExpressionUtils.h",
+  "header_hash": "097d217992c1cb0e075b8e9d5125ef291145d8e1f3b7e56d33bb3048e68a1293",
+  "impl": "Engine/Plugins/Experimental/MeshPartition/Source/MeshPartitionEditor/Private/MeshPartitionMaterialExpressionUtils.cpp",
+  "impl_hash": "3b517ce60397cd295a5a114cc5bbf5d86c69e4896c79eb67c5934937eb329646",
   "module": "MeshPartitionEditor",
   "origin": "plugin"
  },
@@ -1562,6 +1859,7 @@
   "class": "UMaterialExpressionMin",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionMin.h",
+  "header_hash": "58eb645e55eab011d188a7689ec352f296ed0ee529ccbc046a76dc4ca6ea7edd",
   "module": "Engine",
   "origin": "engine"
  },
@@ -1571,6 +1869,7 @@
   "class": "UMaterialExpressionModulo",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionModulo.h",
+  "header_hash": "cd94a679ab8d8ad1904a31ada0ce0bb811f4cb5215a4ef6c690afe4c93fee9f7",
   "module": "Engine",
   "origin": "engine"
  },
@@ -1580,6 +1879,7 @@
   "class": "UMaterialExpressionMotionVectorWorldOffsetOutput",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionMotionVectorWorldOffsetOutput.h",
+  "header_hash": "c45625523ba04cb251762a4fd3594ca14b687497eb9b62f6866b825b7aecbec0",
   "module": "Engine",
   "origin": "engine"
  },
@@ -1589,6 +1889,7 @@
   "class": "UMaterialExpressionMultiply",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionMultiply.h",
+  "header_hash": "62515b50ab7489bb0da1d7e20b23f194e271b9bf6050282327408819fddb4bc0",
   "module": "Engine",
   "origin": "engine"
  },
@@ -1598,6 +1899,9 @@
   "class": "UMaterialExpressionNamedRerouteBase",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionNamedReroute.h",
+  "header_hash": "06f7ffcd617d613f302616d39f4cfb662fc7b6fe8b27dad2d466d0426d02b09f",
+  "impl": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+  "impl_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371",
   "module": "Engine",
   "origin": "engine"
  },
@@ -1607,6 +1911,7 @@
   "class": "UMaterialExpressionNamedRerouteDeclaration",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionNamedReroute.h",
+  "header_hash": "06f7ffcd617d613f302616d39f4cfb662fc7b6fe8b27dad2d466d0426d02b09f",
   "module": "Engine",
   "origin": "engine"
  },
@@ -1616,6 +1921,7 @@
   "class": "UMaterialExpressionNamedRerouteUsage",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionNamedReroute.h",
+  "header_hash": "06f7ffcd617d613f302616d39f4cfb662fc7b6fe8b27dad2d466d0426d02b09f",
   "module": "Engine",
   "origin": "engine"
  },
@@ -1625,6 +1931,7 @@
   "class": "UMaterialExpressionNaniteReplace",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionNaniteReplace.h",
+  "header_hash": "336ba84a6bbe7271e37e8333ba723730a70e5d375de534988442312b27c94f9e",
   "module": "Engine",
   "origin": "engine"
  },
@@ -1634,6 +1941,7 @@
   "class": "UMaterialExpressionNeuralNetworkInput",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionNeuralPostProcessNode.h",
+  "header_hash": "e1220ffe27cb2cf5f5a4e1ee55e7175b94c7908e0d4c897938e592063a705dce",
   "module": "Engine",
   "origin": "engine"
  },
@@ -1643,6 +1951,7 @@
   "class": "UMaterialExpressionNeuralNetworkOutput",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionNeuralPostProcessNode.h",
+  "header_hash": "e1220ffe27cb2cf5f5a4e1ee55e7175b94c7908e0d4c897938e592063a705dce",
   "module": "Engine",
   "origin": "engine"
  },
@@ -1652,6 +1961,7 @@
   "class": "UMaterialExpressionNoise",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionNoise.h",
+  "header_hash": "40c73c96486257e9c49e355621e5f431a6aafdbee89d34cd237e9d6d17263fab",
   "module": "Engine",
   "origin": "engine"
  },
@@ -1661,6 +1971,7 @@
   "class": "UMaterialExpressionNormalize",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionNormalize.h",
+  "header_hash": "cc9cd880648185c3b6cc3695a42f08a9e392db7337b1dfa601dc1fd03fdcb5d2",
   "module": "Engine",
   "origin": "engine"
  },
@@ -1670,6 +1981,9 @@
   "class": "UMaterialExpressionObjectBounds",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionObjectBounds.h",
+  "header_hash": "7ae8d31f12d5a3a1b4167dfa439807ffe5177ad4efd180b54938f21167a28409",
+  "impl": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+  "impl_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371",
   "module": "Engine",
   "origin": "engine"
  },
@@ -1679,6 +1993,9 @@
   "class": "UMaterialExpressionObjectLocalBounds",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionObjectLocalBounds.h",
+  "header_hash": "70cde18889f64824c515cd6e1389a815263e67992f6baea6e9a02b5ddd30d61d",
+  "impl": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+  "impl_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371",
   "module": "Engine",
   "origin": "engine"
  },
@@ -1688,6 +2005,9 @@
   "class": "UMaterialExpressionObjectOrientation",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionObjectOrientation.h",
+  "header_hash": "9fff35453e7fc1e4c5c4ca69315fc3abf0807d854fbe8fba41372f7abe5ed903",
+  "impl": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+  "impl_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371",
   "module": "Engine",
   "origin": "engine"
  },
@@ -1697,6 +2017,7 @@
   "class": "UMaterialExpressionObjectPositionWS",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionObjectPositionWS.h",
+  "header_hash": "2c36fd93ce04247933719cc70e7fdbc1845e4f2bd66e73ba1d4743510e505619",
   "module": "Engine",
   "origin": "engine"
  },
@@ -1706,6 +2027,9 @@
   "class": "UMaterialExpressionObjectRadius",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionObjectRadius.h",
+  "header_hash": "fb2d3c4378b7a49ac1545cab870efa0956cee99a2eade9d306ad17ae5b26e1e1",
+  "impl": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+  "impl_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371",
   "module": "Engine",
   "origin": "engine"
  },
@@ -1715,6 +2039,7 @@
   "class": "UMaterialExpressionOneMinus",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionOneMinus.h",
+  "header_hash": "b3b97792fa8dbb8b7eff2f7d28760b0914bc90c15f44e0b306018b37de2949ce",
   "module": "Engine",
   "origin": "engine"
  },
@@ -1724,6 +2049,7 @@
   "class": "UMaterialExpressionOperator",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionOperator.h",
+  "header_hash": "fa146aac3e467251dccfccbc383d019b503aeb36f9a40e8556be4d8174d0e7e6",
   "module": "Engine",
   "origin": "engine"
  },
@@ -1733,6 +2059,7 @@
   "class": "UMaterialExpressionPanner",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionPanner.h",
+  "header_hash": "ec9433e3dd5208fdc5c65e27ca3a489c799433d75a035f823ca0831a4fe527e1",
   "module": "Engine",
   "origin": "engine"
  },
@@ -1742,6 +2069,9 @@
   "class": "UMaterialExpressionParameter",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionParameter.h",
+  "header_hash": "501a874633b523cc209b4b6ea1ebc73decbed64b2942b78b73cffac47eaa3dc3",
+  "impl": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+  "impl_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371",
   "module": "Engine",
   "origin": "engine"
  },
@@ -1751,6 +2081,9 @@
   "class": "UMaterialExpressionParticleColor",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionParticleColor.h",
+  "header_hash": "b7cd5f07205d4f7f6c7a4cac9f352a5f626977ce21d12850bc3b3016c5811994",
+  "impl": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+  "impl_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371",
   "module": "Engine",
   "origin": "engine"
  },
@@ -1760,6 +2093,9 @@
   "class": "UMaterialExpressionParticleDirection",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionParticleDirection.h",
+  "header_hash": "e9c404f8c199440422553753cba28be660f650b2bcb1dbca4ffcb5862a13d266",
+  "impl": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+  "impl_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371",
   "module": "Engine",
   "origin": "engine"
  },
@@ -1769,6 +2105,9 @@
   "class": "UMaterialExpressionParticleMacroUV",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionParticleMacroUV.h",
+  "header_hash": "91df80cc79f4e2201a58d48286faefdd21af4abb1d1bb59cf6b1811c155470b1",
+  "impl": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+  "impl_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371",
   "module": "Engine",
   "origin": "engine"
  },
@@ -1778,6 +2117,9 @@
   "class": "UMaterialExpressionParticleMotionBlurFade",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionParticleMotionBlurFade.h",
+  "header_hash": "33bb392f630e59d34ba3184f8f7feeca6e0366fd0746c2a55d75553709817a2e",
+  "impl": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+  "impl_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371",
   "module": "Engine",
   "origin": "engine"
  },
@@ -1787,6 +2129,7 @@
   "class": "UMaterialExpressionParticlePositionWS",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionParticlePositionWS.h",
+  "header_hash": "69825c040861aac453d78f747158cf29637757e53d12c357227b717aea391998",
   "module": "Engine",
   "origin": "engine"
  },
@@ -1796,6 +2139,9 @@
   "class": "UMaterialExpressionParticleRadius",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionParticleRadius.h",
+  "header_hash": "918a918b5e1fecda45a6f58e890b512fe52f7af41203f089f86c97db3bacabd3",
+  "impl": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+  "impl_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371",
   "module": "Engine",
   "origin": "engine"
  },
@@ -1805,6 +2151,9 @@
   "class": "UMaterialExpressionParticleRandom",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionParticleRandom.h",
+  "header_hash": "ed3263c10809a8c513f278bfa34ea490ef6782ebba62237ce56ec17400205789",
+  "impl": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+  "impl_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371",
   "module": "Engine",
   "origin": "engine"
  },
@@ -1814,6 +2163,9 @@
   "class": "UMaterialExpressionParticleRelativeTime",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionParticleRelativeTime.h",
+  "header_hash": "328d9d83e84dc261a4947f1c6a573aac1d5c9c2233bd5b572cf7f853df0ed805",
+  "impl": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+  "impl_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371",
   "module": "Engine",
   "origin": "engine"
  },
@@ -1823,6 +2175,9 @@
   "class": "UMaterialExpressionParticleSize",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionParticleSize.h",
+  "header_hash": "cd52ef71147c77e6820eac46eb0bf98641215ea0f4ba3453e231744678d9eed8",
+  "impl": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+  "impl_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371",
   "module": "Engine",
   "origin": "engine"
  },
@@ -1832,6 +2187,9 @@
   "class": "UMaterialExpressionParticleSpeed",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionParticleSpeed.h",
+  "header_hash": "07a6af8f0052c801a8ded2c1b07994654a51a32d0f455072746901c4fa3da425",
+  "impl": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+  "impl_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371",
   "module": "Engine",
   "origin": "engine"
  },
@@ -1841,6 +2199,9 @@
   "class": "UMaterialExpressionParticleSpriteRotation",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionParticleSpriteRotation.h",
+  "header_hash": "bc8f35d937c21e878da8be1a93fd49e97a0ab02a9e50ce8893ac6326bab2b455",
+  "impl": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+  "impl_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371",
   "module": "Engine",
   "origin": "engine"
  },
@@ -1850,6 +2211,7 @@
   "class": "UMaterialExpressionParticleSubUV",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionParticleSubUV.h",
+  "header_hash": "b323b4e77e4308f87a017ca3ee176d8fe370f3505fb2c044bb782e2388728538",
   "module": "Engine",
   "origin": "engine"
  },
@@ -1859,6 +2221,9 @@
   "class": "UMaterialExpressionParticleSubUVProperties",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionParticleSubUVProperties.h",
+  "header_hash": "555374c5405649ec79e21a75b59124a5af3a1d6e56d79dba2548370fe44161ef",
+  "impl": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+  "impl_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371",
   "module": "Engine",
   "origin": "engine"
  },
@@ -1868,6 +2233,7 @@
   "class": "UMaterialExpressionPathTracingBufferTexture",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionPathTracingBufferTexture.h",
+  "header_hash": "b1baa8c5bff4b8a83a3670dd775b56013af109bb043ba70e45ed665697b987ec",
   "module": "Engine",
   "origin": "engine"
  },
@@ -1877,6 +2243,7 @@
   "class": "UMaterialExpressionPathTracingQualitySwitch",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionPathTracingQualitySwitch.h",
+  "header_hash": "c25f990ffab0ad022b0e1dcac4c4ec6374784da897b8d7075978641597d6414f",
   "module": "Engine",
   "origin": "engine"
  },
@@ -1886,6 +2253,7 @@
   "class": "UMaterialExpressionPathTracingRayTypeSwitch",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionPathTracingRayTypeSwitch.h",
+  "header_hash": "fe2bea5f3e2dce397e3797d8ac582f67e4eff2cb8363818de54ff3223a5c5fb3",
   "module": "Engine",
   "origin": "engine"
  },
@@ -1895,6 +2263,7 @@
   "class": "UMaterialExpressionPerInstanceCustomData",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionPerInstanceCustomData.h",
+  "header_hash": "5d1352f83f55cb382d6225a4d77db1c6bcd7075fdb2c8dcd4868da66b235c8fa",
   "module": "Engine",
   "origin": "engine"
  },
@@ -1904,6 +2273,7 @@
   "class": "UMaterialExpressionPerInstanceCustomData3Vector",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionPerInstanceCustomData.h",
+  "header_hash": "5d1352f83f55cb382d6225a4d77db1c6bcd7075fdb2c8dcd4868da66b235c8fa",
   "module": "Engine",
   "origin": "engine"
  },
@@ -1913,6 +2283,9 @@
   "class": "UMaterialExpressionPerInstanceFadeAmount",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionPerInstanceFadeAmount.h",
+  "header_hash": "9c5d2f0d802360537b8ca36be0879b587e3ff74d8f655a8fdbba477ae0123a82",
+  "impl": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+  "impl_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371",
   "module": "Engine",
   "origin": "engine"
  },
@@ -1922,6 +2295,7 @@
   "class": "UMaterialExpressionPerInstanceRandom",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionPerInstanceRandom.h",
+  "header_hash": "71b3b426f186aed82fe2ea2819d0e0fd6429d0ee7290968cdddb8e5f4975ad11",
   "module": "Engine",
   "origin": "engine"
  },
@@ -1931,6 +2305,9 @@
   "class": "UMaterialExpressionPhysicalMaterialOutput",
   "deprecated": false,
   "header": "Engine/Plugins/Runtime/RenderTrace/Source/Private/Materials/MaterialExpressionPhysicalMaterialOutput.h",
+  "header_hash": "fb3bab599311ada31145d6316a5160506c424dea5a875d87c909d641f8f3b298",
+  "impl": "Engine/Plugins/Runtime/RenderTrace/Source/Private/Materials/MaterialExpressionPhysicalMaterialOutput.cpp",
+  "impl_hash": "d26560348c892b047d90d1e99a6caf114e23ef984abdedd445d6c6d6c024a6f4",
   "module": "Private",
   "origin": "plugin"
  },
@@ -1940,6 +2317,9 @@
   "class": "UMaterialExpressionPinBase",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionPinBase.h",
+  "header_hash": "328a9f896ea5df3dcbfbeb2dcbef461978295220f6facd072cc1fc5693bb2ccd",
+  "impl": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+  "impl_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371",
   "module": "Engine",
   "origin": "engine"
  },
@@ -1949,6 +2329,9 @@
   "class": "UMaterialExpressionPixelDepth",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionPixelDepth.h",
+  "header_hash": "f4d43a6afbcf52ac528db64938749b41d60afbfd3e46bf63f2700b49da561250",
+  "impl": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+  "impl_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371",
   "module": "Engine",
   "origin": "engine"
  },
@@ -1958,6 +2341,7 @@
   "class": "UMaterialExpressionPixelNormalWS",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionPixelNormalWS.h",
+  "header_hash": "c162a44260e4a3f3bc238051632136ca709ec99fc5fa5af0d98f6e9ef426aa0c",
   "module": "Engine",
   "origin": "engine"
  },
@@ -1967,6 +2351,7 @@
   "class": "UMaterialExpressionPostVolumeUserFlagTest",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionPostVolumeUserFlagTest.h",
+  "header_hash": "6541700220cddc06dcabdca7fe1581ed809fa638fa118f24272c5c7c88d61884",
   "module": "Engine",
   "origin": "engine"
  },
@@ -1976,6 +2361,7 @@
   "class": "UMaterialExpressionPower",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionPower.h",
+  "header_hash": "149e0792a668be40c91d035b383018060dc91c754048ad5dad1d9f2455285108",
   "module": "Engine",
   "origin": "engine"
  },
@@ -1985,6 +2371,7 @@
   "class": "UMaterialExpressionPreSkinnedLocalBounds",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionPreSkinnedLocalBounds.h",
+  "header_hash": "62a129aecff2ecc266003ad1443721a9346e29a472afe3560b5597f14e985488",
   "module": "Engine",
   "origin": "engine"
  },
@@ -1994,6 +2381,7 @@
   "class": "UMaterialExpressionPreSkinnedNormal",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionPreSkinnedNormal.h",
+  "header_hash": "5e72415913e565d235620e38eb15532b13aada680ece7c7dcffe1d93dce2c577",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2003,6 +2391,9 @@
   "class": "UMaterialExpressionPreSkinnedPosition",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionPreSkinnedPosition.h",
+  "header_hash": "e5ed3ad4e34c02cd2c061023087c57b3fe1071cfc8c63b3ea01b52ce1337abd2",
+  "impl": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+  "impl_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2012,6 +2403,9 @@
   "class": "UMaterialExpressionPrecomputedAOMask",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionPrecomputedAOMask.h",
+  "header_hash": "cc23841b7d351d88d892a68d983d01e7eb45e638f52ffa3f287eb643b0f0ee32",
+  "impl": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+  "impl_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2021,6 +2415,7 @@
   "class": "UMaterialExpressionPreviousFrameSwitch",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionPreviousFrameSwitch.h",
+  "header_hash": "0e6ee10751799ca91caf37a0a5716181568b2cb111c20ded4260c1e76f6c50c4",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2030,6 +2425,7 @@
   "class": "UMaterialExpressionQualitySwitch",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionQualitySwitch.h",
+  "header_hash": "8796ca688ca017b0751e115520e918d05e4225898e62222bf32b025e9110630e",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2039,6 +2435,7 @@
   "class": "UMaterialExpressionRayTracingQualitySwitch",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionRayTracingQualitySwitch.h",
+  "header_hash": "616fe54b2f4fd8b2672c5f868b4e20335e381085f54d9030af81eda8908948dd",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2048,6 +2445,9 @@
   "class": "UMaterialExpressionRecordTextureStreamingInfo",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionRecordTextureStreamingInfo.h",
+  "header_hash": "bf8203438482e914c8b3b039c93fe7ad07ecb31bf963fc01091b39a547c53338",
+  "impl": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+  "impl_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2057,6 +2457,7 @@
   "class": "UMaterialExpressionReflectionCapturePassSwitch",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionReflectionCapturePassSwitch.h",
+  "header_hash": "4c9ae8899513830008337095fa8513a68cbc6b2d28cb4edfeb7fe5338d8c95e7",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2066,6 +2467,7 @@
   "class": "UMaterialExpressionReflectionVectorWS",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionReflectionVectorWS.h",
+  "header_hash": "e6cafcc12a4ff839fe40f4aca72604c576fb7ef707cbba322386e4098604e5d8",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2075,6 +2477,7 @@
   "class": "UMaterialExpressionRequiredSamplersSwitch",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionRequiredSamplersSwitch.h",
+  "header_hash": "3cb2bec17a8bc18aef3d71ba7ad067c6205f1de5af68ad07bf8d49451f1d1ad4",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2084,6 +2487,7 @@
   "class": "UMaterialExpressionReroute",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionReroute.h",
+  "header_hash": "4af87b02550c67978c7adf513af50c5b462268e9ea217117c687a55b011e4dfd",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2093,6 +2497,7 @@
   "class": "UMaterialExpressionRerouteBase",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionRerouteBase.h",
+  "header_hash": "ecba46ca6745a64c10d897a23680018d3789de04601667429f2e736d1048e524",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2102,6 +2507,7 @@
   "class": "UMaterialExpressionRgbToHsv",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionRgbToHsv.h",
+  "header_hash": "126eac6afb019cda7e3ecdfaba976a95782c8e0a1d9254b8d192eeda7990e5ea",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2111,6 +2517,7 @@
   "class": "UMaterialExpressionRotateAboutAxis",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionRotateAboutAxis.h",
+  "header_hash": "c08276de342d8dd17aab450420e7df138a583d3cd9d47038f3550f9d2e377b93",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2120,6 +2527,7 @@
   "class": "UMaterialExpressionRotator",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionRotator.h",
+  "header_hash": "5715e8914de2deb2a90ca1f97c4d47054d3f110afdd176dfdea1eb89d9ce9fee",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2129,6 +2537,7 @@
   "class": "UMaterialExpressionRound",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionRound.h",
+  "header_hash": "7a86044784be391cd2374be24893aa234e9fe1f537f5f15bc2f6b3cb9d64d6ff",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2138,6 +2547,9 @@
   "class": "UMaterialExpressionRuntimeVirtualTextureCustomData",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionRuntimeVirtualTextureCustomData.h",
+  "header_hash": "b954241b0aa8f2d2cc593fe8d2873cb0028cd8989b67ec4d8af6db17dfe0ced3",
+  "impl": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+  "impl_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2147,6 +2559,7 @@
   "class": "UMaterialExpressionRuntimeVirtualTextureOutput",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionRuntimeVirtualTextureOutput.h",
+  "header_hash": "746b32772eb8c13726c5e2570e83179ce87e7c9dd0ab56dc655bde39792df8db",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2156,6 +2569,9 @@
   "class": "UMaterialExpressionRuntimeVirtualTextureReplace",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionRuntimeVirtualTextureReplace.h",
+  "header_hash": "665021950d1ef1144753759bc09b9363ba6cec4561f6f1d96521f8f165af1aa3",
+  "impl": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+  "impl_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2165,6 +2581,7 @@
   "class": "UMaterialExpressionRuntimeVirtualTextureSample",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionRuntimeVirtualTextureSample.h",
+  "header_hash": "36f42b14b3ba3855076e3accd2dce36a1abeb84feb03eb08abcef414f7afb8d7",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2174,6 +2591,9 @@
   "class": "UMaterialExpressionRuntimeVirtualTextureSampleParameter",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionRuntimeVirtualTextureSampleParameter.h",
+  "header_hash": "d4aff0c5c0ec0328b2aff24d49d94d2db1b7b93ad8d9c3d304944a4321110b2a",
+  "impl": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+  "impl_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2183,6 +2603,7 @@
   "class": "UMaterialExpressionSRGBColorToWorkingColorSpace",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSRGBColorToWorkingColorSpace.h",
+  "header_hash": "1d01610ae12be2c75189a2c65a19cb06b9a5d8db48cd67fb214eb2442b5db8ee",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2192,6 +2613,7 @@
   "class": "UMaterialExpressionSamplePhysicsIntegerField",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSamplePhysicsField.h",
+  "header_hash": "a0d3f85a41eee9788fa90459e60ac645434b4d440e9fe3fed1747e9a94bed9c6",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2201,6 +2623,7 @@
   "class": "UMaterialExpressionSamplePhysicsScalarField",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSamplePhysicsField.h",
+  "header_hash": "a0d3f85a41eee9788fa90459e60ac645434b4d440e9fe3fed1747e9a94bed9c6",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2210,6 +2633,7 @@
   "class": "UMaterialExpressionSamplePhysicsVectorField",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSamplePhysicsField.h",
+  "header_hash": "a0d3f85a41eee9788fa90459e60ac645434b4d440e9fe3fed1747e9a94bed9c6",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2219,6 +2643,7 @@
   "class": "UMaterialExpressionSaturate",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSaturate.h",
+  "header_hash": "be4c640fb2dc9c61e2daec52c5930e3e8d53cfdf7bb84af8fbe8a4e56de356a0",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2228,6 +2653,9 @@
   "class": "UMaterialExpressionScalarBlueNoise",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionNoise.h",
+  "header_hash": "40c73c96486257e9c49e355621e5f431a6aafdbee89d34cd237e9d6d17263fab",
+  "impl": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionNoise.cpp",
+  "impl_hash": "b9eccafd4bbd36e447cf692d05186204fc07c8f08546fab53022928153955a6d",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2237,6 +2665,7 @@
   "class": "UMaterialExpressionScalarParameter",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionScalarParameter.h",
+  "header_hash": "1a954544fbe007fd77f01999680815c9f601b3f5201a28131d8bb00dc41c4caa",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2246,6 +2675,7 @@
   "class": "UMaterialExpressionSceneColor",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSceneColor.h",
+  "header_hash": "16c11a3c82f11eea101404aa07be30040d95626db0d1eb610ddd6132f214b890",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2255,6 +2685,7 @@
   "class": "UMaterialExpressionSceneDepth",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSceneDepth.h",
+  "header_hash": "df7b3e9aeb300cce5771349eb9e818fa4d6185580aa51accd1fd31ce20023963",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2264,6 +2695,7 @@
   "class": "UMaterialExpressionSceneDepthWithoutWater",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSceneDepthWithoutWater.h",
+  "header_hash": "015986365b0e7127ef5be3e2bbe1f45c54c7de497b5919ba1c9a40df82e77ea2",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2273,6 +2705,7 @@
   "class": "UMaterialExpressionSceneTexelSize",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSceneTexelSize.h",
+  "header_hash": "4d672179ff9ec5e8f1ac62b1b1fe42417d7de95508216c962b24f84068692354",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2282,6 +2715,7 @@
   "class": "UMaterialExpressionSceneTexture",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSceneTexture.h",
+  "header_hash": "8ebeaff4406f268868a3279e026a16d734176039aed7e49d25c4b464261f8578",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2291,6 +2725,9 @@
   "class": "UMaterialExpressionScreenPosition",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionScreenPosition.h",
+  "header_hash": "2cab38af1dd8973bce118d5be83f925a2dab87a0214f45891210797b5bc228f2",
+  "impl": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+  "impl_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2300,6 +2737,7 @@
   "class": "UMaterialExpressionSetMaterialAttributes",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSetMaterialAttributes.h",
+  "header_hash": "b248db77ea48940318e0cdd2be5f132bfa53abed93255405e87b2d37b4e1db40",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2309,6 +2747,7 @@
   "class": "UMaterialExpressionShaderStageSwitch",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionShaderStageSwitch.h",
+  "header_hash": "3c4892bfb5f9e34d90b3c252edaf4d538c7d758536776eff578e8e8387120f17",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2318,6 +2757,7 @@
   "class": "UMaterialExpressionShadingModel",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionShadingModel.h",
+  "header_hash": "f500e61d45db87e4c45b3586ebc8f13a338853b93f6a9a5d58a5a60509a6d450",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2327,6 +2767,7 @@
   "class": "UMaterialExpressionShadingPathSwitch",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionShadingPathSwitch.h",
+  "header_hash": "3c545372078ef38319313034ffd8c3d66c2692315a8b1bd1b8f4712c3863273d",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2336,6 +2777,7 @@
   "class": "UMaterialExpressionShadowReplace",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionShadowReplace.h",
+  "header_hash": "2e0301f974f6f0e33bfeea49746fa5906a2a5e2368813bf348109e0cc743056c",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2345,6 +2787,7 @@
   "class": "UMaterialExpressionSign",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSign.h",
+  "header_hash": "0f8a9e1ab50c5fb5173aafad75c2ed2679089afa688511038697f09b6097fceb",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2354,6 +2797,7 @@
   "class": "UMaterialExpressionSine",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSine.h",
+  "header_hash": "acabb088a7c20406b50098ea2b52a59236db4da4c59a51ded8e437e1e02c579f",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2363,6 +2807,7 @@
   "class": "UMaterialExpressionSingleLayerWaterMaterialOutput",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSingleLayerWaterMaterialOutput.h",
+  "header_hash": "6bcbecbd84524b50b1500f0cdadc3cf360bcb3c00bb612baea95639daf39c7a9",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2372,6 +2817,7 @@
   "class": "UMaterialExpressionSkyAtmosphereAerialPerspective",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSkyAtmosphereLightIlluminance.h",
+  "header_hash": "9f09350f056c0b83520e097d80619d66d2aab415cbb7bc6159f800b0a2ae0119",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2381,6 +2827,9 @@
   "class": "UMaterialExpressionSkyAtmosphereDistantLightScatteredLuminance",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSkyAtmosphereLightIlluminance.h",
+  "header_hash": "9f09350f056c0b83520e097d80619d66d2aab415cbb7bc6159f800b0a2ae0119",
+  "impl": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+  "impl_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2390,6 +2839,7 @@
   "class": "UMaterialExpressionSkyAtmosphereLightDirection",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSkyAtmosphereLightDirection.h",
+  "header_hash": "d18d835a6718e46fec37c16f0661c58f419cfd885f0db14ba550b92e20509df2",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2399,6 +2849,7 @@
   "class": "UMaterialExpressionSkyAtmosphereLightDiskLuminance",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSkyAtmosphereLightIlluminance.h",
+  "header_hash": "9f09350f056c0b83520e097d80619d66d2aab415cbb7bc6159f800b0a2ae0119",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2408,6 +2859,7 @@
   "class": "UMaterialExpressionSkyAtmosphereLightIlluminance",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSkyAtmosphereLightIlluminance.h",
+  "header_hash": "9f09350f056c0b83520e097d80619d66d2aab415cbb7bc6159f800b0a2ae0119",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2417,6 +2869,7 @@
   "class": "UMaterialExpressionSkyAtmosphereLightIlluminanceOnGround",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSkyAtmosphereLightIlluminance.h",
+  "header_hash": "9f09350f056c0b83520e097d80619d66d2aab415cbb7bc6159f800b0a2ae0119",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2426,6 +2879,7 @@
   "class": "UMaterialExpressionSkyAtmosphereViewLuminance",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSkyAtmosphereViewLuminance.h",
+  "header_hash": "6eda14495a48ec8d21652b85dae872b57f86ae5bf447fb5c173fda708ca1bcf4",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2435,6 +2889,7 @@
   "class": "UMaterialExpressionSkyLightEnvMapSample",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSkyLightEnvMapSample.h",
+  "header_hash": "b1bf8b1d241eb849c214fe19e9f7aca1a9aeec3b7347b1c869fbeaaa8eeb89c1",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2444,6 +2899,7 @@
   "class": "UMaterialExpressionSmoothStep",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSmoothStep.h",
+  "header_hash": "381c260a0d3fefd11c46ce5c8d6f370d2f0e7f43dd2893a1da1ec54f216a7472",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2453,6 +2909,7 @@
   "class": "UMaterialExpressionSobol",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSobol.h",
+  "header_hash": "ddb47ac78909cb4b6b8acda6db1562ecf0c96c5d3cb38baf80d98e94afd507dc",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2462,6 +2919,9 @@
   "class": "UMaterialExpressionSparseVolumeTextureBase",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSparseVolumeTextureBase.h",
+  "header_hash": "60b7d907619f5d069f47648a6bc0a853059d2e47af5acefc8aed158b7aca75c4",
+  "impl": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+  "impl_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2471,6 +2931,9 @@
   "class": "UMaterialExpressionSparseVolumeTextureObject",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSparseVolumeTextureObject.h",
+  "header_hash": "092bb11745426111d7bcf39dad59f07fe662a1dc108ca2c3242360bfafbcc8fc",
+  "impl": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+  "impl_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2480,6 +2943,9 @@
   "class": "UMaterialExpressionSparseVolumeTextureObjectParameter",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSparseVolumeTextureObject.h",
+  "header_hash": "092bb11745426111d7bcf39dad59f07fe662a1dc108ca2c3242360bfafbcc8fc",
+  "impl": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+  "impl_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2489,6 +2955,9 @@
   "class": "UMaterialExpressionSparseVolumeTextureSample",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSparseVolumeTextureSample.h",
+  "header_hash": "fb64a460cc1aef8414d79c04b579761488237f85808202d084f949551ed7d2d9",
+  "impl": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+  "impl_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2498,6 +2967,9 @@
   "class": "UMaterialExpressionSparseVolumeTextureSampleParameter",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSparseVolumeTextureSample.h",
+  "header_hash": "fb64a460cc1aef8414d79c04b579761488237f85808202d084f949551ed7d2d9",
+  "impl": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+  "impl_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2507,6 +2979,7 @@
   "class": "UMaterialExpressionSpeedTree",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSpeedTree.h",
+  "header_hash": "9bbec33354aed8365c9cfcc0c620ec1484f9fded04544b8d141a5ecf5cd30e03",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2516,6 +2989,7 @@
   "class": "UMaterialExpressionSphereMask",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSphereMask.h",
+  "header_hash": "2c729540a0da9a35e06bc9eb9df7af9a4fc79417863db1780010b5ddcdb26f0d",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2525,6 +2999,7 @@
   "class": "UMaterialExpressionSphericalParticleOpacity",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSphericalParticleOpacity.h",
+  "header_hash": "291bfa8a76b1fbd129faf188fad74f403fdd14f20262b14de09d54b79ed16269",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2534,6 +3009,9 @@
   "class": "UMaterialExpressionSpriteTextureSampler",
   "deprecated": false,
   "header": "Engine/Plugins/2D/Paper2D/Source/Paper2D/Public/MaterialExpressionSpriteTextureSampler.h",
+  "header_hash": "2243785231da99d7c7697df50a255912c6834b9a000c567a2118448fd199e56a",
+  "impl": "Engine/Plugins/2D/Paper2D/Source/Paper2D/Private/Rendering/MaterialExpressionSpriteTextureSampler.cpp",
+  "impl_hash": "685d54fb1c2940582a50db948aecf0aaccf6bf2b54384236b54a988cd963a130",
   "module": "Paper2D",
   "origin": "plugin"
  },
@@ -2543,6 +3021,7 @@
   "class": "UMaterialExpressionSquareRoot",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSquareRoot.h",
+  "header_hash": "8516ba748f5eaafba5c4071824833f3dd913bf8d9d1334adbeed873423fa8202",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2552,6 +3031,7 @@
   "class": "UMaterialExpressionStaticBool",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionStaticBool.h",
+  "header_hash": "fea15ce0879b54b65d5be88e7d8bc8ee5ffc6df5911c4ac3671149e79c56625c",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2561,6 +3041,7 @@
   "class": "UMaterialExpressionStaticBoolParameter",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionStaticBoolParameter.h",
+  "header_hash": "8d7a4249d04bf7a11d3ec80994ed44647e0c878c36893faad921aa7428b81052",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2570,6 +3051,7 @@
   "class": "UMaterialExpressionStaticComponentMaskParameter",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionStaticComponentMaskParameter.h",
+  "header_hash": "f63cf6c0ac53e2df83d2f50dfef3b905a958a1b03a658ca47500f17e24557347",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2579,6 +3061,7 @@
   "class": "UMaterialExpressionStaticSwitch",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionStaticSwitch.h",
+  "header_hash": "b1bd208487805ee3ad7c0e5137dc07883a366891dce644703111e898136470e4",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2588,6 +3071,7 @@
   "class": "UMaterialExpressionStaticSwitchParameter",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionStaticSwitchParameter.h",
+  "header_hash": "03bf28faf9465a83e0ad911d7487544c90c517146c86bd478310be16e60dface",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2597,6 +3081,7 @@
   "class": "UMaterialExpressionStep",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionStep.h",
+  "header_hash": "54d2b5926790e971fc174cd73325dfd078e9e9ec0ee6882050e4f0169307e548",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2606,6 +3091,7 @@
   "class": "UMaterialExpressionSubstrateAdd",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSubstrate.h",
+  "header_hash": "d87d86f6f9979dfb6031f0a932283418697e48f7c365cd36f78ca5a919194b5a",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2615,6 +3101,7 @@
   "class": "UMaterialExpressionSubstrateBSDF",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSubstrate.h",
+  "header_hash": "d87d86f6f9979dfb6031f0a932283418697e48f7c365cd36f78ca5a919194b5a",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2624,6 +3111,7 @@
   "class": "UMaterialExpressionSubstrateConvertMaterialAttributes",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSubstrate.h",
+  "header_hash": "d87d86f6f9979dfb6031f0a932283418697e48f7c365cd36f78ca5a919194b5a",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2633,6 +3121,7 @@
   "class": "UMaterialExpressionSubstrateConvertToDecal",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSubstrate.h",
+  "header_hash": "d87d86f6f9979dfb6031f0a932283418697e48f7c365cd36f78ca5a919194b5a",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2642,6 +3131,7 @@
   "class": "UMaterialExpressionSubstrateEyeBSDF",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSubstrate.h",
+  "header_hash": "d87d86f6f9979dfb6031f0a932283418697e48f7c365cd36f78ca5a919194b5a",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2651,6 +3141,7 @@
   "class": "UMaterialExpressionSubstrateHairBSDF",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSubstrate.h",
+  "header_hash": "d87d86f6f9979dfb6031f0a932283418697e48f7c365cd36f78ca5a919194b5a",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2660,6 +3151,7 @@
   "class": "UMaterialExpressionSubstrateHazinessToSecondaryRoughness",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSubstrate.h",
+  "header_hash": "d87d86f6f9979dfb6031f0a932283418697e48f7c365cd36f78ca5a919194b5a",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2669,6 +3161,7 @@
   "class": "UMaterialExpressionSubstrateHorizontalMixing",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSubstrate.h",
+  "header_hash": "d87d86f6f9979dfb6031f0a932283418697e48f7c365cd36f78ca5a919194b5a",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2678,6 +3171,7 @@
   "class": "UMaterialExpressionSubstrateLightFunction",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSubstrate.h",
+  "header_hash": "d87d86f6f9979dfb6031f0a932283418697e48f7c365cd36f78ca5a919194b5a",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2687,6 +3181,7 @@
   "class": "UMaterialExpressionSubstrateMetalnessToDiffuseAlbedoF0",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSubstrate.h",
+  "header_hash": "d87d86f6f9979dfb6031f0a932283418697e48f7c365cd36f78ca5a919194b5a",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2696,6 +3191,7 @@
   "class": "UMaterialExpressionSubstratePostProcess",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSubstrate.h",
+  "header_hash": "d87d86f6f9979dfb6031f0a932283418697e48f7c365cd36f78ca5a919194b5a",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2705,6 +3201,7 @@
   "class": "UMaterialExpressionSubstrateSelect",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSubstrate.h",
+  "header_hash": "d87d86f6f9979dfb6031f0a932283418697e48f7c365cd36f78ca5a919194b5a",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2714,6 +3211,7 @@
   "class": "UMaterialExpressionSubstrateShadingModels",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSubstrate.h",
+  "header_hash": "d87d86f6f9979dfb6031f0a932283418697e48f7c365cd36f78ca5a919194b5a",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2723,6 +3221,7 @@
   "class": "UMaterialExpressionSubstrateSimpleClearCoatBSDF",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSubstrate.h",
+  "header_hash": "d87d86f6f9979dfb6031f0a932283418697e48f7c365cd36f78ca5a919194b5a",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2732,6 +3231,7 @@
   "class": "UMaterialExpressionSubstrateSingleLayerWaterBSDF",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSubstrate.h",
+  "header_hash": "d87d86f6f9979dfb6031f0a932283418697e48f7c365cd36f78ca5a919194b5a",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2741,6 +3241,7 @@
   "class": "UMaterialExpressionSubstrateSlabBSDF",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSubstrate.h",
+  "header_hash": "d87d86f6f9979dfb6031f0a932283418697e48f7c365cd36f78ca5a919194b5a",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2750,6 +3251,7 @@
   "class": "UMaterialExpressionSubstrateThinFilm",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSubstrate.h",
+  "header_hash": "d87d86f6f9979dfb6031f0a932283418697e48f7c365cd36f78ca5a919194b5a",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2759,6 +3261,7 @@
   "class": "UMaterialExpressionSubstrateToonBSDF",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSubstrate.h",
+  "header_hash": "d87d86f6f9979dfb6031f0a932283418697e48f7c365cd36f78ca5a919194b5a",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2768,6 +3271,7 @@
   "class": "UMaterialExpressionSubstrateTransmittanceToMFP",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSubstrate.h",
+  "header_hash": "d87d86f6f9979dfb6031f0a932283418697e48f7c365cd36f78ca5a919194b5a",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2777,6 +3281,7 @@
   "class": "UMaterialExpressionSubstrateUI",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSubstrate.h",
+  "header_hash": "d87d86f6f9979dfb6031f0a932283418697e48f7c365cd36f78ca5a919194b5a",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2786,6 +3291,7 @@
   "class": "UMaterialExpressionSubstrateUnlitBSDF",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSubstrate.h",
+  "header_hash": "d87d86f6f9979dfb6031f0a932283418697e48f7c365cd36f78ca5a919194b5a",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2795,6 +3301,9 @@
   "class": "UMaterialExpressionSubstrateUtilityBase",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSubstrate.h",
+  "header_hash": "d87d86f6f9979dfb6031f0a932283418697e48f7c365cd36f78ca5a919194b5a",
+  "impl": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionSubstrate.cpp",
+  "impl_hash": "7444de5cff4841c440f9bedea0ffcffd5e1b680e5604e8d4c5099090eca1c120",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2804,6 +3313,7 @@
   "class": "UMaterialExpressionSubstrateVerticalLayering",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSubstrate.h",
+  "header_hash": "d87d86f6f9979dfb6031f0a932283418697e48f7c365cd36f78ca5a919194b5a",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2813,6 +3323,7 @@
   "class": "UMaterialExpressionSubstrateVolumetricFogCloudBSDF",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSubstrate.h",
+  "header_hash": "d87d86f6f9979dfb6031f0a932283418697e48f7c365cd36f78ca5a919194b5a",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2822,6 +3333,7 @@
   "class": "UMaterialExpressionSubstrateWeight",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSubstrate.h",
+  "header_hash": "d87d86f6f9979dfb6031f0a932283418697e48f7c365cd36f78ca5a919194b5a",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2831,6 +3343,7 @@
   "class": "UMaterialExpressionSubsurfaceMediumMaterialOutput",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSubsurfaceMediumMaterialOutput.h",
+  "header_hash": "5981d4a328fcd899507c045e48c021638e64420f55e284dcacc1ef4a2025deb3",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2840,6 +3353,7 @@
   "class": "UMaterialExpressionSubtract",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSubtract.h",
+  "header_hash": "857376600fa6b1104d775cfbe2b8829bd972f7afe635bfb678fef5f776cc1b77",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2849,6 +3363,7 @@
   "class": "UMaterialExpressionSwitch",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSwitch.h",
+  "header_hash": "6d2c1a9b36245d7074dbc26f1238c9b9c56ec867fbb65958ac20cc0362d651dc",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2858,6 +3373,7 @@
   "class": "UMaterialExpressionTangent",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionTangent.h",
+  "header_hash": "a4a807a6f52ab62f1c4f09531516a28654aa4143d785e401eaaab6d0aade5706",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2867,6 +3383,7 @@
   "class": "UMaterialExpressionTangentOutput",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionTangentOutput.h",
+  "header_hash": "e0553169b1b8173eb2f27b0c326e01842e5091c23068711916fdc21360c9172b",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2876,6 +3393,7 @@
   "class": "UMaterialExpressionTemporalResponsivenessOutput",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionTemporalResponsivenessOutput.h",
+  "header_hash": "747c24210a3bd69c80af1201a2579d7b59f2366734b23a4932e9fcc84f3e52c5",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2885,6 +3403,7 @@
   "class": "UMaterialExpressionTemporalSobol",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionTemporalSobol.h",
+  "header_hash": "4429f0df25da16c9f53d095f91ad1c15c69dd8f1fdf974b7e0525899e8431942",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2894,6 +3413,9 @@
   "class": "UMaterialExpressionTextureBase",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionTextureBase.h",
+  "header_hash": "47c7f204f3835b9fc2c6297ebdeb090f10c56f91ee3ee7dd0c06a87215e7ddbb",
+  "impl": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+  "impl_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2903,6 +3425,9 @@
   "class": "UMaterialExpressionTextureCollection",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionTextureCollection.h",
+  "header_hash": "f3c5e3532212182c7c8b3654b0598073ba61dc7683e79efb1e8d3af65671f855",
+  "impl": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+  "impl_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2912,6 +3437,9 @@
   "class": "UMaterialExpressionTextureCollectionParameter",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionTextureCollectionParameter.h",
+  "header_hash": "a1dd19c79644d414a956fd291477681bd6d1f8b9df1b848bb54ef4c19cb6824a",
+  "impl": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+  "impl_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2921,6 +3449,7 @@
   "class": "UMaterialExpressionTextureCoordinate",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionTextureCoordinate.h",
+  "header_hash": "1ecb631f8065d6dbed1b94dc563d2f90972562210c9d60f07b6f860fa3234ab1",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2930,6 +3459,7 @@
   "class": "UMaterialExpressionTextureObject",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionTextureObject.h",
+  "header_hash": "3a591a956d42ee341e42999784618c233186ce9e3592fd9ecda9776ef221f7b1",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2939,6 +3469,9 @@
   "class": "UMaterialExpressionTextureObjectFromCollection",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionTextureObjectFromCollection.h",
+  "header_hash": "f855e25999c34ba6e347063835644e894aefe9770113d70933418fa16567a76c",
+  "impl": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+  "impl_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2948,6 +3481,7 @@
   "class": "UMaterialExpressionTextureObjectParameter",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionTextureObjectParameter.h",
+  "header_hash": "c6e906f1d8e0166d3a5c694e3fe5b1bbdb92a695724c9c217c106e7b207022e1",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2957,6 +3491,7 @@
   "class": "UMaterialExpressionTextureProperty",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionTextureProperty.h",
+  "header_hash": "7cb46c0ccf71266bab9033559f9ff293aa1d31a8ceb79b79c60e7dc98302c76d",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2966,6 +3501,7 @@
   "class": "UMaterialExpressionTextureSample",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionTextureSample.h",
+  "header_hash": "afe6e54686c5451f2e907474ac942010934c048818da3b3fe931adaf3d2d779c",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2975,6 +3511,7 @@
   "class": "UMaterialExpressionTextureSampleParameter",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionTextureSampleParameter.h",
+  "header_hash": "94401ac8c4e77911b60efac4951b0ff3abe5ac1e28eb491063be111987c0be6d",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2984,6 +3521,9 @@
   "class": "UMaterialExpressionTextureSampleParameter2D",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionTextureSampleParameter2D.h",
+  "header_hash": "837d340f9827e76c212e08f9526a4d8628df1381003fed571e16a77b7c7955b8",
+  "impl": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+  "impl_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371",
   "module": "Engine",
   "origin": "engine"
  },
@@ -2993,6 +3533,7 @@
   "class": "UMaterialExpressionTextureSampleParameter2DArray",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionTextureSampleParameter2DArray.h",
+  "header_hash": "5977b59eb41e28202b763ced62cd6519bdf26a7dc6f12e8a351d5ce4fe7a1ecc",
   "module": "Engine",
   "origin": "engine"
  },
@@ -3002,6 +3543,7 @@
   "class": "UMaterialExpressionTextureSampleParameterCube",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionTextureSampleParameterCube.h",
+  "header_hash": "cf1f216c8a6ad6b843f9e2648bfd5b9dab14fd662825c4b927399c65c09c71ee",
   "module": "Engine",
   "origin": "engine"
  },
@@ -3011,6 +3553,9 @@
   "class": "UMaterialExpressionTextureSampleParameterCubeArray",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionTextureSampleParameterCubeArray.h",
+  "header_hash": "4b36cd439f34c369895b4c593284d2e5b65fd19ca727ff6d3106bdd76860d50c",
+  "impl": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+  "impl_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371",
   "module": "Engine",
   "origin": "engine"
  },
@@ -3020,6 +3565,7 @@
   "class": "UMaterialExpressionTextureSampleParameterSubUV",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionTextureSampleParameterSubUV.h",
+  "header_hash": "137b6a1fb726de454bd5d68b3ca74c2b1fd15a0c6db1d6f36ef0d30314c902bd",
   "module": "Engine",
   "origin": "engine"
  },
@@ -3029,6 +3575,7 @@
   "class": "UMaterialExpressionTextureSampleParameterVolume",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionTextureSampleParameterVolume.h",
+  "header_hash": "8d25aa9fc310c57c1947e09cc49d83aba6b0739196e06fc0f8b8cbdd1b9422ba",
   "module": "Engine",
   "origin": "engine"
  },
@@ -3038,6 +3585,7 @@
   "class": "UMaterialExpressionThinTranslucentMaterialOutput",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionThinTranslucentMaterialOutput.h",
+  "header_hash": "525f1a375b3b7040a8a9edaef0c45f3f50914249e21e91dee6e83340115733cb",
   "module": "Engine",
   "origin": "engine"
  },
@@ -3047,6 +3595,7 @@
   "class": "UMaterialExpressionTime",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionTime.h",
+  "header_hash": "d44eaf4bcc04af5fe248d5a87f3604ba5089acf127948242fec365f5f8852844",
   "module": "Engine",
   "origin": "engine"
  },
@@ -3056,6 +3605,7 @@
   "class": "UMaterialExpressionTransform",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionTransform.h",
+  "header_hash": "2aab28f1a4447a7bad99a8bafd551dc3cd2e49efab4873ab4b1e899afda782f8",
   "module": "Engine",
   "origin": "engine"
  },
@@ -3065,6 +3615,7 @@
   "class": "UMaterialExpressionTransformPosition",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionTransformPosition.h",
+  "header_hash": "1abc33e1a187efb315b4ff567dd901578127198d5cf7084f11d83ab3003864c9",
   "module": "Engine",
   "origin": "engine"
  },
@@ -3074,6 +3625,7 @@
   "class": "UMaterialExpressionTruncate",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionTruncate.h",
+  "header_hash": "21f2143bc0a7919ef005e43118f4e1a94083f12ede03d2cf2db424bcd53119fd",
   "module": "Engine",
   "origin": "engine"
  },
@@ -3083,6 +3635,7 @@
   "class": "UMaterialExpressionTruncateLWC",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionTruncateLWC.h",
+  "header_hash": "33906f3534668154bdadac2866c3358f8b6683dec13c8f7d96424433f30d392a",
   "module": "Engine",
   "origin": "engine"
  },
@@ -3092,6 +3645,9 @@
   "class": "UMaterialExpressionTwoSidedSign",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionTwoSidedSign.h",
+  "header_hash": "b17583d73ad7cab63bb87039a866f78e154b2f42ff4073dcb94a7f1e620e72e4",
+  "impl": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+  "impl_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371",
   "module": "Engine",
   "origin": "engine"
  },
@@ -3101,6 +3657,7 @@
   "class": "UMaterialExpressionUIntToFloat",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionFloatToUInt.h",
+  "header_hash": "644963dc94b38ade2c08cfc98061ec65c65acaa4ac7dbf4b85ac714517a62e02",
   "module": "Engine",
   "origin": "engine"
  },
@@ -3110,6 +3667,7 @@
   "class": "UMaterialExpressionUserSceneTexture",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionUserSceneTexture.h",
+  "header_hash": "f94787517000c58f81d7133a5c18ebb493178dab27e1093f1550d4a2e7d57253",
   "module": "Engine",
   "origin": "engine"
  },
@@ -3119,6 +3677,7 @@
   "class": "UMaterialExpressionVectorNoise",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionVectorNoise.h",
+  "header_hash": "6e3d05b8596ee9bc5c21bb1b723a09c3b4d9d0a7f2d787c72eb67473058c8d56",
   "module": "Engine",
   "origin": "engine"
  },
@@ -3128,6 +3687,7 @@
   "class": "UMaterialExpressionVectorParameter",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionVectorParameter.h",
+  "header_hash": "cc97f37791b7659c0d446f76f9660126cee5fe7fe9b3875f28046fb7d7f3c6cb",
   "module": "Engine",
   "origin": "engine"
  },
@@ -3137,6 +3697,7 @@
   "class": "UMaterialExpressionVertexColor",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionVertexColor.h",
+  "header_hash": "c1dd97b11460b1a15e44c23be5cea7ebb3a2b7b70a11f3751be4b98e3e05ad85",
   "module": "Engine",
   "origin": "engine"
  },
@@ -3146,6 +3707,7 @@
   "class": "UMaterialExpressionVertexInterpolator",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionVertexInterpolator.h",
+  "header_hash": "e9e01226238003491e4255c8103663ef99b777febd79c08335522e6b232f2a64",
   "module": "Engine",
   "origin": "engine"
  },
@@ -3155,6 +3717,7 @@
   "class": "UMaterialExpressionVertexNormalWS",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionVertexNormalWS.h",
+  "header_hash": "16d3b3bfb5cdd4ad974c20d8fe60269c8481071cea9ae0eed9d8a444c65d5818",
   "module": "Engine",
   "origin": "engine"
  },
@@ -3164,6 +3727,7 @@
   "class": "UMaterialExpressionVertexTangentWS",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionVertexTangentWS.h",
+  "header_hash": "718ab7faedc2a20b30e8ec1e3a1aceed4a7b66c04438fb1aa597460093502d3e",
   "module": "Engine",
   "origin": "engine"
  },
@@ -3173,6 +3737,7 @@
   "class": "UMaterialExpressionViewProperty",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionViewProperty.h",
+  "header_hash": "9638b97dd456a24a9fcab5fd5fa57fa23beed841ea926cde4053a8376226da73",
   "module": "Engine",
   "origin": "engine"
  },
@@ -3182,6 +3747,7 @@
   "class": "UMaterialExpressionViewSize",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionViewSize.h",
+  "header_hash": "a3e28e8822a2cc3df45de177d91a2e5daf1cf8a24385bb9145a78dbd6d7908d4",
   "module": "Engine",
   "origin": "engine"
  },
@@ -3191,6 +3757,7 @@
   "class": "UMaterialExpressionVirtualTextureFeatureSwitch",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionVirtualTextureFeatureSwitch.h",
+  "header_hash": "6b7381f8f16f831d02e0e21bf6796e750450cc3042e3e4efa8c2785a06d9adfb",
   "module": "Engine",
   "origin": "engine"
  },
@@ -3200,6 +3767,7 @@
   "class": "UMaterialExpressionVolumetricAdvancedMaterialInput",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionVolumetricAdvancedMaterialInput.h",
+  "header_hash": "0508523588fc153f45b73d1a55c8a84723017cd00ebf79d76aaf16251e847356",
   "module": "Engine",
   "origin": "engine"
  },
@@ -3209,6 +3777,7 @@
   "class": "UMaterialExpressionVolumetricAdvancedMaterialOutput",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionVolumetricAdvancedMaterialOutput.h",
+  "header_hash": "4bad60f6fbd1a831183941e0bc9a6377c033569233813e69eb1c2550feb2d092",
   "module": "Engine",
   "origin": "engine"
  },
@@ -3218,6 +3787,9 @@
   "class": "UMaterialExpressionVolumetricCloudEmptySpaceSkippingInput",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionVolumetricAdvancedMaterialInput.h",
+  "header_hash": "0508523588fc153f45b73d1a55c8a84723017cd00ebf79d76aaf16251e847356",
+  "impl": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+  "impl_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371",
   "module": "Engine",
   "origin": "engine"
  },
@@ -3227,6 +3799,9 @@
   "class": "UMaterialExpressionVolumetricCloudEmptySpaceSkippingOutput",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionVolumetricAdvancedMaterialOutput.h",
+  "header_hash": "4bad60f6fbd1a831183941e0bc9a6377c033569233813e69eb1c2550feb2d092",
+  "impl": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+  "impl_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371",
   "module": "Engine",
   "origin": "engine"
  },
@@ -3236,6 +3811,7 @@
   "class": "UMaterialExpressionWorldPosition",
   "deprecated": false,
   "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionWorldPosition.h",
+  "header_hash": "2963c7c33b4ceadf8ca2ee8d14cc972e00300565c2144b40b74e37392a61c8dd",
   "module": "Engine",
   "origin": "engine"
  }

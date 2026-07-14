@@ -1,0 +1,374 @@
+{
+  "LinearInterpolate": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "not_applicable"
+    },
+    "semantics": {
+      "operation": "linear_interpolate",
+      "formula": "lerp(A, B, Alpha)",
+      "unconnected_defaults": {
+        "A": "ConstA",
+        "B": "ConstB",
+        "Alpha": "ConstAlpha"
+      },
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [],
+      "unresolved": []
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionLinearInterpolate.h",
+        "symbol": "UMaterialExpressionLinearInterpolate",
+        "claims": ["declaration", "schema"],
+        "source_hash": "37de96a57aed02c8365e1102a2d5db8699279382e12115d2464d01d405868c62"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpressionLinearInterpolate::Compile",
+        "claims": ["schema", "description"],
+        "source_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionLinearInterpolate::Build / BuildTernaryArithmeticOperator",
+        "claims": ["description"],
+        "source_hash": "a40f549263684674f2b154ffdf2b4bf336527786ca7ed983cb4507987ba9d2e8"
+      }
+    ]
+  },
+  "Clamp": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "verified"
+    },
+    "semantics": {
+      "operation": "clamp",
+      "formula": "clamp_mode(Input, Min, Max, ClampMode)",
+      "unconnected_defaults": {
+        "Min": "MinDefault",
+        "Max": "MaxDefault"
+      },
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [
+        {
+          "kind": "clamp_mode",
+          "property": "ClampMode",
+          "both_bounds": "CMODE_Clamp",
+          "minimum_only": "CMODE_ClampMin",
+          "maximum_only": "CMODE_ClampMax"
+        }
+      ],
+      "unresolved": []
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionClamp.h",
+        "symbol": "EClampMode / UMaterialExpressionClamp",
+        "claims": ["declaration", "schema", "restrictions"],
+        "source_hash": "bcf69564e0646dd9dfaea85693e367dda6b0551602b1bbada5e01f827863f6fb"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpressionClamp::Compile",
+        "claims": ["schema", "description", "restrictions"],
+        "source_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionClamp::Build",
+        "claims": ["description", "restrictions"],
+        "source_hash": "a40f549263684674f2b154ffdf2b4bf336527786ca7ed983cb4507987ba9d2e8"
+      }
+    ]
+  },
+  "Power": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "verified"
+    },
+    "semantics": {
+      "operation": "power",
+      "formula": "pow(Base, Exponent)",
+      "unconnected_defaults": {
+        "Exponent": "ConstExponent"
+      },
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [
+        {
+          "kind": "positive_clamped_base",
+          "base_at_or_below": 2.980233e-8,
+          "result": 0.0
+        }
+      ],
+      "unresolved": [
+        "power.vector_exponent_legacy_mir_consistency"
+      ]
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionPower.h",
+        "symbol": "UMaterialExpressionPower",
+        "claims": ["declaration", "schema"],
+        "source_hash": "149e0792a668be40c91d035b383018060dc91c754048ad5dad1d9f2455285108"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpressionPower::Compile / GetExpressionToolTip",
+        "claims": ["schema", "description", "restrictions"],
+        "source_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionPower::Build / PositiveClampedPow",
+        "claims": ["description", "restrictions"],
+        "source_hash": "a40f549263684674f2b154ffdf2b4bf336527786ca7ed983cb4507987ba9d2e8"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/HLSLMaterialTranslator.cpp",
+        "symbol": "FHLSLMaterialTranslator::Power",
+        "claims": ["description", "restrictions"],
+        "source_hash": "285cf264324db9e0146fff797568bf0c873791e20bca843fe9fbb19f95794077"
+      },
+      {
+        "path": "Engine/Shaders/Private/Common.ush",
+        "symbol": "PositiveClampedPow",
+        "claims": ["restrictions"],
+        "source_hash": "11184bf6e39a0065e66acd174e2b8407c89791a184a2ad9552a1f1d83669c84b"
+      }
+    ]
+  },
+  "ComponentMask": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "verified"
+    },
+    "semantics": {
+      "operation": "component_mask",
+      "formula": "mask(Input, R, G, B, A)",
+      "unconnected_defaults": {},
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [
+        {
+          "kind": "selected_component_count",
+          "minimum": 1,
+          "maximum": 4
+        },
+        {
+          "kind": "selected_components_exist",
+          "input": "Input",
+          "components": ["R", "G", "B", "A"]
+        }
+      ],
+      "unresolved": [
+        "component_mask.scalar_channel_legacy_mir_consistency"
+      ]
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionComponentMask.h",
+        "symbol": "UMaterialExpressionComponentMask",
+        "claims": ["declaration", "schema"],
+        "source_hash": "2e0cb9fef3476c3b93bdd4680bf043a7cd61a6c11eb123325e99cb7567073762"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpressionComponentMask::Compile",
+        "claims": ["schema", "description", "restrictions"],
+        "source_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionComponentMask::Build",
+        "claims": ["description"],
+        "source_hash": "a40f549263684674f2b154ffdf2b4bf336527786ca7ed983cb4507987ba9d2e8"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/HLSLMaterialTranslator.cpp",
+        "symbol": "FHLSLMaterialTranslator::ComponentMask",
+        "claims": ["description", "restrictions"],
+        "source_hash": "285cf264324db9e0146fff797568bf0c873791e20bca843fe9fbb19f95794077"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialIREmitter.cpp",
+        "symbol": "FEmitter::Swizzle",
+        "claims": ["restrictions"],
+        "source_hash": "12578f2ab3f58d6c07b5d82d4bce2bea301d0e1c973eafb0b42d9843c870a2d2"
+      }
+    ]
+  },
+  "AppendVector": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "verified"
+    },
+    "semantics": {
+      "operation": "append_vector",
+      "formula": "append(A, B)",
+      "unconnected_defaults": {},
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [
+        {
+          "kind": "component_count_sum",
+          "inputs": ["A", "B"],
+          "maximum": 4
+        }
+      ],
+      "unresolved": [
+        "append_vector.missing_b_legacy_mir_consistency"
+      ]
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionAppendVector.h",
+        "symbol": "UMaterialExpressionAppendVector",
+        "claims": ["declaration", "schema"],
+        "source_hash": "a94e6315896783da94433bc55dba98d07cb10f46a9875f4f1444f36d095c2556"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpressionAppendVector::Compile",
+        "claims": ["schema", "description", "restrictions"],
+        "source_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionAppendVector::Build",
+        "claims": ["description", "restrictions"],
+        "source_hash": "a40f549263684674f2b154ffdf2b4bf336527786ca7ed983cb4507987ba9d2e8"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/HLSLMaterialTranslator.cpp",
+        "symbol": "FHLSLMaterialTranslator::AppendVector",
+        "claims": ["description", "restrictions"],
+        "source_hash": "285cf264324db9e0146fff797568bf0c873791e20bca843fe9fbb19f95794077"
+      }
+    ]
+  },
+  "Divide": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "not_applicable"
+    },
+    "semantics": {
+      "operation": "componentwise_binary",
+      "formula": "A / B",
+      "unconnected_defaults": {
+        "A": "ConstA",
+        "B": "ConstB"
+      },
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [],
+      "unresolved": []
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionDivide.h",
+        "symbol": "UMaterialExpressionDivide",
+        "claims": ["declaration", "schema"],
+        "source_hash": "eb19c4aadef79ebd5423e6261ce7ca4a6c159285f484729fda49203a2e1c05d3"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpressionDivide::Compile",
+        "claims": ["schema", "description"],
+        "source_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionDivide::Build / BuildBinaryOperatorWithDefaults",
+        "claims": ["description"],
+        "source_hash": "a40f549263684674f2b154ffdf2b4bf336527786ca7ed983cb4507987ba9d2e8"
+      }
+    ]
+  },
+  "Subtract": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "not_applicable"
+    },
+    "semantics": {
+      "operation": "componentwise_binary",
+      "formula": "A - B",
+      "unconnected_defaults": {
+        "A": "ConstA",
+        "B": "ConstB"
+      },
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [],
+      "unresolved": []
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSubtract.h",
+        "symbol": "UMaterialExpressionSubtract",
+        "claims": ["declaration", "schema"],
+        "source_hash": "857376600fa6b1104d775cfbe2b8829bd972f7afe635bfb678fef5f776cc1b77"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpressionSubtract::Compile",
+        "claims": ["schema", "description"],
+        "source_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionSubtract::Build / BuildBinaryOperatorWithDefaults",
+        "claims": ["description"],
+        "source_hash": "a40f549263684674f2b154ffdf2b4bf336527786ca7ed983cb4507987ba9d2e8"
+      }
+    ]
+  },
+  "OneMinus": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "verified"
+    },
+    "semantics": {
+      "operation": "componentwise_unary",
+      "formula": "1 - Input",
+      "unconnected_defaults": {},
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [],
+      "unresolved": [
+        "one_minus.missing_input_legacy_mir_consistency"
+      ]
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionOneMinus.h",
+        "symbol": "UMaterialExpressionOneMinus",
+        "claims": ["declaration", "schema"],
+        "source_hash": "b3b97792fa8dbb8b7eff2f7d28760b0914bc90c15f44e0b306018b37de2949ce"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpressionOneMinus::Compile",
+        "claims": ["schema", "description", "restrictions"],
+        "source_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionOneMinus::Build",
+        "claims": ["description", "restrictions"],
+        "source_hash": "a40f549263684674f2b154ffdf2b4bf336527786ca7ed983cb4507987ba9d2e8"
+      }
+    ]
+  }
+}

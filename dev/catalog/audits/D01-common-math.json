@@ -1,0 +1,714 @@
+{
+  "Ceil": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "verified"
+    },
+    "semantics": {
+      "operation": "componentwise_unary",
+      "formula": "ceil(Input)",
+      "unconnected_defaults": {},
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [
+        {
+          "kind": "required_input",
+          "input": "Input",
+          "failure": "compile_error"
+        }
+      ],
+      "unresolved": []
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionCeil.h",
+        "symbol": "UMaterialExpressionCeil",
+        "claims": ["declaration", "schema"],
+        "source_hash": "d2cd75d83ddcce3d48882ceba06de5bdbb3412a8296ef3f24629de222a060710"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpressionCeil::Compile / GetOutputValueType",
+        "claims": ["schema", "description", "restrictions"],
+        "source_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionCeil::Build",
+        "claims": ["description", "restrictions"],
+        "source_hash": "a40f549263684674f2b154ffdf2b4bf336527786ca7ed983cb4507987ba9d2e8"
+      }
+    ]
+  },
+  "Constant4Vector": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "not_applicable"
+    },
+    "semantics": {
+      "operation": "constant",
+      "formula": "Constant",
+      "unconnected_defaults": {},
+      "value_domain": "float4",
+      "restrictions": [],
+      "unresolved": [
+        "legacy_mir.rgb_output_emission_difference"
+      ]
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionConstant4Vector.h",
+        "symbol": "UMaterialExpressionConstant4Vector",
+        "claims": ["declaration", "schema"],
+        "source_hash": "75d535a4c197ace20519fcafdd215407d7af9d090f98bb0ffd99c494d05623aa"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpressionConstant4Vector::UMaterialExpressionConstant4Vector / Compile",
+        "claims": ["schema", "description"],
+        "source_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionConstant4Vector::Build",
+        "claims": ["description"],
+        "source_hash": "a40f549263684674f2b154ffdf2b4bf336527786ca7ed983cb4507987ba9d2e8"
+      }
+    ]
+  },
+  "ConstantBiasScale": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "verified"
+    },
+    "semantics": {
+      "operation": "componentwise_unary",
+      "formula": "(Input + Bias) * Scale",
+      "unconnected_defaults": {},
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [
+        {
+          "kind": "required_input",
+          "input": "Input",
+          "failure": "compile_error"
+        }
+      ],
+      "unresolved": []
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionConstantBiasScale.h",
+        "symbol": "UMaterialExpressionConstantBiasScale",
+        "claims": ["declaration", "schema"],
+        "source_hash": "759caab81b81352ff4aa81b03a5a09d004bc9357a4f47801dcb9fae50206bf66"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpressionConstantBiasScale::Compile",
+        "claims": ["description", "restrictions"],
+        "source_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionConstantBiasScale::Build",
+        "claims": ["description", "restrictions"],
+        "source_hash": "a40f549263684674f2b154ffdf2b4bf336527786ca7ed983cb4507987ba9d2e8"
+      }
+    ]
+  },
+  "Cosine": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "verified"
+    },
+    "semantics": {
+      "operation": "componentwise_unary",
+      "formula": "cos(Input * 2 * PI / Period)",
+      "unconnected_defaults": {},
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [
+        {
+          "kind": "required_input",
+          "input": "Input",
+          "failure": "compile_error"
+        },
+        {
+          "kind": "period_zero_result",
+          "selector": "cosine",
+          "period_property": "Period",
+          "value": 1.0,
+          "backend": "legacy"
+        }
+      ],
+      "unresolved": [
+        "legacy_mir.nonpositive_period_behavior_difference"
+      ]
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionCosine.h",
+        "symbol": "UMaterialExpressionCosine",
+        "claims": ["declaration", "schema"],
+        "source_hash": "b948753705581686367308d191dd35b688fc9c0a12911401da19038fe25f6166"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpressionCosine::Compile",
+        "claims": ["description", "restrictions"],
+        "source_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionCosine::Build / GetTrigonometricInputWithPeriod",
+        "claims": ["description", "restrictions"],
+        "source_hash": "a40f549263684674f2b154ffdf2b4bf336527786ca7ed983cb4507987ba9d2e8"
+      }
+    ]
+  },
+  "CrossProduct": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "verified"
+    },
+    "semantics": {
+      "operation": "cross_product",
+      "formula": "cross(A, B)",
+      "unconnected_defaults": {},
+      "value_domain": "float3",
+      "restrictions": [
+        {
+          "kind": "required_input",
+          "input": "A",
+          "failure": "compile_error"
+        },
+        {
+          "kind": "required_input",
+          "input": "B",
+          "failure": "compile_error"
+        }
+      ],
+      "unresolved": [
+        "legacy_mir.input_dimension_validation_difference"
+      ]
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionCrossProduct.h",
+        "symbol": "UMaterialExpressionCrossProduct",
+        "claims": ["declaration", "schema"],
+        "source_hash": "20193fdccf17bc816d10ea4db2dec3d8ecd2cb8507250606b35f90a72daa8b94"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpressionCrossProduct::Compile",
+        "claims": ["description", "restrictions"],
+        "source_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionCrossProduct::Build",
+        "claims": ["description", "restrictions"],
+        "source_hash": "a40f549263684674f2b154ffdf2b4bf336527786ca7ed983cb4507987ba9d2e8"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/HLSLMaterialTranslator.cpp",
+        "symbol": "FHLSLMaterialTranslator::Cross",
+        "claims": ["description", "restrictions"],
+        "source_hash": "285cf264324db9e0146fff797568bf0c873791e20bca843fe9fbb19f95794077"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialIREmitter.cpp",
+        "symbol": "GetOperatorSignature / ValidateOperatorAndGetResultType",
+        "claims": ["restrictions"],
+        "source_hash": "12578f2ab3f58d6c07b5d82d4bce2bea301d0e1c973eafb0b42d9843c870a2d2"
+      }
+    ]
+  },
+  "Desaturation": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "verified"
+    },
+    "semantics": {
+      "operation": "desaturation",
+      "formula": "desaturate(Input, Fraction, LuminanceFactors)",
+      "unconnected_defaults": {
+        "Fraction": "$one"
+      },
+      "value_domain": "float3",
+      "restrictions": [
+        {
+          "kind": "required_input",
+          "input": "Input",
+          "failure": "compile_error"
+        }
+      ],
+      "unresolved": [
+        "runtime.luminance_factors_initialization_value"
+      ]
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionDesaturation.h",
+        "symbol": "UMaterialExpressionDesaturation",
+        "claims": ["declaration", "schema", "description"],
+        "source_hash": "6256d296f7ea7ab038fffbe14198d5bb6606cb27a43d2a8e816844ac423a6d3b"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpressionDesaturation::UMaterialExpressionDesaturation / Compile",
+        "claims": ["schema", "description", "restrictions"],
+        "source_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionDesaturation::Build",
+        "claims": ["description", "restrictions"],
+        "source_hash": "a40f549263684674f2b154ffdf2b4bf336527786ca7ed983cb4507987ba9d2e8"
+      }
+    ]
+  },
+  "Distance": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "verified"
+    },
+    "semantics": {
+      "operation": "distance",
+      "formula": "distance(A, B)",
+      "unconnected_defaults": {},
+      "value_domain": "float1",
+      "restrictions": [
+        {
+          "kind": "required_input",
+          "input": "A",
+          "failure": "compile_error"
+        },
+        {
+          "kind": "required_input",
+          "input": "B",
+          "failure": "compile_error"
+        }
+      ],
+      "unresolved": []
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionDistance.h",
+        "symbol": "UMaterialExpressionDistance",
+        "claims": ["declaration", "schema"],
+        "source_hash": "5742677b773366bc072cda4db4580885649162119fe5fe0f7e3c7a076668ddd2"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpressionDistance::Compile / CompileHelperLength",
+        "claims": ["description", "restrictions"],
+        "source_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionDistance::Build",
+        "claims": ["description", "restrictions"],
+        "source_hash": "a40f549263684674f2b154ffdf2b4bf336527786ca7ed983cb4507987ba9d2e8"
+      }
+    ]
+  },
+  "DotProduct": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "verified"
+    },
+    "semantics": {
+      "operation": "dot_product",
+      "formula": "dot(A, B)",
+      "unconnected_defaults": {},
+      "value_domain": "float1",
+      "restrictions": [
+        {
+          "kind": "required_input",
+          "input": "A",
+          "failure": "compile_error"
+        },
+        {
+          "kind": "required_input",
+          "input": "B",
+          "failure": "compile_error"
+        }
+      ],
+      "unresolved": [
+        "legacy_mir.mixed_dimension_coercion_difference"
+      ]
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionDotProduct.h",
+        "symbol": "UMaterialExpressionDotProduct",
+        "claims": ["declaration", "schema"],
+        "source_hash": "1fc96397cda7a9c2b0ec18e5db22255c809f9f1d4a4d206ec2a775af546ea46f"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpressionDotProduct::Compile",
+        "claims": ["description", "restrictions"],
+        "source_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionDotProduct::Build",
+        "claims": ["description", "restrictions"],
+        "source_hash": "a40f549263684674f2b154ffdf2b4bf336527786ca7ed983cb4507987ba9d2e8"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/HLSLMaterialTranslator.cpp",
+        "symbol": "FHLSLMaterialTranslator::Dot",
+        "claims": ["description", "restrictions"],
+        "source_hash": "285cf264324db9e0146fff797568bf0c873791e20bca843fe9fbb19f95794077"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialIREmitter.cpp",
+        "symbol": "GetOperatorSignature / ValidateOperatorAndGetResultType",
+        "claims": ["restrictions"],
+        "source_hash": "12578f2ab3f58d6c07b5d82d4bce2bea301d0e1c973eafb0b42d9843c870a2d2"
+      }
+    ]
+  },
+  "Floor": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "verified"
+    },
+    "semantics": {
+      "operation": "componentwise_unary",
+      "formula": "floor(Input)",
+      "unconnected_defaults": {},
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [
+        {
+          "kind": "required_input",
+          "input": "Input",
+          "failure": "compile_error"
+        }
+      ],
+      "unresolved": []
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionFloor.h",
+        "symbol": "UMaterialExpressionFloor",
+        "claims": ["declaration", "schema"],
+        "source_hash": "5f54df979dc21d5dbea8235d50d6077261ee4e60fa78b7cbd6174d9a4e12c7b0"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpressionFloor::Compile / GetOutputValueType",
+        "claims": ["schema", "description", "restrictions"],
+        "source_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionFloor::Build",
+        "claims": ["description", "restrictions"],
+        "source_hash": "a40f549263684674f2b154ffdf2b4bf336527786ca7ed983cb4507987ba9d2e8"
+      }
+    ]
+  },
+  "Frac": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "verified"
+    },
+    "semantics": {
+      "operation": "componentwise_unary",
+      "formula": "frac(Input)",
+      "unconnected_defaults": {},
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [
+        {
+          "kind": "required_input",
+          "input": "Input",
+          "failure": "compile_error"
+        }
+      ],
+      "unresolved": []
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionFrac.h",
+        "symbol": "UMaterialExpressionFrac",
+        "claims": ["declaration", "schema"],
+        "source_hash": "8ad27a8361640fe626c175311fab018b940e22c0cb3cb1523d4cce8d1508ee0a"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpressionFrac::Compile",
+        "claims": ["description", "restrictions"],
+        "source_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionFrac::Build",
+        "claims": ["description", "restrictions"],
+        "source_hash": "a40f549263684674f2b154ffdf2b4bf336527786ca7ed983cb4507987ba9d2e8"
+      }
+    ]
+  },
+  "Max": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "not_applicable"
+    },
+    "semantics": {
+      "operation": "componentwise_binary",
+      "formula": "max(A, B)",
+      "unconnected_defaults": {
+        "A": "ConstA",
+        "B": "ConstB"
+      },
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [],
+      "unresolved": [
+        "legacy_mir.mixed_type_coercion_difference"
+      ]
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionMax.h",
+        "symbol": "UMaterialExpressionMax",
+        "claims": ["declaration", "schema"],
+        "source_hash": "db263dd6ce8dda49a9ce090f92ce9f52f854d86dad812d1e53706ca091469be3"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpressionMax::Compile",
+        "claims": ["schema", "description"],
+        "source_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionMax::Build / BuildBinaryOperatorWithDefaults",
+        "claims": ["description"],
+        "source_hash": "a40f549263684674f2b154ffdf2b4bf336527786ca7ed983cb4507987ba9d2e8"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/HLSLMaterialTranslator.cpp",
+        "symbol": "FHLSLMaterialTranslator::Max",
+        "claims": ["description"],
+        "source_hash": "285cf264324db9e0146fff797568bf0c873791e20bca843fe9fbb19f95794077"
+      }
+    ]
+  },
+  "Min": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "not_applicable"
+    },
+    "semantics": {
+      "operation": "componentwise_binary",
+      "formula": "min(A, B)",
+      "unconnected_defaults": {
+        "A": "ConstA",
+        "B": "ConstB"
+      },
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [],
+      "unresolved": [
+        "legacy_mir.mixed_type_coercion_difference"
+      ]
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionMin.h",
+        "symbol": "UMaterialExpressionMin",
+        "claims": ["declaration", "schema"],
+        "source_hash": "58eb645e55eab011d188a7689ec352f296ed0ee529ccbc046a76dc4ca6ea7edd"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpressionMin::Compile",
+        "claims": ["schema", "description"],
+        "source_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionMin::Build / BuildBinaryOperatorWithDefaults",
+        "claims": ["description"],
+        "source_hash": "a40f549263684674f2b154ffdf2b4bf336527786ca7ed983cb4507987ba9d2e8"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/HLSLMaterialTranslator.cpp",
+        "symbol": "FHLSLMaterialTranslator::Min",
+        "claims": ["description"],
+        "source_hash": "285cf264324db9e0146fff797568bf0c873791e20bca843fe9fbb19f95794077"
+      }
+    ]
+  },
+  "Normalize": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "verified"
+    },
+    "semantics": {
+      "operation": "normalize",
+      "formula": "normalize(VectorInput)",
+      "unconnected_defaults": {},
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [
+        {
+          "kind": "required_input",
+          "input": "VectorInput",
+          "failure": "compile_error"
+        }
+      ],
+      "unresolved": [
+        "legacy_mir.scalar_normalization_difference",
+        "legacy_mir.zero_vector_normalization_consistency"
+      ]
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionNormalize.h",
+        "symbol": "UMaterialExpressionNormalize",
+        "claims": ["declaration", "schema"],
+        "source_hash": "cc9cd880648185c3b6cc3695a42f08a9e392db7337b1dfa601dc1fd03fdcb5d2"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpressionNormalize::Compile",
+        "claims": ["description", "restrictions"],
+        "source_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionNormalize::Build",
+        "claims": ["description", "restrictions"],
+        "source_hash": "a40f549263684674f2b154ffdf2b4bf336527786ca7ed983cb4507987ba9d2e8"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/HLSLMaterialTranslator.cpp",
+        "symbol": "FHLSLMaterialTranslator::Normalize",
+        "claims": ["description", "restrictions"],
+        "source_hash": "285cf264324db9e0146fff797568bf0c873791e20bca843fe9fbb19f95794077"
+      }
+    ]
+  },
+  "Sine": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "verified"
+    },
+    "semantics": {
+      "operation": "componentwise_unary",
+      "formula": "sin(Input * 2 * PI / Period)",
+      "unconnected_defaults": {},
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [
+        {
+          "kind": "required_input",
+          "input": "Input",
+          "failure": "compile_error"
+        }
+      ],
+      "unresolved": [
+        "semantics.nonpositive_period_branch_representation"
+      ]
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSine.h",
+        "symbol": "UMaterialExpressionSine",
+        "claims": ["declaration", "schema"],
+        "source_hash": "acabb088a7c20406b50098ea2b52a59236db4da4c59a51ded8e437e1e02c579f"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpressionSine::Compile",
+        "claims": ["description", "restrictions"],
+        "source_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionSine::Build / GetTrigonometricInputWithPeriod",
+        "claims": ["description", "restrictions"],
+        "source_hash": "a40f549263684674f2b154ffdf2b4bf336527786ca7ed983cb4507987ba9d2e8"
+      }
+    ]
+  },
+  "Tangent": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "verified"
+    },
+    "semantics": {
+      "operation": "componentwise_unary",
+      "formula": "tan(Input * 2 * PI / Period)",
+      "unconnected_defaults": {},
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [
+        {
+          "kind": "required_input",
+          "input": "Input",
+          "failure": "compile_error"
+        },
+        {
+          "kind": "period_zero_result",
+          "selector": "tangent",
+          "period_property": "Period",
+          "value": 0.0,
+          "backend": "legacy"
+        }
+      ],
+      "unresolved": [
+        "legacy_mir.nonpositive_period_behavior_difference"
+      ]
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionTangent.h",
+        "symbol": "UMaterialExpressionTangent",
+        "claims": ["declaration", "schema"],
+        "source_hash": "a4a807a6f52ab62f1c4f09531516a28654aa4143d785e401eaaab6d0aade5706"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpressionTangent::Compile",
+        "claims": ["description", "restrictions"],
+        "source_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionTangent::Build / GetTrigonometricInputWithPeriod",
+        "claims": ["description", "restrictions"],
+        "source_hash": "a40f549263684674f2b154ffdf2b4bf336527786ca7ed983cb4507987ba9d2e8"
+      }
+    ]
+  }
+}

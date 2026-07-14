@@ -1,0 +1,706 @@
+{
+  "CameraPositionWS": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "not_applicable"
+    },
+    "semantics": {
+      "operation": "scene_value",
+      "formula": "camera_position()",
+      "unconnected_defaults": {},
+      "value_domain": "position_float3_or_double3",
+      "restrictions": [],
+      "unresolved": []
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionCameraPositionWS.h",
+        "symbol": "UMaterialExpressionCameraPositionWS",
+        "claims": ["declaration", "schema"],
+        "source_hash": "b8d6c7822d35e22d5397ee2c604058e71098e5f6d6bb2aa1c51c684b0ee5af31"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpressionCameraPositionWS::Compile",
+        "claims": ["description"],
+        "source_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionCameraPositionWS::Build / BuildViewProperty",
+        "claims": ["description"],
+        "source_hash": "a40f549263684674f2b154ffdf2b4bf336527786ca7ed983cb4507987ba9d2e8"
+      }
+    ]
+  },
+  "CameraVectorWS": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "verified"
+    },
+    "semantics": {
+      "operation": "scene_value",
+      "formula": "camera_vector()",
+      "unconnected_defaults": {},
+      "value_domain": "float3",
+      "restrictions": [
+        {
+          "kind": "shader_stage_supported",
+          "stages": ["Pixel", "Compute"]
+        }
+      ],
+      "unresolved": []
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionCameraVectorWS.h",
+        "symbol": "UMaterialExpressionCameraVectorWS",
+        "claims": ["declaration", "schema"],
+        "source_hash": "b8aa321ed0ad118deebf641d8951099be864dc4586b6541d7886d8009b095195"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpressionCameraVectorWS::Compile",
+        "claims": ["description"],
+        "source_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371"
+      },
+      {
+        "path": "Engine/Config/BaseMaterialExpressions.ini",
+        "symbol": "CameraVector",
+        "claims": ["description", "restrictions"],
+        "source_hash": "4fea6f4edcad2da665cf206f2e79b3180476230270825670e61559590a6fcb75"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionExternalCodeBase::Build / BuildMaterialExpressionExternalCodeBase",
+        "claims": ["description", "restrictions"],
+        "source_hash": "a40f549263684674f2b154ffdf2b4bf336527786ca7ed983cb4507987ba9d2e8"
+      }
+    ]
+  },
+  "LightVector": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "verified"
+    },
+    "semantics": {
+      "operation": "scene_value",
+      "formula": "light_vector()",
+      "unconnected_defaults": {},
+      "value_domain": "float3",
+      "restrictions": [
+        {
+          "kind": "shader_stage_supported",
+          "stages": ["Pixel", "Compute"]
+        },
+        {
+          "kind": "material_domains_supported",
+          "domains": ["MD_LightFunction", "MD_DeferredDecal"]
+        }
+      ],
+      "unresolved": []
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionLightVector.h",
+        "symbol": "UMaterialExpressionLightVector",
+        "claims": ["declaration", "schema"],
+        "source_hash": "31e0b7e392a23f5c139161123b641358bb87cbad0d189ba3561abf7e2b77441e"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpressionLightVector::Compile",
+        "claims": ["description"],
+        "source_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371"
+      },
+      {
+        "path": "Engine/Config/BaseMaterialExpressions.ini",
+        "symbol": "LightVector",
+        "claims": ["description", "restrictions"],
+        "source_hash": "4fea6f4edcad2da665cf206f2e79b3180476230270825670e61559590a6fcb75"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionExternalCodeBase::Build / BuildMaterialExpressionExternalCodeBase",
+        "claims": ["description", "restrictions"],
+        "source_hash": "a40f549263684674f2b154ffdf2b4bf336527786ca7ed983cb4507987ba9d2e8"
+      }
+    ]
+  },
+  "ObjectLocalBounds": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "verified"
+    },
+    "semantics": {
+      "operation": "scene_value",
+      "formula": "object_local_bounds()",
+      "unconnected_defaults": {},
+      "value_domain": "float3",
+      "restrictions": [
+        {
+          "kind": "material_domains_supported",
+          "domains": ["MD_Surface", "MD_Volume"]
+        }
+      ],
+      "unresolved": []
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionObjectLocalBounds.h",
+        "symbol": "UMaterialExpressionObjectLocalBounds",
+        "claims": ["declaration", "schema"],
+        "source_hash": "70cde18889f64824c515cd6e1389a815263e67992f6baea6e9a02b5ddd30d61d"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpressionObjectLocalBounds::UMaterialExpressionObjectLocalBounds / UMaterialExpressionObjectLocalBounds::Compile",
+        "claims": ["schema", "description", "restrictions"],
+        "source_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371"
+      },
+      {
+        "path": "Engine/Config/BaseMaterialExpressions.ini",
+        "symbol": "ObjectLocalBoundsHalf / ObjectLocalBoundsFull / ObjectLocalBoundsMin / ObjectLocalBoundsMax",
+        "claims": ["description", "restrictions"],
+        "source_hash": "4fea6f4edcad2da665cf206f2e79b3180476230270825670e61559590a6fcb75"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionExternalCodeBase::Build / BuildMaterialExpressionExternalCodeBase",
+        "claims": ["description", "restrictions"],
+        "source_hash": "a40f549263684674f2b154ffdf2b4bf336527786ca7ed983cb4507987ba9d2e8"
+      }
+    ]
+  },
+  "ObjectPositionWS": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "verified"
+    },
+    "semantics": {
+      "operation": "scene_value",
+      "formula": "object_position(OriginType)",
+      "unconnected_defaults": {},
+      "value_domain": "position_float3_or_double3",
+      "restrictions": [
+        {
+          "kind": "unavailable_context_result",
+          "contexts": ["post_process", "light_atlas", "missing_primitive_data"],
+          "result": 0
+        }
+      ],
+      "unresolved": []
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionObjectPositionWS.h",
+        "symbol": "UMaterialExpressionObjectPositionWS / OriginType",
+        "claims": ["declaration", "schema"],
+        "source_hash": "2c36fd93ce04247933719cc70e7fdbc1845e4f2bd66e73ba1d4743510e505619"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpressionObjectPositionWS::Compile / UMaterialExpressionObjectPositionWS::GetExpressionToolTip",
+        "claims": ["description", "restrictions"],
+        "source_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionObjectPositionWS::Build / EmitActorOrObjectPosition",
+        "claims": ["description"],
+        "source_hash": "a40f549263684674f2b154ffdf2b4bf336527786ca7ed983cb4507987ba9d2e8"
+      }
+    ]
+  },
+  "ObjectRadius": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "verified"
+    },
+    "semantics": {
+      "operation": "scene_value",
+      "formula": "object_radius()",
+      "unconnected_defaults": {},
+      "value_domain": "float1",
+      "restrictions": [
+        {
+          "kind": "material_domains_supported",
+          "domains": ["MD_Surface", "MD_Volume"]
+        }
+      ],
+      "unresolved": []
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionObjectRadius.h",
+        "symbol": "UMaterialExpressionObjectRadius",
+        "claims": ["declaration", "schema"],
+        "source_hash": "fb2d3c4378b7a49ac1545cab870efa0956cee99a2eade9d306ad17ae5b26e1e1"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpressionExternalCodeBase::Compile",
+        "claims": ["description", "restrictions"],
+        "source_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371"
+      },
+      {
+        "path": "Engine/Config/BaseMaterialExpressions.ini",
+        "symbol": "ObjectRadius",
+        "claims": ["description", "restrictions"],
+        "source_hash": "4fea6f4edcad2da665cf206f2e79b3180476230270825670e61559590a6fcb75"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionExternalCodeBase::Build / BuildMaterialExpressionExternalCodeBase",
+        "claims": ["description", "restrictions"],
+        "source_hash": "a40f549263684674f2b154ffdf2b4bf336527786ca7ed983cb4507987ba9d2e8"
+      }
+    ]
+  },
+  "PixelNormalWS": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "verified"
+    },
+    "semantics": {
+      "operation": "scene_value",
+      "formula": "pixel_normal()",
+      "unconnected_defaults": {},
+      "value_domain": "float3",
+      "restrictions": [
+        {
+          "kind": "shader_stage_supported",
+          "stages": ["Pixel", "Compute"]
+        },
+        {
+          "kind": "material_property_forbidden",
+          "material_property": "MP_Normal"
+        },
+        {
+          "kind": "rvt_mode_required",
+          "mode": "no_virtual_texture_normal_dependency"
+        }
+      ],
+      "unresolved": [
+        "backend.pixel_normal_stage_validation_equivalence",
+        "backend.pixel_normal_rvt_validation_equivalence"
+      ]
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionPixelNormalWS.h",
+        "symbol": "UMaterialExpressionPixelNormalWS",
+        "claims": ["declaration", "schema"],
+        "source_hash": "c162a44260e4a3f3bc238051632136ca709ec99fc5fa5af0d98f6e9ef426aa0c"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpressionPixelNormalWS::Compile",
+        "claims": ["description", "restrictions"],
+        "source_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/HLSLMaterialTranslator.cpp",
+        "symbol": "FHLSLMaterialTranslator::PixelNormalWS",
+        "claims": ["description", "restrictions"],
+        "source_hash": "285cf264324db9e0146fff797568bf0c873791e20bca843fe9fbb19f95794077"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIRCommon.cpp",
+        "symbol": "EmitPixelNormalWS / MIR::EGraphProperties::ReadsPixelNormal",
+        "claims": ["description", "restrictions"],
+        "source_hash": "04de66a1de5d53a5e5b6239775db23ea7fdcbd1bfd443d4eb3cf1eed1661a033"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialIRValueAnalyzer.cpp",
+        "symbol": "SetMaterialOutput_Analyze / MIR::EGraphProperties::ReadsPixelNormal",
+        "claims": ["restrictions"],
+        "source_hash": "2195654c0bdfd399bb55001c8edac43547928149a815cb672de53b46fc0e93b4"
+      }
+    ]
+  },
+  "PreSkinnedNormal": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "verified"
+    },
+    "semantics": {
+      "operation": "scene_value",
+      "formula": "pre_skinned_normal()",
+      "unconnected_defaults": {},
+      "value_domain": "float3",
+      "restrictions": [
+        {
+          "kind": "shader_stage_supported",
+          "stages": ["Vertex"]
+        },
+        {
+          "kind": "gpu_skin_cache_unsupported"
+        }
+      ],
+      "unresolved": []
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionPreSkinnedNormal.h",
+        "symbol": "UMaterialExpressionPreSkinnedNormal",
+        "claims": ["declaration", "schema"],
+        "source_hash": "5e72415913e565d235620e38eb15532b13aada680ece7c7dcffe1d93dce2c577"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpressionPreSkinnedNormal::UMaterialExpressionPreSkinnedNormal / UMaterialExpressionPreSkinnedNormal::GetExpressionToolTip / UMaterialExpressionExternalCodeBase::Compile",
+        "claims": ["schema", "description", "restrictions"],
+        "source_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371"
+      },
+      {
+        "path": "Engine/Config/BaseMaterialExpressions.ini",
+        "symbol": "PreSkinnedNormal",
+        "claims": ["description", "restrictions"],
+        "source_hash": "4fea6f4edcad2da665cf206f2e79b3180476230270825670e61559590a6fcb75"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionExternalCodeBase::Build / BuildMaterialExpressionExternalCodeBase",
+        "claims": ["description", "restrictions"],
+        "source_hash": "a40f549263684674f2b154ffdf2b4bf336527786ca7ed983cb4507987ba9d2e8"
+      }
+    ]
+  },
+  "PreSkinnedPosition": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "verified"
+    },
+    "semantics": {
+      "operation": "scene_value",
+      "formula": "pre_skinned_position()",
+      "unconnected_defaults": {},
+      "value_domain": "float3",
+      "restrictions": [
+        {
+          "kind": "shader_stage_supported",
+          "stages": ["Vertex"]
+        },
+        {
+          "kind": "deprecated_replacement",
+          "replacement": "LocalPosition"
+        },
+        {
+          "kind": "gpu_skin_cache_unsupported"
+        }
+      ],
+      "unresolved": []
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionPreSkinnedPosition.h",
+        "symbol": "UMaterialExpressionPreSkinnedPosition",
+        "claims": ["declaration", "schema"],
+        "source_hash": "e5ed3ad4e34c02cd2c061023087c57b3fe1071cfc8c63b3ea01b52ce1337abd2"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpressionPreSkinnedPosition::UMaterialExpressionPreSkinnedPosition / UMaterialExpressionPreSkinnedPosition::GetExpressionToolTip / UMaterialExpressionPreSkinnedPosition::GetCreationDescription / UMaterialExpressionExternalCodeBase::Compile",
+        "claims": ["schema", "description", "restrictions"],
+        "source_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371"
+      },
+      {
+        "path": "Engine/Config/BaseMaterialExpressions.ini",
+        "symbol": "PreSkinnedPosition",
+        "claims": ["description", "restrictions"],
+        "source_hash": "4fea6f4edcad2da665cf206f2e79b3180476230270825670e61559590a6fcb75"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionExternalCodeBase::Build / BuildMaterialExpressionExternalCodeBase",
+        "claims": ["description", "restrictions"],
+        "source_hash": "a40f549263684674f2b154ffdf2b4bf336527786ca7ed983cb4507987ba9d2e8"
+      }
+    ]
+  },
+  "ReflectionVectorWS": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "verified"
+    },
+    "semantics": {
+      "operation": "scene_value",
+      "formula": "reflection_vector(CustomWorldNormal, bNormalizeCustomWorldNormal)",
+      "unconnected_defaults": {
+        "Custom World Normal": "$reflection_vector"
+      },
+      "value_domain": "float3",
+      "restrictions": [
+        {
+          "kind": "shader_stage_supported",
+          "stages": ["Pixel", "Compute"]
+        }
+      ],
+      "unresolved": []
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionReflectionVectorWS.h",
+        "symbol": "UMaterialExpressionReflectionVectorWS / CustomWorldNormal / bNormalizeCustomWorldNormal",
+        "claims": ["declaration", "schema", "description"],
+        "source_hash": "e6cafcc12a4ff839fe40f4aca72604c576fb7ef707cbba322386e4098604e5d8"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpressionReflectionVectorWS::Compile / ReflectionAboutCustomWorldNormal / ReflectionVector",
+        "claims": ["description", "restrictions"],
+        "source_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371"
+      },
+      {
+        "path": "Engine/Config/BaseMaterialExpressions.ini",
+        "symbol": "ReflectionVector / CameraVector",
+        "claims": ["description", "restrictions"],
+        "source_hash": "4fea6f4edcad2da665cf206f2e79b3180476230270825670e61559590a6fcb75"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionReflectionVectorWS::Build / NAME_CameraVector / NAME_ReflectionVector",
+        "claims": ["description", "restrictions"],
+        "source_hash": "a40f549263684674f2b154ffdf2b4bf336527786ca7ed983cb4507987ba9d2e8"
+      }
+    ]
+  },
+  "SceneTexelSize": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "not_applicable"
+    },
+    "semantics": {
+      "operation": "scene_value",
+      "formula": "scene_texel_size()",
+      "unconnected_defaults": {},
+      "value_domain": "float2",
+      "restrictions": [],
+      "unresolved": []
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSceneTexelSize.h",
+        "symbol": "UMaterialExpressionSceneTexelSize",
+        "claims": ["declaration", "schema"],
+        "source_hash": "4d672179ff9ec5e8f1ac62b1b1fe42417d7de95508216c962b24f84068692354"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpressionSceneTexelSize::Compile",
+        "claims": ["description"],
+        "source_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionSceneTexelSize::Build / BuildViewProperty",
+        "claims": ["description"],
+        "source_hash": "a40f549263684674f2b154ffdf2b4bf336527786ca7ed983cb4507987ba9d2e8"
+      }
+    ]
+  },
+  "ScreenPosition": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "not_applicable"
+    },
+    "semantics": {
+      "operation": "scene_value",
+      "formula": "screen_position()",
+      "unconnected_defaults": {},
+      "value_domain": "float2",
+      "restrictions": [],
+      "unresolved": []
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionScreenPosition.h",
+        "symbol": "UMaterialExpressionScreenPosition",
+        "claims": ["declaration", "schema"],
+        "source_hash": "2cab38af1dd8973bce118d5be83f925a2dab87a0214f45891210797b5bc228f2"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpressionScreenPosition::UMaterialExpressionScreenPosition / UMaterialExpressionScreenPosition::Compile",
+        "claims": ["schema", "description"],
+        "source_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371"
+      },
+      {
+        "path": "Engine/Config/BaseMaterialExpressions.ini",
+        "symbol": "ViewportUV / PixelPosition",
+        "claims": ["description"],
+        "source_hash": "4fea6f4edcad2da665cf206f2e79b3180476230270825670e61559590a6fcb75"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionExternalCodeBase::Build / BuildMaterialExpressionExternalCodeBase",
+        "claims": ["description"],
+        "source_hash": "a40f549263684674f2b154ffdf2b4bf336527786ca7ed983cb4507987ba9d2e8"
+      }
+    ]
+  },
+  "VertexNormalWS": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "not_applicable"
+    },
+    "semantics": {
+      "operation": "scene_value",
+      "formula": "vertex_normal()",
+      "unconnected_defaults": {},
+      "value_domain": "float3",
+      "restrictions": [],
+      "unresolved": []
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionVertexNormalWS.h",
+        "symbol": "UMaterialExpressionVertexNormalWS",
+        "claims": ["declaration", "schema"],
+        "source_hash": "16d3b3bfb5cdd4ad974c20d8fe60269c8481071cea9ae0eed9d8a444c65d5818"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpressionVertexNormalWS::Compile",
+        "claims": ["description"],
+        "source_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371"
+      },
+      {
+        "path": "Engine/Config/BaseMaterialExpressions.ini",
+        "symbol": "VertexNormal",
+        "claims": ["description"],
+        "source_hash": "4fea6f4edcad2da665cf206f2e79b3180476230270825670e61559590a6fcb75"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionExternalCodeBase::Build / BuildMaterialExpressionExternalCodeBase",
+        "claims": ["description"],
+        "source_hash": "a40f549263684674f2b154ffdf2b4bf336527786ca7ed983cb4507987ba9d2e8"
+      }
+    ]
+  },
+  "VertexTangentWS": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "not_applicable"
+    },
+    "semantics": {
+      "operation": "scene_value",
+      "formula": "vertex_tangent()",
+      "unconnected_defaults": {},
+      "value_domain": "float3",
+      "restrictions": [],
+      "unresolved": []
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionVertexTangentWS.h",
+        "symbol": "UMaterialExpressionVertexTangentWS",
+        "claims": ["declaration", "schema"],
+        "source_hash": "718ab7faedc2a20b30e8ec1e3a1aceed4a7b66c04438fb1aa597460093502d3e"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpressionVertexTangentWS::Compile",
+        "claims": ["description"],
+        "source_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371"
+      },
+      {
+        "path": "Engine/Config/BaseMaterialExpressions.ini",
+        "symbol": "VertexTangent",
+        "claims": ["description"],
+        "source_hash": "4fea6f4edcad2da665cf206f2e79b3180476230270825670e61559590a6fcb75"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionExternalCodeBase::Build / BuildMaterialExpressionExternalCodeBase",
+        "claims": ["description"],
+        "source_hash": "a40f549263684674f2b154ffdf2b4bf336527786ca7ed983cb4507987ba9d2e8"
+      }
+    ]
+  },
+  "WorldPosition": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "verified"
+    },
+    "semantics": {
+      "operation": "scene_value",
+      "formula": "world_position(WorldPositionShaderOffset)",
+      "unconnected_defaults": {},
+      "value_domain": "position_float3_or_double3",
+      "restrictions": [
+        {
+          "kind": "shader_stage_ignores_property",
+          "property": "WorldPositionShaderOffset",
+          "value": "WPT_ExcludeAllShaderOffsets",
+          "stages": ["non_pixel"]
+        },
+        {
+          "kind": "shader_stage_ignores_property",
+          "property": "WorldPositionShaderOffset",
+          "value": "WPT_CameraRelativeNoOffsets",
+          "stages": ["non_pixel"]
+        }
+      ],
+      "unresolved": []
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionWorldPosition.h",
+        "symbol": "UMaterialExpressionWorldPosition / EWorldPositionIncludedOffsets / WorldPositionShaderOffset",
+        "claims": ["declaration", "schema", "description"],
+        "source_hash": "2963c7c33b4ceadf8ca2ee8d14cc972e00300565c2144b40b74e37392a61c8dd"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpressionWorldPosition::UMaterialExpressionWorldPosition / UMaterialExpressionWorldPosition::Compile",
+        "claims": ["schema", "description"],
+        "source_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/HLSLMaterialTranslator.cpp",
+        "symbol": "FHLSLMaterialTranslator::WorldPosition",
+        "claims": ["description", "restrictions"],
+        "source_hash": "285cf264324db9e0146fff797568bf0c873791e20bca843fe9fbb19f95794077"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionWorldPosition::Build / EmitWorldPosition",
+        "claims": ["description", "restrictions"],
+        "source_hash": "a40f549263684674f2b154ffdf2b4bf336527786ca7ed983cb4507987ba9d2e8"
+      }
+    ]
+  }
+}

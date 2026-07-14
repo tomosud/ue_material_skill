@@ -120,7 +120,7 @@
   "inputs": [],
   "prop_pins": [
    {
-    "name": "",
+    "name": "Constant",
     "prop": "Constant",
     "kind": "Primary",
     "type": "FLinearColor"
@@ -171,7 +171,7 @@
   "desc": "",
   "inputs": [
    {
-    "name": "",
+    "name": "Input",
     "prop": "Input",
     "required": true,
     "default_prop": null
@@ -179,13 +179,13 @@
   ],
   "prop_pins": [
    {
-    "name": "",
+    "name": "Bias",
     "prop": "Bias",
     "kind": "Advanced",
     "type": "float"
    },
    {
-    "name": "",
+    "name": "Scale",
     "prop": "Scale",
     "kind": "Advanced",
     "type": "float"
@@ -523,7 +523,7 @@
   "desc": "",
   "inputs": [
    {
-    "name": "",
+    "name": "Input",
     "prop": "Input",
     "required": true,
     "default_prop": null
@@ -587,7 +587,7 @@
   "desc": "",
   "inputs": [
    {
-    "name": "",
+    "name": "Input",
     "prop": "Input",
     "required": true,
     "default_prop": null
@@ -613,6 +613,18 @@
      "b": 0.0,
      "a": 0.0
     }
+   },
+   "bUseCustomPrimitiveData": {
+    "type": "bool",
+    "default": false
+   },
+   "PrimitiveDataIndex": {
+    "type": "uint8",
+    "default": 0
+   },
+   "ChannelNames": {
+    "type": "FParameterChannelNames",
+    "default": null
    }
   },
   "is_parameter": true,

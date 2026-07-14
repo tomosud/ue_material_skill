@@ -226,7 +226,12 @@
     "name": ""
    }
   ],
-  "props": {},
+  "props": {
+   "LuminanceFactors": {
+    "type": "FLinearColor",
+    "default": null
+   }
+  },
   "notes": ""
  },
  "Fresnel": {
@@ -308,9 +313,9 @@
    }
   ],
   "props": {
-   "DisplayName": {
-    "type": ",",
-    "default": "\"Radius\")\n\tfloat AttenuationRadius = 256.0f"
+   "AttenuationRadius": {
+    "type": "float",
+    "default": 256.0
    },
    "HardnessPercent": {
     "type": "float",
@@ -362,7 +367,12 @@
     "name": ""
    }
   ],
-  "props": {},
+  "props": {
+   "Period": {
+    "type": "float",
+    "default": 1.0
+   }
+  },
   "notes": ""
  },
  "DeriveNormalZ": {
@@ -400,13 +410,13 @@
   ],
   "prop_pins": [
    {
-    "name": "TransformSourceType",
+    "name": "Source",
     "prop": "TransformSourceType",
     "kind": "Advanced",
     "type": "enum:EMaterialVectorCoordTransformSource"
    },
    {
-    "name": "TransformType",
+    "name": "Destination",
     "prop": "TransformType",
     "kind": "Advanced",
     "type": "enum:EMaterialVectorCoordTransform"
@@ -417,7 +427,16 @@
     "name": ""
    }
   ],
-  "props": {},
+  "props": {
+   "TransformSourceType": {
+    "type": "enum:EMaterialVectorCoordTransformSource",
+    "default": "TRANSFORMSOURCE_Tangent"
+   },
+   "TransformType": {
+    "type": "enum:EMaterialVectorCoordTransform",
+    "default": "TRANSFORM_World"
+   }
+  },
   "notes": ""
  },
  "TransformPosition": {
@@ -432,13 +451,13 @@
     "default_prop": null
    },
    {
-    "name": "PeriodicWorldTileSize",
+    "name": "Periodic World Tile Size",
     "prop": "PeriodicWorldTileSize",
     "required": false,
-    "default_prop": null
+    "default_prop": "ConstPeriodicWorldTileSize"
    },
    {
-    "name": "FirstPersonInterpolationAlpha",
+    "name": "First Person Interpolation Alpha",
     "prop": "FirstPersonInterpolationAlpha",
     "required": false,
     "default_prop": "ConstFirstPersonInterpolationAlpha"
@@ -446,13 +465,13 @@
   ],
   "prop_pins": [
    {
-    "name": "TransformSourceType",
+    "name": "Source",
     "prop": "TransformSourceType",
     "kind": "Advanced",
     "type": "enum:EMaterialPositionTransformSource"
    },
    {
-    "name": "TransformType",
+    "name": "Destination",
     "prop": "TransformType",
     "kind": "Advanced",
     "type": "enum:EMaterialPositionTransformSource"
@@ -464,13 +483,29 @@
    }
   ],
   "props": {
+   "TransformSourceType": {
+    "type": "enum:EMaterialPositionTransformSource",
+    "default": "TRANSFORMPOSSOURCE_Local"
+   },
+   "TransformType": {
+    "type": "enum:EMaterialPositionTransformSource",
+    "default": "TRANSFORMPOSSOURCE_Local"
+   },
    "ConstPeriodicWorldTileSize": {
     "type": "float",
-    "default": "32.0"
+    "default": 32.0
    },
    "ConstFirstPersonInterpolationAlpha": {
     "type": "float",
     "default": 1.0
+   },
+   "bUsesPeriodicWorldPosition": {
+    "type": "bool",
+    "default": false
+   },
+   "bUsesFirstPersonInterpolationAlpha": {
+    "type": "bool",
+    "default": false
    }
   },
   "notes": ""

@@ -1,0 +1,803 @@
+{
+  "Abs": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "verified"
+    },
+    "semantics": {
+      "operation": "componentwise_unary",
+      "formula": "abs(Input)",
+      "unconnected_defaults": {},
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [
+        {
+          "kind": "required_input",
+          "input": "Input",
+          "failure": "compile_error"
+        }
+      ],
+      "unresolved": []
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionAbs.h",
+        "symbol": "UMaterialExpressionAbs",
+        "claims": ["declaration", "schema"],
+        "source_hash": "88e1e233d35a4fcd53c606fcb60163b4cea89cf7b8fe444f49f0b8f2b11ade8c"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpressionAbs::Compile",
+        "claims": ["description", "restrictions"],
+        "source_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionAbs::Build",
+        "claims": ["description", "restrictions"],
+        "source_hash": "a40f549263684674f2b154ffdf2b4bf336527786ca7ed983cb4507987ba9d2e8"
+      }
+    ]
+  },
+  "ActorPositionWS": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "verified"
+    },
+    "semantics": {
+      "operation": "position_property",
+      "formula": "position_property(OriginType)",
+      "unconnected_defaults": {},
+      "value_domain": "position_float3_or_double3",
+      "restrictions": [
+        {
+          "kind": "material_domains_supported",
+          "domains": ["MD_Surface", "MD_DeferredDecal", "MD_Volume"]
+        }
+      ],
+      "unresolved": [
+        "legacy_mir.material_domain_guard_difference"
+      ]
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionActorPositionWS.h",
+        "symbol": "UMaterialExpressionActorPositionWS",
+        "claims": ["declaration", "schema"],
+        "source_hash": "94da9c38cd148de8a320efceda026b9168d5ed3ff9a69e09623a664ac2790f59"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpressionActorPositionWS::Compile",
+        "claims": ["description", "restrictions"],
+        "source_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionActorPositionWS::Build / EmitActorOrObjectPosition",
+        "claims": ["description", "restrictions"],
+        "source_hash": "a40f549263684674f2b154ffdf2b4bf336527786ca7ed983cb4507987ba9d2e8"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/HLSLMaterialTranslator.cpp",
+        "symbol": "FHLSLMaterialTranslator::ActorWorldPosition",
+        "claims": ["description", "restrictions"],
+        "source_hash": "285cf264324db9e0146fff797568bf0c873791e20bca843fe9fbb19f95794077"
+      }
+    ]
+  },
+  "DeriveNormalZ": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "verified"
+    },
+    "semantics": {
+      "operation": "derive_normal_z",
+      "formula": "derive_normal_z(InXY)",
+      "unconnected_defaults": {},
+      "value_domain": "float3",
+      "restrictions": [
+        {
+          "kind": "required_input",
+          "input": "InXY",
+          "failure": "compile_error"
+        }
+      ],
+      "unresolved": []
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionDeriveNormalZ.h",
+        "symbol": "UMaterialExpressionDeriveNormalZ",
+        "claims": ["declaration", "schema"],
+        "source_hash": "726982efc303392645072790a4dc861bcbb225eed6a5dc91736866aeb672f8d8"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpressionDeriveNormalZ::Compile",
+        "claims": ["description", "restrictions"],
+        "source_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionDeriveNormalZ::Build",
+        "claims": ["description", "restrictions"],
+        "source_hash": "a40f549263684674f2b154ffdf2b4bf336527786ca7ed983cb4507987ba9d2e8"
+      }
+    ]
+  },
+  "Fmod": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "verified"
+    },
+    "semantics": {
+      "operation": "componentwise_binary",
+      "formula": "fmod(A, B)",
+      "unconnected_defaults": {},
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [
+        {
+          "kind": "required_input",
+          "input": "A",
+          "failure": "compile_error"
+        },
+        {
+          "kind": "required_input",
+          "input": "B",
+          "failure": "compile_error"
+        }
+      ],
+      "unresolved": [
+        "legacy_mir.mixed_type_coercion_difference"
+      ]
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionFmod.h",
+        "symbol": "UMaterialExpressionFmod",
+        "claims": ["declaration", "schema"],
+        "source_hash": "ec6bb8036e14f1c1b429f3cdddc441627909f08e5d0664d807f316ef100f6116"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpressionFmod::Compile",
+        "claims": ["description", "restrictions"],
+        "source_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionFmod::Build",
+        "claims": ["description", "restrictions"],
+        "source_hash": "a40f549263684674f2b154ffdf2b4bf336527786ca7ed983cb4507987ba9d2e8"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/HLSLMaterialTranslator.cpp",
+        "symbol": "FHLSLMaterialTranslator::Fmod",
+        "claims": ["description"],
+        "source_hash": "285cf264324db9e0146fff797568bf0c873791e20bca843fe9fbb19f95794077"
+      }
+    ]
+  },
+  "If": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "verified"
+    },
+    "semantics": {
+      "operation": "conditional",
+      "formula": "if_select(A, B, AGreaterThanB, AEqualsB, ALessThanB, EqualsThreshold)",
+      "unconnected_defaults": {
+        "B": "ConstB",
+        "AEqualsB": "$greater_branch"
+      },
+      "value_domain": "branch_promoted_value",
+      "restrictions": [
+        {
+          "kind": "backend_required_input",
+          "input": "A",
+          "backend": "legacy",
+          "failure": "compile_error"
+        },
+        {
+          "kind": "backend_required_input",
+          "input": "AGreaterThanB",
+          "backend": "legacy",
+          "failure": "compile_error"
+        },
+        {
+          "kind": "backend_required_input",
+          "input": "ALessThanB",
+          "backend": "legacy",
+          "failure": "compile_error"
+        },
+        {
+          "kind": "input_domain_required",
+          "inputs": ["A", "B"],
+          "domain": "primitive",
+          "failure": "compile_error",
+          "backend": "legacy"
+        }
+      ],
+      "unresolved": [
+        "legacy_mir.required_input_default_difference"
+      ]
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionIf.h",
+        "symbol": "UMaterialExpressionIf",
+        "claims": ["declaration", "schema"],
+        "source_hash": "3c765bcc6b25784b470b19d4f18cf1c52b88255ed788b46f7005e7154194d2cb"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpressionIf::Compile / UMaterialExpressionIf::GetInputValueType",
+        "claims": ["description", "restrictions"],
+        "source_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionIf::Build / EmitAlmostEquals",
+        "claims": ["description", "restrictions"],
+        "source_hash": "a40f549263684674f2b154ffdf2b4bf336527786ca7ed983cb4507987ba9d2e8"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/HLSLMaterialTranslator.cpp",
+        "symbol": "FHLSLMaterialTranslator::If",
+        "claims": ["description", "restrictions"],
+        "source_hash": "285cf264324db9e0146fff797568bf0c873791e20bca843fe9fbb19f95794077"
+      }
+    ]
+  },
+  "Length": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "verified"
+    },
+    "semantics": {
+      "operation": "length",
+      "formula": "length(Input)",
+      "unconnected_defaults": {},
+      "value_domain": "float1",
+      "restrictions": [
+        {
+          "kind": "required_input",
+          "input": "Input",
+          "failure": "compile_error"
+        }
+      ],
+      "unresolved": []
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionLength.h",
+        "symbol": "UMaterialExpressionLength",
+        "claims": ["declaration", "schema"],
+        "source_hash": "236fde9449d3b3fcd90d305b340388f9336fcc5dea952d4d93201fd193efdde2"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpressionLength::Compile",
+        "claims": ["description", "restrictions"],
+        "source_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionLength::Build",
+        "claims": ["description", "restrictions"],
+        "source_hash": "a40f549263684674f2b154ffdf2b4bf336527786ca7ed983cb4507987ba9d2e8"
+      }
+    ]
+  },
+  "LocalPosition": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "verified"
+    },
+    "semantics": {
+      "operation": "position_property",
+      "formula": "position_property(IncludedOffsets, LocalOrigin)",
+      "unconnected_defaults": {},
+      "value_domain": "float3",
+      "restrictions": [
+        {
+          "kind": "shader_stage_ignores_property",
+          "property": "IncludedOffsets",
+          "value": "ExcludeOffsets",
+          "stages": ["non_pixel"]
+        }
+      ],
+      "unresolved": [
+        "local_origin.instance_pre_skinning_stage_constraint",
+        "local_origin.instance_pre_skinning_gpu_skin_cache_constraint"
+      ]
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionLocalPosition.h",
+        "symbol": "UMaterialExpressionLocalPosition / EPositionIncludedOffsets / ELocalPositionOrigin",
+        "claims": ["declaration", "schema", "restrictions"],
+        "source_hash": "04bbf9281e246a7a447b52be8d96e504fe1e3bdc727215eb5fc6aecdf703b63b"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpressionLocalPosition::UMaterialExpressionLocalPosition / UMaterialExpressionLocalPosition::Compile",
+        "claims": ["schema", "description"],
+        "source_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionLocalPosition::Build / EmitLocalPosition",
+        "claims": ["description", "restrictions"],
+        "source_hash": "a40f549263684674f2b154ffdf2b4bf336527786ca7ed983cb4507987ba9d2e8"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/HLSLMaterialTranslator.cpp",
+        "symbol": "FHLSLMaterialTranslator::LocalPosition",
+        "claims": ["description", "restrictions"],
+        "source_hash": "285cf264324db9e0146fff797568bf0c873791e20bca843fe9fbb19f95794077"
+      }
+    ]
+  },
+  "Modulo": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "verified"
+    },
+    "semantics": {
+      "operation": "componentwise_binary",
+      "formula": "modulo(A, B)",
+      "unconnected_defaults": {},
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [
+        {
+          "kind": "required_input",
+          "input": "A",
+          "failure": "compile_error"
+        },
+        {
+          "kind": "required_input",
+          "input": "B",
+          "failure": "compile_error"
+        }
+      ],
+      "unresolved": [
+        "legacy_mir.mixed_type_coercion_difference"
+      ]
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionModulo.h",
+        "symbol": "UMaterialExpressionModulo",
+        "claims": ["declaration", "schema"],
+        "source_hash": "cd94a679ab8d8ad1904a31ada0ce0bb811f4cb5215a4ef6c690afe4c93fee9f7"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpressionModulo::Compile / UMaterialExpressionModulo::GetInputValueType / UMaterialExpressionModulo::GetOutputValueType",
+        "claims": ["description", "restrictions"],
+        "source_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionModulo::Build",
+        "claims": ["description", "restrictions"],
+        "source_hash": "a40f549263684674f2b154ffdf2b4bf336527786ca7ed983cb4507987ba9d2e8"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/HLSLMaterialTranslator.cpp",
+        "symbol": "FHLSLMaterialTranslator::Modulo",
+        "claims": ["description"],
+        "source_hash": "285cf264324db9e0146fff797568bf0c873791e20bca843fe9fbb19f95794077"
+      }
+    ]
+  },
+  "ObjectOrientation": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "not_applicable"
+    },
+    "semantics": {
+      "operation": "position_property",
+      "formula": "position_property()",
+      "unconnected_defaults": {},
+      "value_domain": "float3",
+      "restrictions": [],
+      "unresolved": []
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionObjectOrientation.h",
+        "symbol": "UMaterialExpressionObjectOrientation",
+        "claims": ["declaration", "schema"],
+        "source_hash": "9fff35453e7fc1e4c5c4ca69315fc3abf0807d854fbe8fba41372f7abe5ed903"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionExternalCodeBase.h",
+        "symbol": "UMaterialExpressionExternalCodeBase / ExternalCodeIdentifiers",
+        "claims": ["schema"],
+        "source_hash": "791dda298690e72777aa3b4d83bc473e0b43607a0b2f08cf0fc49f47de413e7a"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpressionObjectOrientation::Compile",
+        "claims": ["description"],
+        "source_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/HLSLMaterialTranslator.cpp",
+        "symbol": "FHLSLMaterialTranslator::ObjectOrientation",
+        "claims": ["description"],
+        "source_hash": "285cf264324db9e0146fff797568bf0c873791e20bca843fe9fbb19f95794077"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionExternalCodeBase::Build / BuildMaterialExpressionExternalCodeBase",
+        "claims": ["description"],
+        "source_hash": "a40f549263684674f2b154ffdf2b4bf336527786ca7ed983cb4507987ba9d2e8"
+      },
+      {
+        "path": "Engine/Config/BaseMaterialExpressions.ini",
+        "symbol": "MaterialExpressionObjectOrientation / ObjectOrientation",
+        "claims": ["description"],
+        "source_hash": "4fea6f4edcad2da665cf206f2e79b3180476230270825670e61559590a6fcb75"
+      },
+      {
+        "path": "Engine/Shaders/Private/MaterialTemplate.ush",
+        "symbol": "GetObjectOrientation",
+        "claims": ["description"],
+        "source_hash": "2d237cc8c53a024341a6a3828a251a655fbc9a266c0a2d7ed7e244be90bf292d"
+      }
+    ]
+  },
+  "RotateAboutAxis": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "verified"
+    },
+    "semantics": {
+      "operation": "axis_rotation",
+      "formula": "rotate_about_axis(NormalizedRotationAxis, RotationAngle, PivotPoint, Position, Period)",
+      "unconnected_defaults": {},
+      "value_domain": "float3",
+      "restrictions": [
+        {
+          "kind": "required_input",
+          "input": "NormalizedRotationAxis",
+          "failure": "compile_error"
+        },
+        {
+          "kind": "required_input",
+          "input": "RotationAngle",
+          "failure": "compile_error"
+        },
+        {
+          "kind": "required_input",
+          "input": "PivotPoint",
+          "failure": "compile_error"
+        },
+        {
+          "kind": "required_input",
+          "input": "Position",
+          "failure": "compile_error"
+        }
+      ],
+      "unresolved": [
+        "runtime.period_zero_behavior"
+      ]
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionRotateAboutAxis.h",
+        "symbol": "UMaterialExpressionRotateAboutAxis",
+        "claims": ["declaration", "schema"],
+        "source_hash": "c08276de342d8dd17aab450420e7df138a583d3cd9d47038f3550f9d2e377b93"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpressionRotateAboutAxis::Compile",
+        "claims": ["description", "restrictions"],
+        "source_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionRotateAboutAxis::Build",
+        "claims": ["description", "restrictions"],
+        "source_hash": "a40f549263684674f2b154ffdf2b4bf336527786ca7ed983cb4507987ba9d2e8"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/HLSLMaterialTranslator.cpp",
+        "symbol": "FHLSLMaterialTranslator::RotateAboutAxis",
+        "claims": ["description"],
+        "source_hash": "285cf264324db9e0146fff797568bf0c873791e20bca843fe9fbb19f95794077"
+      }
+    ]
+  },
+  "SmoothStep": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "not_applicable"
+    },
+    "semantics": {
+      "operation": "smoothstep",
+      "formula": "smoothstep(Min, Max, Value)",
+      "unconnected_defaults": {
+        "Min": "ConstMin",
+        "Max": "ConstMax",
+        "Value": "ConstValue"
+      },
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [],
+      "unresolved": []
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSmoothStep.h",
+        "symbol": "UMaterialExpressionSmoothStep",
+        "claims": ["declaration", "schema"],
+        "source_hash": "381c260a0d3fefd11c46ce5c8d6f370d2f0e7f43dd2893a1da1ec54f216a7472"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpressionSmoothStep::Compile",
+        "claims": ["description"],
+        "source_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionSmoothStep::Build / BuildTernaryArithmeticOperator",
+        "claims": ["description"],
+        "source_hash": "a40f549263684674f2b154ffdf2b4bf336527786ca7ed983cb4507987ba9d2e8"
+      }
+    ]
+  },
+  "SphereMask": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "verified"
+    },
+    "semantics": {
+      "operation": "sphere_mask",
+      "formula": "sphere_mask(A, B, Radius, Hardness)",
+      "unconnected_defaults": {
+        "Radius": "AttenuationRadius",
+        "Hardness": "HardnessPercent"
+      },
+      "value_domain": "float1",
+      "restrictions": [
+        {
+          "kind": "required_input",
+          "input": "A",
+          "failure": "compile_error"
+        },
+        {
+          "kind": "required_input",
+          "input": "B",
+          "failure": "compile_error"
+        },
+        {
+          "kind": "scaled_unconnected_default",
+          "input": "Hardness",
+          "property": "HardnessPercent",
+          "scale": 0.01
+        },
+        {
+          "kind": "minimum_effective_input",
+          "input": "Radius",
+          "minimum": 0.00001
+        },
+        {
+          "kind": "editor_range",
+          "property": "HardnessPercent",
+          "minimum": 0.0,
+          "maximum": 100.0
+        }
+      ],
+      "unresolved": []
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSphereMask.h",
+        "symbol": "UMaterialExpressionSphereMask",
+        "claims": ["declaration", "schema", "restrictions"],
+        "source_hash": "2c729540a0da9a35e06bc9eb9df7af9a4fc79417863db1780010b5ddcdb26f0d"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpressionSphereMask::Compile / CompileHelperLength",
+        "claims": ["description", "restrictions"],
+        "source_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionSphereMask::Build",
+        "claims": ["description", "restrictions"],
+        "source_hash": "a40f549263684674f2b154ffdf2b4bf336527786ca7ed983cb4507987ba9d2e8"
+      }
+    ]
+  },
+  "Transform": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "verified"
+    },
+    "semantics": {
+      "operation": "vector_transform",
+      "formula": "transform_vector(Input, TransformSourceType, TransformType)",
+      "unconnected_defaults": {},
+      "value_domain": "float3",
+      "restrictions": [
+        {
+          "kind": "required_input",
+          "input": "Input",
+          "failure": "compile_error"
+        }
+      ],
+      "unresolved": []
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionTransform.h",
+        "symbol": "UMaterialExpressionTransform / EMaterialVectorCoordTransformSource / EMaterialVectorCoordTransform",
+        "claims": ["declaration", "schema"],
+        "source_hash": "2aab28f1a4447a7bad99a8bafd551dc3cd2e49efab4873ab4b1e899afda782f8"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpressionTransform::Compile / GetMaterialCommonBasis",
+        "claims": ["description", "restrictions"],
+        "source_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionTransform::Build / BuildTransformVector",
+        "claims": ["description", "restrictions"],
+        "source_hash": "a40f549263684674f2b154ffdf2b4bf336527786ca7ed983cb4507987ba9d2e8"
+      }
+    ]
+  },
+  "TransformPosition": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "verified"
+    },
+    "semantics": {
+      "operation": "position_transform",
+      "formula": "transform_position(Input, TransformSourceType, TransformType, PeriodicWorldTileSize, FirstPersonInterpolationAlpha)",
+      "unconnected_defaults": {
+        "Periodic World Tile Size": "ConstPeriodicWorldTileSize",
+        "First Person Interpolation Alpha": "ConstFirstPersonInterpolationAlpha"
+      },
+      "value_domain": "position_float3_or_double3",
+      "restrictions": [
+        {
+          "kind": "required_input",
+          "input": "Input",
+          "failure": "compile_error"
+        },
+        {
+          "kind": "dynamic_inputs_by_selector",
+          "properties": ["TransformSourceType", "TransformType"],
+          "match": "TRANSFORMPOSSOURCE_PeriodicWorld",
+          "input": "Periodic World Tile Size",
+          "default_property": "ConstPeriodicWorldTileSize"
+        },
+        {
+          "kind": "dynamic_inputs_by_selector",
+          "properties": ["TransformSourceType", "TransformType"],
+          "match": "TRANSFORMPOSSOURCE_FirstPersonTranslatedWorld",
+          "input": "First Person Interpolation Alpha",
+          "default_property": "ConstFirstPersonInterpolationAlpha"
+        },
+        {
+          "kind": "enum_value_forbidden",
+          "property": "TransformSourceType",
+          "value": "TRANSFORMPOSSOURCE_FirstPersonTranslatedWorld"
+        },
+        {
+          "kind": "editor_minimum",
+          "property": "ConstPeriodicWorldTileSize",
+          "minimum": 0.0001
+        },
+        {
+          "kind": "editor_range",
+          "property": "ConstFirstPersonInterpolationAlpha",
+          "minimum": 0.0,
+          "maximum": 1.0
+        }
+      ],
+      "unresolved": []
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionTransformPosition.h",
+        "symbol": "UMaterialExpressionTransformPosition / EMaterialPositionTransformSource",
+        "claims": ["declaration", "schema", "restrictions"],
+        "source_hash": "1abc33e1a187efb315b4ff567dd901578127198d5cf7084f11d83ab3003864c9"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpressionTransformPosition::Compile / UMaterialExpressionTransformPosition::GetInput / UMaterialExpressionTransformPosition::GetInputName / UMaterialExpressionTransformPosition::PostEditChangeProperty / UMaterialExpressionTransformPosition::GetAbsoluteInputIndex",
+        "claims": ["schema", "description", "restrictions"],
+        "source_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionTransformPosition::Build / BuildTransformVector",
+        "claims": ["description", "restrictions"],
+        "source_hash": "a40f549263684674f2b154ffdf2b4bf336527786ca7ed983cb4507987ba9d2e8"
+      }
+    ]
+  },
+  "ViewSize": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "not_applicable"
+    },
+    "semantics": {
+      "operation": "view_property",
+      "formula": "view_property()",
+      "unconnected_defaults": {},
+      "value_domain": "float2",
+      "restrictions": [],
+      "unresolved": []
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionViewSize.h",
+        "symbol": "UMaterialExpressionViewSize",
+        "claims": ["declaration", "schema"],
+        "source_hash": "a3e28e8822a2cc3df45de177d91a2e5daf1cf8a24385bb9145a78dbd6d7908d4"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpressionViewSize::Compile",
+        "claims": ["description"],
+        "source_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionViewSize::Build / BuildViewProperty",
+        "claims": ["description"],
+        "source_hash": "a40f549263684674f2b154ffdf2b4bf336527786ca7ed983cb4507987ba9d2e8"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExternalCodeRegistry.cpp",
+        "symbol": "MaterialExternalCodeRegistry::GetExternalViewPropertyCode / MEVP_ViewSize",
+        "claims": ["description"],
+        "source_hash": "4acbf8307287544b470840e1de09e0247ed8c7da83d2c1af0da321fbe50b2a3f"
+      }
+    ]
+  }
+}

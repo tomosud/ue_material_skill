@@ -13,6 +13,7 @@ task or documentation files.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import os
 from pathlib import Path
@@ -38,6 +39,11 @@ DECLARATION_RE = re.compile(
     r"(?P<class_name>UMaterialExpression[A-Za-z0-9_]*)\s*"
     r"(?::\s*public\s+(?P<base>[A-Za-z0-9_:]+))?\s*$"
 )
+IMPLEMENTATION_RG_PATTERN = r"\bUMaterialExpression[A-Za-z0-9_]+::[A-Za-z0-9_~]+"
+IMPLEMENTATION_RE = re.compile(
+    r"^(?P<path>.+?):(?P<line>\d+):.*?\b"
+    r"(?P<class_name>UMaterialExpression[A-Za-z0-9_]*)::[A-Za-z0-9_~]+"
+)
 
 
 def parse_args() -> argparse.Namespace:
@@ -52,6 +58,11 @@ def parse_args() -> argparse.Namespace:
         "--scan",
         type=Path,
         help="Read precomputed ripgrep output instead of scanning the checkout",
+    )
+    parser.add_argument(
+        "--impl-scan",
+        type=Path,
+        help="Read precomputed ripgrep implementation output instead of scanning the checkout",
     )
     parser.add_argument(
         "--output",
@@ -79,17 +90,21 @@ def resolve_rg() -> str:
     raise RuntimeError("ripgrep was not found; set RG_PATH or pass --scan")
 
 
-def scan_declarations(engine_root: Path) -> list[str]:
+def scan_source(
+    engine_root: Path,
+    glob: str,
+    pattern: str,
+    roots: list[str] | None = None,
+) -> list[str]:
     result = subprocess.run(
         [
             resolve_rg(),
             "-n",
             "--no-heading",
             "-g",
-            "*.h",
-            RG_PATTERN,
-            "Source",
-            "Plugins",
+            glob,
+            pattern,
+            *(roots or ["Source", "Plugins"]),
         ],
         cwd=engine_root,
         stdout=subprocess.PIPE,
@@ -100,6 +115,60 @@ def scan_declarations(engine_root: Path) -> list[str]:
         check=True,
     )
     return result.stdout.splitlines()
+
+
+def scan_declarations(engine_root: Path) -> list[str]:
+    return scan_source(engine_root, "*.h", RG_PATTERN)
+
+
+def declaration_module_roots(scan_lines: list[str]) -> list[str]:
+    """Return source-module roots that own the scanned declarations."""
+
+    roots: set[str] = set()
+    for raw_line in scan_lines:
+        match = DECLARATION_RE.match(raw_line.strip())
+        if not match:
+            continue
+        parts = match.group("path").replace("\\", "/").split("/")
+        try:
+            source_index = parts.index("Source")
+            roots.add("/".join(parts[: source_index + 2]))
+        except (ValueError, IndexError):
+            continue
+    return sorted(roots)
+
+
+def scan_implementations(engine_root: Path, declarations: list[str]) -> list[str]:
+    # Scanning only modules that declare Material Expressions avoids traversing
+    # every unrelated Engine plugin while still proving each class/path match.
+    roots = declaration_module_roots(declarations)
+    return scan_source(engine_root, "*.cpp", IMPLEMENTATION_RG_PATTERN, roots)
+
+
+def normalized_source_hash(path: Path) -> str:
+    """Hash source bytes after normalizing CRLF and bare CR to LF."""
+
+    data = path.read_bytes().replace(b"\r\n", b"\n").replace(b"\r", b"\n")
+    return hashlib.sha256(data).hexdigest()
+
+
+def implementation_paths(scan_lines: list[str]) -> dict[str, str]:
+    """Return only class-to-cpp mappings that are unambiguous in the scan."""
+
+    candidates: dict[str, set[str]] = {}
+    for raw_line in scan_lines:
+        match = IMPLEMENTATION_RE.match(raw_line.strip())
+        if not match:
+            continue
+        path = match.group("path").replace("\\", "/")
+        if "/Intermediate/" in path:
+            continue
+        candidates.setdefault(match.group("class_name"), set()).add(path)
+    return {
+        class_name: next(iter(paths))
+        for class_name, paths in candidates.items()
+        if len(paths) == 1
+    }
 
 
 def find_base(path: Path, declaration_line: int) -> str | None:
@@ -138,8 +207,13 @@ def module_and_origin(relative_header: str) -> tuple[str, str]:
     return module, "plugin"
 
 
-def build_manifest(engine_root: Path, scan_lines: list[str]) -> dict[str, dict[str, object]]:
+def build_manifest(
+    engine_root: Path,
+    scan_lines: list[str],
+    impl_scan_lines: list[str] | None = None,
+) -> dict[str, dict[str, object]]:
     entries: dict[str, dict[str, object]] = {}
+    implementations = implementation_paths(impl_scan_lines or [])
     for raw_line in scan_lines:
         match = DECLARATION_RE.match(raw_line.strip())
         if not match:
@@ -157,15 +231,21 @@ def build_manifest(engine_root: Path, scan_lines: list[str]) -> dict[str, dict[s
         abstract, deprecated_flag = class_flags(engine_root / header, declaration_line)
         module, origin = module_and_origin(header)
         short_name = class_name.removeprefix("UMaterialExpression") or "(root)"
-        entries[short_name] = {
+        entry: dict[str, object] = {
             "abstract": abstract,
             "base": base,
             "class": class_name,
             "deprecated": deprecated_flag or class_name.endswith("_DEPRECATED"),
             "header": "Engine/" + header,
+            "header_hash": normalized_source_hash(engine_root / header),
             "module": module,
             "origin": origin,
         }
+        implementation = implementations.get(class_name)
+        if implementation is not None:
+            entry["impl"] = "Engine/" + implementation
+            entry["impl_hash"] = normalized_source_hash(engine_root / implementation)
+        entries[short_name] = entry
     return dict(sorted(entries.items()))
 
 
@@ -179,12 +259,23 @@ def main() -> int:
         scan_lines = args.scan.read_text(encoding="utf-8", errors="replace").splitlines()
     else:
         scan_lines = scan_declarations(engine_root)
+    if args.impl_scan:
+        impl_scan_lines = args.impl_scan.read_text(
+            encoding="utf-8", errors="replace"
+        ).splitlines()
+    elif args.scan:
+        # A declaration fixture is commonly used without a corresponding cpp
+        # fixture. Do not inspect an unrelated checkout in that mode.
+        impl_scan_lines = []
+    else:
+        impl_scan_lines = scan_implementations(engine_root, scan_lines)
 
-    manifest = build_manifest(engine_root, scan_lines)
+    manifest = build_manifest(engine_root, scan_lines, impl_scan_lines)
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(
         json.dumps(manifest, ensure_ascii=False, indent=1, sort_keys=True) + "\n",
         encoding="utf-8",
+        newline="\n",
     )
 
     classes = [entry for name, entry in manifest.items() if name != "(root)"]

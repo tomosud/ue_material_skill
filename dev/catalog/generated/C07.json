@@ -468,7 +468,7 @@
   "desc": "",
   "inputs": [
    {
-    "name": "Input",
+    "name": "Coordinates",
     "prop": "Input",
     "required": false,
     "default_prop": "ConstInput"
@@ -547,7 +547,7 @@
   "props": {
    "SceneTextureId": {
     "type": "enum:ESceneTextureId",
-    "default": "ShadingModelID"
+    "default": "SceneColor"
    },
    "bFiltered": {
     "type": "bool",

@@ -180,7 +180,8 @@ class ProvenanceValidationTests(unittest.TestCase):
         result = diagnostics_of(custom_doc({"Code": "return 0;"}))
         provenance_warnings = [
             message for message in messages(result, "warning")
-            if "source audit" in message or "Editor" in message
+            if "incomplete source audit" in message
+            or "no recorded Unreal Editor evidence" in message
         ]
         self.assertEqual(provenance_warnings, [])
 
@@ -189,6 +190,48 @@ class ProvenanceValidationTests(unittest.TestCase):
         warnings = messages(result, "warning")
         self.assertTrue(any("incomplete source audit" in message for message in warnings))
         self.assertTrue(any("no recorded Unreal Editor evidence" in message for message in warnings))
+
+    def test_verified_audit_still_surfaces_each_unresolved_semantic_id(self):
+        unresolved = [
+            "constant.dynamic_type",
+            "constant.legacy_path_consistency",
+        ]
+        node_evidence = {
+            "Constant": {
+                "audit": {
+                    "declaration": "verified",
+                    "schema": "verified",
+                    "description": "verified",
+                    "restrictions": "verified",
+                },
+                "semantics": {
+                    "restrictions": [{"kind": "test_structured_restriction"}],
+                    "unresolved": unresolved,
+                },
+            }
+        }
+        editor_evidence = {
+            "classes": {"Constant": {"editor_roundtrip": True}}
+        }
+
+        result = mgvalidate.validate_document(
+            {"nodes": {"constant1": {"class": "Constant"}}},
+            {"Constant": CATALOG["Constant"]},
+            {},
+            node_evidence,
+            editor_evidence,
+        )
+        warnings = messages(result, "warning")
+
+        self.assertFalse(any("incomplete source audit" in message for message in warnings))
+        self.assertEqual(len(warnings), 1, warnings)
+        self.assertIn("configured UE source or an Unreal Editor sample", warnings[0])
+        for unresolved_id in unresolved:
+            self.assertIn(unresolved_id, warnings[0])
+        self.assertEqual(
+            node_evidence["Constant"]["semantics"]["restrictions"],
+            [{"kind": "test_structured_restriction"}],
+        )
 
 
 class SourceAuditedCoreSchemaTests(unittest.TestCase):

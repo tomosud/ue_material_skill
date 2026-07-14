@@ -28,6 +28,14 @@ $CODEX_HOME/skills/ue-material/SKILL.md
 
 Then invoke it as `$ue-material` or ask Codex to create, inspect, or modify Unreal Material Editor nodes.
 
+To update an existing installation, replace the installed `ue-material` directory with a complete copy of
+`skills/ue-material/`. Do not copy individual catalog or script files, because the packaged version metadata
+and catalog hashes describe the directory as one release unit. Confirm the installed release after copying:
+
+```powershell
+python scripts/search_catalog.py --version
+```
+
 ## Basic usage
 
 Run commands from the installed `ue-material` skill directory. The scripts use only the Python standard
@@ -38,6 +46,7 @@ Search every declared Material Expression, including legacy Japanese or English 
 ```powershell
 python scripts/search_catalog.py texture sample
 python scripts/search_catalog.py --class TextureSample
+python scripts/search_catalog.py --version
 ```
 
 Validate MGJSON before building:

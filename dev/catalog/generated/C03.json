@@ -6,16 +6,19 @@
    {
     "name": "A",
     "prop": "A",
+    "default_prop": "ConstA",
     "required": false
    },
    {
     "name": "B",
     "prop": "B",
+    "default_prop": "ConstB",
     "required": false
    },
    {
     "name": "Alpha",
     "prop": "Alpha",
+    "default_prop": "ConstAlpha",
     "required": false
    }
   ],
@@ -90,17 +93,20 @@
    {
     "name": "Min",
     "prop": "Min",
-    "required": false
+    "required": false,
+    "default_prop": "ConstMin"
    },
    {
     "name": "Max",
     "prop": "Max",
-    "required": false
+    "required": false,
+    "default_prop": "ConstMax"
    },
    {
     "name": "Value",
     "prop": "Value",
-    "required": false
+    "required": false,
+    "default_prop": "ConstValue"
    }
   ],
   "outputs": [
@@ -130,12 +136,14 @@
    {
     "name": "Y",
     "prop": "Y",
-    "required": false
+    "required": false,
+    "default_prop": "ConstY"
    },
    {
     "name": "X",
     "prop": "X",
-    "required": false
+    "required": false,
+    "default_prop": "ConstX"
    }
   ],
   "outputs": [
@@ -166,7 +174,8 @@
    {
     "name": "B",
     "prop": "B",
-    "required": false
+    "required": false,
+    "default_prop": "ConstB"
    },
    {
     "name": "AGreaterThanB",
@@ -205,6 +214,10 @@
    "ConstB": {
     "type": "float",
     "default": 0.0
+   },
+   "ConstAEqualsB_DEPRECATED": {
+    "type": "float",
+    "default": null
    }
   }
  },

@@ -6,6 +6,14 @@
       "description": "verified",
       "restrictions": "not_applicable"
     },
+    "semantics": {
+      "operation": "constant",
+      "formula": "R",
+      "unconnected_defaults": {},
+      "value_domain": "float1",
+      "restrictions": [],
+      "unresolved": []
+    },
     "references": [
       {
         "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionConstant.h",
@@ -35,6 +43,14 @@
       "schema": "verified",
       "description": "verified",
       "restrictions": "not_applicable"
+    },
+    "semantics": {
+      "operation": "constant",
+      "formula": "float2(R, G)",
+      "unconnected_defaults": {},
+      "value_domain": "float2",
+      "restrictions": [],
+      "unresolved": []
     },
     "references": [
       {
@@ -71,6 +87,14 @@
       "description": "verified",
       "restrictions": "not_applicable"
     },
+    "semantics": {
+      "operation": "constant",
+      "formula": "rgb(Constant)",
+      "unconnected_defaults": {},
+      "value_domain": "float3",
+      "restrictions": [],
+      "unresolved": []
+    },
     "references": [
       {
         "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionConstant3Vector.h",
@@ -106,6 +130,17 @@
       "description": "verified",
       "restrictions": "not_applicable"
     },
+    "semantics": {
+      "operation": "componentwise_binary",
+      "formula": "A + B",
+      "unconnected_defaults": {
+        "A": "ConstA",
+        "B": "ConstB"
+      },
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [],
+      "unresolved": []
+    },
     "references": [
       {
         "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionAdd.h",
@@ -130,6 +165,17 @@
       "schema": "verified",
       "description": "verified",
       "restrictions": "not_applicable"
+    },
+    "semantics": {
+      "operation": "componentwise_binary",
+      "formula": "A * B",
+      "unconnected_defaults": {
+        "A": "ConstA",
+        "B": "ConstB"
+      },
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [],
+      "unresolved": []
     },
     "references": [
       {

@@ -62,9 +62,11 @@
   "desc": "",
   "inputs": [
    {
-    "name": "Input",
+    "name": "Coordinates",
+    "prop": "Input",
     "type": "FExpressionInput",
     "required": false,
+    "default_prop": "ConstInput",
     "tooltip": "Defaults to 'ConstInput' if not specified"
    }
   ],
@@ -94,7 +96,7 @@
   "props": {
    "InputMode": {
     "type": "enum:EMaterialSceneAttributeInputMode::Type",
-    "default": ""
+    "default": "Coordinates"
    },
    "ConstInput": {
     "type": "FVector2D",
@@ -368,7 +370,8 @@
   "desc": "",
   "inputs": [
    {
-    "name": "WorldPosition",
+    "name": "World Position",
+    "prop": "WorldPosition",
     "type": "FExpressionInput",
     "required": false,
     "tooltip": "World position of the sample"

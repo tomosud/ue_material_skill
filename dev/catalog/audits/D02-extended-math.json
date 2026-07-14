@@ -1,0 +1,834 @@
+{
+  "Arccosine": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "verified"
+    },
+    "semantics": {
+      "operation": "componentwise_unary",
+      "formula": "acos(Input)",
+      "unconnected_defaults": {},
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [
+        {
+          "kind": "required_input",
+          "input": "Input",
+          "failure": "compile_error"
+        }
+      ],
+      "unresolved": [
+        "arccosine.uniform_vector_output_legacy_mir_consistency"
+      ]
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionArccosine.h",
+        "symbol": "UMaterialExpressionArccosine",
+        "claims": ["declaration", "schema"],
+        "source_hash": "f8d4c45935172ac044b0fdeda88865d3578ad9596bab00e8fdd659424beb414d"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpression::UMaterialExpression / UMaterialExpression::GetInputName / UMaterialExpression::IsInputConnectionRequired / UMaterialExpressionArccosine::Compile",
+        "claims": ["schema", "description", "restrictions"],
+        "source_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionArccosine::Build",
+        "claims": ["description"],
+        "source_hash": "a40f549263684674f2b154ffdf2b4bf336527786ca7ed983cb4507987ba9d2e8"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/HLSLMaterialTranslator.cpp",
+        "symbol": "FHLSLMaterialTranslator::Arccosine",
+        "claims": ["description"],
+        "source_hash": "285cf264324db9e0146fff797568bf0c873791e20bca843fe9fbb19f95794077"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialIREmitter.cpp",
+        "symbol": "FEmitter::Input / GetOperatorSignature / FoldScalarOperator",
+        "claims": ["description", "restrictions"],
+        "source_hash": "12578f2ab3f58d6c07b5d82d4bce2bea301d0e1c973eafb0b42d9843c870a2d2"
+      }
+    ]
+  },
+  "Arcsine": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "verified"
+    },
+    "semantics": {
+      "operation": "componentwise_unary",
+      "formula": "asin(Input)",
+      "unconnected_defaults": {},
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [
+        {
+          "kind": "required_input",
+          "input": "Input",
+          "failure": "compile_error"
+        }
+      ],
+      "unresolved": [
+        "arcsine.uniform_vector_output_legacy_mir_consistency"
+      ]
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionArcsine.h",
+        "symbol": "UMaterialExpressionArcsine",
+        "claims": ["declaration", "schema"],
+        "source_hash": "3e35f962ced33cceac2b36b5e1e6683abe00e42555cb3017b4e400075b95a980"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpression::UMaterialExpression / UMaterialExpression::GetInputName / UMaterialExpression::IsInputConnectionRequired / UMaterialExpressionArcsine::Compile",
+        "claims": ["schema", "description", "restrictions"],
+        "source_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionArcsine::Build",
+        "claims": ["description"],
+        "source_hash": "a40f549263684674f2b154ffdf2b4bf336527786ca7ed983cb4507987ba9d2e8"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/HLSLMaterialTranslator.cpp",
+        "symbol": "FHLSLMaterialTranslator::Arcsine",
+        "claims": ["description"],
+        "source_hash": "285cf264324db9e0146fff797568bf0c873791e20bca843fe9fbb19f95794077"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialIREmitter.cpp",
+        "symbol": "FEmitter::Input / GetOperatorSignature / FoldScalarOperator",
+        "claims": ["description", "restrictions"],
+        "source_hash": "12578f2ab3f58d6c07b5d82d4bce2bea301d0e1c973eafb0b42d9843c870a2d2"
+      }
+    ]
+  },
+  "Arctangent": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "verified"
+    },
+    "semantics": {
+      "operation": "componentwise_unary",
+      "formula": "atan(Input)",
+      "unconnected_defaults": {},
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [
+        {
+          "kind": "required_input",
+          "input": "Input",
+          "failure": "compile_error"
+        }
+      ],
+      "unresolved": [
+        "arctangent.uniform_vector_output_legacy_mir_consistency"
+      ]
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionArctangent.h",
+        "symbol": "UMaterialExpressionArctangent",
+        "claims": ["declaration", "schema"],
+        "source_hash": "c4ca7e66f18d24e36c2b55b35e9b699c82ffa6683444eae7ed2b46bfa919c2cb"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpression::UMaterialExpression / UMaterialExpression::GetInputName / UMaterialExpression::IsInputConnectionRequired / UMaterialExpressionArctangent::Compile",
+        "claims": ["schema", "description", "restrictions"],
+        "source_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionArctangent::Build",
+        "claims": ["description"],
+        "source_hash": "a40f549263684674f2b154ffdf2b4bf336527786ca7ed983cb4507987ba9d2e8"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/HLSLMaterialTranslator.cpp",
+        "symbol": "FHLSLMaterialTranslator::Arctangent",
+        "claims": ["description"],
+        "source_hash": "285cf264324db9e0146fff797568bf0c873791e20bca843fe9fbb19f95794077"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialIREmitter.cpp",
+        "symbol": "FEmitter::Input / GetOperatorSignature / FoldScalarOperator",
+        "claims": ["description", "restrictions"],
+        "source_hash": "12578f2ab3f58d6c07b5d82d4bce2bea301d0e1c973eafb0b42d9843c870a2d2"
+      }
+    ]
+  },
+  "Arctangent2": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "verified"
+    },
+    "semantics": {
+      "operation": "componentwise_binary",
+      "formula": "atan2(Y, X)",
+      "unconnected_defaults": {},
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [
+        {
+          "kind": "required_input",
+          "input": "Y",
+          "failure": "compile_error"
+        },
+        {
+          "kind": "required_input",
+          "input": "X",
+          "failure": "compile_error"
+        }
+      ],
+      "unresolved": [
+        "arctangent2.output_shape_legacy_mir_consistency"
+      ]
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionArctangent2.h",
+        "symbol": "UMaterialExpressionArctangent2",
+        "claims": ["declaration", "schema"],
+        "source_hash": "d888cfe51bba6153dcb560b11932d79590f2c0cbc8d02380b9a2760c6742b74f"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpression::UMaterialExpression / UMaterialExpression::GetInputName / UMaterialExpression::IsInputConnectionRequired / UMaterialExpressionArctangent2::Compile",
+        "claims": ["schema", "description", "restrictions"],
+        "source_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionArctangent2::Build",
+        "claims": ["description"],
+        "source_hash": "a40f549263684674f2b154ffdf2b4bf336527786ca7ed983cb4507987ba9d2e8"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/HLSLMaterialTranslator.cpp",
+        "symbol": "FHLSLMaterialTranslator::Arctangent2",
+        "claims": ["description"],
+        "source_hash": "285cf264324db9e0146fff797568bf0c873791e20bca843fe9fbb19f95794077"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialIREmitter.cpp",
+        "symbol": "FEmitter::Input / GetOperatorSignature / FoldScalarOperator",
+        "claims": ["description", "restrictions"],
+        "source_hash": "12578f2ab3f58d6c07b5d82d4bce2bea301d0e1c973eafb0b42d9843c870a2d2"
+      }
+    ]
+  },
+  "Exponential": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "verified"
+    },
+    "semantics": {
+      "operation": "componentwise_unary",
+      "formula": "exp(Input)",
+      "unconnected_defaults": {},
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [
+        {
+          "kind": "required_input",
+          "input": "Input",
+          "failure": "compile_error"
+        }
+      ],
+      "unresolved": []
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionExponential.h",
+        "symbol": "UMaterialExpressionExponential",
+        "claims": ["declaration", "schema"],
+        "source_hash": "3f9e7c636d1975502e7c3b8ee8fa76fc2ca9c29b285833246d3d175778737557"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpression::UMaterialExpression / UMaterialExpression::GetInputName / UMaterialExpression::IsInputConnectionRequired / UMaterialExpressionExponential::Compile",
+        "claims": ["schema", "description", "restrictions"],
+        "source_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionExponential::Build",
+        "claims": ["description"],
+        "source_hash": "a40f549263684674f2b154ffdf2b4bf336527786ca7ed983cb4507987ba9d2e8"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/HLSLMaterialTranslator.cpp",
+        "symbol": "FHLSLMaterialTranslator::Exponential",
+        "claims": ["description"],
+        "source_hash": "285cf264324db9e0146fff797568bf0c873791e20bca843fe9fbb19f95794077"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialIREmitter.cpp",
+        "symbol": "FEmitter::Input / GetOperatorSignature / FoldScalarOperator",
+        "claims": ["description", "restrictions"],
+        "source_hash": "12578f2ab3f58d6c07b5d82d4bce2bea301d0e1c973eafb0b42d9843c870a2d2"
+      }
+    ]
+  },
+  "Exponential2": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "verified"
+    },
+    "semantics": {
+      "operation": "componentwise_unary",
+      "formula": "exp2(Input)",
+      "unconnected_defaults": {},
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [
+        {
+          "kind": "required_input",
+          "input": "Input",
+          "failure": "compile_error"
+        }
+      ],
+      "unresolved": []
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionExponential2.h",
+        "symbol": "UMaterialExpressionExponential2",
+        "claims": ["declaration", "schema"],
+        "source_hash": "68667bd666ff2bfe36719180f661045a372522c56b8909a9ec4e437300e659de"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpression::UMaterialExpression / UMaterialExpression::GetInputName / UMaterialExpression::IsInputConnectionRequired / UMaterialExpressionExponential2::Compile",
+        "claims": ["schema", "description", "restrictions"],
+        "source_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionExponential2::Build",
+        "claims": ["description"],
+        "source_hash": "a40f549263684674f2b154ffdf2b4bf336527786ca7ed983cb4507987ba9d2e8"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/HLSLMaterialTranslator.cpp",
+        "symbol": "FHLSLMaterialTranslator::Exponential2",
+        "claims": ["description"],
+        "source_hash": "285cf264324db9e0146fff797568bf0c873791e20bca843fe9fbb19f95794077"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialIREmitter.cpp",
+        "symbol": "FEmitter::Input / GetOperatorSignature / FoldScalarOperator",
+        "claims": ["description", "restrictions"],
+        "source_hash": "12578f2ab3f58d6c07b5d82d4bce2bea301d0e1c973eafb0b42d9843c870a2d2"
+      }
+    ]
+  },
+  "Logarithm": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "verified"
+    },
+    "semantics": {
+      "operation": "componentwise_unary",
+      "formula": "log(Input)",
+      "unconnected_defaults": {},
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [
+        {
+          "kind": "required_input",
+          "input": "Input",
+          "failure": "compile_error"
+        }
+      ],
+      "unresolved": [
+        "logarithm.constant_nonpositive_legacy_mir_consistency"
+      ]
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionLogarithm.h",
+        "symbol": "UMaterialExpressionLogarithm",
+        "claims": ["declaration", "schema"],
+        "source_hash": "936c89489b1b40308af2c6b7452aa210c4e84ff9a8859004f0f6da7052e0d485"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpression::UMaterialExpression / UMaterialExpression::GetInputName / UMaterialExpression::IsInputConnectionRequired / UMaterialExpressionLogarithm::Compile",
+        "claims": ["schema", "description", "restrictions"],
+        "source_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionLogarithm::Build",
+        "claims": ["description"],
+        "source_hash": "a40f549263684674f2b154ffdf2b4bf336527786ca7ed983cb4507987ba9d2e8"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/HLSLMaterialTranslator.cpp",
+        "symbol": "FHLSLMaterialTranslator::Logarithm",
+        "claims": ["description"],
+        "source_hash": "285cf264324db9e0146fff797568bf0c873791e20bca843fe9fbb19f95794077"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialIREmitter.cpp",
+        "symbol": "FEmitter::Input / GetOperatorSignature / FoldScalarOperator",
+        "claims": ["description", "restrictions"],
+        "source_hash": "12578f2ab3f58d6c07b5d82d4bce2bea301d0e1c973eafb0b42d9843c870a2d2"
+      }
+    ]
+  },
+  "Logarithm10": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "verified"
+    },
+    "semantics": {
+      "operation": "componentwise_unary",
+      "formula": "log10(X)",
+      "unconnected_defaults": {},
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [
+        {
+          "kind": "required_input",
+          "input": "X",
+          "failure": "compile_error"
+        }
+      ],
+      "unresolved": [
+        "logarithm10.constant_nonpositive_legacy_mir_consistency"
+      ]
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionLogarithm10.h",
+        "symbol": "UMaterialExpressionLogarithm10",
+        "claims": ["declaration", "schema"],
+        "source_hash": "732efc72c6ee4d9e09443d615d131ea021c845923d2745bcd9152163d7870521"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpression::UMaterialExpression / UMaterialExpression::GetInputName / UMaterialExpression::IsInputConnectionRequired / UMaterialExpressionLogarithm10::Compile",
+        "claims": ["schema", "description", "restrictions"],
+        "source_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionLogarithm10::Build",
+        "claims": ["description"],
+        "source_hash": "a40f549263684674f2b154ffdf2b4bf336527786ca7ed983cb4507987ba9d2e8"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/HLSLMaterialTranslator.cpp",
+        "symbol": "FHLSLMaterialTranslator::Logarithm10",
+        "claims": ["description"],
+        "source_hash": "285cf264324db9e0146fff797568bf0c873791e20bca843fe9fbb19f95794077"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialIREmitter.cpp",
+        "symbol": "FEmitter::Input / GetOperatorSignature / FoldScalarOperator",
+        "claims": ["description", "restrictions"],
+        "source_hash": "12578f2ab3f58d6c07b5d82d4bce2bea301d0e1c973eafb0b42d9843c870a2d2"
+      }
+    ]
+  },
+  "Logarithm2": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "verified"
+    },
+    "semantics": {
+      "operation": "componentwise_unary",
+      "formula": "log2(X)",
+      "unconnected_defaults": {},
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [
+        {
+          "kind": "required_input",
+          "input": "X",
+          "failure": "compile_error"
+        }
+      ],
+      "unresolved": [
+        "logarithm2.constant_nonpositive_legacy_mir_consistency"
+      ]
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionLogarithm2.h",
+        "symbol": "UMaterialExpressionLogarithm2",
+        "claims": ["declaration", "schema"],
+        "source_hash": "5546e4115fcd901ed877cfcadd8ab5df0c7d02f45ecd0369e9f235462a3478d1"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpression::UMaterialExpression / UMaterialExpression::GetInputName / UMaterialExpression::IsInputConnectionRequired / UMaterialExpressionLogarithm2::Compile",
+        "claims": ["schema", "description", "restrictions"],
+        "source_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionLogarithm2::Build",
+        "claims": ["description"],
+        "source_hash": "a40f549263684674f2b154ffdf2b4bf336527786ca7ed983cb4507987ba9d2e8"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/HLSLMaterialTranslator.cpp",
+        "symbol": "FHLSLMaterialTranslator::Logarithm2",
+        "claims": ["description"],
+        "source_hash": "285cf264324db9e0146fff797568bf0c873791e20bca843fe9fbb19f95794077"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialIREmitter.cpp",
+        "symbol": "FEmitter::Input / GetOperatorSignature / FoldScalarOperator",
+        "claims": ["description", "restrictions"],
+        "source_hash": "12578f2ab3f58d6c07b5d82d4bce2bea301d0e1c973eafb0b42d9843c870a2d2"
+      }
+    ]
+  },
+  "Round": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "verified"
+    },
+    "semantics": {
+      "operation": "componentwise_unary",
+      "formula": "round(Input)",
+      "unconnected_defaults": {},
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [
+        {
+          "kind": "required_input",
+          "input": "Input",
+          "failure": "compile_error"
+        }
+      ],
+      "unresolved": [
+        "round.uint_output_legacy_mir_consistency"
+      ]
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionRound.h",
+        "symbol": "UMaterialExpressionRound",
+        "claims": ["declaration", "schema"],
+        "source_hash": "7a86044784be391cd2374be24893aa234e9fe1f537f5f15bc2f6b3cb9d64d6ff"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpression::UMaterialExpression / UMaterialExpression::GetInputName / UMaterialExpression::IsInputConnectionRequired / UMaterialExpressionRound::Compile / UMaterialExpressionRound::GetOutputValueType",
+        "claims": ["schema", "description", "restrictions"],
+        "source_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionRound::Build",
+        "claims": ["description"],
+        "source_hash": "a40f549263684674f2b154ffdf2b4bf336527786ca7ed983cb4507987ba9d2e8"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/HLSLMaterialTranslator.cpp",
+        "symbol": "FHLSLMaterialTranslator::Round",
+        "claims": ["description"],
+        "source_hash": "285cf264324db9e0146fff797568bf0c873791e20bca843fe9fbb19f95794077"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialIREmitter.cpp",
+        "symbol": "FEmitter::Input / GetOperatorSignature / FoldScalarOperator",
+        "claims": ["description", "restrictions"],
+        "source_hash": "12578f2ab3f58d6c07b5d82d4bce2bea301d0e1c973eafb0b42d9843c870a2d2"
+      }
+    ]
+  },
+  "Saturate": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "verified"
+    },
+    "semantics": {
+      "operation": "clamp",
+      "formula": "saturate(Input)",
+      "unconnected_defaults": {},
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [
+        {
+          "kind": "required_input",
+          "input": "Input",
+          "failure": "compile_error"
+        }
+      ],
+      "unresolved": []
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSaturate.h",
+        "symbol": "UMaterialExpressionSaturate",
+        "claims": ["declaration", "schema"],
+        "source_hash": "be4c640fb2dc9c61e2daec52c5930e3e8d53cfdf7bb84af8fbe8a4e56de356a0"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpression::UMaterialExpression / UMaterialExpression::GetInputName / UMaterialExpression::IsInputConnectionRequired / UMaterialExpressionSaturate::Compile",
+        "claims": ["schema", "description", "restrictions"],
+        "source_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionSaturate::Build",
+        "claims": ["description"],
+        "source_hash": "a40f549263684674f2b154ffdf2b4bf336527786ca7ed983cb4507987ba9d2e8"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/HLSLMaterialTranslator.cpp",
+        "symbol": "FHLSLMaterialTranslator::Saturate",
+        "claims": ["description"],
+        "source_hash": "285cf264324db9e0146fff797568bf0c873791e20bca843fe9fbb19f95794077"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialIREmitter.cpp",
+        "symbol": "FEmitter::Input / GetOperatorSignature / FoldScalarOperator",
+        "claims": ["description", "restrictions"],
+        "source_hash": "12578f2ab3f58d6c07b5d82d4bce2bea301d0e1c973eafb0b42d9843c870a2d2"
+      }
+    ]
+  },
+  "Sign": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "verified"
+    },
+    "semantics": {
+      "operation": "componentwise_unary",
+      "formula": "sign(Input)",
+      "unconnected_defaults": {},
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [
+        {
+          "kind": "required_input",
+          "input": "Input",
+          "failure": "compile_error"
+        }
+      ],
+      "unresolved": []
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSign.h",
+        "symbol": "UMaterialExpressionSign",
+        "claims": ["declaration", "schema"],
+        "source_hash": "0f8a9e1ab50c5fb5173aafad75c2ed2679089afa688511038697f09b6097fceb"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpression::UMaterialExpression / UMaterialExpression::GetInputName / UMaterialExpression::IsInputConnectionRequired / UMaterialExpressionSign::Compile",
+        "claims": ["schema", "description", "restrictions"],
+        "source_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionSign::Build",
+        "claims": ["description"],
+        "source_hash": "a40f549263684674f2b154ffdf2b4bf336527786ca7ed983cb4507987ba9d2e8"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/HLSLMaterialTranslator.cpp",
+        "symbol": "FHLSLMaterialTranslator::Sign",
+        "claims": ["description"],
+        "source_hash": "285cf264324db9e0146fff797568bf0c873791e20bca843fe9fbb19f95794077"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialIREmitter.cpp",
+        "symbol": "FEmitter::Input / GetOperatorSignature / FEmitter::AnalyticalPartialDerivative",
+        "claims": ["description", "restrictions"],
+        "source_hash": "12578f2ab3f58d6c07b5d82d4bce2bea301d0e1c973eafb0b42d9843c870a2d2"
+      }
+    ]
+  },
+  "SquareRoot": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "verified"
+    },
+    "semantics": {
+      "operation": "componentwise_unary",
+      "formula": "sqrt(Input)",
+      "unconnected_defaults": {},
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [
+        {
+          "kind": "required_input",
+          "input": "Input",
+          "failure": "compile_error"
+        }
+      ],
+      "unresolved": [
+        "square_root.constant_negative_legacy_mir_consistency"
+      ]
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSquareRoot.h",
+        "symbol": "UMaterialExpressionSquareRoot",
+        "claims": ["declaration", "schema"],
+        "source_hash": "8516ba748f5eaafba5c4071824833f3dd913bf8d9d1334adbeed873423fa8202"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpression::UMaterialExpression / UMaterialExpression::GetInputName / UMaterialExpression::IsInputConnectionRequired / UMaterialExpressionSquareRoot::Compile",
+        "claims": ["schema", "description", "restrictions"],
+        "source_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionSquareRoot::Build",
+        "claims": ["description"],
+        "source_hash": "a40f549263684674f2b154ffdf2b4bf336527786ca7ed983cb4507987ba9d2e8"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/HLSLMaterialTranslator.cpp",
+        "symbol": "FHLSLMaterialTranslator::SquareRoot",
+        "claims": ["description"],
+        "source_hash": "285cf264324db9e0146fff797568bf0c873791e20bca843fe9fbb19f95794077"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialIREmitter.cpp",
+        "symbol": "FEmitter::Input / GetOperatorSignature / FoldScalarOperator",
+        "claims": ["description", "restrictions"],
+        "source_hash": "12578f2ab3f58d6c07b5d82d4bce2bea301d0e1c973eafb0b42d9843c870a2d2"
+      }
+    ]
+  },
+  "Step": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "not_applicable"
+    },
+    "semantics": {
+      "operation": "componentwise_binary",
+      "formula": "step(Y, X)",
+      "unconnected_defaults": {
+        "Y": "ConstY",
+        "X": "ConstX"
+      },
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [],
+      "unresolved": []
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionStep.h",
+        "symbol": "UMaterialExpressionStep / ConstY / ConstX",
+        "claims": ["declaration", "schema"],
+        "source_hash": "54d2b5926790e971fc174cd73325dfd078e9e9ec0ee6882050e4f0169307e548"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpression::UMaterialExpression / UMaterialExpression::GetInputName / UMaterialExpression::IsInputConnectionRequired / UMaterialExpressionStep::Compile",
+        "claims": ["schema", "description"],
+        "source_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionStep::Build / BuildBinaryOperatorWithDefaults",
+        "claims": ["description"],
+        "source_hash": "a40f549263684674f2b154ffdf2b4bf336527786ca7ed983cb4507987ba9d2e8"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/HLSLMaterialTranslator.cpp",
+        "symbol": "FHLSLMaterialTranslator::Step",
+        "claims": ["description"],
+        "source_hash": "285cf264324db9e0146fff797568bf0c873791e20bca843fe9fbb19f95794077"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialIREmitter.cpp",
+        "symbol": "FEmitter::InputDefaultFloat / GetOperatorSignature / FoldScalarOperator",
+        "claims": ["description"],
+        "source_hash": "12578f2ab3f58d6c07b5d82d4bce2bea301d0e1c973eafb0b42d9843c870a2d2"
+      }
+    ]
+  },
+  "Truncate": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "verified"
+    },
+    "semantics": {
+      "operation": "componentwise_unary",
+      "formula": "trunc(Input)",
+      "unconnected_defaults": {},
+      "value_domain": "numeric_scalar_or_vector",
+      "restrictions": [
+        {
+          "kind": "required_input",
+          "input": "Input",
+          "failure": "compile_error"
+        }
+      ],
+      "unresolved": [
+        "truncate.uint_output_legacy_mir_consistency"
+      ]
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionTruncate.h",
+        "symbol": "UMaterialExpressionTruncate",
+        "claims": ["declaration", "schema"],
+        "source_hash": "21f2143bc0a7919ef005e43118f4e1a94083f12ede03d2cf2db424bcd53119fd"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpression::UMaterialExpression / UMaterialExpression::GetInputName / UMaterialExpression::IsInputConnectionRequired / UMaterialExpressionTruncate::Compile / UMaterialExpressionTruncate::GetOutputValueType",
+        "claims": ["schema", "description", "restrictions"],
+        "source_hash": "9930f4df181e6fec9dc720d2f2968cfaa377c93fc2d7045a950ae08cf7a59371"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionTruncate::Build",
+        "claims": ["description"],
+        "source_hash": "a40f549263684674f2b154ffdf2b4bf336527786ca7ed983cb4507987ba9d2e8"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/HLSLMaterialTranslator.cpp",
+        "symbol": "FHLSLMaterialTranslator::Truncate",
+        "claims": ["description"],
+        "source_hash": "285cf264324db9e0146fff797568bf0c873791e20bca843fe9fbb19f95794077"
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialIREmitter.cpp",
+        "symbol": "FEmitter::Input / GetOperatorSignature / FoldScalarOperator",
+        "claims": ["description", "restrictions"],
+        "source_hash": "12578f2ab3f58d6c07b5d82d4bce2bea301d0e1c973eafb0b42d9843c870a2d2"
+      }
+    ]
+  }
+}
