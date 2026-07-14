@@ -1,6 +1,6 @@
 # T02: 中間フォーマット MGJSON 仕様書 [基盤 / 優先度A]
 
-status: TODO
+status: DONE
 output: `skill/references/mgjson.md`
 依存: なし
 
@@ -31,5 +31,15 @@ AI⇔ツール間の中間フォーマット仕様を確定する。PLAN.md §3.
 - MGJSONのバリデーションルール一覧(validate.pyの仕様を兼ねる)
 
 ## 完了条件
-- [ ] 例が3つ以上(単純、テクスチャ+パラメータ、コメント付き)
-- [ ] このmdだけでT03/T04/T05の入出力仕様が確定する
+- [x] 例が3つ以上(単純、テクスチャ+パラメータ、コメント付き)
+- [x] このmdだけでT03/T04/T05の入出力仕様が確定する
+
+## 実施メモ
+
+- 成果物: `skill/references/mgjson.md`
+- nodes / links / pos、node id、typed props、raw_props、Comment、catalog Pin 名の
+  正規化、validation の error / warning 境界、parse.py の出力正規化を確定した。
+- 空の output name は `mask`、index 0 の `Output`、`outN` の順で effective name を
+  補う。空の input name は `prop`、`inN` の順で補う判断とした。
+- 未解決点: asset path の実在と enum choices は現行 catalog だけでは常に検証できない。
+  unknown class は解析形式では保持できるが、Pin schema がないため build は error とする。

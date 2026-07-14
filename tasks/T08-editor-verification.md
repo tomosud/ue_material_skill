@@ -1,6 +1,6 @@
 # T08: 実機検証プロトコル [基盤 / 優先度A / ユーザー協働]
 
-status: TODO
+status: WAITING USER（offline QA完了、Unreal Editor steps 1〜9待ち）
 output: `tasks/verification-log.md`(検証結果の記録)、カタログの verified 昇格
 依存: T03, T04
 
@@ -42,3 +42,11 @@ round-tripが通ったクラスは catalog の `verified: true` に更新(スク
 ## 完了条件
 - [ ] ステップ1〜8がOK、9の結果がformat.mdに反映済み
 - [ ] 発見した相違点が全てツール/カタログ/仕様書に反映済み
+
+## 実施メモ（進行中）
+
+- `tasks/verification-log.md` を作成し、自動化可能なvalidate/build/parse/round-trip、
+  実sample、catalog無し、MF、clipboard、JSON、skill validatorを全て実行した。
+- 手動step 1〜7のMGJSON fixtureと期待値、copy-back手順、verified昇格規則をlogへ固定した。
+- build生成T3DのUnreal Editor Ctrl+Vはこの実行環境から操作できないため未判定。
+  完了条件を満たしていないので `DONE` / `verified: true` にはしていない。

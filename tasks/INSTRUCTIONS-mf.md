@@ -32,6 +32,16 @@
 
 type表記: S=Scalar, V2/V3/V4=Vector, T2d=Texture Object, B=Bool, MA=MaterialAttributes
 
+M01 のソース調査に基づく追加規則:
+
+- `inputs` / `outputs` は Material Function の `SortPriority` 表示順を保つ。
+- item の `type` は `S|V2|V3|V4|T2d|TCube|T2dArr|TVol|SB|MA|TExt|B|Stra`。
+- input item は optional `"required": bool` を持てる。省略時は `true`。
+- input / output item は optional `"id": "<GUID32hex>"` を持てる。uasset または
+  実 clipboard で確認できた場合だけ記録し、推測で生成しない。
+- build.py は `path` と順序付き `name` / `type` から FunctionInputs / FunctionOutputs /
+  Outputs と Graph Pin を生成する。詳細は `skill/references/mf-call.md`。
+
 ## 各エントリに書くこと
 
 - desc: 何をする関数か(日本語1行)

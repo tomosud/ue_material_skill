@@ -1,0 +1,7 @@
+interface:
+  display_name: "UE Material"
+  short_description: "Unreal Materialノードを生成・解析・往復編集"
+  brand_color: "#1F6FEB"
+  default_prompt: "Use $ue-material to create a validated Unreal Material node graph and place it on my clipboard."
+policy:
+  allow_implicit_invocation: true

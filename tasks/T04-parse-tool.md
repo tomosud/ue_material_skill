@@ -1,6 +1,6 @@
 # T04: parse.py — T3D → MGJSON 解析ツール [基盤 / 優先度A]
 
-status: TODO
+status: DONE
 output: `skill/scripts/parse.py`
 依存: T01, T02
 
@@ -33,6 +33,19 @@ output: `skill/scripts/parse.py`
 - 未知プロパティは `raw_props` に落とす(捨てない)
 
 ## 完了条件
-- [ ] 実エディタのコピー(E01サンプル)を食わせてMGJSONが出る
-- [ ] T3D 2,000トークン相当 → 100トークン以下のMGJSONになる(典型ケース)
-- [ ] カタログ無しでも動作する(ピン名がインデックス表記になるだけ)
+- [x] 実エディタのコピー(E01サンプル)を食わせてMGJSONが出る
+- [x] T3D 2,000トークン相当 → 100トークン以下のMGJSONになる(典型ケース)
+- [x] カタログ無しでも動作する(ピン名がインデックス表記になるだけ)
+
+## 実施メモ
+
+- 成果物: `skill/scripts/parse.py`。clipboard（既定）/ file / stdinからT3Dを読み、compact
+  MGJSONをstdoutへ出す。`--keep-pos`、`--stats`、`--no-catalog` を実装した。
+- Begin/End Object stack、quoted/parenthesized value、CustomProperties Pin、LinkedToの両方向
+  dedupe、Root除外、class alias採番、typed default省略、unknown raw_props保持を実装した。
+- Commentは生成規約と一致するboundsなら `nodes` 包含へ戻し、自由枠だけsize/posを保持する。
+- `example/sample.txt`（実Editor T3D）は4 node / 3 internal linkとして解析され、出力MGJSONを
+  validate.pyへ渡してerror 0を確認した。clipboardからの同サイクルも確認済み。
+- カタログ無しでは link Pinが `in0` / `outN` になり、unknown class/raw propsを捨てずに動作。
+- compactness例: 3ノードT3D 3,070文字 → MGJSON 184文字（概算46 token）。5ノードComment
+  付き7,254文字 → 585文字。canonical round-trip完全一致、MF round-tripも確認した。

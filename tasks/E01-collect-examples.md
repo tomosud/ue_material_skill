@@ -1,6 +1,6 @@
 # E01: 実機サンプル収集 [ユーザー協働 / 優先度A / 最初にやる]
 
-status: TODO
+status: PARTIAL（`example/sample.txt` 1件受領、指定9種とEditorバージョン待ち）
 output: `examples/*.txt`(生T3D)
 依存: なし。**他タスクの精度を上げるので最優先**
 
@@ -28,3 +28,9 @@ output: `examples/*.txt`(生T3D)
 ## 完了条件
 - [ ] 上記9ファイル(最低でも01〜05)
 - [ ] UEバージョン記録
+
+## 実施メモ（進行中）
+
+- ユーザー提供 `example/sample.txt` を受領。Root + SubstrateSimpleClearCoatBSDF + Constant +
+  ScalarParameter 2個を含む実T3Dで、T01/T04の仕様・解析検証に使用した。
+- 指定の01〜09別sampleではなく、Editorの正確なバージョンも未記録なので完了扱いにしない。

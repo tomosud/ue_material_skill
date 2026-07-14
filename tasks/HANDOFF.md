@@ -1,5 +1,63 @@
 # 外部AIへの作業引き渡しガイド
 
+## 現在地（継続更新）
+
+最終更新: 2026-07-14 / 引き継ぎ実行者: Codex
+
+この欄を再開時の正本とする。個別タスクの完了判定は各 task md の `status:` と成果物を
+優先し、古い一覧表の status は参考にしない。
+
+### 完了済み
+
+- T01: `skill/references/format.md`。ユーザー提供 `example/sample.txt` の実 T3D を反映済み。
+- C01〜C22: `catalog/generated/C01.json`〜`C22.json`。全 task md が `DONE`。
+- M02〜M04: `catalog/generated/M02-mf.json`〜`M04-mf.json`。全 task md が `DONE`。
+- ここまでの成果は commit `8faac81` (`Add node catalogs and T3D format spec`) に含まれる。
+
+### 現在実行中
+
+- T02 完了: `skill/references/mgjson.md` と `tasks/T02-mgjson-spec.md` を更新済み。
+- M01 完了: `skill/references/mf-call.md`、task md、`INSTRUCTIONS-mf.md` を更新済み。
+- T06 完了: 359/359ノードと82 MFを `skill/catalog/` に統合し、逆引き索引を生成済み。
+- T05 完了: `skill/scripts/validate.py`。破損17パターン、正常graph、CLI exit codeを検証済み。
+- T03/T04 完了: `build.py` / `parse.py`。通常・Comment・MF、typed/raw props、layout、
+  file/stdin/stdout/clipboard、catalog無しparse、実sample、canonical round-tripを確認済み。
+- T07 完了: `skill/SKILL.md`（159行）と `skill/agents/openai.yaml`。skill-creatorの
+  `quick_validate.py` は `Skill is valid!`。
+- T08 offline QA 完了: 7 fixture、実sample、MF、catalog無し、全JSON、skill validatorがOK。
+  `tasks/verification-log.md` に全結果と手動fixtureを記録済み。残作業はEditor steps 1〜9のみ。
+
+### 監査結果と注意
+
+- 未完了: E01、T08。E01/T08 の Unreal Editor 操作だけはユーザー協働。
+- `catalog/generated/*.json` は 26 ファイルすべて JSON syntax OK。
+- `tools/qa_outputs.py` の候補20 classを照合し、明確な差分だった ViewProperty を
+  `Property` / `InvProperty` の2出力へ修正した。他は無名出力、機能フラグ条件、または
+  CustomOutput の `GetNumOutputs()` によるため候補表示のままで妥当。
+- 一部 generated catalog の `class` に C++ prefix `U` が混入している
+  （例: C08 の `/Script/Engine.UMaterialExpressionMaterialFunctionCall`）。T06 は manifest の
+  module / class 名から runtime class path を正規化し、merged catalog に誤 prefix を残さない。
+- T06 は既存章の省略フィールドを500件超警告したうえで補完する。型違反・重複・manifest
+  不一致はエラー。全 `verified` は Editor確認前なので false。詳細は T06 実施メモ参照。
+- validate.py は未検証classごとに warning を出す設計。MaterialFunctionCall は packaged
+  function catalog の path が必須で、任意の未収載functionは Pin schema 不明のため error。
+- T03試験中に parameter基底の継承props欠落を発見し、T06 mergeで `ParameterName` / `Group` /
+  `SortPriority` を `is_parameter` classへ補完するよう修正・再生成した。
+- clipboard試験は Windows PowerShell 経路で成功。現在のclipboardにはT08 step 1の
+  Constant3Vector T3Dが入り、Material Editorの空白でCtrl+Vすれば最初の手動試験を開始できる。
+- 実行環境では `python` が PATH から見えず、`py` に登録 interpreter もなかった。
+  検証用 Python 3.12.11 を一時配置して全QAを行い、`.uv-python/` / `.uv-cache/` /
+  `__pycache__` は最終QA後に削除済み。再開時はユーザー環境の `python` を使う。
+- ユーザー所有の未追跡 `.claude/settings.local.json` には触れない。
+
+### 中断時の再開手順
+
+1. この「現在地」と `git status --short` を読む。
+2. `rg -n "^status:" tasks -g "*.md"` で task の実態を再確認する。
+3. `status: DONE` でない最上流 task から依存順に再開する。
+4. 各 task の成果物、task md の `status` / `実施メモ`、この欄を同じ作業単位で更新する。
+5. Python 実装後は unit test と build→parse round-trip を必ず再実行する。
+
 このリポジトリのタスクは全て **タスクmdのパスを伝えるだけ** で、会話コンテキストなしに
 任意のAI(Codex CLI、別のClaude Codeセッション、その他エージェント)へ発注できる。
 

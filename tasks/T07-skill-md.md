@@ -1,6 +1,6 @@
 # T07: SKILL.md 執筆 [基盤 / 優先度A]
 
-status: TODO
+status: DONE
 output: `skill/SKILL.md`
 依存: T01〜T05 完了後
 
@@ -31,5 +31,17 @@ Claude Skill 本体。frontmatter(name/description トリガー最適化)+ 本�
   クリップボードはローカル実行時のみ(リモートはファイル渡しにフォールバック)
 
 ## 完了条件
-- [ ] skill-creator の作法に準拠(500行以内、詳細はreferencesへ)
-- [ ] descriptionだけで適切にトリガーする(していけない場合も明記)
+- [x] skill-creator の作法に準拠(500行以内、詳細はreferencesへ)
+- [x] descriptionだけで適切にトリガーする(していけない場合も明記)
+
+## 実施メモ
+
+- 成果物: `skill/SKILL.md`（159行）と skill-creator 推奨metadata
+  `skill/agents/openai.yaml`。
+- frontmatter description に Material生成/解析/改変/コピー済みノードの trigger と、
+  Blueprint/Niagara/画像生成/非Material HLSL の非triggerを明記した。
+- 生成、clipboard解析、往復改変、未知node採取の4 workflow、MGJSON要約、頻出20 class、
+  Root/MF/clipboard/remote/asset/plugin制約を記載。詳細はreferencesへ分離した。
+- skill-creator の `quick_validate.py` は `Skill is valid!`。Windows既定encodingを避けるため
+  `PYTHONUTF8=1` で実行した。openai.yaml はPyYAML再読込、short_description 29文字、
+  default_promptの `$ue-material` 明記を確認した。

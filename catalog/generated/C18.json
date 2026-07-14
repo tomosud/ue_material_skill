@@ -629,7 +629,10 @@
     ],
     "outputs": [
       {
-        "name": ""
+        "name": "Property"
+      },
+      {
+        "name": "InvProperty"
       }
     ],
     "props": {

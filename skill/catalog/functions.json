@@ -1,0 +1,2028 @@
+{
+  "3ColorBlend": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Texturing/3ColorBlend.3ColorBlend",
+    "desc": "ノーマルマップの法線方向に基づいて3つの色またはテクスチャをブレンドする",
+    "inputs": [
+      {
+        "name": "Normal",
+        "type": "V3"
+      },
+      {
+        "name": "Texture0",
+        "type": "V3"
+      },
+      {
+        "name": "Texture1",
+        "type": "V3"
+      },
+      {
+        "name": "Texture2",
+        "type": "V3"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V3"
+      }
+    ],
+    "usage": "トリプラナー テクスチャリングの基本関数",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "Abs": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Math/Abs.Abs",
+    "desc": "スカラーの絶対値を計算",
+    "inputs": [
+      {
+        "name": "Value",
+        "type": "S"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "S"
+      }
+    ],
+    "usage": "負の値を正に変換、対称分布の計算",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "AdjustSaturation": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Texturing/AdjustSaturation.AdjustSaturation",
+    "desc": "色の彩度(saturation)を調整する",
+    "inputs": [
+      {
+        "name": "Input",
+        "type": "V3"
+      },
+      {
+        "name": "SaturationAmount",
+        "type": "S"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V3"
+      }
+    ],
+    "usage": "カラー画像の彩度調整、色の強度制御",
+    "verified": false,
+    "path_uncertain": true
+  },
+  "BlendAngleCorrectedNormals": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Texturing/BlendAngleCorrectedNormals.BlendAngleCorrectedNormals",
+    "desc": "2つのノーマルマップを角度補正付きで合成する",
+    "inputs": [
+      {
+        "name": "BaseNormal",
+        "type": "V3"
+      },
+      {
+        "name": "AdditionalNormal",
+        "type": "V3"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V3"
+      }
+    ],
+    "usage": "ディテールノーマルの重ね合わせの定番",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "Blend_Add": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions03/Blends/Blend_Add.Blend_Add",
+    "desc": "2つの色を加算する",
+    "inputs": [
+      {
+        "name": "A",
+        "type": "V3"
+      },
+      {
+        "name": "B",
+        "type": "V3"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V3"
+      }
+    ],
+    "usage": "光の加算合成",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "Blend_ColorBurn": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions03/Blends/Blend_ColorBurn.Blend_ColorBurn",
+    "desc": "カラーバーンブレンド（暗い色が強調される）",
+    "inputs": [
+      {
+        "name": "A",
+        "type": "V3"
+      },
+      {
+        "name": "B",
+        "type": "V3"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V3"
+      }
+    ],
+    "usage": "焼き込み効果",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "Blend_ColorDodge": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions03/Blends/Blend_ColorDodge.Blend_ColorDodge",
+    "desc": "カラードッジブレンド（明るい色が強調される）",
+    "inputs": [
+      {
+        "name": "A",
+        "type": "V3"
+      },
+      {
+        "name": "B",
+        "type": "V3"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V3"
+      }
+    ],
+    "usage": "スクリーン合成より強い明るい効果",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "Blend_Darken": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions03/Blends/Blend_Darken.Blend_Darken",
+    "desc": "2つの色の暗い方を選ぶ",
+    "inputs": [
+      {
+        "name": "A",
+        "type": "V3"
+      },
+      {
+        "name": "B",
+        "type": "V3"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V3"
+      }
+    ],
+    "usage": "影の描画や暗い領域のマスク",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "Blend_Difference": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions03/Blends/Blend_Difference.Blend_Difference",
+    "desc": "2つの色の差分をとる",
+    "inputs": [
+      {
+        "name": "A",
+        "type": "V3"
+      },
+      {
+        "name": "B",
+        "type": "V3"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V3"
+      }
+    ],
+    "usage": "差分マスクやシルエット効果",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "Blend_Exclusion": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions03/Blends/Blend_Exclusion.Blend_Exclusion",
+    "desc": "除外ブレンド（差分に似た効果だがコントラスト低い）",
+    "inputs": [
+      {
+        "name": "A",
+        "type": "V3"
+      },
+      {
+        "name": "B",
+        "type": "V3"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V3"
+      }
+    ],
+    "usage": "微妙な差分効果",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "Blend_HardLight": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions03/Blends/Blend_HardLight.Blend_HardLight",
+    "desc": "ハードライトブレンド（オーバーレイより強い）",
+    "inputs": [
+      {
+        "name": "A",
+        "type": "V3"
+      },
+      {
+        "name": "B",
+        "type": "V3"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V3"
+      }
+    ],
+    "usage": "強いコントラスト効果を必要とする合成",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "Blend_Lighten": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions03/Blends/Blend_Lighten.Blend_Lighten",
+    "desc": "2つの色の明るい方を選ぶ",
+    "inputs": [
+      {
+        "name": "A",
+        "type": "V3"
+      },
+      {
+        "name": "B",
+        "type": "V3"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V3"
+      }
+    ],
+    "usage": "光の領域の描画や明るい領域のマスク",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "Blend_LinearBurn": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions03/Blends/Blend_LinearBurn.Blend_LinearBurn",
+    "desc": "リニアバーン（乗算より強い暗くなる効果）",
+    "inputs": [
+      {
+        "name": "A",
+        "type": "V3"
+      },
+      {
+        "name": "B",
+        "type": "V3"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V3"
+      }
+    ],
+    "usage": "深い影の追加",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "Blend_LinearDodge": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions03/Blends/Blend_LinearDodge.Blend_LinearDodge",
+    "desc": "リニアドッジ（加算合成に類似した明るくなる効果）",
+    "inputs": [
+      {
+        "name": "A",
+        "type": "V3"
+      },
+      {
+        "name": "B",
+        "type": "V3"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V3"
+      }
+    ],
+    "usage": "強い発光や光の効果",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "Blend_Multiply": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions03/Blends/Blend_Multiply.Blend_Multiply",
+    "desc": "2つの色を乗算合成する",
+    "inputs": [
+      {
+        "name": "A",
+        "type": "V3"
+      },
+      {
+        "name": "B",
+        "type": "V3"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V3"
+      }
+    ],
+    "usage": "テクスチャの暗い領域をさらに暗くする合成",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "Blend_Overlay": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions03/Blends/Blend_Overlay.Blend_Overlay",
+    "desc": "オーバーレイブレンド（暗い部分は乗算、明るい部分はスクリーン）",
+    "inputs": [
+      {
+        "name": "A",
+        "type": "V3"
+      },
+      {
+        "name": "B",
+        "type": "V3"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V3"
+      }
+    ],
+    "usage": "コントラスト効果を加えた画像の重ね合わせ",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "Blend_Screen": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions03/Blends/Blend_Screen.Blend_Screen",
+    "desc": "2つの色をスクリーン合成する（明るくなる）",
+    "inputs": [
+      {
+        "name": "A",
+        "type": "V3"
+      },
+      {
+        "name": "B",
+        "type": "V3"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V3"
+      }
+    ],
+    "usage": "光や発光効果の加算的な合成",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "Blend_SoftLight": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions03/Blends/Blend_SoftLight.Blend_SoftLight",
+    "desc": "ソフトライトブレンド（よりマイルドなコントラスト効果）",
+    "inputs": [
+      {
+        "name": "A",
+        "type": "V3"
+      },
+      {
+        "name": "B",
+        "type": "V3"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V3"
+      }
+    ],
+    "usage": "微妙な陰影効果の追加",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "Blend_Subtract": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions03/Blends/Blend_Subtract.Blend_Subtract",
+    "desc": "第1引数から第2引数を減算する",
+    "inputs": [
+      {
+        "name": "A",
+        "type": "V3"
+      },
+      {
+        "name": "B",
+        "type": "V3"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V3"
+      }
+    ],
+    "usage": "暗くなる効果や減算型のマスク",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "BreakOutFloat2Components": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Math/BreakOutFloat2Components.BreakOutFloat2Components",
+    "desc": "V2ベクトルをX、Yの2つのスカラーに分割する",
+    "inputs": [
+      {
+        "name": "Vector2",
+        "type": "V2"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "X",
+        "type": "S"
+      },
+      {
+        "name": "Y",
+        "type": "S"
+      }
+    ],
+    "usage": "UV座標の分解、2D座標の個別操作",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "BreakOutFloat3Components": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Math/BreakOutFloat3Components.BreakOutFloat3Components",
+    "desc": "V3ベクトルをX、Y、Zの3つのスカラーに分割する",
+    "inputs": [
+      {
+        "name": "Vector3",
+        "type": "V3"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "X",
+        "type": "S"
+      },
+      {
+        "name": "Y",
+        "type": "S"
+      },
+      {
+        "name": "Z",
+        "type": "S"
+      }
+    ],
+    "usage": "ワールド座標やノーマルの各成分の抽出",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "BreakOutFloat4Components": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Math/BreakOutFloat4Components.BreakOutFloat4Components",
+    "desc": "V4ベクトルをX、Y、Z、Wの4つのスカラーに分割する",
+    "inputs": [
+      {
+        "name": "Vector4",
+        "type": "V4"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "X",
+        "type": "S"
+      },
+      {
+        "name": "Y",
+        "type": "S"
+      },
+      {
+        "name": "Z",
+        "type": "S"
+      },
+      {
+        "name": "W",
+        "type": "S"
+      }
+    ],
+    "usage": "RGBA値の個別チャンネル操作",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "BumpOffset": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Texturing/BumpOffset.BumpOffset",
+    "desc": "ハイトマップを使用したパラックスマッピング(視差マッピング)を実現",
+    "inputs": [
+      {
+        "name": "HeightTexture",
+        "type": "S"
+      },
+      {
+        "name": "HeightRatio",
+        "type": "S"
+      },
+      {
+        "name": "ReferencePlane",
+        "type": "S"
+      },
+      {
+        "name": "UV",
+        "type": "V2"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V2"
+      }
+    ],
+    "usage": "フラットサーフェスに奥行き感を与えるパラックスマッピング効果",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "CameraDepthFade": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Opacity/CameraDepthFade.CameraDepthFade",
+    "desc": "カメラからの距離に基づいてフェードしたスカラー値を生成",
+    "inputs": [
+      {
+        "name": "FadeDistance",
+        "type": "S"
+      },
+      {
+        "name": "FadeInDistance",
+        "type": "S"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "S"
+      }
+    ],
+    "usage": "フォグエフェクト、距離ベースの透明度制御",
+    "verified": false,
+    "path_uncertain": true
+  },
+  "CameraDirection": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Utility/CameraDirection.CameraDirection",
+    "desc": "ワールド空間でのカメラの前方向ベクトル（正規化）を取得",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "CameraDirection",
+        "type": "V3"
+      }
+    ],
+    "usage": "ビルボード効果、カメラ向きの適応的アニメーション",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "CheapContrast": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Texturing/CheapContrast.CheapContrast",
+    "desc": "コントラストを高速に増加させる(スカラー値用)",
+    "inputs": [
+      {
+        "name": "Input",
+        "type": "S"
+      },
+      {
+        "name": "ContrastAmount",
+        "type": "S"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "S"
+      }
+    ],
+    "usage": "グレースケール値のコントラスト調整",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "CheapContrast_RGB": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Texturing/CheapContrast_RGB.CheapContrast_RGB",
+    "desc": "カラー値のチャネルごとにコントラストを増加させる",
+    "inputs": [
+      {
+        "name": "Input",
+        "type": "V3"
+      },
+      {
+        "name": "ContrastAmount",
+        "type": "S"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V3"
+      }
+    ],
+    "usage": "テクスチャのコントラスト強調、詳細度の調整",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "Clamp": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Math/Clamp.Clamp",
+    "desc": "スカラーを最小値と最大値の間に制限",
+    "inputs": [
+      {
+        "name": "Value",
+        "type": "S"
+      },
+      {
+        "name": "Min",
+        "type": "S"
+      },
+      {
+        "name": "Max",
+        "type": "S"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "S"
+      }
+    ],
+    "usage": "値域制限、安全な値の範囲確保",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "ComponentMask": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Math/ComponentMask.ComponentMask",
+    "desc": "ベクトルから指定成分のみを抽出",
+    "inputs": [
+      {
+        "name": "Vector",
+        "type": "V3"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "R",
+        "type": "S"
+      },
+      {
+        "name": "G",
+        "type": "S"
+      },
+      {
+        "name": "B",
+        "type": "S"
+      }
+    ],
+    "usage": "カラーチャンネルの分離、成分選択的操作",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "Cosine": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Math/Cosine.Cosine",
+    "desc": "スカラーの余弦値を計算（入力はラジアン）",
+    "inputs": [
+      {
+        "name": "Value",
+        "type": "S"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "S"
+      }
+    ],
+    "usage": "波状アニメーション、余弦ベースの周期効果",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "CrossProduct": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Math/CrossProduct.CrossProduct",
+    "desc": "2つのV3ベクトルの外積を計算",
+    "inputs": [
+      {
+        "name": "A",
+        "type": "V3"
+      },
+      {
+        "name": "B",
+        "type": "V3"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V3"
+      }
+    ],
+    "usage": "垂直ベクトルの生成、平面の法線計算",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "CustomRotator": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Texturing/CustomRotator.CustomRotator",
+    "desc": "UVを指定角度だけ回転させる",
+    "inputs": [
+      {
+        "name": "UV",
+        "type": "V2"
+      },
+      {
+        "name": "CenterUV",
+        "type": "V2"
+      },
+      {
+        "name": "AngleInRadians",
+        "type": "S"
+      },
+      {
+        "name": "TexSize",
+        "type": "V2"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V2"
+      }
+    ],
+    "usage": "テクスチャの回転アニメーション、ダイナミックな回転効果",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "DepthFade": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Opacity/DepthFade.DepthFade",
+    "desc": "オブジェクトのエッジをカメラ深度に基づいてフェードさせる",
+    "inputs": [
+      {
+        "name": "InFadeDistance",
+        "type": "S"
+      },
+      {
+        "name": "InOpacity",
+        "type": "S"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "S"
+      }
+    ],
+    "usage": "透明オブジェクトの水面交差フェード、ソフトパーティクル効果",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "Desaturate": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Texturing/Desaturate.Desaturate",
+    "desc": "カラー値をグレースケールに変換する",
+    "inputs": [
+      {
+        "name": "Color",
+        "type": "V3"
+      },
+      {
+        "name": "DesaturationFactor",
+        "type": "S"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "S"
+      }
+    ],
+    "usage": "カラーからルミナンス値の抽出、モノクロ変換",
+    "verified": false,
+    "path_uncertain": true
+  },
+  "Desaturation": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Color/Desaturation.Desaturation",
+    "desc": "入力色を彩度を落とし、グレースケールに近づける",
+    "inputs": [
+      {
+        "name": "InColor",
+        "type": "V3"
+      },
+      {
+        "name": "Percent",
+        "type": "S"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V3"
+      }
+    ],
+    "usage": "色の淡色化やグレースケール効果",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "DetailTexturing": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Texturing/DetailTexturing.DetailTexturing",
+    "desc": "ディテールテクスチャをベーステクスチャと合成する定番MF",
+    "inputs": [
+      {
+        "name": "BaseTexture",
+        "type": "V3"
+      },
+      {
+        "name": "DetailTexture",
+        "type": "V3"
+      },
+      {
+        "name": "DetailAmount",
+        "type": "S"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V3"
+      }
+    ],
+    "usage": "遠景テクスチャに細部を追加、メモリ効率的なディテール表現",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "DiamondGradient": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Texturing/DiamondGradient.DiamondGradient",
+    "desc": "ダイヤモンド形（四角形）のグラデーションを生成する",
+    "inputs": [
+      {
+        "name": "CenterPosition",
+        "type": "V2"
+      },
+      {
+        "name": "Size",
+        "type": "S"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "S"
+      }
+    ],
+    "usage": "四角い領域マスクの生成",
+    "verified": false,
+    "path_uncertain": true
+  },
+  "DistanceFromPlane": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Utility/DistanceFromPlane.DistanceFromPlane",
+    "desc": "ワールド空間の点から平面までの距離を計算",
+    "inputs": [
+      {
+        "name": "PlaneBase",
+        "type": "V3"
+      },
+      {
+        "name": "PlaneNormal",
+        "type": "V3"
+      },
+      {
+        "name": "Position",
+        "type": "V3"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Distance",
+        "type": "S"
+      }
+    ],
+    "usage": "スラッシング効果、平面切り取り、制約領域の定義",
+    "verified": false,
+    "path_uncertain": true
+  },
+  "DotProduct": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Math/DotProduct.DotProduct",
+    "desc": "2つのV3ベクトルの内積を計算",
+    "inputs": [
+      {
+        "name": "A",
+        "type": "V3"
+      },
+      {
+        "name": "B",
+        "type": "V3"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "S"
+      }
+    ],
+    "usage": "法線と光の角度計算、視角依存の効果",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "FlattenNormal": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Texturing/FlattenNormal.FlattenNormal",
+    "desc": "ノーマルマップを平坦化・デサチュレートする",
+    "inputs": [
+      {
+        "name": "In",
+        "type": "V3"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V3"
+      }
+    ],
+    "usage": "ノーマルの強度を弱める、グローバルノーマルの補正",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "Flipbook": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Texturing/Flipbook.Flipbook",
+    "desc": "スプライトシートのようにテクスチャをフレーム分割して再生する",
+    "inputs": [
+      {
+        "name": "UV",
+        "type": "V2"
+      },
+      {
+        "name": "ExecutionTime",
+        "type": "S"
+      },
+      {
+        "name": "TextureSize",
+        "type": "V2"
+      },
+      {
+        "name": "TotalFrames",
+        "type": "S"
+      },
+      {
+        "name": "FramesPerSecond",
+        "type": "S"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V2"
+      }
+    ],
+    "usage": "テクスチャシート上の複数フレームを時系列で再生するアニメーション",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "Frac": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Math/Frac.Frac",
+    "desc": "スカラーの小数部分を取得（0.0〜1.0）",
+    "inputs": [
+      {
+        "name": "Value",
+        "type": "S"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "S"
+      }
+    ],
+    "usage": "タイリングテクスチャの周期化、サイクリングアニメーション",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "FresnelFunction": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Utility/Fresnel.Fresnel",
+    "desc": "表面の法線とカメラ方向に基づくフレネル効果を計算",
+    "inputs": [
+      {
+        "name": "Normal",
+        "type": "V3"
+      },
+      {
+        "name": "Exponent",
+        "type": "S"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "S"
+      }
+    ],
+    "usage": "リム照明、金属の光沢表現、視角依存の反射",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "HSVtoRGB": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Color/HSVtoRGB.HSVtoRGB",
+    "desc": "HSV色空間からRGB色空間に変換する",
+    "inputs": [
+      {
+        "name": "HSV",
+        "type": "V3"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "RGB",
+        "type": "V3"
+      }
+    ],
+    "usage": "HSVで調整した色をRGBに戻す",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "HeightLerp": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Texturing/HeightLerp.HeightLerp",
+    "desc": "高さ値に基づいて2つの値を補間する",
+    "inputs": [
+      {
+        "name": "A",
+        "type": "V3"
+      },
+      {
+        "name": "B",
+        "type": "V3"
+      },
+      {
+        "name": "Height",
+        "type": "S"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V3"
+      }
+    ],
+    "usage": "パラックスマッピングやハイトベースのブレンド",
+    "verified": false,
+    "path_uncertain": true
+  },
+  "HeightLerpWithTwoInputs": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Texturing/HeightLerpWithTwoInputs.HeightLerpWithTwoInputs",
+    "desc": "2つのハイト値に基づいて複数の値を補間する",
+    "inputs": [
+      {
+        "name": "A",
+        "type": "V3"
+      },
+      {
+        "name": "B",
+        "type": "V3"
+      },
+      {
+        "name": "HeightA",
+        "type": "S"
+      },
+      {
+        "name": "HeightB",
+        "type": "S"
+      },
+      {
+        "name": "Contrast",
+        "type": "S"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V3"
+      }
+    ],
+    "usage": "複雑なハイトベースのレイヤーブレンド、高度な視差マッピング",
+    "verified": false,
+    "path_uncertain": true
+  },
+  "HueShift": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Color/HueShift.HueShift",
+    "desc": "入力色の色相をシフトさせる",
+    "inputs": [
+      {
+        "name": "InColor",
+        "type": "V3"
+      },
+      {
+        "name": "Offset",
+        "type": "S"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V3"
+      }
+    ],
+    "usage": "色相の回転調整",
+    "verified": false,
+    "path_uncertain": true
+  },
+  "Lerp": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Math/Lerp.Lerp",
+    "desc": "2つのスカラー値を線形補間する",
+    "inputs": [
+      {
+        "name": "A",
+        "type": "S"
+      },
+      {
+        "name": "B",
+        "type": "S"
+      },
+      {
+        "name": "Alpha",
+        "type": "S"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "S"
+      }
+    ],
+    "usage": "段階的なアニメーション、値の平滑な遷移",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "LinearGradient": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Texturing/LinearGradient.LinearGradient",
+    "desc": "指定された方向に線形なグラデーションを生成する",
+    "inputs": [
+      {
+        "name": "Direction",
+        "type": "V2"
+      },
+      {
+        "name": "StartPos",
+        "type": "V2"
+      },
+      {
+        "name": "Width",
+        "type": "S"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "S"
+      }
+    ],
+    "usage": "線形グラデーションマスク",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "MakeFloat2": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Math/MakeFloat2.MakeFloat2",
+    "desc": "2つのスカラー値からV2ベクトルを構築する",
+    "inputs": [
+      {
+        "name": "X",
+        "type": "S"
+      },
+      {
+        "name": "Y",
+        "type": "S"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V2"
+      }
+    ],
+    "usage": "UV座標の組み立て、2D座標の作成",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "MakeFloat3": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Math/MakeFloat3.MakeFloat3",
+    "desc": "3つのスカラー値からV3ベクトルを構築する",
+    "inputs": [
+      {
+        "name": "X",
+        "type": "S"
+      },
+      {
+        "name": "Y",
+        "type": "S"
+      },
+      {
+        "name": "Z",
+        "type": "S"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V3"
+      }
+    ],
+    "usage": "カラー値やベクトル座標の作成",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "MakeFloat4": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Math/MakeFloat4.MakeFloat4",
+    "desc": "4つのスカラー値からV4ベクトルを構築する",
+    "inputs": [
+      {
+        "name": "X",
+        "type": "S"
+      },
+      {
+        "name": "Y",
+        "type": "S"
+      },
+      {
+        "name": "Z",
+        "type": "S"
+      },
+      {
+        "name": "W",
+        "type": "S"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V4"
+      }
+    ],
+    "usage": "RGBA値の組み立て、4要素ベクトルの作成",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "MotionTexture": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Texturing/MotionTexture.MotionTexture",
+    "desc": "時間軸でテクスチャをモーションさせる",
+    "inputs": [
+      {
+        "name": "Texture",
+        "type": "T2d"
+      },
+      {
+        "name": "UV",
+        "type": "V2"
+      },
+      {
+        "name": "Time",
+        "type": "S"
+      },
+      {
+        "name": "Speed",
+        "type": "S"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V4"
+      }
+    ],
+    "usage": "テクスチャアニメーション、パーティクル用モーション",
+    "verified": false,
+    "path_uncertain": true
+  },
+  "NormalFromFunction": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Texturing/NormalFromFunction.NormalFromFunction",
+    "desc": "数学関数からノーマルマップを生成する",
+    "inputs": [
+      {
+        "name": "InputU",
+        "type": "S"
+      },
+      {
+        "name": "InputV",
+        "type": "S"
+      },
+      {
+        "name": "ScaleU",
+        "type": "S"
+      },
+      {
+        "name": "ScaleV",
+        "type": "S"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V3"
+      }
+    ],
+    "usage": "プロシージャルなノーマル生成、数式ベースの表面ディテール",
+    "verified": false,
+    "path_uncertain": true
+  },
+  "NormalFromHeightMap": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Texturing/NormalFromHeightMap.NormalFromHeightMap",
+    "desc": "ハイトマップからノーマルマップを生成する",
+    "inputs": [
+      {
+        "name": "HeightTexture",
+        "type": "T2d"
+      },
+      {
+        "name": "HeightAmount",
+        "type": "S"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V3"
+      }
+    ],
+    "usage": "グレースケール画像からノーマルマップを動的に生成",
+    "verified": false,
+    "path_uncertain": true
+  },
+  "Normalize": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Math/Normalize.Normalize",
+    "desc": "ベクトルを正規化（長さ1に）する",
+    "inputs": [
+      {
+        "name": "Vector",
+        "type": "V3"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V3"
+      }
+    ],
+    "usage": "ノーマルマップの正規化、方向ベクトルの標準化",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "ObjectPivotPoint": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Object/ObjectPivotPoint.ObjectPivotPoint",
+    "desc": "ワールド空間でのオブジェクトのピボットポイント位置を取得",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "ObjectPivot",
+        "type": "V3"
+      }
+    ],
+    "usage": "オブジェクト中心基準のアニメーション、放射状エフェクト",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "ObjectRadius": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Object/ObjectRadius.ObjectRadius",
+    "desc": "オブジェクトのバウンディングスフィアの半径を取得",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "ObjectRadius",
+        "type": "S"
+      }
+    ],
+    "usage": "サイズベースのスケーリング、距離計算の正規化",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "ObjectScale": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Object/ObjectScale.ObjectScale",
+    "desc": "オブジェクトの非均一スケール値を取得",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "ObjectScale",
+        "type": "V3"
+      }
+    ],
+    "usage": "スケール依存のディテール調整、サイズ応答型エフェクト",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "Panner": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Texturing/Panner.Panner",
+    "desc": "時間に基づいてUVをパンニング(スクロール)する",
+    "inputs": [
+      {
+        "name": "UV",
+        "type": "V2"
+      },
+      {
+        "name": "Speed",
+        "type": "V2"
+      },
+      {
+        "name": "Time",
+        "type": "S"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V2"
+      }
+    ],
+    "usage": "水の流れ、ベルトコンベア、スクロール背景などのアニメーション",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "ParallaxMapping": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Texturing/ParallaxMapping.ParallaxMapping",
+    "desc": "ハイトマップを使用した視差マッピング効果",
+    "inputs": [
+      {
+        "name": "HeightMap",
+        "type": "T2d"
+      },
+      {
+        "name": "UV",
+        "type": "V2"
+      },
+      {
+        "name": "HeightAmount",
+        "type": "S"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V2"
+      }
+    ],
+    "usage": "フラットサーフェスに立体感を付与するパラックスマッピング",
+    "verified": false,
+    "path_uncertain": true
+  },
+  "Pow": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Math/Pow.Pow",
+    "desc": "底をスカラー値で指数乗する",
+    "inputs": [
+      {
+        "name": "Base",
+        "type": "S"
+      },
+      {
+        "name": "Exponent",
+        "type": "S"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "S"
+      }
+    ],
+    "usage": "コントラスト調整、非線形フェード",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "ProceduralTextureSigns": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Texturing/ProceduralTextureSigns.ProceduralTextureSigns",
+    "desc": "プロシージャルにテキストや記号をレンダリング",
+    "inputs": [
+      {
+        "name": "UV",
+        "type": "V2"
+      },
+      {
+        "name": "TextType",
+        "type": "S"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V4"
+      }
+    ],
+    "usage": "動的なテキストやシンボル表示、プロシージャル看板",
+    "verified": false,
+    "path_uncertain": true
+  },
+  "RGBtoHSV": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Color/RGBtoHSV.RGBtoHSV",
+    "desc": "RGB色空間からHSV色空間に変換する",
+    "inputs": [
+      {
+        "name": "RGB",
+        "type": "V3"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "HSV",
+        "type": "V3"
+      }
+    ],
+    "usage": "色の色相・彩度・値を個別に操作する必要がある場合",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "RadialGradientExponential": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Texturing/RadialGradientExponential.RadialGradientExponential",
+    "desc": "中心点から放射状に指数関数的に減衰するグラデーションを生成する",
+    "inputs": [
+      {
+        "name": "CenterPosition",
+        "type": "V2"
+      },
+      {
+        "name": "Radius",
+        "type": "S"
+      },
+      {
+        "name": "Exponent",
+        "type": "S"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "S"
+      }
+    ],
+    "usage": "スムーズな放射グラデーション、ビネット効果",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "ReflectionVector": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Utility/ReflectionVector.ReflectionVector",
+    "desc": "入射ベクトルと表面法線からリフレクションベクトルを計算",
+    "inputs": [
+      {
+        "name": "IncidentDirection",
+        "type": "V3"
+      },
+      {
+        "name": "SurfaceNormal",
+        "type": "V3"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V3"
+      }
+    ],
+    "usage": "反射効果、キューブマップサンプリング方向の決定",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "RemapValueRange": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Math/RemapValueRange.RemapValueRange",
+    "desc": "スカラー値を元の範囲から新しい範囲に再マップする",
+    "inputs": [
+      {
+        "name": "Value",
+        "type": "S"
+      },
+      {
+        "name": "InMin",
+        "type": "S"
+      },
+      {
+        "name": "InMax",
+        "type": "S"
+      },
+      {
+        "name": "OutMin",
+        "type": "S"
+      },
+      {
+        "name": "OutMax",
+        "type": "S"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "S"
+      }
+    ],
+    "usage": "テクスチャの値域の変換、正規化値の別範囲への再マップ",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "RotateAboutAxis": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Texturing/RotateAboutAxis.RotateAboutAxis",
+    "desc": "任意軸を中心に3D位置を回転させる",
+    "inputs": [
+      {
+        "name": "Position",
+        "type": "V3"
+      },
+      {
+        "name": "Axis",
+        "type": "V3"
+      },
+      {
+        "name": "RotationAngleInRadians",
+        "type": "S"
+      },
+      {
+        "name": "PivotPoint",
+        "type": "V3"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V3"
+      }
+    ],
+    "usage": "任意軸回転、複雑な空間変換",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "RotateAboutWorldAxis": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Texturing/RotateAboutWorldAxis.RotateAboutWorldAxis",
+    "desc": "ワールド座標系の任意軸を中心に回転させる",
+    "inputs": [
+      {
+        "name": "PivotPoint",
+        "type": "V3"
+      },
+      {
+        "name": "Axis",
+        "type": "V3"
+      },
+      {
+        "name": "AngleInRadians",
+        "type": "S"
+      },
+      {
+        "name": "Position",
+        "type": "V3"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V3"
+      }
+    ],
+    "usage": "ワールド座標の特定軸周りの回転、デカール配置",
+    "verified": false,
+    "path_uncertain": true
+  },
+  "Round": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Math/Round.Round",
+    "desc": "スカラー値を最も近い整数に四捨五入する",
+    "inputs": [
+      {
+        "name": "Value",
+        "type": "S"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "S"
+      }
+    ],
+    "usage": "アニメーション量子化、ポスタライズ効果",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "SCurve": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Curves/SCurve.SCurve",
+    "desc": "入力スカラーに対してS字カーブ(Smoothstep)の変換を適用する",
+    "inputs": [
+      {
+        "name": "Value",
+        "type": "S"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "S"
+      }
+    ],
+    "usage": "スムーズな遷移や値の非線形マッピング",
+    "verified": false,
+    "path_uncertain": true
+  },
+  "ScaleAndOffset": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Texturing/ScaleAndOffset.ScaleAndOffset",
+    "desc": "UVをスケーリングとオフセットする",
+    "inputs": [
+      {
+        "name": "UV",
+        "type": "V2"
+      },
+      {
+        "name": "ScaleXY",
+        "type": "V2"
+      },
+      {
+        "name": "OffsetXY",
+        "type": "V2"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V2"
+      }
+    ],
+    "usage": "UV座標の一括調整、テクスチャの位置とサイズ制御",
+    "verified": false,
+    "path_uncertain": true
+  },
+  "ScaleUVsByCenter": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Texturing/ScaleUVsByCenter.ScaleUVsByCenter",
+    "desc": "UVの中心を基準にしてスケーリングする",
+    "inputs": [
+      {
+        "name": "UV",
+        "type": "V2"
+      },
+      {
+        "name": "Scale",
+        "type": "S"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V2"
+      }
+    ],
+    "usage": "UV中心からのズームイン・ズームアウト効果",
+    "verified": false,
+    "path_uncertain": true
+  },
+  "SimpleGrassWind": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/WorldPositionOffset/SimpleGrassWind.SimpleGrassWind",
+    "desc": "単純な風アニメーション効果をワールドポジションにオフセット",
+    "inputs": [
+      {
+        "name": "WindStrength",
+        "type": "S"
+      },
+      {
+        "name": "WindSpeed",
+        "type": "S"
+      },
+      {
+        "name": "WindFrequency",
+        "type": "S"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Offset",
+        "type": "V3"
+      }
+    ],
+    "usage": "草や植生の風による揺らぎアニメーション",
+    "verified": false,
+    "path_uncertain": true
+  },
+  "Sine": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Math/Sine.Sine",
+    "desc": "スカラーの正弦値を計算（入力はラジアン）",
+    "inputs": [
+      {
+        "name": "Value",
+        "type": "S"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "S"
+      }
+    ],
+    "usage": "波状アニメーション、周期的な変動",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "SphereMask": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Utility/SphereMask.SphereMask",
+    "desc": "球形のマスクを生成（中心から距離による減衰）",
+    "inputs": [
+      {
+        "name": "Position",
+        "type": "V3"
+      },
+      {
+        "name": "CenterPosition",
+        "type": "V3"
+      },
+      {
+        "name": "Radius",
+        "type": "S"
+      },
+      {
+        "name": "Hardness",
+        "type": "S"
+      },
+      {
+        "name": "InvertMask",
+        "type": "B"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "S"
+      }
+    ],
+    "usage": "スポットライト効果、球形影響領域の定義",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "Sqrt": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Math/Sqrt.Sqrt",
+    "desc": "スカラーの平方根を計算",
+    "inputs": [
+      {
+        "name": "Value",
+        "type": "S"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "S"
+      }
+    ],
+    "usage": "距離の逆計算、エネルギー減衰の補正",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "TextureCropping": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Texturing/TextureCropping.TextureCropping",
+    "desc": "テクスチャ座標をクロップ・スケーリングする",
+    "inputs": [
+      {
+        "name": "UV",
+        "type": "V2"
+      },
+      {
+        "name": "MinX",
+        "type": "S"
+      },
+      {
+        "name": "MaxX",
+        "type": "S"
+      },
+      {
+        "name": "MinY",
+        "type": "S"
+      },
+      {
+        "name": "MaxY",
+        "type": "S"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V2"
+      }
+    ],
+    "usage": "テクスチャアトラス内の特定領域を抜き出す、UVリマップ",
+    "verified": false,
+    "path_uncertain": true
+  },
+  "TileAndOffset": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Texturing/TileAndOffset.TileAndOffset",
+    "desc": "UVをタイル化してオフセットを加える",
+    "inputs": [
+      {
+        "name": "UV",
+        "type": "V2"
+      },
+      {
+        "name": "TileCount",
+        "type": "S"
+      },
+      {
+        "name": "Offset",
+        "type": "V2"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V2"
+      }
+    ],
+    "usage": "UV のタイリングとオフセット、テクスチャのスクロール効果",
+    "verified": false,
+    "path_uncertain": true
+  },
+  "VectorLength": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Math/VectorLength.VectorLength",
+    "desc": "ベクトルの長さ（マグニチュード）を計算する",
+    "inputs": [
+      {
+        "name": "Vector",
+        "type": "V3"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "S"
+      }
+    ],
+    "usage": "距離計算、ベクトルの大きさの取得",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "WorldAlignedNormal": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Texturing/WorldAlignedNormal.WorldAlignedNormal",
+    "desc": "ワールド座標に基づいたトライプラナー投影によるノーマルマッピング",
+    "inputs": [
+      {
+        "name": "Texture",
+        "type": "T2d"
+      },
+      {
+        "name": "XYZBlend",
+        "type": "V3"
+      },
+      {
+        "name": "WorldPosition",
+        "type": "V3"
+      },
+      {
+        "name": "BlendAmount",
+        "type": "S"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "XY Normal",
+        "type": "V3"
+      },
+      {
+        "name": "Z Normal",
+        "type": "V3"
+      },
+      {
+        "name": "XYZ Normal",
+        "type": "V3"
+      }
+    ],
+    "usage": "複数面への統一的なノーマルマッピング、特にプロシージャル地形",
+    "verified": false,
+    "path_uncertain": false
+  },
+  "WorldAlignedTexture": {
+    "path": "/Engine/Functions/Engine_MaterialFunctions01/Texturing/WorldAlignedTexture.WorldAlignedTexture",
+    "desc": "ワールド座標に基づいたトライプラナー投影によるテクスチャマッピング",
+    "inputs": [
+      {
+        "name": "Texture",
+        "type": "T2d"
+      },
+      {
+        "name": "XYZBlend",
+        "type": "V3"
+      },
+      {
+        "name": "WorldPosition",
+        "type": "V3"
+      },
+      {
+        "name": "BlendAmount",
+        "type": "S"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "XY Texture",
+        "type": "V4"
+      },
+      {
+        "name": "Z Texture",
+        "type": "V4"
+      },
+      {
+        "name": "XYZ Blend",
+        "type": "V3"
+      }
+    ],
+    "usage": "岩や地形のテクスチャを複数面に統一的に貼り付ける定番",
+    "verified": false,
+    "path_uncertain": false
+  }
+}

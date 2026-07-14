@@ -1,6 +1,6 @@
 # T05: validate.py — MGJSON検証ツール [基盤 / 優先度A]
 
-status: TODO
+status: DONE
 output: `skill/scripts/validate.py`
 依存: T02(仕様)、カタログ
 
@@ -31,5 +31,18 @@ Claudeが書いたMGJSONをbuild前に検証し、間違いを**具体的な修�
 出力: 人間可読のエラーリスト(行番号相当の位置情報付き)+ exit code
 
 ## 完了条件
-- [ ] 意図的に壊したMGJSON 10パターンで全て適切なメッセージが出る
-- [ ] build.pyから関数として呼べる構造(モジュール分離)
+- [x] 意図的に壊したMGJSON 10パターンで全て適切なメッセージが出る
+- [x] build.pyから関数として呼べる構造(モジュール分離)
+
+## 実施メモ
+
+- 成果物: `skill/scripts/validate.py`。標準ライブラリのみで動作し、CLI と
+  `validate_text()` / `validate_document()` / `pin_schema()` の import API を提供する。
+- JSON構文・重複key・shape・ID・class/property/type・Comment・position・link方向・
+  Pin候補・多重入力・重複link・abstract/deprecated・孤立・cycle を検査する。
+- MaterialFunctionCall は `skill/catalog/functions.json` の path から動的 Pin を検証する。
+  未収載functionは安全に生成できないため、サンプル採取またはschema追加を促す error とした。
+- enum choices が catalog にない現状では non-empty string まで型検査し warning を出す。
+  asset path は構文のみ検査し、存在確認できない旨を warning にする。
+- 検証: `py_compile`、意図的な破損17パターン（仕様要求10以上）、正常な3ノードgraph、
+  CLIの人間可読メッセージと exit 1 を確認した。

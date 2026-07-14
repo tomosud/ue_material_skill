@@ -1,6 +1,6 @@
 # T03: build.py — MGJSON → T3D 生成ツール [基盤 / 優先度A]
 
-status: TODO
+status: DONE
 output: `skill/scripts/build.py`
 依存: T01, T02, カタログ最低限(C01+C02があれば着手可)
 
@@ -34,7 +34,20 @@ T3Dテキストを組み立てる。
   (「エディタからそのノードをコピーして見せて」と促す文言)
 
 ## 完了条件
-- [ ] PLAN §3.2 のサンプルMGJSONからT3Dが生成できる
-- [ ] validate.py(T05)を内蔵チェックとして呼ぶ or 同等チェック
-- [ ] クリップボード書き込みがWindowsで動く(pwsh/powershell両対応)
-- [ ] 単体テスト: 生成→parse.py(T04)で往復して同型になる
+- [x] PLAN §3.2 のサンプルMGJSONからT3Dが生成できる
+- [x] validate.py(T05)を内蔵チェックとして呼ぶ or 同等チェック
+- [x] クリップボード書き込みがWindowsで動く(pwsh/powershell両対応)
+- [x] 単体テスト: 生成→parse.py(T04)で往復して同型になる
+
+## 実施メモ
+
+- 成果物: `skill/scripts/build.py`。標準ライブラリのみで、MGJSON file/stdin から
+  clipboard（既定）、`-o FILE`、`--stdout` へ出力する。
+- validate.py を直接 import し、error 時はT3Dを一切出さない。catalog順の全input / prop_pin /
+  output、決定的GUID、両方向LinkedTo、Expression側の冗長入力、typed/raw propsを生成する。
+- DAG depthの300×180自動配置、明示pos、Commentの240×120 node bounds + 80 margin、
+  MaterialFunctionCallのFunctionInputs / FunctionOutputs / Outputsを実装した。
+- clipboard は `pwsh` 優先、`powershell` fallback。UTF-8一時ファイル経由でWindows PowerShell
+  実書込（5ノード、7,362文字）と `Get-Clipboard -Raw` 再読込を確認した。
+- 検証: `py_compile`、通常5ノード、MF dynamic Pin、file/clipboard、build→parse→build→parseで
+  canonical MGJSONが完全一致することを確認した。EditorでのCtrl+V確認はT08へ残す。
