@@ -1,0 +1,86 @@
+{
+  "HeightfieldMinMaxTexture": {
+    "class": "/Script/VirtualHeightfieldMesh.UMaterialExpressionHeightfieldMinMaxTexture",
+    "header": "Engine/Plugins/Experimental/VirtualHeightfieldMesh/Source/VirtualHeightfieldMesh/Private/HeightfieldMinMaxTextureMaterialExpression.h",
+    "desc": "UHeightfieldMinMaxTextureオブジェクトに含まれるテクスチャを出力。SamplerTypeはMinMaxTextureから自動選択される",
+    "inputs": [],
+    "prop_pins": [],
+    "outputs": [{"name": ""}],
+    "props": {
+      "MinMaxTexture": {"type": "asset:UHeightfieldMinMaxTexture", "default": null},
+      "SamplerType": {"type": "enum:EMaterialSamplerType", "default": "SAMPLERTYPE_Color"}
+    },
+    "notes": "VirtualHeightfieldMeshプラグイン有効時のみ使用可能",
+    "verified": false
+  },
+  "MeshPartitionResource": {
+    "class": "/Script/MeshPartitionEditor.UMaterialExpressionMeshPartitionResource",
+    "header": "Engine/Plugins/Experimental/MeshPartition/Source/MeshPartitionEditor/Public/MeshPartitionMaterialExpressionUtils.h",
+    "desc": "MeshPartitionの共有テクスチャリソースパラメータ。他のMeshPartition表現式から参照される",
+    "inputs": [],
+    "prop_pins": [],
+    "outputs": [{"name": "Channel Texture"}],
+    "props": {},
+    "notes": "MeshPartitionプラグイン有効時のみ使用可能。他のMeshPartitionノードで参照される共有リソース",
+    "verified": false
+  },
+  "MeshPartitionTexcoord": {
+    "class": "/Script/MeshPartitionEditor.UMaterialExpressionMeshPartitionTexcoord",
+    "header": "Engine/Plugins/Experimental/MeshPartition/Source/MeshPartitionEditor/Public/MeshPartitionMaterialExpressionUtils.h",
+    "desc": "MeshPartitionチャネルのテクスチャ座標を出力。uvとunit単位の2つの出力を提供",
+    "inputs": [],
+    "prop_pins": [],
+    "outputs": [
+      {"name": "uv"},
+      {"name": "uv [unit]"}
+    ],
+    "props": {},
+    "notes": "MeshPartitionプラグイン有効時のみ使用可能",
+    "verified": false
+  },
+  "MeshPartitionChannelSample": {
+    "class": "/Script/MeshPartitionEditor.UMaterialExpressionMeshPartitionChannelSample",
+    "header": "Engine/Plugins/Experimental/MeshPartition/Source/MeshPartitionEditor/Public/MeshPartitionMaterialExpressionUtils.h",
+    "desc": "MeshPartitionDefinitionで指定されたチャネルをテクスチャ座標から取得",
+    "inputs": [
+      {"name": "Channel Texture", "prop": "ChannelTextureInput", "required": true}
+    ],
+    "prop_pins": [],
+    "outputs": [{"name": ""}],
+    "props": {
+      "Channel": {"type": "FName", "default": ""},
+      "MeshPartitionDefinition": {"type": "asset:UMeshPartitionDefinition", "default": null}
+    },
+    "notes": "MeshPartitionプラグイン有効時のみ使用可能。Channel入力はMeshPartitionResourceから接続必須",
+    "verified": false
+  },
+  "MeshPartitionChannelSampleIndex": {
+    "class": "/Script/MeshPartitionEditor.UMaterialExpressionMeshPartitionChannelSampleIndex",
+    "header": "Engine/Plugins/Experimental/MeshPartition/Source/MeshPartitionEditor/Public/MeshPartitionMaterialExpressionUtils.h",
+    "desc": "インデックスで指定されたMeshPartitionチャネルをテクスチャ座標から取得",
+    "inputs": [
+      {"name": "Channel Texture", "prop": "ChannelTextureInput", "required": true},
+      {"name": "Channel Index", "prop": "ChannelIndex", "required": false, "default_prop": "ConstChannelIndex"}
+    ],
+    "prop_pins": [],
+    "outputs": [{"name": ""}],
+    "props": {
+      "ConstChannelIndex": {"type": "int32", "default": 0}
+    },
+    "notes": "MeshPartitionプラグイン有効時のみ使用可能。Channel Textureはリソースから、Channel IndexはConstChannelIndexがデフォルト",
+    "verified": false
+  },
+  "MeshPartitionInspector": {
+    "class": "/Script/MeshPartitionEditor.UMaterialExpressionMeshPartitionInspector",
+    "header": "Engine/Plugins/Experimental/MeshPartition/Source/MeshPartitionEditor/Public/MeshPartitionMaterialExpressionUtils.h",
+    "desc": "MeshPartitionチャネルの検査・可視化用。全チャネルをランダムカラーで表示",
+    "inputs": [
+      {"name": "Channel Texture", "prop": "ChannelTextureInput", "required": true}
+    ],
+    "prop_pins": [],
+    "outputs": [{"name": ""}],
+    "props": {},
+    "notes": "MeshPartitionプラグイン有効時のみ使用可能。デバッグ用の検査・可視化ノード",
+    "verified": false
+  }
+}

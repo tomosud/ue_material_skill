@@ -1,547 +1,597 @@
 {
-  "Time": {
-    "class": "/Script/Engine.UMaterialExpressionTime",
-    "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionTime.h",
-    "desc": "時間値を出力。Period で時刻をループさせることが可能。bIgnorePause で一時停止を無視可能",
-    "inputs": [],
-    "prop_pins": [],
-    "outputs": [
-      {
-        "name": ""
-      }
-    ],
-    "props": {
-      "bIgnorePause": {
-        "type": "bool",
-        "default": false
-      },
-      "bOverride_Period": {
-        "type": "bool",
-        "default": false
-      },
-      "Period": {
-        "type": "float",
-        "default": 0.0
-      }
-    },
-    "notes": "",
-    "verified": false
+ "Time": {
+  "class": "/Script/Engine.UMaterialExpressionTime",
+  "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionTime.h",
+  "desc": "時間値を出力。Period で時刻をループさせることが可能。bIgnorePause で一時停止を無視可能",
+  "inputs": [],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {
+   "bIgnorePause": {
+    "type": "bool",
+    "default": false
+   },
+   "bOverride_Period": {
+    "type": "bool",
+    "default": false
+   },
+   "Period": {
+    "type": "float",
+    "default": 0.0
+   }
   },
-  "DeltaTime": {
-    "class": "/Script/Engine.UMaterialExpressionDeltaTime",
-    "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionDeltaTime.h",
-    "desc": "前フレームからの経過時間を出力",
-    "inputs": [],
-    "prop_pins": [],
-    "outputs": [
-      {
-        "name": ""
-      }
-    ],
-    "props": {},
-    "notes": "",
-    "verified": false
+  "notes": "",
+  "verified": false
+ },
+ "DeltaTime": {
+  "class": "/Script/Engine.UMaterialExpressionDeltaTime",
+  "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionDeltaTime.h",
+  "desc": "前フレームからの経過時間を出力",
+  "inputs": [],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {},
+  "notes": "",
+  "verified": false
+ },
+ "VertexColor": {
+  "class": "/Script/Engine.UMaterialExpressionVertexColor",
+  "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionVertexColor.h",
+  "desc": "メッシュの頂点カラーを出力",
+  "inputs": [],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": "",
+    "mask": "RGB"
+   },
+   {
+    "name": "",
+    "mask": "R"
+   },
+   {
+    "name": "",
+    "mask": "G"
+   },
+   {
+    "name": "",
+    "mask": "B"
+   },
+   {
+    "name": "",
+    "mask": "A"
+   }
+  ],
+  "props": {},
+  "notes": "ctor確認済: 出力5本(RGB,R,G,B,A)",
+  "verified": false
+ },
+ "Noise": {
+  "class": "/Script/Engine.UMaterialExpressionNoise",
+  "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionNoise.h",
+  "desc": "パーリンノイズやシンプレックスノイズなど複数の手法でノイズを生成。3次元位置から自動生成",
+  "inputs": [
+   {
+    "name": "Position",
+    "prop": "Position",
+    "required": false
+   },
+   {
+    "name": "FilterWidth",
+    "prop": "FilterWidth",
+    "required": false
+   }
+  ],
+  "prop_pins": [
+   {
+    "name": "Function",
+    "prop": "NoiseFunction",
+    "kind": "Primary",
+    "type": "enum:ENoiseFunction"
+   },
+   {
+    "name": "Quality",
+    "prop": "Quality",
+    "kind": "Primary",
+    "type": "int32"
+   }
+  ],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {
+   "Scale": {
+    "type": "float",
+    "default": 1.0
+   },
+   "Quality": {
+    "type": "int32",
+    "default": 3
+   },
+   "NoiseFunction": {
+    "type": "enum:ENoiseFunction",
+    "default": "NOISEFUNCTION_SimplexTex"
+   },
+   "bTurbulence": {
+    "type": "bool",
+    "default": false
+   },
+   "Levels": {
+    "type": "int32",
+    "default": 1
+   },
+   "OutputMin": {
+    "type": "float",
+    "default": 0.0
+   },
+   "OutputMax": {
+    "type": "float",
+    "default": 1.0
+   },
+   "LevelScale": {
+    "type": "float",
+    "default": 2.0
+   },
+   "bTiling": {
+    "type": "bool",
+    "default": false
+   },
+   "RepeatSize": {
+    "type": "uint32",
+    "default": 128
+   }
   },
-  "VertexColor": {
-    "class": "/Script/Engine.UMaterialExpressionVertexColor",
-    "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionVertexColor.h",
-    "desc": "メッシュの頂点カラーを出力",
-    "inputs": [],
-    "prop_pins": [],
-    "outputs": [
-      {
-        "name": ""
-      }
-    ],
-    "props": {},
-    "notes": "",
-    "verified": false
+  "notes": "GetInputName オーバーライド有り。FilterWidth のピン名は Levels パラメータに依存",
+  "verified": false
+ },
+ "VectorNoise": {
+  "class": "/Script/Engine.UMaterialExpressionVectorNoise",
+  "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionVectorNoise.h",
+  "desc": "3次元ベクトルとしてノイズを出力。セルノイズ、パーリンノイズ勾配など対応",
+  "inputs": [
+   {
+    "name": "Position",
+    "prop": "Position",
+    "required": false
+   }
+  ],
+  "prop_pins": [
+   {
+    "name": "Function",
+    "prop": "NoiseFunction",
+    "kind": "Advanced",
+    "type": "enum:EVectorNoiseFunction"
+   },
+   {
+    "name": "Quality",
+    "prop": "Quality",
+    "kind": "Advanced",
+    "type": "int32"
+   },
+   {
+    "name": "bTiling",
+    "prop": "bTiling",
+    "kind": "Advanced",
+    "type": "bool"
+   },
+   {
+    "name": "TileSize",
+    "prop": "TileSize",
+    "kind": "Advanced",
+    "type": "uint32"
+   }
+  ],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {
+   "NoiseFunction": {
+    "type": "enum:EVectorNoiseFunction",
+    "default": "VNF_CellnoiseALU"
+   },
+   "Quality": {
+    "type": "int32",
+    "default": 1
+   },
+   "bTiling": {
+    "type": "bool",
+    "default": false
+   },
+   "TileSize": {
+    "type": "uint32",
+    "default": 16
+   }
   },
-  "Noise": {
-    "class": "/Script/Engine.UMaterialExpressionNoise",
-    "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionNoise.h",
-    "desc": "パーリンノイズやシンプレックスノイズなど複数の手法でノイズを生成。3次元位置から自動生成",
-    "inputs": [
-      {
-        "name": "Position",
-        "prop": "Position",
-        "required": false
-      },
-      {
-        "name": "FilterWidth",
-        "prop": "FilterWidth",
-        "required": false
-      }
-    ],
-    "prop_pins": [
-      {
-        "name": "Function",
-        "prop": "NoiseFunction",
-        "kind": "Primary",
-        "type": "enum:ENoiseFunction"
-      },
-      {
-        "name": "Quality",
-        "prop": "Quality",
-        "kind": "Primary",
-        "type": "int32"
-      }
-    ],
-    "outputs": [
-      {
-        "name": ""
-      }
-    ],
-    "props": {
-      "Scale": {
-        "type": "float",
-        "default": 1.0
-      },
-      "Quality": {
-        "type": "int32",
-        "default": 3
-      },
-      "NoiseFunction": {
-        "type": "enum:ENoiseFunction",
-        "default": "NOISEFUNCTION_SimplexTex"
-      },
-      "bTurbulence": {
-        "type": "bool",
-        "default": false
-      },
-      "Levels": {
-        "type": "int32",
-        "default": 1
-      },
-      "OutputMin": {
-        "type": "float",
-        "default": 0.0
-      },
-      "OutputMax": {
-        "type": "float",
-        "default": 1.0
-      },
-      "LevelScale": {
-        "type": "float",
-        "default": 2.0
-      },
-      "bTiling": {
-        "type": "bool",
-        "default": false
-      },
-      "RepeatSize": {
-        "type": "uint32",
-        "default": 128
-      }
-    },
-    "notes": "GetInputName オーバーライド有り。FilterWidth のピン名は Levels パラメータに依存",
-    "verified": false
+  "notes": "GetInputName オーバーライド有り",
+  "verified": false
+ },
+ "BlackBody": {
+  "class": "/Script/Engine.UMaterialExpressionBlackBody",
+  "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionBlackBody.h",
+  "desc": "温度から黒体放射の色を計算。物理的に正確な色温度表現",
+  "inputs": [
+   {
+    "name": "Temp",
+    "prop": "Temp",
+    "required": false
+   }
+  ],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {},
+  "notes": "",
+  "verified": false
+ },
+ "HsvToRgb": {
+  "class": "/Script/Engine.UMaterialExpressionHsvToRgb",
+  "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionHsvToRgb.h",
+  "desc": "HSV色空間からRGB色空間に変換",
+  "inputs": [
+   {
+    "name": "Input",
+    "prop": "Input",
+    "required": false
+   }
+  ],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {},
+  "notes": "",
+  "verified": false
+ },
+ "RgbToHsv": {
+  "class": "/Script/Engine.UMaterialExpressionRgbToHsv",
+  "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionRgbToHsv.h",
+  "desc": "RGB色空間からHSV色空間に変換",
+  "inputs": [
+   {
+    "name": "Input",
+    "prop": "Input",
+    "required": false
+   }
+  ],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {},
+  "notes": "",
+  "verified": false
+ },
+ "DepthFade": {
+  "class": "/Script/Engine.UMaterialExpressionDepthFade",
+  "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionDepthFade.h",
+  "desc": "シーン深度に基づいて半透明のフェードを適用。オブジェクトが別のオブジェクトに接近時に透明化",
+  "inputs": [
+   {
+    "name": "Opacity",
+    "prop": "InOpacity",
+    "required": false,
+    "default_prop": "OpacityDefault"
+   },
+   {
+    "name": "FadeDistance",
+    "prop": "FadeDistance",
+    "required": false,
+    "default_prop": "FadeDistanceDefault"
+   }
+  ],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {
+   "OpacityDefault": {
+    "type": "float",
+    "default": 1.0
+   },
+   "FadeDistanceDefault": {
+    "type": "float",
+    "default": 100.0
+   }
   },
-  "VectorNoise": {
-    "class": "/Script/Engine.UMaterialExpressionVectorNoise",
-    "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionVectorNoise.h",
-    "desc": "3次元ベクトルとしてノイズを出力。セルノイズ、パーリンノイズ勾配など対応",
-    "inputs": [
-      {
-        "name": "Position",
-        "prop": "Position",
-        "required": false
-      }
-    ],
-    "prop_pins": [
-      {
-        "name": "Function",
-        "prop": "NoiseFunction",
-        "kind": "Advanced",
-        "type": "enum:EVectorNoiseFunction"
-      },
-      {
-        "name": "Quality",
-        "prop": "Quality",
-        "kind": "Advanced",
-        "type": "int32"
-      },
-      {
-        "name": "bTiling",
-        "prop": "bTiling",
-        "kind": "Advanced",
-        "type": "bool"
-      },
-      {
-        "name": "TileSize",
-        "prop": "TileSize",
-        "kind": "Advanced",
-        "type": "uint32"
-      }
-    ],
-    "outputs": [
-      {
-        "name": ""
-      }
-    ],
-    "props": {
-      "NoiseFunction": {
-        "type": "enum:EVectorNoiseFunction",
-        "default": "VNF_CellnoiseALU"
-      },
-      "Quality": {
-        "type": "int32",
-        "default": 1
-      },
-      "bTiling": {
-        "type": "bool",
-        "default": false
-      },
-      "TileSize": {
-        "type": "uint32",
-        "default": 16
-      }
-    },
-    "notes": "GetInputName オーバーライド有り",
-    "verified": false
+  "notes": "GetInputName オーバーライド有り。InputIndex == 0 で 'Opacity' を返す",
+  "verified": false
+ },
+ "DistanceCullFade": {
+  "class": "/Script/Engine.UMaterialExpressionDistanceCullFade",
+  "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionDistanceCullFade.h",
+  "desc": "カメラからの距離に基づいてフェード。遠距離カリングに使用",
+  "inputs": [],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {},
+  "notes": "",
+  "verified": false
+ },
+ "DynamicParameter": {
+  "class": "/Script/Engine.UMaterialExpressionDynamicParameter",
+  "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionDynamicParameter.h",
+  "desc": "パーティクルシステムからの動的パラメータを受け取る。4つまでのベクトルを出力可能",
+  "inputs": [],
+  "prop_pins": [
+   {
+    "name": "DefaultValue",
+    "prop": "DefaultValue",
+    "kind": "Primary",
+    "type": "FLinearColor"
+   },
+   {
+    "name": "ParameterIndex",
+    "prop": "ParameterIndex",
+    "kind": "Primary",
+    "type": "uint32"
+   }
+  ],
+  "outputs": [
+   {
+    "name": "",
+    "mask": "R"
+   },
+   {
+    "name": "",
+    "mask": "G"
+   },
+   {
+    "name": "",
+    "mask": "B"
+   },
+   {
+    "name": "",
+    "mask": "A"
+   },
+   {
+    "name": "RGB",
+    "mask": "RGB"
+   },
+   {
+    "name": "RGBA",
+    "mask": "RGBA"
+   }
+  ],
+  "props": {
+   "ParamNames": {
+    "type": "array:FString",
+    "default": null
+   },
+   "DefaultValue": {
+    "type": "FLinearColor",
+    "default": "FLinearColor::White"
+   },
+   "ParameterIndex": {
+    "type": "uint32",
+    "default": 0
+   }
   },
-  "BlackBody": {
-    "class": "/Script/Engine.UMaterialExpressionBlackBody",
-    "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionBlackBody.h",
-    "desc": "温度から黒体放射の色を計算。物理的に正確な色温度表現",
-    "inputs": [
-      {
-        "name": "Temp",
-        "prop": "Temp",
-        "required": false
-      }
-    ],
-    "prop_pins": [],
-    "outputs": [
-      {
-        "name": ""
-      }
-    ],
-    "props": {},
-    "notes": "",
-    "verified": false
+  "notes": "GetOutputs() オーバーライド有り。動的に出力ピンを生成 | ctor確認済: 出力6本(R,G,B,A,RGB,RGBA)。GetOutputsでParamNames由来の動的名になる場合あり",
+  "verified": false
+ },
+ "PerInstanceRandom": {
+  "class": "/Script/Engine.UMaterialExpressionPerInstanceRandom",
+  "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionPerInstanceRandom.h",
+  "desc": "インスタンスごとのランダム値を出力",
+  "inputs": [],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {},
+  "notes": "",
+  "verified": false
+ },
+ "PerInstanceFadeAmount": {
+  "class": "/Script/Engine.UMaterialExpressionPerInstanceFadeAmount",
+  "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionPerInstanceFadeAmount.h",
+  "desc": "インスタンスごとのフェード量を出力",
+  "inputs": [],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {},
+  "notes": "",
+  "verified": false
+ },
+ "PerInstanceCustomData": {
+  "class": "/Script/Engine.UMaterialExpressionPerInstanceCustomData",
+  "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionPerInstanceCustomData.h",
+  "desc": "インスタンスごとのカスタムデータを参照。float値を出力",
+  "inputs": [
+   {
+    "name": "DefaultValue",
+    "prop": "DefaultValue",
+    "required": false,
+    "default_prop": "ConstDefaultValue"
+   }
+  ],
+  "prop_pins": [
+   {
+    "name": "DataIndex",
+    "prop": "DataIndex",
+    "kind": "Advanced",
+    "type": "uint32"
+   }
+  ],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {
+   "ConstDefaultValue": {
+    "type": "float",
+    "default": 0.0
+   },
+   "DataIndex": {
+    "type": "uint32",
+    "default": 0
+   }
   },
-  "HsvToRgb": {
-    "class": "/Script/Engine.UMaterialExpressionHsvToRgb",
-    "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionHsvToRgb.h",
-    "desc": "HSV色空間からRGB色空間に変換",
-    "inputs": [
-      {
-        "name": "Input",
-        "prop": "Input",
-        "required": false
-      }
-    ],
-    "prop_pins": [],
-    "outputs": [
-      {
-        "name": ""
-      }
-    ],
-    "props": {},
-    "notes": "",
-    "verified": false
+  "notes": "",
+  "verified": false
+ },
+ "EyeAdaptation": {
+  "class": "/Script/Engine.UMaterialExpressionEyeAdaptation",
+  "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionEyeAdaptation.h",
+  "desc": "目の順応(露出補正)の現在値を参照",
+  "inputs": [],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": "EyeAdaptation"
+   }
+  ],
+  "props": {},
+  "notes": "",
+  "verified": false
+ },
+ "SceneColor": {
+  "class": "/Script/Engine.UMaterialExpressionSceneColor",
+  "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionSceneColor.h",
+  "desc": "画面座標からシーンカラーをサンプリング",
+  "inputs": [
+   {
+    "name": "Input",
+    "prop": "Input",
+    "required": false,
+    "default_prop": "ConstInput"
+   }
+  ],
+  "prop_pins": [
+   {
+    "name": "InputMode",
+    "prop": "InputMode",
+    "kind": "Advanced",
+    "type": "enum:EMaterialSceneAttributeInputMode::Type"
+   }
+  ],
+  "outputs": [
+   {
+    "name": "RGB",
+    "mask": "RGB"
+   },
+   {
+    "name": "A",
+    "mask": "A"
+   }
+  ],
+  "props": {
+   "InputMode": {
+    "type": "enum:EMaterialSceneAttributeInputMode::Type",
+    "default": "Coordinates"
+   },
+   "ConstInput": {
+    "type": "FVector2D",
+    "default": {
+     "x": 0.0,
+     "y": 0.0
+    }
+   }
   },
-  "RgbToHsv": {
-    "class": "/Script/Engine.UMaterialExpressionRgbToHsv",
-    "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionRgbToHsv.h",
-    "desc": "RGB色空間からHSV色空間に変換",
-    "inputs": [
-      {
-        "name": "Input",
-        "prop": "Input",
-        "required": false
-      }
-    ],
-    "prop_pins": [],
-    "outputs": [
-      {
-        "name": ""
-      }
-    ],
-    "props": {},
-    "notes": "",
-    "verified": false
+  "notes": "GetInputName オーバーライド有り。InputMode により入力の解釈が変わる | ctor確認済: 出力2本",
+  "verified": false
+ },
+ "SceneTexture": {
+  "class": "/Script/Engine.UMaterialExpressionSceneTexture",
+  "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionSceneTexture.h",
+  "desc": "画面配置テクスチャ(深度、法線など)をサンプリング",
+  "inputs": [
+   {
+    "name": "Coordinates",
+    "prop": "Coordinates",
+    "required": false
+   }
+  ],
+  "prop_pins": [
+   {
+    "name": "SceneTextureId",
+    "prop": "SceneTextureId",
+    "kind": "Advanced",
+    "type": "enum:ESceneTextureId"
+   },
+   {
+    "name": "Filtered",
+    "prop": "bFiltered",
+    "kind": "Advanced",
+    "type": "bool"
+   }
+  ],
+  "outputs": [
+   {
+    "name": "Color",
+    "mask": "RGBA"
+   },
+   {
+    "name": "Size"
+   },
+   {
+    "name": "InvSize"
+   }
+  ],
+  "props": {
+   "SceneTextureId": {
+    "type": "enum:ESceneTextureId",
+    "default": "ShadingModelID"
+   },
+   "bFiltered": {
+    "type": "bool",
+    "default": false
+   }
   },
-  "DepthFade": {
-    "class": "/Script/Engine.UMaterialExpressionDepthFade",
-    "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionDepthFade.h",
-    "desc": "シーン深度に基づいて半透明のフェードを適用。オブジェクトが別のオブジェクトに接近時に透明化",
-    "inputs": [
-      {
-        "name": "Opacity",
-        "prop": "InOpacity",
-        "required": false,
-        "default_prop": "OpacityDefault"
-      },
-      {
-        "name": "FadeDistance",
-        "prop": "FadeDistance",
-        "required": false,
-        "default_prop": "FadeDistanceDefault"
-      }
-    ],
-    "prop_pins": [],
-    "outputs": [
-      {
-        "name": ""
-      }
-    ],
-    "props": {
-      "OpacityDefault": {
-        "type": "float",
-        "default": 1.0
-      },
-      "FadeDistanceDefault": {
-        "type": "float",
-        "default": 100.0
-      }
-    },
-    "notes": "GetInputName オーバーライド有り。InputIndex == 0 で 'Opacity' を返す",
-    "verified": false
-  },
-  "DistanceCullFade": {
-    "class": "/Script/Engine.UMaterialExpressionDistanceCullFade",
-    "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionDistanceCullFade.h",
-    "desc": "カメラからの距離に基づいてフェード。遠距離カリングに使用",
-    "inputs": [],
-    "prop_pins": [],
-    "outputs": [
-      {
-        "name": ""
-      }
-    ],
-    "props": {},
-    "notes": "",
-    "verified": false
-  },
-  "DynamicParameter": {
-    "class": "/Script/Engine.UMaterialExpressionDynamicParameter",
-    "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionDynamicParameter.h",
-    "desc": "パーティクルシステムからの動的パラメータを受け取る。4つまでのベクトルを出力可能",
-    "inputs": [],
-    "prop_pins": [
-      {
-        "name": "DefaultValue",
-        "prop": "DefaultValue",
-        "kind": "Primary",
-        "type": "FLinearColor"
-      },
-      {
-        "name": "ParameterIndex",
-        "prop": "ParameterIndex",
-        "kind": "Primary",
-        "type": "uint32"
-      }
-    ],
-    "outputs": [
-      {
-        "name": ""
-      }
-    ],
-    "props": {
-      "ParamNames": {
-        "type": "array:FString",
-        "default": null
-      },
-      "DefaultValue": {
-        "type": "FLinearColor",
-        "default": "FLinearColor::White"
-      },
-      "ParameterIndex": {
-        "type": "uint32",
-        "default": 0
-      }
-    },
-    "notes": "GetOutputs() オーバーライド有り。動的に出力ピンを生成",
-    "verified": false
-  },
-  "PerInstanceRandom": {
-    "class": "/Script/Engine.UMaterialExpressionPerInstanceRandom",
-    "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionPerInstanceRandom.h",
-    "desc": "インスタンスごとのランダム値を出力",
-    "inputs": [],
-    "prop_pins": [],
-    "outputs": [
-      {
-        "name": ""
-      }
-    ],
-    "props": {},
-    "notes": "",
-    "verified": false
-  },
-  "PerInstanceFadeAmount": {
-    "class": "/Script/Engine.UMaterialExpressionPerInstanceFadeAmount",
-    "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionPerInstanceFadeAmount.h",
-    "desc": "インスタンスごとのフェード量を出力",
-    "inputs": [],
-    "prop_pins": [],
-    "outputs": [
-      {
-        "name": ""
-      }
-    ],
-    "props": {},
-    "notes": "",
-    "verified": false
-  },
-  "PerInstanceCustomData": {
-    "class": "/Script/Engine.UMaterialExpressionPerInstanceCustomData",
-    "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionPerInstanceCustomData.h",
-    "desc": "インスタンスごとのカスタムデータを参照。float値を出力",
-    "inputs": [
-      {
-        "name": "DefaultValue",
-        "prop": "DefaultValue",
-        "required": false,
-        "default_prop": "ConstDefaultValue"
-      }
-    ],
-    "prop_pins": [
-      {
-        "name": "DataIndex",
-        "prop": "DataIndex",
-        "kind": "Advanced",
-        "type": "uint32"
-      }
-    ],
-    "outputs": [
-      {
-        "name": ""
-      }
-    ],
-    "props": {
-      "ConstDefaultValue": {
-        "type": "float",
-        "default": 0.0
-      },
-      "DataIndex": {
-        "type": "uint32",
-        "default": 0
-      }
-    },
-    "notes": "",
-    "verified": false
-  },
-  "EyeAdaptation": {
-    "class": "/Script/Engine.UMaterialExpressionEyeAdaptation",
-    "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionEyeAdaptation.h",
-    "desc": "目の順応(露出補正)の現在値を参照",
-    "inputs": [],
-    "prop_pins": [],
-    "outputs": [
-      {
-        "name": ""
-      }
-    ],
-    "props": {},
-    "notes": "",
-    "verified": false
-  },
-  "SceneColor": {
-    "class": "/Script/Engine.UMaterialExpressionSceneColor",
-    "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionSceneColor.h",
-    "desc": "画面座標からシーンカラーをサンプリング",
-    "inputs": [
-      {
-        "name": "Input",
-        "prop": "Input",
-        "required": false,
-        "default_prop": "ConstInput"
-      }
-    ],
-    "prop_pins": [
-      {
-        "name": "InputMode",
-        "prop": "InputMode",
-        "kind": "Advanced",
-        "type": "enum:EMaterialSceneAttributeInputMode::Type"
-      }
-    ],
-    "outputs": [
-      {
-        "name": ""
-      }
-    ],
-    "props": {
-      "InputMode": {
-        "type": "enum:EMaterialSceneAttributeInputMode::Type",
-        "default": "Coordinates"
-      },
-      "ConstInput": {
-        "type": "FVector2D",
-        "default": {
-          "x": 0.0,
-          "y": 0.0
-        }
-      }
-    },
-    "notes": "GetInputName オーバーライド有り。InputMode により入力の解釈が変わる",
-    "verified": false
-  },
-  "SceneTexture": {
-    "class": "/Script/Engine.UMaterialExpressionSceneTexture",
-    "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionSceneTexture.h",
-    "desc": "画面配置テクスチャ(深度、法線など)をサンプリング",
-    "inputs": [
-      {
-        "name": "Coordinates",
-        "prop": "Coordinates",
-        "required": false
-      }
-    ],
-    "prop_pins": [
-      {
-        "name": "SceneTextureId",
-        "prop": "SceneTextureId",
-        "kind": "Advanced",
-        "type": "enum:ESceneTextureId"
-      },
-      {
-        "name": "Filtered",
-        "prop": "bFiltered",
-        "kind": "Advanced",
-        "type": "bool"
-      }
-    ],
-    "outputs": [
-      {
-        "name": ""
-      }
-    ],
-    "props": {
-      "SceneTextureId": {
-        "type": "enum:ESceneTextureId",
-        "default": "ShadingModelID"
-      },
-      "bFiltered": {
-        "type": "bool",
-        "default": false
-      }
-    },
-    "notes": "",
-    "verified": false
-  },
-  "SRGBColorToWorkingColorSpace": {
-    "class": "/Script/Engine.UMaterialExpressionSRGBColorToWorkingColorSpace",
-    "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionSRGBColorToWorkingColorSpace.h",
-    "desc": "sRGB色空間からワーキング色空間に変換",
-    "inputs": [
-      {
-        "name": "Input",
-        "prop": "Input",
-        "required": false
-      }
-    ],
-    "prop_pins": [],
-    "outputs": [
-      {
-        "name": ""
-      }
-    ],
-    "props": {},
-    "notes": "",
-    "verified": false
-  }
+  "notes": "ctor確認済: 出力3本",
+  "verified": false
+ },
+ "SRGBColorToWorkingColorSpace": {
+  "class": "/Script/Engine.UMaterialExpressionSRGBColorToWorkingColorSpace",
+  "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionSRGBColorToWorkingColorSpace.h",
+  "desc": "sRGB色空間からワーキング色空間に変換",
+  "inputs": [
+   {
+    "name": "Input",
+    "prop": "Input",
+    "required": false
+   }
+  ],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {},
+  "notes": "",
+  "verified": false
+ }
 }

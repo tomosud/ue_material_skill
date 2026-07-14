@@ -4,6 +4,16 @@ status: TODO
 output: `skill/SKILL.md`
 依存: T01〜T05 完了後
 
+## 単独実行の前提(外部AI向け)
+
+- このmdと下記「必読」だけで着手可能。会話コンテキストは不要
+- 作業ディレクトリ: C:/work/script/ue_material_skill(リポジトリ)
+- UEソース: C:/work/unreal/UnrealEngine-release(**読み取り専用**)
+- 必読: PLAN.md 全体、skill/ 配下の全成果物、tasks/INSTRUCTIONS-*.md
+- 変更してよいのは output に書かれた成果物と本mdのみ。完了時は本mdの `status:` を DONE にし、
+  成果物パス・未解決点・判断に迷った点を本md末尾に「## 実施メモ」として追記する
+
+
 ## 内容
 
 Claude Skill 本体。frontmatter(name/description トリガー最適化)+ 本文:

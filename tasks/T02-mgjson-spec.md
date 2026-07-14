@@ -4,6 +4,16 @@ status: TODO
 output: `skill/references/mgjson.md`
 依存: なし
 
+## 単独実行の前提(外部AI向け)
+
+- このmdと下記「必読」だけで着手可能。会話コンテキストは不要
+- 作業ディレクトリ: C:/work/script/ue_material_skill(リポジトリ)
+- UEソース: C:/work/unreal/UnrealEngine-release(**読み取り専用**)
+- 必読: PLAN.md の§3(アーキテクチャ)、catalog/generated/C01.json(propsの型表記の実例として)
+- 変更してよいのは output に書かれた成果物と本mdのみ。完了時は本mdの `status:` を DONE にし、
+  成果物パス・未解決点・判断に迷った点を本md末尾に「## 実施メモ」として追記する
+
+
 ## 内容
 
 AI⇔ツール間の中間フォーマット仕様を確定する。PLAN.md §3.2 の草案をベースに:

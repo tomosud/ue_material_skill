@@ -42,10 +42,20 @@ tasks/<ID>.md があなたのタスク。
 
 | Wave | タスク | 発注 | 完了確認 |
 |---|---|---|---|
-| 1 | C01 C02 C03 C04 C05 C06 C07 C08 | 発注済 2026-07-14 | |
-| 1 | M02 M03 M04 | 発注済 2026-07-14 | |
-| 2 | C09 C10 C11 C12 C13 C14 C15 C16 | 未 | |
-| 3 | C17 C18 C19 C20 C21 C22 | 未 | |
+| 1 | C01 C02 C03 C04 C05 C06 C07 C08 | 発注済 | **完了・検品済**(138クラス、カバレッジ欠落0) |
+| 1 | M02 M03 M04 | 発注済 | **完了**(計82関数、全てverified:false) |
+| 2+3 | C09〜C22(14タスク一括) | 発注済 2026-07-14 | |
+
+Wave 1 QA記録: `tools/qa_outputs.py`(cppコンストラクタとの出力ピン照合)で14件検出
+→ 実修正10件(VertexColor/DynamicParameter/SceneColor/SceneTexture/EyeAdaptation/
+ChannelMaskParameter/PixelDepth/SceneDepth/Composite/PinBase)をカタログに反映済み。
+Wave 2+3 の回収後も同スクリプトで検算すること。
+
+## 高性能AI向けタスクの引き渡し
+
+T01〜T08 / M01 は自己完結化済み。`tasks/HANDOFF.md` の発注文で外部AI
+(Codex・別セッション等)にmdパスを伝えるだけで実行できる。
+推奨: 第1陣 T01+T02+M01+T06 → 第2陣 T03+T04+T05 → T07。
 
 Wave 2/3 は Wave 1 の完了を見て順次発注(一度に大量発注しないための分割。
 依存関係はないので、再開時にまとめて発注してもよい)。
