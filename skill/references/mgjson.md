@@ -1,64 +1,40 @@
-# MGJSON 仕様
+# MGJSON Reference
 
-MGJSON は、Unreal Engine Material Graph と AI の間で使うコンパクトな JSON 形式である。
-T3D 固有の GUID、object name、全 Pin field、所有者参照を隠し、意味のあるノード、
-プロパティ、接続だけを表す。`validate.py`、`build.py`、`parse.py` は本仕様を正本とする。
+MGJSON is the compact, conversational representation used by this skill for Unreal Material graphs.
+`validate.py`, `build.py`, and `parse.py` are the implementation authority for this format. MGJSON omits
+clipboard-only GUIDs, object names, owner references, and most Pin serialization fields.
 
-## 目次
+This document specifies the local format. It does not make a node behavior claim. Consult
+`source-verification.md` and the node evidence catalog before using a class or Pin schema for generation.
 
-- [文書構造](#文書構造)
-- [ノード](#ノード)
-- [プロパティ値](#プロパティ値)
-- [接続](#接続)
-- [位置と自動レイアウト](#位置と自動レイアウト)
-- [コメント](#コメント)
-- [カタログとの対応](#カタログとの対応)
-- [検証規則](#検証規則)
-- [parse.py の正規化規則](#parsepy-の正規化規則)
-- [例](#例)
-
-## 文書構造
-
-### 形式
+## Document shape
 
 ```ebnf
 document      = object containing "nodes" [and "links"] [and "pos"] ;
 nodes         = object { node-id : node } ;
 links         = array of link-string ;
 pos           = object { node-id : [x, y] } ;
-node          = normal-node | comment-node ;
 normal-node   = { "class": class-name,
                   ["props": object], ["raw_props": object] } ;
 comment-node  = { "class": "Comment", ["props": comment-props] } ;
 ```
 
-JSON は UTF-8。top-level は object でなければならない。
+- The document is a UTF-8 JSON object.
+- `nodes` is required and must be a non-empty object.
+- `links` is optional and defaults to an empty array.
+- `pos` is optional; omitted positions use the builder's automatic layout.
+- Unknown keys and duplicate JSON object keys are errors.
 
-| key | 必須 | 型 | 意味 |
-|---|---:|---|---|
-| `nodes` | yes | object | node id から node 定義への map。空は禁止。 |
-| `links` | no | array[string] | 接続。省略時は空配列。 |
-| `pos` | no | object | 明示位置。省略 node は自動配置。 |
-
-未知の top-level key は typo を隠すため error とする。JSON object の key 重複は通常の
-parser では後勝ちになるが、本ツールは `object_pairs_hook` 等で検出して error とする。
-
-### node id
-
-node id は document 内の短い識別子で、次を満たす。
+Node IDs are local labels and must match:
 
 ```regex
 ^[A-Za-z_][A-Za-z0-9_-]*$
 ```
 
-- 大文字小文字を区別する。
-- `.`、空白、`->` は link parser との曖昧さを避けるため禁止する。
-- object の key なので一意でなければならない。
-- Unreal の object name や GUID とは無関係で、T3D 生成時に別途割り当てる。
+They are case-sensitive and are unrelated to Unreal object names or GUIDs. Periods, spaces, and `->` are
+excluded to keep link parsing unambiguous.
 
-## ノード
-
-### 通常ノード
+## Nodes
 
 ```json
 {
@@ -68,381 +44,161 @@ node id は document 内の短い識別子で、次を満たす。
 }
 ```
 
-| key | 必須 | 型 | 規則 |
-|---|---:|---|---|
-| `class` | yes | string | `MaterialExpression` を除いたカタログ短名。完全 class path は不可。 |
-| `props` | no | object | カタログ `props` の property 名と typed JSON 値。省略時は空。 |
-| `raw_props` | no | object[string] | カタログ未収載 property の T3D 右辺生値。省略時は空。 |
+- `class` is the catalog short name, without the `MaterialExpression` prefix.
+- `props` contains typed values whose names and types are declared by the catalog.
+- `raw_props` contains single-line T3D right-hand-side strings for properties that are not typed in the
+  catalog.
+- The same property cannot occur in both `props` and `raw_props`.
+- `parse.py` may omit values that deep-equal a catalog default.
 
-node 内の未知 key は error。`props` と `raw_props` に同じ property 名を置くことは禁止する。
-class 既定値と同じ `props` は入力として許可するが、`parse.py` は省略する。
+An unknown class can be preserved by `parse.py` for investigation, but `validate.py` and `build.py` reject it
+because no safe Pin schema is available. `raw_props` is an escape hatch for properties, not for unknown Pins.
+Abstract classes are errors. Deprecated classes produce warnings.
 
-### 未知 class
+## Typed property values
 
-`parse.py` はカタログにない MaterialExpression も捨てず、class suffix と `raw_props` を
-出力する。この MGJSON は解析・引き継ぎには有効だが、Pin 構成を生成できないため
-`validate.py` / `build.py` は unknown class を error にする。再生成するには、そのノード
-1 個の clipboard sample から class、input、property input、全 output の順序をカタログへ
-追加する。`raw_props` は「未知 property」の escape hatch であり、未知 Pin schema の代替ではない。
+| Catalog type | MGJSON value |
+|---|---|
+| `float`, `double` | finite JSON number |
+| signed or unsigned integer | JSON integer |
+| `bool` | JSON boolean |
+| `FName`, `FString`, `FText` | JSON string |
+| `enum:EType` | enum value-name string |
+| `asset:Type` | Unreal object path string or `null` |
+| `FLinearColor`, `FColor` | three- or four-number array |
+| `FVector2D`, `FIntPoint` | two-number array |
+| `FVector`, `FVector3f` | three-number array |
+| `FVector4`, `FVector4f` | four-number array |
+| `FGuid` | 32 hexadecimal characters |
 
-### abstract / deprecated
+Three-component colors use the catalog alpha default when available, otherwise `1.0`. Color values are not
+clamped to 0–1. Every numeric component must be finite.
 
-- catalog の `abstract: true` class は生成不能なので error。
-- `deprecated: true` class は warning。class が現行 UE で生成可能なら build は続行できる。
-- `verified: false` は通常状態で error にしない。必要に応じて warning summary に含める。
+Asset values normally use a complete object path such as `/Game/Textures/T_Base.T_Base`. `/Game`, `/Engine`,
+and plugin mount paths are syntactically accepted. `null` means no asset. Validation checks syntax and catalog
+type, not asset existence; existence requires the target project's Asset Registry or Unreal Editor.
 
-## プロパティ値
+Enum values use their exact Unreal token, not an integer or localized label. A catalog choice list is enforced
+when present. Without a choice list, validation can check only that the value is a non-empty string and emits a
+warning.
 
-`props` の key は catalog entry の `props` key をそのまま使う。値の JSON 表現は
-catalog の `type` に従う。
+`raw_props` names must match:
 
-| catalog type | MGJSON 値 | 例 |
-|---|---|---|
-| `float`, `double` | finite number | `0.5` |
-| `int8`〜`int64`, `uint8`〜`uint64` | integer | `2` |
-| `bool` | boolean | `true` |
-| `FName`, `FString`, `FText` | string | `"Roughness"` |
-| `enum:EType` | enum value name string | `"SAMPLERTYPE_Color"` |
-| `asset:Type` | Unreal asset path string または `null` | `"/Game/Textures/T_Base.T_Base"` |
-| `FLinearColor`, `FColor` | number array 3 または 4 要素 | `[1.0, 0.2, 0.0]` |
-| `FVector2D`, `FIntPoint` | number / integer array 2 要素 | `[2.0, 2.0]` |
-| `FVector`, `FVector3f` | number array 3 要素 | `[0.0, 0.0, 1.0]` |
-| `FVector4`, `FVector4f` | number array 4 要素 | `[1.0, 0.0, 0.0, 1.0]` |
-| `FGuid` | 32 hex string | `"00112233445566778899AABBCCDDEEFF"` |
-| その他の既知 struct | JSON object または catalog が定める array | `{"x": 1, "y": 2}` |
-
-### 色
-
-- `[r,g,b]` は alpha を class 既定値、既定値が得られなければ `1.0` とする。
-- `[r,g,b,a]` は alpha を明示する。
-- 値域は HDR color を許すため 0〜1 に制限しない。全要素は finite number とする。
-- parse は T3D `(R=...,G=...,B=...,A=...)` を array に変換する。
-
-### asset path
-
-- `/Game/...`、`/Engine/...`、plugin mount path `/PluginName/...` を許可する。
-- object path は原則 `Package.Asset` まで含める。
-- 空 string は禁止し、参照なしは `null` を使う。
-- build は catalog の具体的 asset type を使って T3D object reference に変換する。
-- path の存在確認は Editor asset registry が必要なため validate の対象外。
-
-### enum
-
-enum は整数でなく C++ / T3D の value name を使う。catalog が enum choices を持つ場合は
-厳密照合し、持たない場合は non-empty string の型検査だけを行い warning を出せる。
-
-### raw_props
-
-`raw_props` の value は T3D property line の `=` より右側だけを表す string である。
-
-```json
-"raw_props": {
-  "CustomStruct": "(Mode=Foo,Weights=(1.0,2.0))"
-}
+```regex
+^[A-Za-z_][A-Za-z0-9_]*(?:\([0-9]+\))?$
 ```
 
-- property 名は `^[A-Za-z_][A-Za-z0-9_]*(?:\([0-9]+\))?$` を満たす。
-- value に改行を含めてはならない。
-- build は解釈・再引用せず `PropertyName=<raw value>` として Expression 定義へ出す。
-- `Material`, `Function`, `GraphNode`, editor position、GUID property は環境依存なので
-  raw_props にも出さない。
+Values cannot contain a newline. The builder emits them without interpreting or requoting the right-hand side.
+Environment-owned properties such as `Material`, `Function`, `GraphNode`, editor coordinates, and generated
+GUIDs must not be carried through `raw_props`.
 
-## 接続
+## Links
 
-### canonical syntax
+Canonical syntax is:
 
 ```text
-src[.output] -> dst.input
+source[.output] -> destination.input
 ```
 
-```ebnf
-link       = source-endpoint, " -> ", destination-endpoint ;
-source-endpoint = node-id, [ ".", output-name ] ;
-destination-endpoint = node-id, ".", input-name ;
-```
+- Omitting the source output selects output index 0.
+- The destination input is required.
+- Extra whitespace around the arrow is accepted and normalized.
+- One destination input accepts at most one link; outputs may fan out.
+- Duplicate links are errors. Data cycles are warnings.
+- A Comment cannot be a link endpoint.
+- The Material Root is not represented. The user connects final outputs to Root inputs after paste.
 
-- canonical separator は両側 1 空白の ` -> `。parser / validator は arrow 周辺の追加空白を
-  許容して trim するが、serializer は canonical form で出す。
-- source の output 名省略は、その class の output index 0 を意味する。
-- destination input 名は必須。
-- endpoint は最初の `.` で node id と Pin 名に分ける。Pin 名は前後を trim し、空は禁止。
-- Pin 名には空白、日本語、括弧を許すが `->` は禁止する。
+Effective input names are resolved in this order: non-empty `name`, `prop`, then `in<index>`. Effective output
+names are resolved as non-empty `name`, `mask`, `Output` for index 0, then `out<index>`. A source-audited catalog
+entry may use internal clipboard names such as `Output2`; do not replace those names with a semantic channel
+label.
 
-### Pin 名の正規化
+Input order is `inputs` followed by `prop_pins`. Output order is the catalog `outputs` order. These orders are
+part of the clipboard reconstruction contract and cannot be rearranged for presentation.
 
-カタログ field から MGJSON で使う effective name を次で決める。
+## Positions and comments
 
-入力 (`inputs` の後に `prop_pins`):
+`pos` maps a node ID to an integer `[x, y]`. Unknown IDs and non-integer coordinates are errors. Explicit
+positions are preserved. Missing positions are assigned by `build.py` using graph depth and document order.
+`parse.py` discards positions unless `--keep-pos` is used.
 
-1. `name` が non-empty なら `name`。
-2. 空なら `prop`。
-3. それもなければ `in<index>`。
+Comment is a reserved local class. Its supported properties are:
 
-出力 (`outputs` 順):
-
-1. `name` が non-empty なら `name`。
-2. 空で `mask` が non-empty なら `mask`（例: `RGB`, `R`, `G`, `B`, `A`）。
-3. index 0 なら `Output`。
-4. それ以外は `out<index>`。
-
-source output を省略した場合は常に index 0 であり、その effective name が `RGB` でも
-`Output` でも同じ Pin を指す。serializer は compactness のため index 0 を省略する。
-
-### 接続制約
-
-- source は output、destination は input / prop_pin でなければならない。
-- 1 input に入る link は最大 1 本。複数なら error。
-- 同一 link の重複は error。
-- self-loop を含む data cycle は warning。UE の一部特殊 graph を除き通常は意図しない。
-- output は複数 input に fan-out できる。
-- Comment は endpoint にできない。
-- Root node は MGJSON に存在しない。BaseColor 等への最終接続は表現せず、build 後に
-  Material Editor で手動接続する。
-
-## 位置と自動レイアウト
-
-`pos` は node id から `[x,y]` への map。
-
-```json
-"pos": {"uv": [-600, 0], "tex": [-300, 0]}
-```
-
-- x, y は finite integer。float 入力は error とする。
-- `nodes` にない id は error。
-- position がない通常 node は build が接続 DAG の深さで左から右へ配置する。
-- column 間隔 300 px、row 間隔 180 px。同じ depth は node 定義順に上から下へ並べる。
-- cycle の node は、cycle 外 predecessor から得られる最大 depth、なければ depth 0 に置く。
-- 明示 pos は変更しない。明示 node も自動配置 node の depth 計算には参加する。
-- parse は既定で position を捨て、`--keep-pos` のときだけ GraphNode の `NodePosX/Y` を出す。
-
-JSON object の insertion order を layout と ID 採番の安定化に使う。実装は入力順を保持する。
-
-## コメント
-
-Comment は予約 class `Comment` で表す。
-
-```json
-{
-  "class": "Comment",
-  "props": {
-    "Text": "Base color",
-    "nodes": ["uv", "tex"],
-    "CommentColor": [0.1, 0.25, 0.5, 1.0],
-    "FontSize": 18
-  }
-}
-```
-
-comment props:
-
-| key | 型 | 規則 |
-|---|---|---|
-| `Text` | string | 表示文字列。省略時は空。 |
-| `nodes` | array[string] | 包含する通常 node id。一意、1個以上。省略可。 |
-| `CommentColor` | 3/4 number array | 省略時は UE 既定色。 |
-| `FontSize` | positive integer | 1〜1000。 |
-| `bCommentBubbleVisible_InDetailsPanel` | bool | optional。 |
-| `bColorCommentBubble` | bool | optional。 |
-| `MoveMode` | string | `GroupMovement` または `NoGroupMovement`。 |
-| `SizeX`, `SizeY` | positive integer | `nodes` がない手動枠だけで使用。 |
-
-`nodes` がある場合、build は対象通常 node の position を先に確定し、各 node を
-240×120 px とみなした bounding box に上下左右 80 px の margin を加える。Comment の
-`NodePosX/Y`, `NodeWidth/Height` と Expression mirror property をこの bounds から生成する。
-この場合 Comment 自身の `pos` と `SizeX/SizeY` は競合するため error。
-
-`nodes` がない場合は自由 comment とし、`pos` を使う。size 省略時は 400×200 px。
-Comment の `nodes` に別 Comment、自分自身、存在しない id を指定してはならない。
-
-## カタログとの対応
-
-`skill/catalog/nodes.json` の各短名 entry を使う。
-
-| MGJSON | catalog |
+| Property | Type |
 |---|---|
-| `node.class` | top-level key |
-| `node.props` key/type | `entry.props` key/type/default |
-| destination input | `entry.inputs` + `entry.prop_pins` の effective name |
-| source output | `entry.outputs` の effective name / index |
-| T3D class path | `entry.class` |
+| `Text` | string |
+| `nodes` | unique, non-empty array of normal-node IDs |
+| `CommentColor` | three- or four-number color |
+| `FontSize` | positive integer |
+| `bCommentBubbleVisible_InDetailsPanel` | boolean |
+| `bColorCommentBubble` | boolean |
+| `MoveMode` | `GroupMovement` or `NoGroupMovement` |
+| `SizeX`, `SizeY` | positive integers for an ungrouped frame |
 
-property input は通常 input の後に並ぶ。この順序は T3D `SourceIndex` の生成に必須。
-全 output も接続有無にかかわらず catalog 順で T3D に出す。
+For a grouped Comment, the builder computes the frame from contained node positions. An explicit Comment
+position or size conflicts with computed grouping and is rejected. An ungrouped Comment may use `pos` and size.
+A Comment cannot contain itself, another Comment, or a missing node.
 
-### 動的ピン: Custom ノード
+## Dynamic Pins
 
-catalog entry が `dynamic_pins: true` の class(現在は `Custom`)は、Pin schema を
-catalog の `inputs` / `outputs` ではなく **node の props から導出**する。
+`Custom` derives its Pins from node properties rather than static catalog arrays. Read
+`custom-expressions.md` before creating one. Its source-checked rules, 32-parameter Material IR limit, shader
+include mappings, Scene Texture fixup, and private-API warnings are maintained there rather than duplicated
+here.
 
-```json
-{
-  "class": "Custom",
-  "props": {
-    "Description": "LumaSplit",
-    "OutputType": "CMOT_Float3",
-    "Code": "Luma = dot(A, float3(0.2126, 0.7152, 0.0722));\nreturn A * 2.0;",
-    "Inputs": [{"InputName": "A"}],
-    "AdditionalOutputs": [{"OutputName": "Luma", "OutputType": "CMOT_Float1"}],
-    "AdditionalDefines": [{"DefineName": "MYPROJ_MODE", "DefineValue": "1"}],
-    "IncludeFilePaths": ["/Project/Material/MyLib.ush"]
-  }
-}
-```
+`MaterialFunctionCall` derives Pins from the function catalog. Read `mf-call.md`. Function catalog entries are
+parsing support unless their exact path and Pin schema have separate asset or Editor evidence.
 
-- 入力 Pin = `props.Inputs` の各 `InputName`(省略時は UE ctor 既定の無名 input 1本)。
-  link の宛先名は `custom1.A` のように `InputName` を使う。
-- 出力 Pin = `AdditionalOutputs` が空なら無名 1 本(link では省略か `Output`)。
-  1件以上あれば `return` + 各 named output(`custom1.Luma` のように参照)。
-  無名の additional output は Pin にならない。
-- `TArray<...>` 型 prop は build 時に UE clipboard と同じ索引付き行
-  (`Inputs(0)=(InputName="A")`)へ、parse 時に構造化 array へ往復される。
-  `FCustomInput.Input`(接続情報)は Pin LinkedTo が正のため出力しない。
-- struct 要素の未知 field は warning 付きでそのまま通す(局所 escape hatch)。
-  配列全体を `raw_props` に入れてはならない。
-- UEがcopy時に出す`bShowOutputNameOnPin`は`AdditionalOutputs`から
-  `RebuildOutputs()`が再構築する派生fieldなので、parse時に破棄する。
+## Validation behavior
 
-Custom 固有の検証(`validate.py`):
+Errors prevent generation and return exit code 1. Warnings preserve representable input but identify risk or
+missing evidence. Major error classes are:
 
-- named input + named additional output は合計 **32 以下**(Material IR 制限、超過は error)
-- Input/Output 名は HLSL identifier 規則、予約語不可、同一 node 内重複不可、
-  texture 入力に自動生成される `<名前>Sampler` との衝突不可(いずれも error)
-- `AdditionalDefines` は名前(identifier)と値の両方が必須(空は error)
-- `IncludeFilePaths` は絶対 virtual shader path(`/Project/...` 等)。
-  filesystem path・`..`・相対 path は error
-- `Code` に comment 外の明示 `return` 文がなければ warning
-  (UE は case-sensitive substring 判定のため comment 内 `return` で誤動作する)
-- named additional output が `Code` 内で代入されていなければ warning
-  (新 Material IR は `out` 生成のため未代入は未定義値になる)
-- named input が未接続なら warning(compile 不能。無名 input は対象外)
-- `Code` 中の `<入力名>.ID` / `<入力名>.Fetch` は、その入力が
-  `SceneTexture` / `UserSceneTexture` の出力 0 へ直結している場合のみ許可(error)
-- `Parameters.` / `View.` / Engine private helper の使用は `unsafe_internal_api` warning。
-  Engine private HLSL 関数は allowlist 化しない(UE version 固定+実機 compile が前提)
+1. invalid JSON, duplicate keys, unknown keys, or an invalid document shape;
+2. invalid node IDs, unknown or abstract classes, and invalid typed or raw properties;
+3. invalid positions or Comment containment;
+4. malformed links, unknown endpoints or Pins, reversed Pin direction, duplicate links, or multiple links to
+   one input;
+5. class-specific validation failures, including source-checked Custom rules.
 
-## 検証規則
+Warnings include deprecation, isolated nodes, cycles, unchecked enum values, raw properties, unresolved asset
+existence, incomplete source audits, and incomplete Unreal Editor evidence. Source and Editor evidence are
+reported independently.
 
-`validate.py` は diagnostic を `error` と `warning` に分ける。error が 1 件以上なら exit 1、
-error なしなら warning があっても exit 0。成功時は exit 0。JSON / I/O 自体の失敗も exit 1。
+`build.py` calls validation and emits no T3D when any error is present.
 
-### error
+## Parse normalization
 
-1. JSON syntax error、duplicate key、top-level / node shape 不正、未知 key。
-2. node id 不正、空 nodes、未知 class、abstract class。
-3. props / raw_props の型不正、未知 typed prop、同名衝突、raw value の改行。
-4. pos の未知 id、非整数座標、Comment bounds 指定との競合。
-5. link syntax 不正、未知 node / Pin、source input、destination output。
-6. destination input への複数 link、duplicate link。
-7. Comment endpoint / 不正な包含 id、Comment の再帰包含。
+`parse.py` performs these normalizations:
 
-class / property / Pin の未知名には `difflib.get_close_matches` 等で最も近い候補を最大3件示す。
-diagnostic path は `$`, `$.nodes.mul.class`, `$.links[2]` のような JSONPath 風表記にする。
+1. discard the Material Root and links that terminate only at the Root;
+2. derive the short class from the Material Expression class;
+3. assign deterministic local node IDs from class aliases and T3D order;
+4. reconstruct internal links from Pin `LinkedTo` records and deduplicate reciprocal records;
+5. use audited catalog Pin names when a schema matches, otherwise use `in<index>` and `out<index>`;
+6. convert known property text to typed MGJSON and preserve unknown properties in `raw_props`;
+7. omit environment-owned coordinates, GUIDs, owner pointers, and reproducible derived fields;
+8. retain positions only with `--keep-pos`.
 
-### warning
+`--stats` reports counts rather than MGJSON. Unknown external Pin references are discarded because copied
+selections can legitimately contain links to nodes outside the selection.
 
-1. deprecated / unverified class。
-2. 孤立した通常 node（link なし）。node が1個だけの document では警告しない。
-3. data cycle / self-loop。
-4. catalog に enum choices がなく値を厳密検査できない場合。
-5. `raw_props` 使用、asset path の存在未確認。
+## Source-audited example
 
-build は validate を関数として呼び、error があれば T3D を一切出力しない。
-
-## parse.py の正規化規則
-
-1. T3D の MaterialGraphNode_Root と Root だけへの link を捨てる。
-2. GraphNode class から `MaterialExpression` suffix を除いて `class` を得る。
-3. node id は次の alias + 1始まり連番を使用する。alias 未登録なら class 名を lower camel
-   ではなく ASCII lowercase にして用いる。
-
-| class | alias |
-|---|---|
-| `Constant`, `Constant2Vector`, `Constant3Vector`, `Constant4Vector` | `const` |
-| `ScalarParameter` | `scalar` |
-| `VectorParameter` | `vector` |
-| `TextureCoordinate` | `uv` |
-| `TextureSample`, `TextureSampleParameter2D` | `tex` |
-| `Multiply` | `mul` |
-| `Add` | `add` |
-| `LinearInterpolate` | `lerp` |
-| `MaterialFunctionCall` | `mf` |
-| `Comment` | `comment` |
-
-例: 最初の Multiply は `mul1`、2個目は `mul2`。T3D の出現順に採番する。
-
-4. 接続は `LinkedTo` だけから復元し、両方向記載を1本に deduplicate する。
-5. catalog がある場合は effective Pin name を使い、source index 0 は省略する。
-6. catalog がない / Pin が一致しない場合は入力 `in<index>`、出力 `out<index>` を使う。
-7. known prop は T3D から typed MGJSON へ変換し、catalog default と deep-equal なら省略する。
-8. 未知 property は `raw_props` に右辺をそのまま保存する。
-9. `MaterialExpressionEditorX/Y`, `NodeGuid`, `MaterialExpressionGuid`, `ExpressionGUID`,
-   `Material`, `Function`, `GraphNode`, `ExportPath` は出力しない。ただし parameter 固有の
-   `ExpressionGUID` は意味上必要な場合もペーストで再発行されるため省略する。
-10. class固有の再構築可能な派生fieldも出力しない。現在はCustomの
-    `bShowOutputNameOnPin`を`AdditionalOutputs`から再構築する。
-11. `--keep-pos` のときだけ通常 node と自由 Comment の pos を出す。包含 Comment の geometry
-    は可能なら内包関係へ戻し、確定できなければ自由 Comment として size / pos を保持する。
-
-JSON 出力は `ensure_ascii=false`、compact separator を使用してよい。`--stats` は MGJSON の代わりに
-node 数、Comment 数、内部 link 数、unknown class / raw prop 数だけを出す。
-
-## 例
-
-### 1. 単純な演算
+The classes and Pins in this example are covered by `skill/catalog/audits/C01-core.json`.
 
 ```json
 {
   "nodes": {
     "a": {"class": "Constant", "props": {"R": 0.25}},
     "b": {"class": "Constant", "props": {"R": 2.0}},
-    "mul": {"class": "Multiply"}
-  },
-  "links": ["a -> mul.A", "b -> mul.B"]
-}
-```
-
-### 2. テクスチャとパラメータ
-
-```json
-{
-  "nodes": {
-    "uv": {"class": "TextureCoordinate", "props": {"UTiling": 2.0, "VTiling": 2.0}},
-    "tex": {
-      "class": "TextureSampleParameter2D",
-      "props": {
-        "ParameterName": "BaseTex",
-        "Texture": "/Game/Textures/T_Base.T_Base"
-      }
-    },
-    "strength": {"class": "ScalarParameter", "props": {"ParameterName": "Strength", "DefaultValue": 1.0}},
-    "mul": {"class": "Multiply"}
+    "multiply": {"class": "Multiply"},
+    "bias": {"class": "Add", "props": {"ConstB": 0.1}}
   },
   "links": [
-    "uv -> tex.Coordinates",
-    "tex.RGB -> mul.A",
-    "strength -> mul.B"
-  ],
-  "pos": {"uv": [-600, 0]}
-}
-```
-
-### 3. コメント付き
-
-```json
-{
-  "nodes": {
-    "color": {"class": "Constant3Vector", "props": {"Constant": [0.8, 0.15, 0.05]}},
-    "gain": {"class": "ScalarParameter", "props": {"ParameterName": "Gain", "DefaultValue": 1.0}},
-    "mul": {"class": "Multiply"},
-    "group": {
-      "class": "Comment",
-      "props": {
-        "Text": "Tint controls",
-        "nodes": ["color", "gain", "mul"],
-        "CommentColor": [0.12, 0.22, 0.42, 1.0]
-      }
-    }
-  },
-  "links": ["color -> mul.A", "gain -> mul.B"]
+    "a -> multiply.A",
+    "b -> multiply.B",
+    "multiply -> bias.A"
+  ]
 }
 ```

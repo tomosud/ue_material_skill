@@ -11,8 +11,7 @@
   "header": "Materials/MaterialExpressionViewSize.h",
   "props": {},
   "prop_pins": [],
-  "verified": false,
-  "desc": "ビューのサイズ(幅と高さ)"
+  "desc": ""
  },
  "ActorPositionWS": {
   "notes": "",
@@ -38,8 +37,7 @@
     "kind": "Advanced"
    }
   ],
-  "verified": false,
-  "desc": "アクタのワールド座標"
+  "desc": ""
  },
  "LocalPosition": {
   "notes": "",
@@ -81,11 +79,10 @@
     "kind": "Advanced"
    }
   ],
-  "verified": false,
-  "desc": "ローカル座標系でのピクセル位置"
+  "desc": ""
  },
  "ObjectOrientation": {
-  "notes": "MaterialExpressionExternalCodeBaseを継承",
+  "notes": "",
   "class": "/Script/Engine.MaterialExpressionObjectOrientation",
   "outputs": [
    {
@@ -96,11 +93,10 @@
   "header": "Materials/MaterialExpressionObjectOrientation.h",
   "props": {},
   "prop_pins": [],
-  "verified": false,
-  "desc": "オブジェクトの向きを示すベクトル"
+  "desc": ""
  },
  "VertexTangentWS": {
-  "notes": "MaterialExpressionExternalCodeBaseを継承",
+  "notes": "",
   "class": "/Script/Engine.MaterialExpressionVertexTangentWS",
   "outputs": [
    {
@@ -111,11 +107,10 @@
   "header": "Materials/MaterialExpressionVertexTangentWS.h",
   "props": {},
   "prop_pins": [],
-  "verified": false,
-  "desc": "頂点の接線(ワールド座標)"
+  "desc": ""
  },
  "ScreenPosition": {
-  "notes": "MaterialExpressionExternalCodeBaseを継承",
+  "notes": "",
   "class": "/Script/Engine.MaterialExpressionScreenPosition",
   "outputs": [
    {
@@ -129,8 +124,7 @@
   "header": "Materials/MaterialExpressionScreenPosition.h",
   "props": {},
   "prop_pins": [],
-  "verified": false,
-  "desc": "スクリーン座標系でのピクセル位置"
+  "desc": ""
  },
  "PixelNormalWS": {
   "notes": "",
@@ -144,11 +138,10 @@
   "header": "Materials/MaterialExpressionPixelNormalWS.h",
   "props": {},
   "prop_pins": [],
-  "verified": false,
-  "desc": "現在のピクセルの表面法線(ワールド座標)"
+  "desc": ""
  },
  "CameraVectorWS": {
-  "notes": "MaterialExpressionExternalCodeBaseを継承",
+  "notes": "",
   "class": "/Script/Engine.MaterialExpressionCameraVectorWS",
   "outputs": [
    {
@@ -159,11 +152,10 @@
   "header": "Materials/MaterialExpressionCameraVectorWS.h",
   "props": {},
   "prop_pins": [],
-  "verified": false,
-  "desc": "カメラから現在のピクセルへの方向ベクトル"
+  "desc": ""
  },
  "ObjectLocalBounds": {
-  "notes": "MaterialExpressionExternalCodeBaseを継承",
+  "notes": "",
   "class": "/Script/Engine.MaterialExpressionObjectLocalBounds",
   "outputs": [
    {
@@ -183,8 +175,7 @@
   "header": "Materials/MaterialExpressionObjectLocalBounds.h",
   "props": {},
   "prop_pins": [],
-  "verified": false,
-  "desc": "オブジェクトのローカル座標系バウンディングボックス情報"
+  "desc": ""
  },
  "WorldPosition": {
   "notes": "",
@@ -216,8 +207,7 @@
     "kind": "Advanced"
    }
   ],
-  "verified": false,
-  "desc": "ワールド座標系での現在のピクセル位置を出力"
+  "desc": ""
  },
  "ObjectPositionWS": {
   "notes": "",
@@ -243,8 +233,7 @@
     "kind": "Advanced"
    }
   ],
-  "verified": false,
-  "desc": "オブジェクトのワールド座標"
+  "desc": ""
  },
  "CameraPositionWS": {
   "notes": "",
@@ -258,11 +247,10 @@
   "header": "Materials/MaterialExpressionCameraPositionWS.h",
   "props": {},
   "prop_pins": [],
-  "verified": false,
-  "desc": "カメラのワールド座標"
+  "desc": ""
  },
  "TwoSidedSign": {
-  "notes": "MaterialExpressionExternalCodeBaseを継承",
+  "notes": "",
   "class": "/Script/Engine.MaterialExpressionTwoSidedSign",
   "outputs": [
    {
@@ -273,11 +261,10 @@
   "header": "Materials/MaterialExpressionTwoSidedSign.h",
   "props": {},
   "prop_pins": [],
-  "verified": false,
-  "desc": "両面マテリアル時の表裏判定値"
+  "desc": ""
  },
  "PixelDepth": {
-  "notes": "MaterialExpressionExternalCodeBaseを継承",
+  "notes": "",
   "class": "/Script/Engine.MaterialExpressionPixelDepth",
   "outputs": [
    {
@@ -289,11 +276,10 @@
   "header": "Materials/MaterialExpressionPixelDepth.h",
   "props": {},
   "prop_pins": [],
-  "verified": false,
-  "desc": "現在のピクセルの深度値"
+  "desc": ""
  },
  "ObjectRadius": {
-  "notes": "MaterialExpressionExternalCodeBaseを継承",
+  "notes": "",
   "class": "/Script/Engine.MaterialExpressionObjectRadius",
   "outputs": [
    {
@@ -304,11 +290,10 @@
   "header": "Materials/MaterialExpressionObjectRadius.h",
   "props": {},
   "prop_pins": [],
-  "verified": false,
-  "desc": "オブジェクトのバウンディングスフィアの半径"
+  "desc": ""
  },
  "ObjectBounds": {
-  "notes": "MaterialExpressionExternalCodeBaseを継承",
+  "notes": "",
   "class": "/Script/Engine.MaterialExpressionObjectBounds",
   "outputs": [
    {
@@ -319,8 +304,7 @@
   "header": "Materials/MaterialExpressionObjectBounds.h",
   "props": {},
   "prop_pins": [],
-  "verified": false,
-  "desc": "オブジェクトのバウンディングボックス情報"
+  "desc": ""
  },
  "SceneTexelSize": {
   "notes": "",
@@ -334,8 +318,7 @@
   "header": "Materials/MaterialExpressionSceneTexelSize.h",
   "props": {},
   "prop_pins": [],
-  "verified": false,
-  "desc": "シーンテクスチャのテクセルサイズ"
+  "desc": ""
  },
  "ReflectionVectorWS": {
   "notes": "",
@@ -350,7 +333,7 @@
     "prop": "CustomWorldNormal",
     "name": "Custom World Normal",
     "required": false,
-    "note": "未指定時はピクセル法線を使用",
+    "note": "",
     "default_prop": null
    }
   ],
@@ -369,11 +352,10 @@
     "kind": "Advanced"
    }
   ],
-  "verified": false,
-  "desc": "反射ベクトル"
+  "desc": ""
  },
  "SceneDepth": {
-  "notes": "GetInputNameオーバーライドあり - InputModeのenum値を表示",
+  "notes": "",
   "class": "/Script/Engine.MaterialExpressionSceneDepth",
   "outputs": [
    {
@@ -386,7 +368,7 @@
     "prop": "Input",
     "name": "",
     "required": false,
-    "note": "入力モードによって名前が変わる(GetInputName参照)",
+    "note": "",
     "default_prop": "ConstInput"
    }
   ],
@@ -409,11 +391,10 @@
     "kind": "Advanced"
    }
   ],
-  "verified": false,
-  "desc": "シーンの深度値をサンプリング"
+  "desc": ""
  },
  "VertexNormalWS": {
-  "notes": "MaterialExpressionExternalCodeBaseを継承",
+  "notes": "",
   "class": "/Script/Engine.MaterialExpressionVertexNormalWS",
   "outputs": [
    {
@@ -424,7 +405,6 @@
   "header": "Materials/MaterialExpressionVertexNormalWS.h",
   "props": {},
   "prop_pins": [],
-  "verified": false,
-  "desc": "頂点の法線(ワールド座標)"
+  "desc": ""
  }
 }

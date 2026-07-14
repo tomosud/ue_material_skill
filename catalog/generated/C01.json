@@ -2,7 +2,7 @@
  "Constant": {
   "class": "/Script/Engine.MaterialExpressionConstant",
   "header": "Materials/MaterialExpressionConstant.h",
-  "desc": "定数値（float）を出力する",
+  "desc": "Outputs the scalar value stored in R.",
   "inputs": [],
   "prop_pins": [
    {
@@ -14,7 +14,7 @@
   ],
   "outputs": [
    {
-    "name": ""
+    "name": "Output"
    }
   ],
   "props": {
@@ -23,13 +23,12 @@
     "default": 0.0
    }
   },
-  "notes": "",
-  "verified": true
+  "notes": ""
  },
  "Constant2Vector": {
   "class": "/Script/Engine.MaterialExpressionConstant2Vector",
   "header": "Materials/MaterialExpressionConstant2Vector.h",
-  "desc": "2要素ベクトル定数（X, Y）を出力",
+  "desc": "Outputs a two-component constant formed from R and G, followed by separate R and G component outputs.",
   "inputs": [],
   "prop_pins": [
    {
@@ -47,15 +46,15 @@
   ],
   "outputs": [
    {
-    "name": "",
+    "name": "Output",
     "mask": "RG"
    },
    {
-    "name": "",
+    "name": "Output2",
     "mask": "R"
    },
    {
-    "name": "",
+    "name": "Output3",
     "mask": "G"
    }
   ],
@@ -69,17 +68,16 @@
     "default": 0.0
    }
   },
-  "notes": "",
-  "verified": false
+  "notes": ""
  },
  "Constant3Vector": {
   "class": "/Script/Engine.MaterialExpressionConstant3Vector",
   "header": "Materials/MaterialExpressionConstant3Vector.h",
-  "desc": "3要素ベクトル定数（RGB）を出力",
+  "desc": "Outputs a three-component constant formed from Constant.RGB, followed by separate R, G, and B component outputs.",
   "inputs": [],
   "prop_pins": [
    {
-    "name": "",
+    "name": "Constant",
     "prop": "Constant",
     "kind": "Primary",
     "type": "FLinearColor"
@@ -87,19 +85,19 @@
   ],
   "outputs": [
    {
-    "name": "",
+    "name": "Output",
     "mask": "RGB"
    },
    {
-    "name": "",
+    "name": "Output2",
     "mask": "R"
    },
    {
-    "name": "",
+    "name": "Output3",
     "mask": "G"
    },
    {
-    "name": "",
+    "name": "Output4",
     "mask": "B"
    }
   ],
@@ -113,13 +111,12 @@
     }
    }
   },
-  "notes": "meta に HideAlphaChannel が指定されている",
-  "verified": false
+  "notes": ""
  },
  "Constant4Vector": {
   "class": "/Script/Engine.MaterialExpressionConstant4Vector",
   "header": "Materials/MaterialExpressionConstant4Vector.h",
-  "desc": "4要素ベクトル定数（RGBA）を出力",
+  "desc": "",
   "inputs": [],
   "prop_pins": [
    {
@@ -166,13 +163,12 @@
     }
    }
   },
-  "notes": "出力ピンに名前を表示（bShowOutputNameOnPin=true）",
-  "verified": false
+  "notes": ""
  },
  "ConstantBiasScale": {
   "class": "/Script/Engine.MaterialExpressionConstantBiasScale",
   "header": "Materials/MaterialExpressionConstantBiasScale.h",
-  "desc": "入力に Bias と Scale を適用: (Bias + Input) * Scale",
+  "desc": "",
   "inputs": [
    {
     "name": "",
@@ -210,13 +206,12 @@
     "default": 0.5
    }
   },
-  "notes": "",
-  "verified": false
+  "notes": ""
  },
  "ScalarParameter": {
   "class": "/Script/Engine.MaterialExpressionScalarParameter",
   "header": "Materials/MaterialExpressionScalarParameter.h",
-  "desc": "スカラー値のパラメータ",
+  "desc": "",
   "inputs": [],
   "prop_pins": [
    {
@@ -266,13 +261,12 @@
    }
   },
   "is_parameter": true,
-  "notes": "",
-  "verified": false
+  "notes": ""
  },
  "VectorParameter": {
   "class": "/Script/Engine.MaterialExpressionVectorParameter",
   "header": "Materials/MaterialExpressionVectorParameter.h",
-  "desc": "ベクトル値のパラメータ（RGB/RGBA）",
+  "desc": "",
   "inputs": [],
   "prop_pins": [
    {
@@ -332,13 +326,12 @@
    }
   },
   "is_parameter": true,
-  "notes": "",
-  "verified": false
+  "notes": ""
  },
  "DoubleVectorParameter": {
   "class": "/Script/Engine.MaterialExpressionDoubleVectorParameter",
   "header": "Materials/MaterialExpressionDoubleVectorParameter.h",
-  "desc": "ダブル精度ベクトルパラメータ（XYZ/XYZW）",
+  "desc": "",
   "inputs": [],
   "prop_pins": [
    {
@@ -382,13 +375,12 @@
    }
   },
   "is_parameter": true,
-  "notes": "",
-  "verified": false
+  "notes": ""
  },
  "StaticBool": {
   "class": "/Script/Engine.MaterialExpressionStaticBool",
   "header": "Materials/MaterialExpressionStaticBool.h",
-  "desc": "静的ブール定数（コンパイル時定数）",
+  "desc": "",
   "inputs": [],
   "prop_pins": [
    {
@@ -409,13 +401,12 @@
     "default": false
    }
   },
-  "notes": "",
-  "verified": false
+  "notes": ""
  },
  "StaticBoolParameter": {
   "class": "/Script/Engine.MaterialExpressionStaticBoolParameter",
   "header": "Materials/MaterialExpressionStaticBoolParameter.h",
-  "desc": "静的ブールパラメータ（DynamicBranch で動的に変更可）",
+  "desc": "",
   "inputs": [],
   "prop_pins": [
    {
@@ -441,13 +432,12 @@
    }
   },
   "is_parameter": true,
-  "notes": "DynamicBranch=true で MCT_Bool 出力（デフォルト MCT_StaticBool）",
-  "verified": false
+  "notes": ""
  },
  "StaticSwitch": {
   "class": "/Script/Engine.MaterialExpressionStaticSwitch",
   "header": "Materials/MaterialExpressionStaticSwitch.h",
-  "desc": "静的条件分岐（DefaultValue が True なら A、False なら B を出力）",
+  "desc": "",
   "inputs": [
    {
     "name": "True",
@@ -466,7 +456,7 @@
     "prop": "Value",
     "required": false,
     "default_prop": "DefaultValue",
-    "note": "未接続時は DefaultValue を使用"
+    "note": ""
    }
   ],
   "prop_pins": [
@@ -488,13 +478,12 @@
     "default": false
    }
   },
-  "notes": "GetInputName で「True」「False」「Value」に名前付け。meta に MIR_OnDemandInputRequest が指定",
-  "verified": false
+  "notes": ""
  },
  "StaticSwitchParameter": {
   "class": "/Script/Engine.MaterialExpressionStaticSwitchParameter",
   "header": "Materials/MaterialExpressionStaticSwitchParameter.h",
-  "desc": "静的条件分岐パラメータ（DefaultValue で True/False 分岐）",
+  "desc": "",
   "inputs": [
    {
     "name": "True",
@@ -526,13 +515,12 @@
    }
   },
   "is_parameter": true,
-  "notes": "UMaterialExpressionStaticBoolParameter を継承。GetInputName で「True」「False」に名前付け",
-  "verified": false
+  "notes": ""
  },
  "StaticComponentMaskParameter": {
   "class": "/Script/Engine.MaterialExpressionStaticComponentMaskParameter",
   "header": "Materials/MaterialExpressionStaticComponentMaskParameter.h",
-  "desc": "静的成分マスクパラメータ（R/G/B/A から選択）",
+  "desc": "",
   "inputs": [
    {
     "name": "",
@@ -591,13 +579,12 @@
    }
   },
   "is_parameter": true,
-  "notes": "",
-  "verified": false
+  "notes": ""
  },
  "ChannelMaskParameter": {
   "class": "/Script/Engine.MaterialExpressionChannelMaskParameter",
   "header": "Materials/MaterialExpressionChannelMaskParameter.h",
-  "desc": "チャネルマスクパラメータ（R/G/B/A チャネルを選択して出力）",
+  "desc": "",
   "inputs": [
    {
     "name": "",
@@ -629,13 +616,12 @@
    }
   },
   "is_parameter": true,
-  "notes": "UMaterialExpressionVectorParameter を継承。Input が必須（IsInputConnectionRequired=true）",
-  "verified": false
+  "notes": ""
  },
  "Parameter": {
   "class": "/Script/Engine.MaterialExpressionParameter",
   "header": "Materials/MaterialExpressionParameter.h",
-  "desc": "パラメータの基底クラス",
+  "desc": "",
   "abstract": true,
   "inputs": [],
   "prop_pins": [],
@@ -658,7 +644,6 @@
     "default": 32
    }
   },
-  "notes": "IsAllowedIn() でサブクラスのみを許可（自身は使用不可）",
-  "verified": false
+  "notes": ""
  }
 }

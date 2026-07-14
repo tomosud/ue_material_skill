@@ -1,540 +1,519 @@
 {
-  "LinearInterpolate": {
-    "class": "/Script/Engine.UMaterialExpressionLinearInterpolate",
-    "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionLinearInterpolate.h",
-    "inputs": [
-      {
-        "name": "A",
-        "prop": "A",
-        "required": false
-      },
-      {
-        "name": "B",
-        "prop": "B",
-        "required": false
-      },
-      {
-        "name": "Alpha",
-        "prop": "Alpha",
-        "required": false
-      }
-    ],
-    "outputs": [
-      {
-        "name": ""
-      }
-    ],
-    "verified": false,
-    "props": {
-      "ConstA": {
-        "type": "float",
-        "default": 0.0
-      },
-      "ConstB": {
-        "type": "float",
-        "default": 1.0
-      },
-      "ConstAlpha": {
-        "type": "float",
-        "default": 0.5
-      }
-    }
-  },
-  "InverseLinearInterpolate": {
-    "class": "/Script/Engine.UMaterialExpressionInverseLinearInterpolate",
-    "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionInverseLinearInterpolate.h",
-    "inputs": [
-      {
-        "name": "A",
-        "prop": "A",
-        "required": false
-      },
-      {
-        "name": "B",
-        "prop": "B",
-        "required": false
-      },
-      {
-        "name": "Value",
-        "prop": "Value",
-        "required": false
-      }
-    ],
-    "outputs": [
-      {
-        "name": ""
-      }
-    ],
-    "verified": false,
-    "props": {
-      "ConstA": {
-        "type": "float",
-        "default": 0.0
-      },
-      "ConstB": {
-        "type": "float",
-        "default": 1.0
-      },
-      "ConstValue": {
-        "type": "float",
-        "default": 0.0
-      },
-      "bClampResult": {
-        "type": "bool",
-        "default": "false"
-      }
-    }
-  },
-  "SmoothStep": {
-    "class": "/Script/Engine.UMaterialExpressionSmoothStep",
-    "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSmoothStep.h",
-    "inputs": [
-      {
-        "name": "Min",
-        "prop": "Min",
-        "required": false
-      },
-      {
-        "name": "Max",
-        "prop": "Max",
-        "required": false
-      },
-      {
-        "name": "Value",
-        "prop": "Value",
-        "required": false
-      }
-    ],
-    "outputs": [
-      {
-        "name": ""
-      }
-    ],
-    "verified": false,
-    "props": {
-      "ConstMin": {
-        "type": "float",
-        "default": 0.0
-      },
-      "ConstMax": {
-        "type": "float",
-        "default": 1.0
-      },
-      "ConstValue": {
-        "type": "float",
-        "default": 0.0
-      }
-    }
-  },
-  "Step": {
-    "class": "/Script/Engine.UMaterialExpressionStep",
-    "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionStep.h",
-    "inputs": [
-      {
-        "name": "Y",
-        "prop": "Y",
-        "required": false
-      },
-      {
-        "name": "X",
-        "prop": "X",
-        "required": false
-      }
-    ],
-    "outputs": [
-      {
-        "name": ""
-      }
-    ],
-    "verified": false,
-    "props": {
-      "ConstY": {
-        "type": "float",
-        "default": 0.0
-      },
-      "ConstX": {
-        "type": "float",
-        "default": 1.0
-      }
-    }
-  },
-  "If": {
-    "class": "/Script/Engine.UMaterialExpressionIf",
-    "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionIf.h",
-    "inputs": [
-      {
-        "name": "A",
-        "prop": "A",
-        "required": true
-      },
-      {
-        "name": "B",
-        "prop": "B",
-        "required": false
-      },
-      {
-        "name": "AGreaterThanB",
-        "prop": "AGreaterThanB",
-        "required": true
-      },
-      {
-        "name": "AEqualsB",
-        "prop": "AEqualsB",
-        "required": false
-      },
-      {
-        "name": "ALessThanB",
-        "prop": "ALessThanB",
-        "required": true
-      }
-    ],
-    "outputs": [
-      {
-        "name": ""
-      }
-    ],
-    "verified": false,
-    "prop_pins": [
-      {
-        "name": "EqualsThreshold",
-        "prop": "EqualsThreshold",
-        "kind": "Advanced",
-        "type": "float"
-      }
-    ],
-    "props": {
-      "EqualsThreshold": {
-        "type": "float",
-        "default": 1e-05
-      },
-      "ConstB": {
-        "type": "float",
-        "default": 0.0
-      }
-    }
-  },
-  "Sine": {
-    "class": "/Script/Engine.UMaterialExpressionSine",
-    "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSine.h",
-    "inputs": [
-      {
-        "name": "Input",
-        "prop": "Input",
-        "required": true
-      }
-    ],
-    "outputs": [
-      {
-        "name": ""
-      }
-    ],
-    "verified": false,
-    "prop_pins": [
-      {
-        "name": "Period",
-        "prop": "Period",
-        "kind": "Advanced",
-        "type": "float"
-      }
-    ],
-    "props": {
-      "Period": {
-        "type": "float",
-        "default": 1.0
-      }
-    }
-  },
-  "Cosine": {
-    "class": "/Script/Engine.UMaterialExpressionCosine",
-    "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionCosine.h",
-    "inputs": [
-      {
-        "name": "Input",
-        "prop": "Input",
-        "required": true
-      }
-    ],
-    "outputs": [
-      {
-        "name": ""
-      }
-    ],
-    "verified": false,
-    "prop_pins": [
-      {
-        "name": "Period",
-        "prop": "Period",
-        "kind": "Advanced",
-        "type": "float"
-      }
-    ],
-    "props": {
-      "Period": {
-        "type": "float",
-        "default": 1.0
-      }
-    }
-  },
-  "Tangent": {
-    "class": "/Script/Engine.UMaterialExpressionTangent",
-    "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionTangent.h",
-    "inputs": [
-      {
-        "name": "Input",
-        "prop": "Input",
-        "required": true
-      }
-    ],
-    "outputs": [
-      {
-        "name": ""
-      }
-    ],
-    "verified": false,
-    "prop_pins": [
-      {
-        "name": "Period",
-        "prop": "Period",
-        "kind": "Advanced",
-        "type": "float"
-      }
-    ],
-    "props": {
-      "Period": {
-        "type": "float",
-        "default": 1.0
-      }
-    }
-  },
-  "Arcsine": {
-    "class": "/Script/Engine.UMaterialExpressionArcsine",
-    "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionArcsine.h",
-    "inputs": [
-      {
-        "name": "Input",
-        "prop": "Input",
-        "required": true
-      }
-    ],
-    "outputs": [
-      {
-        "name": ""
-      }
-    ],
-    "verified": false
-  },
-  "ArcsineFast": {
-    "class": "/Script/Engine.UMaterialExpressionArcsineFast",
-    "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionArcsineFast.h",
-    "inputs": [
-      {
-        "name": "Input",
-        "prop": "Input",
-        "required": true
-      }
-    ],
-    "outputs": [
-      {
-        "name": ""
-      }
-    ],
-    "verified": false
-  },
-  "Arccosine": {
-    "class": "/Script/Engine.UMaterialExpressionArccosine",
-    "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionArccosine.h",
-    "inputs": [
-      {
-        "name": "Input",
-        "prop": "Input",
-        "required": true
-      }
-    ],
-    "outputs": [
-      {
-        "name": ""
-      }
-    ],
-    "verified": false
-  },
-  "ArccosineFast": {
-    "class": "/Script/Engine.UMaterialExpressionArccosineFast",
-    "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionArccosineFast.h",
-    "inputs": [
-      {
-        "name": "Input",
-        "prop": "Input",
-        "required": true
-      }
-    ],
-    "outputs": [
-      {
-        "name": ""
-      }
-    ],
-    "verified": false
-  },
-  "Arctangent": {
-    "class": "/Script/Engine.UMaterialExpressionArctangent",
-    "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionArctangent.h",
-    "inputs": [
-      {
-        "name": "Input",
-        "prop": "Input",
-        "required": true
-      }
-    ],
-    "outputs": [
-      {
-        "name": ""
-      }
-    ],
-    "verified": false
-  },
-  "ArctangentFast": {
-    "class": "/Script/Engine.UMaterialExpressionArctangentFast",
-    "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionArctangentFast.h",
-    "inputs": [
-      {
-        "name": "Input",
-        "prop": "Input",
-        "required": true
-      }
-    ],
-    "outputs": [
-      {
-        "name": ""
-      }
-    ],
-    "verified": false
-  },
-  "Arctangent2": {
-    "class": "/Script/Engine.UMaterialExpressionArctangent2",
-    "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionArctangent2.h",
-    "inputs": [
-      {
-        "name": "Y",
-        "prop": "Y",
-        "required": true
-      },
-      {
-        "name": "X",
-        "prop": "X",
-        "required": true
-      }
-    ],
-    "outputs": [
-      {
-        "name": ""
-      }
-    ],
-    "verified": false
-  },
-  "Arctangent2Fast": {
-    "class": "/Script/Engine.UMaterialExpressionArctangent2Fast",
-    "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionArctangent2Fast.h",
-    "inputs": [
-      {
-        "name": "Y",
-        "prop": "Y",
-        "required": true
-      },
-      {
-        "name": "X",
-        "prop": "X",
-        "required": true
-      }
-    ],
-    "outputs": [
-      {
-        "name": ""
-      }
-    ],
-    "verified": false
-  },
-  "Exponential": {
-    "class": "/Script/Engine.UMaterialExpressionExponential",
-    "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionExponential.h",
-    "inputs": [
-      {
-        "name": "Input",
-        "prop": "Input",
-        "required": true
-      }
-    ],
-    "outputs": [
-      {
-        "name": ""
-      }
-    ],
-    "verified": false
-  },
-  "Exponential2": {
-    "class": "/Script/Engine.UMaterialExpressionExponential2",
-    "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionExponential2.h",
-    "inputs": [
-      {
-        "name": "Input",
-        "prop": "Input",
-        "required": true
-      }
-    ],
-    "outputs": [
-      {
-        "name": ""
-      }
-    ],
-    "verified": false
-  },
-  "Logarithm": {
-    "class": "/Script/Engine.UMaterialExpressionLogarithm",
-    "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionLogarithm.h",
-    "inputs": [
-      {
-        "name": "Input",
-        "prop": "Input",
-        "required": true
-      }
-    ],
-    "outputs": [
-      {
-        "name": ""
-      }
-    ],
-    "verified": false
-  },
-  "Logarithm2": {
-    "class": "/Script/Engine.UMaterialExpressionLogarithm2",
-    "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionLogarithm2.h",
-    "inputs": [
-      {
-        "name": "X",
-        "prop": "X",
-        "required": true
-      }
-    ],
-    "outputs": [
-      {
-        "name": ""
-      }
-    ],
-    "verified": false
-  },
-  "Logarithm10": {
-    "class": "/Script/Engine.UMaterialExpressionLogarithm10",
-    "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionLogarithm10.h",
-    "inputs": [
-      {
-        "name": "X",
-        "prop": "X",
-        "required": true
-      }
-    ],
-    "outputs": [
-      {
-        "name": ""
-      }
-    ],
-    "verified": false
+ "LinearInterpolate": {
+  "class": "/Script/Engine.UMaterialExpressionLinearInterpolate",
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionLinearInterpolate.h",
+  "inputs": [
+   {
+    "name": "A",
+    "prop": "A",
+    "required": false
+   },
+   {
+    "name": "B",
+    "prop": "B",
+    "required": false
+   },
+   {
+    "name": "Alpha",
+    "prop": "Alpha",
+    "required": false
+   }
+  ],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {
+   "ConstA": {
+    "type": "float",
+    "default": 0.0
+   },
+   "ConstB": {
+    "type": "float",
+    "default": 1.0
+   },
+   "ConstAlpha": {
+    "type": "float",
+    "default": 0.5
+   }
   }
+ },
+ "InverseLinearInterpolate": {
+  "class": "/Script/Engine.UMaterialExpressionInverseLinearInterpolate",
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionInverseLinearInterpolate.h",
+  "inputs": [
+   {
+    "name": "A",
+    "prop": "A",
+    "required": false
+   },
+   {
+    "name": "B",
+    "prop": "B",
+    "required": false
+   },
+   {
+    "name": "Value",
+    "prop": "Value",
+    "required": false
+   }
+  ],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {
+   "ConstA": {
+    "type": "float",
+    "default": 0.0
+   },
+   "ConstB": {
+    "type": "float",
+    "default": 1.0
+   },
+   "ConstValue": {
+    "type": "float",
+    "default": 0.0
+   },
+   "bClampResult": {
+    "type": "bool",
+    "default": "false"
+   }
+  }
+ },
+ "SmoothStep": {
+  "class": "/Script/Engine.UMaterialExpressionSmoothStep",
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSmoothStep.h",
+  "inputs": [
+   {
+    "name": "Min",
+    "prop": "Min",
+    "required": false
+   },
+   {
+    "name": "Max",
+    "prop": "Max",
+    "required": false
+   },
+   {
+    "name": "Value",
+    "prop": "Value",
+    "required": false
+   }
+  ],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {
+   "ConstMin": {
+    "type": "float",
+    "default": 0.0
+   },
+   "ConstMax": {
+    "type": "float",
+    "default": 1.0
+   },
+   "ConstValue": {
+    "type": "float",
+    "default": 0.0
+   }
+  }
+ },
+ "Step": {
+  "class": "/Script/Engine.UMaterialExpressionStep",
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionStep.h",
+  "inputs": [
+   {
+    "name": "Y",
+    "prop": "Y",
+    "required": false
+   },
+   {
+    "name": "X",
+    "prop": "X",
+    "required": false
+   }
+  ],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {
+   "ConstY": {
+    "type": "float",
+    "default": 0.0
+   },
+   "ConstX": {
+    "type": "float",
+    "default": 1.0
+   }
+  }
+ },
+ "If": {
+  "class": "/Script/Engine.UMaterialExpressionIf",
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionIf.h",
+  "inputs": [
+   {
+    "name": "A",
+    "prop": "A",
+    "required": true
+   },
+   {
+    "name": "B",
+    "prop": "B",
+    "required": false
+   },
+   {
+    "name": "AGreaterThanB",
+    "prop": "AGreaterThanB",
+    "required": true
+   },
+   {
+    "name": "AEqualsB",
+    "prop": "AEqualsB",
+    "required": false
+   },
+   {
+    "name": "ALessThanB",
+    "prop": "ALessThanB",
+    "required": true
+   }
+  ],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "prop_pins": [
+   {
+    "name": "EqualsThreshold",
+    "prop": "EqualsThreshold",
+    "kind": "Advanced",
+    "type": "float"
+   }
+  ],
+  "props": {
+   "EqualsThreshold": {
+    "type": "float",
+    "default": 1e-05
+   },
+   "ConstB": {
+    "type": "float",
+    "default": 0.0
+   }
+  }
+ },
+ "Sine": {
+  "class": "/Script/Engine.UMaterialExpressionSine",
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionSine.h",
+  "inputs": [
+   {
+    "name": "Input",
+    "prop": "Input",
+    "required": true
+   }
+  ],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "prop_pins": [
+   {
+    "name": "Period",
+    "prop": "Period",
+    "kind": "Advanced",
+    "type": "float"
+   }
+  ],
+  "props": {
+   "Period": {
+    "type": "float",
+    "default": 1.0
+   }
+  }
+ },
+ "Cosine": {
+  "class": "/Script/Engine.UMaterialExpressionCosine",
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionCosine.h",
+  "inputs": [
+   {
+    "name": "Input",
+    "prop": "Input",
+    "required": true
+   }
+  ],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "prop_pins": [
+   {
+    "name": "Period",
+    "prop": "Period",
+    "kind": "Advanced",
+    "type": "float"
+   }
+  ],
+  "props": {
+   "Period": {
+    "type": "float",
+    "default": 1.0
+   }
+  }
+ },
+ "Tangent": {
+  "class": "/Script/Engine.UMaterialExpressionTangent",
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionTangent.h",
+  "inputs": [
+   {
+    "name": "Input",
+    "prop": "Input",
+    "required": true
+   }
+  ],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "prop_pins": [
+   {
+    "name": "Period",
+    "prop": "Period",
+    "kind": "Advanced",
+    "type": "float"
+   }
+  ],
+  "props": {
+   "Period": {
+    "type": "float",
+    "default": 1.0
+   }
+  }
+ },
+ "Arcsine": {
+  "class": "/Script/Engine.UMaterialExpressionArcsine",
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionArcsine.h",
+  "inputs": [
+   {
+    "name": "Input",
+    "prop": "Input",
+    "required": true
+   }
+  ],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ]
+ },
+ "ArcsineFast": {
+  "class": "/Script/Engine.UMaterialExpressionArcsineFast",
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionArcsineFast.h",
+  "inputs": [
+   {
+    "name": "Input",
+    "prop": "Input",
+    "required": true
+   }
+  ],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ]
+ },
+ "Arccosine": {
+  "class": "/Script/Engine.UMaterialExpressionArccosine",
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionArccosine.h",
+  "inputs": [
+   {
+    "name": "Input",
+    "prop": "Input",
+    "required": true
+   }
+  ],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ]
+ },
+ "ArccosineFast": {
+  "class": "/Script/Engine.UMaterialExpressionArccosineFast",
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionArccosineFast.h",
+  "inputs": [
+   {
+    "name": "Input",
+    "prop": "Input",
+    "required": true
+   }
+  ],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ]
+ },
+ "Arctangent": {
+  "class": "/Script/Engine.UMaterialExpressionArctangent",
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionArctangent.h",
+  "inputs": [
+   {
+    "name": "Input",
+    "prop": "Input",
+    "required": true
+   }
+  ],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ]
+ },
+ "ArctangentFast": {
+  "class": "/Script/Engine.UMaterialExpressionArctangentFast",
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionArctangentFast.h",
+  "inputs": [
+   {
+    "name": "Input",
+    "prop": "Input",
+    "required": true
+   }
+  ],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ]
+ },
+ "Arctangent2": {
+  "class": "/Script/Engine.UMaterialExpressionArctangent2",
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionArctangent2.h",
+  "inputs": [
+   {
+    "name": "Y",
+    "prop": "Y",
+    "required": true
+   },
+   {
+    "name": "X",
+    "prop": "X",
+    "required": true
+   }
+  ],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ]
+ },
+ "Arctangent2Fast": {
+  "class": "/Script/Engine.UMaterialExpressionArctangent2Fast",
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionArctangent2Fast.h",
+  "inputs": [
+   {
+    "name": "Y",
+    "prop": "Y",
+    "required": true
+   },
+   {
+    "name": "X",
+    "prop": "X",
+    "required": true
+   }
+  ],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ]
+ },
+ "Exponential": {
+  "class": "/Script/Engine.UMaterialExpressionExponential",
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionExponential.h",
+  "inputs": [
+   {
+    "name": "Input",
+    "prop": "Input",
+    "required": true
+   }
+  ],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ]
+ },
+ "Exponential2": {
+  "class": "/Script/Engine.UMaterialExpressionExponential2",
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionExponential2.h",
+  "inputs": [
+   {
+    "name": "Input",
+    "prop": "Input",
+    "required": true
+   }
+  ],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ]
+ },
+ "Logarithm": {
+  "class": "/Script/Engine.UMaterialExpressionLogarithm",
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionLogarithm.h",
+  "inputs": [
+   {
+    "name": "Input",
+    "prop": "Input",
+    "required": true
+   }
+  ],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ]
+ },
+ "Logarithm2": {
+  "class": "/Script/Engine.UMaterialExpressionLogarithm2",
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionLogarithm2.h",
+  "inputs": [
+   {
+    "name": "X",
+    "prop": "X",
+    "required": true
+   }
+  ],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ]
+ },
+ "Logarithm10": {
+  "class": "/Script/Engine.UMaterialExpressionLogarithm10",
+  "header": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionLogarithm10.h",
+  "inputs": [
+   {
+    "name": "X",
+    "prop": "X",
+    "required": true
+   }
+  ],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ]
+ }
 }

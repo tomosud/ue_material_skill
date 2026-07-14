@@ -1,235 +1,403 @@
 {
-  "IsOrthographic": {
-    "class": "/Script/Engine.MaterialExpressionIsOrthographic",
-    "header": "Materials/MaterialExpressionIsOrthographic.h",
-    "desc": "現在のカメラが正投影かどうかを出力(1=正投影、0=透視投影)",
-    "inputs": [],
-    "prop_pins": [],
-    "outputs": [{"name": ""}],
-    "props": {},
-    "notes": "ExternalCodeBase派生。入力なし",
-    "verified": false
+ "IsOrthographic": {
+  "class": "/Script/Engine.MaterialExpressionIsOrthographic",
+  "header": "Materials/MaterialExpressionIsOrthographic.h",
+  "desc": "",
+  "inputs": [],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {},
+  "notes": ""
+ },
+ "LandscapeGrassOutput": {
+  "class": "/Script/Landscape.MaterialExpressionLandscapeGrassOutput",
+  "header": "Materials/MaterialExpressionLandscapeGrassOutput.h",
+  "desc": "",
+  "inputs": [],
+  "prop_pins": [],
+  "outputs": [],
+  "props": {
+   "GrassTypes": {
+    "type": "array:FGrassInput",
+    "default": []
+   }
   },
-  "LandscapeGrassOutput": {
-    "class": "/Script/Landscape.MaterialExpressionLandscapeGrassOutput",
-    "header": "Materials/MaterialExpressionLandscapeGrassOutput.h",
-    "desc": "ランドスケープ上の草タイプごとの密度を出力",
-    "inputs": [],
-    "prop_pins": [],
-    "outputs": [],
-    "props": {
-      "GrassTypes": {"type": "array:FGrassInput", "default": []}
-    },
-    "notes": "CustomOutput派生。入力は GrassTypes 配列の各要素の Input フィールドで、GetInputsView()により動的に列挙される。出力数は GrassTypes.Num()。GetInputName() オーバーライドあり",
-    "verified": false
+  "notes": ""
+ },
+ "LandscapeLayerBlend": {
+  "class": "/Script/Landscape.MaterialExpressionLandscapeLayerBlend",
+  "header": "Materials/MaterialExpressionLandscapeLayerBlend.h",
+  "desc": "",
+  "inputs": [],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {
+   "Layers": {
+    "type": "array:FLayerBlendInput",
+    "default": []
+   }
   },
-  "LandscapeLayerBlend": {
-    "class": "/Script/Landscape.MaterialExpressionLandscapeLayerBlend",
-    "header": "Materials/MaterialExpressionLandscapeLayerBlend.h",
-    "desc": "複数のランドスケープレイヤーをブレンド",
-    "inputs": [],
-    "prop_pins": [],
-    "outputs": [{"name": ""}],
-    "props": {
-      "Layers": {"type": "array:FLayerBlendInput", "default": []}
-    },
-    "notes": "Layers 配列に応じた動的入力。GetInputsView() で LayerInput と HeightInput(BlendType==LB_HeightBlendの場合のみ)を返す。GetInputName() オーバーライドあり",
-    "verified": false
+  "notes": ""
+ },
+ "LandscapeLayerCoords": {
+  "class": "/Script/Landscape.MaterialExpressionLandscapeLayerCoords",
+  "header": "Materials/MaterialExpressionLandscapeLayerCoords.h",
+  "desc": "",
+  "inputs": [],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {
+   "MappingType": {
+    "type": "enum:ETerrainCoordMappingType",
+    "default": "TCMT_Auto"
+   },
+   "CustomUVType": {
+    "type": "enum:ELandscapeCustomizedCoordType",
+    "default": "LCCT_None"
+   },
+   "MappingScale": {
+    "type": "float",
+    "default": 1.0
+   },
+   "MappingRotation": {
+    "type": "float",
+    "default": 0.0
+   },
+   "MappingPanU": {
+    "type": "float",
+    "default": 0.0
+   },
+   "MappingPanV": {
+    "type": "float",
+    "default": 0.0
+   }
   },
-  "LandscapeLayerCoords": {
-    "class": "/Script/Landscape.MaterialExpressionLandscapeLayerCoords",
-    "header": "Materials/MaterialExpressionLandscapeLayerCoords.h",
-    "desc": "ランドスケープレイヤーのテクスチャ座標を取得",
-    "inputs": [],
-    "prop_pins": [],
-    "outputs": [{"name": ""}],
-    "props": {
-      "MappingType": {"type": "enum:ETerrainCoordMappingType", "default": "TCMT_Auto"},
-      "CustomUVType": {"type": "enum:ELandscapeCustomizedCoordType", "default": "LCCT_None"},
-      "MappingScale": {"type": "float", "default": 1.0},
-      "MappingRotation": {"type": "float", "default": 0.0},
-      "MappingPanU": {"type": "float", "default": 0.0},
-      "MappingPanV": {"type": "float", "default": 0.0}
-    },
-    "notes": "入力なし。プロパティベースの設定で座標を生成",
-    "verified": false
+  "notes": ""
+ },
+ "LandscapeLayerSample": {
+  "class": "/Script/Landscape.MaterialExpressionLandscapeLayerSample",
+  "header": "Materials/MaterialExpressionLandscapeLayerSample.h",
+  "desc": "",
+  "inputs": [],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {
+   "ParameterName": {
+    "type": "FName",
+    "default": ""
+   },
+   "PreviewWeight": {
+    "type": "float",
+    "default": 0.0
+   }
   },
-  "LandscapeLayerSample": {
-    "class": "/Script/Landscape.MaterialExpressionLandscapeLayerSample",
-    "header": "Materials/MaterialExpressionLandscapeLayerSample.h",
-    "desc": "指定ランドスケープレイヤーのウェイト値をサンプリング",
-    "inputs": [],
-    "prop_pins": [],
-    "outputs": [{"name": ""}],
-    "props": {
-      "ParameterName": {"type": "FName", "default": ""},
-      "PreviewWeight": {"type": "float", "default": 0.0}
-    },
-    "notes": "is_parameter: true。入力なし。ParameterName で指定されたレイヤーの重みを返す",
-    "verified": false,
-    "is_parameter": true
+  "notes": "",
+  "is_parameter": true
+ },
+ "LandscapeLayerSwitch": {
+  "class": "/Script/Landscape.MaterialExpressionLandscapeLayerSwitch",
+  "header": "Materials/MaterialExpressionLandscapeLayerSwitch.h",
+  "desc": "",
+  "inputs": [
+   {
+    "name": "LayerUsed",
+    "prop": "LayerUsed",
+    "required": false
+   },
+   {
+    "name": "LayerNotUsed",
+    "prop": "LayerNotUsed",
+    "required": false
+   }
+  ],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {
+   "ParameterName": {
+    "type": "FName",
+    "default": ""
+   },
+   "PreviewUsed": {
+    "type": "uint32",
+    "default": 0
+   }
   },
-  "LandscapeLayerSwitch": {
-    "class": "/Script/Landscape.MaterialExpressionLandscapeLayerSwitch",
-    "header": "Materials/MaterialExpressionLandscapeLayerSwitch.h",
-    "desc": "ランドスケープレイヤーが使用されているかで出力を切り替え",
-    "inputs": [
-      {"name": "LayerUsed", "prop": "LayerUsed", "required": false},
-      {"name": "LayerNotUsed", "prop": "LayerNotUsed", "required": false}
-    ],
-    "prop_pins": [],
-    "outputs": [{"name": ""}],
-    "props": {
-      "ParameterName": {"type": "FName", "default": ""},
-      "PreviewUsed": {"type": "uint32", "default": 0}
-    },
-    "notes": "is_parameter: true。MaterialAttributes対応（IsResultMaterialAttributes オーバーライドあり）",
-    "verified": false,
-    "is_parameter": true
+  "notes": "",
+  "is_parameter": true
+ },
+ "LandscapeLayerWeight": {
+  "class": "/Script/Landscape.MaterialExpressionLandscapeLayerWeight",
+  "header": "Materials/MaterialExpressionLandscapeLayerWeight.h",
+  "desc": "",
+  "inputs": [
+   {
+    "name": "Base",
+    "prop": "Base",
+    "required": false,
+    "default_prop": "ConstBase"
+   },
+   {
+    "name": "Layer",
+    "prop": "Layer",
+    "required": false
+   }
+  ],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {
+   "ParameterName": {
+    "type": "FName",
+    "default": ""
+   },
+   "PreviewWeight": {
+    "type": "float",
+    "default": 0.0
+   },
+   "ConstBase": {
+    "type": "FVector",
+    "default": {
+     "x": 0.0,
+     "y": 0.0,
+     "z": 0.0
+    }
+   }
   },
-  "LandscapeLayerWeight": {
-    "class": "/Script/Landscape.MaterialExpressionLandscapeLayerWeight",
-    "header": "Materials/MaterialExpressionLandscapeLayerWeight.h",
-    "desc": "ランドスケープレイヤーの重みに応じて Base から Layer にブレンド",
-    "inputs": [
-      {"name": "Base", "prop": "Base", "required": false, "default_prop": "ConstBase"},
-      {"name": "Layer", "prop": "Layer", "required": false}
-    ],
-    "prop_pins": [],
-    "outputs": [{"name": ""}],
-    "props": {
-      "ParameterName": {"type": "FName", "default": ""},
-      "PreviewWeight": {"type": "float", "default": 0.0},
-      "ConstBase": {"type": "FVector", "default": {"x": 0.0, "y": 0.0, "z": 0.0}}
-    },
-    "notes": "is_parameter: true。MaterialAttributes対応。Base未接続時は ConstBase を使用",
-    "verified": false,
-    "is_parameter": true
+  "notes": "",
+  "is_parameter": true
+ },
+ "LandscapePhysicalMaterialOutput": {
+  "class": "/Script/Landscape.MaterialExpressionLandscapePhysicalMaterialOutput",
+  "header": "Materials/MaterialExpressionLandscapePhysicalMaterialOutput.h",
+  "desc": "",
+  "inputs": [],
+  "prop_pins": [],
+  "outputs": [],
+  "props": {
+   "Inputs": {
+    "type": "array:FPhysicalMaterialInput",
+    "default": []
+   }
   },
-  "LandscapePhysicalMaterialOutput": {
-    "class": "/Script/Landscape.MaterialExpressionLandscapePhysicalMaterialOutput",
-    "header": "Materials/MaterialExpressionLandscapePhysicalMaterialOutput.h",
-    "desc": "ランドスケープ上の各位置での物理マテリアルを出力",
-    "inputs": [],
-    "prop_pins": [],
-    "outputs": [],
-    "props": {
-      "Inputs": {"type": "array:FPhysicalMaterialInput", "default": []}
-    },
-    "notes": "CustomOutput派生。入力は Inputs 配列の各要素の Input フィールドで、GetInputsView()により動的に列挙される。出力数は Inputs.Num()。GetInputName()で PhysicalMaterial の名前を返す",
-    "verified": false
+  "notes": ""
+ },
+ "LandscapeVisibilityMask": {
+  "class": "/Script/Landscape.MaterialExpressionLandscapeVisibilityMask",
+  "header": "Materials/MaterialExpressionLandscapeVisibilityMask.h",
+  "desc": "",
+  "inputs": [],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {},
+  "notes": ""
+ },
+ "LayerStack": {
+  "class": "/Script/Engine.MaterialExpressionLayerStack",
+  "header": "Materials/MaterialExpressionLayerStack.h",
+  "desc": "",
+  "inputs": [],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {
+   "LayerInputs": {
+    "type": "array:FMaterialLayerInput",
+    "default": []
+   },
+   "AvailableLayers": {
+    "type": "asset:UMaterialFunctionInterface",
+    "default": null
+   },
+   "AvailableBlends": {
+    "type": "asset:UMaterialFunctionInterface",
+    "default": null
+   }
   },
-  "LandscapeVisibilityMask": {
-    "class": "/Script/Landscape.MaterialExpressionLandscapeVisibilityMask",
-    "header": "Materials/MaterialExpressionLandscapeVisibilityMask.h",
-    "desc": "ランドスケープの可視性マスク（非表示レイヤーを検出）",
-    "inputs": [],
-    "prop_pins": [],
-    "outputs": [{"name": ""}],
-    "props": {},
-    "notes": "入力なし。ParameterName は static で '__LANDSCAPE_VISIBILITY__' に固定",
-    "verified": false
+  "notes": ""
+ },
+ "LegacyBlendMaterialAttributes": {
+  "class": "/Script/Engine.MaterialExpressionLegacyBlendMaterialAttributes",
+  "header": "Materials/MaterialExpressionBlendMaterialAttributes.h",
+  "desc": "",
+  "inputs": [
+   {
+    "name": "A",
+    "prop": "A",
+    "required": true
+   },
+   {
+    "name": "B",
+    "prop": "B",
+    "required": true
+   },
+   {
+    "name": "Alpha",
+    "prop": "Alpha",
+    "required": true
+   },
+   {
+    "name": "VertexAttribute_UseA",
+    "prop": "VertexAttribute_UseA",
+    "required": false
+   },
+   {
+    "name": "VertexAttribute_UseB",
+    "prop": "VertexAttribute_UseB",
+    "required": false
+   },
+   {
+    "name": "PixelAttribute_UseA",
+    "prop": "PixelAttribute_UseA",
+    "required": false
+   },
+   {
+    "name": "PixelAttribute_UseB",
+    "prop": "PixelAttribute_UseB",
+    "required": false
+   }
+  ],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {
+   "PixelAttributeBlendType": {
+    "type": "enum:EMaterialAttributeBlend::Type",
+    "default": "Blend"
+   },
+   "VertexAttributeBlendType": {
+    "type": "enum:EMaterialAttributeBlend::Type",
+    "default": "Blend"
+   },
+   "BlendFunctionType": {
+    "type": "enum:EMaterialAttributeBlendFunction::Type",
+    "default": "Horizontal"
+   }
   },
-  "LayerStack": {
-    "class": "/Script/Engine.MaterialExpressionLayerStack",
-    "header": "Materials/MaterialExpressionLayerStack.h",
-    "desc": "マテリアルレイヤー関数スタックを処理（実験的機能）",
-    "inputs": [],
-    "prop_pins": [],
-    "outputs": [{"name": ""}],
-    "props": {
-      "LayerInputs": {"type": "array:FMaterialLayerInput", "default": []},
-      "AvailableLayers": {"type": "asset:UMaterialFunctionInterface", "default": null},
-      "AvailableBlends": {"type": "asset:UMaterialFunctionInterface", "default": null}
-    },
-    "notes": "Experimental。MaterialAttributeLayers派生。LayerInputs は動的入力。GetInputName() と GetInput() オーバーライドあり",
-    "verified": false
-  },
-  "LegacyBlendMaterialAttributes": {
-    "class": "/Script/Engine.MaterialExpressionLegacyBlendMaterialAttributes",
-    "header": "Materials/MaterialExpressionBlendMaterialAttributes.h",
-    "desc": "マテリアル属性のレガシーブレンド（廃止予定）",
-    "inputs": [
-      {"name": "A", "prop": "A", "required": true},
-      {"name": "B", "prop": "B", "required": true},
-      {"name": "Alpha", "prop": "Alpha", "required": true},
-      {"name": "VertexAttribute_UseA", "prop": "VertexAttribute_UseA", "required": false},
-      {"name": "VertexAttribute_UseB", "prop": "VertexAttribute_UseB", "required": false},
-      {"name": "PixelAttribute_UseA", "prop": "PixelAttribute_UseA", "required": false},
-      {"name": "PixelAttribute_UseB", "prop": "PixelAttribute_UseB", "required": false}
-    ],
-    "prop_pins": [],
-    "outputs": [{"name": ""}],
-    "props": {
-      "PixelAttributeBlendType": {"type": "enum:EMaterialAttributeBlend::Type", "default": "Blend"},
-      "VertexAttributeBlendType": {"type": "enum:EMaterialAttributeBlend::Type", "default": "Blend"},
-      "BlendFunctionType": {"type": "enum:EMaterialAttributeBlendFunction::Type", "default": "Horizontal"}
-    },
-    "notes": "deprecated: true。BlendMaterialAttributes 派生。4つの追加入力を持つ",
-    "verified": false,
-    "deprecated": true
-  },
-  "LightVector": {
-    "class": "/Script/Engine.MaterialExpressionLightVector",
-    "header": "Materials/MaterialExpressionLightVector.h",
-    "desc": "ライト方向ベクトルを出力",
-    "inputs": [],
-    "prop_pins": [],
-    "outputs": [{"name": ""}],
-    "props": {},
-    "notes": "ExternalCodeBase派生。入力なし",
-    "verified": false
-  },
-  "LightmapUVs": {
-    "class": "/Script/Engine.MaterialExpressionLightmapUVs",
-    "header": "Materials/MaterialExpressionLightmapUVs.h",
-    "desc": "ライトマップのUV座標を出力",
-    "inputs": [],
-    "prop_pins": [],
-    "outputs": [{"name": "", "mask": "RG"}],
-    "props": {},
-    "notes": "ExternalCodeBase派生。入力なし。出力マスク RG (FExpressionOutput(TEXT(\"\"), 1, 1, 1, 0, 0))",
-    "verified": false
-  },
-  "LightmassReplace": {
-    "class": "/Script/Engine.MaterialExpressionLightmassReplace",
-    "header": "Materials/MaterialExpressionLightmassReplace.h",
-    "desc": "ライトマスレンダリング時と実行時で異なる値を使用",
-    "inputs": [
-      {"name": "Realtime", "prop": "Realtime", "required": false},
-      {"name": "Lightmass", "prop": "Lightmass", "required": false}
-    ],
-    "prop_pins": [],
-    "outputs": [{"name": ""}],
-    "props": {},
-    "notes": "入力は両方とも optional。GetInputName() オーバーライドなし",
-    "verified": false
-  },
-  "MainDirectionalLight": {
-    "class": "/Script/Engine.MaterialExpressionMainDirectionalLight",
-    "header": "Materials/MaterialExpressionMainDirectionalLight.h",
-    "desc": "メインの指向性ライトの情報を出力（照度と方向ベクトル）",
-    "inputs": [],
-    "prop_pins": [],
-    "outputs": [
-      {"name": "Illuminance"},
-      {"name": "Direction"}
-    ],
-    "props": {},
-    "notes": "入力なし。出力2本（Illuminance, Direction）。GetOutputValueType() オーバーライドあり",
-    "verified": false
-  },
-  "MapARPassthroughCameraUV": {
-    "class": "/Script/Engine.MaterialExpressionMapARPassthroughCameraUV",
-    "header": "Materials/MaterialExpressionMapARPassthroughCameraUV.h",
-    "desc": "ビューポートUVをAR透視カメラUVにマッピング（アスペクト比とデバイス回転を考慮）",
-    "inputs": [
-      {"name": "Coordinates", "prop": "Coordinates", "required": true}
-    ],
-    "prop_pins": [],
-    "outputs": [{"name": ""}],
-    "props": {},
-    "notes": "入力は required=true。AR向けの座標変換",
-    "verified": false
-  }
+  "notes": "",
+  "deprecated": true
+ },
+ "LightVector": {
+  "class": "/Script/Engine.MaterialExpressionLightVector",
+  "header": "Materials/MaterialExpressionLightVector.h",
+  "desc": "",
+  "inputs": [],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {},
+  "notes": ""
+ },
+ "LightmapUVs": {
+  "class": "/Script/Engine.MaterialExpressionLightmapUVs",
+  "header": "Materials/MaterialExpressionLightmapUVs.h",
+  "desc": "",
+  "inputs": [],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": "",
+    "mask": "RG"
+   }
+  ],
+  "props": {},
+  "notes": ""
+ },
+ "LightmassReplace": {
+  "class": "/Script/Engine.MaterialExpressionLightmassReplace",
+  "header": "Materials/MaterialExpressionLightmassReplace.h",
+  "desc": "",
+  "inputs": [
+   {
+    "name": "Realtime",
+    "prop": "Realtime",
+    "required": false
+   },
+   {
+    "name": "Lightmass",
+    "prop": "Lightmass",
+    "required": false
+   }
+  ],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {},
+  "notes": ""
+ },
+ "MainDirectionalLight": {
+  "class": "/Script/Engine.MaterialExpressionMainDirectionalLight",
+  "header": "Materials/MaterialExpressionMainDirectionalLight.h",
+  "desc": "",
+  "inputs": [],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": "Illuminance"
+   },
+   {
+    "name": "Direction"
+   }
+  ],
+  "props": {},
+  "notes": ""
+ },
+ "MapARPassthroughCameraUV": {
+  "class": "/Script/Engine.MaterialExpressionMapARPassthroughCameraUV",
+  "header": "Materials/MaterialExpressionMapARPassthroughCameraUV.h",
+  "desc": "",
+  "inputs": [
+   {
+    "name": "Coordinates",
+    "prop": "Coordinates",
+    "required": true
+   }
+  ],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {},
+  "notes": ""
+ }
 }

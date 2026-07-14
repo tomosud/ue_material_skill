@@ -16,6 +16,9 @@ from pathlib import Path
 from typing import Any
 
 
+AUDIT_STATES = {"pending", "verified", "partial", "not_applicable"}
+
+
 class CatalogError(Exception):
     pass
 
@@ -123,7 +126,7 @@ def validate_node_entry(key: str, entry: Any, source: Path) -> list[str]:
         errors.append(f"{base}.desc: expected string")
     if "header" in entry and not isinstance(entry["header"], str):
         errors.append(f"{base}.header: expected string")
-    for flag in ("abstract", "deprecated", "is_parameter", "verified"):
+    for flag in ("abstract", "deprecated", "is_parameter"):
         if flag in entry and not isinstance(entry[flag], bool):
             errors.append(f"{base}.{flag}: expected bool")
     if entry.get("abstract") or entry.get("deprecated"):
@@ -160,14 +163,14 @@ def normalize_node_entry(
             entry[field] = value
             warnings.append(f"{source.name}:{key}: defaulted missing {field}")
 
-    default("desc", key)
+    # Never infer a description from the class name. Descriptions require
+    # explicit source evidence in node-evidence.json.
+    default("desc", "")
     default("inputs", [])
     default("prop_pins", [])
     default("outputs", [])
     default("props", {})
     default("notes", "")
-    entry.setdefault("verified", False)
-
     props = entry.get("props") if isinstance(entry.get("props"), dict) else {}
     if entry.get("is_parameter") and isinstance(props, dict):
         inherited_parameter_props = {
@@ -226,10 +229,12 @@ def validate_function_entry(key: str, entry: Any, source: Path) -> list[str]:
     base = f"{source}:{key}"
     if not isinstance(entry, dict):
         return [f"{base}: expected object"]
-    for field in ("path", "desc", "usage"):
-        if not isinstance(entry.get(field), str) or not entry.get(field):
-            errors.append(f"{base}.{field}: required non-empty string")
-    for flag in ("verified", "path_uncertain"):
+    if not isinstance(entry.get("path"), str) or not entry.get("path"):
+        errors.append(f"{base}.path: required non-empty string")
+    for field in ("desc", "usage"):
+        if field in entry and not isinstance(entry.get(field), str):
+            errors.append(f"{base}.{field}: expected string")
+    for flag in ("path_uncertain",):
         if flag in entry and not isinstance(entry.get(flag), bool):
             errors.append(f"{base}.{flag}: expected bool")
     for direction in ("inputs", "outputs"):
@@ -281,10 +286,11 @@ def merge_nodes(
                     f"{source.name}:{key}: normalized class {entry.get('class')!r} -> {canonical!r}"
                 )
             entry["class"] = canonical
+            entry["header"] = str(manifest[key].get("header", ""))
             entry["abstract"] = bool(manifest[key].get("abstract", entry.get("abstract", False)))
             entry["deprecated"] = bool(manifest[key].get("deprecated", entry.get("deprecated", False)))
-            entry.setdefault("plugin", manifest[key].get("origin") == "plugin")
-            entry.setdefault("verified", False)
+            entry["plugin"] = manifest[key].get("origin") == "plugin"
+            entry.pop("verified", None)
             merged[key] = entry
     expected = set(manifest) - {"(root)"}
     actual = set(merged)
@@ -315,12 +321,14 @@ def merge_functions(
                 paths[path] = key
             if isinstance(entry, dict):
                 entry = dict(entry)
+                entry.setdefault("desc", "")
+                entry.setdefault("usage", "")
                 if "path_uncertain" not in entry:
                     entry["path_uncertain"] = False
                     warnings.append(
                         f"{source.name}:{key}: defaulted missing path_uncertain=false"
                     )
-                entry.setdefault("verified", False)
+                entry.pop("verified", None)
             merged[key] = entry
     return OrderedDict((key, merged[key]) for key in sorted(merged)), errors
 
@@ -329,6 +337,105 @@ def write_json(path: Path, value: Any) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     text = json.dumps(value, ensure_ascii=False, indent=2) + "\n"
     path.write_text(text, encoding="utf-8", newline="\n")
+
+
+def validate_evidence(
+    evidence: dict[str, Any], manifest: dict[str, Any]
+) -> tuple[dict[str, Any], list[str]]:
+    errors: list[str] = []
+    records = evidence.get("nodes")
+    if not isinstance(records, dict):
+        return {}, ["node evidence: top-level 'nodes' must be an object"]
+    expected = set(manifest) - {"(root)"}
+    actual = set(records)
+    for key in sorted(expected - actual):
+        errors.append(f"node evidence: missing class {key}")
+    for key in sorted(actual - expected):
+        errors.append(f"node evidence: unexpected class {key}")
+    for key in sorted(expected & actual):
+        record = records[key]
+        if not isinstance(record, dict):
+            errors.append(f"node evidence:{key}: expected object")
+            continue
+        audit = record.get("audit")
+        references = record.get("references")
+        if not isinstance(audit, dict):
+            errors.append(f"node evidence:{key}.audit: expected object")
+            continue
+        for claim in ("declaration", "schema", "description", "restrictions"):
+            if audit.get(claim) not in AUDIT_STATES:
+                errors.append(
+                    f"node evidence:{key}.audit.{claim}: expected one of {sorted(AUDIT_STATES)}"
+                )
+        if audit.get("declaration") != "verified":
+            errors.append(f"node evidence:{key}: declaration must be verified")
+        if not isinstance(references, list) or not references:
+            errors.append(f"node evidence:{key}.references: required non-empty array")
+            continue
+        covered_claims: set[str] = set()
+        for index, reference in enumerate(references):
+            path = f"node evidence:{key}.references[{index}]"
+            if not isinstance(reference, dict):
+                errors.append(f"{path}: expected object")
+                continue
+            if not isinstance(reference.get("path"), str) or not reference.get("path"):
+                errors.append(f"{path}.path: required non-empty string")
+            if not isinstance(reference.get("symbol"), str) or not reference.get("symbol"):
+                errors.append(f"{path}.symbol: required non-empty string")
+            claims = reference.get("claims")
+            if not isinstance(claims, list) or not claims:
+                errors.append(f"{path}.claims: required non-empty array")
+            else:
+                covered_claims.update(str(claim) for claim in claims)
+        for claim, state in audit.items():
+            if state == "verified" and claim not in covered_claims:
+                errors.append(
+                    f"node evidence:{key}: verified {claim!r} has no reference claiming it"
+                )
+    return records, errors
+
+
+def validate_active_prose(
+    nodes: OrderedDict[str, Any], evidence: dict[str, Any]
+) -> list[str]:
+    """Reject active prose whose claim type has not been source-audited."""
+
+    errors: list[str] = []
+
+    def find_field_notes(value: Any, path: str = "") -> list[str]:
+        found: list[str] = []
+        if isinstance(value, dict):
+            for field, child in value.items():
+                child_path = f"{path}.{field}" if path else field
+                if field == "note" and isinstance(child, str) and child.strip():
+                    found.append(child_path)
+                else:
+                    found.extend(find_field_notes(child, child_path))
+        elif isinstance(value, list):
+            for index, child in enumerate(value):
+                found.extend(find_field_notes(child, f"{path}[{index}]"))
+        return found
+
+    for key, entry in nodes.items():
+        record = evidence.get(key)
+        audit = record.get("audit") if isinstance(record, dict) else None
+        audit = audit if isinstance(audit, dict) else {}
+        if isinstance(entry.get("desc"), str) and entry["desc"].strip():
+            if audit.get("description") != "verified":
+                errors.append(
+                    f"catalog:{key}.desc: active description requires verified source evidence"
+                )
+        if isinstance(entry.get("notes"), str) and entry["notes"].strip():
+            if audit.get("restrictions") != "verified":
+                errors.append(
+                    f"catalog:{key}.notes: active notes require verified restriction evidence"
+                )
+        if audit.get("schema") != "verified":
+            for field_path in find_field_notes(entry):
+                errors.append(
+                    f"catalog:{key}.{field_path}: active field note requires verified schema evidence"
+                )
+    return errors
 
 
 def effective_pin_name(pin: dict[str, Any], index: int, output: bool) -> str:
@@ -343,22 +450,46 @@ def effective_pin_name(pin: dict[str, Any], index: int, output: bool) -> str:
     return f"{'out' if output else 'in'}{index}"
 
 
-def write_index(path: Path, nodes: OrderedDict[str, Any]) -> None:
+def write_index(
+    path: Path, nodes: OrderedDict[str, Any], evidence: dict[str, Any]
+) -> None:
+    ready: list[tuple[str, dict[str, Any], dict[str, Any]]] = []
+    for key, entry in nodes.items():
+        record = evidence.get(key, {}) if isinstance(evidence.get(key), dict) else {}
+        audit = record.get("audit", {}) if isinstance(record.get("audit"), dict) else {}
+        if (
+            audit.get("declaration") == "verified"
+            and audit.get("schema") == "verified"
+            and audit.get("description") == "verified"
+            and audit.get("restrictions") in {"verified", "not_applicable"}
+            and not entry.get("abstract")
+            and not entry.get("deprecated")
+        ):
+            ready.append((key, entry, audit))
+
     lines = [
-        "# Material Expression 逆引き索引",
+        "# Material Expression Index",
         "",
-        "`skill/catalog/nodes.json` から自動生成。説明文を検索して class と Pin を確認する。",
-        "手編集せず `catalog_merge.py` を再実行する。",
+        "Generated from `skill/catalog/nodes.json` and `skill/catalog/node-evidence.json`.",
+        "Do not edit this file manually. Run `catalog_merge.py` to regenerate it.",
+        "This compact index contains only generation-ready, source-audited entries.",
+        f"Coverage: {len(ready)} generation-ready / {len(nodes)} declared classes.",
+        "Use `python scripts/search_catalog.py <terms>` to search pending declarations, source symbols, Pins,",
+        "properties, plugins, and evidence states without loading the complete catalog.",
         "",
-        "| class | 説明 | 入力 | 出力 | flags |",
+        "| class | description | inputs | outputs | evidence |",
         "|---|---|---|---|---|",
     ]
-    for key, entry in nodes.items():
+    for key, entry, audit in ready:
         inputs = list(entry.get("inputs", [])) + list(entry.get("prop_pins", []))
         outputs = list(entry.get("outputs", []))
-        input_names = ", ".join(effective_pin_name(pin, i, False) for i, pin in enumerate(inputs)) or "-"
-        output_names = ", ".join(effective_pin_name(pin, i, True) for i, pin in enumerate(outputs)) or "-"
-        flags = [name for name in ("abstract", "deprecated", "plugin", "verified") if entry.get(name)]
+        input_names = ", ".join(
+            effective_pin_name(pin, i, False) for i, pin in enumerate(inputs)) or "-"
+        output_names = ", ".join(
+            effective_pin_name(pin, i, True) for i, pin in enumerate(outputs)) or "-"
+        flags = ["source-verified"]
+        if entry.get("plugin"):
+            flags.append("plugin")
         desc = str(entry.get("desc", "")).replace("|", "\\|").replace("\n", " ")
         lines.append(
             f"| `{key}` | {desc} | {input_names.replace('|', '&#124;')} | "
@@ -376,6 +507,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--output", type=Path, default=root / "skill" / "catalog" / "nodes.json")
     parser.add_argument("--functions-output", type=Path, default=root / "skill" / "catalog" / "functions.json")
     parser.add_argument("--index", type=Path, default=root / "skill" / "references" / "nodes-index.md")
+    parser.add_argument("--evidence", type=Path, default=root / "skill" / "catalog" / "node-evidence.json")
     parser.add_argument("--quiet", action="store_true")
     return parser.parse_args(argv)
 
@@ -384,13 +516,16 @@ def main(argv: list[str] | None = None) -> int:
     args = parse_args(argv)
     try:
         manifest = load_json(args.manifest)
+        evidence_document = load_json(args.evidence)
+        evidence, evidence_errors = validate_evidence(evidence_document, manifest)
         node_files = sorted(args.generated_dir.glob("C[0-9][0-9].json"))
         function_files = sorted(args.generated_dir.glob("M[0-9][0-9]-mf.json"))
         if not node_files:
             raise CatalogError(f"no CXX.json files found in {args.generated_dir}")
         nodes, warnings, node_errors = merge_nodes(node_files, manifest)
         functions, function_errors = merge_functions(function_files, warnings)
-        errors = node_errors + function_errors
+        prose_errors = validate_active_prose(nodes, evidence)
+        errors = node_errors + function_errors + evidence_errors + prose_errors
         if not args.quiet:
             for warning in warnings:
                 print(f"warning: {warning}", file=sys.stderr)
@@ -401,18 +536,26 @@ def main(argv: list[str] | None = None) -> int:
             return 1
         write_json(args.output, nodes)
         write_json(args.functions_output, functions)
-        write_index(args.index, nodes)
+        write_index(args.index, nodes, evidence)
         if not args.quiet:
             total = len(nodes)
             expected = len(manifest) - (1 if "(root)" in manifest else 0)
             abstract = sum(bool(item.get("abstract")) for item in nodes.values())
             deprecated = sum(bool(item.get("deprecated")) for item in nodes.values())
-            verified = sum(bool(item.get("verified")) for item in nodes.values())
+            source_schema = sum(
+                record.get("audit", {}).get("schema") == "verified"
+                for record in evidence.values() if isinstance(record, dict)
+            )
+            source_descriptions = sum(
+                record.get("audit", {}).get("description") == "verified"
+                for record in evidence.values() if isinstance(record, dict)
+            )
             plugins = sum(bool(item.get("plugin")) for item in nodes.values())
             coverage = 100.0 * total / expected if expected else 100.0
             print(
                 f"nodes={total} manifest={expected} coverage={coverage:.1f}% "
-                f"abstract={abstract} deprecated={deprecated} plugin={plugins} verified={verified}"
+                f"abstract={abstract} deprecated={deprecated} plugin={plugins} "
+                f"source_schema={source_schema} source_descriptions={source_descriptions}"
             )
             print(f"functions={len(functions)}")
             print(f"normalizations={len(warnings)}")

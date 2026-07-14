@@ -1,249 +1,422 @@
 {
-  "AbsorptionMediumMaterialOutput": {
-    "class": "/Script/Engine.MaterialExpressionAbsorptionMediumMaterialOutput",
-    "header": "Materials/MaterialExpressionAbsorptionMediumMaterialOutput.h",
-    "desc": "パストレーサー用固体屈折性ガラスの吸収特性を設定する出力。透光距離100単位時の透光色を入力",
-    "inputs": [
-      {"name": "TransmittanceColor", "prop": "TransmittanceColor", "required": false}
-    ],
-    "prop_pins": [],
-    "outputs": [],
-    "props": {},
-    "notes": "CustomOutput。Outputs.Reset()で出力ピンなし。GetNumOutputs()は1を返すがエディタ上では非表示",
-    "verified": false
+ "AbsorptionMediumMaterialOutput": {
+  "class": "/Script/Engine.MaterialExpressionAbsorptionMediumMaterialOutput",
+  "header": "Materials/MaterialExpressionAbsorptionMediumMaterialOutput.h",
+  "desc": "",
+  "inputs": [
+   {
+    "name": "TransmittanceColor",
+    "prop": "TransmittanceColor",
+    "required": false
+   }
+  ],
+  "prop_pins": [],
+  "outputs": [],
+  "props": {},
+  "notes": ""
+ },
+ "Aggregate": {
+  "class": "/Script/Engine.MaterialExpressionAggregate",
+  "header": "Materials/MaterialExpressionAggregate.h",
+  "desc": "",
+  "inputs": [
+   {
+    "name": "PrototypeInput",
+    "prop": "PrototypeInput",
+    "required": false
+   }
+  ],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {
+   "Kind": {
+    "type": "enum:EMaterialExpressionMakeAggregateKind",
+    "default": "MaterialAttributes"
+   },
+   "UserAggregate": {
+    "type": "asset:UMaterialAggregate",
+    "default": null
+   },
+   "AttributeNames": {
+    "type": "TArray<FName>",
+    "default": []
+   }
   },
-  "Aggregate": {
-    "class": "/Script/Engine.MaterialExpressionAggregate",
-    "header": "Materials/MaterialExpressionAggregate.h",
-    "desc": "マテリアル属性またはユーザー定義アグリゲートの複数入力をまとめて1つの出力に",
-    "inputs": [
-      {"name": "PrototypeInput", "prop": "PrototypeInput", "required": false}
-    ],
-    "prop_pins": [],
-    "outputs": [{"name": ""}],
-    "props": {
-      "Kind": {"type": "enum:EMaterialExpressionMakeAggregateKind", "default": "MaterialAttributes"},
-      "UserAggregate": {"type": "asset:UMaterialAggregate", "default": null},
-      "AttributeNames": {"type": "TArray<FName>", "default": []}
-    },
-    "notes": "Outputs.Empty(); Outputs.Emplace()で初期化。Entriesは動的に生成される",
-    "verified": false
+  "notes": ""
+ },
+ "AtmosphericFogColor": {
+  "class": "/Script/Engine.MaterialExpressionAtmosphericFogColor",
+  "header": "Materials/MaterialExpressionAtmosphericFogColor.h",
+  "desc": "",
+  "inputs": [
+   {
+    "name": "WorldPosition",
+    "prop": "WorldPosition",
+    "required": false
+   }
+  ],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {
+   "WorldPositionOriginType": {
+    "type": "enum:EPositionOrigin",
+    "default": "Absolute"
+   }
   },
-  "AtmosphericFogColor": {
-    "class": "/Script/Engine.MaterialExpressionAtmosphericFogColor",
-    "header": "Materials/MaterialExpressionAtmosphericFogColor.h",
-    "desc": "大気フォグの色を計算（非推奨：Atmosphereプラグイン推奨）",
-    "inputs": [
-      {"name": "WorldPosition", "prop": "WorldPosition", "required": false}
-    ],
-    "prop_pins": [],
-    "outputs": [{"name": ""}],
-    "props": {
-      "WorldPositionOriginType": {"type": "enum:EPositionOrigin", "default": "Absolute"}
-    },
-    "notes": "GetInputName()オーバーライドで入力名を動的に設定。deprecated",
-    "verified": false,
-    "deprecated": true
+  "notes": "",
+  "deprecated": true
+ },
+ "AtmosphericLightColor": {
+  "class": "/Script/Engine.MaterialExpressionAtmosphericLightColor",
+  "header": "Materials/MaterialExpressionAtmosphericLightColor.h",
+  "desc": "",
+  "inputs": [],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {},
+  "notes": ""
+ },
+ "AtmosphericLightVector": {
+  "class": "/Script/Engine.MaterialExpressionAtmosphericLightVector",
+  "header": "Materials/MaterialExpressionAtmosphericLightVector.h",
+  "desc": "",
+  "inputs": [],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {},
+  "notes": ""
+ },
+ "BentNormalCustomOutput": {
+  "class": "/Script/Engine.MaterialExpressionBentNormalCustomOutput",
+  "header": "Materials/MaterialExpressionBentNormalCustomOutput.h",
+  "desc": "",
+  "inputs": [
+   {
+    "name": "Input",
+    "prop": "Input",
+    "required": true
+   }
+  ],
+  "prop_pins": [],
+  "outputs": [],
+  "props": {},
+  "notes": ""
+ },
+ "BindlessSwitch": {
+  "class": "/Script/Engine.MaterialExpressionBindlessSwitch",
+  "header": "Materials/MaterialExpressionBindlessSwitch.h",
+  "desc": "",
+  "inputs": [
+   {
+    "name": "Default",
+    "prop": "Default",
+    "required": true,
+    "note": ""
+   },
+   {
+    "name": "Bindless",
+    "prop": "Bindless",
+    "required": true,
+    "note": ""
+   }
+  ],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {},
+  "notes": ""
+ },
+ "Blend": {
+  "class": "/Script/Engine.MaterialExpressionBlend",
+  "header": "Materials/MaterialExpressionBlend.h",
+  "desc": "",
+  "inputs": [
+   {
+    "name": "A",
+    "prop": "A",
+    "required": false
+   },
+   {
+    "name": "B",
+    "prop": "B",
+    "required": false
+   },
+   {
+    "name": "Alpha",
+    "prop": "Alpha",
+    "required": false
+   }
+  ],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {
+   "PixelAttributesBlendMode": {
+    "type": "enum:EMaterialExpressionBlendMode",
+    "default": "Blend"
+   },
+   "VertexAttributesBlendMode": {
+    "type": "enum:EMaterialExpressionBlendMode",
+    "default": "Blend"
+   }
   },
-  "AtmosphericLightColor": {
-    "class": "/Script/Engine.MaterialExpressionAtmosphericLightColor",
-    "header": "Materials/MaterialExpressionAtmosphericLightColor.h",
-    "desc": "大気中の太陽光の地表照度を計算（DisplayName: Atmosphere Sun Light Illuminance On Ground）",
-    "inputs": [],
-    "prop_pins": [],
-    "outputs": [{"name": ""}],
-    "props": {},
-    "notes": "UMaterialExpressionExternalCodeBase継承。入力ピンなし",
-    "verified": false
+  "notes": ""
+ },
+ "Bounds": {
+  "class": "/Script/Engine.MaterialExpressionBounds",
+  "header": "Materials/MaterialExpressionBounds.h",
+  "desc": "",
+  "inputs": [],
+  "prop_pins": [
+   {
+    "name": "Type",
+    "prop": "Type",
+    "kind": "Advanced",
+    "type": "enum:EMaterialExpressionBoundsType"
+   }
+  ],
+  "outputs": [
+   {
+    "name": "Half Extents"
+   },
+   {
+    "name": "Extents"
+   },
+   {
+    "name": "Min"
+   },
+   {
+    "name": "Max"
+   }
+  ],
+  "props": {
+   "Type": {
+    "type": "enum:EMaterialExpressionBoundsType",
+    "default": "MEILB_InstanceLocal"
+   }
   },
-  "AtmosphericLightVector": {
-    "class": "/Script/Engine.MaterialExpressionAtmosphericLightVector",
-    "header": "Materials/MaterialExpressionAtmosphericLightVector.h",
-    "desc": "大気中の太陽光ベクトルを計算（DisplayName: Atmosphere Sun Light Vector）",
-    "inputs": [],
-    "prop_pins": [],
-    "outputs": [{"name": ""}],
-    "props": {},
-    "notes": "UMaterialExpressionExternalCodeBase継承。入力ピンなし",
-    "verified": false
+  "notes": ""
+ },
+ "ClearCoatNormalCustomOutput": {
+  "class": "/Script/Engine.MaterialExpressionClearCoatNormalCustomOutput",
+  "header": "Materials/MaterialExpressionClearCoatNormalCustomOutput.h",
+  "desc": "",
+  "inputs": [
+   {
+    "name": "Input",
+    "prop": "Input",
+    "required": true
+   }
+  ],
+  "prop_pins": [],
+  "outputs": [],
+  "props": {},
+  "notes": ""
+ },
+ "CloudSampleAttribute": {
+  "class": "/Script/Engine.MaterialExpressionCloudSampleAttribute",
+  "header": "Materials/MaterialExpressionCloudLayer.h",
+  "desc": "",
+  "inputs": [],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": "Altitude"
+   },
+   {
+    "name": "AltitudeInLayer"
+   },
+   {
+    "name": "NormAltitudeInLayer"
+   },
+   {
+    "name": "ShadowSampleDistance"
+   }
+  ],
+  "props": {},
+  "notes": ""
+ },
+ "CollectionParameter": {
+  "class": "/Script/Engine.MaterialExpressionCollectionParameter",
+  "header": "Materials/MaterialExpressionCollectionParameter.h",
+  "desc": "",
+  "inputs": [],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {
+   "Collection": {
+    "type": "asset:UMaterialParameterCollection",
+    "default": null
+   },
+   "ParameterName": {
+    "type": "FName",
+    "default": ""
+   },
+   "ExpressionGUID": {
+    "type": "FGuid",
+    "default": ""
+   },
+   "Group": {
+    "type": "FName",
+    "default": ""
+   },
+   "SortPriority": {
+    "type": "int32",
+    "default": 32
+   },
+   "ParameterId": {
+    "type": "FGuid",
+    "default": ""
+   }
   },
-  "BentNormalCustomOutput": {
-    "class": "/Script/Engine.MaterialExpressionBentNormalCustomOutput",
-    "header": "Materials/MaterialExpressionBentNormalCustomOutput.h",
-    "desc": "ベント法線のカスタム出力。パストレーサー用の湾曲法線情報を設定",
-    "inputs": [
-      {"name": "Input", "prop": "Input", "required": true}
-    ],
-    "prop_pins": [],
-    "outputs": [],
-    "props": {},
-    "notes": "CustomOutput。Outputs.Reset()で出力ピンなし。GetNumOutputs()は1を返すがエディタ上では非表示",
-    "verified": false
+  "notes": "",
+  "is_parameter": true
+ },
+ "CollectionTransform": {
+  "class": "/Script/Engine.MaterialExpressionCollectionTransform",
+  "header": "Materials/MaterialExpressionCollectionTransform.h",
+  "desc": "",
+  "inputs": [
+   {
+    "name": "Input",
+    "prop": "Input",
+    "required": false
+   }
+  ],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {
+   "Collection": {
+    "type": "asset:UMaterialParameterCollection",
+    "default": null
+   },
+   "ParameterName": {
+    "type": "FName",
+    "default": ""
+   },
+   "ParameterId": {
+    "type": "FGuid",
+    "default": ""
+   },
+   "TransformType": {
+    "type": "enum:EParameterCollectionTransformType",
+    "default": "Position"
+   }
   },
-  "BindlessSwitch": {
-    "class": "/Script/Engine.MaterialExpressionBindlessSwitch",
-    "header": "Materials/MaterialExpressionBindlessSwitch.h",
-    "desc": "バインドレス対応とデフォルト実装を条件分岐。バインドレス対応時はBindless入力、非対応時はDefault入力を選択",
-    "inputs": [
-      {"name": "Default", "prop": "Default", "required": true, "note": "バインドレス非対応時に使用"},
-      {"name": "Bindless", "prop": "Bindless", "required": true, "note": "バインドレス対応時に使用"}
-    ],
-    "prop_pins": [],
-    "outputs": [{"name": ""}],
-    "props": {},
-    "notes": "IsInputConnectionRequired()をオーバーライド。両入力は必須",
-    "verified": false
+  "notes": "",
+  "is_parameter": true
+ },
+ "ColorRamp": {
+  "class": "/Script/Engine.MaterialExpressionColorRamp",
+  "header": "Materials/MaterialExpressionColorRamp.h",
+  "desc": "",
+  "inputs": [
+   {
+    "name": "Input",
+    "prop": "Input",
+    "required": false,
+    "default_prop": "ConstInput"
+   }
+  ],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {
+   "ConstInput": {
+    "type": "float",
+    "default": 0.5
+   },
+   "ColorCurve": {
+    "type": "asset:UCurveLinearColor",
+    "default": null
+   }
   },
-  "Blend": {
-    "class": "/Script/Engine.MaterialExpressionBlend",
-    "header": "Materials/MaterialExpressionBlend.h",
-    "desc": "マテリアル属性（ピクセル/頂点）を2つの入力間でAlphaにより線形補間",
-    "inputs": [
-      {"name": "A", "prop": "A", "required": false},
-      {"name": "B", "prop": "B", "required": false},
-      {"name": "Alpha", "prop": "Alpha", "required": false}
-    ],
-    "prop_pins": [],
-    "outputs": [{"name": ""}],
-    "props": {
-      "PixelAttributesBlendMode": {"type": "enum:EMaterialExpressionBlendMode", "default": "Blend"},
-      "VertexAttributesBlendMode": {"type": "enum:EMaterialExpressionBlendMode", "default": "Blend"}
-    },
-    "notes": "マテリアル属性専用ノード。EMaterialExpressionBlendMode: Blend/UseA/UseB",
-    "verified": false
+  "notes": ""
+ },
+ "ConstantDouble": {
+  "class": "/Script/Engine.MaterialExpressionConstantDouble",
+  "header": "Materials/MaterialExpressionGenericConstant.h",
+  "desc": "",
+  "inputs": [],
+  "prop_pins": [
+   {
+    "name": "Value",
+    "prop": "Value",
+    "kind": "Primary",
+    "type": "double"
+   }
+  ],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {
+   "Value": {
+    "type": "double",
+    "default": 0.0
+   }
   },
-  "Bounds": {
-    "class": "/Script/Engine.MaterialExpressionBounds",
-    "header": "Materials/MaterialExpressionBounds.h",
-    "desc": "メッシュのバウンディングボックス情報（ローカル座標）を出力。タイプにより出力が異なる",
-    "inputs": [],
-    "prop_pins": [
-      {"name": "Type", "prop": "Type", "kind": "Advanced", "type": "enum:EMaterialExpressionBoundsType"}
-    ],
-    "outputs": [
-      {"name": "Half Extents"},
-      {"name": "Extents"},
-      {"name": "Min"},
-      {"name": "Max"}
-    ],
-    "props": {
-      "Type": {"type": "enum:EMaterialExpressionBoundsType", "default": "MEILB_InstanceLocal"}
-    },
-    "notes": "4つの出力：Half Extents(幅奥行き高さの半分)、Extents(全幅)、Min(最小点3D)、Max(最大点3D)。すべてローカル座標",
-    "verified": false
+  "notes": ""
+ },
+ "Convert": {
+  "class": "/Script/Engine.MaterialExpressionConvert",
+  "header": "Materials/MaterialExpressionConvert.h",
+  "desc": "",
+  "inputs": [],
+  "prop_pins": [],
+  "outputs": [],
+  "props": {
+   "ConvertInputs": {
+    "type": "TArray<FMaterialExpressionConvertInput>",
+    "default": []
+   },
+   "ConvertOutputs": {
+    "type": "TArray<FMaterialExpressionConvertOutput>",
+    "default": []
+   },
+   "ConvertMappings": {
+    "type": "TArray<FMaterialExpressionConvertMapping>",
+    "default": []
+   },
+   "NodeName": {
+    "type": "FString",
+    "default": "Convert"
+   }
   },
-  "ClearCoatNormalCustomOutput": {
-    "class": "/Script/Engine.MaterialExpressionClearCoatNormalCustomOutput",
-    "header": "Materials/MaterialExpressionClearCoatNormalCustomOutput.h",
-    "desc": "クリアコート底面法線のカスタム出力",
-    "inputs": [
-      {"name": "Input", "prop": "Input", "required": true}
-    ],
-    "prop_pins": [],
-    "outputs": [],
-    "props": {},
-    "notes": "CustomOutput。Outputs.Reset()で出力ピンなし",
-    "verified": false
-  },
-  "CloudSampleAttribute": {
-    "class": "/Script/Engine.MaterialExpressionCloudSampleAttribute",
-    "header": "Materials/MaterialExpressionCloudLayer.h",
-    "desc": "クラウドレイヤーのサンプル属性を取得（高度、レイヤー内位置、正規化高度、シャドウ距離）",
-    "inputs": [],
-    "prop_pins": [],
-    "outputs": [
-      {"name": "Altitude"},
-      {"name": "AltitudeInLayer"},
-      {"name": "NormAltitudeInLayer"},
-      {"name": "ShadowSampleDistance"}
-    ],
-    "props": {},
-    "notes": "4つの出力ピン。UMaterialExpressionExternalCodeBase継承",
-    "verified": false
-  },
-  "CollectionParameter": {
-    "class": "/Script/Engine.MaterialExpressionCollectionParameter",
-    "header": "Materials/MaterialExpressionCollectionParameter.h",
-    "desc": "マテリアルパラメータコレクションの単一パラメータを参照",
-    "inputs": [],
-    "prop_pins": [],
-    "outputs": [{"name": ""}],
-    "props": {
-      "Collection": {"type": "asset:UMaterialParameterCollection", "default": null},
-      "ParameterName": {"type": "FName", "default": ""},
-      "ExpressionGUID": {"type": "FGuid", "default": ""},
-      "Group": {"type": "FName", "default": ""},
-      "SortPriority": {"type": "int32", "default": 32},
-      "ParameterId": {"type": "FGuid", "default": ""}
-    },
-    "notes": "パラメータノード。HasAParameterName()=true。パラメータ名変更時はParameterIdで追跡",
-    "verified": false,
-    "is_parameter": true
-  },
-  "CollectionTransform": {
-    "class": "/Script/Engine.MaterialExpressionCollectionTransform",
-    "header": "Materials/MaterialExpressionCollectionTransform.h",
-    "desc": "マテリアルパラメータコレクション内の連続5ベクトル要素を変換行列として使用",
-    "inputs": [
-      {"name": "Input", "prop": "Input", "required": false}
-    ],
-    "prop_pins": [],
-    "outputs": [{"name": ""}],
-    "props": {
-      "Collection": {"type": "asset:UMaterialParameterCollection", "default": null},
-      "ParameterName": {"type": "FName", "default": ""},
-      "ParameterId": {"type": "FGuid", "default": ""},
-      "TransformType": {"type": "enum:EParameterCollectionTransformType", "default": "Position"}
-    },
-    "notes": "パラメータノード。TransformType: Position(4x4位置行列)/Vector(3x3回転行列)/Projection(4x4射影行列)/LocalToWorld/WorldToLocal",
-    "verified": false,
-    "is_parameter": true
-  },
-  "ColorRamp": {
-    "class": "/Script/Engine.MaterialExpressionColorRamp",
-    "header": "Materials/MaterialExpressionColorRamp.h",
-    "desc": "入力値に基づいて曲線からリニアカラーをサンプリング",
-    "inputs": [
-      {"name": "Input", "prop": "Input", "required": false, "default_prop": "ConstInput"}
-    ],
-    "prop_pins": [],
-    "outputs": [{"name": ""}],
-    "props": {
-      "ConstInput": {"type": "float", "default": 0.5},
-      "ColorCurve": {"type": "asset:UCurveLinearColor", "default": null}
-    },
-    "notes": "Constructorで白→黒グラデーションの初期カラーカーブを作成。ConstInputはOverridingInputProperty",
-    "verified": false
-  },
-  "ConstantDouble": {
-    "class": "/Script/Engine.MaterialExpressionConstantDouble",
-    "header": "Materials/MaterialExpressionGenericConstant.h",
-    "desc": "倍精度浮動小数点定数値を出力",
-    "inputs": [],
-    "prop_pins": [
-      {"name": "Value", "prop": "Value", "kind": "Primary", "type": "double"}
-    ],
-    "outputs": [{"name": ""}],
-    "props": {
-      "Value": {"type": "double", "default": 0.0}
-    },
-    "notes": "UMaterialExpressionGenericConstant継承（abstract）。ValueはShowAsInputPin=Primary",
-    "verified": false
-  },
-  "Convert": {
-    "class": "/Script/Engine.MaterialExpressionConvert",
-    "header": "Materials/MaterialExpressionConvert.h",
-    "desc": "動的入出力型コンバージョンノード。複数の型変換と成分マッピングに対応",
-    "inputs": [],
-    "prop_pins": [],
-    "outputs": [],
-    "props": {
-      "ConvertInputs": {"type": "TArray<FMaterialExpressionConvertInput>", "default": []},
-      "ConvertOutputs": {"type": "TArray<FMaterialExpressionConvertOutput>", "default": []},
-      "ConvertMappings": {"type": "TArray<FMaterialExpressionConvertMapping>", "default": []},
-      "NodeName": {"type": "FString", "default": "Convert"}
-    },
-    "notes": "入出力が動的。CountInputs()/GetOutputs()をオーバーライド。PostEditChangePropertyで入出力を再生成。RecreateOutputs()で出力を更新",
-    "verified": false
-  }
+  "notes": ""
+ }
 }

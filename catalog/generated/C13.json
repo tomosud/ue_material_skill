@@ -1,223 +1,352 @@
 {
-  "MaterialAttributeLayers": {
-    "class": "/Script/Engine.MaterialExpressionMaterialAttributeLayers",
-    "header": "Materials/MaterialExpressionMaterialAttributeLayers.h",
-    "desc": "マテリアル属性レイヤーの構成と合成。複数のレイヤーとブレンド関数を使用して属性を結合",
-    "inputs": [
-      {"name": "", "prop": "Input", "required": false}
-    ],
-    "prop_pins": [],
-    "outputs": [{"name": ""}],
-    "props": {
-      "DefaultLayers": {"type": "struct:FMaterialLayersFunctions", "default": null}
-    },
-    "notes": "FMaterialAttributesInput タイプの単一入力。IsResultMaterialAttributes()==true",
-    "verified": false
+ "MaterialAttributeLayers": {
+  "class": "/Script/Engine.MaterialExpressionMaterialAttributeLayers",
+  "header": "Materials/MaterialExpressionMaterialAttributeLayers.h",
+  "desc": "",
+  "inputs": [
+   {
+    "name": "",
+    "prop": "Input",
+    "required": false
+   }
+  ],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {
+   "DefaultLayers": {
+    "type": "struct:FMaterialLayersFunctions",
+    "default": null
+   }
   },
-  "MaterialCache": {
-    "class": "/Script/Engine.MaterialExpressionMaterialCache",
-    "header": "Materials/MaterialExpressionMaterialCache.h",
-    "desc": "マテリアルキャッシュの読み書き。キャッシュタグと属性レイアウトの動的管理",
-    "inputs": [
-      {"name": "Primitive", "prop": "Primitive", "required": false},
-      {"name": "UV", "prop": "UV", "required": false}
-    ],
-    "prop_pins": [],
-    "outputs": [],
-    "props": {
-      "bIsSample": {"type": "bool", "default": false},
-      "Tag": {"type": "asset:UMaterialCacheVirtualTextureTag", "default": null}
-    },
-    "notes": "出力は ConstructOutputs() で動的に生成される。GetOutputs() をオーバーライドして TArray を返す",
-    "verified": false
+  "notes": ""
+ },
+ "MaterialCache": {
+  "class": "/Script/Engine.MaterialExpressionMaterialCache",
+  "header": "Materials/MaterialExpressionMaterialCache.h",
+  "desc": "",
+  "inputs": [
+   {
+    "name": "Primitive",
+    "prop": "Primitive",
+    "required": false
+   },
+   {
+    "name": "UV",
+    "prop": "UV",
+    "required": false
+   }
+  ],
+  "prop_pins": [],
+  "outputs": [],
+  "props": {
+   "bIsSample": {
+    "type": "bool",
+    "default": false
+   },
+   "Tag": {
+    "type": "asset:UMaterialCacheVirtualTextureTag",
+    "default": null
+   }
   },
-  "MaterialLayerOutput": {
-    "class": "/Script/Engine.MaterialExpressionMaterialLayerOutput",
-    "header": "Materials/MaterialExpressionMaterialLayerOutput.h",
-    "desc": "マテリアルレイヤー出力。レイヤーグラフの終端ノード",
-    "inputs": [],
-    "prop_pins": [],
-    "outputs": [{"name": "Material Attributes"}],
-    "props": {},
-    "notes": "UMaterialExpressionFunctionOutput を継承。コンストラクタで OutputName を設定",
-    "verified": false
+  "notes": ""
+ },
+ "MaterialLayerOutput": {
+  "class": "/Script/Engine.MaterialExpressionMaterialLayerOutput",
+  "header": "Materials/MaterialExpressionMaterialLayerOutput.h",
+  "desc": "",
+  "inputs": [],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": "Material Attributes"
+   }
+  ],
+  "props": {},
+  "notes": ""
+ },
+ "MaterialProxyReplace": {
+  "class": "/Script/Engine.MaterialExpressionMaterialProxyReplace",
+  "header": "Materials/MaterialExpressionMaterialProxyReplace.h",
+  "desc": "",
+  "inputs": [
+   {
+    "name": "Realtime",
+    "prop": "Realtime",
+    "required": false
+   },
+   {
+    "name": "MaterialProxy",
+    "prop": "MaterialProxy",
+    "required": false
+   }
+  ],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {},
+  "notes": ""
+ },
+ "MaterialSample": {
+  "class": "/Script/Engine.MaterialExpressionMaterialSample",
+  "header": "Materials/MaterialExpressionMaterialSample.h",
+  "desc": "",
+  "inputs": [],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {
+   "MaterialReference": {
+    "type": "asset:UMaterialInterface",
+    "default": null
+   }
   },
-  "MaterialProxyReplace": {
-    "class": "/Script/Engine.MaterialExpressionMaterialProxyReplace",
-    "header": "Materials/MaterialExpressionMaterialProxyReplace.h",
-    "desc": "リアルタイム/マテリアルプロキシの切り替え。IsResultMaterialAttributes() == true",
-    "inputs": [
-      {"name": "Realtime", "prop": "Realtime", "required": false},
-      {"name": "MaterialProxy", "prop": "MaterialProxy", "required": false}
-    ],
-    "prop_pins": [],
-    "outputs": [{"name": ""}],
-    "props": {},
-    "notes": "出力値タイプは MCT_Unknown。Build()/Compile() で処理",
-    "verified": false
+  "notes": ""
+ },
+ "MeshPaintTextureCoordinateIndex": {
+  "class": "/Script/Engine.MaterialExpressionMeshPaintTextureCoordinateIndex",
+  "header": "Materials/MaterialExpressionMeshPaintTextureCoordinateIndex.h",
+  "desc": "",
+  "inputs": [],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {},
+  "notes": ""
+ },
+ "MeshPaintTextureObject": {
+  "class": "/Script/Engine.MaterialExpressionMeshPaintTextureObject",
+  "header": "Materials/MaterialExpressionMeshPaintTextureObject.h",
+  "desc": "",
+  "inputs": [],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {},
+  "notes": ""
+ },
+ "MeshPaintTextureReplace": {
+  "class": "/Script/Engine.MaterialExpressionMeshPaintTextureReplace",
+  "header": "Materials/MaterialExpressionMeshPaintTextureReplace.h",
+  "desc": "",
+  "inputs": [
+   {
+    "name": "Default",
+    "prop": "Default",
+    "required": true
+   },
+   {
+    "name": "MeshPaintTexture",
+    "prop": "MeshPaintTexture",
+    "required": true
+   }
+  ],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {},
+  "notes": ""
+ },
+ "MotionVectorWorldOffsetOutput": {
+  "class": "/Script/Engine.MaterialExpressionMotionVectorWorldOffsetOutput",
+  "header": "Materials/MaterialExpressionMotionVectorWorldOffsetOutput.h",
+  "desc": "",
+  "inputs": [
+   {
+    "name": "",
+    "prop": "Input",
+    "required": false
+   }
+  ],
+  "prop_pins": [],
+  "outputs": [],
+  "props": {},
+  "notes": ""
+ },
+ "NaniteReplace": {
+  "class": "/Script/Engine.MaterialExpressionNaniteReplace",
+  "header": "Materials/MaterialExpressionNaniteReplace.h",
+  "desc": "",
+  "inputs": [
+   {
+    "name": "Default",
+    "prop": "Default",
+    "required": true
+   },
+   {
+    "name": "Nanite",
+    "prop": "Nanite",
+    "required": true
+   }
+  ],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {},
+  "notes": ""
+ },
+ "NeuralNetworkInput": {
+  "class": "/Script/Engine.MaterialExpressionNeuralNetworkInput",
+  "header": "Materials/MaterialExpressionNeuralPostProcessNode.h",
+  "desc": "",
+  "inputs": [
+   {
+    "name": "Coordinates",
+    "prop": "Coordinates",
+    "required": false
+   },
+   {
+    "name": "Input0",
+    "prop": "Input0",
+    "required": false
+   },
+   {
+    "name": "Mask",
+    "prop": "Mask",
+    "required": false
+   }
+  ],
+  "prop_pins": [],
+  "outputs": [],
+  "props": {
+   "NeuralIndexType": {
+    "type": "enum:ENeuralIndexType",
+    "default": "NIT_TextureIndex"
+   }
   },
-  "MaterialSample": {
-    "class": "/Script/Engine.MaterialExpressionMaterialSample",
-    "header": "Materials/MaterialExpressionMaterialSample.h",
-    "desc": "別のマテリアルの機能出力を参照。プロトタイプ段階（ENABLE_MATERIAL_SAMPLE_PROTOTYPE=0）",
-    "inputs": [],
-    "prop_pins": [],
-    "outputs": [{"name": ""}],
-    "props": {
-      "MaterialReference": {"type": "asset:UMaterialInterface", "default": null}
-    },
-    "notes": "ENABLE_MATERIAL_SAMPLE_PROTOTYPE フラグが 0 の状態では Compile は実装されていない",
-    "verified": false
+  "notes": ""
+ },
+ "NeuralNetworkOutput": {
+  "class": "/Script/Engine.MaterialExpressionNeuralNetworkOutput",
+  "header": "Materials/MaterialExpressionNeuralPostProcessNode.h",
+  "desc": "",
+  "inputs": [
+   {
+    "name": "Coordinates",
+    "prop": "Coordinates",
+    "required": false
+   }
+  ],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": "RGBA",
+    "mask": "RGBA"
+   }
+  ],
+  "props": {
+   "NeuralIndexType": {
+    "type": "enum:ENeuralIndexType",
+    "default": "NIT_TextureIndex"
+   }
   },
-  "MeshPaintTextureCoordinateIndex": {
-    "class": "/Script/Engine.MaterialExpressionMeshPaintTextureCoordinateIndex",
-    "header": "Materials/MaterialExpressionMeshPaintTextureCoordinateIndex.h",
-    "desc": "メッシュペイント用テクスチャ座標インデックス。External Code Base のラッパー",
-    "inputs": [],
-    "prop_pins": [],
-    "outputs": [{"name": ""}],
-    "props": {},
-    "notes": "コンストラクタで Outputs.Reset() して 1 つの空出力を追加",
-    "verified": false
+  "notes": ""
+ },
+ "Operator": {
+  "class": "/Script/Engine.MaterialExpressionOperator",
+  "header": "Materials/MaterialExpressionOperator.h",
+  "desc": "",
+  "inputs": [],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {
+   "Operator": {
+    "type": "enum:EMaterialExpressionOperatorKind",
+    "default": "Add"
+   },
+   "DynamicInputs": {
+    "type": "struct:TArray<FMaterialExpressionOperatorInput>",
+    "default": []
+   }
   },
-  "MeshPaintTextureObject": {
-    "class": "/Script/Engine.MaterialExpressionMeshPaintTextureObject",
-    "header": "Materials/MaterialExpressionMeshPaintTextureObject.h",
-    "desc": "メッシュペイント用テクスチャオブジェクト。External Code Base のラッパー",
-    "inputs": [],
-    "prop_pins": [],
-    "outputs": [{"name": ""}],
-    "props": {},
-    "notes": "コンストラクタで Outputs.Reset() して 1 つの空出力を追加。GetOutputValueType() をオーバーライド",
-    "verified": false
-  },
-  "MeshPaintTextureReplace": {
-    "class": "/Script/Engine.MaterialExpressionMeshPaintTextureReplace",
-    "header": "Materials/MaterialExpressionMeshPaintTextureReplace.h",
-    "desc": "メッシュペイントテクスチャの切り替え。デフォルト/メッシュペイント入力",
-    "inputs": [
-      {"name": "Default", "prop": "Default", "required": true},
-      {"name": "MeshPaintTexture", "prop": "MeshPaintTexture", "required": true}
-    ],
-    "prop_pins": [],
-    "outputs": [{"name": ""}],
-    "props": {},
-    "notes": "コンストラクタで Outputs.Reset() して 1 つの空出力を追加",
-    "verified": false
-  },
-  "MotionVectorWorldOffsetOutput": {
-    "class": "/Script/Engine.MaterialExpressionMotionVectorWorldOffsetOutput",
-    "header": "Materials/MaterialExpressionMotionVectorWorldOffsetOutput.h",
-    "desc": "モーションベクトル世界オフセット出力。ピクセル単位のモーションベクトルオフセット",
-    "inputs": [
-      {"name": "", "prop": "Input", "required": false}
-    ],
-    "prop_pins": [],
-    "outputs": [],
-    "props": {},
-    "notes": "UMaterialExpressionCustomOutput を継承。GetNumOutputs() =0。コンストラクタで Outputs.Reset()",
-    "verified": false
-  },
-  "NaniteReplace": {
-    "class": "/Script/Engine.MaterialExpressionNaniteReplace",
-    "header": "Materials/MaterialExpressionNaniteReplace.h",
-    "desc": "ナナイトレンダリング時の置き換え。デフォルト/ナナイト入力で切り替え",
-    "inputs": [
-      {"name": "Default", "prop": "Default", "required": true},
-      {"name": "Nanite", "prop": "Nanite", "required": true}
-    ],
-    "prop_pins": [],
-    "outputs": [{"name": ""}],
-    "props": {},
-    "notes": "コンストラクタで Outputs を明示的に修正しない（デフォルト出力 1 本）",
-    "verified": false
-  },
-  "NeuralNetworkInput": {
-    "class": "/Script/Engine.MaterialExpressionNeuralNetworkInput",
-    "header": "Materials/MaterialExpressionNeuralPostProcessNode.h",
-    "desc": "ニューラルネットワーク入力ノード。ニューラルポストプロセスの入力",
-    "inputs": [
-      {"name": "Coordinates", "prop": "Coordinates", "required": false},
-      {"name": "Input0", "prop": "Input0", "required": false},
-      {"name": "Mask", "prop": "Mask", "required": false}
-    ],
-    "prop_pins": [],
-    "outputs": [],
-    "props": {
-      "NeuralIndexType": {"type": "enum:ENeuralIndexType", "default": "NIT_TextureIndex"}
-    },
-    "notes": "UMaterialExpressionCustomOutput を継承。GetNumOutputs() で動的に出力数を返す。コンストラクタで Outputs.Reset()",
-    "verified": false
-  },
-  "NeuralNetworkOutput": {
-    "class": "/Script/Engine.MaterialExpressionNeuralNetworkOutput",
-    "header": "Materials/MaterialExpressionNeuralPostProcessNode.h",
-    "desc": "ニューラルネットワーク出力ノード。ニューラルポストプロセスの出力",
-    "inputs": [
-      {"name": "Coordinates", "prop": "Coordinates", "required": false}
-    ],
-    "prop_pins": [],
-    "outputs": [
-      {"name": "RGBA", "mask": "RGBA"}
-    ],
-    "props": {
-      "NeuralIndexType": {"type": "enum:ENeuralIndexType", "default": "NIT_TextureIndex"}
-    },
-    "notes": "UMaterialExpression を直接継承。コンストラクタで Outputs を RGBA に設定",
-    "verified": false
-  },
-  "Operator": {
-    "class": "/Script/Engine.MaterialExpressionOperator",
-    "header": "Materials/MaterialExpressionOperator.h",
-    "desc": "演算ノード。単項/二項/三項演算を動的にサポート",
-    "inputs": [],
-    "prop_pins": [],
-    "outputs": [{"name": ""}],
-    "props": {
-      "Operator": {"type": "enum:EMaterialExpressionOperatorKind", "default": "Add"},
-      "DynamicInputs": {"type": "struct:TArray<FMaterialExpressionOperatorInput>", "default": []}
-    },
-    "notes": "GetInputName() は A-Z で入力名を生成。CountInputs()/GetInput() をオーバーライド。GetInputName で A-Z, Input1-N のように可変対応",
-    "verified": false
-  },
-  "ParticleColor": {
-    "class": "/Script/Engine.MaterialExpressionParticleColor",
-    "header": "Materials/MaterialExpressionParticleColor.h",
-    "desc": "パーティクルカラー。RGB/R/G/B/A/RGBA 出力",
-    "inputs": [],
-    "prop_pins": [],
-    "outputs": [
-      {"name": "RGB", "mask": "RGB"},
-      {"name": "R", "mask": "R"},
-      {"name": "G", "mask": "G"},
-      {"name": "B", "mask": "B"},
-      {"name": "A", "mask": "A"},
-      {"name": "RGBA", "mask": "RGBA"}
-    ],
-    "props": {},
-    "notes": "External Code Base を継承。コンストラクタで 6 つの出力を設定（WITH_EDITORONLY_DATA ブロック内）",
-    "verified": false
-  },
-  "ParticleDirection": {
-    "class": "/Script/Engine.MaterialExpressionParticleDirection",
-    "header": "Materials/MaterialExpressionParticleDirection.h",
-    "desc": "パーティクル方向。パーティクルの移動方向ベクトル",
-    "inputs": [],
-    "prop_pins": [],
-    "outputs": [{"name": ""}],
-    "props": {},
-    "notes": "External Code Base を継承。コンストラクタで出力を明示的に修正しない（デフォルト出力 1 本）",
-    "verified": false
-  },
-  "ParticleMacroUV": {
-    "class": "/Script/Engine.MaterialExpressionParticleMacroUV",
-    "header": "Materials/MaterialExpressionParticleMacroUV.h",
-    "desc": "パーティクルマクロUV。パーティクルシステムの MacroUVPosition/Radius を使用した UV 座標生成",
-    "inputs": [],
-    "prop_pins": [],
-    "outputs": [{"name": ""}],
-    "props": {},
-    "notes": "External Code Base を継承。コンストラクタで出力を明示的に修正しない（デフォルト出力 1 本）",
-    "verified": false
-  }
+  "notes": ""
+ },
+ "ParticleColor": {
+  "class": "/Script/Engine.MaterialExpressionParticleColor",
+  "header": "Materials/MaterialExpressionParticleColor.h",
+  "desc": "",
+  "inputs": [],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": "RGB",
+    "mask": "RGB"
+   },
+   {
+    "name": "R",
+    "mask": "R"
+   },
+   {
+    "name": "G",
+    "mask": "G"
+   },
+   {
+    "name": "B",
+    "mask": "B"
+   },
+   {
+    "name": "A",
+    "mask": "A"
+   },
+   {
+    "name": "RGBA",
+    "mask": "RGBA"
+   }
+  ],
+  "props": {},
+  "notes": ""
+ },
+ "ParticleDirection": {
+  "class": "/Script/Engine.MaterialExpressionParticleDirection",
+  "header": "Materials/MaterialExpressionParticleDirection.h",
+  "desc": "",
+  "inputs": [],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {},
+  "notes": ""
+ },
+ "ParticleMacroUV": {
+  "class": "/Script/Engine.MaterialExpressionParticleMacroUV",
+  "header": "Materials/MaterialExpressionParticleMacroUV.h",
+  "desc": "",
+  "inputs": [],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {},
+  "notes": ""
+ }
 }

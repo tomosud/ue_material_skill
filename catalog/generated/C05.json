@@ -1,1014 +1,1001 @@
 {
-  "TextureSample": {
-    "class": "/Script/Engine.MaterialExpressionTextureSample",
-    "header": "Materials/MaterialExpressionTextureSample.h",
-    "desc": "テクスチャをサンプリング。RGB/R/G/B/A/RGBA複数出力対応",
-    "inputs": [
-      {
-        "name": "Coordinates",
-        "prop": "Coordinates",
-        "required": false,
-        "default_prop": "ConstCoordinate",
-        "note": "デフォルト: ConstCoordinate"
-      },
-      {
-        "name": "TextureObject",
-        "prop": "TextureObject",
-        "required": false
-      },
-      {
-        "name": "MipValue",
-        "prop": "MipValue",
-        "required": false
-      },
-      {
-        "name": "CoordinatesDX",
-        "prop": "CoordinatesDX",
-        "required": true,
-        "note": "MipValueMode=TMVM_Derivative時のみ"
-      },
-      {
-        "name": "CoordinatesDY",
-        "prop": "CoordinatesDY",
-        "required": true,
-        "note": "MipValueMode=TMVM_Derivative時のみ"
-      },
-      {
-        "name": "Apply View MipBias",
-        "prop": "AutomaticViewMipBiasValue",
-        "required": false
-      }
-    ],
-    "prop_pins": [
-      {
-        "name": "MipValueMode",
-        "prop": "MipValueMode",
-        "kind": "Advanced",
-        "type": "enum:ETextureMipValueMode"
-      },
-      {
-        "name": "SamplerSource",
-        "prop": "SamplerSource",
-        "kind": "Advanced",
-        "type": "enum:ESamplerSourceMode"
-      }
-    ],
-    "outputs": [
-      {
-        "name": "RGB",
-        "mask": "RGB"
-      },
-      {
-        "name": "R",
-        "mask": "R"
-      },
-      {
-        "name": "G",
-        "mask": "G"
-      },
-      {
-        "name": "B",
-        "mask": "B"
-      },
-      {
-        "name": "A",
-        "mask": "A"
-      },
-      {
-        "name": "RGBA",
-        "mask": "RGBA"
-      }
-    ],
-    "props": {
-      "Texture": {
-        "type": "asset:UTexture",
-        "default": null
-      },
-      "SamplerType": {
-        "type": "enum:EMaterialSamplerType",
-        "default": "SAMPLERTYPE_Color"
-      },
-      "ConstCoordinate": {
-        "type": "uint32",
-        "default": 0
-      },
-      "ConstMipValue": {
-        "type": "int32",
-        "default": -1
-      },
-      "MipValueMode": {
-        "type": "enum:ETextureMipValueMode",
-        "default": "TMVM_None"
-      },
-      "AutomaticViewMipBias": {
-        "type": "bool",
-        "default": true
-      },
-      "GatherMode": {
-        "type": "enum:ETextureGatherMode",
-        "default": "TGM_None"
-      },
-      "ChannelNames": {
-        "type": "FParameterChannelNames",
-        "default": null
-      }
-    },
-    "notes": "MipValueModeが TMVM_MipLevel/MipBias/Derivative に応じて入力ピンが変動。GetInputName でダイナミックに返される",
-    "verified": false
+ "TextureSample": {
+  "class": "/Script/Engine.MaterialExpressionTextureSample",
+  "header": "Materials/MaterialExpressionTextureSample.h",
+  "desc": "",
+  "inputs": [
+   {
+    "name": "Coordinates",
+    "prop": "Coordinates",
+    "required": false,
+    "default_prop": "ConstCoordinate",
+    "note": ""
+   },
+   {
+    "name": "TextureObject",
+    "prop": "TextureObject",
+    "required": false
+   },
+   {
+    "name": "MipValue",
+    "prop": "MipValue",
+    "required": false
+   },
+   {
+    "name": "CoordinatesDX",
+    "prop": "CoordinatesDX",
+    "required": true,
+    "note": ""
+   },
+   {
+    "name": "CoordinatesDY",
+    "prop": "CoordinatesDY",
+    "required": true,
+    "note": ""
+   },
+   {
+    "name": "Apply View MipBias",
+    "prop": "AutomaticViewMipBiasValue",
+    "required": false
+   }
+  ],
+  "prop_pins": [
+   {
+    "name": "MipValueMode",
+    "prop": "MipValueMode",
+    "kind": "Advanced",
+    "type": "enum:ETextureMipValueMode"
+   },
+   {
+    "name": "SamplerSource",
+    "prop": "SamplerSource",
+    "kind": "Advanced",
+    "type": "enum:ESamplerSourceMode"
+   }
+  ],
+  "outputs": [
+   {
+    "name": "RGB",
+    "mask": "RGB"
+   },
+   {
+    "name": "R",
+    "mask": "R"
+   },
+   {
+    "name": "G",
+    "mask": "G"
+   },
+   {
+    "name": "B",
+    "mask": "B"
+   },
+   {
+    "name": "A",
+    "mask": "A"
+   },
+   {
+    "name": "RGBA",
+    "mask": "RGBA"
+   }
+  ],
+  "props": {
+   "Texture": {
+    "type": "asset:UTexture",
+    "default": null
+   },
+   "SamplerType": {
+    "type": "enum:EMaterialSamplerType",
+    "default": "SAMPLERTYPE_Color"
+   },
+   "ConstCoordinate": {
+    "type": "uint32",
+    "default": 0
+   },
+   "ConstMipValue": {
+    "type": "int32",
+    "default": -1
+   },
+   "MipValueMode": {
+    "type": "enum:ETextureMipValueMode",
+    "default": "TMVM_None"
+   },
+   "AutomaticViewMipBias": {
+    "type": "bool",
+    "default": true
+   },
+   "GatherMode": {
+    "type": "enum:ETextureGatherMode",
+    "default": "TGM_None"
+   },
+   "ChannelNames": {
+    "type": "FParameterChannelNames",
+    "default": null
+   }
   },
-  "TextureSampleParameter2D": {
-    "class": "/Script/Engine.MaterialExpressionTextureSampleParameter2D",
-    "header": "Materials/MaterialExpressionTextureSampleParameter2D.h",
-    "desc": "テクスチャパラメータ(2D)。TextureSampleParameterの2D専用版",
-    "inputs": [
-      {
-        "name": "Coordinates",
-        "prop": "Coordinates",
-        "required": false,
-        "default_prop": "ConstCoordinate"
-      },
-      {
-        "name": "TextureObject",
-        "prop": "TextureObject",
-        "required": false
-      },
-      {
-        "name": "MipValue",
-        "prop": "MipValue",
-        "required": false
-      },
-      {
-        "name": "CoordinatesDX",
-        "prop": "CoordinatesDX",
-        "required": true
-      },
-      {
-        "name": "CoordinatesDY",
-        "prop": "CoordinatesDY",
-        "required": true
-      },
-      {
-        "name": "Apply View MipBias",
-        "prop": "AutomaticViewMipBiasValue",
-        "required": false
-      }
-    ],
-    "prop_pins": [
-      {
-        "name": "MipValueMode",
-        "prop": "MipValueMode",
-        "kind": "Advanced",
-        "type": "enum:ETextureMipValueMode"
-      },
-      {
-        "name": "SamplerSource",
-        "prop": "SamplerSource",
-        "kind": "Advanced",
-        "type": "enum:ESamplerSourceMode"
-      }
-    ],
-    "outputs": [
-      {
-        "name": "RGB",
-        "mask": "RGB"
-      },
-      {
-        "name": "R",
-        "mask": "R"
-      },
-      {
-        "name": "G",
-        "mask": "G"
-      },
-      {
-        "name": "B",
-        "mask": "B"
-      },
-      {
-        "name": "A",
-        "mask": "A"
-      },
-      {
-        "name": "RGBA",
-        "mask": "RGBA"
-      }
-    ],
-    "props": {
-      "Texture": {
-        "type": "asset:UTexture",
-        "default": null
-      },
-      "SamplerType": {
-        "type": "enum:EMaterialSamplerType",
-        "default": "SAMPLERTYPE_Color"
-      },
-      "ParameterName": {
-        "type": "FName",
-        "default": ""
-      },
-      "ExpressionGUID": {
-        "type": "FGuid",
-        "default": null
-      },
-      "Group": {
-        "type": "FName",
-        "default": ""
-      },
-      "SortPriority": {
-        "type": "int32",
-        "default": 32
-      },
-      "ConstCoordinate": {
-        "type": "uint32",
-        "default": 0
-      },
-      "ConstMipValue": {
-        "type": "int32",
-        "default": -1
-      },
-      "MipValueMode": {
-        "type": "enum:ETextureMipValueMode",
-        "default": "TMVM_None"
-      },
-      "AutomaticViewMipBias": {
-        "type": "bool",
-        "default": true
-      },
-      "GatherMode": {
-        "type": "enum:ETextureGatherMode",
-        "default": "TGM_None"
-      }
-    },
-    "is_parameter": true,
-    "notes": "",
-    "verified": false
+  "notes": ""
+ },
+ "TextureSampleParameter2D": {
+  "class": "/Script/Engine.MaterialExpressionTextureSampleParameter2D",
+  "header": "Materials/MaterialExpressionTextureSampleParameter2D.h",
+  "desc": "",
+  "inputs": [
+   {
+    "name": "Coordinates",
+    "prop": "Coordinates",
+    "required": false,
+    "default_prop": "ConstCoordinate"
+   },
+   {
+    "name": "TextureObject",
+    "prop": "TextureObject",
+    "required": false
+   },
+   {
+    "name": "MipValue",
+    "prop": "MipValue",
+    "required": false
+   },
+   {
+    "name": "CoordinatesDX",
+    "prop": "CoordinatesDX",
+    "required": true
+   },
+   {
+    "name": "CoordinatesDY",
+    "prop": "CoordinatesDY",
+    "required": true
+   },
+   {
+    "name": "Apply View MipBias",
+    "prop": "AutomaticViewMipBiasValue",
+    "required": false
+   }
+  ],
+  "prop_pins": [
+   {
+    "name": "MipValueMode",
+    "prop": "MipValueMode",
+    "kind": "Advanced",
+    "type": "enum:ETextureMipValueMode"
+   },
+   {
+    "name": "SamplerSource",
+    "prop": "SamplerSource",
+    "kind": "Advanced",
+    "type": "enum:ESamplerSourceMode"
+   }
+  ],
+  "outputs": [
+   {
+    "name": "RGB",
+    "mask": "RGB"
+   },
+   {
+    "name": "R",
+    "mask": "R"
+   },
+   {
+    "name": "G",
+    "mask": "G"
+   },
+   {
+    "name": "B",
+    "mask": "B"
+   },
+   {
+    "name": "A",
+    "mask": "A"
+   },
+   {
+    "name": "RGBA",
+    "mask": "RGBA"
+   }
+  ],
+  "props": {
+   "Texture": {
+    "type": "asset:UTexture",
+    "default": null
+   },
+   "SamplerType": {
+    "type": "enum:EMaterialSamplerType",
+    "default": "SAMPLERTYPE_Color"
+   },
+   "ParameterName": {
+    "type": "FName",
+    "default": ""
+   },
+   "ExpressionGUID": {
+    "type": "FGuid",
+    "default": null
+   },
+   "Group": {
+    "type": "FName",
+    "default": ""
+   },
+   "SortPriority": {
+    "type": "int32",
+    "default": 32
+   },
+   "ConstCoordinate": {
+    "type": "uint32",
+    "default": 0
+   },
+   "ConstMipValue": {
+    "type": "int32",
+    "default": -1
+   },
+   "MipValueMode": {
+    "type": "enum:ETextureMipValueMode",
+    "default": "TMVM_None"
+   },
+   "AutomaticViewMipBias": {
+    "type": "bool",
+    "default": true
+   },
+   "GatherMode": {
+    "type": "enum:ETextureGatherMode",
+    "default": "TGM_None"
+   }
   },
-  "TextureObject": {
-    "class": "/Script/Engine.MaterialExpressionTextureObject",
-    "header": "Materials/MaterialExpressionTextureObject.h",
-    "desc": "テクスチャオブジェクト出力（サンプリングなし）。マテリアル関数用プレビュー値",
-    "inputs": [],
-    "prop_pins": [],
-    "outputs": [
-      {
-        "name": ""
-      }
-    ],
-    "props": {
-      "Texture": {
-        "type": "asset:UTexture",
-        "default": null
-      },
-      "SamplerType": {
-        "type": "enum:EMaterialSamplerType",
-        "default": "SAMPLERTYPE_Color"
-      },
-      "IsDefaultMeshpaintTexture": {
-        "type": "bool",
-        "default": false
-      }
-    },
-    "notes": "",
-    "verified": false
+  "is_parameter": true,
+  "notes": ""
+ },
+ "TextureObject": {
+  "class": "/Script/Engine.MaterialExpressionTextureObject",
+  "header": "Materials/MaterialExpressionTextureObject.h",
+  "desc": "",
+  "inputs": [],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {
+   "Texture": {
+    "type": "asset:UTexture",
+    "default": null
+   },
+   "SamplerType": {
+    "type": "enum:EMaterialSamplerType",
+    "default": "SAMPLERTYPE_Color"
+   },
+   "IsDefaultMeshpaintTexture": {
+    "type": "bool",
+    "default": false
+   }
   },
-  "TextureObjectParameter": {
-    "class": "/Script/Engine.MaterialExpressionTextureObjectParameter",
-    "header": "Materials/MaterialExpressionTextureObjectParameter.h",
-    "desc": "テクスチャオブジェクトパラメータ（サンプリングなし）",
-    "inputs": [],
-    "prop_pins": [],
-    "outputs": [
-      {
-        "name": ""
-      }
-    ],
-    "props": {
-      "Texture": {
-        "type": "asset:UTexture",
-        "default": null
-      },
-      "SamplerType": {
-        "type": "enum:EMaterialSamplerType",
-        "default": "SAMPLERTYPE_Color"
-      },
-      "ParameterName": {
-        "type": "FName",
-        "default": ""
-      },
-      "ExpressionGUID": {
-        "type": "FGuid",
-        "default": null
-      },
-      "Group": {
-        "type": "FName",
-        "default": ""
-      },
-      "SortPriority": {
-        "type": "int32",
-        "default": 32
-      }
-    },
-    "is_parameter": true,
-    "notes": "",
-    "verified": false
+  "notes": ""
+ },
+ "TextureObjectParameter": {
+  "class": "/Script/Engine.MaterialExpressionTextureObjectParameter",
+  "header": "Materials/MaterialExpressionTextureObjectParameter.h",
+  "desc": "",
+  "inputs": [],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {
+   "Texture": {
+    "type": "asset:UTexture",
+    "default": null
+   },
+   "SamplerType": {
+    "type": "enum:EMaterialSamplerType",
+    "default": "SAMPLERTYPE_Color"
+   },
+   "ParameterName": {
+    "type": "FName",
+    "default": ""
+   },
+   "ExpressionGUID": {
+    "type": "FGuid",
+    "default": null
+   },
+   "Group": {
+    "type": "FName",
+    "default": ""
+   },
+   "SortPriority": {
+    "type": "int32",
+    "default": 32
+   }
   },
-  "TextureCoordinate": {
-    "class": "/Script/Engine.MaterialExpressionTextureCoordinate",
-    "header": "Materials/MaterialExpressionTextureCoordinate.h",
-    "desc": "テクスチャ座標（UV）出力。タイリングやミラーリング設定対応",
-    "inputs": [],
-    "prop_pins": [
-      {
-        "name": "CoordinateIndex",
-        "prop": "CoordinateIndex",
-        "kind": "Primary",
-        "type": "int32"
-      },
-      {
-        "name": "UTiling",
-        "prop": "UTiling",
-        "kind": "Advanced",
-        "type": "float"
-      },
-      {
-        "name": "VTiling",
-        "prop": "VTiling",
-        "kind": "Advanced",
-        "type": "float"
-      },
-      {
-        "name": "UnMirrorU",
-        "prop": "UnMirrorU",
-        "kind": "Advanced",
-        "type": "bool"
-      },
-      {
-        "name": "UnMirrorV",
-        "prop": "UnMirrorV",
-        "kind": "Advanced",
-        "type": "bool"
-      }
-    ],
-    "outputs": [
-      {
-        "name": ""
-      }
-    ],
-    "props": {
-      "CoordinateIndex": {
-        "type": "int32",
-        "default": 0
-      },
-      "UTiling": {
-        "type": "float",
-        "default": 1.0
-      },
-      "VTiling": {
-        "type": "float",
-        "default": 1.0
-      },
-      "UnMirrorU": {
-        "type": "bool",
-        "default": false
-      },
-      "UnMirrorV": {
-        "type": "bool",
-        "default": false
-      }
-    },
-    "notes": "",
-    "verified": false
+  "is_parameter": true,
+  "notes": ""
+ },
+ "TextureCoordinate": {
+  "class": "/Script/Engine.MaterialExpressionTextureCoordinate",
+  "header": "Materials/MaterialExpressionTextureCoordinate.h",
+  "desc": "",
+  "inputs": [],
+  "prop_pins": [
+   {
+    "name": "CoordinateIndex",
+    "prop": "CoordinateIndex",
+    "kind": "Primary",
+    "type": "int32"
+   },
+   {
+    "name": "UTiling",
+    "prop": "UTiling",
+    "kind": "Advanced",
+    "type": "float"
+   },
+   {
+    "name": "VTiling",
+    "prop": "VTiling",
+    "kind": "Advanced",
+    "type": "float"
+   },
+   {
+    "name": "UnMirrorU",
+    "prop": "UnMirrorU",
+    "kind": "Advanced",
+    "type": "bool"
+   },
+   {
+    "name": "UnMirrorV",
+    "prop": "UnMirrorV",
+    "kind": "Advanced",
+    "type": "bool"
+   }
+  ],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {
+   "CoordinateIndex": {
+    "type": "int32",
+    "default": 0
+   },
+   "UTiling": {
+    "type": "float",
+    "default": 1.0
+   },
+   "VTiling": {
+    "type": "float",
+    "default": 1.0
+   },
+   "UnMirrorU": {
+    "type": "bool",
+    "default": false
+   },
+   "UnMirrorV": {
+    "type": "bool",
+    "default": false
+   }
   },
-  "Panner": {
-    "class": "/Script/Engine.MaterialExpressionPanner",
-    "header": "Materials/MaterialExpressionPanner.h",
-    "desc": "UV座標をパン（移動）。時間に基づいて座標をシフト",
-    "inputs": [
-      {
-        "name": "Coordinate",
-        "prop": "Coordinate",
-        "required": false,
-        "default_prop": "ConstCoordinate"
-      },
-      {
-        "name": "Time",
-        "prop": "Time",
-        "required": false
-      },
-      {
-        "name": "Speed",
-        "prop": "Speed",
-        "required": false,
-        "default_prop": null,
-        "note": "OverridingInputProperty: Speed"
-      }
-    ],
-    "prop_pins": [
-      {
-        "name": "SpeedX",
-        "prop": "SpeedX",
-        "kind": "Primary",
-        "type": "float"
-      },
-      {
-        "name": "SpeedY",
-        "prop": "SpeedY",
-        "kind": "Primary",
-        "type": "float"
-      }
-    ],
-    "outputs": [
-      {
-        "name": ""
-      }
-    ],
-    "props": {
-      "SpeedX": {
-        "type": "float",
-        "default": 0.0
-      },
-      "SpeedY": {
-        "type": "float",
-        "default": 0.0
-      },
-      "ConstCoordinate": {
-        "type": "uint32",
-        "default": 0
-      },
-      "bFractionalPart": {
-        "type": "bool",
-        "default": false
-      }
-    },
-    "notes": "",
-    "verified": false
+  "notes": ""
+ },
+ "Panner": {
+  "class": "/Script/Engine.MaterialExpressionPanner",
+  "header": "Materials/MaterialExpressionPanner.h",
+  "desc": "",
+  "inputs": [
+   {
+    "name": "Coordinate",
+    "prop": "Coordinate",
+    "required": false,
+    "default_prop": "ConstCoordinate"
+   },
+   {
+    "name": "Time",
+    "prop": "Time",
+    "required": false
+   },
+   {
+    "name": "Speed",
+    "prop": "Speed",
+    "required": false,
+    "default_prop": null,
+    "note": ""
+   }
+  ],
+  "prop_pins": [
+   {
+    "name": "SpeedX",
+    "prop": "SpeedX",
+    "kind": "Primary",
+    "type": "float"
+   },
+   {
+    "name": "SpeedY",
+    "prop": "SpeedY",
+    "kind": "Primary",
+    "type": "float"
+   }
+  ],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {
+   "SpeedX": {
+    "type": "float",
+    "default": 0.0
+   },
+   "SpeedY": {
+    "type": "float",
+    "default": 0.0
+   },
+   "ConstCoordinate": {
+    "type": "uint32",
+    "default": 0
+   },
+   "bFractionalPart": {
+    "type": "bool",
+    "default": false
+   }
   },
-  "Rotator": {
-    "class": "/Script/Engine.MaterialExpressionRotator",
-    "header": "Materials/MaterialExpressionRotator.h",
-    "desc": "UV座標を回転。中心点を基準に時間に基づいて回転",
-    "inputs": [
-      {
-        "name": "Coordinate",
-        "prop": "Coordinate",
-        "required": false,
-        "default_prop": "ConstCoordinate"
-      },
-      {
-        "name": "Time",
-        "prop": "Time",
-        "required": false
-      }
-    ],
-    "prop_pins": [
-      {
-        "name": "CenterX",
-        "prop": "CenterX",
-        "kind": "Advanced",
-        "type": "float"
-      },
-      {
-        "name": "CenterY",
-        "prop": "CenterY",
-        "kind": "Advanced",
-        "type": "float"
-      },
-      {
-        "name": "Speed",
-        "prop": "Speed",
-        "kind": "Advanced",
-        "type": "float"
-      }
-    ],
-    "outputs": [
-      {
-        "name": ""
-      }
-    ],
-    "props": {
-      "CenterX": {
-        "type": "float",
-        "default": 0.5
-      },
-      "CenterY": {
-        "type": "float",
-        "default": 0.5
-      },
-      "Speed": {
-        "type": "float",
-        "default": 0.25
-      },
-      "ConstCoordinate": {
-        "type": "uint32",
-        "default": 0
-      }
-    },
-    "notes": "",
-    "verified": false
+  "notes": ""
+ },
+ "Rotator": {
+  "class": "/Script/Engine.MaterialExpressionRotator",
+  "header": "Materials/MaterialExpressionRotator.h",
+  "desc": "",
+  "inputs": [
+   {
+    "name": "Coordinate",
+    "prop": "Coordinate",
+    "required": false,
+    "default_prop": "ConstCoordinate"
+   },
+   {
+    "name": "Time",
+    "prop": "Time",
+    "required": false
+   }
+  ],
+  "prop_pins": [
+   {
+    "name": "CenterX",
+    "prop": "CenterX",
+    "kind": "Advanced",
+    "type": "float"
+   },
+   {
+    "name": "CenterY",
+    "prop": "CenterY",
+    "kind": "Advanced",
+    "type": "float"
+   },
+   {
+    "name": "Speed",
+    "prop": "Speed",
+    "kind": "Advanced",
+    "type": "float"
+   }
+  ],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {
+   "CenterX": {
+    "type": "float",
+    "default": 0.5
+   },
+   "CenterY": {
+    "type": "float",
+    "default": 0.5
+   },
+   "Speed": {
+    "type": "float",
+    "default": 0.25
+   },
+   "ConstCoordinate": {
+    "type": "uint32",
+    "default": 0
+   }
   },
-  "BumpOffset": {
-    "class": "/Script/Engine.MaterialExpressionBumpOffset",
-    "header": "Materials/MaterialExpressionBumpOffset.h",
-    "desc": "バンプオフセット。高さマップに基づいて座標をシフト（視差マッピング効果）",
-    "inputs": [
-      {
-        "name": "Coordinate",
-        "prop": "Coordinate",
-        "required": false,
-        "default_prop": "ConstCoordinate"
-      },
-      {
-        "name": "Height",
-        "prop": "Height",
-        "required": true
-      },
-      {
-        "name": "HeightRatioInput",
-        "prop": "HeightRatioInput",
-        "required": false,
-        "default_prop": "HeightRatio"
-      }
-    ],
-    "prop_pins": [],
-    "outputs": [
-      {
-        "name": ""
-      }
-    ],
-    "props": {
-      "HeightRatio": {
-        "type": "float",
-        "default": 0.05
-      },
-      "ReferencePlane": {
-        "type": "float",
-        "default": 0.5
-      },
-      "ConstCoordinate": {
-        "type": "uint32",
-        "default": 0
-      }
-    },
-    "notes": "",
-    "verified": false
+  "notes": ""
+ },
+ "BumpOffset": {
+  "class": "/Script/Engine.MaterialExpressionBumpOffset",
+  "header": "Materials/MaterialExpressionBumpOffset.h",
+  "desc": "",
+  "inputs": [
+   {
+    "name": "Coordinate",
+    "prop": "Coordinate",
+    "required": false,
+    "default_prop": "ConstCoordinate"
+   },
+   {
+    "name": "Height",
+    "prop": "Height",
+    "required": true
+   },
+   {
+    "name": "HeightRatioInput",
+    "prop": "HeightRatioInput",
+    "required": false,
+    "default_prop": "HeightRatio"
+   }
+  ],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {
+   "HeightRatio": {
+    "type": "float",
+    "default": 0.05
+   },
+   "ReferencePlane": {
+    "type": "float",
+    "default": 0.5
+   },
+   "ConstCoordinate": {
+    "type": "uint32",
+    "default": 0
+   }
   },
-  "TextureProperty": {
-    "class": "/Script/Engine.MaterialExpressionTextureProperty",
-    "header": "Materials/MaterialExpressionTextureProperty.h",
-    "desc": "テクスチャプロパティ出力（テクスチャサイズなど）",
-    "inputs": [
-      {
-        "name": "TextureObject",
-        "prop": "TextureObject",
-        "required": false
-      }
-    ],
-    "prop_pins": [
-      {
-        "name": "Property",
-        "prop": "Property",
-        "kind": "Advanced",
-        "type": "enum:EMaterialExposedTextureProperty"
-      }
-    ],
-    "outputs": [
-      {
-        "name": ""
-      }
-    ],
-    "props": {
-      "Property": {
-        "type": "enum:EMaterialExposedTextureProperty",
-        "default": "TMTM_TextureSize"
-      }
-    },
-    "notes": "",
-    "verified": false
+  "notes": ""
+ },
+ "TextureProperty": {
+  "class": "/Script/Engine.MaterialExpressionTextureProperty",
+  "header": "Materials/MaterialExpressionTextureProperty.h",
+  "desc": "",
+  "inputs": [
+   {
+    "name": "TextureObject",
+    "prop": "TextureObject",
+    "required": false
+   }
+  ],
+  "prop_pins": [
+   {
+    "name": "Property",
+    "prop": "Property",
+    "kind": "Advanced",
+    "type": "enum:EMaterialExposedTextureProperty"
+   }
+  ],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {
+   "Property": {
+    "type": "enum:EMaterialExposedTextureProperty",
+    "default": "TMTM_TextureSize"
+   }
   },
-  "TextureSampleParameterCube": {
-    "class": "/Script/Engine.MaterialExpressionTextureSampleParameterCube",
-    "header": "Materials/MaterialExpressionTextureSampleParameterCube.h",
-    "desc": "キューブマップテクスチャパラメータ（サンプリング）",
-    "inputs": [
-      {
-        "name": "Coordinates",
-        "prop": "Coordinates",
-        "required": false,
-        "default_prop": "ConstCoordinate"
-      },
-      {
-        "name": "TextureObject",
-        "prop": "TextureObject",
-        "required": false
-      },
-      {
-        "name": "MipValue",
-        "prop": "MipValue",
-        "required": false
-      },
-      {
-        "name": "CoordinatesDX",
-        "prop": "CoordinatesDX",
-        "required": true
-      },
-      {
-        "name": "CoordinatesDY",
-        "prop": "CoordinatesDY",
-        "required": true
-      },
-      {
-        "name": "Apply View MipBias",
-        "prop": "AutomaticViewMipBiasValue",
-        "required": false
-      }
-    ],
-    "prop_pins": [
-      {
-        "name": "MipValueMode",
-        "prop": "MipValueMode",
-        "kind": "Advanced",
-        "type": "enum:ETextureMipValueMode"
-      },
-      {
-        "name": "SamplerSource",
-        "prop": "SamplerSource",
-        "kind": "Advanced",
-        "type": "enum:ESamplerSourceMode"
-      }
-    ],
-    "outputs": [
-      {
-        "name": "RGB",
-        "mask": "RGB"
-      },
-      {
-        "name": "R",
-        "mask": "R"
-      },
-      {
-        "name": "G",
-        "mask": "G"
-      },
-      {
-        "name": "B",
-        "mask": "B"
-      },
-      {
-        "name": "A",
-        "mask": "A"
-      },
-      {
-        "name": "RGBA",
-        "mask": "RGBA"
-      }
-    ],
-    "props": {
-      "Texture": {
-        "type": "asset:UTexture",
-        "default": null
-      },
-      "SamplerType": {
-        "type": "enum:EMaterialSamplerType",
-        "default": "SAMPLERTYPE_Color"
-      },
-      "ParameterName": {
-        "type": "FName",
-        "default": ""
-      },
-      "ExpressionGUID": {
-        "type": "FGuid",
-        "default": null
-      },
-      "Group": {
-        "type": "FName",
-        "default": ""
-      },
-      "SortPriority": {
-        "type": "int32",
-        "default": 32
-      },
-      "ConstCoordinate": {
-        "type": "uint32",
-        "default": 0
-      },
-      "ConstMipValue": {
-        "type": "int32",
-        "default": -1
-      },
-      "MipValueMode": {
-        "type": "enum:ETextureMipValueMode",
-        "default": "TMVM_None"
-      },
-      "AutomaticViewMipBias": {
-        "type": "bool",
-        "default": true
-      },
-      "GatherMode": {
-        "type": "enum:ETextureGatherMode",
-        "default": "TGM_None"
-      }
-    },
-    "is_parameter": true,
-    "notes": "",
-    "verified": false
+  "notes": ""
+ },
+ "TextureSampleParameterCube": {
+  "class": "/Script/Engine.MaterialExpressionTextureSampleParameterCube",
+  "header": "Materials/MaterialExpressionTextureSampleParameterCube.h",
+  "desc": "",
+  "inputs": [
+   {
+    "name": "Coordinates",
+    "prop": "Coordinates",
+    "required": false,
+    "default_prop": "ConstCoordinate"
+   },
+   {
+    "name": "TextureObject",
+    "prop": "TextureObject",
+    "required": false
+   },
+   {
+    "name": "MipValue",
+    "prop": "MipValue",
+    "required": false
+   },
+   {
+    "name": "CoordinatesDX",
+    "prop": "CoordinatesDX",
+    "required": true
+   },
+   {
+    "name": "CoordinatesDY",
+    "prop": "CoordinatesDY",
+    "required": true
+   },
+   {
+    "name": "Apply View MipBias",
+    "prop": "AutomaticViewMipBiasValue",
+    "required": false
+   }
+  ],
+  "prop_pins": [
+   {
+    "name": "MipValueMode",
+    "prop": "MipValueMode",
+    "kind": "Advanced",
+    "type": "enum:ETextureMipValueMode"
+   },
+   {
+    "name": "SamplerSource",
+    "prop": "SamplerSource",
+    "kind": "Advanced",
+    "type": "enum:ESamplerSourceMode"
+   }
+  ],
+  "outputs": [
+   {
+    "name": "RGB",
+    "mask": "RGB"
+   },
+   {
+    "name": "R",
+    "mask": "R"
+   },
+   {
+    "name": "G",
+    "mask": "G"
+   },
+   {
+    "name": "B",
+    "mask": "B"
+   },
+   {
+    "name": "A",
+    "mask": "A"
+   },
+   {
+    "name": "RGBA",
+    "mask": "RGBA"
+   }
+  ],
+  "props": {
+   "Texture": {
+    "type": "asset:UTexture",
+    "default": null
+   },
+   "SamplerType": {
+    "type": "enum:EMaterialSamplerType",
+    "default": "SAMPLERTYPE_Color"
+   },
+   "ParameterName": {
+    "type": "FName",
+    "default": ""
+   },
+   "ExpressionGUID": {
+    "type": "FGuid",
+    "default": null
+   },
+   "Group": {
+    "type": "FName",
+    "default": ""
+   },
+   "SortPriority": {
+    "type": "int32",
+    "default": 32
+   },
+   "ConstCoordinate": {
+    "type": "uint32",
+    "default": 0
+   },
+   "ConstMipValue": {
+    "type": "int32",
+    "default": -1
+   },
+   "MipValueMode": {
+    "type": "enum:ETextureMipValueMode",
+    "default": "TMVM_None"
+   },
+   "AutomaticViewMipBias": {
+    "type": "bool",
+    "default": true
+   },
+   "GatherMode": {
+    "type": "enum:ETextureGatherMode",
+    "default": "TGM_None"
+   }
   },
-  "AntialiasedTextureMask": {
-    "class": "/Script/Engine.MaterialExpressionAntialiasedTextureMask",
-    "header": "Materials/MaterialExpressionAntialiasedTextureMask.h",
-    "desc": "アンチエイリアスされたテクスチャマスク。単一チャンネルの高精度マスク出力",
-    "inputs": [
-      {
-        "name": "Coordinates",
-        "prop": "Coordinates",
-        "required": false,
-        "default_prop": "ConstCoordinate"
-      },
-      {
-        "name": "TextureObject",
-        "prop": "TextureObject",
-        "required": false
-      },
-      {
-        "name": "MipValue",
-        "prop": "MipValue",
-        "required": false
-      },
-      {
-        "name": "CoordinatesDX",
-        "prop": "CoordinatesDX",
-        "required": true
-      },
-      {
-        "name": "CoordinatesDY",
-        "prop": "CoordinatesDY",
-        "required": true
-      },
-      {
-        "name": "Apply View MipBias",
-        "prop": "AutomaticViewMipBiasValue",
-        "required": false
-      }
-    ],
-    "prop_pins": [
-      {
-        "name": "MipValueMode",
-        "prop": "MipValueMode",
-        "kind": "Advanced",
-        "type": "enum:ETextureMipValueMode"
-      },
-      {
-        "name": "SamplerSource",
-        "prop": "SamplerSource",
-        "kind": "Advanced",
-        "type": "enum:ESamplerSourceMode"
-      }
-    ],
-    "outputs": [
-      {
-        "name": "RGB",
-        "mask": "RGB"
-      },
-      {
-        "name": "R",
-        "mask": "R"
-      },
-      {
-        "name": "G",
-        "mask": "G"
-      },
-      {
-        "name": "B",
-        "mask": "B"
-      },
-      {
-        "name": "A",
-        "mask": "A"
-      },
-      {
-        "name": "RGBA",
-        "mask": "RGBA"
-      }
-    ],
-    "props": {
-      "Texture": {
-        "type": "asset:UTexture",
-        "default": null
-      },
-      "SamplerType": {
-        "type": "enum:EMaterialSamplerType",
-        "default": "SAMPLERTYPE_Color"
-      },
-      "ParameterName": {
-        "type": "FName",
-        "default": ""
-      },
-      "ExpressionGUID": {
-        "type": "FGuid",
-        "default": null
-      },
-      "Group": {
-        "type": "FName",
-        "default": ""
-      },
-      "SortPriority": {
-        "type": "int32",
-        "default": 32
-      },
-      "ConstCoordinate": {
-        "type": "uint32",
-        "default": 0
-      },
-      "ConstMipValue": {
-        "type": "int32",
-        "default": -1
-      },
-      "Threshold": {
-        "type": "float",
-        "default": 0.5
-      },
-      "Channel": {
-        "type": "enum:ETextureColorChannel",
-        "default": "TCC_Alpha"
-      },
-      "MipValueMode": {
-        "type": "enum:ETextureMipValueMode",
-        "default": "TMVM_None"
-      },
-      "AutomaticViewMipBias": {
-        "type": "bool",
-        "default": true
-      },
-      "GatherMode": {
-        "type": "enum:ETextureGatherMode",
-        "default": "TGM_None"
-      }
-    },
-    "is_parameter": true,
-    "notes": "",
-    "verified": false
+  "is_parameter": true,
+  "notes": ""
+ },
+ "AntialiasedTextureMask": {
+  "class": "/Script/Engine.MaterialExpressionAntialiasedTextureMask",
+  "header": "Materials/MaterialExpressionAntialiasedTextureMask.h",
+  "desc": "",
+  "inputs": [
+   {
+    "name": "Coordinates",
+    "prop": "Coordinates",
+    "required": false,
+    "default_prop": "ConstCoordinate"
+   },
+   {
+    "name": "TextureObject",
+    "prop": "TextureObject",
+    "required": false
+   },
+   {
+    "name": "MipValue",
+    "prop": "MipValue",
+    "required": false
+   },
+   {
+    "name": "CoordinatesDX",
+    "prop": "CoordinatesDX",
+    "required": true
+   },
+   {
+    "name": "CoordinatesDY",
+    "prop": "CoordinatesDY",
+    "required": true
+   },
+   {
+    "name": "Apply View MipBias",
+    "prop": "AutomaticViewMipBiasValue",
+    "required": false
+   }
+  ],
+  "prop_pins": [
+   {
+    "name": "MipValueMode",
+    "prop": "MipValueMode",
+    "kind": "Advanced",
+    "type": "enum:ETextureMipValueMode"
+   },
+   {
+    "name": "SamplerSource",
+    "prop": "SamplerSource",
+    "kind": "Advanced",
+    "type": "enum:ESamplerSourceMode"
+   }
+  ],
+  "outputs": [
+   {
+    "name": "RGB",
+    "mask": "RGB"
+   },
+   {
+    "name": "R",
+    "mask": "R"
+   },
+   {
+    "name": "G",
+    "mask": "G"
+   },
+   {
+    "name": "B",
+    "mask": "B"
+   },
+   {
+    "name": "A",
+    "mask": "A"
+   },
+   {
+    "name": "RGBA",
+    "mask": "RGBA"
+   }
+  ],
+  "props": {
+   "Texture": {
+    "type": "asset:UTexture",
+    "default": null
+   },
+   "SamplerType": {
+    "type": "enum:EMaterialSamplerType",
+    "default": "SAMPLERTYPE_Color"
+   },
+   "ParameterName": {
+    "type": "FName",
+    "default": ""
+   },
+   "ExpressionGUID": {
+    "type": "FGuid",
+    "default": null
+   },
+   "Group": {
+    "type": "FName",
+    "default": ""
+   },
+   "SortPriority": {
+    "type": "int32",
+    "default": 32
+   },
+   "ConstCoordinate": {
+    "type": "uint32",
+    "default": 0
+   },
+   "ConstMipValue": {
+    "type": "int32",
+    "default": -1
+   },
+   "Threshold": {
+    "type": "float",
+    "default": 0.5
+   },
+   "Channel": {
+    "type": "enum:ETextureColorChannel",
+    "default": "TCC_Alpha"
+   },
+   "MipValueMode": {
+    "type": "enum:ETextureMipValueMode",
+    "default": "TMVM_None"
+   },
+   "AutomaticViewMipBias": {
+    "type": "bool",
+    "default": true
+   },
+   "GatherMode": {
+    "type": "enum:ETextureGatherMode",
+    "default": "TGM_None"
+   }
   },
-  "TextureBase": {
-    "abstract": true,
-    "class": "/Script/Engine.MaterialExpressionTextureBase",
-    "header": "Materials/MaterialExpressionTextureBase.h",
-    "desc": "テクスチャサンプル・テクスチャオブジェクトの基底クラス",
-    "inputs": [],
-    "prop_pins": [
-      {
-        "name": "SamplerType",
-        "prop": "SamplerType",
-        "kind": "Advanced",
-        "type": "enum:EMaterialSamplerType"
-      }
-    ],
-    "outputs": [
-      {
-        "name": ""
-      }
-    ],
-    "props": {
-      "Texture": {
-        "type": "asset:UTexture",
-        "default": null
-      },
-      "SamplerType": {
-        "type": "enum:EMaterialSamplerType",
-        "default": "SAMPLERTYPE_Color"
-      },
-      "IsDefaultMeshpaintTexture": {
-        "type": "bool",
-        "default": false
-      }
-    },
-    "notes": "",
-    "verified": false
+  "is_parameter": true,
+  "notes": ""
+ },
+ "TextureBase": {
+  "abstract": true,
+  "class": "/Script/Engine.MaterialExpressionTextureBase",
+  "header": "Materials/MaterialExpressionTextureBase.h",
+  "desc": "",
+  "inputs": [],
+  "prop_pins": [
+   {
+    "name": "SamplerType",
+    "prop": "SamplerType",
+    "kind": "Advanced",
+    "type": "enum:EMaterialSamplerType"
+   }
+  ],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {
+   "Texture": {
+    "type": "asset:UTexture",
+    "default": null
+   },
+   "SamplerType": {
+    "type": "enum:EMaterialSamplerType",
+    "default": "SAMPLERTYPE_Color"
+   },
+   "IsDefaultMeshpaintTexture": {
+    "type": "bool",
+    "default": false
+   }
   },
-  "TextureSampleParameter": {
-    "abstract": true,
-    "class": "/Script/Engine.MaterialExpressionTextureSampleParameter",
-    "header": "Materials/MaterialExpressionTextureSampleParameter.h",
-    "desc": "テクスチャサンプルパラメータの基底クラス",
-    "inputs": [
-      {
-        "name": "Coordinates",
-        "prop": "Coordinates",
-        "required": false,
-        "default_prop": "ConstCoordinate"
-      },
-      {
-        "name": "TextureObject",
-        "prop": "TextureObject",
-        "required": false
-      },
-      {
-        "name": "MipValue",
-        "prop": "MipValue",
-        "required": false
-      },
-      {
-        "name": "CoordinatesDX",
-        "prop": "CoordinatesDX",
-        "required": true
-      },
-      {
-        "name": "CoordinatesDY",
-        "prop": "CoordinatesDY",
-        "required": true
-      },
-      {
-        "name": "Apply View MipBias",
-        "prop": "AutomaticViewMipBiasValue",
-        "required": false
-      }
-    ],
-    "prop_pins": [
-      {
-        "name": "MipValueMode",
-        "prop": "MipValueMode",
-        "kind": "Advanced",
-        "type": "enum:ETextureMipValueMode"
-      },
-      {
-        "name": "SamplerSource",
-        "prop": "SamplerSource",
-        "kind": "Advanced",
-        "type": "enum:ESamplerSourceMode"
-      }
-    ],
-    "outputs": [
-      {
-        "name": "RGB",
-        "mask": "RGB"
-      },
-      {
-        "name": "R",
-        "mask": "R"
-      },
-      {
-        "name": "G",
-        "mask": "G"
-      },
-      {
-        "name": "B",
-        "mask": "B"
-      },
-      {
-        "name": "A",
-        "mask": "A"
-      },
-      {
-        "name": "RGBA",
-        "mask": "RGBA"
-      }
-    ],
-    "props": {
-      "Texture": {
-        "type": "asset:UTexture",
-        "default": null
-      },
-      "SamplerType": {
-        "type": "enum:EMaterialSamplerType",
-        "default": "SAMPLERTYPE_Color"
-      },
-      "ParameterName": {
-        "type": "FName",
-        "default": ""
-      },
-      "ExpressionGUID": {
-        "type": "FGuid",
-        "default": null
-      },
-      "Group": {
-        "type": "FName",
-        "default": ""
-      },
-      "SortPriority": {
-        "type": "int32",
-        "default": 32
-      },
-      "ConstCoordinate": {
-        "type": "uint32",
-        "default": 0
-      },
-      "ConstMipValue": {
-        "type": "int32",
-        "default": -1
-      },
-      "MipValueMode": {
-        "type": "enum:ETextureMipValueMode",
-        "default": "TMVM_None"
-      },
-      "AutomaticViewMipBias": {
-        "type": "bool",
-        "default": true
-      },
-      "GatherMode": {
-        "type": "enum:ETextureGatherMode",
-        "default": "TGM_None"
-      }
-    },
-    "is_parameter": true,
-    "notes": "",
-    "verified": false
-  }
+  "notes": ""
+ },
+ "TextureSampleParameter": {
+  "abstract": true,
+  "class": "/Script/Engine.MaterialExpressionTextureSampleParameter",
+  "header": "Materials/MaterialExpressionTextureSampleParameter.h",
+  "desc": "",
+  "inputs": [
+   {
+    "name": "Coordinates",
+    "prop": "Coordinates",
+    "required": false,
+    "default_prop": "ConstCoordinate"
+   },
+   {
+    "name": "TextureObject",
+    "prop": "TextureObject",
+    "required": false
+   },
+   {
+    "name": "MipValue",
+    "prop": "MipValue",
+    "required": false
+   },
+   {
+    "name": "CoordinatesDX",
+    "prop": "CoordinatesDX",
+    "required": true
+   },
+   {
+    "name": "CoordinatesDY",
+    "prop": "CoordinatesDY",
+    "required": true
+   },
+   {
+    "name": "Apply View MipBias",
+    "prop": "AutomaticViewMipBiasValue",
+    "required": false
+   }
+  ],
+  "prop_pins": [
+   {
+    "name": "MipValueMode",
+    "prop": "MipValueMode",
+    "kind": "Advanced",
+    "type": "enum:ETextureMipValueMode"
+   },
+   {
+    "name": "SamplerSource",
+    "prop": "SamplerSource",
+    "kind": "Advanced",
+    "type": "enum:ESamplerSourceMode"
+   }
+  ],
+  "outputs": [
+   {
+    "name": "RGB",
+    "mask": "RGB"
+   },
+   {
+    "name": "R",
+    "mask": "R"
+   },
+   {
+    "name": "G",
+    "mask": "G"
+   },
+   {
+    "name": "B",
+    "mask": "B"
+   },
+   {
+    "name": "A",
+    "mask": "A"
+   },
+   {
+    "name": "RGBA",
+    "mask": "RGBA"
+   }
+  ],
+  "props": {
+   "Texture": {
+    "type": "asset:UTexture",
+    "default": null
+   },
+   "SamplerType": {
+    "type": "enum:EMaterialSamplerType",
+    "default": "SAMPLERTYPE_Color"
+   },
+   "ParameterName": {
+    "type": "FName",
+    "default": ""
+   },
+   "ExpressionGUID": {
+    "type": "FGuid",
+    "default": null
+   },
+   "Group": {
+    "type": "FName",
+    "default": ""
+   },
+   "SortPriority": {
+    "type": "int32",
+    "default": 32
+   },
+   "ConstCoordinate": {
+    "type": "uint32",
+    "default": 0
+   },
+   "ConstMipValue": {
+    "type": "int32",
+    "default": -1
+   },
+   "MipValueMode": {
+    "type": "enum:ETextureMipValueMode",
+    "default": "TMVM_None"
+   },
+   "AutomaticViewMipBias": {
+    "type": "bool",
+    "default": true
+   },
+   "GatherMode": {
+    "type": "enum:ETextureGatherMode",
+    "default": "TGM_None"
+   }
+  },
+  "is_parameter": true,
+  "notes": ""
+ }
 }

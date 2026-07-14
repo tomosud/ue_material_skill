@@ -20,6 +20,8 @@ import validate as mgvalidate  # noqa: E402
 
 CATALOG = mgvalidate.load_catalog()
 FUNCTIONS = mgvalidate.load_functions()
+NODE_EVIDENCE = mgvalidate.load_node_evidence()
+EDITOR_EVIDENCE = mgvalidate.load_editor_evidence()
 SAMPLE_09 = (ROOT / "examples" / "09-custom.txt").read_text(encoding="utf-8-sig")
 P01_COPYBACK = (ROOT / "tests" / "fixtures" / "p01-custom-lumasplit-copyback.txt").read_text(
     encoding="utf-8-sig"
@@ -27,7 +29,8 @@ P01_COPYBACK = (ROOT / "tests" / "fixtures" / "p01-custom-lumasplit-copyback.txt
 
 
 def diagnostics_of(document):
-    return mgvalidate.validate_document(document, CATALOG, FUNCTIONS)
+    return mgvalidate.validate_document(
+        document, CATALOG, FUNCTIONS, NODE_EVIDENCE, EDITOR_EVIDENCE)
 
 
 def messages(result, severity):
@@ -168,6 +171,50 @@ class EditorCopyBackTests(unittest.TestCase):
         self.assertEqual(stats["raw_props"], 0)
         self.assertEqual(reparsed, document)
         self.assertEqual(mgbuild.build_t3d(reparsed, CATALOG, FUNCTIONS), rebuilt)
+
+
+class ProvenanceValidationTests(unittest.TestCase):
+    def test_source_and_editor_verified_custom_has_no_provenance_warning(self):
+        result = diagnostics_of(custom_doc({"Code": "return 0;"}))
+        provenance_warnings = [
+            message for message in messages(result, "warning")
+            if "source audit" in message or "Editor" in message
+        ]
+        self.assertEqual(provenance_warnings, [])
+
+    def test_unaudited_node_reports_source_and_editor_evidence_separately(self):
+        result = diagnostics_of({"nodes": {"constant1": {"class": "Constant4Vector"}}})
+        warnings = messages(result, "warning")
+        self.assertTrue(any("incomplete source audit" in message for message in warnings))
+        self.assertTrue(any("no recorded Unreal Editor evidence" in message for message in warnings))
+
+
+class SourceAuditedCoreSchemaTests(unittest.TestCase):
+    def test_constant3_output_pin_names_follow_material_graph_source(self):
+        outputs = CATALOG["Constant3Vector"]["outputs"]
+        self.assertEqual(
+            [mgvalidate.effective_pin_name(pin, index, True) for index, pin in enumerate(outputs)],
+            ["Output", "Output2", "Output3", "Output4"],
+        )
+        self.assertEqual([pin["mask"] for pin in outputs], ["RGB", "R", "G", "B"])
+
+    def test_constant3_component_link_uses_clipboard_pin_name(self):
+        document = {
+            "nodes": {
+                "color": {"class": "Constant3Vector"},
+                "multiply": {"class": "Multiply"},
+            },
+            "links": ["color.Output2 -> multiply.A"],
+        }
+        result = diagnostics_of(document)
+        self.assertTrue(result.ok, messages(result, "error"))
+        t3d = mgbuild.build_t3d(document, CATALOG, FUNCTIONS)
+        self.assertIn('PinName="Output2"', t3d)
+        reparsed, _ = mgparse.convert_t3d(t3d, CATALOG)
+        self.assertEqual(reparsed["links"], ["const1.Output2 -> mul1.A"])
+        rebuilt = mgbuild.build_t3d(reparsed, CATALOG, FUNCTIONS)
+        reparsed_again, _ = mgparse.convert_t3d(rebuilt, CATALOG)
+        self.assertEqual(reparsed_again, reparsed)
 
 
 class CustomValidationTests(unittest.TestCase):

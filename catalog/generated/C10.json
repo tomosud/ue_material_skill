@@ -1,284 +1,494 @@
 {
-  "CurveAtlasRowParameter": {
-    "class": "/Script/Engine.MaterialExpressionCurveAtlasRowParameter",
-    "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionCurveAtlasRowParameter.h",
-    "desc": "スカラーパラメータを曲線アトラスの行位置として使用し、時間入力で値をサンプリングする",
-    "inputs": [
-      {"name": "CurveTime", "prop": "InputTime", "required": true}
-    ],
-    "prop_pins": [],
-    "outputs": [
-      {"name": "RGB", "mask": "RGB"},
-      {"name": "R", "mask": "R"},
-      {"name": "G", "mask": "G"},
-      {"name": "B", "mask": "B"},
-      {"name": "A", "mask": "A"}
-    ],
-    "props": {
-      "Curve": {"type": "asset:UCurveLinearColor", "default": null},
-      "Atlas": {"type": "asset:UCurveLinearColorAtlas", "default": null},
-      "ParameterName": {"type": "FName", "default": ""},
-      "Group": {"type": "FName", "default": ""},
-      "DefaultValue": {"type": "float", "default": 0.0}
-    },
-    "notes": "継承元UMaterialExpressionScalarParameterのDefaultValueはShowAsInputPin=Primaryに設定されている",
-    "verified": false,
-    "is_parameter": true
+ "CurveAtlasRowParameter": {
+  "class": "/Script/Engine.MaterialExpressionCurveAtlasRowParameter",
+  "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionCurveAtlasRowParameter.h",
+  "desc": "",
+  "inputs": [
+   {
+    "name": "CurveTime",
+    "prop": "InputTime",
+    "required": true
+   }
+  ],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": "RGB",
+    "mask": "RGB"
+   },
+   {
+    "name": "R",
+    "mask": "R"
+   },
+   {
+    "name": "G",
+    "mask": "G"
+   },
+   {
+    "name": "B",
+    "mask": "B"
+   },
+   {
+    "name": "A",
+    "mask": "A"
+   }
+  ],
+  "props": {
+   "Curve": {
+    "type": "asset:UCurveLinearColor",
+    "default": null
+   },
+   "Atlas": {
+    "type": "asset:UCurveLinearColorAtlas",
+    "default": null
+   },
+   "ParameterName": {
+    "type": "FName",
+    "default": ""
+   },
+   "Group": {
+    "type": "FName",
+    "default": ""
+   },
+   "DefaultValue": {
+    "type": "float",
+    "default": 0.0
+   }
   },
-  "CustomOutput": {
-    "class": "/Script/Engine.MaterialExpressionCustomOutput",
-    "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionCustomOutput.h",
-    "desc": "カスタム出力の基底クラス(抽象)",
-    "abstract": true,
-    "verified": false
+  "notes": "",
+  "is_parameter": true
+ },
+ "CustomOutput": {
+  "class": "/Script/Engine.MaterialExpressionCustomOutput",
+  "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionCustomOutput.h",
+  "desc": "",
+  "abstract": true
+ },
+ "DBufferTexture": {
+  "class": "/Script/Engine.MaterialExpressionDBufferTexture",
+  "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionDBufferTexture.h",
+  "desc": "",
+  "inputs": [
+   {
+    "name": "Coordinates",
+    "prop": "Coordinates",
+    "required": false
+   }
+  ],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": "RGBA",
+    "mask": "RGBA"
+   },
+   {
+    "name": "RGB",
+    "mask": "RGB"
+   },
+   {
+    "name": "A",
+    "mask": "A"
+   }
+  ],
+  "props": {
+   "DBufferTextureId": {
+    "type": "enum:EDBufferTextureId",
+    "default": "DBT_A"
+   }
   },
-  "DBufferTexture": {
-    "class": "/Script/Engine.MaterialExpressionDBufferTexture",
-    "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionDBufferTexture.h",
-    "desc": "DBuffer テクスチャから値を取得する。A/B/C のいずれかを選択してサンプリング",
-    "inputs": [
-      {"name": "Coordinates", "prop": "Coordinates", "required": false}
-    ],
-    "prop_pins": [],
-    "outputs": [
-      {"name": "RGBA", "mask": "RGBA"},
-      {"name": "RGB", "mask": "RGB"},
-      {"name": "A", "mask": "A"}
-    ],
-    "props": {
-      "DBufferTextureId": {"type": "enum:EDBufferTextureId", "default": "DBT_A"}
-    },
-    "notes": "",
-    "verified": false
+  "notes": ""
+ },
+ "DDX": {
+  "class": "/Script/Engine.MaterialExpressionDDX",
+  "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionDDX.h",
+  "desc": "",
+  "inputs": [
+   {
+    "name": "",
+    "prop": "Value",
+    "required": false
+   }
+  ],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {},
+  "notes": ""
+ },
+ "DDY": {
+  "class": "/Script/Engine.MaterialExpressionDDY",
+  "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionDDY.h",
+  "desc": "",
+  "inputs": [
+   {
+    "name": "",
+    "prop": "Value",
+    "required": false
+   }
+  ],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {},
+  "notes": ""
+ },
+ "DataDrivenShaderPlatformInfoSwitch": {
+  "class": "/Script/Engine.MaterialExpressionDataDrivenShaderPlatformInfoSwitch",
+  "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionDataDrivenShaderPlatformInfoSwitch.h",
+  "desc": "",
+  "inputs": [
+   {
+    "name": "",
+    "prop": "InputTrue",
+    "required": false
+   },
+   {
+    "name": "",
+    "prop": "InputFalse",
+    "required": false
+   }
+  ],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {
+   "DDSPIPropertyNames": {
+    "type": "TArray<FDataDrivenShaderPlatformInfoInput>",
+    "default": null
+   }
   },
-  "DDX": {
-    "class": "/Script/Engine.MaterialExpressionDDX",
-    "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionDDX.h",
-    "desc": "入力値の水平方向の偏微分(ddx)を計算する",
-    "inputs": [
-      {"name": "", "prop": "Value", "required": false}
-    ],
-    "prop_pins": [],
-    "outputs": [
-      {"name": ""}
-    ],
-    "props": {},
-    "notes": "",
-    "verified": false
+  "notes": ""
+ },
+ "DecalColor": {
+  "class": "/Script/Engine.MaterialExpressionDecalColor",
+  "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionDecalColor.h",
+  "desc": "",
+  "inputs": [],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": "RGB",
+    "mask": "RGB"
+   },
+   {
+    "name": "R",
+    "mask": "R"
+   },
+   {
+    "name": "G",
+    "mask": "G"
+   },
+   {
+    "name": "B",
+    "mask": "B"
+   },
+   {
+    "name": "A",
+    "mask": "A"
+   },
+   {
+    "name": "RGBA",
+    "mask": "RGBA"
+   }
+  ],
+  "props": {},
+  "notes": ""
+ },
+ "DecalDerivative": {
+  "class": "/Script/Engine.MaterialExpressionDecalDerivative",
+  "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionDecalDerivative.h",
+  "desc": "",
+  "inputs": [],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": "DDX"
+   },
+   {
+    "name": "DDY"
+   }
+  ],
+  "props": {},
+  "notes": ""
+ },
+ "DecalLifetimeOpacity": {
+  "class": "/Script/Engine.MaterialExpressionDecalLifetimeOpacity",
+  "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionDecalLifetimeOpacity.h",
+  "desc": "",
+  "inputs": [],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": "Opacity"
+   }
+  ],
+  "props": {},
+  "notes": ""
+ },
+ "DecalMipmapLevel": {
+  "class": "/Script/Engine.MaterialExpressionDecalMipmapLevel",
+  "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionDecalMipmapLevel.h",
+  "desc": "",
+  "inputs": [
+   {
+    "name": "",
+    "prop": "TextureSize",
+    "required": false,
+    "default_prop": "ConstWidth"
+   }
+  ],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {
+   "TextureSize": {
+    "type": "float",
+    "default": null
+   },
+   "ConstWidth": {
+    "type": "float",
+    "default": 256.0
+   },
+   "ConstHeight": {
+    "type": "float",
+    "default": 256.0
+   }
   },
-  "DDY": {
-    "class": "/Script/Engine.MaterialExpressionDDY",
-    "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionDDY.h",
-    "desc": "入力値の垂直方向の偏微分(ddy)を計算する",
-    "inputs": [
-      {"name": "", "prop": "Value", "required": false}
-    ],
-    "prop_pins": [],
-    "outputs": [
-      {"name": ""}
-    ],
-    "props": {},
-    "notes": "",
-    "verified": false
+  "notes": ""
+ },
+ "DepthOfFieldFunction": {
+  "class": "/Script/Engine.MaterialExpressionDepthOfFieldFunction",
+  "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionDepthOfFieldFunction.h",
+  "desc": "",
+  "inputs": [
+   {
+    "name": "",
+    "prop": "Depth",
+    "required": false
+   }
+  ],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {
+   "FunctionValue": {
+    "type": "enum:EDepthOfFieldFunctionValue",
+    "default": "TDOF_NearAndFarMask"
+   }
   },
-  "DataDrivenShaderPlatformInfoSwitch": {
-    "class": "/Script/Engine.MaterialExpressionDataDrivenShaderPlatformInfoSwitch",
-    "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionDataDrivenShaderPlatformInfoSwitch.h",
-    "desc": "シェーダプラットフォーム情報に基づいて条件分岐し、2つの入力から選択する",
-    "inputs": [
-      {"name": "", "prop": "InputTrue", "required": false},
-      {"name": "", "prop": "InputFalse", "required": false}
-    ],
-    "prop_pins": [],
-    "outputs": [
-      {"name": ""}
-    ],
-    "props": {
-      "DDSPIPropertyNames": {"type": "TArray<FDataDrivenShaderPlatformInfoInput>", "default": null}
-    },
-    "notes": "GetInputNameで動的に条件文字列を組立てて入力名を決定する",
-    "verified": false
+  "notes": ""
+ },
+ "DistanceFieldApproxAO": {
+  "class": "/Script/Engine.MaterialExpressionDistanceFieldApproxAO",
+  "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionDistanceFieldApproxAO.h",
+  "desc": "",
+  "inputs": [
+   {
+    "name": "",
+    "prop": "Position",
+    "required": false
+   },
+   {
+    "name": "",
+    "prop": "Normal",
+    "required": false
+   },
+   {
+    "name": "",
+    "prop": "BaseDistance",
+    "required": false,
+    "default_prop": "BaseDistanceDefault"
+   },
+   {
+    "name": "",
+    "prop": "Radius",
+    "required": false,
+    "default_prop": "RadiusDefault"
+   }
+  ],
+  "prop_pins": [
+   {
+    "name": "",
+    "prop": "NumSteps",
+    "kind": "Primary",
+    "type": "uint32"
+   },
+   {
+    "name": "",
+    "prop": "StepScaleDefault",
+    "kind": "Advanced",
+    "type": "float"
+   }
+  ],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {
+   "Position": {
+    "type": "float",
+    "default": null
+   },
+   "Normal": {
+    "type": "float",
+    "default": null
+   },
+   "BaseDistance": {
+    "type": "float",
+    "default": null
+   },
+   "BaseDistanceDefault": {
+    "type": "float",
+    "default": 15.0
+   },
+   "Radius": {
+    "type": "float",
+    "default": null
+   },
+   "RadiusDefault": {
+    "type": "float",
+    "default": 150.0
+   },
+   "NumSteps": {
+    "type": "uint32",
+    "default": 1
+   },
+   "StepScaleDefault": {
+    "type": "float",
+    "default": 3.0
+   },
+   "WorldPositionOriginType": {
+    "type": "enum:EPositionOrigin",
+    "default": "Absolute"
+   }
   },
-  "DecalColor": {
-    "class": "/Script/Engine.MaterialExpressionDecalColor",
-    "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionDecalColor.h",
-    "desc": "デカール受信サーフェスのベースカラーを取得する",
-    "inputs": [],
-    "prop_pins": [],
-    "outputs": [
-      {"name": "RGB", "mask": "RGB"},
-      {"name": "R", "mask": "R"},
-      {"name": "G", "mask": "G"},
-      {"name": "B", "mask": "B"},
-      {"name": "A", "mask": "A"},
-      {"name": "RGBA", "mask": "RGBA"}
-    ],
-    "props": {},
-    "notes": "UMaterialExpressionExternalCodeBaseを継承(実装コード生成型)",
-    "verified": false
+  "notes": ""
+ },
+ "DistanceFieldGradient": {
+  "class": "/Script/Engine.MaterialExpressionDistanceFieldGradient",
+  "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionDistanceFieldGradient.h",
+  "desc": "",
+  "inputs": [
+   {
+    "name": "",
+    "prop": "Position",
+    "required": false
+   }
+  ],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {
+   "WorldPositionOriginType": {
+    "type": "enum:EPositionOrigin",
+    "default": "Absolute"
+   }
   },
-  "DecalDerivative": {
-    "class": "/Script/Engine.MaterialExpressionDecalDerivative",
-    "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionDecalDerivative.h",
-    "desc": "デカール受信サーフェスの偏微分(DDX, DDY)を取得する",
-    "inputs": [],
-    "prop_pins": [],
-    "outputs": [
-      {"name": "DDX"},
-      {"name": "DDY"}
-    ],
-    "props": {},
-    "notes": "FExpressionOutput(TEXT(\"...\"))形式で名前のみ、マスク情報なし",
-    "verified": false
+  "notes": ""
+ },
+ "DistanceFieldsRenderingSwitch": {
+  "class": "/Script/Engine.MaterialExpressionDistanceFieldsRenderingSwitch",
+  "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionDistanceFieldsRenderingSwitch.h",
+  "desc": "",
+  "inputs": [
+   {
+    "name": "No",
+    "prop": "No",
+    "required": false
+   },
+   {
+    "name": "Yes",
+    "prop": "Yes",
+    "required": false
+   }
+  ],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {},
+  "notes": ""
+ },
+ "DistanceToNearestSurface": {
+  "class": "/Script/Engine.MaterialExpressionDistanceToNearestSurface",
+  "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionDistanceToNearestSurface.h",
+  "desc": "",
+  "inputs": [
+   {
+    "name": "",
+    "prop": "Position",
+    "required": false
+   }
+  ],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {
+   "WorldPositionOriginType": {
+    "type": "enum:EPositionOrigin",
+    "default": "Absolute"
+   }
   },
-  "DecalLifetimeOpacity": {
-    "class": "/Script/Engine.MaterialExpressionDecalLifetimeOpacity",
-    "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionDecalLifetimeOpacity.h",
-    "desc": "デカールのライフタイムに基づいた不透明度を取得する",
-    "inputs": [],
-    "prop_pins": [],
-    "outputs": [
-      {"name": "Opacity"}
-    ],
-    "props": {},
-    "notes": "UMaterialExpressionExternalCodeBaseを継承",
-    "verified": false
+  "notes": ""
+ },
+ "EvalPhysicsIntegerField": {
+  "class": "/Script/Engine.MaterialExpressionEvalPhysicsIntegerField",
+  "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionSamplePhysicsField.h",
+  "desc": "",
+  "inputs": [
+   {
+    "name": "",
+    "prop": "WorldPosition",
+    "required": false
+   }
+  ],
+  "prop_pins": [
+   {
+    "name": "",
+    "prop": "FieldTarget",
+    "kind": "Advanced",
+    "type": "enum:EFieldIntegerType"
+   }
+  ],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {
+   "WorldPositionOriginType": {
+    "type": "enum:EPositionOrigin",
+    "default": "Absolute"
+   },
+   "FieldTarget": {
+    "type": "enum:EFieldIntegerType",
+    "default": "Integer_DynamicState"
+   }
   },
-  "DecalMipmapLevel": {
-    "class": "/Script/Engine.MaterialExpressionDecalMipmapLevel",
-    "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionDecalMipmapLevel.h",
-    "desc": "テクスチャサイズからミップマップレベルを計算する",
-    "inputs": [
-      {"name": "", "prop": "TextureSize", "required": false, "default_prop": "ConstWidth"}
-    ],
-    "prop_pins": [],
-    "outputs": [
-      {"name": ""}
-    ],
-    "props": {
-      "TextureSize": {"type": "float", "default": null},
-      "ConstWidth": {"type": "float", "default": 256.0},
-      "ConstHeight": {"type": "float", "default": 256.0}
-    },
-    "notes": "ConstWidthとConstHeightはOverridingInputProperty=TextureSize。UMaterialExpressionExternalCodeBaseを継承",
-    "verified": false
-  },
-  "DepthOfFieldFunction": {
-    "class": "/Script/Engine.MaterialExpressionDepthOfFieldFunction",
-    "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionDepthOfFieldFunction.h",
-    "desc": "深度から被写界深度関連の値を計算する(ピント、近景、遠景、円盤の混乱など)",
-    "inputs": [
-      {"name": "", "prop": "Depth", "required": false}
-    ],
-    "prop_pins": [],
-    "outputs": [
-      {"name": ""}
-    ],
-    "props": {
-      "FunctionValue": {"type": "enum:EDepthOfFieldFunctionValue", "default": "TDOF_NearAndFarMask"}
-    },
-    "notes": "UMaterialExpressionExternalCodeBaseを継承",
-    "verified": false
-  },
-  "DistanceFieldApproxAO": {
-    "class": "/Script/Engine.MaterialExpressionDistanceFieldApproxAO",
-    "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionDistanceFieldApproxAO.h",
-    "desc": "ディスタンスフィールドを用いた環境遮蔽(AO)を近似計算する",
-    "inputs": [
-      {"name": "", "prop": "Position", "required": false},
-      {"name": "", "prop": "Normal", "required": false},
-      {"name": "", "prop": "BaseDistance", "required": false, "default_prop": "BaseDistanceDefault"},
-      {"name": "", "prop": "Radius", "required": false, "default_prop": "RadiusDefault"}
-    ],
-    "prop_pins": [
-      {"name": "", "prop": "NumSteps", "kind": "Primary", "type": "uint32"},
-      {"name": "", "prop": "StepScaleDefault", "kind": "Advanced", "type": "float"}
-    ],
-    "outputs": [
-      {"name": ""}
-    ],
-    "props": {
-      "Position": {"type": "float", "default": null},
-      "Normal": {"type": "float", "default": null},
-      "BaseDistance": {"type": "float", "default": null},
-      "BaseDistanceDefault": {"type": "float", "default": 15.0},
-      "Radius": {"type": "float", "default": null},
-      "RadiusDefault": {"type": "float", "default": 150.0},
-      "NumSteps": {"type": "uint32", "default": 1},
-      "StepScaleDefault": {"type": "float", "default": 3.0},
-      "WorldPositionOriginType": {"type": "enum:EPositionOrigin", "default": "Absolute"}
-    },
-    "notes": "NumStepsはShowAsInputPin=Primary、StepScaleDefaultはShowAsInputPin=Advanced",
-    "verified": false
-  },
-  "DistanceFieldGradient": {
-    "class": "/Script/Engine.MaterialExpressionDistanceFieldGradient",
-    "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionDistanceFieldGradient.h",
-    "desc": "ディスタンスフィールドの勾配(法線)を取得する",
-    "inputs": [
-      {"name": "", "prop": "Position", "required": false}
-    ],
-    "prop_pins": [],
-    "outputs": [
-      {"name": ""}
-    ],
-    "props": {
-      "WorldPositionOriginType": {"type": "enum:EPositionOrigin", "default": "Absolute"}
-    },
-    "notes": "Positionの入力名はGetInputNameでWorldPositionOriginTypeに基づいて動的に決定される",
-    "verified": false
-  },
-  "DistanceFieldsRenderingSwitch": {
-    "class": "/Script/Engine.MaterialExpressionDistanceFieldsRenderingSwitch",
-    "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionDistanceFieldsRenderingSwitch.h",
-    "desc": "ディスタンスフィールドレンダリングがサポートされているかで条件分岐する",
-    "inputs": [
-      {"name": "No", "prop": "No", "required": false},
-      {"name": "Yes", "prop": "Yes", "required": false}
-    ],
-    "prop_pins": [],
-    "outputs": [
-      {"name": ""}
-    ],
-    "props": {},
-    "notes": "meta=(MIR_OnDemandInputRequest)で動的に入力が決定される",
-    "verified": false
-  },
-  "DistanceToNearestSurface": {
-    "class": "/Script/Engine.MaterialExpressionDistanceToNearestSurface",
-    "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionDistanceToNearestSurface.h",
-    "desc": "最も近いサーフェスまでの距離を取得する",
-    "inputs": [
-      {"name": "", "prop": "Position", "required": false}
-    ],
-    "prop_pins": [],
-    "outputs": [
-      {"name": ""}
-    ],
-    "props": {
-      "WorldPositionOriginType": {"type": "enum:EPositionOrigin", "default": "Absolute"}
-    },
-    "notes": "Positionの入力名はGetInputNameでWorldPositionOriginTypeに基づいて動的に決定される",
-    "verified": false
-  },
-  "EvalPhysicsIntegerField": {
-    "class": "/Script/Engine.MaterialExpressionEvalPhysicsIntegerField",
-    "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionSamplePhysicsField.h",
-    "desc": "グローバルフィジックスフィールドから整数値をサンプリングする",
-    "inputs": [
-      {"name": "", "prop": "WorldPosition", "required": false}
-    ],
-    "prop_pins": [
-      {"name": "", "prop": "FieldTarget", "kind": "Advanced", "type": "enum:EFieldIntegerType"}
-    ],
-    "outputs": [
-      {"name": ""}
-    ],
-    "props": {
-      "WorldPositionOriginType": {"type": "enum:EPositionOrigin", "default": "Absolute"},
-      "FieldTarget": {"type": "enum:EFieldIntegerType", "default": "Integer_DynamicState"}
-    },
-    "notes": "UMaterialExpressionSamplePhysicsIntegerFieldを継承。FieldTargetはShowAsInputPin=Advanced。WorldPositionの入力名はGetInputNameで動的に決定される",
-    "verified": false
-  }
+  "notes": ""
+ }
 }

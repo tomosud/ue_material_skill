@@ -1,282 +1,625 @@
 {
-  "PreSkinnedNormal": {
-    "class": "/Script/Engine.MaterialExpressionPreSkinnedNormal",
-    "header": "Materials/MaterialExpressionPreSkinnedNormal.h",
-    "desc": "スキニング前のローカル法線を返す。スケルタルメッシュの頂点シェーダでのみ使用可能",
-    "inputs": [],
-    "prop_pins": [],
-    "outputs": [{"name": ""}],
-    "props": {},
-    "notes": "",
-    "verified": false
+ "PreSkinnedNormal": {
+  "class": "/Script/Engine.MaterialExpressionPreSkinnedNormal",
+  "header": "Materials/MaterialExpressionPreSkinnedNormal.h",
+  "desc": "",
+  "inputs": [],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {},
+  "notes": ""
+ },
+ "PreSkinnedPosition": {
+  "class": "/Script/Engine.MaterialExpressionPreSkinnedPosition",
+  "header": "Materials/MaterialExpressionPreSkinnedPosition.h",
+  "desc": "",
+  "inputs": [],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {},
+  "notes": "",
+  "deprecated": true
+ },
+ "PrecomputedAOMask": {
+  "class": "/Script/Engine.MaterialExpressionPrecomputedAOMask",
+  "header": "Materials/MaterialExpressionPrecomputedAOMask.h",
+  "desc": "",
+  "inputs": [],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {},
+  "notes": ""
+ },
+ "PreviousFrameSwitch": {
+  "class": "/Script/Engine.MaterialExpressionPreviousFrameSwitch",
+  "header": "Materials/MaterialExpressionPreviousFrameSwitch.h",
+  "desc": "",
+  "inputs": [
+   {
+    "name": "Current Frame",
+    "prop": "CurrentFrame",
+    "required": true,
+    "default_prop": null
+   },
+   {
+    "name": "Previous Frame",
+    "prop": "PreviousFrame",
+    "required": true,
+    "default_prop": null
+   }
+  ],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {},
+  "notes": ""
+ },
+ "QualitySwitch": {
+  "class": "/Script/Engine.MaterialExpressionQualitySwitch",
+  "header": "Materials/MaterialExpressionQualitySwitch.h",
+  "desc": "",
+  "inputs": [
+   {
+    "name": "Default",
+    "prop": "Default",
+    "required": true,
+    "default_prop": null
+   },
+   {
+    "name": "Low",
+    "prop": "Inputs[0]",
+    "required": false,
+    "default_prop": null
+   },
+   {
+    "name": "High",
+    "prop": "Inputs[1]",
+    "required": false,
+    "default_prop": null
+   },
+   {
+    "name": "Epic",
+    "prop": "Inputs[2]",
+    "required": false,
+    "default_prop": null
+   },
+   {
+    "name": "Cinematic",
+    "prop": "Inputs[3]",
+    "required": false,
+    "default_prop": null
+   }
+  ],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {},
+  "notes": ""
+ },
+ "RayTracingQualitySwitch": {
+  "class": "/Script/Engine.MaterialExpressionRayTracingQualitySwitch",
+  "header": "Materials/MaterialExpressionRayTracingQualitySwitch.h",
+  "desc": "",
+  "inputs": [
+   {
+    "name": "Normal",
+    "prop": "Normal",
+    "required": true,
+    "default_prop": null
+   },
+   {
+    "name": "RayTraced",
+    "prop": "RayTraced",
+    "required": true,
+    "default_prop": null
+   }
+  ],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {},
+  "notes": ""
+ },
+ "RecordTextureStreamingInfo": {
+  "class": "/Script/Engine.MaterialExpressionRecordTextureStreamingInfo",
+  "header": "Materials/MaterialExpressionRecordTextureStreamingInfo.h",
+  "desc": "",
+  "inputs": [
+   {
+    "name": "TextureObject",
+    "prop": "TextureObject",
+    "required": true,
+    "default_prop": null
+   },
+   {
+    "name": "Coordinates",
+    "prop": "Coordinates",
+    "required": true,
+    "default_prop": null
+   }
+  ],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": "Tex"
+   }
+  ],
+  "props": {},
+  "notes": ""
+ },
+ "ReflectionCapturePassSwitch": {
+  "class": "/Script/Engine.MaterialExpressionReflectionCapturePassSwitch",
+  "header": "Materials/MaterialExpressionReflectionCapturePassSwitch.h",
+  "desc": "",
+  "inputs": [
+   {
+    "name": "Default",
+    "prop": "Default",
+    "required": true,
+    "default_prop": null
+   },
+   {
+    "name": "Reflection",
+    "prop": "Reflection",
+    "required": true,
+    "default_prop": null
+   }
+  ],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {},
+  "notes": ""
+ },
+ "RequiredSamplersSwitch": {
+  "class": "/Script/Engine.MaterialExpressionRequiredSamplersSwitch",
+  "header": "Materials/MaterialExpressionRequiredSamplersSwitch.h",
+  "desc": "",
+  "inputs": [
+   {
+    "name": "Within platform limit",
+    "prop": "InputTrue",
+    "required": false,
+    "default_prop": null
+   },
+   {
+    "name": "Over platform limit",
+    "prop": "InputFalse",
+    "required": false,
+    "default_prop": null
+   }
+  ],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {
+   "RequiredSamplers": {
+    "type": "uint32",
+    "default": 16
+   }
   },
-  "PreSkinnedPosition": {
-    "class": "/Script/Engine.MaterialExpressionPreSkinnedPosition",
-    "header": "Materials/MaterialExpressionPreSkinnedPosition.h",
-    "desc": "スキニング前のローカル位置を返す（非推奨、'Local Position'にマージされた）",
-    "inputs": [],
-    "prop_pins": [],
-    "outputs": [{"name": ""}],
-    "props": {},
-    "notes": "",
-    "verified": false,
-    "deprecated": true
+  "notes": ""
+ },
+ "RuntimeVirtualTextureCustomData": {
+  "class": "/Script/Engine.MaterialExpressionRuntimeVirtualTextureCustomData",
+  "header": "Materials/MaterialExpressionRuntimeVirtualTextureCustomData.h",
+  "desc": "",
+  "inputs": [],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {},
+  "notes": ""
+ },
+ "RuntimeVirtualTextureOutput": {
+  "class": "/Script/Engine.MaterialExpressionRuntimeVirtualTextureOutput",
+  "header": "Materials/MaterialExpressionRuntimeVirtualTextureOutput.h",
+  "desc": "",
+  "inputs": [
+   {
+    "name": "BaseColor",
+    "prop": "BaseColor",
+    "required": false,
+    "default_prop": null
+   },
+   {
+    "name": "Specular",
+    "prop": "Specular",
+    "required": false,
+    "default_prop": null
+   },
+   {
+    "name": "Roughness",
+    "prop": "Roughness",
+    "required": false,
+    "default_prop": null
+   },
+   {
+    "name": "Normal",
+    "prop": "Normal",
+    "required": false,
+    "default_prop": null
+   },
+   {
+    "name": "WorldHeight",
+    "prop": "WorldHeight",
+    "required": false,
+    "default_prop": null
+   },
+   {
+    "name": "Opacity",
+    "prop": "Opacity",
+    "required": false,
+    "default_prop": null
+   },
+   {
+    "name": "Mask",
+    "prop": "Mask",
+    "required": false,
+    "default_prop": null
+   },
+   {
+    "name": "Displacement",
+    "prop": "Displacement",
+    "required": false,
+    "default_prop": null
+   },
+   {
+    "name": "Mask4",
+    "prop": "Mask4",
+    "required": false,
+    "default_prop": null
+   }
+  ],
+  "prop_pins": [],
+  "outputs": [],
+  "props": {},
+  "notes": ""
+ },
+ "RuntimeVirtualTextureReplace": {
+  "class": "/Script/Engine.MaterialExpressionRuntimeVirtualTextureReplace",
+  "header": "Materials/MaterialExpressionRuntimeVirtualTextureReplace.h",
+  "desc": "",
+  "inputs": [
+   {
+    "name": "Default",
+    "prop": "Default",
+    "required": true,
+    "default_prop": null
+   },
+   {
+    "name": "VirtualTextureOutput",
+    "prop": "VirtualTextureOutput",
+    "required": true,
+    "default_prop": null
+   }
+  ],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {},
+  "notes": ""
+ },
+ "RuntimeVirtualTextureSample": {
+  "class": "/Script/Engine.MaterialExpressionRuntimeVirtualTextureSample",
+  "header": "Materials/MaterialExpressionRuntimeVirtualTextureSample.h",
+  "desc": "",
+  "inputs": [
+   {
+    "name": "Coordinates",
+    "prop": "Coordinates",
+    "required": false,
+    "default_prop": null
+   },
+   {
+    "name": "WorldPosition",
+    "prop": "WorldPosition",
+    "required": false,
+    "default_prop": null
+   },
+   {
+    "name": "MipValue",
+    "prop": "MipValue",
+    "required": false,
+    "default_prop": null
+   },
+   {
+    "name": "DDX",
+    "prop": "DDX",
+    "required": false,
+    "default_prop": null
+   },
+   {
+    "name": "DDY",
+    "prop": "DDY",
+    "required": false,
+    "default_prop": null
+   }
+  ],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": "BaseColor"
+   },
+   {
+    "name": "Specular"
+   },
+   {
+    "name": "Roughness"
+   },
+   {
+    "name": "Normal"
+   },
+   {
+    "name": "WorldHeight"
+   },
+   {
+    "name": "Mask"
+   },
+   {
+    "name": "Displacement"
+   },
+   {
+    "name": "Mask4"
+   }
+  ],
+  "props": {
+   "VirtualTexture": {
+    "type": "asset:URuntimeVirtualTexture",
+    "default": null
+   },
+   "MaterialType": {
+    "type": "enum:ERuntimeVirtualTextureMaterialType",
+    "default": "BaseColor"
+   },
+   "bSinglePhysicalSpace": {
+    "type": "bool",
+    "default": true
+   },
+   "bAdaptive": {
+    "type": "bool",
+    "default": false
+   },
+   "WorldPositionOriginType": {
+    "type": "enum:EPositionOrigin",
+    "default": "Absolute"
+   },
+   "TextureAddressMode": {
+    "type": "enum:ERuntimeVirtualTextureTextureAddressMode",
+    "default": "RVTTA_Clamp"
+   },
+   "MipValueMode": {
+    "type": "enum:ERuntimeVirtualTextureMipValueMode",
+    "default": "RVTMVM_None"
+   },
+   "bEnableFeedback": {
+    "type": "bool",
+    "default": true
+   }
   },
-  "PrecomputedAOMask": {
-    "class": "/Script/Engine.MaterialExpressionPrecomputedAOMask",
-    "header": "Materials/MaterialExpressionPrecomputedAOMask.h",
-    "desc": "Lightmass World設定で生成された事前計算AOマスクにアクセス",
-    "inputs": [],
-    "prop_pins": [],
-    "outputs": [{"name": ""}],
-    "props": {},
-    "notes": "",
-    "verified": false
+  "notes": ""
+ },
+ "RuntimeVirtualTextureSampleParameter": {
+  "class": "/Script/Engine.MaterialExpressionRuntimeVirtualTextureSampleParameter",
+  "header": "Materials/MaterialExpressionRuntimeVirtualTextureSampleParameter.h",
+  "desc": "",
+  "inputs": [
+   {
+    "name": "Coordinates",
+    "prop": "Coordinates",
+    "required": false,
+    "default_prop": null
+   },
+   {
+    "name": "WorldPosition",
+    "prop": "WorldPosition",
+    "required": false,
+    "default_prop": null
+   },
+   {
+    "name": "MipValue",
+    "prop": "MipValue",
+    "required": false,
+    "default_prop": null
+   },
+   {
+    "name": "DDX",
+    "prop": "DDX",
+    "required": false,
+    "default_prop": null
+   },
+   {
+    "name": "DDY",
+    "prop": "DDY",
+    "required": false,
+    "default_prop": null
+   }
+  ],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": "BaseColor"
+   },
+   {
+    "name": "Specular"
+   },
+   {
+    "name": "Roughness"
+   },
+   {
+    "name": "Normal"
+   },
+   {
+    "name": "WorldHeight"
+   },
+   {
+    "name": "Mask"
+   },
+   {
+    "name": "Displacement"
+   },
+   {
+    "name": "Mask4"
+   }
+  ],
+  "props": {
+   "VirtualTexture": {
+    "type": "asset:URuntimeVirtualTexture",
+    "default": null
+   },
+   "MaterialType": {
+    "type": "enum:ERuntimeVirtualTextureMaterialType",
+    "default": "BaseColor"
+   },
+   "bSinglePhysicalSpace": {
+    "type": "bool",
+    "default": true
+   },
+   "bAdaptive": {
+    "type": "bool",
+    "default": false
+   },
+   "WorldPositionOriginType": {
+    "type": "enum:EPositionOrigin",
+    "default": "Absolute"
+   },
+   "TextureAddressMode": {
+    "type": "enum:ERuntimeVirtualTextureTextureAddressMode",
+    "default": "RVTTA_Clamp"
+   },
+   "MipValueMode": {
+    "type": "enum:ERuntimeVirtualTextureMipValueMode",
+    "default": "RVTMVM_None"
+   },
+   "bEnableFeedback": {
+    "type": "bool",
+    "default": true
+   },
+   "ParameterName": {
+    "type": "FName",
+    "default": ""
+   },
+   "ExpressionGUID": {
+    "type": "FGuid",
+    "default": ""
+   },
+   "Group": {
+    "type": "FName",
+    "default": ""
+   },
+   "SortPriority": {
+    "type": "int32",
+    "default": 32
+   }
   },
-  "PreviousFrameSwitch": {
-    "class": "/Script/Engine.MaterialExpressionPreviousFrameSwitch",
-    "header": "Materials/MaterialExpressionPreviousFrameSwitch.h",
-    "desc": "現在フレームと前フレームのいずれかを選択するスイッチ",
-    "inputs": [
-      {"name": "Current Frame", "prop": "CurrentFrame", "required": true, "default_prop": null},
-      {"name": "Previous Frame", "prop": "PreviousFrame", "required": true, "default_prop": null}
-    ],
-    "prop_pins": [],
-    "outputs": [{"name": ""}],
-    "props": {},
-    "notes": "",
-    "verified": false
+  "notes": "",
+  "is_parameter": true
+ },
+ "SamplePhysicsScalarField": {
+  "class": "/Script/Engine.MaterialExpressionSamplePhysicsScalarField",
+  "header": "Materials/MaterialExpressionSamplePhysicsField.h",
+  "desc": "",
+  "inputs": [
+   {
+    "name": "WorldPosition",
+    "prop": "WorldPosition",
+    "required": false,
+    "default_prop": null
+   }
+  ],
+  "prop_pins": [
+   {
+    "name": "Target Type",
+    "prop": "FieldTarget",
+    "kind": "Advanced",
+    "type": "enum:EFieldScalarType"
+   }
+  ],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {
+   "WorldPositionOriginType": {
+    "type": "enum:EPositionOrigin",
+    "default": "Absolute"
+   },
+   "FieldTarget": {
+    "type": "enum:EFieldScalarType",
+    "default": "Scalar_DynamicConstraint"
+   }
   },
-  "QualitySwitch": {
-    "class": "/Script/Engine.MaterialExpressionQualitySwitch",
-    "header": "Materials/MaterialExpressionQualitySwitch.h",
-    "desc": "品質レベルに基づいて異なる入力を選択するスイッチ",
-    "inputs": [
-      {"name": "Default", "prop": "Default", "required": true, "default_prop": null},
-      {"name": "Low", "prop": "Inputs[0]", "required": false, "default_prop": null},
-      {"name": "High", "prop": "Inputs[1]", "required": false, "default_prop": null},
-      {"name": "Epic", "prop": "Inputs[2]", "required": false, "default_prop": null},
-      {"name": "Cinematic", "prop": "Inputs[3]", "required": false, "default_prop": null}
-    ],
-    "prop_pins": [],
-    "outputs": [{"name": ""}],
-    "props": {},
-    "notes": "Inputs配列の要素数はEMaterialQualityLevel::Numで定義。IsInputConnectionRequired(InputIndex==0)でDefault必須",
-    "verified": false
+  "notes": ""
+ },
+ "SamplePhysicsIntegerField": {
+  "class": "/Script/Engine.MaterialExpressionSamplePhysicsIntegerField",
+  "header": "Materials/MaterialExpressionSamplePhysicsField.h",
+  "desc": "",
+  "inputs": [
+   {
+    "name": "WorldPosition",
+    "prop": "WorldPosition",
+    "required": false,
+    "default_prop": null
+   }
+  ],
+  "prop_pins": [
+   {
+    "name": "Target Type",
+    "prop": "FieldTarget",
+    "kind": "Advanced",
+    "type": "enum:EFieldIntegerType"
+   }
+  ],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {
+   "WorldPositionOriginType": {
+    "type": "enum:EPositionOrigin",
+    "default": "Absolute"
+   },
+   "FieldTarget": {
+    "type": "enum:EFieldIntegerType",
+    "default": "Integer_DynamicState"
+   }
   },
-  "RayTracingQualitySwitch": {
-    "class": "/Script/Engine.MaterialExpressionRayTracingQualitySwitch",
-    "header": "Materials/MaterialExpressionRayTracingQualitySwitch.h",
-    "desc": "レイトレーシング対応かどうかに基づいて異なる入力を選択するスイッチ",
-    "inputs": [
-      {"name": "Normal", "prop": "Normal", "required": true, "default_prop": null},
-      {"name": "RayTraced", "prop": "RayTraced", "required": true, "default_prop": null}
-    ],
-    "prop_pins": [],
-    "outputs": [{"name": ""}],
-    "props": {},
-    "notes": "",
-    "verified": false
-  },
-  "RecordTextureStreamingInfo": {
-    "class": "/Script/Engine.MaterialExpressionRecordTextureStreamingInfo",
-    "header": "Materials/MaterialExpressionRecordTextureStreamingInfo.h",
-    "desc": "テクスチャのUVスケール情報を自動ストリーミングシステム用に記録",
-    "inputs": [
-      {"name": "TextureObject", "prop": "TextureObject", "required": true, "default_prop": null},
-      {"name": "Coordinates", "prop": "Coordinates", "required": true, "default_prop": null}
-    ],
-    "prop_pins": [],
-    "outputs": [{"name": "Tex"}],
-    "props": {},
-    "notes": "GetInput()でInputIndexを処理。GetInputValueType()でMCT_Texture2D, MCT_Float2を返す",
-    "verified": false
-  },
-  "ReflectionCapturePassSwitch": {
-    "class": "/Script/Engine.MaterialExpressionReflectionCapturePassSwitch",
-    "header": "Materials/MaterialExpressionReflectionCapturePassSwitch.h",
-    "desc": "リフレクションキャプチャレンダリング時の特殊な挙動を定義するスイッチ",
-    "inputs": [
-      {"name": "Default", "prop": "Default", "required": true, "default_prop": null},
-      {"name": "Reflection", "prop": "Reflection", "required": true, "default_prop": null}
-    ],
-    "prop_pins": [],
-    "outputs": [{"name": ""}],
-    "props": {},
-    "notes": "",
-    "verified": false
-  },
-  "RequiredSamplersSwitch": {
-    "class": "/Script/Engine.MaterialExpressionRequiredSamplersSwitch",
-    "header": "Materials/MaterialExpressionRequiredSamplersSwitch.h",
-    "desc": "プラットフォームのサンプラー数制限に基づいてロジックを切り替えるスイッチ",
-    "inputs": [
-      {"name": "Within platform limit", "prop": "InputTrue", "required": false, "default_prop": null},
-      {"name": "Over platform limit", "prop": "InputFalse", "required": false, "default_prop": null}
-    ],
-    "prop_pins": [],
-    "outputs": [{"name": ""}],
-    "props": {
-      "RequiredSamplers": {"type": "uint32", "default": 16}
-    },
-    "notes": "GetInputName()で入力ピン名を返す。IsInputConnectionRequired()でfalse",
-    "verified": false
-  },
-  "RuntimeVirtualTextureCustomData": {
-    "class": "/Script/Engine.MaterialExpressionRuntimeVirtualTextureCustomData",
-    "header": "Materials/MaterialExpressionRuntimeVirtualTextureCustomData.h",
-    "desc": "ランタイム仮想テクスチャのカスタムデータにアクセス",
-    "inputs": [],
-    "prop_pins": [],
-    "outputs": [{"name": ""}],
-    "props": {},
-    "notes": "",
-    "verified": false
-  },
-  "RuntimeVirtualTextureOutput": {
-    "class": "/Script/Engine.MaterialExpressionRuntimeVirtualTextureOutput",
-    "header": "Materials/MaterialExpressionRuntimeVirtualTextureOutput.h",
-    "desc": "ランタイム仮想テクスチャへ複数のマテリアル属性を出力",
-    "inputs": [
-      {"name": "BaseColor", "prop": "BaseColor", "required": false, "default_prop": null},
-      {"name": "Specular", "prop": "Specular", "required": false, "default_prop": null},
-      {"name": "Roughness", "prop": "Roughness", "required": false, "default_prop": null},
-      {"name": "Normal", "prop": "Normal", "required": false, "default_prop": null},
-      {"name": "WorldHeight", "prop": "WorldHeight", "required": false, "default_prop": null},
-      {"name": "Opacity", "prop": "Opacity", "required": false, "default_prop": null},
-      {"name": "Mask", "prop": "Mask", "required": false, "default_prop": null},
-      {"name": "Displacement", "prop": "Displacement", "required": false, "default_prop": null},
-      {"name": "Mask4", "prop": "Mask4", "required": false, "default_prop": null}
-    ],
-    "prop_pins": [],
-    "outputs": [],
-    "props": {},
-    "notes": "CustomOutputノード。GetNumOutputs()で動的に出力数を決定。Compile()でOutputIndexごとに異なる処理",
-    "verified": false
-  },
-  "RuntimeVirtualTextureReplace": {
-    "class": "/Script/Engine.MaterialExpressionRuntimeVirtualTextureReplace",
-    "header": "Materials/MaterialExpressionRuntimeVirtualTextureReplace.h",
-    "desc": "仮想テクスチャレンダリングパス時のロジック切り替え",
-    "inputs": [
-      {"name": "Default", "prop": "Default", "required": true, "default_prop": null},
-      {"name": "VirtualTextureOutput", "prop": "VirtualTextureOutput", "required": true, "default_prop": null}
-    ],
-    "prop_pins": [],
-    "outputs": [{"name": ""}],
-    "props": {},
-    "notes": "IsInRuntimeVirtualTextureOutput()により入力を選択",
-    "verified": false
-  },
-  "RuntimeVirtualTextureSample": {
-    "class": "/Script/Engine.MaterialExpressionRuntimeVirtualTextureSample",
-    "header": "Materials/MaterialExpressionRuntimeVirtualTextureSample.h",
-    "desc": "ランタイム仮想テクスチャからサンプリング。複数の出力ピンを持つ",
-    "inputs": [
-      {"name": "Coordinates", "prop": "Coordinates", "required": false, "default_prop": null},
-      {"name": "WorldPosition", "prop": "WorldPosition", "required": false, "default_prop": null},
-      {"name": "MipValue", "prop": "MipValue", "required": false, "default_prop": null},
-      {"name": "DDX", "prop": "DDX", "required": false, "default_prop": null},
-      {"name": "DDY", "prop": "DDY", "required": false, "default_prop": null}
-    ],
-    "prop_pins": [],
-    "outputs": [
-      {"name": "BaseColor"},
-      {"name": "Specular"},
-      {"name": "Roughness"},
-      {"name": "Normal"},
-      {"name": "WorldHeight"},
-      {"name": "Mask"},
-      {"name": "Displacement"},
-      {"name": "Mask4"}
-    ],
-    "props": {
-      "VirtualTexture": {"type": "asset:URuntimeVirtualTexture", "default": null},
-      "MaterialType": {"type": "enum:ERuntimeVirtualTextureMaterialType", "default": "BaseColor"},
-      "bSinglePhysicalSpace": {"type": "bool", "default": true},
-      "bAdaptive": {"type": "bool", "default": false},
-      "WorldPositionOriginType": {"type": "enum:EPositionOrigin", "default": "Absolute"},
-      "TextureAddressMode": {"type": "enum:ERuntimeVirtualTextureTextureAddressMode", "default": "RVTTA_Clamp"},
-      "MipValueMode": {"type": "enum:ERuntimeVirtualTextureMipValueMode", "default": "RVTMVM_None"},
-      "bEnableFeedback": {"type": "bool", "default": true}
-    },
-    "notes": "InitOutputs()で出力ピンを動的に生成。GetInput()でInputIndexを処理。MipValueModeにより入力ピンが変動可能",
-    "verified": false
-  },
-  "RuntimeVirtualTextureSampleParameter": {
-    "class": "/Script/Engine.MaterialExpressionRuntimeVirtualTextureSampleParameter",
-    "header": "Materials/MaterialExpressionRuntimeVirtualTextureSampleParameter.h",
-    "desc": "ランタイム仮想テクスチャサンプリングのパラメータ版",
-    "inputs": [
-      {"name": "Coordinates", "prop": "Coordinates", "required": false, "default_prop": null},
-      {"name": "WorldPosition", "prop": "WorldPosition", "required": false, "default_prop": null},
-      {"name": "MipValue", "prop": "MipValue", "required": false, "default_prop": null},
-      {"name": "DDX", "prop": "DDX", "required": false, "default_prop": null},
-      {"name": "DDY", "prop": "DDY", "required": false, "default_prop": null}
-    ],
-    "prop_pins": [],
-    "outputs": [
-      {"name": "BaseColor"},
-      {"name": "Specular"},
-      {"name": "Roughness"},
-      {"name": "Normal"},
-      {"name": "WorldHeight"},
-      {"name": "Mask"},
-      {"name": "Displacement"},
-      {"name": "Mask4"}
-    ],
-    "props": {
-      "VirtualTexture": {"type": "asset:URuntimeVirtualTexture", "default": null},
-      "MaterialType": {"type": "enum:ERuntimeVirtualTextureMaterialType", "default": "BaseColor"},
-      "bSinglePhysicalSpace": {"type": "bool", "default": true},
-      "bAdaptive": {"type": "bool", "default": false},
-      "WorldPositionOriginType": {"type": "enum:EPositionOrigin", "default": "Absolute"},
-      "TextureAddressMode": {"type": "enum:ERuntimeVirtualTextureTextureAddressMode", "default": "RVTTA_Clamp"},
-      "MipValueMode": {"type": "enum:ERuntimeVirtualTextureMipValueMode", "default": "RVTMVM_None"},
-      "bEnableFeedback": {"type": "bool", "default": true},
-      "ParameterName": {"type": "FName", "default": ""},
-      "ExpressionGUID": {"type": "FGuid", "default": ""},
-      "Group": {"type": "FName", "default": ""},
-      "SortPriority": {"type": "int32", "default": 32}
-    },
-    "notes": "UMaterialExpressionRuntimeVirtualTextureSampleを継承。パラメータ版なので参照用プロパティを追加",
-    "verified": false,
-    "is_parameter": true
-  },
-  "SamplePhysicsScalarField": {
-    "class": "/Script/Engine.MaterialExpressionSamplePhysicsScalarField",
-    "header": "Materials/MaterialExpressionSamplePhysicsField.h",
-    "desc": "グローバルフィジックスフィールドのスカラー値をサンプリング",
-    "inputs": [
-      {"name": "WorldPosition", "prop": "WorldPosition", "required": false, "default_prop": null}
-    ],
-    "prop_pins": [
-      {"name": "Target Type", "prop": "FieldTarget", "kind": "Advanced", "type": "enum:EFieldScalarType"}
-    ],
-    "outputs": [{"name": ""}],
-    "props": {
-      "WorldPositionOriginType": {"type": "enum:EPositionOrigin", "default": "Absolute"},
-      "FieldTarget": {"type": "enum:EFieldScalarType", "default": "Scalar_DynamicConstraint"}
-    },
-    "notes": "GetInputName()でWorldPositionの表示名を動的に生成。WorldPositionOriginTypeで変更可能",
-    "verified": false
-  },
-  "SamplePhysicsIntegerField": {
-    "class": "/Script/Engine.MaterialExpressionSamplePhysicsIntegerField",
-    "header": "Materials/MaterialExpressionSamplePhysicsField.h",
-    "desc": "グローバルフィジックスフィールドの整数値をサンプリング",
-    "inputs": [
-      {"name": "WorldPosition", "prop": "WorldPosition", "required": false, "default_prop": null}
-    ],
-    "prop_pins": [
-      {"name": "Target Type", "prop": "FieldTarget", "kind": "Advanced", "type": "enum:EFieldIntegerType"}
-    ],
-    "outputs": [{"name": ""}],
-    "props": {
-      "WorldPositionOriginType": {"type": "enum:EPositionOrigin", "default": "Absolute"},
-      "FieldTarget": {"type": "enum:EFieldIntegerType", "default": "Integer_DynamicState"}
-    },
-    "notes": "GetInputName()でWorldPositionの表示名を動的に生成。WorldPositionOriginTypeで変更可能",
-    "verified": false
-  }
+  "notes": ""
+ }
 }

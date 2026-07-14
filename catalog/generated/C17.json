@@ -1,288 +1,603 @@
 {
-  "Sobol": {
-    "class": "/Script/Engine.MaterialExpressionSobol",
-    "header": "Materials/MaterialExpressionSobol.h",
-    "desc": "Sobol準ランダム数列サンプラー。2D格子セルと点番号から準ランダム座標を生成",
-    "inputs": [
-      {"name": "Cell", "prop": "Cell", "required": true},
-      {"name": "Index", "prop": "Index", "required": false, "default_prop": "ConstIndex"},
-      {"name": "Seed", "prop": "Seed", "required": false, "default_prop": "ConstSeed"}
-    ],
-    "prop_pins": [],
-    "outputs": [{"name": ""}],
-    "props": {
-      "ConstIndex": {"type": "uint32", "default": 0},
-      "ConstSeed": {"type": "FVector2D", "default": [0.0, 0.0]}
-    },
-    "notes": "",
-    "verified": false
+ "Sobol": {
+  "class": "/Script/Engine.MaterialExpressionSobol",
+  "header": "Materials/MaterialExpressionSobol.h",
+  "desc": "",
+  "inputs": [
+   {
+    "name": "Cell",
+    "prop": "Cell",
+    "required": true
+   },
+   {
+    "name": "Index",
+    "prop": "Index",
+    "required": false,
+    "default_prop": "ConstIndex"
+   },
+   {
+    "name": "Seed",
+    "prop": "Seed",
+    "required": false,
+    "default_prop": "ConstSeed"
+   }
+  ],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {
+   "ConstIndex": {
+    "type": "uint32",
+    "default": 0
+   },
+   "ConstSeed": {
+    "type": "FVector2D",
+    "default": [
+     0.0,
+     0.0
+    ]
+   }
   },
-  "SparseVolumeTextureBase": {
-    "abstract": true,
-    "class": "/Script/Engine.MaterialExpressionSparseVolumeTextureBase",
-    "header": "Materials/MaterialExpressionSparseVolumeTextureBase.h",
-    "desc": "スパースボリュームテクスチャのベースクラス",
-    "notes": "",
-    "verified": false
+  "notes": ""
+ },
+ "SparseVolumeTextureBase": {
+  "abstract": true,
+  "class": "/Script/Engine.MaterialExpressionSparseVolumeTextureBase",
+  "header": "Materials/MaterialExpressionSparseVolumeTextureBase.h",
+  "desc": "",
+  "notes": ""
+ },
+ "SparseVolumeTextureObject": {
+  "class": "/Script/Engine.MaterialExpressionSparseVolumeTextureObject",
+  "header": "Materials/MaterialExpressionSparseVolumeTextureObject.h",
+  "desc": "",
+  "inputs": [],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {
+   "SparseVolumeTexture": {
+    "type": "asset:USparseVolumeTexture",
+    "default": null
+   }
   },
-  "SparseVolumeTextureObject": {
-    "class": "/Script/Engine.MaterialExpressionSparseVolumeTextureObject",
-    "header": "Materials/MaterialExpressionSparseVolumeTextureObject.h",
-    "desc": "スパースボリュームテクスチャオブジェクトを出力",
-    "inputs": [],
-    "prop_pins": [],
-    "outputs": [{"name": ""}],
-    "props": {
-      "SparseVolumeTexture": {"type": "asset:USparseVolumeTexture", "default": null}
-    },
-    "notes": "コンストラクタで出力を明示的に1つ設定",
-    "verified": false
+  "notes": ""
+ },
+ "SparseVolumeTextureObjectParameter": {
+  "class": "/Script/Engine.MaterialExpressionSparseVolumeTextureObjectParameter",
+  "header": "Materials/MaterialExpressionSparseVolumeTextureObject.h",
+  "desc": "",
+  "is_parameter": true,
+  "inputs": [],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {
+   "SparseVolumeTexture": {
+    "type": "asset:USparseVolumeTexture",
+    "default": null
+   },
+   "ParameterName": {
+    "type": "FName",
+    "default": ""
+   },
+   "ExpressionGUID": {
+    "type": "FGuid",
+    "default": null
+   },
+   "Group": {
+    "type": "FName",
+    "default": ""
+   },
+   "SortPriority": {
+    "type": "int32",
+    "default": 32
+   }
   },
-  "SparseVolumeTextureObjectParameter": {
-    "class": "/Script/Engine.MaterialExpressionSparseVolumeTextureObjectParameter",
-    "header": "Materials/MaterialExpressionSparseVolumeTextureObject.h",
-    "desc": "スパースボリュームテクスチャオブジェクトパラメータ",
-    "is_parameter": true,
-    "inputs": [],
-    "prop_pins": [],
-    "outputs": [{"name": ""}],
-    "props": {
-      "SparseVolumeTexture": {"type": "asset:USparseVolumeTexture", "default": null},
-      "ParameterName": {"type": "FName", "default": ""},
-      "ExpressionGUID": {"type": "FGuid", "default": null},
-      "Group": {"type": "FName", "default": ""},
-      "SortPriority": {"type": "int32", "default": 32}
-    },
-    "notes": "SparseVolumeTextureSampleParameterを継承して出力を1つに制限",
-    "verified": false
+  "notes": ""
+ },
+ "SparseVolumeTextureSample": {
+  "class": "/Script/Engine.MaterialExpressionSparseVolumeTextureSample",
+  "header": "Materials/MaterialExpressionSparseVolumeTextureSample.h",
+  "desc": "",
+  "inputs": [
+   {
+    "name": "Coordinates",
+    "prop": "Coordinates",
+    "required": false,
+    "default_prop": null,
+    "note": ""
+   },
+   {
+    "name": "TextureObject",
+    "prop": "TextureObject",
+    "required": false,
+    "default_prop": null,
+    "note": ""
+   },
+   {
+    "name": "MipValue",
+    "prop": "MipValue",
+    "required": false,
+    "default_prop": "ConstMipValue"
+   },
+   {
+    "name": "DDX(UVs)",
+    "prop": "CoordinatesDX",
+    "required": true
+   },
+   {
+    "name": "DDY(UVs)",
+    "prop": "CoordinatesDY",
+    "required": true
+   }
+  ],
+  "prop_pins": [
+   {
+    "name": "MipValueMode",
+    "prop": "MipValueMode",
+    "kind": "Advanced",
+    "type": "enum:ETextureMipValueMode"
+   },
+   {
+    "name": "SamplerSource",
+    "prop": "SamplerSource",
+    "kind": "Advanced",
+    "type": "enum:ESamplerSourceMode"
+   }
+  ],
+  "outputs": [
+   {
+    "name": "Attributes A"
+   },
+   {
+    "name": "Attributes B"
+   }
+  ],
+  "props": {
+   "SparseVolumeTexture": {
+    "type": "asset:USparseVolumeTexture",
+    "default": null
+   },
+   "MipValueMode": {
+    "type": "enum:ETextureMipValueMode",
+    "default": "TMVM_None"
+   },
+   "SamplerSource": {
+    "type": "enum:ESamplerSourceMode",
+    "default": 0
+   },
+   "ConstMipValue": {
+    "type": "int32",
+    "default": 0
+   }
   },
-  "SparseVolumeTextureSample": {
-    "class": "/Script/Engine.MaterialExpressionSparseVolumeTextureSample",
-    "header": "Materials/MaterialExpressionSparseVolumeTextureSample.h",
-    "desc": "スパースボリュームテクスチャをサンプリング。2つの属性出力を持つ",
-    "inputs": [
-      {"name": "Coordinates", "prop": "Coordinates", "required": false, "default_prop": null, "note": "未接続時は0"},
-      {"name": "TextureObject", "prop": "TextureObject", "required": false, "default_prop": null, "note": "Defaults to 'SparseVolumeTexture'"},
-      {"name": "MipValue", "prop": "MipValue", "required": false, "default_prop": "ConstMipValue"},
-      {"name": "DDX(UVs)", "prop": "CoordinatesDX", "required": true},
-      {"name": "DDY(UVs)", "prop": "CoordinatesDY", "required": true}
-    ],
-    "prop_pins": [
-      {"name": "MipValueMode", "prop": "MipValueMode", "kind": "Advanced", "type": "enum:ETextureMipValueMode"},
-      {"name": "SamplerSource", "prop": "SamplerSource", "kind": "Advanced", "type": "enum:ESamplerSourceMode"}
-    ],
-    "outputs": [
-      {"name": "Attributes A"},
-      {"name": "Attributes B"}
-    ],
-    "props": {
-      "SparseVolumeTexture": {"type": "asset:USparseVolumeTexture", "default": null},
-      "MipValueMode": {"type": "enum:ETextureMipValueMode", "default": "TMVM_None"},
-      "SamplerSource": {"type": "enum:ESamplerSourceMode", "default": 0},
-      "ConstMipValue": {"type": "int32", "default": 0}
-    },
-    "notes": "MipValueMode によって入力ピンが変わる(GetInputName参照)。CoordinatesDX/DY は MipValueMode==TMVM_Derivative でのみ有効",
-    "verified": false
+  "notes": ""
+ },
+ "SparseVolumeTextureSampleParameter": {
+  "class": "/Script/Engine.MaterialExpressionSparseVolumeTextureSampleParameter",
+  "header": "Materials/MaterialExpressionSparseVolumeTextureSample.h",
+  "desc": "",
+  "is_parameter": true,
+  "inputs": [
+   {
+    "name": "Coordinates",
+    "prop": "Coordinates",
+    "required": false,
+    "default_prop": null
+   },
+   {
+    "name": "TextureObject",
+    "prop": "TextureObject",
+    "required": false,
+    "default_prop": null
+   },
+   {
+    "name": "MipValue",
+    "prop": "MipValue",
+    "required": false,
+    "default_prop": "ConstMipValue"
+   },
+   {
+    "name": "DDX(UVs)",
+    "prop": "CoordinatesDX",
+    "required": true
+   },
+   {
+    "name": "DDY(UVs)",
+    "prop": "CoordinatesDY",
+    "required": true
+   }
+  ],
+  "prop_pins": [
+   {
+    "name": "MipValueMode",
+    "prop": "MipValueMode",
+    "kind": "Advanced",
+    "type": "enum:ETextureMipValueMode"
+   },
+   {
+    "name": "SamplerSource",
+    "prop": "SamplerSource",
+    "kind": "Advanced",
+    "type": "enum:ESamplerSourceMode"
+   }
+  ],
+  "outputs": [
+   {
+    "name": "Attributes A"
+   },
+   {
+    "name": "Attributes B"
+   }
+  ],
+  "props": {
+   "SparseVolumeTexture": {
+    "type": "asset:USparseVolumeTexture",
+    "default": null
+   },
+   "MipValueMode": {
+    "type": "enum:ETextureMipValueMode",
+    "default": "TMVM_None"
+   },
+   "SamplerSource": {
+    "type": "enum:ESamplerSourceMode",
+    "default": 0
+   },
+   "ConstMipValue": {
+    "type": "int32",
+    "default": 0
+   },
+   "ParameterName": {
+    "type": "FName",
+    "default": ""
+   },
+   "ExpressionGUID": {
+    "type": "FGuid",
+    "default": null
+   },
+   "Group": {
+    "type": "FName",
+    "default": ""
+   },
+   "SortPriority": {
+    "type": "int32",
+    "default": 32
+   }
   },
-  "SparseVolumeTextureSampleParameter": {
-    "class": "/Script/Engine.MaterialExpressionSparseVolumeTextureSampleParameter",
-    "header": "Materials/MaterialExpressionSparseVolumeTextureSample.h",
-    "desc": "スパースボリュームテクスチャサンプリングパラメータ",
-    "is_parameter": true,
-    "inputs": [
-      {"name": "Coordinates", "prop": "Coordinates", "required": false, "default_prop": null},
-      {"name": "TextureObject", "prop": "TextureObject", "required": false, "default_prop": null},
-      {"name": "MipValue", "prop": "MipValue", "required": false, "default_prop": "ConstMipValue"},
-      {"name": "DDX(UVs)", "prop": "CoordinatesDX", "required": true},
-      {"name": "DDY(UVs)", "prop": "CoordinatesDY", "required": true}
-    ],
-    "prop_pins": [
-      {"name": "MipValueMode", "prop": "MipValueMode", "kind": "Advanced", "type": "enum:ETextureMipValueMode"},
-      {"name": "SamplerSource", "prop": "SamplerSource", "kind": "Advanced", "type": "enum:ESamplerSourceMode"}
-    ],
-    "outputs": [
-      {"name": "Attributes A"},
-      {"name": "Attributes B"}
-    ],
-    "props": {
-      "SparseVolumeTexture": {"type": "asset:USparseVolumeTexture", "default": null},
-      "MipValueMode": {"type": "enum:ETextureMipValueMode", "default": "TMVM_None"},
-      "SamplerSource": {"type": "enum:ESamplerSourceMode", "default": 0},
-      "ConstMipValue": {"type": "int32", "default": 0},
-      "ParameterName": {"type": "FName", "default": ""},
-      "ExpressionGUID": {"type": "FGuid", "default": null},
-      "Group": {"type": "FName", "default": ""},
-      "SortPriority": {"type": "int32", "default": 32}
-    },
-    "notes": "SparseVolumeTextureSampleを継承。パラメータ化されたバージョン",
-    "verified": false
+  "notes": ""
+ },
+ "SpeedTree": {
+  "class": "/Script/Engine.MaterialExpressionSpeedTree",
+  "header": "Materials/MaterialExpressionSpeedTree.h",
+  "desc": "",
+  "inputs": [
+   {
+    "name": "GeometryInput",
+    "prop": "GeometryInput",
+    "required": false,
+    "default_prop": null,
+    "note": ""
+   },
+   {
+    "name": "WindInput",
+    "prop": "WindInput",
+    "required": false,
+    "default_prop": null,
+    "note": ""
+   },
+   {
+    "name": "LODInput",
+    "prop": "LODInput",
+    "required": false,
+    "default_prop": null,
+    "note": ""
+   },
+   {
+    "name": "ExtraBendWS",
+    "prop": "ExtraBendWS",
+    "required": false
+   }
+  ],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {
+   "GeometryType": {
+    "type": "enum:ESpeedTreeGeometryType",
+    "default": "STG_Branch"
+   },
+   "WindType": {
+    "type": "enum:ESpeedTreeWindType",
+    "default": "STW_None"
+   },
+   "LODType": {
+    "type": "enum:ESpeedTreeLODType",
+    "default": "STLOD_Pop"
+   },
+   "BillboardThreshold": {
+    "type": "float",
+    "default": 0.9
+   },
+   "bAccurateWindVelocities": {
+    "type": "bool",
+    "default": false
+   }
   },
-  "SpeedTree": {
-    "class": "/Script/Engine.MaterialExpressionSpeedTree",
-    "header": "Materials/MaterialExpressionSpeedTree.h",
-    "desc": "SpeedTreeアセット用のジオメトリ・風・LOD制御",
-    "inputs": [
-      {"name": "GeometryInput", "prop": "GeometryInput", "required": false, "default_prop": null, "note": "Defaults to 'GeometryType'"},
-      {"name": "WindInput", "prop": "WindInput", "required": false, "default_prop": null, "note": "Defaults to 'WindType'"},
-      {"name": "LODInput", "prop": "LODInput", "required": false, "default_prop": null, "note": "Defaults to 'LODType'"},
-      {"name": "ExtraBendWS", "prop": "ExtraBendWS", "required": false}
-    ],
-    "prop_pins": [],
-    "outputs": [{"name": ""}],
-    "props": {
-      "GeometryType": {"type": "enum:ESpeedTreeGeometryType", "default": "STG_Branch"},
-      "WindType": {"type": "enum:ESpeedTreeWindType", "default": "STW_None"},
-      "LODType": {"type": "enum:ESpeedTreeLODType", "default": "STLOD_Pop"},
-      "BillboardThreshold": {"type": "float", "default": 0.9},
-      "bAccurateWindVelocities": {"type": "bool", "default": false}
-    },
-    "notes": "",
-    "verified": false
+  "notes": ""
+ },
+ "SphericalParticleOpacity": {
+  "class": "/Script/Engine.MaterialExpressionSphericalParticleOpacity",
+  "header": "Materials/MaterialExpressionSphericalParticleOpacity.h",
+  "desc": "",
+  "inputs": [
+   {
+    "name": "Density",
+    "prop": "Density",
+    "required": false,
+    "default_prop": "ConstantDensity"
+   }
+  ],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {
+   "ConstantDensity": {
+    "type": "float",
+    "default": 1.0
+   }
   },
-  "SphericalParticleOpacity": {
-    "class": "/Script/Engine.MaterialExpressionSphericalParticleOpacity",
-    "header": "Materials/MaterialExpressionSphericalParticleOpacity.h",
-    "desc": "球形パーティクルの不透明度を計算",
-    "inputs": [
-      {"name": "Density", "prop": "Density", "required": false, "default_prop": "ConstantDensity"}
-    ],
-    "prop_pins": [],
-    "outputs": [{"name": ""}],
-    "props": {
-      "ConstantDensity": {"type": "float", "default": 1.0}
-    },
-    "notes": "",
-    "verified": false
+  "notes": ""
+ },
+ "SubsurfaceMediumMaterialOutput": {
+  "class": "/Script/Engine.MaterialExpressionSubsurfaceMediumMaterialOutput",
+  "header": "Materials/MaterialExpressionSubsurfaceMediumMaterialOutput.h",
+  "desc": "",
+  "inputs": [
+   {
+    "name": "MeanFreePath",
+    "prop": "MeanFreePath",
+    "required": false
+   },
+   {
+    "name": "ScatteringDistribution",
+    "prop": "ScatteringDistribution",
+    "required": false
+   }
+  ],
+  "prop_pins": [],
+  "outputs": [],
+  "props": {},
+  "notes": ""
+ },
+ "Switch": {
+  "class": "/Script/Engine.MaterialExpressionSwitch",
+  "header": "Materials/MaterialExpressionSwitch.h",
+  "desc": "",
+  "inputs": [
+   {
+    "name": "SwitchValue",
+    "prop": "SwitchValue",
+    "required": false,
+    "default_prop": "ConstSwitchValue"
+   },
+   {
+    "name": "Default",
+    "prop": "Default",
+    "required": false,
+    "default_prop": "ConstDefault"
+   }
+  ],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {
+   "Description": {
+    "type": "FString",
+    "default": "Switch"
+   },
+   "ConstSwitchValue": {
+    "type": "float",
+    "default": 0.0
+   },
+   "ConstDefault": {
+    "type": "float",
+    "default": 0.0
+   },
+   "Inputs": {
+    "type": "TArray<FSwitchCustomInput>",
+    "default": null
+   }
   },
-  "SubsurfaceMediumMaterialOutput": {
-    "class": "/Script/Engine.MaterialExpressionSubsurfaceMediumMaterialOutput",
-    "header": "Materials/MaterialExpressionSubsurfaceMediumMaterialOutput.h",
-    "desc": "サブサーフェス媒質の平均自由光路と散乱分布を設定（パストレーサー専用）",
-    "inputs": [
-      {"name": "MeanFreePath", "prop": "MeanFreePath", "required": false},
-      {"name": "ScatteringDistribution", "prop": "ScatteringDistribution", "required": false}
-    ],
-    "prop_pins": [],
-    "outputs": [],
-    "props": {},
-    "notes": "カスタムアウトプット。出力ピンなし",
-    "verified": false
+  "notes": ""
+ },
+ "TangentOutput": {
+  "class": "/Script/Engine.MaterialExpressionTangentOutput",
+  "header": "Materials/MaterialExpressionTangentOutput.h",
+  "desc": "",
+  "inputs": [
+   {
+    "name": "Input",
+    "prop": "Input",
+    "required": true
+   }
+  ],
+  "prop_pins": [],
+  "outputs": [],
+  "props": {},
+  "notes": ""
+ },
+ "TemporalResponsivenessOutput": {
+  "class": "/Script/Engine.MaterialExpressionTemporalResponsivenessOutput",
+  "header": "Materials/MaterialExpressionTemporalResponsivenessOutput.h",
+  "desc": "",
+  "inputs": [
+   {
+    "name": "Input",
+    "prop": "Input",
+    "required": false
+   }
+  ],
+  "prop_pins": [],
+  "outputs": [],
+  "props": {},
+  "notes": ""
+ },
+ "TemporalSobol": {
+  "class": "/Script/Engine.MaterialExpressionTemporalSobol",
+  "header": "Materials/MaterialExpressionTemporalSobol.h",
+  "desc": "",
+  "inputs": [
+   {
+    "name": "Index",
+    "prop": "Index",
+    "required": false,
+    "default_prop": "ConstIndex"
+   },
+   {
+    "name": "Seed",
+    "prop": "Seed",
+    "required": false,
+    "default_prop": "ConstSeed"
+   }
+  ],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {
+   "ConstIndex": {
+    "type": "uint32",
+    "default": 0
+   },
+   "ConstSeed": {
+    "type": "FVector2D",
+    "default": [
+     0.0,
+     0.0
+    ]
+   }
   },
-  "Switch": {
-    "class": "/Script/Engine.MaterialExpressionSwitch",
-    "header": "Materials/MaterialExpressionSwitch.h",
-    "desc": "条件値に基づいて複数の入力から1つを選択",
-    "inputs": [
-      {"name": "SwitchValue", "prop": "SwitchValue", "required": false, "default_prop": "ConstSwitchValue"},
-      {"name": "Default", "prop": "Default", "required": false, "default_prop": "ConstDefault"}
-    ],
-    "prop_pins": [],
-    "outputs": [{"name": ""}],
-    "props": {
-      "Description": {"type": "FString", "default": "Switch"},
-      "ConstSwitchValue": {"type": "float", "default": 0.0},
-      "ConstDefault": {"type": "float", "default": 0.0},
-      "Inputs": {"type": "TArray<FSwitchCustomInput>", "default": null}
-    },
-    "notes": "動的入力配列を持つ。GetInputName/GetInputsViewで動的に処理される。RebuildOutputs()で出力が1つに設定される",
-    "verified": false
+  "notes": ""
+ },
+ "TextureCollection": {
+  "class": "/Script/Engine.MaterialExpressionTextureCollection",
+  "header": "Materials/MaterialExpressionTextureCollection.h",
+  "desc": "",
+  "inputs": [],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": "TextureCollection"
+   },
+   {
+    "name": "TextureCount"
+   }
+  ],
+  "props": {
+   "TextureCollection": {
+    "type": "asset:UTextureCollection",
+    "default": null
+   }
   },
-  "TangentOutput": {
-    "class": "/Script/Engine.MaterialExpressionTangentOutput",
-    "header": "Materials/MaterialExpressionTangentOutput.h",
-    "desc": "カスタムアイタンジェント出力",
-    "inputs": [
-      {"name": "Input", "prop": "Input", "required": true}
-    ],
-    "prop_pins": [],
-    "outputs": [],
-    "props": {},
-    "notes": "カスタムアウトプット。出力ピンなし（Outputs.Reset()）",
-    "verified": false
+  "notes": ""
+ },
+ "TextureCollectionParameter": {
+  "class": "/Script/Engine.MaterialExpressionTextureCollectionParameter",
+  "header": "Materials/MaterialExpressionTextureCollectionParameter.h",
+  "desc": "",
+  "is_parameter": true,
+  "inputs": [],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": "TextureCollection"
+   },
+   {
+    "name": "TextureCount"
+   }
+  ],
+  "props": {
+   "TextureCollection": {
+    "type": "asset:UTextureCollection",
+    "default": null
+   },
+   "ParameterName": {
+    "type": "FName",
+    "default": ""
+   },
+   "ExpressionGUID": {
+    "type": "FGuid",
+    "default": null
+   },
+   "Group": {
+    "type": "FName",
+    "default": ""
+   },
+   "SortPriority": {
+    "type": "int32",
+    "default": 32
+   }
   },
-  "TemporalResponsivenessOutput": {
-    "class": "/Script/Engine.MaterialExpressionTemporalResponsivenessOutput",
-    "header": "Materials/MaterialExpressionTemporalResponsivenessOutput.h",
-    "desc": "テンポラルアキュムレーションの応答性を制御（実験的）",
-    "inputs": [
-      {"name": "Input", "prop": "Input", "required": false}
-    ],
-    "prop_pins": [],
-    "outputs": [],
-    "props": {},
-    "notes": "カスタムアウトプット。出力ピンなし（Outputs.Reset()）。Naniteは基本パスのみサポート",
-    "verified": false
+  "notes": ""
+ },
+ "TextureObjectFromCollection": {
+  "class": "/Script/Engine.MaterialExpressionTextureObjectFromCollection",
+  "header": "Materials/MaterialExpressionTextureObjectFromCollection.h",
+  "desc": "",
+  "inputs": [
+   {
+    "name": "TextureCollection",
+    "prop": "TextureCollection",
+    "required": false
+   },
+   {
+    "name": "CollectionIndex",
+    "prop": "CollectionIndex",
+    "required": false,
+    "default_prop": "ConstCollectionIndex"
+   }
+  ],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {
+   "TextureCollectionObject": {
+    "type": "asset:UTextureCollection",
+    "default": null
+   },
+   "ConstCollectionIndex": {
+    "type": "int32",
+    "default": 0
+   },
+   "TextureType": {
+    "type": "enum:ETextureCollectionMemberType",
+    "default": "Texture2D"
+   }
   },
-  "TemporalSobol": {
-    "class": "/Script/Engine.MaterialExpressionTemporalSobol",
-    "header": "Materials/MaterialExpressionTemporalSobol.h",
-    "desc": "テンポラル対応Sobol準ランダム数列サンプラー",
-    "inputs": [
-      {"name": "Index", "prop": "Index", "required": false, "default_prop": "ConstIndex"},
-      {"name": "Seed", "prop": "Seed", "required": false, "default_prop": "ConstSeed"}
-    ],
-    "prop_pins": [],
-    "outputs": [{"name": ""}],
-    "props": {
-      "ConstIndex": {"type": "uint32", "default": 0},
-      "ConstSeed": {"type": "FVector2D", "default": [0.0, 0.0]}
-    },
-    "notes": "",
-    "verified": false
-  },
-  "TextureCollection": {
-    "class": "/Script/Engine.MaterialExpressionTextureCollection",
-    "header": "Materials/MaterialExpressionTextureCollection.h",
-    "desc": "テクスチャコレクションを参照。テクスチャコレクションオブジェクトと数を出力",
-    "inputs": [],
-    "prop_pins": [],
-    "outputs": [
-      {"name": "TextureCollection"},
-      {"name": "TextureCount"}
-    ],
-    "props": {
-      "TextureCollection": {"type": "asset:UTextureCollection", "default": null}
-    },
-    "notes": "コンストラクタで2つの出力を明示的に設定",
-    "verified": false
-  },
-  "TextureCollectionParameter": {
-    "class": "/Script/Engine.MaterialExpressionTextureCollectionParameter",
-    "header": "Materials/MaterialExpressionTextureCollectionParameter.h",
-    "desc": "テクスチャコレクションパラメータ",
-    "is_parameter": true,
-    "inputs": [],
-    "prop_pins": [],
-    "outputs": [
-      {"name": "TextureCollection"},
-      {"name": "TextureCount"}
-    ],
-    "props": {
-      "TextureCollection": {"type": "asset:UTextureCollection", "default": null},
-      "ParameterName": {"type": "FName", "default": ""},
-      "ExpressionGUID": {"type": "FGuid", "default": null},
-      "Group": {"type": "FName", "default": ""},
-      "SortPriority": {"type": "int32", "default": 32}
-    },
-    "notes": "TextureCollectionを継承。パラメータ化されたバージョン",
-    "verified": false
-  },
-  "TextureObjectFromCollection": {
-    "class": "/Script/Engine.MaterialExpressionTextureObjectFromCollection",
-    "header": "Materials/MaterialExpressionTextureObjectFromCollection.h",
-    "desc": "テクスチャコレクションからテクスチャオブジェクトを取得",
-    "inputs": [
-      {"name": "TextureCollection", "prop": "TextureCollection", "required": false},
-      {"name": "CollectionIndex", "prop": "CollectionIndex", "required": false, "default_prop": "ConstCollectionIndex"}
-    ],
-    "prop_pins": [],
-    "outputs": [{"name": ""}],
-    "props": {
-      "TextureCollectionObject": {"type": "asset:UTextureCollection", "default": null},
-      "ConstCollectionIndex": {"type": "int32", "default": 0},
-      "TextureType": {"type": "enum:ETextureCollectionMemberType", "default": "Texture2D"}
-    },
-    "notes": "",
-    "verified": false
-  }
+  "notes": ""
+ }
 }

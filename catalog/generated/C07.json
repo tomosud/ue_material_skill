@@ -2,7 +2,7 @@
  "Time": {
   "class": "/Script/Engine.UMaterialExpressionTime",
   "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionTime.h",
-  "desc": "時間値を出力。Period で時刻をループさせることが可能。bIgnorePause で一時停止を無視可能",
+  "desc": "",
   "inputs": [],
   "prop_pins": [],
   "outputs": [
@@ -24,13 +24,12 @@
     "default": 0.0
    }
   },
-  "notes": "",
-  "verified": false
+  "notes": ""
  },
  "DeltaTime": {
   "class": "/Script/Engine.UMaterialExpressionDeltaTime",
   "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionDeltaTime.h",
-  "desc": "前フレームからの経過時間を出力",
+  "desc": "",
   "inputs": [],
   "prop_pins": [],
   "outputs": [
@@ -39,13 +38,12 @@
    }
   ],
   "props": {},
-  "notes": "",
-  "verified": false
+  "notes": ""
  },
  "VertexColor": {
   "class": "/Script/Engine.UMaterialExpressionVertexColor",
   "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionVertexColor.h",
-  "desc": "メッシュの頂点カラーを出力",
+  "desc": "",
   "inputs": [],
   "prop_pins": [],
   "outputs": [
@@ -71,13 +69,12 @@
    }
   ],
   "props": {},
-  "notes": "ctor確認済: 出力5本(RGB,R,G,B,A)",
-  "verified": false
+  "notes": ""
  },
  "Noise": {
   "class": "/Script/Engine.UMaterialExpressionNoise",
   "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionNoise.h",
-  "desc": "パーリンノイズやシンプレックスノイズなど複数の手法でノイズを生成。3次元位置から自動生成",
+  "desc": "",
   "inputs": [
    {
     "name": "Position",
@@ -151,13 +148,12 @@
     "default": 128
    }
   },
-  "notes": "GetInputName オーバーライド有り。FilterWidth のピン名は Levels パラメータに依存",
-  "verified": false
+  "notes": ""
  },
  "VectorNoise": {
   "class": "/Script/Engine.UMaterialExpressionVectorNoise",
   "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionVectorNoise.h",
-  "desc": "3次元ベクトルとしてノイズを出力。セルノイズ、パーリンノイズ勾配など対応",
+  "desc": "",
   "inputs": [
    {
     "name": "Position",
@@ -214,13 +210,12 @@
     "default": 16
    }
   },
-  "notes": "GetInputName オーバーライド有り",
-  "verified": false
+  "notes": ""
  },
  "BlackBody": {
   "class": "/Script/Engine.UMaterialExpressionBlackBody",
   "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionBlackBody.h",
-  "desc": "温度から黒体放射の色を計算。物理的に正確な色温度表現",
+  "desc": "",
   "inputs": [
    {
     "name": "Temp",
@@ -235,13 +230,12 @@
    }
   ],
   "props": {},
-  "notes": "",
-  "verified": false
+  "notes": ""
  },
  "HsvToRgb": {
   "class": "/Script/Engine.UMaterialExpressionHsvToRgb",
   "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionHsvToRgb.h",
-  "desc": "HSV色空間からRGB色空間に変換",
+  "desc": "",
   "inputs": [
    {
     "name": "Input",
@@ -256,13 +250,12 @@
    }
   ],
   "props": {},
-  "notes": "",
-  "verified": false
+  "notes": ""
  },
  "RgbToHsv": {
   "class": "/Script/Engine.UMaterialExpressionRgbToHsv",
   "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionRgbToHsv.h",
-  "desc": "RGB色空間からHSV色空間に変換",
+  "desc": "",
   "inputs": [
    {
     "name": "Input",
@@ -277,13 +270,12 @@
    }
   ],
   "props": {},
-  "notes": "",
-  "verified": false
+  "notes": ""
  },
  "DepthFade": {
   "class": "/Script/Engine.UMaterialExpressionDepthFade",
   "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionDepthFade.h",
-  "desc": "シーン深度に基づいて半透明のフェードを適用。オブジェクトが別のオブジェクトに接近時に透明化",
+  "desc": "",
   "inputs": [
    {
     "name": "Opacity",
@@ -314,13 +306,12 @@
     "default": 100.0
    }
   },
-  "notes": "GetInputName オーバーライド有り。InputIndex == 0 で 'Opacity' を返す",
-  "verified": false
+  "notes": ""
  },
  "DistanceCullFade": {
   "class": "/Script/Engine.UMaterialExpressionDistanceCullFade",
   "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionDistanceCullFade.h",
-  "desc": "カメラからの距離に基づいてフェード。遠距離カリングに使用",
+  "desc": "",
   "inputs": [],
   "prop_pins": [],
   "outputs": [
@@ -329,13 +320,12 @@
    }
   ],
   "props": {},
-  "notes": "",
-  "verified": false
+  "notes": ""
  },
  "DynamicParameter": {
   "class": "/Script/Engine.UMaterialExpressionDynamicParameter",
   "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionDynamicParameter.h",
-  "desc": "パーティクルシステムからの動的パラメータを受け取る。4つまでのベクトルを出力可能",
+  "desc": "",
   "inputs": [],
   "prop_pins": [
    {
@@ -391,13 +381,12 @@
     "default": 0
    }
   },
-  "notes": "GetOutputs() オーバーライド有り。動的に出力ピンを生成 | ctor確認済: 出力6本(R,G,B,A,RGB,RGBA)。GetOutputsでParamNames由来の動的名になる場合あり",
-  "verified": false
+  "notes": ""
  },
  "PerInstanceRandom": {
   "class": "/Script/Engine.UMaterialExpressionPerInstanceRandom",
   "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionPerInstanceRandom.h",
-  "desc": "インスタンスごとのランダム値を出力",
+  "desc": "",
   "inputs": [],
   "prop_pins": [],
   "outputs": [
@@ -406,13 +395,12 @@
    }
   ],
   "props": {},
-  "notes": "",
-  "verified": false
+  "notes": ""
  },
  "PerInstanceFadeAmount": {
   "class": "/Script/Engine.UMaterialExpressionPerInstanceFadeAmount",
   "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionPerInstanceFadeAmount.h",
-  "desc": "インスタンスごとのフェード量を出力",
+  "desc": "",
   "inputs": [],
   "prop_pins": [],
   "outputs": [
@@ -421,13 +409,12 @@
    }
   ],
   "props": {},
-  "notes": "",
-  "verified": false
+  "notes": ""
  },
  "PerInstanceCustomData": {
   "class": "/Script/Engine.UMaterialExpressionPerInstanceCustomData",
   "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionPerInstanceCustomData.h",
-  "desc": "インスタンスごとのカスタムデータを参照。float値を出力",
+  "desc": "",
   "inputs": [
    {
     "name": "DefaultValue",
@@ -459,13 +446,12 @@
     "default": 0
    }
   },
-  "notes": "",
-  "verified": false
+  "notes": ""
  },
  "EyeAdaptation": {
   "class": "/Script/Engine.UMaterialExpressionEyeAdaptation",
   "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionEyeAdaptation.h",
-  "desc": "目の順応(露出補正)の現在値を参照",
+  "desc": "",
   "inputs": [],
   "prop_pins": [],
   "outputs": [
@@ -474,13 +460,12 @@
    }
   ],
   "props": {},
-  "notes": "",
-  "verified": false
+  "notes": ""
  },
  "SceneColor": {
   "class": "/Script/Engine.UMaterialExpressionSceneColor",
   "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionSceneColor.h",
-  "desc": "画面座標からシーンカラーをサンプリング",
+  "desc": "",
   "inputs": [
    {
     "name": "Input",
@@ -520,13 +505,12 @@
     }
    }
   },
-  "notes": "GetInputName オーバーライド有り。InputMode により入力の解釈が変わる | ctor確認済: 出力2本",
-  "verified": false
+  "notes": ""
  },
  "SceneTexture": {
   "class": "/Script/Engine.UMaterialExpressionSceneTexture",
   "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionSceneTexture.h",
-  "desc": "画面配置テクスチャ(深度、法線など)をサンプリング",
+  "desc": "",
   "inputs": [
    {
     "name": "Coordinates",
@@ -570,13 +554,12 @@
     "default": false
    }
   },
-  "notes": "ctor確認済: 出力3本",
-  "verified": false
+  "notes": ""
  },
  "SRGBColorToWorkingColorSpace": {
   "class": "/Script/Engine.UMaterialExpressionSRGBColorToWorkingColorSpace",
   "header": "Engine\\Source\\Runtime\\Engine\\Public\\Materials\\MaterialExpressionSRGBColorToWorkingColorSpace.h",
-  "desc": "sRGB色空間からワーキング色空間に変換",
+  "desc": "",
   "inputs": [
    {
     "name": "Input",
@@ -591,7 +574,6 @@
    }
   ],
   "props": {},
-  "notes": "",
-  "verified": false
+  "notes": ""
  }
 }

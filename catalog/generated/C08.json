@@ -2,7 +2,7 @@
  "Comment": {
   "class": "/Script/Engine.UMaterialExpressionComment",
   "header": "Materials/MaterialExpressionComment.h",
-  "desc": "コメント用ノード。マテリアルグラフの整理に使用",
+  "desc": "",
   "inputs": [],
   "prop_pins": [],
   "outputs": [
@@ -36,13 +36,12 @@
     "default": true
    }
   },
-  "notes": "MaterialExpression単体はIsAllowedIn()でfalse。MaterialGraphNode_Comment経由のclipboard生成・往復をUE 5.8で確認済み",
-  "verified": true
+  "notes": ""
  },
  "Reroute": {
   "class": "/Script/Engine.UMaterialExpressionReroute",
   "header": "Materials/MaterialExpressionReroute.h",
-  "desc": "入力をそのまま出力に通す。グラフの結線を整理するために使用",
+  "desc": "",
   "inputs": [
    {
     "name": "Input",
@@ -57,13 +56,12 @@
    }
   ],
   "props": {},
-  "notes": "",
-  "verified": false
+  "notes": ""
  },
  "RerouteBase": {
   "class": "/Script/Engine.UMaterialExpressionRerouteBase",
   "header": "Materials/MaterialExpressionRerouteBase.h",
-  "desc": "Reroute 系の基底クラス。複数の入力値を通す機能を提供",
+  "desc": "",
   "inputs": [],
   "prop_pins": [],
   "outputs": [
@@ -72,14 +70,13 @@
    }
   ],
   "props": {},
-  "notes": "抽象クラス",
-  "verified": false,
+  "notes": "",
   "abstract": true
  },
  "NamedRerouteBase": {
   "class": "/Script/Engine.UMaterialExpressionNamedRerouteBase",
   "header": "Materials/MaterialExpressionNamedReroute.h",
-  "desc": "名前付き Reroute の基底クラス",
+  "desc": "",
   "inputs": [],
   "prop_pins": [],
   "outputs": [
@@ -88,14 +85,13 @@
    }
   ],
   "props": {},
-  "notes": "抽象クラス",
-  "verified": false,
+  "notes": "",
   "abstract": true
  },
  "NamedRerouteDeclaration": {
   "class": "/Script/Engine.UMaterialExpressionNamedRerouteDeclaration",
   "header": "Materials/MaterialExpressionNamedReroute.h",
-  "desc": "名前付き変数を宣言するノード",
+  "desc": "",
   "inputs": [
    {
     "name": "Input",
@@ -123,13 +119,12 @@
     "default": null
    }
   },
-  "notes": "VariableGuid で同一変数を追跡。UE 5.8実機sampleでName/NodeColor/VariableGuidを確認",
-  "verified": true
+  "notes": ""
  },
  "NamedRerouteUsage": {
   "class": "/Script/Engine.UMaterialExpressionNamedRerouteUsage",
   "header": "Materials/MaterialExpressionNamedReroute.h",
-  "desc": "名前付き変数の使用側ノード",
+  "desc": "",
   "inputs": [],
   "prop_pins": [],
   "outputs": [
@@ -147,13 +142,12 @@
     "default": null
    }
   },
-  "notes": "meta=(MIR_OnDemandInputRequest)。UE 5.8実機sampleでDeclaration/DeclarationGuidを確認",
-  "verified": true
+  "notes": ""
  },
  "Composite": {
   "class": "/Script/Engine.UMaterialExpressionComposite",
   "header": "Materials/MaterialExpressionComposite.h",
-  "desc": "サブグラフを組み込むノード。入出力はピンベースで管理される",
+  "desc": "",
   "inputs": [],
   "prop_pins": [],
   "outputs": [],
@@ -163,13 +157,12 @@
     "default": ""
    }
   },
-  "notes": "InputExpressions と OutputExpressions でピンを管理。GetInputsView/GetOutputs をオーバーライド | ctor確認済: Outputs.Reset()のみ。出力はPinBase経由で動的",
-  "verified": false
+  "notes": ""
  },
  "PinBase": {
   "class": "/Script/Engine.UMaterialExpressionPinBase",
   "header": "Materials/MaterialExpressionPinBase.h",
-  "desc": "ピン集約ノード。複数の Reroute ピンを管理",
+  "desc": "",
   "inputs": [],
   "prop_pins": [],
   "outputs": [],
@@ -183,13 +176,12 @@
     "default": null
    }
   },
-  "notes": "IsAllowedIn() で false を返すため、マテリアルでは使用不可。Composite の子要素用 | ctor確認済: Outputs.Reset()のみ。出力はピン構成で動的",
-  "verified": false
+  "notes": ""
  },
  "MaterialFunctionCall": {
   "class": "/Script/Engine.UMaterialExpressionMaterialFunctionCall",
   "header": "Materials/MaterialExpressionMaterialFunctionCall.h",
-  "desc": "マテリアル関数を呼び出すノード",
+  "desc": "",
   "inputs": [],
   "prop_pins": [],
   "outputs": [],
@@ -199,13 +191,12 @@
     "default": null
    }
   },
-  "notes": "FunctionInputs 配列により動的にピン数が変わる。GetInputsView/GetInputName をオーバーライド。meta=(MIR_OnDemandInputRequest)",
-  "verified": false
+  "notes": ""
  },
  "FunctionInput": {
   "class": "/Script/Engine.UMaterialExpressionFunctionInput",
   "header": "Materials/MaterialExpressionFunctionInput.h",
-  "desc": "マテリアル関数の入力ピン定義",
+  "desc": "",
   "inputs": [
    {
     "name": "Preview",
@@ -249,13 +240,12 @@
     "default": "General"
    }
   },
-  "notes": "meta=(MIR_OnDemandInputRequest)。IsAllowedIn() により MaterialFunction のみ",
-  "verified": false
+  "notes": ""
  },
  "FunctionOutput": {
   "class": "/Script/Engine.UMaterialExpressionFunctionOutput",
   "header": "Materials/MaterialExpressionFunctionOutput.h",
-  "desc": "マテリアル関数の出力ピン定義",
+  "desc": "",
   "inputs": [
    {
     "name": "A",
@@ -283,13 +273,12 @@
     "default": 0
    }
   },
-  "notes": "IsAllowedIn() により MaterialFunction のみ。GetInputName は NAME_None を返す",
-  "verified": false
+  "notes": ""
  },
  "Custom": {
   "class": "/Script/Engine.UMaterialExpressionCustom",
   "header": "Materials/MaterialExpressionCustom.h",
-  "desc": "HLSL コードを埋め込むノード。入出力は動的に定義される",
+  "desc": "Embeds user HLSL in a generated material function with property-defined dynamic inputs and outputs.",
   "inputs": [],
   "prop_pins": [],
   "outputs": [],
@@ -380,14 +369,13 @@
     "default": false
    }
   },
-  "notes": "動的ピン: 入力はInputs(named/unnamed)、出力はAdditionalOutputs無→無名1本/有→'return'+named outputs (RebuildOutputs準拠)。接続はPin LinkedToが正でFCustomInput.Inputは書かない。GraphNodeクラスは/Script/UnrealEd.MaterialGraphNode_Custom。既定値はUE5.8 ctor実測 (Description='Custom', OutputType=CMOT_Float3, Inputs=[無名1件])。named input+named additional output合計32以下(Material IR制限)。UE 5.8実機でA入力、return+Luma出力、AdditionalDefines、2接続のbuild→paste→copy-backを確認。",
-  "verified": true,
+  "notes": "Inputs and outputs are dynamic. RebuildOutputs creates one unnamed output without AdditionalOutputs, otherwise 'return' followed by named outputs. Pin LinkedTo records own connections; FCustomInput.Input is reconstructed. UE 5.8 defaults are Description='Custom', OutputType=CMOT_Float3, and one unnamed input. Material IR permits at most 32 named inputs plus named additional outputs. The LumaSplit fixture has generated paste/copy-back evidence.",
   "dynamic_pins": true
  },
  "GetMaterialAttributes": {
   "class": "/Script/Engine.UMaterialExpressionGetMaterialAttributes",
   "header": "Materials/MaterialExpressionGetMaterialAttributes.h",
-  "desc": "MaterialAttributes 構造体から属性を抽出",
+  "desc": "",
   "inputs": [
    {
     "name": "MaterialAttributes",
@@ -403,13 +391,12 @@
     "default": null
    }
   },
-  "notes": "AttributeGetTypes により動的に出力ピンが追加される。出力ピン数はこの配列のサイズに応じて変わる",
-  "verified": false
+  "notes": ""
  },
  "SetMaterialAttributes": {
   "class": "/Script/Engine.UMaterialExpressionSetMaterialAttributes",
   "header": "Materials/MaterialExpressionSetMaterialAttributes.h",
-  "desc": "複数の属性を MaterialAttributes 構造体に組み込む",
+  "desc": "",
   "inputs": [],
   "prop_pins": [],
   "outputs": [
@@ -423,13 +410,12 @@
     "default": null
    }
   },
-  "notes": "Inputs 配列で動的にピンが追加される。AttributeSetTypes により入力ピン数が変わる。GetInputsView/GetInput/GetInputName をオーバーライド",
-  "verified": false
+  "notes": ""
  },
  "MakeMaterialAttributes": {
   "class": "/Script/Engine.UMaterialExpressionMakeMaterialAttributes",
   "header": "Materials/MaterialExpressionMakeMaterialAttributes.h",
-  "desc": "個別の属性入力から MaterialAttributes を構築",
+  "desc": "",
   "inputs": [
    {
     "name": "BaseColor",
@@ -534,13 +520,12 @@
    }
   ],
   "props": {},
-  "notes": "IsResultMaterialAttributes(0) = true。全入力ピンは任意。GetExpressionInput() で EMaterialProperty から入力ピンを取得",
-  "verified": false
+  "notes": ""
  },
  "BreakMaterialAttributes": {
   "class": "/Script/Engine.UMaterialExpressionBreakMaterialAttributes",
   "header": "Materials/MaterialExpressionBreakMaterialAttributes.h",
-  "desc": "MaterialAttributes 構造体を個別の属性に分解",
+  "desc": "",
   "inputs": [
    {
     "name": "MaterialAttributes",
@@ -551,13 +536,12 @@
   "prop_pins": [],
   "outputs": [],
   "props": {},
-  "notes": "PropertyToIOIndexMap により出力ピン数が固定される。GetInputName で各出力の名前を取得",
-  "verified": false
+  "notes": ""
  },
  "BlendMaterialAttributes": {
   "class": "/Script/Engine.UMaterialExpressionBlendMaterialAttributes",
   "header": "Materials/MaterialExpressionBlendMaterialAttributes.h",
-  "desc": "2つの MaterialAttributes を指定比率で混合",
+  "desc": "",
   "inputs": [
    {
     "name": "A",
@@ -591,7 +575,6 @@
     "default": "Blend"
    }
   },
-  "notes": "IsResultMaterialAttributes(0) = true。GetInput オーバーライドで A/B/Alpha を返す",
-  "verified": false
+  "notes": ""
  }
 }

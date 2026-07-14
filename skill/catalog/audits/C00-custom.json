@@ -1,0 +1,47 @@
+{
+  "Custom": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "verified"
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionCustom.h",
+        "symbol": "UMaterialExpressionCustom",
+        "claims": ["declaration", "schema"]
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpressionCustom::UMaterialExpressionCustom / Compile / RebuildOutputs / HasPixelDiscard",
+        "claims": ["schema", "description", "restrictions"]
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/HLSLMaterialTranslator.cpp",
+        "symbol": "FHLSLMaterialTranslator::CustomExpression",
+        "claims": ["schema", "description", "restrictions"]
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionCustom::Build",
+        "claims": ["schema", "description", "restrictions"]
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialIR.h",
+        "symbol": "MaxNumFunctionParameters",
+        "claims": ["restrictions"]
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialIRToHLSLTranslator.cpp",
+        "symbol": "GenerateCustomFunctionsHLSL",
+        "claims": ["description", "restrictions"]
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialShared.cpp",
+        "symbol": "CustomExpressionSceneTextureInputFixup",
+        "claims": ["restrictions"]
+      }
+    ]
+  }
+}

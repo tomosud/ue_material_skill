@@ -138,6 +138,25 @@ def load_functions(path: Path | str | None = None) -> dict[str, Any]:
     return value
 
 
+def load_node_evidence(path: Path | str | None = None) -> dict[str, Any]:
+    target = Path(path) if path else repository_root() / "skill" / "catalog" / "node-evidence.json"
+    with target.open("r", encoding="utf-8-sig") as handle:
+        value = json.load(handle, object_pairs_hook=_unique_object)
+    records = value.get("nodes") if isinstance(value, dict) else None
+    if not isinstance(records, dict):
+        raise ValueError(f"node evidence {target} must contain a top-level nodes object")
+    return records
+
+
+def load_editor_evidence(path: Path | str | None = None) -> dict[str, Any]:
+    target = Path(path) if path else repository_root() / "skill" / "catalog" / "editor-evidence.json"
+    with target.open("r", encoding="utf-8-sig") as handle:
+        value = json.load(handle, object_pairs_hook=_unique_object)
+    if not isinstance(value, dict):
+        raise ValueError(f"Editor evidence {target} must contain an object")
+    return value
+
+
 def load_document(text: str) -> tuple[Any | None, list[Diagnostic]]:
     try:
         return json.loads(text, object_pairs_hook=_unique_object), []
@@ -188,6 +207,61 @@ def _function_for_node(node: dict[str, Any], functions: dict[str, Any]) -> dict[
         (item for item in functions.values() if isinstance(item, dict) and item.get("path") == path),
         None,
     )
+
+
+def _function_name_for_node(node: dict[str, Any], functions: dict[str, Any]) -> str | None:
+    props = node.get("props")
+    path = props.get("MaterialFunction") if isinstance(props, dict) else None
+    if not isinstance(path, str):
+        return None
+    return next(
+        (
+            name for name, item in functions.items()
+            if isinstance(item, dict) and item.get("path") == path
+        ),
+        None,
+    )
+
+
+def _provenance_diagnostics(
+    class_name: str,
+    path: str,
+    node_evidence: dict[str, Any],
+    editor_evidence: dict[str, Any],
+) -> list[Diagnostic]:
+    diagnostics: list[Diagnostic] = []
+    record = node_evidence.get(class_name)
+    audit = record.get("audit") if isinstance(record, dict) else None
+    if not isinstance(audit, dict):
+        diagnostics.append(Diagnostic(
+            "warning", path,
+            f"class {class_name!r} has no source evidence record; catalog facts are not source-proven"))
+    else:
+        incomplete = [
+            f"{claim}={audit.get(claim, 'missing')}"
+            for claim in ("schema", "description", "restrictions")
+            if audit.get(claim) not in {"verified", "not_applicable"}
+        ]
+        if incomplete:
+            diagnostics.append(Diagnostic(
+                "warning", path,
+                f"class {class_name!r} has an incomplete source audit ({', '.join(incomplete)}); "
+                "inspect the configured UE source before treating catalog facts as authoritative"))
+
+    classes = editor_evidence.get("classes")
+    editor = classes.get(class_name) if isinstance(classes, dict) else None
+    if not isinstance(editor, dict):
+        diagnostics.append(Diagnostic(
+            "warning", path, f"class {class_name!r} has no recorded Unreal Editor evidence"))
+    elif not editor.get("editor_roundtrip", False):
+        if editor.get("editor_paste", False):
+            level = "Editor paste observed; semantic paste/copy-back round-trip not recorded"
+        elif editor.get("editor_copy", False):
+            level = "Editor copy observed only; generated paste/copy-back not recorded"
+        else:
+            level = "no successful Editor copy or paste evidence recorded"
+        diagnostics.append(Diagnostic("warning", path, f"class {class_name!r}: {level}"))
+    return diagnostics
 
 
 def custom_pin_schema(
@@ -590,9 +664,13 @@ def validate_document(
     document: Any,
     catalog: dict[str, Any] | None = None,
     functions: dict[str, Any] | None = None,
+    node_evidence: dict[str, Any] | None = None,
+    editor_evidence: dict[str, Any] | None = None,
 ) -> ValidationResult:
     catalog = catalog if catalog is not None else load_catalog()
     functions = functions if functions is not None else load_functions()
+    node_evidence = node_evidence if node_evidence is not None else load_node_evidence()
+    editor_evidence = editor_evidence if editor_evidence is not None else load_editor_evidence()
     diagnostics: list[Diagnostic] = []
     if not isinstance(document, dict):
         return ValidationResult([Diagnostic("error", "$", "top-level value must be an object")])
@@ -632,6 +710,8 @@ def validate_document(
             diagnostics.append(Diagnostic("error", f"{node_path}.class", "required non-empty string"))
             continue
         if class_name == "Comment":
+            diagnostics.extend(_provenance_diagnostics(
+                class_name, f"{node_path}.class", node_evidence, editor_evidence))
             if "raw_props" in node:
                 diagnostics.append(Diagnostic("error", f"{node_path}.raw_props", "Comment does not accept raw_props"))
             _comment_validation(node_id, node, nodes, pos, diagnostics)
@@ -645,8 +725,8 @@ def validate_document(
             diagnostics.append(Diagnostic("error", f"{node_path}.class", f"class {class_name!r} is abstract and cannot be built"))
         if entry.get("deprecated"):
             diagnostics.append(Diagnostic("warning", f"{node_path}.class", f"class {class_name!r} is deprecated"))
-        if not entry.get("verified", False):
-            diagnostics.append(Diagnostic("warning", f"{node_path}.class", f"class {class_name!r} is not Editor-verified"))
+        diagnostics.extend(_provenance_diagnostics(
+            class_name, f"{node_path}.class", node_evidence, editor_evidence))
         props = node.get("props", {})
         raw_props = node.get("raw_props", {})
         if not isinstance(props, dict):
@@ -699,6 +779,17 @@ def validate_document(
                 diagnostics.append(Diagnostic("error", f"{node_path}.props.MaterialFunction", "MaterialFunctionCall requires a function object path"))
             elif _function_for_node(node, functions) is None:
                 diagnostics.append(Diagnostic("error", f"{node_path}.props.MaterialFunction", "function path is not in the packaged function catalog", "add its input/output schema or paste a sample from the Editor"))
+            else:
+                function_name = _function_name_for_node(node, functions)
+                function_records = editor_evidence.get("functions")
+                function_record = (
+                    function_records.get(function_name)
+                    if isinstance(function_records, dict) and function_name else None
+                )
+                if not isinstance(function_record, dict) or not function_record.get("editor_roundtrip", False):
+                    diagnostics.append(Diagnostic(
+                        "warning", f"{node_path}.props.MaterialFunction",
+                        f"function {function_name or function_path!r} has no generated Editor paste/copy-back evidence"))
         if class_name == "Custom":
             _custom_checks(node_id, node, diagnostics)
 
@@ -799,11 +890,14 @@ def validate_text(
     text: str,
     catalog: dict[str, Any] | None = None,
     functions: dict[str, Any] | None = None,
+    node_evidence: dict[str, Any] | None = None,
+    editor_evidence: dict[str, Any] | None = None,
 ) -> tuple[Any | None, ValidationResult]:
     document, load_diagnostics = load_document(text)
     if load_diagnostics:
         return None, ValidationResult(load_diagnostics)
-    return document, validate_document(document, catalog, functions)
+    return document, validate_document(
+        document, catalog, functions, node_evidence, editor_evidence)
 
 
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
@@ -811,6 +905,8 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("input", nargs="?", default="-", help="MGJSON file, or - for stdin")
     parser.add_argument("--catalog", type=Path)
     parser.add_argument("--functions", type=Path)
+    parser.add_argument("--evidence", type=Path)
+    parser.add_argument("--editor-evidence", type=Path)
     return parser.parse_args(argv)
 
 
@@ -820,7 +916,10 @@ def main(argv: list[str] | None = None) -> int:
         text = sys.stdin.read() if args.input == "-" else Path(args.input).read_text(encoding="utf-8-sig")
         catalog = load_catalog(args.catalog)
         functions = load_functions(args.functions)
-        _, result = validate_text(text, catalog, functions)
+        node_evidence = load_node_evidence(args.evidence)
+        editor_evidence = load_editor_evidence(args.editor_evidence)
+        _, result = validate_text(
+            text, catalog, functions, node_evidence, editor_evidence)
     except (OSError, ValueError) as exc:
         print(f"error: $: {exc}", file=sys.stderr)
         return 1

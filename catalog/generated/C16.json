@@ -2,7 +2,7 @@
  "SamplePhysicsVectorField": {
   "class": "/Script/Engine.UMaterialExpressionSamplePhysicsVectorField",
   "header": "Materials/MaterialExpressionSamplePhysicsField.h",
-  "desc": "物理フィールドベクトル値をサンプリング",
+  "desc": "",
   "inputs": [
    {
     "name": "WorldPosition",
@@ -40,13 +40,12 @@
     "default": ""
    }
   },
-  "notes": "",
-  "verified": false
+  "notes": ""
  },
  "ScalarBlueNoise": {
   "class": "/Script/Engine.UMaterialExpressionScalarBlueNoise",
   "header": "Materials/MaterialExpressionNoise.h",
-  "desc": "スカラーブルーノイズをサンプリング",
+  "desc": "",
   "inputs": [],
   "prop_pins": [],
   "outputs": [
@@ -55,13 +54,12 @@
    }
   ],
   "props": {},
-  "notes": "",
-  "verified": false
+  "notes": ""
  },
  "SceneDepthWithoutWater": {
   "class": "/Script/Engine.UMaterialExpressionSceneDepthWithoutWater",
   "header": "Materials/MaterialExpressionSceneDepthWithoutWater.h",
-  "desc": "水を除いたシーン深度値を取得",
+  "desc": "",
   "inputs": [
    {
     "name": "Input",
@@ -107,13 +105,12 @@
     "default": 1000000.0
    }
   },
-  "notes": "",
-  "verified": false
+  "notes": ""
  },
  "ShaderStageSwitch": {
   "class": "/Script/Engine.UMaterialExpressionShaderStageSwitch",
   "header": "Materials/MaterialExpressionShaderStageSwitch.h",
-  "desc": "ピクセル/頂点シェーダステージで異なる入力を選択",
+  "desc": "",
   "inputs": [
    {
     "name": "PixelShader",
@@ -135,13 +132,12 @@
    }
   ],
   "props": {},
-  "notes": "",
-  "verified": false
+  "notes": ""
  },
  "ShadingModel": {
   "class": "/Script/Engine.UMaterialExpressionShadingModel",
   "header": "Materials/MaterialExpressionShadingModel.h",
-  "desc": "シェーディングモデルを指定",
+  "desc": "",
   "inputs": [],
   "prop_pins": [
    {
@@ -162,13 +158,12 @@
     "default": "MSM_DefaultLit"
    }
   },
-  "notes": "",
-  "verified": false
+  "notes": ""
  },
  "ShadingPathSwitch": {
   "class": "/Script/Engine.UMaterialExpressionShadingPathSwitch",
   "header": "Materials/MaterialExpressionShadingPathSwitch.h",
-  "desc": "シェーディングパスに応じて異なる入力を選択",
+  "desc": "",
   "inputs": [
    {
     "name": "Default",
@@ -184,13 +179,12 @@
    }
   ],
   "props": {},
-  "notes": "Inputs array (ERHIShadingPath::Num) is handled dynamically",
-  "verified": false
+  "notes": ""
  },
  "ShadowReplace": {
   "class": "/Script/Engine.UMaterialExpressionShadowReplace",
   "header": "Materials/MaterialExpressionShadowReplace.h",
-  "desc": "影マップレンダリング時に別の入力を使用",
+  "desc": "",
   "inputs": [
    {
     "name": "Default",
@@ -212,13 +206,12 @@
    }
   ],
   "props": {},
-  "notes": "",
-  "verified": false
+  "notes": ""
  },
  "SingleLayerWaterMaterialOutput": {
   "class": "/Script/Engine.UMaterialExpressionSingleLayerWaterMaterialOutput",
   "header": "Materials/MaterialExpressionSingleLayerWaterMaterialOutput.h",
-  "desc": "単層水マテリアル出力",
+  "desc": "",
   "inputs": [
    {
     "name": "ScatteringCoefficients",
@@ -261,13 +254,12 @@
    }
   ],
   "props": {},
-  "notes": "CustomOutput subclass with 4 outputs",
-  "verified": false
+  "notes": ""
  },
  "SkyAtmosphereAerialPerspective": {
   "class": "/Script/Engine.UMaterialExpressionSkyAtmosphereAerialPerspective",
   "header": "Materials/MaterialExpressionSkyAtmosphereLightIlluminance.h",
-  "desc": "大気エアリアルパースペクティブをサンプリング",
+  "desc": "",
   "inputs": [
    {
     "name": "WorldPosition",
@@ -295,13 +287,12 @@
     "default": "Absolute"
    }
   },
-  "notes": "",
-  "verified": false
+  "notes": ""
  },
  "SkyAtmosphereDistantLightScatteredLuminance": {
   "class": "/Script/Engine.UMaterialExpressionSkyAtmosphereDistantLightScatteredLuminance",
   "header": "Materials/MaterialExpressionSkyAtmosphereLightIlluminance.h",
-  "desc": "大気遠距離光の散乱ルミナンス",
+  "desc": "",
   "inputs": [],
   "prop_pins": [],
   "outputs": [
@@ -310,13 +301,12 @@
    }
   ],
   "props": {},
-  "notes": "",
-  "verified": false
+  "notes": ""
  },
  "SkyAtmosphereLightDirection": {
   "class": "/Script/Engine.UMaterialExpressionSkyAtmosphereLightDirection",
   "header": "Materials/MaterialExpressionSkyAtmosphereLightDirection.h",
-  "desc": "大気光の方向を取得",
+  "desc": "",
   "inputs": [],
   "prop_pins": [
    {
@@ -337,13 +327,12 @@
     "default": "0"
    }
   },
-  "notes": "",
-  "verified": false
+  "notes": ""
  },
  "SkyAtmosphereLightDiskLuminance": {
   "class": "/Script/Engine.UMaterialExpressionSkyAtmosphereLightDiskLuminance",
   "header": "Materials/MaterialExpressionSkyAtmosphereLightIlluminance.h",
-  "desc": "大気光ディスクのルミナンス",
+  "desc": "",
   "inputs": [
    {
     "name": "DiskAngularDiameterOverride",
@@ -371,13 +360,12 @@
     "default": "0"
    }
   },
-  "notes": "",
-  "verified": false
+  "notes": ""
  },
  "SkyAtmosphereLightIlluminance": {
   "class": "/Script/Engine.UMaterialExpressionSkyAtmosphereLightIlluminance",
   "header": "Materials/MaterialExpressionSkyAtmosphereLightIlluminance.h",
-  "desc": "大気光の照度",
+  "desc": "",
   "inputs": [
    {
     "name": "WorldPosition",
@@ -415,13 +403,12 @@
     "default": "Absolute"
    }
   },
-  "notes": "",
-  "verified": false
+  "notes": ""
  },
  "SkyAtmosphereLightIlluminanceOnGround": {
   "class": "/Script/Engine.UMaterialExpressionSkyAtmosphereLightIlluminanceOnGround",
   "header": "Materials/MaterialExpressionSkyAtmosphereLightIlluminance.h",
-  "desc": "地上の大気光照度",
+  "desc": "",
   "inputs": [],
   "prop_pins": [
    {
@@ -442,13 +429,12 @@
     "default": "0"
    }
   },
-  "notes": "",
-  "verified": false
+  "notes": ""
  },
  "SkyAtmosphereViewLuminance": {
   "class": "/Script/Engine.UMaterialExpressionSkyAtmosphereViewLuminance",
   "header": "Materials/MaterialExpressionSkyAtmosphereViewLuminance.h",
-  "desc": "ビュー方向での大気ルミナンス",
+  "desc": "",
   "inputs": [
    {
     "name": "WorldDirection",
@@ -464,13 +450,12 @@
    }
   ],
   "props": {},
-  "notes": "",
-  "verified": false
+  "notes": ""
  },
  "SkyLightEnvMapSample": {
   "class": "/Script/Engine.UMaterialExpressionSkyLightEnvMapSample",
   "header": "Materials/MaterialExpressionSkyLightEnvMapSample.h",
-  "desc": "スカイライトキューブマップをサンプリング",
+  "desc": "",
   "inputs": [
    {
     "name": "Direction",
@@ -492,7 +477,6 @@
    }
   ],
   "props": {},
-  "notes": "",
-  "verified": false
+  "notes": ""
  }
 }

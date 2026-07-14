@@ -11,14 +11,19 @@ create and consume verbose T3D; do not hand-author GUIDs, Pin records, or T3D in
 ## Non-negotiable rules
 
 - Run `scripts/validate.py` before every build. Do not build when it reports an error.
-- Use class and Pin names from `catalog/nodes.json` or `references/nodes-index.md`; do not guess.
+- Use only source-audited class, property, and Pin facts for generation. Run `scripts/search_catalog.py` for
+  discovery; `references/nodes-index.md` is the compact generation-ready overview. Pending catalog schema is
+  parsing support, not a safe recommendation.
+- Read `references/source-verification.md` before making factual node claims or using an unaudited class.
+  Inspect the configured UE source root instead of inferring behavior from a class name.
 - Preserve node object order when a stable layout matters.
 - Never create or connect the Material Root node. After paste, tell the user which final output to connect
   manually to Base Color, Roughness, Normal, Emissive Color, or another Root input.
 - A `MaterialFunctionCall` may call a packaged function, but this skill cannot author the function's
-  internal graph. Use `catalog/functions.json` and only its exact asset paths and Pin names.
-- Treat `warning: ... not Editor-verified` as provenance information, not an automatic failure. Report
-  any plugin, deprecated, path-uncertain, or asset-existence warning that can affect the user's result.
+  internal graph. Do not recommend a function whose exact path and Pin schema lack recorded asset or Editor
+  evidence.
+- Treat source-audit and Editor-evidence warnings as separate provenance information, not automatic failures.
+  Report any plugin, deprecated, path-uncertain, or asset-existence warning that can affect the result.
 - Never paste the full T3D into the conversation. When clipboard access is unavailable, exchange it as a
   `.txt`/`.t3d` file.
 
@@ -26,8 +31,9 @@ create and consume verbose T3D; do not hand-author GUIDs, Pin records, or T3D in
 
 ### Generate a new graph
 
-1. Read `references/mgjson.md` when the request needs syntax beyond the summary below. Search
-   `references/nodes-index.md` for suitable classes and check their exact catalog entries.
+1. Read `references/mgjson.md` when the request needs syntax beyond the summary below. Run
+   `python scripts/search_catalog.py <terms> --generation-ready`. If no suitable audited class exists, inspect
+   source before using a pending entry and do not fill gaps from memory.
 2. Write MGJSON to a temporary or user-requested `.json` file.
 3. Validate it:
 
@@ -42,7 +48,7 @@ create and consume verbose T3D; do not hand-author GUIDs, Pin records, or T3D in
    python scripts/build.py graph.json --to-clipboard
    ```
 
-6. Tell the user: “Material Editor の何もない所で Ctrl+V してください。” Then name the one or
+6. Tell the user: "Paste with Ctrl+V in an empty area of Material Editor." Then name the one or
    more final outputs they must connect manually to the Root inputs. Mention that paste uses the current
    cursor location and preserves relative layout.
 
@@ -89,7 +95,14 @@ python scripts/parse.py --from-clipboard --no-catalog --keep-pos
 Use the resulting class and `raw_props` as evidence. Unknown Pins appear as `inN`/`outN`; request a second
 sample with representative connections if direction/order matters. Until a reviewed catalog entry exists,
 explain that the graph can be analyzed but `validate.py`/`build.py` will reject that class. Consult
-`references/format.md` only when debugging or extending the parser/catalog.
+`references/source-verification.md` before adding facts, and consult `references/format.md` only when
+debugging or extending the parser/catalog.
+
+### Work with a Custom expression
+
+Read `references/custom-expressions.md` before generating or modifying `UMaterialExpressionCustom` code.
+Use only source-backed input/output rules, keep private Engine shader APIs version-locked, and require an
+Editor material compile for claims that source inspection or clipboard round-trip cannot prove.
 
 ## MGJSON quick syntax
 
@@ -98,11 +111,8 @@ The top level is `{"nodes": {...}, "links": [...], "pos": {...}}`. Only `nodes` 
 ```json
 {
   "nodes": {
-    "color": {"class": "Constant3Vector", "props": {"Constant": [0.8, 0.15, 0.05]}},
-    "gain": {"class": "ScalarParameter", "props": {"ParameterName": "Gain", "DefaultValue": 1.0}},
-    "mul": {"class": "Multiply"}
-  },
-  "links": ["color -> mul.A", "gain -> mul.B"]
+    "custom": {"class": "Custom", "props": {"Code": "return 0.0;"}}
+  }
 }
 ```
 
@@ -111,41 +121,16 @@ The top level is `{"nodes": {...}, "links": [...], "pos": {...}}`. Only `nodes` 
   single-line T3D right-hand-side strings.
 - A link is `source[.output] -> destination.input`. Omitting the source output means output index 0.
 - One destination input accepts at most one link. Outputs may fan out.
-- `pos` values are integer `[x,y]`; omitted positions use 300×180 automatic layout.
-- A grouped comment is
-  `{"class":"Comment","props":{"Text":"Label","nodes":["a","b"]}}`.
+- `pos` values are integer `[x,y]`; omitted positions use the tool's automatic layout.
 - Asset properties use object paths such as `/Game/Textures/T_Base.T_Base`; `null` means no asset.
 - Read `references/mgjson.md` for typed values, comments, validation rules, and normalization.
 
-## Frequent classes and effective Pin names
+## Node and function discovery
 
-The first output shown may be omitted in link syntax. Property input Pins are included after ordinary inputs.
-
-| class | inputs | outputs |
-|---|---|---|
-| `Constant` | Value | Output |
-| `Constant2Vector` | X, Y | RG, R, G |
-| `Constant3Vector` | Constant | RGB, R, G, B |
-| `ScalarParameter` | DefaultValue | Output |
-| `VectorParameter` | DefaultValue | RGB, R, G, B, A, RGBA |
-| `TextureCoordinate` | CoordinateIndex, UTiling, VTiling, UnMirrorU, UnMirrorV | Output |
-| `TextureSample` | Coordinates, TextureObject, MipValue, CoordinatesDX, CoordinatesDY, Apply View MipBias, MipValueMode, SamplerSource | RGB, R, G, B, A, RGBA |
-| `TextureSampleParameter2D` | Coordinates, TextureObject, MipValue, CoordinatesDX, CoordinatesDY, Apply View MipBias, MipValueMode, SamplerSource | RGB, R, G, B, A, RGBA |
-| `Multiply` | A, B | Output |
-| `Add` | A, B | Output |
-| `Subtract` | A, B | Output |
-| `Divide` | A, B | Output |
-| `LinearInterpolate` | A, B, Alpha | Output |
-| `OneMinus` | Input | Output |
-| `Clamp` | Input, Min, Max, ClampMode | Output |
-| `Fresnel` | ExponentIn, BaseReflectFractionIn, Normal | Output |
-| `DotProduct` | A, B | Output |
-| `Normalize` | VectorInput | Output |
-| `ComponentMask` | Input, R, G, B, A | Output |
-| `AppendVector` | A, B | Output |
-
-Always prefer the live catalog over this table when they differ. For a Material Function call, read
-`references/mf-call.md` before building because its input/output arrays are dynamic.
+Use `scripts/search_catalog.py` to search source symbols, exact Pins, properties, plugins, and evidence states
+without loading the complete catalog. `references/nodes-index.md` lists only generation-ready nodes. For a
+Material Function call, read `references/mf-call.md` and require separate asset or Editor evidence before
+building.
 
 ## Boundaries and recovery
 

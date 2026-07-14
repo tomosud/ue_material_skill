@@ -1,270 +1,513 @@
 {
   "Blend_Multiply": {
     "path": "/Engine/Functions/Engine_MaterialFunctions03/Blends/Blend_Multiply.Blend_Multiply",
-    "desc": "2つの色を乗算合成する",
+    "desc": "",
     "inputs": [
-      {"name": "A", "type": "V3"},
-      {"name": "B", "type": "V3"}
+      {
+        "name": "A",
+        "type": "V3"
+      },
+      {
+        "name": "B",
+        "type": "V3"
+      }
     ],
-    "outputs": [{"name": "Result", "type": "V3"}],
-    "usage": "テクスチャの暗い領域をさらに暗くする合成",
-    "verified": false
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V3"
+      }
+    ],
+    "usage": ""
   },
   "Blend_Screen": {
     "path": "/Engine/Functions/Engine_MaterialFunctions03/Blends/Blend_Screen.Blend_Screen",
-    "desc": "2つの色をスクリーン合成する（明るくなる）",
+    "desc": "",
     "inputs": [
-      {"name": "A", "type": "V3"},
-      {"name": "B", "type": "V3"}
+      {
+        "name": "A",
+        "type": "V3"
+      },
+      {
+        "name": "B",
+        "type": "V3"
+      }
     ],
-    "outputs": [{"name": "Result", "type": "V3"}],
-    "usage": "光や発光効果の加算的な合成",
-    "verified": false
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V3"
+      }
+    ],
+    "usage": ""
   },
   "Blend_Overlay": {
     "path": "/Engine/Functions/Engine_MaterialFunctions03/Blends/Blend_Overlay.Blend_Overlay",
-    "desc": "オーバーレイブレンド（暗い部分は乗算、明るい部分はスクリーン）",
+    "desc": "",
     "inputs": [
-      {"name": "A", "type": "V3"},
-      {"name": "B", "type": "V3"}
+      {
+        "name": "A",
+        "type": "V3"
+      },
+      {
+        "name": "B",
+        "type": "V3"
+      }
     ],
-    "outputs": [{"name": "Result", "type": "V3"}],
-    "usage": "コントラスト効果を加えた画像の重ね合わせ",
-    "verified": false
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V3"
+      }
+    ],
+    "usage": ""
   },
   "Blend_SoftLight": {
     "path": "/Engine/Functions/Engine_MaterialFunctions03/Blends/Blend_SoftLight.Blend_SoftLight",
-    "desc": "ソフトライトブレンド（よりマイルドなコントラスト効果）",
+    "desc": "",
     "inputs": [
-      {"name": "A", "type": "V3"},
-      {"name": "B", "type": "V3"}
+      {
+        "name": "A",
+        "type": "V3"
+      },
+      {
+        "name": "B",
+        "type": "V3"
+      }
     ],
-    "outputs": [{"name": "Result", "type": "V3"}],
-    "usage": "微妙な陰影効果の追加",
-    "verified": false
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V3"
+      }
+    ],
+    "usage": ""
   },
   "Blend_HardLight": {
     "path": "/Engine/Functions/Engine_MaterialFunctions03/Blends/Blend_HardLight.Blend_HardLight",
-    "desc": "ハードライトブレンド（オーバーレイより強い）",
+    "desc": "",
     "inputs": [
-      {"name": "A", "type": "V3"},
-      {"name": "B", "type": "V3"}
+      {
+        "name": "A",
+        "type": "V3"
+      },
+      {
+        "name": "B",
+        "type": "V3"
+      }
     ],
-    "outputs": [{"name": "Result", "type": "V3"}],
-    "usage": "強いコントラスト効果を必要とする合成",
-    "verified": false
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V3"
+      }
+    ],
+    "usage": ""
   },
   "Blend_Darken": {
     "path": "/Engine/Functions/Engine_MaterialFunctions03/Blends/Blend_Darken.Blend_Darken",
-    "desc": "2つの色の暗い方を選ぶ",
+    "desc": "",
     "inputs": [
-      {"name": "A", "type": "V3"},
-      {"name": "B", "type": "V3"}
+      {
+        "name": "A",
+        "type": "V3"
+      },
+      {
+        "name": "B",
+        "type": "V3"
+      }
     ],
-    "outputs": [{"name": "Result", "type": "V3"}],
-    "usage": "影の描画や暗い領域のマスク",
-    "verified": false
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V3"
+      }
+    ],
+    "usage": ""
   },
   "Blend_Lighten": {
     "path": "/Engine/Functions/Engine_MaterialFunctions03/Blends/Blend_Lighten.Blend_Lighten",
-    "desc": "2つの色の明るい方を選ぶ",
+    "desc": "",
     "inputs": [
-      {"name": "A", "type": "V3"},
-      {"name": "B", "type": "V3"}
+      {
+        "name": "A",
+        "type": "V3"
+      },
+      {
+        "name": "B",
+        "type": "V3"
+      }
     ],
-    "outputs": [{"name": "Result", "type": "V3"}],
-    "usage": "光の領域の描画や明るい領域のマスク",
-    "verified": false
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V3"
+      }
+    ],
+    "usage": ""
   },
   "Blend_Difference": {
     "path": "/Engine/Functions/Engine_MaterialFunctions03/Blends/Blend_Difference.Blend_Difference",
-    "desc": "2つの色の差分をとる",
+    "desc": "",
     "inputs": [
-      {"name": "A", "type": "V3"},
-      {"name": "B", "type": "V3"}
+      {
+        "name": "A",
+        "type": "V3"
+      },
+      {
+        "name": "B",
+        "type": "V3"
+      }
     ],
-    "outputs": [{"name": "Result", "type": "V3"}],
-    "usage": "差分マスクやシルエット効果",
-    "verified": false
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V3"
+      }
+    ],
+    "usage": ""
   },
   "Blend_Exclusion": {
     "path": "/Engine/Functions/Engine_MaterialFunctions03/Blends/Blend_Exclusion.Blend_Exclusion",
-    "desc": "除外ブレンド（差分に似た効果だがコントラスト低い）",
+    "desc": "",
     "inputs": [
-      {"name": "A", "type": "V3"},
-      {"name": "B", "type": "V3"}
+      {
+        "name": "A",
+        "type": "V3"
+      },
+      {
+        "name": "B",
+        "type": "V3"
+      }
     ],
-    "outputs": [{"name": "Result", "type": "V3"}],
-    "usage": "微妙な差分効果",
-    "verified": false
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V3"
+      }
+    ],
+    "usage": ""
   },
   "Blend_ColorBurn": {
     "path": "/Engine/Functions/Engine_MaterialFunctions03/Blends/Blend_ColorBurn.Blend_ColorBurn",
-    "desc": "カラーバーンブレンド（暗い色が強調される）",
+    "desc": "",
     "inputs": [
-      {"name": "A", "type": "V3"},
-      {"name": "B", "type": "V3"}
+      {
+        "name": "A",
+        "type": "V3"
+      },
+      {
+        "name": "B",
+        "type": "V3"
+      }
     ],
-    "outputs": [{"name": "Result", "type": "V3"}],
-    "usage": "焼き込み効果",
-    "verified": false
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V3"
+      }
+    ],
+    "usage": ""
   },
   "Blend_ColorDodge": {
     "path": "/Engine/Functions/Engine_MaterialFunctions03/Blends/Blend_ColorDodge.Blend_ColorDodge",
-    "desc": "カラードッジブレンド（明るい色が強調される）",
+    "desc": "",
     "inputs": [
-      {"name": "A", "type": "V3"},
-      {"name": "B", "type": "V3"}
+      {
+        "name": "A",
+        "type": "V3"
+      },
+      {
+        "name": "B",
+        "type": "V3"
+      }
     ],
-    "outputs": [{"name": "Result", "type": "V3"}],
-    "usage": "スクリーン合成より強い明るい効果",
-    "verified": false
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V3"
+      }
+    ],
+    "usage": ""
   },
   "Blend_LinearBurn": {
     "path": "/Engine/Functions/Engine_MaterialFunctions03/Blends/Blend_LinearBurn.Blend_LinearBurn",
-    "desc": "リニアバーン（乗算より強い暗くなる効果）",
+    "desc": "",
     "inputs": [
-      {"name": "A", "type": "V3"},
-      {"name": "B", "type": "V3"}
+      {
+        "name": "A",
+        "type": "V3"
+      },
+      {
+        "name": "B",
+        "type": "V3"
+      }
     ],
-    "outputs": [{"name": "Result", "type": "V3"}],
-    "usage": "深い影の追加",
-    "verified": false
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V3"
+      }
+    ],
+    "usage": ""
   },
   "Blend_LinearDodge": {
     "path": "/Engine/Functions/Engine_MaterialFunctions03/Blends/Blend_LinearDodge.Blend_LinearDodge",
-    "desc": "リニアドッジ（加算合成に類似した明るくなる効果）",
+    "desc": "",
     "inputs": [
-      {"name": "A", "type": "V3"},
-      {"name": "B", "type": "V3"}
+      {
+        "name": "A",
+        "type": "V3"
+      },
+      {
+        "name": "B",
+        "type": "V3"
+      }
     ],
-    "outputs": [{"name": "Result", "type": "V3"}],
-    "usage": "強い発光や光の効果",
-    "verified": false
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V3"
+      }
+    ],
+    "usage": ""
   },
   "Blend_Add": {
     "path": "/Engine/Functions/Engine_MaterialFunctions03/Blends/Blend_Add.Blend_Add",
-    "desc": "2つの色を加算する",
+    "desc": "",
     "inputs": [
-      {"name": "A", "type": "V3"},
-      {"name": "B", "type": "V3"}
+      {
+        "name": "A",
+        "type": "V3"
+      },
+      {
+        "name": "B",
+        "type": "V3"
+      }
     ],
-    "outputs": [{"name": "Result", "type": "V3"}],
-    "usage": "光の加算合成",
-    "verified": false
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V3"
+      }
+    ],
+    "usage": ""
   },
   "Blend_Subtract": {
     "path": "/Engine/Functions/Engine_MaterialFunctions03/Blends/Blend_Subtract.Blend_Subtract",
-    "desc": "第1引数から第2引数を減算する",
+    "desc": "",
     "inputs": [
-      {"name": "A", "type": "V3"},
-      {"name": "B", "type": "V3"}
+      {
+        "name": "A",
+        "type": "V3"
+      },
+      {
+        "name": "B",
+        "type": "V3"
+      }
     ],
-    "outputs": [{"name": "Result", "type": "V3"}],
-    "usage": "暗くなる効果や減算型のマスク",
-    "verified": false
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V3"
+      }
+    ],
+    "usage": ""
   },
   "3ColorBlend": {
     "path": "/Engine/Functions/Engine_MaterialFunctions01/Texturing/3ColorBlend.3ColorBlend",
-    "desc": "ノーマルマップの法線方向に基づいて3つの色またはテクスチャをブレンドする",
+    "desc": "",
     "inputs": [
-      {"name": "Normal", "type": "V3"},
-      {"name": "Texture0", "type": "V3"},
-      {"name": "Texture1", "type": "V3"},
-      {"name": "Texture2", "type": "V3"}
+      {
+        "name": "Normal",
+        "type": "V3"
+      },
+      {
+        "name": "Texture0",
+        "type": "V3"
+      },
+      {
+        "name": "Texture1",
+        "type": "V3"
+      },
+      {
+        "name": "Texture2",
+        "type": "V3"
+      }
     ],
-    "outputs": [{"name": "Result", "type": "V3"}],
-    "usage": "トリプラナー テクスチャリングの基本関数",
-    "verified": false
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V3"
+      }
+    ],
+    "usage": ""
   },
   "HueShift": {
     "path": "/Engine/Functions/Engine_MaterialFunctions01/Color/HueShift.HueShift",
-    "desc": "入力色の色相をシフトさせる",
+    "desc": "",
     "inputs": [
-      {"name": "InColor", "type": "V3"},
-      {"name": "Offset", "type": "S"}
+      {
+        "name": "InColor",
+        "type": "V3"
+      },
+      {
+        "name": "Offset",
+        "type": "S"
+      }
     ],
-    "outputs": [{"name": "Result", "type": "V3"}],
-    "usage": "色相の回転調整",
-    "verified": false,
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V3"
+      }
+    ],
+    "usage": "",
     "path_uncertain": true
   },
   "Desaturation": {
     "path": "/Engine/Functions/Engine_MaterialFunctions01/Color/Desaturation.Desaturation",
-    "desc": "入力色を彩度を落とし、グレースケールに近づける",
+    "desc": "",
     "inputs": [
-      {"name": "InColor", "type": "V3"},
-      {"name": "Percent", "type": "S"}
+      {
+        "name": "InColor",
+        "type": "V3"
+      },
+      {
+        "name": "Percent",
+        "type": "S"
+      }
     ],
-    "outputs": [{"name": "Result", "type": "V3"}],
-    "usage": "色の淡色化やグレースケール効果",
-    "verified": false
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V3"
+      }
+    ],
+    "usage": ""
   },
   "RGBtoHSV": {
     "path": "/Engine/Functions/Engine_MaterialFunctions01/Color/RGBtoHSV.RGBtoHSV",
-    "desc": "RGB色空間からHSV色空間に変換する",
+    "desc": "",
     "inputs": [
-      {"name": "RGB", "type": "V3"}
+      {
+        "name": "RGB",
+        "type": "V3"
+      }
     ],
-    "outputs": [{"name": "HSV", "type": "V3"}],
-    "usage": "色の色相・彩度・値を個別に操作する必要がある場合",
-    "verified": false
+    "outputs": [
+      {
+        "name": "HSV",
+        "type": "V3"
+      }
+    ],
+    "usage": ""
   },
   "HSVtoRGB": {
     "path": "/Engine/Functions/Engine_MaterialFunctions01/Color/HSVtoRGB.HSVtoRGB",
-    "desc": "HSV色空間からRGB色空間に変換する",
+    "desc": "",
     "inputs": [
-      {"name": "HSV", "type": "V3"}
+      {
+        "name": "HSV",
+        "type": "V3"
+      }
     ],
-    "outputs": [{"name": "RGB", "type": "V3"}],
-    "usage": "HSVで調整した色をRGBに戻す",
-    "verified": false
+    "outputs": [
+      {
+        "name": "RGB",
+        "type": "V3"
+      }
+    ],
+    "usage": ""
   },
   "LinearGradient": {
     "path": "/Engine/Functions/Engine_MaterialFunctions01/Texturing/LinearGradient.LinearGradient",
-    "desc": "指定された方向に線形なグラデーションを生成する",
+    "desc": "",
     "inputs": [
-      {"name": "Direction", "type": "V2"},
-      {"name": "StartPos", "type": "V2"},
-      {"name": "Width", "type": "S"}
+      {
+        "name": "Direction",
+        "type": "V2"
+      },
+      {
+        "name": "StartPos",
+        "type": "V2"
+      },
+      {
+        "name": "Width",
+        "type": "S"
+      }
     ],
-    "outputs": [{"name": "Result", "type": "S"}],
-    "usage": "線形グラデーションマスク",
-    "verified": false
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "S"
+      }
+    ],
+    "usage": ""
   },
   "RadialGradientExponential": {
     "path": "/Engine/Functions/Engine_MaterialFunctions01/Texturing/RadialGradientExponential.RadialGradientExponential",
-    "desc": "中心点から放射状に指数関数的に減衰するグラデーションを生成する",
+    "desc": "",
     "inputs": [
-      {"name": "CenterPosition", "type": "V2"},
-      {"name": "Radius", "type": "S"},
-      {"name": "Exponent", "type": "S"}
+      {
+        "name": "CenterPosition",
+        "type": "V2"
+      },
+      {
+        "name": "Radius",
+        "type": "S"
+      },
+      {
+        "name": "Exponent",
+        "type": "S"
+      }
     ],
-    "outputs": [{"name": "Result", "type": "S"}],
-    "usage": "スムーズな放射グラデーション、ビネット効果",
-    "verified": false
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "S"
+      }
+    ],
+    "usage": ""
   },
   "DiamondGradient": {
     "path": "/Engine/Functions/Engine_MaterialFunctions01/Texturing/DiamondGradient.DiamondGradient",
-    "desc": "ダイヤモンド形（四角形）のグラデーションを生成する",
+    "desc": "",
     "inputs": [
-      {"name": "CenterPosition", "type": "V2"},
-      {"name": "Size", "type": "S"}
+      {
+        "name": "CenterPosition",
+        "type": "V2"
+      },
+      {
+        "name": "Size",
+        "type": "S"
+      }
     ],
-    "outputs": [{"name": "Result", "type": "S"}],
-    "usage": "四角い領域マスクの生成",
-    "verified": false,
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "S"
+      }
+    ],
+    "usage": "",
     "path_uncertain": true
   },
   "SCurve": {
     "path": "/Engine/Functions/Engine_MaterialFunctions01/Curves/SCurve.SCurve",
-    "desc": "入力スカラーに対してS字カーブ(Smoothstep)の変換を適用する",
+    "desc": "",
     "inputs": [
-      {"name": "Value", "type": "S"}
+      {
+        "name": "Value",
+        "type": "S"
+      }
     ],
-    "outputs": [{"name": "Result", "type": "S"}],
-    "usage": "スムーズな遷移や値の非線形マッピング",
-    "verified": false,
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "S"
+      }
+    ],
+    "usage": "",
     "path_uncertain": true
   }
 }

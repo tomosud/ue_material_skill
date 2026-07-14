@@ -1,299 +1,551 @@
 {
-  "Add": {
-    "class": "/Script/Engine.MaterialExpressionAdd",
-    "header": "Materials/MaterialExpressionAdd.h",
-    "desc": "A + B。float/vector対応、次元は大きい方に合わせられる",
-    "inputs": [
-      {"name": "A", "prop": "A", "required": false, "default_prop": "ConstA"},
-      {"name": "B", "prop": "B", "required": false, "default_prop": "ConstB"}
-    ],
-    "prop_pins": [],
-    "outputs": [{"name": ""}],
-    "props": {
-      "ConstA": {"type": "float", "default": 0.0},
-      "ConstB": {"type": "float", "default": 1.0}
-    },
-    "notes": "",
-    "verified": false
+ "Add": {
+  "class": "/Script/Engine.MaterialExpressionAdd",
+  "header": "Materials/MaterialExpressionAdd.h",
+  "desc": "Adds A and B; an unconnected input uses its ConstA or ConstB value.",
+  "inputs": [
+   {
+    "name": "A",
+    "prop": "A",
+    "required": false,
+    "default_prop": "ConstA"
+   },
+   {
+    "name": "B",
+    "prop": "B",
+    "required": false,
+    "default_prop": "ConstB"
+   }
+  ],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": "Output"
+   }
+  ],
+  "props": {
+   "ConstA": {
+    "type": "float",
+    "default": 0.0
+   },
+   "ConstB": {
+    "type": "float",
+    "default": 1.0
+   }
   },
-  "Subtract": {
-    "class": "/Script/Engine.MaterialExpressionSubtract",
-    "header": "Materials/MaterialExpressionSubtract.h",
-    "desc": "A - B。float/vector対応",
-    "inputs": [
-      {"name": "A", "prop": "A", "required": false, "default_prop": "ConstA"},
-      {"name": "B", "prop": "B", "required": false, "default_prop": "ConstB"}
-    ],
-    "prop_pins": [],
-    "outputs": [{"name": ""}],
-    "props": {
-      "ConstA": {"type": "float", "default": 1.0},
-      "ConstB": {"type": "float", "default": 1.0}
-    },
-    "notes": "",
-    "verified": false
+  "notes": ""
+ },
+ "Subtract": {
+  "class": "/Script/Engine.MaterialExpressionSubtract",
+  "header": "Materials/MaterialExpressionSubtract.h",
+  "desc": "",
+  "inputs": [
+   {
+    "name": "A",
+    "prop": "A",
+    "required": false,
+    "default_prop": "ConstA"
+   },
+   {
+    "name": "B",
+    "prop": "B",
+    "required": false,
+    "default_prop": "ConstB"
+   }
+  ],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {
+   "ConstA": {
+    "type": "float",
+    "default": 1.0
+   },
+   "ConstB": {
+    "type": "float",
+    "default": 1.0
+   }
   },
-  "Multiply": {
-    "class": "/Script/Engine.MaterialExpressionMultiply",
-    "header": "Materials/MaterialExpressionMultiply.h",
-    "desc": "A * B。float/vector対応",
-    "inputs": [
-      {"name": "A", "prop": "A", "required": false, "default_prop": "ConstA"},
-      {"name": "B", "prop": "B", "required": false, "default_prop": "ConstB"}
-    ],
-    "prop_pins": [],
-    "outputs": [{"name": ""}],
-    "props": {
-      "ConstA": {"type": "float", "default": 0.0},
-      "ConstB": {"type": "float", "default": 1.0}
-    },
-    "notes": "",
-    "verified": false
+  "notes": ""
+ },
+ "Multiply": {
+  "class": "/Script/Engine.MaterialExpressionMultiply",
+  "header": "Materials/MaterialExpressionMultiply.h",
+  "desc": "Multiplies A and B; an unconnected input uses its ConstA or ConstB value.",
+  "inputs": [
+   {
+    "name": "A",
+    "prop": "A",
+    "required": false,
+    "default_prop": "ConstA"
+   },
+   {
+    "name": "B",
+    "prop": "B",
+    "required": false,
+    "default_prop": "ConstB"
+   }
+  ],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": "Output"
+   }
+  ],
+  "props": {
+   "ConstA": {
+    "type": "float",
+    "default": 0.0
+   },
+   "ConstB": {
+    "type": "float",
+    "default": 1.0
+   }
   },
-  "Divide": {
-    "class": "/Script/Engine.MaterialExpressionDivide",
-    "header": "Materials/MaterialExpressionDivide.h",
-    "desc": "A / B。float/vector対応",
-    "inputs": [
-      {"name": "A", "prop": "A", "required": false, "default_prop": "ConstA"},
-      {"name": "B", "prop": "B", "required": false, "default_prop": "ConstB"}
-    ],
-    "prop_pins": [],
-    "outputs": [{"name": ""}],
-    "props": {
-      "ConstA": {"type": "float", "default": 1.0},
-      "ConstB": {"type": "float", "default": 2.0}
-    },
-    "notes": "",
-    "verified": false
+  "notes": ""
+ },
+ "Divide": {
+  "class": "/Script/Engine.MaterialExpressionDivide",
+  "header": "Materials/MaterialExpressionDivide.h",
+  "desc": "",
+  "inputs": [
+   {
+    "name": "A",
+    "prop": "A",
+    "required": false,
+    "default_prop": "ConstA"
+   },
+   {
+    "name": "B",
+    "prop": "B",
+    "required": false,
+    "default_prop": "ConstB"
+   }
+  ],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {
+   "ConstA": {
+    "type": "float",
+    "default": 1.0
+   },
+   "ConstB": {
+    "type": "float",
+    "default": 2.0
+   }
   },
-  "Modulo": {
-    "class": "/Script/Engine.MaterialExpressionModulo",
-    "header": "Materials/MaterialExpressionModulo.h",
-    "desc": "A mod B。整数演算のモジュロ",
-    "inputs": [
-      {"name": "A", "prop": "A", "required": true},
-      {"name": "B", "prop": "B", "required": true}
-    ],
-    "prop_pins": [],
-    "outputs": [{"name": ""}],
-    "props": {},
-    "notes": "",
-    "verified": false
+  "notes": ""
+ },
+ "Modulo": {
+  "class": "/Script/Engine.MaterialExpressionModulo",
+  "header": "Materials/MaterialExpressionModulo.h",
+  "desc": "",
+  "inputs": [
+   {
+    "name": "A",
+    "prop": "A",
+    "required": true
+   },
+   {
+    "name": "B",
+    "prop": "B",
+    "required": true
+   }
+  ],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {},
+  "notes": ""
+ },
+ "Fmod": {
+  "class": "/Script/Engine.MaterialExpressionFmod",
+  "header": "Materials/MaterialExpressionFmod.h",
+  "desc": "",
+  "inputs": [
+   {
+    "name": "A",
+    "prop": "A",
+    "required": true
+   },
+   {
+    "name": "B",
+    "prop": "B",
+    "required": true
+   }
+  ],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {},
+  "notes": ""
+ },
+ "Power": {
+  "class": "/Script/Engine.MaterialExpressionPower",
+  "header": "Materials/MaterialExpressionPower.h",
+  "desc": "",
+  "inputs": [
+   {
+    "name": "Base",
+    "prop": "Base",
+    "required": true
+   },
+   {
+    "name": "Exponent",
+    "prop": "Exponent",
+    "required": false,
+    "default_prop": "ConstExponent"
+   }
+  ],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {
+   "ConstExponent": {
+    "type": "float",
+    "default": 2.0
+   }
   },
-  "Fmod": {
-    "class": "/Script/Engine.MaterialExpressionFmod",
-    "header": "Materials/MaterialExpressionFmod.h",
-    "desc": "A fmod B。浮動小数点数のモジュロ",
-    "inputs": [
-      {"name": "A", "prop": "A", "required": true},
-      {"name": "B", "prop": "B", "required": true}
-    ],
-    "prop_pins": [],
-    "outputs": [{"name": ""}],
-    "props": {},
-    "notes": "",
-    "verified": false
+  "notes": ""
+ },
+ "SquareRoot": {
+  "class": "/Script/Engine.MaterialExpressionSquareRoot",
+  "header": "Materials/MaterialExpressionSquareRoot.h",
+  "desc": "",
+  "inputs": [
+   {
+    "name": "Input",
+    "prop": "Input",
+    "required": true
+   }
+  ],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {},
+  "notes": ""
+ },
+ "Abs": {
+  "class": "/Script/Engine.MaterialExpressionAbs",
+  "header": "Materials/MaterialExpressionAbs.h",
+  "desc": "",
+  "inputs": [
+   {
+    "name": "Input",
+    "prop": "Input",
+    "required": true
+   }
+  ],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {},
+  "notes": ""
+ },
+ "Sign": {
+  "class": "/Script/Engine.MaterialExpressionSign",
+  "header": "Materials/MaterialExpressionSign.h",
+  "desc": "",
+  "inputs": [
+   {
+    "name": "Input",
+    "prop": "Input",
+    "required": true
+   }
+  ],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {},
+  "notes": ""
+ },
+ "Floor": {
+  "class": "/Script/Engine.MaterialExpressionFloor",
+  "header": "Materials/MaterialExpressionFloor.h",
+  "desc": "",
+  "inputs": [
+   {
+    "name": "Input",
+    "prop": "Input",
+    "required": true
+   }
+  ],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {},
+  "notes": ""
+ },
+ "Ceil": {
+  "class": "/Script/Engine.MaterialExpressionCeil",
+  "header": "Materials/MaterialExpressionCeil.h",
+  "desc": "",
+  "inputs": [
+   {
+    "name": "Input",
+    "prop": "Input",
+    "required": true
+   }
+  ],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {},
+  "notes": ""
+ },
+ "Round": {
+  "class": "/Script/Engine.MaterialExpressionRound",
+  "header": "Materials/MaterialExpressionRound.h",
+  "desc": "",
+  "inputs": [
+   {
+    "name": "Input",
+    "prop": "Input",
+    "required": true
+   }
+  ],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {},
+  "notes": ""
+ },
+ "Truncate": {
+  "class": "/Script/Engine.MaterialExpressionTruncate",
+  "header": "Materials/MaterialExpressionTruncate.h",
+  "desc": "",
+  "inputs": [
+   {
+    "name": "Input",
+    "prop": "Input",
+    "required": true
+   }
+  ],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {},
+  "notes": ""
+ },
+ "Frac": {
+  "class": "/Script/Engine.MaterialExpressionFrac",
+  "header": "Materials/MaterialExpressionFrac.h",
+  "desc": "",
+  "inputs": [
+   {
+    "name": "Input",
+    "prop": "Input",
+    "required": true
+   }
+  ],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {},
+  "notes": ""
+ },
+ "OneMinus": {
+  "class": "/Script/Engine.MaterialExpressionOneMinus",
+  "header": "Materials/MaterialExpressionOneMinus.h",
+  "desc": "",
+  "inputs": [
+   {
+    "name": "Input",
+    "prop": "Input",
+    "required": true
+   }
+  ],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {},
+  "notes": ""
+ },
+ "Min": {
+  "class": "/Script/Engine.MaterialExpressionMin",
+  "header": "Materials/MaterialExpressionMin.h",
+  "desc": "",
+  "inputs": [
+   {
+    "name": "A",
+    "prop": "A",
+    "required": false,
+    "default_prop": "ConstA"
+   },
+   {
+    "name": "B",
+    "prop": "B",
+    "required": false,
+    "default_prop": "ConstB"
+   }
+  ],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {
+   "ConstA": {
+    "type": "float",
+    "default": 0.0
+   },
+   "ConstB": {
+    "type": "float",
+    "default": 1.0
+   }
   },
-  "Power": {
-    "class": "/Script/Engine.MaterialExpressionPower",
-    "header": "Materials/MaterialExpressionPower.h",
-    "desc": "Base ^ Exponent。べき乗",
-    "inputs": [
-      {"name": "Base", "prop": "Base", "required": true},
-      {"name": "Exponent", "prop": "Exponent", "required": false, "default_prop": "ConstExponent"}
-    ],
-    "prop_pins": [],
-    "outputs": [{"name": ""}],
-    "props": {
-      "ConstExponent": {"type": "float", "default": 2.0}
-    },
-    "notes": "",
-    "verified": false
+  "notes": ""
+ },
+ "Max": {
+  "class": "/Script/Engine.MaterialExpressionMax",
+  "header": "Materials/MaterialExpressionMax.h",
+  "desc": "",
+  "inputs": [
+   {
+    "name": "A",
+    "prop": "A",
+    "required": false,
+    "default_prop": "ConstA"
+   },
+   {
+    "name": "B",
+    "prop": "B",
+    "required": false,
+    "default_prop": "ConstB"
+   }
+  ],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {
+   "ConstA": {
+    "type": "float",
+    "default": 0.0
+   },
+   "ConstB": {
+    "type": "float",
+    "default": 1.0
+   }
   },
-  "SquareRoot": {
-    "class": "/Script/Engine.MaterialExpressionSquareRoot",
-    "header": "Materials/MaterialExpressionSquareRoot.h",
-    "desc": "sqrt(Input)。平方根",
-    "inputs": [
-      {"name": "Input", "prop": "Input", "required": true}
-    ],
-    "prop_pins": [],
-    "outputs": [{"name": ""}],
-    "props": {},
-    "notes": "",
-    "verified": false
+  "notes": ""
+ },
+ "Clamp": {
+  "class": "/Script/Engine.MaterialExpressionClamp",
+  "header": "Materials/MaterialExpressionClamp.h",
+  "desc": "",
+  "inputs": [
+   {
+    "name": "Input",
+    "prop": "Input",
+    "required": true
+   },
+   {
+    "name": "Min",
+    "prop": "Min",
+    "required": false,
+    "default_prop": "MinDefault"
+   },
+   {
+    "name": "Max",
+    "prop": "Max",
+    "required": false,
+    "default_prop": "MaxDefault"
+   }
+  ],
+  "prop_pins": [
+   {
+    "name": "ClampMode",
+    "prop": "ClampMode",
+    "kind": "Advanced",
+    "type": "TEnumAsByte<EClampMode>"
+   }
+  ],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {
+   "ClampMode": {
+    "type": "enum:EClampMode",
+    "default": "CMODE_Clamp"
+   },
+   "MinDefault": {
+    "type": "float",
+    "default": 0.0
+   },
+   "MaxDefault": {
+    "type": "float",
+    "default": 1.0
+   }
   },
-  "Abs": {
-    "class": "/Script/Engine.MaterialExpressionAbs",
-    "header": "Materials/MaterialExpressionAbs.h",
-    "desc": "abs(Input)。絶対値",
-    "inputs": [
-      {"name": "Input", "prop": "Input", "required": true}
-    ],
-    "prop_pins": [],
-    "outputs": [{"name": ""}],
-    "props": {},
-    "notes": "",
-    "verified": false
-  },
-  "Sign": {
-    "class": "/Script/Engine.MaterialExpressionSign",
-    "header": "Materials/MaterialExpressionSign.h",
-    "desc": "sign(Input)。符号(-1/0/1)",
-    "inputs": [
-      {"name": "Input", "prop": "Input", "required": true}
-    ],
-    "prop_pins": [],
-    "outputs": [{"name": ""}],
-    "props": {},
-    "notes": "",
-    "verified": false
-  },
-  "Floor": {
-    "class": "/Script/Engine.MaterialExpressionFloor",
-    "header": "Materials/MaterialExpressionFloor.h",
-    "desc": "floor(Input)。床関数(切り下げ)",
-    "inputs": [
-      {"name": "Input", "prop": "Input", "required": true}
-    ],
-    "prop_pins": [],
-    "outputs": [{"name": ""}],
-    "props": {},
-    "notes": "",
-    "verified": false
-  },
-  "Ceil": {
-    "class": "/Script/Engine.MaterialExpressionCeil",
-    "header": "Materials/MaterialExpressionCeil.h",
-    "desc": "ceil(Input)。天井関数(切り上げ)",
-    "inputs": [
-      {"name": "Input", "prop": "Input", "required": true}
-    ],
-    "prop_pins": [],
-    "outputs": [{"name": ""}],
-    "props": {},
-    "notes": "",
-    "verified": false
-  },
-  "Round": {
-    "class": "/Script/Engine.MaterialExpressionRound",
-    "header": "Materials/MaterialExpressionRound.h",
-    "desc": "round(Input)。四捨五入",
-    "inputs": [
-      {"name": "Input", "prop": "Input", "required": true}
-    ],
-    "prop_pins": [],
-    "outputs": [{"name": ""}],
-    "props": {},
-    "notes": "",
-    "verified": false
-  },
-  "Truncate": {
-    "class": "/Script/Engine.MaterialExpressionTruncate",
-    "header": "Materials/MaterialExpressionTruncate.h",
-    "desc": "trunc(Input)。小数部切り捨て",
-    "inputs": [
-      {"name": "Input", "prop": "Input", "required": true}
-    ],
-    "prop_pins": [],
-    "outputs": [{"name": ""}],
-    "props": {},
-    "notes": "",
-    "verified": false
-  },
-  "Frac": {
-    "class": "/Script/Engine.MaterialExpressionFrac",
-    "header": "Materials/MaterialExpressionFrac.h",
-    "desc": "frac(Input)。小数部取得",
-    "inputs": [
-      {"name": "Input", "prop": "Input", "required": true}
-    ],
-    "prop_pins": [],
-    "outputs": [{"name": ""}],
-    "props": {},
-    "notes": "",
-    "verified": false
-  },
-  "OneMinus": {
-    "class": "/Script/Engine.MaterialExpressionOneMinus",
-    "header": "Materials/MaterialExpressionOneMinus.h",
-    "desc": "1 - Input。補数",
-    "inputs": [
-      {"name": "Input", "prop": "Input", "required": true}
-    ],
-    "prop_pins": [],
-    "outputs": [{"name": ""}],
-    "props": {},
-    "notes": "",
-    "verified": true
-  },
-  "Min": {
-    "class": "/Script/Engine.MaterialExpressionMin",
-    "header": "Materials/MaterialExpressionMin.h",
-    "desc": "min(A, B)。最小値",
-    "inputs": [
-      {"name": "A", "prop": "A", "required": false, "default_prop": "ConstA"},
-      {"name": "B", "prop": "B", "required": false, "default_prop": "ConstB"}
-    ],
-    "prop_pins": [],
-    "outputs": [{"name": ""}],
-    "props": {
-      "ConstA": {"type": "float", "default": 0.0},
-      "ConstB": {"type": "float", "default": 1.0}
-    },
-    "notes": "",
-    "verified": false
-  },
-  "Max": {
-    "class": "/Script/Engine.MaterialExpressionMax",
-    "header": "Materials/MaterialExpressionMax.h",
-    "desc": "max(A, B)。最大値",
-    "inputs": [
-      {"name": "A", "prop": "A", "required": false, "default_prop": "ConstA"},
-      {"name": "B", "prop": "B", "required": false, "default_prop": "ConstB"}
-    ],
-    "prop_pins": [],
-    "outputs": [{"name": ""}],
-    "props": {
-      "ConstA": {"type": "float", "default": 0.0},
-      "ConstB": {"type": "float", "default": 1.0}
-    },
-    "notes": "",
-    "verified": false
-  },
-  "Clamp": {
-    "class": "/Script/Engine.MaterialExpressionClamp",
-    "header": "Materials/MaterialExpressionClamp.h",
-    "desc": "clamp(Input, Min, Max)。値を範囲内に制限",
-    "inputs": [
-      {"name": "Input", "prop": "Input", "required": true},
-      {"name": "Min", "prop": "Min", "required": false, "default_prop": "MinDefault"},
-      {"name": "Max", "prop": "Max", "required": false, "default_prop": "MaxDefault"}
-    ],
-    "prop_pins": [
-      {"name": "ClampMode", "prop": "ClampMode", "kind": "Advanced", "type": "TEnumAsByte<EClampMode>"}
-    ],
-    "outputs": [{"name": ""}],
-    "props": {
-      "ClampMode": {"type": "enum:EClampMode", "default": "CMODE_Clamp"},
-      "MinDefault": {"type": "float", "default": 0.0},
-      "MaxDefault": {"type": "float", "default": 1.0}
-    },
-    "notes": "",
-    "verified": false
-  },
-  "Saturate": {
-    "class": "/Script/Engine.MaterialExpressionSaturate",
-    "header": "Materials/MaterialExpressionSaturate.h",
-    "desc": "saturate(Input)。[0,1]に制限",
-    "inputs": [
-      {"name": "Input", "prop": "Input", "required": true}
-    ],
-    "prop_pins": [],
-    "outputs": [{"name": ""}],
-    "props": {},
-    "notes": "",
-    "verified": false
-  }
+  "notes": ""
+ },
+ "Saturate": {
+  "class": "/Script/Engine.MaterialExpressionSaturate",
+  "header": "Materials/MaterialExpressionSaturate.h",
+  "desc": "",
+  "inputs": [
+   {
+    "name": "Input",
+    "prop": "Input",
+    "required": true
+   }
+  ],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {},
+  "notes": ""
+ }
 }

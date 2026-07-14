@@ -1,0 +1,152 @@
+{
+  "Constant": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "not_applicable"
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionConstant.h",
+        "symbol": "UMaterialExpressionConstant",
+        "claims": ["declaration", "schema"]
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpressionConstant::UMaterialExpressionConstant / Compile",
+        "claims": ["schema", "description"]
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionConstant::Build",
+        "claims": ["description"]
+      },
+      {
+        "path": "Engine/Source/Editor/UnrealEd/Private/MaterialGraphNode.cpp",
+        "symbol": "UMaterialGraphNode::CreateOutputPins",
+        "claims": ["schema"]
+      }
+    ]
+  },
+  "Constant2Vector": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "not_applicable"
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionConstant2Vector.h",
+        "symbol": "UMaterialExpressionConstant2Vector",
+        "claims": ["declaration", "schema"]
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpressionConstant2Vector::UMaterialExpressionConstant2Vector / Compile",
+        "claims": ["schema", "description"]
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionConstant2Vector::Build",
+        "claims": ["schema", "description"]
+      },
+      {
+        "path": "Engine/Source/Editor/UnrealEd/Private/MaterialGraphNode.cpp",
+        "symbol": "UMaterialGraphNode::CreateOutputPins",
+        "claims": ["schema"]
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Classes/EdGraph/EdGraphNode.h",
+        "symbol": "CreateUniquePinName",
+        "claims": ["schema"]
+      }
+    ]
+  },
+  "Constant3Vector": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "not_applicable"
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionConstant3Vector.h",
+        "symbol": "UMaterialExpressionConstant3Vector",
+        "claims": ["declaration", "schema"]
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpressionConstant3Vector::UMaterialExpressionConstant3Vector / Compile",
+        "claims": ["schema", "description"]
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionConstant3Vector::Build",
+        "claims": ["schema", "description"]
+      },
+      {
+        "path": "Engine/Source/Editor/UnrealEd/Private/MaterialGraphNode.cpp",
+        "symbol": "UMaterialGraphNode::CreateOutputPins",
+        "claims": ["schema"]
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Classes/EdGraph/EdGraphNode.h",
+        "symbol": "CreateUniquePinName",
+        "claims": ["schema"]
+      }
+    ]
+  },
+  "Add": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "not_applicable"
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionAdd.h",
+        "symbol": "UMaterialExpressionAdd",
+        "claims": ["declaration", "schema", "description"]
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpressionAdd::Compile",
+        "claims": ["schema", "description"]
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionAdd::Build",
+        "claims": ["description"]
+      }
+    ]
+  },
+  "Multiply": {
+    "audit": {
+      "declaration": "verified",
+      "schema": "verified",
+      "description": "verified",
+      "restrictions": "not_applicable"
+    },
+    "references": [
+      {
+        "path": "Engine/Source/Runtime/Engine/Public/Materials/MaterialExpressionMultiply.h",
+        "symbol": "UMaterialExpressionMultiply",
+        "claims": ["declaration", "schema", "description"]
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp",
+        "symbol": "UMaterialExpressionMultiply::Compile",
+        "claims": ["schema", "description"]
+      },
+      {
+        "path": "Engine/Source/Runtime/Engine/Private/Materials/MaterialExpressionsToMIR.cpp",
+        "symbol": "UMaterialExpressionMultiply::Build",
+        "claims": ["description"]
+      }
+    ]
+  }
+}

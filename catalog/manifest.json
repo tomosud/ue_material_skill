@@ -905,7 +905,7 @@
   "class": "UMaterialExpressionHeightfieldMinMaxTexture",
   "deprecated": false,
   "header": "Engine/Plugins/Experimental/VirtualHeightfieldMesh/Source/VirtualHeightfieldMesh/Private/HeightfieldMinMaxTextureMaterialExpression.h",
-  "module": "Experimental",
+  "module": "VirtualHeightfieldMesh",
   "origin": "plugin"
  },
  "HsvToRgb": {
@@ -1220,7 +1220,7 @@
   "class": "UMaterialExpressionMaterialXAppend3Vector",
   "deprecated": false,
   "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionAppend3Vector.h",
-  "module": "Interchange",
+  "module": "Import",
   "origin": "plugin"
  },
  "MaterialXAppend4Vector": {
@@ -1229,7 +1229,7 @@
   "class": "UMaterialExpressionMaterialXAppend4Vector",
   "deprecated": false,
   "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionAppend4Vector.h",
-  "module": "Interchange",
+  "module": "Import",
   "origin": "plugin"
  },
  "MaterialXBurn": {
@@ -1238,7 +1238,7 @@
   "class": "UMaterialExpressionMaterialXBurn",
   "deprecated": false,
   "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionBurn.h",
-  "module": "Interchange",
+  "module": "Import",
   "origin": "plugin"
  },
  "MaterialXContrast": {
@@ -1247,7 +1247,7 @@
   "class": "UMaterialExpressionMaterialXContrast",
   "deprecated": false,
   "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionContrast.h",
-  "module": "Interchange",
+  "module": "Import",
   "origin": "plugin"
  },
  "MaterialXDifference": {
@@ -1256,7 +1256,7 @@
   "class": "UMaterialExpressionMaterialXDifference",
   "deprecated": false,
   "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionDifference.h",
-  "module": "Interchange",
+  "module": "Import",
   "origin": "plugin"
  },
  "MaterialXDisjointOver": {
@@ -1265,7 +1265,7 @@
   "class": "UMaterialExpressionMaterialXDisjointOver",
   "deprecated": false,
   "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionDisjointOver.h",
-  "module": "Interchange",
+  "module": "Import",
   "origin": "plugin"
  },
  "MaterialXDodge": {
@@ -1274,7 +1274,7 @@
   "class": "UMaterialExpressionMaterialXDodge",
   "deprecated": false,
   "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionDodge.h",
-  "module": "Interchange",
+  "module": "Import",
   "origin": "plugin"
  },
  "MaterialXFractal": {
@@ -1283,7 +1283,7 @@
   "class": "UMaterialExpressionMaterialXFractal",
   "deprecated": false,
   "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionFractal.h",
-  "module": "Interchange",
+  "module": "Import",
   "origin": "plugin"
  },
  "MaterialXIn": {
@@ -1292,7 +1292,7 @@
   "class": "UMaterialExpressionMaterialXIn",
   "deprecated": false,
   "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionIn.h",
-  "module": "Interchange",
+  "module": "Import",
   "origin": "plugin"
  },
  "MaterialXLuminance": {
@@ -1301,7 +1301,7 @@
   "class": "UMaterialExpressionMaterialXLuminance",
   "deprecated": false,
   "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionLuminance.h",
-  "module": "Interchange",
+  "module": "Import",
   "origin": "plugin"
  },
  "MaterialXMask": {
@@ -1310,7 +1310,7 @@
   "class": "UMaterialExpressionMaterialXMask",
   "deprecated": false,
   "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionMask.h",
-  "module": "Interchange",
+  "module": "Import",
   "origin": "plugin"
  },
  "MaterialXMatte": {
@@ -1319,7 +1319,7 @@
   "class": "UMaterialExpressionMaterialXMatte",
   "deprecated": false,
   "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionMatte.h",
-  "module": "Interchange",
+  "module": "Import",
   "origin": "plugin"
  },
  "MaterialXMinus": {
@@ -1328,7 +1328,7 @@
   "class": "UMaterialExpressionMaterialXMinus",
   "deprecated": false,
   "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionMinus.h",
-  "module": "Interchange",
+  "module": "Import",
   "origin": "plugin"
  },
  "MaterialXMod": {
@@ -1337,7 +1337,7 @@
   "class": "UMaterialExpressionMaterialXMod",
   "deprecated": false,
   "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionMod.h",
-  "module": "Interchange",
+  "module": "Import",
   "origin": "plugin"
  },
  "MaterialXOut": {
@@ -1346,7 +1346,7 @@
   "class": "UMaterialExpressionMaterialXOut",
   "deprecated": false,
   "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionOut.h",
-  "module": "Interchange",
+  "module": "Import",
   "origin": "plugin"
  },
  "MaterialXOver": {
@@ -1355,7 +1355,7 @@
   "class": "UMaterialExpressionMaterialXOver",
   "deprecated": false,
   "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionOver.h",
-  "module": "Interchange",
+  "module": "Import",
   "origin": "plugin"
  },
  "MaterialXOverlay": {
@@ -1364,7 +1364,7 @@
   "class": "UMaterialExpressionMaterialXOverlay",
   "deprecated": false,
   "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionOverlay.h",
-  "module": "Interchange",
+  "module": "Import",
   "origin": "plugin"
  },
  "MaterialXPlus": {
@@ -1373,7 +1373,7 @@
   "class": "UMaterialExpressionMaterialXPlus",
   "deprecated": false,
   "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionPlus.h",
-  "module": "Interchange",
+  "module": "Import",
   "origin": "plugin"
  },
  "MaterialXPremult": {
@@ -1382,7 +1382,7 @@
   "class": "UMaterialExpressionMaterialXPremult",
   "deprecated": false,
   "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionPremult.h",
-  "module": "Interchange",
+  "module": "Import",
   "origin": "plugin"
  },
  "MaterialXRamp4": {
@@ -1391,7 +1391,7 @@
   "class": "UMaterialExpressionMaterialXRamp4",
   "deprecated": false,
   "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionRamp4.h",
-  "module": "Interchange",
+  "module": "Import",
   "origin": "plugin"
  },
  "MaterialXRampLeftRight": {
@@ -1400,7 +1400,7 @@
   "class": "UMaterialExpressionMaterialXRampLeftRight",
   "deprecated": false,
   "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionRampLeftRight.h",
-  "module": "Interchange",
+  "module": "Import",
   "origin": "plugin"
  },
  "MaterialXRampTopBottom": {
@@ -1409,7 +1409,7 @@
   "class": "UMaterialExpressionMaterialXRampTopBottom",
   "deprecated": false,
   "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionRampTopBottom.h",
-  "module": "Interchange",
+  "module": "Import",
   "origin": "plugin"
  },
  "MaterialXRange": {
@@ -1418,7 +1418,7 @@
   "class": "UMaterialExpressionMaterialXRange",
   "deprecated": false,
   "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionRange.h",
-  "module": "Interchange",
+  "module": "Import",
   "origin": "plugin"
  },
  "MaterialXRemap": {
@@ -1427,7 +1427,7 @@
   "class": "UMaterialExpressionMaterialXRemap",
   "deprecated": false,
   "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionRemap.h",
-  "module": "Interchange",
+  "module": "Import",
   "origin": "plugin"
  },
  "MaterialXScreen": {
@@ -1436,7 +1436,7 @@
   "class": "UMaterialExpressionMaterialXScreen",
   "deprecated": false,
   "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionScreen.h",
-  "module": "Interchange",
+  "module": "Import",
   "origin": "plugin"
  },
  "MaterialXSplitLeftRight": {
@@ -1445,7 +1445,7 @@
   "class": "UMaterialExpressionMaterialXSplitLeftRight",
   "deprecated": false,
   "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionSplitLeftRight.h",
-  "module": "Interchange",
+  "module": "Import",
   "origin": "plugin"
  },
  "MaterialXSplitTopBottom": {
@@ -1454,7 +1454,7 @@
   "class": "UMaterialExpressionMaterialXSplitTopBottom",
   "deprecated": false,
   "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionSplitTopBottom.h",
-  "module": "Interchange",
+  "module": "Import",
   "origin": "plugin"
  },
  "MaterialXTextureSampleParameterBlur": {
@@ -1463,7 +1463,7 @@
   "class": "UMaterialExpressionMaterialXTextureSampleParameterBlur",
   "deprecated": false,
   "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Public/MaterialX/MaterialExpressions/MaterialExpressionTextureSampleParameterBlur.h",
-  "module": "Interchange",
+  "module": "Import",
   "origin": "plugin"
  },
  "MaterialXUnpremult": {
@@ -1472,7 +1472,7 @@
   "class": "UMaterialExpressionMaterialXUnpremult",
   "deprecated": false,
   "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionUnpremult.h",
-  "module": "Interchange",
+  "module": "Import",
   "origin": "plugin"
  },
  "Max": {
@@ -1517,7 +1517,7 @@
   "class": "UMaterialExpressionMeshPartitionChannelSample",
   "deprecated": false,
   "header": "Engine/Plugins/Experimental/MeshPartition/Source/MeshPartitionEditor/Public/MeshPartitionMaterialExpressionUtils.h",
-  "module": "Experimental",
+  "module": "MeshPartitionEditor",
   "origin": "plugin"
  },
  "MeshPartitionChannelSampleIndex": {
@@ -1526,7 +1526,7 @@
   "class": "UMaterialExpressionMeshPartitionChannelSampleIndex",
   "deprecated": false,
   "header": "Engine/Plugins/Experimental/MeshPartition/Source/MeshPartitionEditor/Public/MeshPartitionMaterialExpressionUtils.h",
-  "module": "Experimental",
+  "module": "MeshPartitionEditor",
   "origin": "plugin"
  },
  "MeshPartitionInspector": {
@@ -1535,7 +1535,7 @@
   "class": "UMaterialExpressionMeshPartitionInspector",
   "deprecated": false,
   "header": "Engine/Plugins/Experimental/MeshPartition/Source/MeshPartitionEditor/Public/MeshPartitionMaterialExpressionUtils.h",
-  "module": "Experimental",
+  "module": "MeshPartitionEditor",
   "origin": "plugin"
  },
  "MeshPartitionResource": {
@@ -1544,7 +1544,7 @@
   "class": "UMaterialExpressionMeshPartitionResource",
   "deprecated": false,
   "header": "Engine/Plugins/Experimental/MeshPartition/Source/MeshPartitionEditor/Public/MeshPartitionMaterialExpressionUtils.h",
-  "module": "Experimental",
+  "module": "MeshPartitionEditor",
   "origin": "plugin"
  },
  "MeshPartitionTexcoord": {
@@ -1553,7 +1553,7 @@
   "class": "UMaterialExpressionMeshPartitionTexcoord",
   "deprecated": false,
   "header": "Engine/Plugins/Experimental/MeshPartition/Source/MeshPartitionEditor/Public/MeshPartitionMaterialExpressionUtils.h",
-  "module": "Experimental",
+  "module": "MeshPartitionEditor",
   "origin": "plugin"
  },
  "Min": {
@@ -1931,7 +1931,7 @@
   "class": "UMaterialExpressionPhysicalMaterialOutput",
   "deprecated": false,
   "header": "Engine/Plugins/Runtime/RenderTrace/Source/Private/Materials/MaterialExpressionPhysicalMaterialOutput.h",
-  "module": "Runtime",
+  "module": "Private",
   "origin": "plugin"
  },
  "PinBase": {
@@ -2534,7 +2534,7 @@
   "class": "UMaterialExpressionSpriteTextureSampler",
   "deprecated": false,
   "header": "Engine/Plugins/2D/Paper2D/Source/Paper2D/Public/MaterialExpressionSpriteTextureSampler.h",
-  "module": "2D",
+  "module": "Paper2D",
   "origin": "plugin"
  },
  "SquareRoot": {

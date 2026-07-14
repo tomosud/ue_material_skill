@@ -1,348 +1,710 @@
 {
   "BlendAngleCorrectedNormals": {
     "path": "/Engine/Functions/Engine_MaterialFunctions02/Utility/BlendAngleCorrectedNormals.BlendAngleCorrectedNormals",
-    "desc": "2つのノーマルマップを角度補正付きで合成する",
+    "desc": "",
     "inputs": [
-      {"name": "BaseNormal", "type": "V3"},
-      {"name": "AdditionalNormal", "type": "V3"}
+      {
+        "name": "BaseNormal",
+        "type": "V3"
+      },
+      {
+        "name": "AdditionalNormal",
+        "type": "V3"
+      }
     ],
-    "outputs": [{"name": "Result", "type": "V3"}],
-    "usage": "ディテールノーマルの重ね合わせの定番",
-    "verified": true,
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V3"
+      }
+    ],
+    "usage": "",
     "path_uncertain": false
   },
   "FlattenNormal": {
     "path": "/Engine/Functions/Engine_MaterialFunctions01/Texturing/FlattenNormal.FlattenNormal",
-    "desc": "ノーマルマップを平坦化・デサチュレートする",
+    "desc": "",
     "inputs": [
-      {"name": "In", "type": "V3"}
+      {
+        "name": "In",
+        "type": "V3"
+      }
     ],
-    "outputs": [{"name": "Result", "type": "V3"}],
-    "usage": "ノーマルの強度を弱める、グローバルノーマルの補正",
-    "verified": false,
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V3"
+      }
+    ],
+    "usage": "",
     "path_uncertain": false
   },
   "NormalFromHeightMap": {
     "path": "/Engine/Functions/Engine_MaterialFunctions01/Texturing/NormalFromHeightMap.NormalFromHeightMap",
-    "desc": "ハイトマップからノーマルマップを生成する",
+    "desc": "",
     "inputs": [
-      {"name": "HeightTexture", "type": "T2d"},
-      {"name": "HeightAmount", "type": "S"}
+      {
+        "name": "HeightTexture",
+        "type": "T2d"
+      },
+      {
+        "name": "HeightAmount",
+        "type": "S"
+      }
     ],
-    "outputs": [{"name": "Result", "type": "V3"}],
-    "usage": "グレースケール画像からノーマルマップを動的に生成",
-    "verified": false,
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V3"
+      }
+    ],
+    "usage": "",
     "path_uncertain": true
   },
   "CustomRotator": {
     "path": "/Engine/Functions/Engine_MaterialFunctions01/Texturing/CustomRotator.CustomRotator",
-    "desc": "UVを指定角度だけ回転させる",
+    "desc": "",
     "inputs": [
-      {"name": "UV", "type": "V2"},
-      {"name": "CenterUV", "type": "V2"},
-      {"name": "AngleInRadians", "type": "S"},
-      {"name": "TexSize", "type": "V2"}
+      {
+        "name": "UV",
+        "type": "V2"
+      },
+      {
+        "name": "CenterUV",
+        "type": "V2"
+      },
+      {
+        "name": "AngleInRadians",
+        "type": "S"
+      },
+      {
+        "name": "TexSize",
+        "type": "V2"
+      }
     ],
-    "outputs": [{"name": "Result", "type": "V2"}],
-    "usage": "テクスチャの回転アニメーション、ダイナミックな回転効果",
-    "verified": false,
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V2"
+      }
+    ],
+    "usage": "",
     "path_uncertain": false
   },
   "WorldAlignedTexture": {
     "path": "/Engine/Functions/Engine_MaterialFunctions01/Texturing/WorldAlignedTexture.WorldAlignedTexture",
-    "desc": "ワールド座標に基づいたトライプラナー投影によるテクスチャマッピング",
+    "desc": "",
     "inputs": [
-      {"name": "Texture", "type": "T2d"},
-      {"name": "XYZBlend", "type": "V3"},
-      {"name": "WorldPosition", "type": "V3"},
-      {"name": "BlendAmount", "type": "S"}
+      {
+        "name": "Texture",
+        "type": "T2d"
+      },
+      {
+        "name": "XYZBlend",
+        "type": "V3"
+      },
+      {
+        "name": "WorldPosition",
+        "type": "V3"
+      },
+      {
+        "name": "BlendAmount",
+        "type": "S"
+      }
     ],
-    "outputs": [{"name": "XY Texture", "type": "V4"},
-              {"name": "Z Texture", "type": "V4"},
-              {"name": "XYZ Blend", "type": "V3"}],
-    "usage": "岩や地形のテクスチャを複数面に統一的に貼り付ける定番",
-    "verified": false,
+    "outputs": [
+      {
+        "name": "XY Texture",
+        "type": "V4"
+      },
+      {
+        "name": "Z Texture",
+        "type": "V4"
+      },
+      {
+        "name": "XYZ Blend",
+        "type": "V3"
+      }
+    ],
+    "usage": "",
     "path_uncertain": false
   },
   "WorldAlignedNormal": {
     "path": "/Engine/Functions/Engine_MaterialFunctions01/Texturing/WorldAlignedNormal.WorldAlignedNormal",
-    "desc": "ワールド座標に基づいたトライプラナー投影によるノーマルマッピング",
+    "desc": "",
     "inputs": [
-      {"name": "Texture", "type": "T2d"},
-      {"name": "XYZBlend", "type": "V3"},
-      {"name": "WorldPosition", "type": "V3"},
-      {"name": "BlendAmount", "type": "S"}
+      {
+        "name": "Texture",
+        "type": "T2d"
+      },
+      {
+        "name": "XYZBlend",
+        "type": "V3"
+      },
+      {
+        "name": "WorldPosition",
+        "type": "V3"
+      },
+      {
+        "name": "BlendAmount",
+        "type": "S"
+      }
     ],
-    "outputs": [{"name": "XY Normal", "type": "V3"},
-              {"name": "Z Normal", "type": "V3"},
-              {"name": "XYZ Normal", "type": "V3"}],
-    "usage": "複数面への統一的なノーマルマッピング、特にプロシージャル地形",
-    "verified": false,
+    "outputs": [
+      {
+        "name": "XY Normal",
+        "type": "V3"
+      },
+      {
+        "name": "Z Normal",
+        "type": "V3"
+      },
+      {
+        "name": "XYZ Normal",
+        "type": "V3"
+      }
+    ],
+    "usage": "",
     "path_uncertain": false
   },
   "Flipbook": {
     "path": "/Engine/Functions/Engine_MaterialFunctions01/Texturing/Flipbook.Flipbook",
-    "desc": "スプライトシートのようにテクスチャをフレーム分割して再生する",
+    "desc": "",
     "inputs": [
-      {"name": "UV", "type": "V2"},
-      {"name": "ExecutionTime", "type": "S"},
-      {"name": "TextureSize", "type": "V2"},
-      {"name": "TotalFrames", "type": "S"},
-      {"name": "FramesPerSecond", "type": "S"}
+      {
+        "name": "UV",
+        "type": "V2"
+      },
+      {
+        "name": "ExecutionTime",
+        "type": "S"
+      },
+      {
+        "name": "TextureSize",
+        "type": "V2"
+      },
+      {
+        "name": "TotalFrames",
+        "type": "S"
+      },
+      {
+        "name": "FramesPerSecond",
+        "type": "S"
+      }
     ],
-    "outputs": [{"name": "Result", "type": "V2"}],
-    "usage": "テクスチャシート上の複数フレームを時系列で再生するアニメーション",
-    "verified": false,
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V2"
+      }
+    ],
+    "usage": "",
     "path_uncertain": false
   },
   "HeightLerp": {
     "path": "/Engine/Functions/Engine_MaterialFunctions01/Texturing/HeightLerp.HeightLerp",
-    "desc": "高さ値に基づいて2つの値を補間する",
+    "desc": "",
     "inputs": [
-      {"name": "A", "type": "V3"},
-      {"name": "B", "type": "V3"},
-      {"name": "Height", "type": "S"}
+      {
+        "name": "A",
+        "type": "V3"
+      },
+      {
+        "name": "B",
+        "type": "V3"
+      },
+      {
+        "name": "Height",
+        "type": "S"
+      }
     ],
-    "outputs": [{"name": "Result", "type": "V3"}],
-    "usage": "パラックスマッピングやハイトベースのブレンド",
-    "verified": false,
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V3"
+      }
+    ],
+    "usage": "",
     "path_uncertain": true
   },
   "HeightLerpWithTwoInputs": {
     "path": "/Engine/Functions/Engine_MaterialFunctions01/Texturing/HeightLerpWithTwoInputs.HeightLerpWithTwoInputs",
-    "desc": "2つのハイト値に基づいて複数の値を補間する",
+    "desc": "",
     "inputs": [
-      {"name": "A", "type": "V3"},
-      {"name": "B", "type": "V3"},
-      {"name": "HeightA", "type": "S"},
-      {"name": "HeightB", "type": "S"},
-      {"name": "Contrast", "type": "S"}
+      {
+        "name": "A",
+        "type": "V3"
+      },
+      {
+        "name": "B",
+        "type": "V3"
+      },
+      {
+        "name": "HeightA",
+        "type": "S"
+      },
+      {
+        "name": "HeightB",
+        "type": "S"
+      },
+      {
+        "name": "Contrast",
+        "type": "S"
+      }
     ],
-    "outputs": [{"name": "Result", "type": "V3"}],
-    "usage": "複雑なハイトベースのレイヤーブレンド、高度な視差マッピング",
-    "verified": false,
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V3"
+      }
+    ],
+    "usage": "",
     "path_uncertain": true
   },
   "TextureCropping": {
     "path": "/Engine/Functions/Engine_MaterialFunctions01/Texturing/TextureCropping.TextureCropping",
-    "desc": "テクスチャ座標をクロップ・スケーリングする",
+    "desc": "",
     "inputs": [
-      {"name": "UV", "type": "V2"},
-      {"name": "MinX", "type": "S"},
-      {"name": "MaxX", "type": "S"},
-      {"name": "MinY", "type": "S"},
-      {"name": "MaxY", "type": "S"}
+      {
+        "name": "UV",
+        "type": "V2"
+      },
+      {
+        "name": "MinX",
+        "type": "S"
+      },
+      {
+        "name": "MaxX",
+        "type": "S"
+      },
+      {
+        "name": "MinY",
+        "type": "S"
+      },
+      {
+        "name": "MaxY",
+        "type": "S"
+      }
     ],
-    "outputs": [{"name": "Result", "type": "V2"}],
-    "usage": "テクスチャアトラス内の特定領域を抜き出す、UVリマップ",
-    "verified": false,
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V2"
+      }
+    ],
+    "usage": "",
     "path_uncertain": true
   },
   "ScaleUVsByCenter": {
     "path": "/Engine/Functions/Engine_MaterialFunctions01/Texturing/ScaleUVsByCenter.ScaleUVsByCenter",
-    "desc": "UVの中心を基準にしてスケーリングする",
+    "desc": "",
     "inputs": [
-      {"name": "UV", "type": "V2"},
-      {"name": "Scale", "type": "S"}
+      {
+        "name": "UV",
+        "type": "V2"
+      },
+      {
+        "name": "Scale",
+        "type": "S"
+      }
     ],
-    "outputs": [{"name": "Result", "type": "V2"}],
-    "usage": "UV中心からのズームイン・ズームアウト効果",
-    "verified": false,
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V2"
+      }
+    ],
+    "usage": "",
     "path_uncertain": true
   },
   "RotateAboutWorldAxis": {
     "path": "/Engine/Functions/Engine_MaterialFunctions01/Texturing/RotateAboutWorldAxis.RotateAboutWorldAxis",
-    "desc": "ワールド座標系の任意軸を中心に回転させる",
+    "desc": "",
     "inputs": [
-      {"name": "PivotPoint", "type": "V3"},
-      {"name": "Axis", "type": "V3"},
-      {"name": "AngleInRadians", "type": "S"},
-      {"name": "Position", "type": "V3"}
+      {
+        "name": "PivotPoint",
+        "type": "V3"
+      },
+      {
+        "name": "Axis",
+        "type": "V3"
+      },
+      {
+        "name": "AngleInRadians",
+        "type": "S"
+      },
+      {
+        "name": "Position",
+        "type": "V3"
+      }
     ],
-    "outputs": [{"name": "Result", "type": "V3"}],
-    "usage": "ワールド座標の特定軸周りの回転、デカール配置",
-    "verified": false,
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V3"
+      }
+    ],
+    "usage": "",
     "path_uncertain": true
   },
   "RotateAboutAxis": {
     "path": "/Engine/Functions/Engine_MaterialFunctions01/Texturing/RotateAboutAxis.RotateAboutAxis",
-    "desc": "任意軸を中心に3D位置を回転させる",
+    "desc": "",
     "inputs": [
-      {"name": "Position", "type": "V3"},
-      {"name": "Axis", "type": "V3"},
-      {"name": "RotationAngleInRadians", "type": "S"},
-      {"name": "PivotPoint", "type": "V3"}
+      {
+        "name": "Position",
+        "type": "V3"
+      },
+      {
+        "name": "Axis",
+        "type": "V3"
+      },
+      {
+        "name": "RotationAngleInRadians",
+        "type": "S"
+      },
+      {
+        "name": "PivotPoint",
+        "type": "V3"
+      }
     ],
-    "outputs": [{"name": "Result", "type": "V3"}],
-    "usage": "任意軸回転、複雑な空間変換",
-    "verified": false,
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V3"
+      }
+    ],
+    "usage": "",
     "path_uncertain": false
   },
   "CheapContrast": {
     "path": "/Engine/Functions/Engine_MaterialFunctions01/Texturing/CheapContrast.CheapContrast",
-    "desc": "コントラストを高速に増加させる(スカラー値用)",
+    "desc": "",
     "inputs": [
-      {"name": "Input", "type": "S"},
-      {"name": "ContrastAmount", "type": "S"}
+      {
+        "name": "Input",
+        "type": "S"
+      },
+      {
+        "name": "ContrastAmount",
+        "type": "S"
+      }
     ],
-    "outputs": [{"name": "Result", "type": "S"}],
-    "usage": "グレースケール値のコントラスト調整",
-    "verified": false,
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "S"
+      }
+    ],
+    "usage": "",
     "path_uncertain": false
   },
   "CheapContrast_RGB": {
     "path": "/Engine/Functions/Engine_MaterialFunctions01/Texturing/CheapContrast_RGB.CheapContrast_RGB",
-    "desc": "カラー値のチャネルごとにコントラストを増加させる",
+    "desc": "",
     "inputs": [
-      {"name": "Input", "type": "V3"},
-      {"name": "ContrastAmount", "type": "S"}
+      {
+        "name": "Input",
+        "type": "V3"
+      },
+      {
+        "name": "ContrastAmount",
+        "type": "S"
+      }
     ],
-    "outputs": [{"name": "Result", "type": "V3"}],
-    "usage": "テクスチャのコントラスト強調、詳細度の調整",
-    "verified": false,
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V3"
+      }
+    ],
+    "usage": "",
     "path_uncertain": false
   },
   "DetailTexturing": {
     "path": "/Engine/Functions/Engine_MaterialFunctions01/Texturing/DetailTexturing.DetailTexturing",
-    "desc": "ディテールテクスチャをベーステクスチャと合成する定番MF",
+    "desc": "",
     "inputs": [
-      {"name": "BaseTexture", "type": "V3"},
-      {"name": "DetailTexture", "type": "V3"},
-      {"name": "DetailAmount", "type": "S"}
+      {
+        "name": "BaseTexture",
+        "type": "V3"
+      },
+      {
+        "name": "DetailTexture",
+        "type": "V3"
+      },
+      {
+        "name": "DetailAmount",
+        "type": "S"
+      }
     ],
-    "outputs": [{"name": "Result", "type": "V3"}],
-    "usage": "遠景テクスチャに細部を追加、メモリ効率的なディテール表現",
-    "verified": false,
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V3"
+      }
+    ],
+    "usage": "",
     "path_uncertain": false
   },
   "BumpOffset": {
     "path": "/Engine/Functions/Engine_MaterialFunctions01/Texturing/BumpOffset.BumpOffset",
-    "desc": "ハイトマップを使用したパラックスマッピング(視差マッピング)を実現",
+    "desc": "",
     "inputs": [
-      {"name": "HeightTexture", "type": "S"},
-      {"name": "HeightRatio", "type": "S"},
-      {"name": "ReferencePlane", "type": "S"},
-      {"name": "UV", "type": "V2"}
+      {
+        "name": "HeightTexture",
+        "type": "S"
+      },
+      {
+        "name": "HeightRatio",
+        "type": "S"
+      },
+      {
+        "name": "ReferencePlane",
+        "type": "S"
+      },
+      {
+        "name": "UV",
+        "type": "V2"
+      }
     ],
-    "outputs": [{"name": "Result", "type": "V2"}],
-    "usage": "フラットサーフェスに奥行き感を与えるパラックスマッピング効果",
-    "verified": false,
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V2"
+      }
+    ],
+    "usage": "",
     "path_uncertain": false
   },
   "TileAndOffset": {
     "path": "/Engine/Functions/Engine_MaterialFunctions01/Texturing/TileAndOffset.TileAndOffset",
-    "desc": "UVをタイル化してオフセットを加える",
+    "desc": "",
     "inputs": [
-      {"name": "UV", "type": "V2"},
-      {"name": "TileCount", "type": "S"},
-      {"name": "Offset", "type": "V2"}
+      {
+        "name": "UV",
+        "type": "V2"
+      },
+      {
+        "name": "TileCount",
+        "type": "S"
+      },
+      {
+        "name": "Offset",
+        "type": "V2"
+      }
     ],
-    "outputs": [{"name": "Result", "type": "V2"}],
-    "usage": "UV のタイリングとオフセット、テクスチャのスクロール効果",
-    "verified": false,
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V2"
+      }
+    ],
+    "usage": "",
     "path_uncertain": true
   },
   "Panner": {
     "path": "/Engine/Functions/Engine_MaterialFunctions01/Texturing/Panner.Panner",
-    "desc": "時間に基づいてUVをパンニング(スクロール)する",
+    "desc": "",
     "inputs": [
-      {"name": "UV", "type": "V2"},
-      {"name": "Speed", "type": "V2"},
-      {"name": "Time", "type": "S"}
+      {
+        "name": "UV",
+        "type": "V2"
+      },
+      {
+        "name": "Speed",
+        "type": "V2"
+      },
+      {
+        "name": "Time",
+        "type": "S"
+      }
     ],
-    "outputs": [{"name": "Result", "type": "V2"}],
-    "usage": "水の流れ、ベルトコンベア、スクロール背景などのアニメーション",
-    "verified": false,
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V2"
+      }
+    ],
+    "usage": "",
     "path_uncertain": false
   },
   "AdjustSaturation": {
     "path": "/Engine/Functions/Engine_MaterialFunctions01/Texturing/AdjustSaturation.AdjustSaturation",
-    "desc": "色の彩度(saturation)を調整する",
+    "desc": "",
     "inputs": [
-      {"name": "Input", "type": "V3"},
-      {"name": "SaturationAmount", "type": "S"}
+      {
+        "name": "Input",
+        "type": "V3"
+      },
+      {
+        "name": "SaturationAmount",
+        "type": "S"
+      }
     ],
-    "outputs": [{"name": "Result", "type": "V3"}],
-    "usage": "カラー画像の彩度調整、色の強度制御",
-    "verified": false,
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V3"
+      }
+    ],
+    "usage": "",
     "path_uncertain": true
   },
   "Desaturate": {
     "path": "/Engine/Functions/Engine_MaterialFunctions01/Texturing/Desaturate.Desaturate",
-    "desc": "カラー値をグレースケールに変換する",
+    "desc": "",
     "inputs": [
-      {"name": "Color", "type": "V3"},
-      {"name": "DesaturationFactor", "type": "S"}
+      {
+        "name": "Color",
+        "type": "V3"
+      },
+      {
+        "name": "DesaturationFactor",
+        "type": "S"
+      }
     ],
-    "outputs": [{"name": "Result", "type": "S"}],
-    "usage": "カラーからルミナンス値の抽出、モノクロ変換",
-    "verified": false,
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "S"
+      }
+    ],
+    "usage": "",
     "path_uncertain": true
   },
   "ScaleAndOffset": {
     "path": "/Engine/Functions/Engine_MaterialFunctions01/Texturing/ScaleAndOffset.ScaleAndOffset",
-    "desc": "UVをスケーリングとオフセットする",
+    "desc": "",
     "inputs": [
-      {"name": "UV", "type": "V2"},
-      {"name": "ScaleXY", "type": "V2"},
-      {"name": "OffsetXY", "type": "V2"}
+      {
+        "name": "UV",
+        "type": "V2"
+      },
+      {
+        "name": "ScaleXY",
+        "type": "V2"
+      },
+      {
+        "name": "OffsetXY",
+        "type": "V2"
+      }
     ],
-    "outputs": [{"name": "Result", "type": "V2"}],
-    "usage": "UV座標の一括調整、テクスチャの位置とサイズ制御",
-    "verified": false,
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V2"
+      }
+    ],
+    "usage": "",
     "path_uncertain": true
   },
   "ParallaxMapping": {
     "path": "/Engine/Functions/Engine_MaterialFunctions01/Texturing/ParallaxMapping.ParallaxMapping",
-    "desc": "ハイトマップを使用した視差マッピング効果",
+    "desc": "",
     "inputs": [
-      {"name": "HeightMap", "type": "T2d"},
-      {"name": "UV", "type": "V2"},
-      {"name": "HeightAmount", "type": "S"}
+      {
+        "name": "HeightMap",
+        "type": "T2d"
+      },
+      {
+        "name": "UV",
+        "type": "V2"
+      },
+      {
+        "name": "HeightAmount",
+        "type": "S"
+      }
     ],
-    "outputs": [{"name": "Result", "type": "V2"}],
-    "usage": "フラットサーフェスに立体感を付与するパラックスマッピング",
-    "verified": false,
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V2"
+      }
+    ],
+    "usage": "",
     "path_uncertain": true
   },
   "NormalFromFunction": {
     "path": "/Engine/Functions/Engine_MaterialFunctions01/Texturing/NormalFromFunction.NormalFromFunction",
-    "desc": "数学関数からノーマルマップを生成する",
+    "desc": "",
     "inputs": [
-      {"name": "InputU", "type": "S"},
-      {"name": "InputV", "type": "S"},
-      {"name": "ScaleU", "type": "S"},
-      {"name": "ScaleV", "type": "S"}
+      {
+        "name": "InputU",
+        "type": "S"
+      },
+      {
+        "name": "InputV",
+        "type": "S"
+      },
+      {
+        "name": "ScaleU",
+        "type": "S"
+      },
+      {
+        "name": "ScaleV",
+        "type": "S"
+      }
     ],
-    "outputs": [{"name": "Result", "type": "V3"}],
-    "usage": "プロシージャルなノーマル生成、数式ベースの表面ディテール",
-    "verified": false,
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V3"
+      }
+    ],
+    "usage": "",
     "path_uncertain": true
   },
   "ProceduralTextureSigns": {
     "path": "/Engine/Functions/Engine_MaterialFunctions01/Texturing/ProceduralTextureSigns.ProceduralTextureSigns",
-    "desc": "プロシージャルにテキストや記号をレンダリング",
+    "desc": "",
     "inputs": [
-      {"name": "UV", "type": "V2"},
-      {"name": "TextType", "type": "S"}
+      {
+        "name": "UV",
+        "type": "V2"
+      },
+      {
+        "name": "TextType",
+        "type": "S"
+      }
     ],
-    "outputs": [{"name": "Result", "type": "V4"}],
-    "usage": "動的なテキストやシンボル表示、プロシージャル看板",
-    "verified": false,
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V4"
+      }
+    ],
+    "usage": "",
     "path_uncertain": true
   },
   "MotionTexture": {
     "path": "/Engine/Functions/Engine_MaterialFunctions01/Texturing/MotionTexture.MotionTexture",
-    "desc": "時間軸でテクスチャをモーションさせる",
+    "desc": "",
     "inputs": [
-      {"name": "Texture", "type": "T2d"},
-      {"name": "UV", "type": "V2"},
-      {"name": "Time", "type": "S"},
-      {"name": "Speed", "type": "S"}
+      {
+        "name": "Texture",
+        "type": "T2d"
+      },
+      {
+        "name": "UV",
+        "type": "V2"
+      },
+      {
+        "name": "Time",
+        "type": "S"
+      },
+      {
+        "name": "Speed",
+        "type": "S"
+      }
     ],
-    "outputs": [{"name": "Result", "type": "V4"}],
-    "usage": "テクスチャアニメーション、パーティクル用モーション",
-    "verified": false,
+    "outputs": [
+      {
+        "name": "Result",
+        "type": "V4"
+      }
+    ],
+    "usage": "",
     "path_uncertain": true
   }
 }
