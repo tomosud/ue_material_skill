@@ -296,43 +296,93 @@
   "props": {
    "Code": {
     "type": "FString",
-    "default": ""
+    "default": "// The below expression will get compiled\n// into the output of this node\nfloat3(1, 1, 1)"
+   },
+   "Description": {
+    "type": "FString",
+    "default": "Custom"
+   },
+   "OutputType": {
+    "type": "enum:ECustomMaterialOutputType",
+    "default": "CMOT_Float3",
+    "choices": [
+     "CMOT_Float1",
+     "CMOT_Float2",
+     "CMOT_Float3",
+     "CMOT_Float4",
+     "CMOT_MaterialAttributes"
+    ]
+   },
+   "Inputs": {
+    "type": "TArray<FCustomInput>",
+    "default": [
+     {
+      "InputName": ""
+     }
+    ],
+    "struct": {
+     "InputName": {
+      "type": "FName",
+      "default": ""
+     }
+    }
+   },
+   "AdditionalOutputs": {
+    "type": "TArray<FCustomOutput>",
+    "default": [],
+    "struct": {
+     "OutputName": {
+      "type": "FName",
+      "default": ""
+     },
+     "OutputType": {
+      "type": "enum:ECustomMaterialOutputType",
+      "default": "CMOT_Float1",
+      "choices": [
+       "CMOT_Float1",
+       "CMOT_Float2",
+       "CMOT_Float3",
+       "CMOT_Float4",
+       "CMOT_MaterialAttributes"
+      ]
+     }
+    }
+   },
+   "AdditionalDefines": {
+    "type": "TArray<FCustomDefine>",
+    "default": [],
+    "struct": {
+     "DefineName": {
+      "type": "FString",
+      "default": ""
+     },
+     "DefineValue": {
+      "type": "FString",
+      "default": ""
+     }
+    }
+   },
+   "IncludeFilePaths": {
+    "type": "TArray<FString>",
+    "default": []
+   },
+   "ContainsClipInstruction": {
+    "type": "enum:ECustomMaterialClipInstruction",
+    "default": "CMCI_Search",
+    "choices": [
+     "CMCI_Search",
+     "CMCI_Yes",
+     "CMCI_No"
+    ]
    },
    "ShowCode": {
     "type": "bool",
     "default": false
-   },
-   "OutputType": {
-    "type": "enum:ECustomMaterialOutputType",
-    "default": "CMOT_Float1"
-   },
-   "Description": {
-    "type": "FString",
-    "default": ""
-   },
-   "Inputs": {
-    "type": "TArray<FCustomInput>",
-    "default": null
-   },
-   "AdditionalOutputs": {
-    "type": "TArray<FCustomOutput>",
-    "default": null
-   },
-   "AdditionalDefines": {
-    "type": "TArray<FCustomDefine>",
-    "default": null
-   },
-   "IncludeFilePaths": {
-    "type": "TArray<FString>",
-    "default": null
-   },
-   "ContainsClipInstruction": {
-    "type": "enum:ECustomMaterialClipInstruction",
-    "default": "CMCI_Search"
    }
   },
-  "notes": "Inputs 配列で動的にピンが追加される。GetInputsView/GetInput/GetInputName をオーバーライド。AdditionalOutputs で出力ピンが追加される。UE 5.8実機sampleでCode、Inputs(0..1)、ShowCode、A/B/Output Pinを確認（索引付きInputsはMGJSON raw_props保持）",
-  "verified": false
+  "notes": "動的ピン: 入力はInputs(named/unnamed)、出力はAdditionalOutputs無→無名1本/有→'return'+named outputs (RebuildOutputs準拠)。接続はPin LinkedToが正でFCustomInput.Inputは書かない。GraphNodeクラスは/Script/UnrealEd.MaterialGraphNode_Custom。既定値はUE5.8 ctor実測 (Description='Custom', OutputType=CMOT_Float3, Inputs=[無名1件])。named input+named additional output合計32以下(Material IR制限)。",
+  "verified": false,
+  "dynamic_pins": true
  },
  "GetMaterialAttributes": {
   "class": "/Script/Engine.UMaterialExpressionGetMaterialAttributes",

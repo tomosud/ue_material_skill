@@ -24,6 +24,8 @@ GUID_NAMESPACE = uuid.UUID("4c10a3bc-2267-47e2-a1b3-1198aaf9dc73")
 NODE_WIDTH = 240
 NODE_HEIGHT = 120
 COMMENT_MARGIN = 80
+# Expressions whose Editor graph node is a specialized subclass (matches real clipboard).
+GRAPH_NODE_CLASSES = {"Custom": "/Script/UnrealEd.MaterialGraphNode_Custom"}
 
 
 class BuildError(RuntimeError):
@@ -125,7 +127,8 @@ def serialize_property(value: Any, spec: dict[str, Any]) -> str:
     if lower.startswith("enum:") or type_name.startswith("E"):
         return value
     if lower.startswith("asset:"):
-        return f'{quote(asset_class_path(type_name) + "\'" + value + "\'")}'
+        reference = "{0}'{1}'".format(asset_class_path(type_name), value)
+        return quote(reference)
     if type_name in {"FLinearColor", "FColor"}:
         values = list(value)
         if len(values) == 3:
@@ -147,6 +150,31 @@ def serialize_property(value: Any, spec: dict[str, Any]) -> str:
     if type_name == "FGuid":
         return value.upper()
     return serialize_generic(value)
+
+
+def indexed_array_lines(name: str, value: list[Any], spec: dict[str, Any]) -> list[str]:
+    """Emit a TArray property the way UE clipboard T3D does: one Name(index)=... line
+    per element. Struct elements use the catalog 'struct' field schema; fields that
+    are not in the schema round-trip through serialize_generic unchanged."""
+    if not value:
+        return [f"      {name}=()"]
+    struct_spec = spec.get("struct") if isinstance(spec.get("struct"), dict) else None
+    lines: list[str] = []
+    for index, item in enumerate(value):
+        if struct_spec is None or not isinstance(item, dict):
+            lines.append(f"      {name}({index})={serialize_generic(item)}")
+            continue
+        ordered = [key for key in struct_spec if key in item]
+        ordered += [key for key in item if key not in struct_spec]
+        fields = []
+        for key in ordered:
+            field_spec = struct_spec.get(key)
+            if isinstance(field_spec, dict):
+                fields.append(f"{key}={serialize_property(item[key], field_spec)}")
+            else:
+                fields.append(f"{key}={serialize_generic(item[key])}")
+        lines.append(f"      {name}({index})=({','.join(fields)})")
+    return lines
 
 
 def compute_positions(document: dict[str, Any], links: list[mgvalidate.Link]) -> dict[str, tuple[int, int]]:
@@ -345,7 +373,11 @@ def _expression_lines(
     props = node.get("props", {})
     prop_catalog = entry.get("props", {})
     for name, value in props.items():
-        lines.append(f"      {name}={serialize_property(value, prop_catalog[name])}")
+        spec = prop_catalog[name]
+        if str(spec.get("type", "")).lower().startswith("tarray<") and isinstance(value, list):
+            lines.extend(indexed_array_lines(name, value, spec))
+        else:
+            lines.append(f"      {name}={serialize_property(value, spec)}")
     for name, value in node.get("raw_props", {}).items():
         lines.append(f"      {name}={value}")
     if node.get("class") == "MaterialFunctionCall":
@@ -382,8 +414,9 @@ def _normal_block(
     infos: dict[str, NodeInfo],
     functions: dict[str, Any],
 ) -> list[str]:
+    graph_class = GRAPH_NODE_CLASSES.get(str(info.document.get("class")), "/Script/UnrealEd.MaterialGraphNode")
     lines = [
-        f'Begin Object Class=/Script/UnrealEd.MaterialGraphNode Name={quote(info.graph_name)}',
+        f'Begin Object Class={graph_class} Name={quote(info.graph_name)}',
         f"   Begin Object Class={info.expression_class} Name={quote(info.expression_name)}",
         "   End Object",
         f"   Begin Object Name={quote(info.expression_name)}",

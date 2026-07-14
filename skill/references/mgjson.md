@@ -269,6 +269,55 @@ Comment の `nodes` に別 Comment、自分自身、存在しない id を指定
 property input は通常 input の後に並ぶ。この順序は T3D `SourceIndex` の生成に必須。
 全 output も接続有無にかかわらず catalog 順で T3D に出す。
 
+### 動的ピン: Custom ノード
+
+catalog entry が `dynamic_pins: true` の class(現在は `Custom`)は、Pin schema を
+catalog の `inputs` / `outputs` ではなく **node の props から導出**する。
+
+```json
+{
+  "class": "Custom",
+  "props": {
+    "Description": "LumaSplit",
+    "OutputType": "CMOT_Float3",
+    "Code": "Luma = dot(A, float3(0.2126, 0.7152, 0.0722));\nreturn A * 2.0;",
+    "Inputs": [{"InputName": "A"}],
+    "AdditionalOutputs": [{"OutputName": "Luma", "OutputType": "CMOT_Float1"}],
+    "AdditionalDefines": [{"DefineName": "MYPROJ_MODE", "DefineValue": "1"}],
+    "IncludeFilePaths": ["/Project/Material/MyLib.ush"]
+  }
+}
+```
+
+- 入力 Pin = `props.Inputs` の各 `InputName`(省略時は UE ctor 既定の無名 input 1本)。
+  link の宛先名は `custom1.A` のように `InputName` を使う。
+- 出力 Pin = `AdditionalOutputs` が空なら無名 1 本(link では省略か `Output`)。
+  1件以上あれば `return` + 各 named output(`custom1.Luma` のように参照)。
+  無名の additional output は Pin にならない。
+- `TArray<...>` 型 prop は build 時に UE clipboard と同じ索引付き行
+  (`Inputs(0)=(InputName="A")`)へ、parse 時に構造化 array へ往復される。
+  `FCustomInput.Input`(接続情報)は Pin LinkedTo が正のため出力しない。
+- struct 要素の未知 field は warning 付きでそのまま通す(局所 escape hatch)。
+  配列全体を `raw_props` に入れてはならない。
+
+Custom 固有の検証(`validate.py`):
+
+- named input + named additional output は合計 **32 以下**(Material IR 制限、超過は error)
+- Input/Output 名は HLSL identifier 規則、予約語不可、同一 node 内重複不可、
+  texture 入力に自動生成される `<名前>Sampler` との衝突不可(いずれも error)
+- `AdditionalDefines` は名前(identifier)と値の両方が必須(空は error)
+- `IncludeFilePaths` は絶対 virtual shader path(`/Project/...` 等)。
+  filesystem path・`..`・相対 path は error
+- `Code` に comment 外の明示 `return` 文がなければ warning
+  (UE は case-sensitive substring 判定のため comment 内 `return` で誤動作する)
+- named additional output が `Code` 内で代入されていなければ warning
+  (新 Material IR は `out` 生成のため未代入は未定義値になる)
+- named input が未接続なら warning(compile 不能。無名 input は対象外)
+- `Code` 中の `<入力名>.ID` / `<入力名>.Fetch` は、その入力が
+  `SceneTexture` / `UserSceneTexture` の出力 0 へ直結している場合のみ許可(error)
+- `Parameters.` / `View.` / Engine private helper の使用は `unsafe_internal_api` warning。
+  Engine private HLSL 関数は allowlist 化しない(UE version 固定+実機 compile が前提)
+
 ## 検証規則
 
 `validate.py` は diagnostic を `error` と `warning` に分ける。error が 1 件以上なら exit 1、

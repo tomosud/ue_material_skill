@@ -1,0 +1,15 @@
+{
+  "nodes": {
+    "col": {"class": "Constant3Vector", "props": {"Constant": [0.2, 0.5, 0.9]}},
+    "custom1": {"class": "Custom", "props": {
+      "Description": "LumaSplit",
+      "OutputType": "CMOT_Float3",
+      "Code": "Luma = dot(A, float3(0.2126, 0.7152, 0.0722));\nreturn A * 2.0;",
+      "Inputs": [{"InputName": "A"}],
+      "AdditionalOutputs": [{"OutputName": "Luma", "OutputType": "CMOT_Float1"}],
+      "AdditionalDefines": [{"DefineName": "MYPROJ_MODE", "DefineValue": "1"}]
+    }},
+    "mul": {"class": "Multiply"}
+  },
+  "links": ["col -> custom1.A", "custom1.Luma -> mul.A"]
+}

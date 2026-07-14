@@ -25,6 +25,40 @@ INT_TYPE_RE = re.compile(r"^(?:u?int(?:8|16|32|64)?|byte)$", re.IGNORECASE)
 LINK_RE = re.compile(r"^\s*(.*?)\s*->\s*(.*?)\s*$")
 CLASS_ALIASES = {"Lerp": "LinearInterpolate"}
 
+# --- Custom (HLSL) expression support -------------------------------------
+HLSL_IDENT_RE = re.compile(r"^[A-Za-z_][A-Za-z0-9_]*$")
+# Conservative HLSL keyword/reserved set plus UE Custom function parameter names.
+HLSL_RESERVED = {
+    "AppendStructuredBuffer", "BlendState", "Buffer", "ByteAddressBuffer", "CompileShader",
+    "ComputeShader", "ConsumeStructuredBuffer", "DepthStencilState", "DomainShader",
+    "GeometryShader", "Hullshader", "InputPatch", "LineStream", "OutputPatch", "Parameters",
+    "PixelShader", "PointStream", "RWBuffer", "RWByteAddressBuffer", "RWStructuredBuffer",
+    "RWTexture1D", "RWTexture2D", "RWTexture3D", "SamplerComparisonState", "SamplerState",
+    "StructuredBuffer", "Texture1D", "Texture1DArray", "Texture2D", "Texture2DArray",
+    "Texture2DMS", "Texture3D", "TextureCube", "TextureCubeArray", "TriangleStream",
+    "VertexShader", "View", "bool", "break", "case", "cbuffer", "centroid", "class", "column_major",
+    "compile", "const", "continue", "default", "discard", "do", "double", "dword", "else",
+    "export", "extern", "false", "float", "for", "fxgroup", "goto", "groupshared", "half",
+    "if", "in", "inline", "inout", "int", "interface", "line", "lineadj", "linear", "matrix",
+    "min10float", "min12int", "min16float", "min16int", "min16uint", "namespace", "nointerpolation",
+    "noperspective", "numthreads", "out", "packoffset", "pass", "pixelfragment", "point",
+    "precise", "register", "return", "row_major", "sample", "sampler", "shared", "snorm",
+    "stateblock", "stateblock_state", "static", "string", "struct", "switch", "tbuffer",
+    "technique", "technique10", "technique11", "texture", "true", "typedef", "triangle",
+    "triangleadj", "uint", "uniform", "unorm", "unsigned", "vector", "vertexfragment",
+    "void", "volatile", "while",
+}
+CUSTOM_SCENETEX_REF_RE = re.compile(r"\b([A-Za-z_][A-Za-z0-9_]*)\s*\.\s*(ID|Fetch)\b")
+CUSTOM_SCENETEX_CLASSES = {"SceneTexture", "UserSceneTexture"}
+# Engine private surface detection: never an allowlist, only a warning trigger.
+CUSTOM_UNSAFE_CODE_PATTERNS = (
+    (re.compile(r"\bParameters\s*\."), "reads FMaterial*Parameters fields directly"),
+    (re.compile(r"\b(?:Resolved)?View\s*\."), "reads the View uniform buffer directly"),
+    (re.compile(r"\bGetPrimitiveData\s*\("), "calls an Engine-internal primitive helper"),
+    (re.compile(r'#\s*include\s*"/Engine/Private/'), "includes Engine private shader headers"),
+)
+CUSTOM_ASSIGN_TEMPLATE = r"\b{name}\b\s*(?:[+\-*/|&^]|<<|>>)?=(?!=)"
+
 
 class DuplicateKeyError(ValueError):
     pass
@@ -156,9 +190,46 @@ def _function_for_node(node: dict[str, Any], functions: dict[str, Any]) -> dict[
     )
 
 
+def custom_pin_schema(
+    node: dict[str, Any], entry: dict[str, Any]
+) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
+    """Dynamic pins for the Custom (HLSL) expression.
+
+    Input pins come from props.Inputs (falling back to the UE constructor default
+    recorded in the catalog). Output pins mirror UMaterialExpressionCustom::
+    RebuildOutputs: one unnamed pin without AdditionalOutputs, otherwise 'return'
+    followed by every *named* additional output.
+    """
+    props = node.get("props") if isinstance(node.get("props"), dict) else {}
+    prop_specs = entry.get("props", {}) if isinstance(entry.get("props"), dict) else {}
+    default_inputs = []
+    inputs_spec = prop_specs.get("Inputs")
+    if isinstance(inputs_spec, dict) and isinstance(inputs_spec.get("default"), list):
+        default_inputs = inputs_spec["default"]
+    raw_inputs = props.get("Inputs", default_inputs)
+    inputs: list[dict[str, Any]] = []
+    if isinstance(raw_inputs, list):
+        for item in raw_inputs:
+            name = item.get("InputName", "") if isinstance(item, dict) else ""
+            inputs.append({"name": str(name) if name else ""})
+    raw_outputs = props.get("AdditionalOutputs", [])
+    named_outputs = [
+        str(item["OutputName"])
+        for item in raw_outputs
+        if isinstance(item, dict) and item.get("OutputName")
+    ] if isinstance(raw_outputs, list) else []
+    if named_outputs:
+        outputs = [{"name": "return"}] + [{"name": name} for name in named_outputs]
+    else:
+        outputs = [{"name": ""}]
+    return inputs, outputs
+
+
 def pin_schema(
     node: dict[str, Any], entry: dict[str, Any], functions: dict[str, Any]
 ) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
+    if node.get("class") == "Custom":
+        return custom_pin_schema(node, entry)
     if node.get("class") == "MaterialFunctionCall":
         function = _function_for_node(node, functions)
         if function:
@@ -261,6 +332,198 @@ def parse_link(value: Any, index: int) -> tuple[Link | None, Diagnostic | None]:
     if not source_id or not destination_id:
         return None, Diagnostic("error", path, "node id is empty")
     return Link(source_id, source_pin, destination_id, destination_pin, index, value), None
+
+
+def _validate_struct_array(
+    path: str, value: list[Any], spec: dict[str, Any], diagnostics: list[Diagnostic]
+) -> None:
+    """Element-level validation for TArray<FStruct> props declared with a 'struct' schema."""
+    struct_spec = spec.get("struct")
+    if not isinstance(struct_spec, dict):
+        return
+    for index, item in enumerate(value):
+        item_path = f"{path}[{index}]"
+        if not isinstance(item, dict):
+            diagnostics.append(Diagnostic("error", item_path, "array element must be an object"))
+            continue
+        for field_name, field_value in item.items():
+            field_path = f"{item_path}.{field_name}"
+            field_spec = struct_spec.get(field_name)
+            if not isinstance(field_spec, dict):
+                diagnostics.append(Diagnostic(
+                    "warning", field_path,
+                    f"unknown struct field {field_name!r} is passed through unvalidated",
+                    _suggest(field_name, struct_spec),
+                ))
+                continue
+            ok, suggestion = _validate_typed_value(field_value, field_spec)
+            if not ok:
+                diagnostics.append(Diagnostic(
+                    "error", field_path,
+                    f"invalid value for catalog type {field_spec.get('type')!r}", suggestion,
+                ))
+                continue
+            field_type = str(field_spec.get("type", ""))
+            if (field_type.startswith("enum:") or field_type.startswith("E")) and isinstance(field_value, str):
+                choices = field_spec.get("choices")
+                if isinstance(choices, list) and field_value not in choices:
+                    diagnostics.append(Diagnostic(
+                        "error", field_path, f"unknown enum value {field_value!r}",
+                        _suggest(field_value, choices),
+                    ))
+
+
+def _valid_virtual_include(path_value: str) -> tuple[bool, str | None]:
+    if not path_value:
+        return False, "use an absolute virtual shader path such as /Project/MyLib.ush"
+    if "\\" in path_value or ":" in path_value:
+        return False, "filesystem paths are not allowed; use a virtual shader path (/Project/... or /Engine/...)"
+    if not path_value.startswith("/"):
+        return False, "virtual shader paths must start with '/'"
+    parts = path_value.split("/")
+    if ".." in parts or "." in parts[1:-1] or any(not part for part in parts[1:]):
+        return False, "path must not contain '..', empty segments, or relative segments"
+    if len(parts) < 3:
+        return False, "expected /<MappedRoot>/<Path>/<File>.ush"
+    return True, None
+
+
+def _custom_checks(node_id: str, node: dict[str, Any], diagnostics: list[Diagnostic]) -> None:
+    """Semantic checks for the Custom expression (name rules, limits, defines, includes, code)."""
+    path = f"$.nodes.{node_id}.props"
+    props = node.get("props") if isinstance(node.get("props"), dict) else {}
+
+    def _array(name: str) -> list[Any]:
+        value = props.get(name)
+        return value if isinstance(value, list) else []
+
+    named_parameters: list[str] = []
+    seen_names: set[str] = set()
+    for label, field in (("Inputs", "InputName"), ("AdditionalOutputs", "OutputName")):
+        for index, item in enumerate(_array(label)):
+            if not isinstance(item, dict):
+                continue
+            item_path = f"{path}.{label}[{index}].{field}"
+            name = item.get(field)
+            if not name:
+                if label == "AdditionalOutputs":
+                    diagnostics.append(Diagnostic(
+                        "warning", item_path, "unnamed additional output creates no pin"))
+                continue
+            name = str(name)
+            named_parameters.append(name)
+            if not HLSL_IDENT_RE.fullmatch(name):
+                diagnostics.append(Diagnostic(
+                    "error", item_path, f"{name!r} is not a valid HLSL identifier",
+                    "use letters, digits and '_', not starting with a digit"))
+            elif name in HLSL_RESERVED:
+                diagnostics.append(Diagnostic(
+                    "error", item_path, f"{name!r} is a reserved HLSL/UE identifier"))
+            if name in seen_names:
+                diagnostics.append(Diagnostic(
+                    "error", item_path, f"duplicate parameter name {name!r} in this Custom node"))
+            seen_names.add(name)
+    for name in sorted(seen_names):
+        if name + "Sampler" in seen_names:
+            diagnostics.append(Diagnostic(
+                "error", path,
+                f"parameter {name + 'Sampler'!r} collides with the sampler UE auto-generates for texture input {name!r}",
+                f"rename one of {name!r} / {name + 'Sampler'!r}"))
+    if len(named_parameters) > 32:
+        diagnostics.append(Diagnostic(
+            "error", path,
+            f"{len(named_parameters)} named inputs + named additional outputs exceed the Material IR limit of 32"))
+
+    for index, item in enumerate(_array("AdditionalDefines")):
+        if not isinstance(item, dict):
+            continue
+        item_path = f"{path}.AdditionalDefines[{index}]"
+        define_name = item.get("DefineName")
+        define_value = item.get("DefineValue")
+        if not define_name or not isinstance(define_name, str):
+            diagnostics.append(Diagnostic("error", f"{item_path}.DefineName", "define name must be non-empty"))
+        elif not HLSL_IDENT_RE.fullmatch(define_name):
+            diagnostics.append(Diagnostic("error", f"{item_path}.DefineName", f"{define_name!r} is not a valid identifier"))
+        if define_value is None or (isinstance(define_value, str) and not define_value):
+            diagnostics.append(Diagnostic(
+                "error", f"{item_path}.DefineValue",
+                "define value must be non-empty (the Material IR path rejects empty defines)"))
+
+    for index, item in enumerate(_array("IncludeFilePaths")):
+        item_path = f"{path}.IncludeFilePaths[{index}]"
+        if not isinstance(item, str):
+            continue
+        ok, suggestion = _valid_virtual_include(item)
+        if not ok:
+            diagnostics.append(Diagnostic("error", item_path, f"invalid include path {item!r}", suggestion))
+        elif not item.endswith((".ush", ".usf")):
+            diagnostics.append(Diagnostic("warning", item_path, "include usually ends with .ush"))
+
+    code = props.get("Code")
+    if isinstance(code, str) and code:
+        # UE decides whether to wrap the body with 'return (...)' via a naive
+        # case-sensitive substring test. A 'return' inside a comment therefore
+        # suppresses the wrapper and breaks compilation, so we check for a real
+        # return statement outside comments.
+        without_comments = re.sub(r"//[^\n]*", " ", re.sub(r"/\*.*?\*/", " ", code, flags=re.S))
+        if not re.search(r"\breturn\b", without_comments):
+            diagnostics.append(Diagnostic(
+                "warning", f"{path}.Code",
+                'no explicit "return" statement found outside comments; UE only checks a case-sensitive substring, so always write an explicit return statement'))
+        for index, item in enumerate(_array("AdditionalOutputs")):
+            name = item.get("OutputName") if isinstance(item, dict) else None
+            if name and not re.search(CUSTOM_ASSIGN_TEMPLATE.format(name=re.escape(str(name))), code):
+                diagnostics.append(Diagnostic(
+                    "warning", f"{path}.Code",
+                    f"additional output {name!r} does not appear to be assigned; assign it on every control path "
+                    "(the new Material IR emits it as 'out', leaving it undefined when unassigned)"))
+        for pattern, reason in CUSTOM_UNSAFE_CODE_PATTERNS:
+            if pattern.search(code):
+                diagnostics.append(Diagnostic(
+                    "warning", f"{path}.Code",
+                    f"unsafe_internal_api: code {reason}; this is not a stable UE API and must be pinned to a UE version and Editor-compiled"))
+
+
+def _custom_link_checks(
+    normal_nodes: dict[str, tuple[dict[str, Any], dict[str, Any]]],
+    link_records: list[tuple["Link", str | None, int]],
+    functions: dict[str, Any],
+    diagnostics: list[Diagnostic],
+) -> None:
+    """Post-link checks: named Custom inputs should be fed, and SceneTexture .ID/.Fetch
+    syntax requires a direct connection from SceneTexture/UserSceneTexture output 0."""
+    for node_id, (node, entry) in normal_nodes.items():
+        if node.get("class") != "Custom":
+            continue
+        inputs, _ = pin_schema(node, entry, functions)
+        named = {pin["name"] for pin in inputs if pin.get("name")}
+        incoming: dict[str, tuple[str | None, int]] = {}
+        for link, source_class, source_index in link_records:
+            if link.destination_id == node_id:
+                incoming[link.destination_pin] = (source_class, source_index)
+        path = f"$.nodes.{node_id}.props"
+        for name in sorted(named - incoming.keys()):
+            diagnostics.append(Diagnostic(
+                "warning", f"{path}.Inputs",
+                f"named Custom input {name!r} is not connected; the material will not compile until it is"))
+        props = node.get("props") if isinstance(node.get("props"), dict) else {}
+        code = props.get("Code")
+        if not isinstance(code, str):
+            continue
+        for match in CUSTOM_SCENETEX_REF_RE.finditer(code):
+            name, member = match.group(1), match.group(2)
+            if name not in named:
+                continue
+            record = incoming.get(name)
+            if record is None:
+                diagnostics.append(Diagnostic(
+                    "error", f"{path}.Code",
+                    f"'{name}.{member}' requires input {name!r} to be linked directly from a SceneTexture or UserSceneTexture node (it is unconnected)"))
+            elif record[0] not in CUSTOM_SCENETEX_CLASSES or record[1] != 0:
+                diagnostics.append(Diagnostic(
+                    "error", f"{path}.Code",
+                    f"'{name}.{member}' requires input {name!r} to be linked directly from SceneTexture/UserSceneTexture output 0, "
+                    f"not from {record[0]!r} output {record[1]}"))
 
 
 def _comment_validation(
@@ -415,6 +678,13 @@ def validate_document(
                     diagnostics.append(Diagnostic("warning", prop_path, f"catalog has no choices for {type_name}; enum name was type-checked only"))
             if type_name.lower().startswith("asset:") and isinstance(value, str):
                 diagnostics.append(Diagnostic("warning", prop_path, "asset path syntax is valid but existence was not checked"))
+            if type_name.lower().startswith("tarray<") and isinstance(value, list):
+                if isinstance(spec.get("struct"), dict):
+                    _validate_struct_array(prop_path, value, spec, diagnostics)
+                elif type_name.lower() == "tarray<fstring>":
+                    for element_index, element in enumerate(value):
+                        if not isinstance(element, str):
+                            diagnostics.append(Diagnostic("error", f"{prop_path}[{element_index}]", "array element must be a string"))
         for prop_name, value in raw_props.items():
             prop_path = f"{node_path}.raw_props.{prop_name}"
             if not isinstance(prop_name, str) or not RAW_PROP_RE.fullmatch(prop_name):
@@ -429,8 +699,11 @@ def validate_document(
                 diagnostics.append(Diagnostic("error", f"{node_path}.props.MaterialFunction", "MaterialFunctionCall requires a function object path"))
             elif _function_for_node(node, functions) is None:
                 diagnostics.append(Diagnostic("error", f"{node_path}.props.MaterialFunction", "function path is not in the packaged function catalog", "add its input/output schema or paste a sample from the Editor"))
+        if class_name == "Custom":
+            _custom_checks(node_id, node, diagnostics)
 
     parsed_links: list[Link] = []
+    link_records: list[tuple[Link, str | None, int]] = []
     occupied_inputs: dict[tuple[str, str], int] = {}
     seen_links: dict[tuple[str, str | None, str, str], int] = {}
     connected: set[str] = set()
@@ -487,6 +760,9 @@ def validate_document(
         if source_pin in source_output_names and link.destination_pin in destination_input_names:
             connected.update((link.source_id, link.destination_id))
             graph[link.source_id].add(link.destination_id)
+            link_records.append((link, source_node.get("class"), source_output_names.index(source_pin)))
+
+    _custom_link_checks(normal_nodes, link_records, functions, diagnostics)
 
     if len(normal_nodes) > 1:
         for node_id in normal_nodes:

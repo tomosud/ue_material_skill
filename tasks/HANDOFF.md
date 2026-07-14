@@ -2,7 +2,21 @@
 
 ## 現在地（継続更新）
 
-最終更新: 2026-07-14 / 引き継ぎ実行者: Codex
+最終更新: 2026-07-14 / 引き継ぎ実行者: Claude main AI(P0-1実装中)
+
+### P0-1(Custom意味的round-trip)の状況 — tasks/P01-custom-roundtrip.md が正本
+
+- 実装・offlineテストは完了: validate/build/parse がCustomの
+  Inputs/AdditionalOutputs/AdditionalDefines/IncludeFilePaths を構造化往復する。
+  詳細な変更一覧は `tasks/P01-custom-roundtrip.md` の実施メモ。
+- 回帰テスト: `python -m unittest discover -s tests`(repo root、14件、全green。
+  examples 01〜09 の parse 健全性も固定済み)。
+- 残: Editor実機検証のみ。LumaSplit fixture
+  (`tests/fixtures/p01-custom-lumasplit.mgjson`)のT3Dをclipboardへ配置済みで、
+  ユーザーのpaste→copy-back待ち。一致確認後に Custom を verified 昇格し、
+  P01 md の受入条件を更新して status: DONE にする。
+- 注意: build.py の asset 参照 f-string を Python 3.11 互換へ修正済み
+  (以前は 3.12 専用構文だった)。
 
 この欄を再開時の正本とする。個別タスクの完了判定は各 task md の `status:` と成果物を
 優先し、古い一覧表の status は参考にしない。

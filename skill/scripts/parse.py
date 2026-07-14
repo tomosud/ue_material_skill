@@ -34,6 +34,10 @@ IGNORED_EXPRESSION_PROPS = {
     "MaterialExpressionEditorX", "MaterialExpressionEditorY", "NodeGuid", "MaterialExpressionGuid",
     "ExpressionGUID", "Material", "Function", "GraphNode", "ExportPath", "SubgraphExpression",
 }
+INDEXED_PROP_RE = re.compile(r"^([A-Za-z_][A-Za-z0-9_]*)\((\d+)\)$")
+# Struct fields dropped when aggregating indexed arrays: FCustomInput.Input carries the
+# expression connection, which is reconstructed exclusively from Pin.LinkedTo.
+STRUCT_CONNECTION_FIELDS = {"tarray<fcustominput>": {"Input"}}
 
 
 class ParseError(RuntimeError):
@@ -305,6 +309,7 @@ def extract_expression_props(
         for pin in (entry.get("inputs", []) if isinstance(entry, dict) else [])
         if isinstance(pin, dict)
     }
+    indexed: dict[str, dict[int, str]] = {}
     for name, raw in expression.properties:
         base_name = name.split("(", 1)[0]
         if name in IGNORED_EXPRESSION_PROPS or base_name in {"FunctionInputs", "FunctionOutputs", "Outputs"}:
@@ -314,6 +319,12 @@ def extract_expression_props(
             continue
         if name in input_props:
             continue
+        indexed_match = INDEXED_PROP_RE.fullmatch(name)
+        if indexed_match:
+            base_spec = prop_specs.get(indexed_match.group(1)) if isinstance(prop_specs, dict) else None
+            if isinstance(base_spec, dict) and str(base_spec.get("type", "")).lower().startswith("tarray<"):
+                indexed.setdefault(indexed_match.group(1), {})[int(indexed_match.group(2))] = raw
+                continue
         spec = prop_specs.get(name) if isinstance(prop_specs, dict) else None
         if isinstance(spec, dict):
             value = parse_typed(raw, spec)
@@ -321,6 +332,26 @@ def extract_expression_props(
                 props[name] = value
         else:
             raw_props[name] = raw
+    for base_name, elements in indexed.items():
+        spec = prop_specs[base_name]
+        type_lower = str(spec.get("type", "")).lower()
+        struct_spec = spec.get("struct") if isinstance(spec.get("struct"), dict) else None
+        drop_fields = STRUCT_CONNECTION_FIELDS.get(type_lower, set())
+        items: list[Any] = []
+        for index in range(max(elements) + 1):
+            raw = elements.get(index)
+            if raw is None:
+                items.append({} if struct_spec else "")
+                continue
+            if struct_spec is None and type_lower == "tarray<fstring>":
+                items.append(unquote(raw))
+                continue
+            value = parse_generic(raw)
+            if isinstance(value, dict) and drop_fields:
+                value = {key: item for key, item in value.items() if key not in drop_fields}
+            items.append(value)
+        if not _is_default(items, spec):
+            props[base_name] = items
     return props, raw_props
 
 
@@ -500,6 +531,12 @@ def convert_t3d(
         entry = catalog.get(parsed.class_name)
         if not isinstance(entry, dict):
             return fallback
+        if entry.get("dynamic_pins") and mgvalidate is not None:
+            inputs, outputs = mgvalidate.pin_schema(parsed.mg_node, entry, {})
+            schema_pins = outputs if pin.output else inputs
+            if pin.index < len(schema_pins):
+                return mgvalidate.effective_pin_name(schema_pins[pin.index], pin.index, pin.output)
+            return pin.name or fallback
         schema = list(entry.get("outputs", [])) if pin.output else list(entry.get("inputs", [])) + list(entry.get("prop_pins", []))
         if pin.index >= len(schema):
             return fallback
