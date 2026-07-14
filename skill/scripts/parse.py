@@ -397,11 +397,20 @@ def _infer_comment_members(
         ]
         if not candidates:
             continue
-        bound_left = min(node.position[0] for node in candidates) - 80
-        bound_top = min(node.position[1] for node in candidates) - 80
-        bound_right = max(node.position[0] + 240 for node in candidates) + 80
-        bound_bottom = max(node.position[1] + 120 for node in candidates) + 80
-        if (left, top, left + width, top + height) == (bound_left, bound_top, bound_right, bound_bottom):
+        node_left = min(node.position[0] for node in candidates)
+        node_top = min(node.position[1] for node in candidates)
+        node_right = max(node.position[0] + 240 for node in candidates)
+        node_bottom = max(node.position[1] + 120 for node in candidates)
+        margins = (
+            node_left - left,
+            node_top - top,
+            left + width - node_right,
+            top + height - node_bottom,
+        )
+        # The Editor snaps/mutates comment geometry during paste, so the generated
+        # 80 px margins do not round-trip bit-for-bit. Treat a tight enclosing frame
+        # as semantic containment, while leaving large free-form comments untouched.
+        if all(0 <= margin <= 200 for margin in margins):
             props["nodes"] = [node.node_id for node in candidates]
             props.pop("SizeX", None)
             props.pop("SizeY", None)

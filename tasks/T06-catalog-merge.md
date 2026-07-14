@@ -43,5 +43,6 @@ output: `skill/scripts/catalog_merge.py` + `skill/catalog/nodes.json`
   (`inputs: "not-array"`) が `expected array` になることを確認した。
 - `tools/qa_outputs.py` の候補20件を確認し、明確な差分だった ViewProperty の
   2出力 (`Property` / `InvProperty`) を C18 と統合結果へ反映した。
-- 全エントリはまだ Editor 未検証のため `verified: false` のまま。補完警告500件超は
-  T08で優先的に確認する監査情報であり、`--quiet` では表示を抑止できる。
+- T08実round-trip後、`Constant` / `OneMinus` / `Comment` の3 classを
+  `verified: true`へ昇格した。他は引き続きfalse。補完警告500件超は今後の実機確認で
+  優先する監査情報であり、`--quiet`では表示を抑止できる。

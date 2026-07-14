@@ -24,12 +24,13 @@
   file/stdin/stdout/clipboard、catalog無しparse、実sample、canonical round-tripを確認済み。
 - T07 完了: `skill/SKILL.md`（159行）と `skill/agents/openai.yaml`。skill-creatorの
   `quick_validate.py` は `Skill is valid!`。
-- T08 offline QA 完了: 7 fixture、実sample、MF、catalog無し、全JSON、skill validatorがOK。
-  `tasks/verification-log.md` に全結果と手動fixtureを記録済み。残作業はEditor steps 1〜9のみ。
+- T08 完了: offline QAとEditor steps 1〜9が全てOK。実copy→parse→build→再paste同型、
+  PinType全省略も成功。結果は`tasks/verification-log.md`。Editorは
+  `5.8.0-55116800+++UE5+Release-5.8`（Windows 11 build 26200.8655）。
 
 ### 監査結果と注意
 
-- 未完了: E01、T08。E01/T08 の Unreal Editor 操作だけはユーザー協働。
+- 基盤T01〜T08、C01〜C22、M01〜M04は完了。未完了は追加sample収集E01のみ。
 - `catalog/generated/*.json` は 26 ファイルすべて JSON syntax OK。
 - `tools/qa_outputs.py` の候補20 classを照合し、明確な差分だった ViewProperty を
   `Property` / `InvProperty` の2出力へ修正した。他は無名出力、機能フラグ条件、または
@@ -38,16 +39,17 @@
   （例: C08 の `/Script/Engine.UMaterialExpressionMaterialFunctionCall`）。T06 は manifest の
   module / class 名から runtime class path を正規化し、merged catalog に誤 prefix を残さない。
 - T06 は既存章の省略フィールドを500件超警告したうえで補完する。型違反・重複・manifest
-  不一致はエラー。全 `verified` は Editor確認前なので false。詳細は T06 実施メモ参照。
+  不一致はエラー。実round-trip済み3 classだけverified true。詳細はT06/T08実施メモ参照。
 - validate.py は未検証classごとに warning を出す設計。MaterialFunctionCall は packaged
   function catalog の path が必須で、任意の未収載functionは Pin schema 不明のため error。
 - T03試験中に parameter基底の継承props欠落を発見し、T06 mergeで `ParameterName` / `Group` /
   `SortPriority` を `is_parameter` classへ補完するよう修正・再生成した。
-- clipboard試験は Windows PowerShell 経路で成功。現在のclipboardにはT08 step 1の
-  Constant3Vector T3Dが入り、Material Editorの空白でCtrl+Vすれば最初の手動試験を開始できる。
+- step 8実copy-backでComment geometryが完全一致しないことを確認し、`parse.py` の包含推定を
+  各辺0〜200pxのtight-enclosure判定へ修正。修正版の実round-tripは同型を確認済み。
+- clipboard試験はWindows PowerShell経路で成功。step 9でPinType field全省略も実機確認済み。
 - 実行環境では `python` が PATH から見えず、`py` に登録 interpreter もなかった。
-  検証用 Python 3.12.11 を一時配置して全QAを行い、`.uv-python/` / `.uv-cache/` /
-  `__pycache__` は最終QA後に削除済み。再開時はユーザー環境の `python` を使う。
+  検証用 Python 3.12.11を `.uv-python/` へ一時配置してEditor検証と最終QAに使用し、
+  T08完了後に`.uv-python/` / `.uv-cache/` / `__pycache__`を削除済み。
 - ユーザー所有の未追跡 `.claude/settings.local.json` には触れない。
 
 ### 中断時の再開手順

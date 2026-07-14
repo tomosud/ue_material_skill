@@ -5,13 +5,14 @@
 ## 現在の判定
 
 - オフライン検証: **OK**
-- Unreal Editor貼り付け検証: **WAITING USER**
+- Unreal Editor貼り付け検証: **OK（steps 1〜9）**
 - 対象ソース: UE 5.8 checkout
-- 実際に使うEditorの正確なバージョン: **未記録**（Help > Aboutで記録すること）
-- catalog `verified`: 全件 `false` のまま。Editor round-tripが通ったclassだけ昇格する。
+- 実際に使うEditor: **Unreal Editor 5.8.0-55116800+++UE5+Release-5.8**
+- OS表示: Windows 11 (25H2) [10.0.26200.8655] (x86_64)
+- catalog `verified`: `Constant` / `OneMinus` / `Comment` の3 classを実round-tripにより昇格。
 
 `example/sample.txt` はユーザー提供の実Editor T3Dとして解析済みだが、要求されていたE01の
-9種類別sampleとEditorバージョンは未収集である。従ってparse実入力の根拠には使えるが、
+9種類別sampleは未収集である。従ってparse実入力の根拠には使えるが、
 build生成物のCtrl+V成功を示すものではない。
 
 ## 自動検証結果
@@ -55,15 +56,101 @@ T3Dとの差分を下表へ追記する。失敗時もfixtureを変えず、貼�
 
 | step | 状態 | Editorで確認すること |
 |---:|---|---|
-| 1 | WAITING | Constant3Vectorが1個貼られ、色が (0.2, 0.5, 0.9) |
-| 2 | WAITING | Constant 2個からMultiply A/Bへの2接続 |
-| 3 | WAITING | TextureSampleのG（3番目の出力）がMultiply.Aへ接続 |
-| 4 | WAITING | ScalarParameter name=Strength、default=0.75、Group=Controls |
-| 5 | WAITING | TextureSampleParameter2DとDefaultTexture参照 |
-| 6 | WAITING | ConstantのValue property Pinが再構築されるか。接続可否も記録 |
-| 7 | WAITING | Comment枠が2ノードを80px marginで包含し、移動がgroup動作 |
-| 8 | WAITING | 貼った選択をcopy→parse→build→再pasteして同じgraph |
-| 9 | WAITING | 現build.pyの最小Pin fieldで受理されるか。必要fieldがあればformat.mdへ反映 |
+| 1 | **OK (2026-07-14)** | Constant3Vectorが1個貼られ、色が (0.2, 0.5, 0.9) |
+| 2 | **OK (2026-07-14)** | Constant 2個からMultiply A/Bへの2接続 |
+| 3 | **OK (2026-07-14)** | TextureSampleのG（3番目の出力）がMultiply.Aへ接続 |
+| 4 | **OK (2026-07-14)** | ScalarParameter name=Strength、default=0.75、Group=Controls |
+| 5 | **OK (2026-07-14)** | TextureSampleParameter2DとDefaultTexture参照 |
+| 6 | **OK (2026-07-14)** | ConstantのValue property Pinが再構築され、接続も保持 |
+| 7 | **OK (2026-07-14)** | Comment枠が2ノードを80px marginで包含 |
+| 8 | **OK (2026-07-14)** | 実copy→parse→build→再pasteで同じgraph |
+| 9 | **OK (2026-07-14)** | `PinType.*`全省略で値・A/B接続が完全復元。format/buildへ反映 |
+
+### 手動結果 01
+
+- 結果: **OK**
+- 確認画像: Constant3Vector 1個がMaterial Editorへ貼り付けられた。
+- 値: X/R=0.2、Y/G=0.5、Z/B=0.9。プレビュー色も一致。
+- Root未接続: step 1の想定どおり（Root接続は生成対象外）。
+- UEバージョン: 5.8.0-55116800+++UE5+Release-5.8。
+
+### 手動結果 02
+
+- 結果: **OK**
+- Constant 0.25の出力がMultiply.Aへ接続された。
+- Constant 2.0の出力がMultiply.Bへ接続された。
+- 2本ともPin接続と値がfixtureに一致。
+- UEバージョン: 5.8.0-55116800+++UE5+Release-5.8。
+
+### 手動結果 03
+
+- 結果: **OK**
+- TextureSampleの緑色G出力（output index 2）がMultiply.Aへ接続された。
+- RGB/R/G/B/A/RGBAの全出力順と選択出力がfixtureに一致。
+- UEバージョン: 5.8.0-55116800+++UE5+Release-5.8。
+
+### 手動結果 04
+
+- 結果: **OK**
+- Parameter Name=`Strength`、Default Value=`0.75`、Group=`Controls`をDetailsで確認。
+- Sort Priorityはcatalog補完既定値どおり`32`。
+- UEバージョン: 5.8.0-55116800+++UE5+Release-5.8。
+
+### 手動結果 05
+
+- 結果: **OK**
+- TextureSampleParameter2DのParameter Name=`BaseTexture`を確認。
+- `/Engine/EngineResources/DefaultTexture.DefaultTexture` が`None`にならず解決され、
+  Detailsのasset欄とnode previewへDefaultTextureが表示された。
+- catalogの`asset:UTexture`から生成した`/Script/Engine.Texture` object referenceはUE 5.8で有効。
+- UEバージョン: 5.8.0-55116800+++UE5+Release-5.8。
+
+### 手動結果 06
+
+- 結果: **OK**
+- source Constant R=`0.8`の出力からtarget Constantの`Value` property Pinへ接続された。
+- paste後もValue Pinが存在し、リンクは削除されなかった。
+- ShowAsInputPin系を通常inputsの後へ出すbuild規約がUE 5.8で機能することを確認。
+- UEバージョン: 5.8.0-55116800+++UE5+Release-5.8。
+
+### 手動結果 07
+
+- 結果: **OK**
+- 青系Comment枠、Text=`Invert`、Constant 0.4、OneMinus、内部linkを画像で確認。
+- 2ノードは枠内に収まり、生成規約の80px margin相当の余白が保持された。
+- UEバージョン: 5.8.0-55116800+++UE5+Release-5.8。
+
+### Step 08 進行メモ
+
+- 最初の実copy-backは2 nodes / 1 Comment / 1 link、typed props、raw props 0で解析成功。
+- EditorがComment geometryを微調整し、従来の80px完全一致判定では包含`nodes`へ戻らず
+  `SizeX=700` / `SizeY=280`の自由枠になった。
+- `parse.py` を修正し、各辺0〜200pxのtight enclosing frameを包含Commentと判定するようにした。
+  生成fixtureのparseで`nodes=[const1,oneminus1]`へ戻ることを再確認済み。
+- 修正版で実clipboardを再取得し、次のcanonical MGJSONへ正常変換した（error 0 / raw props 0）。
+  `Constant(R=0.4)`、`OneMinus`、包含Comment `Invert`、内部link 1本。
+- Commentは`nodes=[const1,oneminus1]`へ復元され、SizeX/SizeY自由枠は除去された。
+- 再buildしたT3Dをclipboardへ格納済み。ユーザーの再paste結果待ち。
+
+### 手動結果 08
+
+- 結果: **OK**
+- 元graphと再paste graphを同一画面で比較し、Comment text/color/bounds、Constant 0.4、
+  OneMinus、内部linkが一致した。
+- 実copy-backで発見したComment geometry差は修正版parserで包含`nodes`へ正規化された。
+- `Constant`、`OneMinus`、`Comment`は実round-trip確認済み。catalog verified昇格対象。
+- UEバージョン: 5.8.0-55116800+++UE5+Release-5.8。
+
+### 手動結果 09
+
+- 結果: **OK**
+- Constant×2 → Multiplyの全7 Pinから`PinType.*`を完全に除いたT3Dをpasteした。
+- Constant値0.25 / 2.0、Multiply.A / Bへの2接続が完全に復元された。
+- build.pyはdata Pinの`PinType.PinCategory`を出さない最小形式へ変更した。
+- format.mdにUE 5.8.0-55116800実機結果を追記した。
+- 再QA: py_compile、catalog merge、PinType field 0、通常/Comment round-trip、
+  verified class一覧を確認して`FINAL_QA_OK`。
+- UEバージョン: 5.8.0-55116800+++UE5+Release-5.8。
 
 ### Fixture 01
 

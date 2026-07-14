@@ -226,7 +226,7 @@
     "outputs": [{"name": ""}],
     "props": {},
     "notes": "",
-    "verified": false
+    "verified": true
   },
   "Min": {
     "class": "/Script/Engine.MaterialExpressionMin",

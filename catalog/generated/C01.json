@@ -24,7 +24,7 @@
    }
   },
   "notes": "",
-  "verified": false
+  "verified": true
  },
  "Constant2Vector": {
   "class": "/Script/Engine.MaterialExpressionConstant2Vector",

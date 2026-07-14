@@ -36,8 +36,8 @@
     "default": true
    }
   },
-  "notes": "IsAllowedIn() で false を返すため、マテリアルでは使用不可",
-  "verified": false
+  "notes": "MaterialExpression単体はIsAllowedIn()でfalse。MaterialGraphNode_Comment経由のclipboard生成・往復をUE 5.8で確認済み",
+  "verified": true
  },
  "Reroute": {
   "class": "/Script/Engine.UMaterialExpressionReroute",

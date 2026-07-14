@@ -41,10 +41,10 @@
 | `CollectionParameter` | マテリアルパラメータコレクションの単一パラメータを参照 | - | Output | - |
 | `CollectionTransform` | マテリアルパラメータコレクション内の連続5ベクトル要素を変換行列として使用 | Input | Output | - |
 | `ColorRamp` | 入力値に基づいて曲線からリニアカラーをサンプリング | Input | Output | - |
-| `Comment` | コメント用ノード。マテリアルグラフの整理に使用 | - | Output | - |
+| `Comment` | コメント用ノード。マテリアルグラフの整理に使用 | - | Output | verified |
 | `ComponentMask` | ベクトルの特定のコンポーネント(R/G/B/A)を選択出力 | Input, R, G, B, A | Output | - |
 | `Composite` | サブグラフを組み込むノード。入出力はピンベースで管理される | - | - | - |
-| `Constant` | 定数値（float）を出力する | Value | Output | - |
+| `Constant` | 定数値（float）を出力する | Value | Output | verified |
 | `Constant2Vector` | 2要素ベクトル定数（X, Y）を出力 | X, Y | RG, R, G | - |
 | `Constant3Vector` | 3要素ベクトル定数（RGB）を出力 | Constant | RGB, R, G, B | - |
 | `Constant4Vector` | 4要素ベクトル定数（RGBA）を出力 | Constant | RGBA, R, G, B, A, RGB | - |
@@ -194,7 +194,7 @@
 | `ObjectOrientation` | オブジェクトの向きを示すベクトル | - | Output | - |
 | `ObjectPositionWS` | オブジェクトのワールド座標 | Origin | Output | - |
 | `ObjectRadius` | オブジェクトのバウンディングスフィアの半径 | - | Output | - |
-| `OneMinus` | 1 - Input。補数 | Input | Output | - |
+| `OneMinus` | 1 - Input。補数 | Input | Output | verified |
 | `Operator` | 演算ノード。単項/二項/三項演算を動的にサポート | - | Output | - |
 | `Panner` | UV座標をパン（移動）。時間に基づいて座標をシフト | Coordinate, Time, Speed, SpeedX, SpeedY | Output | - |
 | `Parameter` | パラメータの基底クラス | - | - | - |

@@ -297,14 +297,11 @@ def _pin_line(
     pin_id: str,
     name: str,
     output: bool,
-    required: bool,
     linked: list[str],
 ) -> str:
     fields = [f"PinId={pin_id}", f"PinName={quote(name)}"]
     if output:
-        fields.extend(['Direction="EGPD_Output"', 'PinType.PinCategory=""'])
-    else:
-        fields.append(f'PinType.PinCategory="{"required" if required else "optional"}"')
+        fields.append('Direction="EGPD_Output"')
     if linked:
         fields.append("LinkedTo=(" + "".join(item + "," for item in linked) + ")")
     return "   CustomProperties Pin (" + ",".join(fields) + ",)"
@@ -405,7 +402,7 @@ def _normal_block(
         name = mgvalidate.effective_pin_name(pin, index, False)
         lines.append(
             _pin_line(
-                info.input_ids[index], name, False, bool(pin.get("required", False)),
+                info.input_ids[index], name, False,
                 linked[(info.node_id, "input", index)],
             )
         )
@@ -413,7 +410,7 @@ def _normal_block(
         name = mgvalidate.effective_pin_name(pin, index, True)
         lines.append(
             _pin_line(
-                info.output_ids[index], name, True, False,
+                info.output_ids[index], name, True,
                 linked[(info.node_id, "output", index)],
             )
         )

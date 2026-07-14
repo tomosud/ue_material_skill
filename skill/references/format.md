@@ -216,7 +216,7 @@ state は必ず GraphNode 側に書く。
 各 Pin は GraphNode のプロパティ領域に 1 行で記述する。
 
 ```text
-CustomProperties Pin (PinId=00112233445566778899AABBCCDDEEFF,PinName="A",PinType.PinCategory="optional",LinkedTo=(MaterialGraphNode_0 11112222333344445555666677778888,),)
+CustomProperties Pin (PinId=00112233445566778899AABBCCDDEEFF,PinName="A",LinkedTo=(MaterialGraphNode_0 11112222333344445555666677778888,),)
 ```
 
 `UEdGraphNode::ImportCustomProperties` は `Pin` token の後を `UEdGraphPin::ImportTextItem`
@@ -231,7 +231,7 @@ CustomProperties Pin (PinId=00112233445566778899AABBCCDDEEFF,PinName="A",PinType
 | `PinId` | 32 桁 hex GUID | 必須 | document 内で一意。全 `LinkedTo` と一致させる。 |
 | `PinName` | quoted FName | 省略可 | 全 Pin で必ず出す。入力は再構築時の名前照合に必須。 |
 | `Direction` | quoted enum | 省略時 `EGPD_Input` | 出力だけ `Direction="EGPD_Output"` を必ず出す。 |
-| `PinType.PinCategory` | quoted FName | 省略可 | catalog 値があれば `"required"`, `"optional"`, `"exec"` 等を出す。通常 data pin は省略しても再生成される。 |
+| `PinType.PinCategory` | quoted FName | 省略可 | UE 5.8実機で全data Pinから省略しても入力・出力・接続が再構築された。build.pyは出さない。 |
 | その他 `PinType.*` | struct member の T3D 値 | 省略可 | 原則出さない。reconstruct で式 class から再生成される。 |
 | `LinkedTo` | Pin reference array | 未接続なら省略 | 接続 Pin では必須。書式は次節。 |
 | `DefaultValue` | quoted string | 省略可 | property input 等で既定値を保持する必要がある場合だけ出す。 |
@@ -251,6 +251,8 @@ Pin import の真の構文最小セットは有効な `PinId` だけである
 - 出力 Pin: `PinId`, `PinName`, `Direction="EGPD_Output"`。接続時は `LinkedTo` も必要。
 - 全入力を catalog の `inputs` 順、その後に `prop_pins` 順で出す。
 - 全出力を catalog の `outputs` 順で、未接続でも省略せず出す。
+- UE 5.8.0-55116800実機では `PinType.*` を全7 Pinから省略した
+  Constant×2 → Multiplyの値とA/B接続が完全に復元された。この実用最小を生成規約とする。
 
 ## 接続と LinkedTo
 

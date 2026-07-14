@@ -143,8 +143,6 @@ def validate_node_entry(key: str, entry: Any, source: Path) -> list[str]:
                 errors.append(f"{prop_path}.type: required non-empty string")
     if "notes" in entry and not isinstance(entry.get("notes"), str):
         errors.append(f"{base}.notes: expected string")
-    if entry.get("verified", False) is not False:
-        errors.append(f"{base}.verified: must be false before T08")
     return errors
 
 
@@ -234,8 +232,6 @@ def validate_function_entry(key: str, entry: Any, source: Path) -> list[str]:
     for flag in ("verified", "path_uncertain"):
         if flag in entry and not isinstance(entry.get(flag), bool):
             errors.append(f"{base}.{flag}: expected bool")
-    if entry.get("verified", False) is not False:
-        errors.append(f"{base}.verified: must be false before T08")
     for direction in ("inputs", "outputs"):
         pins = entry.get(direction)
         if not isinstance(pins, list):
