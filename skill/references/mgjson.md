@@ -299,6 +299,8 @@ catalog の `inputs` / `outputs` ではなく **node の props から導出**す
   `FCustomInput.Input`(接続情報)は Pin LinkedTo が正のため出力しない。
 - struct 要素の未知 field は warning 付きでそのまま通す(局所 escape hatch)。
   配列全体を `raw_props` に入れてはならない。
+- UEがcopy時に出す`bShowOutputNameOnPin`は`AdditionalOutputs`から
+  `RebuildOutputs()`が再構築する派生fieldなので、parse時に破棄する。
 
 Custom 固有の検証(`validate.py`):
 
@@ -376,7 +378,9 @@ build は validate を関数として呼び、error があれば T3D を一切�
 9. `MaterialExpressionEditorX/Y`, `NodeGuid`, `MaterialExpressionGuid`, `ExpressionGUID`,
    `Material`, `Function`, `GraphNode`, `ExportPath` は出力しない。ただし parameter 固有の
    `ExpressionGUID` は意味上必要な場合もペーストで再発行されるため省略する。
-10. `--keep-pos` のときだけ通常 node と自由 Comment の pos を出す。包含 Comment の geometry
+10. class固有の再構築可能な派生fieldも出力しない。現在はCustomの
+    `bShowOutputNameOnPin`を`AdditionalOutputs`から再構築する。
+11. `--keep-pos` のときだけ通常 node と自由 Comment の pos を出す。包含 Comment の geometry
     は可能なら内包関係へ戻し、確定できなければ自由 Comment として size / pos を保持する。
 
 JSON 出力は `ensure_ascii=false`、compact separator を使用してよい。`--stats` は MGJSON の代わりに

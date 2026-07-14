@@ -54,7 +54,7 @@
 | `Cosine` | Cosine | Input, Period | Output | - |
 | `CrossProduct` | 2つのベクトルの外積を計算 | A, B | Output | - |
 | `CurveAtlasRowParameter` | スカラーパラメータを曲線アトラスの行位置として使用し、時間入力で値をサンプリングする | CurveTime | RGB, R, G, B, A | - |
-| `Custom` | HLSL コードを埋め込むノード。入出力は動的に定義される | - | - | - |
+| `Custom` | HLSL コードを埋め込むノード。入出力は動的に定義される | - | - | verified |
 | `CustomOutput` | カスタム出力の基底クラス(抽象) | - | - | abstract |
 | `DBufferTexture` | DBuffer テクスチャから値を取得する。A/B/C のいずれかを選択してサンプリング | Coordinates | RGBA, RGB, A | - |
 | `DDX` | 入力値の水平方向の偏微分(ddx)を計算する | Value | Output | - |

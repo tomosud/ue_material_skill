@@ -380,8 +380,8 @@
     "default": false
    }
   },
-  "notes": "動的ピン: 入力はInputs(named/unnamed)、出力はAdditionalOutputs無→無名1本/有→'return'+named outputs (RebuildOutputs準拠)。接続はPin LinkedToが正でFCustomInput.Inputは書かない。GraphNodeクラスは/Script/UnrealEd.MaterialGraphNode_Custom。既定値はUE5.8 ctor実測 (Description='Custom', OutputType=CMOT_Float3, Inputs=[無名1件])。named input+named additional output合計32以下(Material IR制限)。",
-  "verified": false,
+  "notes": "動的ピン: 入力はInputs(named/unnamed)、出力はAdditionalOutputs無→無名1本/有→'return'+named outputs (RebuildOutputs準拠)。接続はPin LinkedToが正でFCustomInput.Inputは書かない。GraphNodeクラスは/Script/UnrealEd.MaterialGraphNode_Custom。既定値はUE5.8 ctor実測 (Description='Custom', OutputType=CMOT_Float3, Inputs=[無名1件])。named input+named additional output合計32以下(Material IR制限)。UE 5.8実機でA入力、return+Luma出力、AdditionalDefines、2接続のbuild→paste→copy-backを確認。",
+  "verified": true,
   "dynamic_pins": true
  },
  "GetMaterialAttributes": {

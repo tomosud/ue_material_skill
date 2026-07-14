@@ -1,6 +1,6 @@
 # P01: Customノードのraw保持→意味的round-trip昇格 [MAIN-AI-REVIEW P0-1]
 
-status: WIP (Claude main AI, 2026-07-14)
+status: DONE (Codex, 2026-07-14)
 output: `skill/scripts/{validate,build,parse}.py` 拡張、catalog Custom entry 修正、
 `tests/` offline回帰テスト、`skill/references/mgjson.md` Custom節
 
@@ -8,19 +8,19 @@ output: `skill/scripts/{validate,build,parse}.py` 拡張、catalog Custom entry 
 
 ## 受入条件(発注文より)
 
-- [ ] Inputs / AdditionalOutputs / AdditionalDefines / IncludeFilePaths をMGJSONで構造化
-- [ ] parse / validate / build で indexed TArray と動的Pinを往復
-- [ ] UE 5.8 constructor既定値へcatalog修正
+- [x] Inputs / AdditionalOutputs / AdditionalDefines / IncludeFilePaths をMGJSONで構造化
+- [x] parse / validate / build で indexed TArray と動的Pinを往復
+- [x] UE 5.8 constructor既定値へcatalog修正
       (Description="Custom", OutputType=CMOT_Float3, Code=ctor既定, Inputs=[{InputName:""}])
-- [ ] named input + named additional output 合計32以下を検証
-- [ ] additional output の全経路代入(静的に断定できなければwarning)
-- [ ] input/output名: identifier規則、予約語、重複、<TextureName>Sampler衝突を検査
-- [ ] virtual shader include path 検査(絶対virtual path、`..`拒否)
-- [ ] SceneTexture の .ID/.Fetch は該当入力がSceneTexture/UserSceneTexture出力0へ直結時のみ許可
-- [ ] Engine private HLSL関数を一般allowlist化しない(unsafe_internal_api warningのみ)
-- [ ] examples/09-custom.txt を使うoffline回帰テスト追加
-- [ ] 旧translatorと新Material IRの差を壊さない(named input接続必須、明示return推奨)
-- [ ] Editor実機: sample09 round-trip + AdditionalOutputs fixture(ユーザー1操作ずつ)
+- [x] named input + named additional output 合計32以下を検証
+- [x] additional output の全経路代入(静的に断定できなければwarning)
+- [x] input/output名: identifier規則、予約語、重複、<TextureName>Sampler衝突を検査
+- [x] virtual shader include path 検査(絶対virtual path、`..`拒否)
+- [x] SceneTexture の .ID/.Fetch は該当入力がSceneTexture/UserSceneTexture出力0へ直結時のみ許可
+- [x] Engine private HLSL関数を一般allowlist化しない(unsafe_internal_api warningのみ)
+- [x] examples/09-custom.txt を使うoffline回帰テスト追加
+- [x] 旧translatorと新Material IRの差を壊さない(named input接続必須、明示return推奨)
+- [x] Editor実機: sample09 round-trip + AdditionalOutputs fixture(ユーザー1操作ずつ)
 
 ## UEソース確定事項(実装根拠)
 
@@ -52,7 +52,18 @@ output: `skill/scripts/{validate,build,parse}.py` 拡張、catalog Custom entry 
   - `skill/references/mgjson.md`: 「動的ピン: Customノード」節を追加。
 - `return`検査はUEのsubstring判定より厳しく「comment外の`\breturn\b`」で判定
   (comment内returnがUEの自動wrapを抑止する危険ケースを検出できる)。
-- 未実施: Editor実機検証(LumaSplit fixture=Constant3Vector→Custom(A, +Luma出力)→Multiply
-  をclipboardへ配置済み。paste→copy-backでの一致確認待ち)。
-  fixture: `tests/fixtures/p01-custom-lumasplit.mgjson`
-- 完了後: Custom の verified 昇格と受入条件チェックボックス更新を行うこと。
+- 2026-07-14 Editor実機検証完了。UE 5.8でLumaSplit fixtureをpaste→copy-backし、
+  `Code`、`Inputs=[A]`、`AdditionalOutputs=[Luma]`、
+  `AdditionalDefines=[MYPROJ_MODE=1]`、`Constant→A`、`Luma→Multiply.A`を確認した。
+  実copy-backは`tests/fixtures/p01-custom-lumasplit-copyback.txt`へ保存。
+- copy-backで判明した派生field `bShowOutputNameOnPin=True`は`RebuildOutputs()`が
+  AdditionalOutputsから再構築するため、`raw_props`へ保持せずparse時に除外するよう修正した。
+- 実copy-backのparse→validate→build→parseはraw props 0でcanonical一致。
+  offline回帰は16件全green、py_compile成功、catalog merge成功、skill quick validationは
+  `Skill is valid!`。Customをgenerated/merged catalogで`verified: true`へ昇格した。
+
+## 残存リスク（P0-1完了を妨げない後続検証）
+
+- `IncludeFilePaths`はoffline canonical往復済みだが、実Editor copy-backは未確認。
+- 今回の実機確認はgraphのpaste/copy-back。旧translator・新MIR双方でのmaterial shader compile、
+  platform/domain別挙動、include先関数のcompileは別の統合試験が必要。

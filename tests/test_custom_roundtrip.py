@@ -21,6 +21,9 @@ import validate as mgvalidate  # noqa: E402
 CATALOG = mgvalidate.load_catalog()
 FUNCTIONS = mgvalidate.load_functions()
 SAMPLE_09 = (ROOT / "examples" / "09-custom.txt").read_text(encoding="utf-8-sig")
+P01_COPYBACK = (ROOT / "tests" / "fixtures" / "p01-custom-lumasplit-copyback.txt").read_text(
+    encoding="utf-8-sig"
+)
 
 
 def diagnostics_of(document):
@@ -129,6 +132,42 @@ class ConnectedCustomTests(unittest.TestCase):
         reparsed, _ = mgparse.convert_t3d(t3d, CATALOG)
         self.assertEqual(reparsed["nodes"]["custom1"], document["nodes"]["custom1"])
         self.assertIn("custom1.Luma -> mul1.A", reparsed["links"])
+
+
+class EditorCopyBackTests(unittest.TestCase):
+    def test_lumasplit_copyback_is_structured(self):
+        document, stats = mgparse.convert_t3d(P01_COPYBACK, CATALOG)
+        self.assertEqual(stats, {
+            "nodes": 3, "comments": 0, "links": 2,
+            "unknown_classes": 0, "raw_props": 0,
+        })
+        custom = document["nodes"]["custom1"]
+        self.assertNotIn("raw_props", custom)
+        self.assertEqual(custom["props"]["Description"], "LumaSplit")
+        self.assertEqual(custom["props"]["Inputs"], [{"InputName": "A"}])
+        self.assertEqual(custom["props"]["AdditionalOutputs"], [{"OutputName": "Luma"}])
+        self.assertEqual(
+            custom["props"]["AdditionalDefines"],
+            [{"DefineName": "MYPROJ_MODE", "DefineValue": "1"}],
+        )
+        self.assertEqual(
+            custom["props"]["Code"],
+            "Luma = dot(A, float3(0.2126, 0.7152, 0.0722));\nreturn A * 2.0;",
+        )
+        self.assertEqual(
+            document["links"],
+            ["const1 -> custom1.A", "custom1.Luma -> mul1.A"],
+        )
+
+    def test_lumasplit_copyback_is_canonical(self):
+        document, _ = mgparse.convert_t3d(P01_COPYBACK, CATALOG)
+        result = diagnostics_of(document)
+        self.assertTrue(result.ok, messages(result, "error"))
+        rebuilt = mgbuild.build_t3d(document, CATALOG, FUNCTIONS)
+        reparsed, stats = mgparse.convert_t3d(rebuilt, CATALOG)
+        self.assertEqual(stats["raw_props"], 0)
+        self.assertEqual(reparsed, document)
+        self.assertEqual(mgbuild.build_t3d(reparsed, CATALOG, FUNCTIONS), rebuilt)
 
 
 class CustomValidationTests(unittest.TestCase):

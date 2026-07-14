@@ -14,7 +14,7 @@ clipboard往復を行う実用的な基盤として成立している。一方�
 
 次の開発単位は、以下の順を推奨する。
 
-1. P0: Customの動的Pin往復と既定値を正す。
+1. P0: Customの動的Pin往復と既定値を正す。**DONE (2026-07-14)**
 2. P0: `verified`を証拠レベルへ分解する。
 3. P0: 01〜09実sampleを自動回帰テストへ固定する。
 4. P1: Editor自動往復ハーネスを作り、利用頻度上位classを昇格する。
@@ -29,8 +29,8 @@ clipboard往復を行う実用的な基盤として成立している。一方�
 - 02の異なるnode間でPinIdが重複する実例を検出し、parserは
   `(owner node name, PinId)`で正しく3接続を復元する。
 - merged catalogは359 node / 82 functionを収載し、JSONとmanifest coverageは成立している。
-- Editor実証済みフラグはnode 5/359（1.4%）、function 1/82（1.2%）。nodeは
-  `Comment`、`Constant`、`OneMinus`、`NamedRerouteDeclaration`、`NamedRerouteUsage`、
+- Editor実証済みフラグはnode 6/359（1.7%）、function 1/82（1.2%）。nodeは
+  `Comment`、`Constant`、`OneMinus`、`NamedRerouteDeclaration`、`NamedRerouteUsage`、`Custom`、
   functionは`BlendAngleCorrectedNormals`。
 
 ここで注意すべきなのは、前3 nodeはbuild→paste→copy-backを含む一方、Named Rerouteは
@@ -38,7 +38,11 @@ clipboard往復を行う実用的な基盤として成立している。一方�
 
 ## P0: リリース品質の前に実施する項目
 
-### 1. Customをraw保持から意味的な往復へ昇格する
+### 1. Customをraw保持から意味的な往復へ昇格する — DONE
+
+2026-07-14に実装とUE 5.8実機検証を完了した。正本は`tasks/P01-custom-roundtrip.md`。
+LumaSplitのbuild→paste→copy-backでCode、A入力、return+Luma出力、define、2接続を確認し、
+実T3Dを`tests/fixtures/p01-custom-lumasplit-copyback.txt`へ固定した。以下の「現状」は実装前の記録。
 
 CustomノードのHLSL生成経路、利用可能関数、texture sampler、SceneTexture専用構文、include mapping、
 旧translatorと新Material IRの差は
@@ -49,7 +53,7 @@ CustomノードのHLSL生成経路、利用可能関数、texture sampler、Scen
 additional outputを旧経路の`inout`ではなく`out`として生成する。互換性のため、32個上限を検証し、
 追加出力は全制御経路で必ず代入する規約にする。
 
-現状:
+実装前の現状:
 
 - sample 09は`Code`と`ShowCode`をtyped props、`Inputs(0)` / `Inputs(1)`を`raw_props`へ保持する。
 - catalogの`Custom.inputs` / `outputs`は空なので、build側`pin_schema()`はA/B/Output Pinを作れない。

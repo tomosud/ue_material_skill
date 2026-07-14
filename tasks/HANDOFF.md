@@ -2,19 +2,22 @@
 
 ## 現在地（継続更新）
 
-最終更新: 2026-07-14 / 引き継ぎ実行者: Claude main AI(P0-1実装中)
+最終更新: 2026-07-14 / 引き継ぎ実行者: Codex(P0-1完了)
 
 ### P0-1(Custom意味的round-trip)の状況 — tasks/P01-custom-roundtrip.md が正本
 
-- 実装・offlineテストは完了: validate/build/parse がCustomの
+- **P0-1は完了**: validate/build/parse がCustomの
   Inputs/AdditionalOutputs/AdditionalDefines/IncludeFilePaths を構造化往復する。
   詳細な変更一覧は `tasks/P01-custom-roundtrip.md` の実施メモ。
-- 回帰テスト: `python -m unittest discover -s tests`(repo root、14件、全green。
+- 回帰テスト: `python -m unittest discover -s tests`(repo root、16件、全green。
   examples 01〜09 の parse 健全性も固定済み)。
-- 残: Editor実機検証のみ。LumaSplit fixture
-  (`tests/fixtures/p01-custom-lumasplit.mgjson`)のT3Dをclipboardへ配置済みで、
-  ユーザーのpaste→copy-back待ち。一致確認後に Custom を verified 昇格し、
-  P01 md の受入条件を更新して status: DONE にする。
+- UE 5.8実機でLumaSplit fixtureをpaste→copy-backし、Code、A入力、return+Luma出力、
+  AdditionalDefines、2接続を確認。実T3Dは
+  `tests/fixtures/p01-custom-lumasplit-copyback.txt`へ保存した。
+- copy-backはraw props 0でcanonical往復一致。`bShowOutputNameOnPin`は
+  RebuildOutputs由来の派生fieldとしてparse対象外にし、Customを`verified: true`へ昇格した。
+- 残存risk: `IncludeFilePaths`の実Editor往復と、旧translator/新MIR双方のshader compileは
+  未確認。P0-1の意味的clipboard往復とは分離した後続統合試験とする。
 - 注意: build.py の asset 参照 f-string を Python 3.11 互換へ修正済み
   (以前は 3.12 専用構文だった)。
 
@@ -39,9 +42,8 @@ Engine private APIの危険度を含む。Custom対応に着手するAIは必読
 
 ### 現在実行中
 
-- 追加精査としてCustomノードのUE 5.8 source調査を完了し、
-  `tasks/CUSTOM-NODE-SOURCE-RESEARCH.md`へ記録した。これは調査・設計報告であり、
-  CustomのMGJSON構造化実装自体は未着手。次の実装AIはMAIN-AI-REVIEW P0-1と同時に扱う。
+- P0-1は完了。次候補は`tasks/MAIN-AI-REVIEW.md`のP0-2
+  (`verified`の証拠レベル分解)またはP0-3(実sample回帰テストの拡張)。
 - T02 完了: `skill/references/mgjson.md` と `tasks/T02-mgjson-spec.md` を更新済み。
 - M01 完了: `skill/references/mf-call.md`、task md、`INSTRUCTIONS-mf.md` を更新済み。
 - T06 完了: 359/359ノードと82 MFを `skill/catalog/` に統合し、逆引き索引を生成済み。
@@ -66,8 +68,9 @@ Engine private APIの危険度を含む。Custom対応に着手するAIは必読
   `Convert to Named Reroute`で宣言＋使用へ変換した実機コピーを受領し、
   `examples/08-named-reroute.txt` に保存済み。共有GUID一致を確認し、未収載VariableGuidを
   C08へ追加、両classをverifiedへ更新。09は入力A/Bと`return A + B;`を持つCustomを受領し、
-  `examples/09-custom.txt`へ保存。未収載の`ShowCode: bool`をC08へ追加した。索引付きInputsは
-  MGJSONの`raw_props`へ可逆保持される。これで01〜09の実機sampleを全件収集済み。
+  `examples/09-custom.txt`へ保存。未収載の`ShowCode: bool`をC08へ追加した。その後P0-1で
+  Inputs/AdditionalOutputs/AdditionalDefinesを構造化し、LumaSplitの実機往復まで完了した。
+  これで01〜09の実機sampleとCustom追加出力fixtureを収集済み。
 
 ### 監査結果と注意
 

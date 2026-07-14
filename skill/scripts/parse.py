@@ -34,6 +34,11 @@ IGNORED_EXPRESSION_PROPS = {
     "MaterialExpressionEditorX", "MaterialExpressionEditorY", "NodeGuid", "MaterialExpressionGuid",
     "ExpressionGUID", "Material", "Function", "GraphNode", "ExportPath", "SubgraphExpression",
 }
+# Serialized fields rebuilt deterministically by a specific expression class.  Keeping these as
+# raw_props would duplicate semantic data and produce a warning after a valid Editor round-trip.
+DERIVED_EXPRESSION_PROPS = {
+    "Custom": {"bShowOutputNameOnPin"},  # Rebuilt from AdditionalOutputs by RebuildOutputs().
+}
 INDEXED_PROP_RE = re.compile(r"^([A-Za-z_][A-Za-z0-9_]*)\((\d+)\)$")
 # Struct fields dropped when aggregating indexed arrays: FCustomInput.Input carries the
 # expression connection, which is reconstructed exclusively from Pin.LinkedTo.
@@ -312,7 +317,9 @@ def extract_expression_props(
     indexed: dict[str, dict[int, str]] = {}
     for name, raw in expression.properties:
         base_name = name.split("(", 1)[0]
-        if name in IGNORED_EXPRESSION_PROPS or base_name in {"FunctionInputs", "FunctionOutputs", "Outputs"}:
+        if (name in IGNORED_EXPRESSION_PROPS
+                or name in DERIVED_EXPRESSION_PROPS.get(class_name, set())
+                or base_name in {"FunctionInputs", "FunctionOutputs", "Outputs"}):
             continue
         # Connections are reconstructed exclusively from Pin.LinkedTo, even without a catalog.
         if re.match(r"^\(\s*Expression\s*=", raw):

@@ -9,7 +9,7 @@
 - 対象ソース: UE 5.8 checkout
 - 実際に使うEditor: **Unreal Editor 5.8.0-55116800+++UE5+Release-5.8**
 - OS表示: Windows 11 (25H2) [10.0.26200.8655] (x86_64)
-- catalog `verified`: `Constant` / `OneMinus` / `Comment`を実round-tripで昇格し、
+- catalog `verified`: `Constant` / `OneMinus` / `Comment` / `Custom`を実round-tripで昇格し、
   `NamedRerouteDeclaration` / `NamedRerouteUsage`を実機copyで昇格。
 
 `example/sample.txt`に加え、E01の01〜09をすべて実Editor T3Dとして収集済み。
@@ -68,6 +68,20 @@ T3Dとの差分を下表へ追記する。失敗時もfixtureを変えず、貼�
 | 7 | **OK (2026-07-14)** | Comment枠が2ノードを80px marginで包含 |
 | 8 | **OK (2026-07-14)** | 実copy→parse→build→再pasteで同じgraph |
 | 9 | **OK (2026-07-14)** | `PinType.*`全省略で値・A/B接続が完全復元。format/buildへ反映 |
+| P01 | **OK (2026-07-14)** | CustomのA入力、return+Luma出力、define、2接続をpaste→copy-back |
+
+### 手動結果 P01 Custom
+
+- 結果: **OK**
+- fixture: `tests/fixtures/p01-custom-lumasplit.mgjson`
+- 実copy-back: `tests/fixtures/p01-custom-lumasplit-copyback.txt`
+- `Code`、`Inputs=[A]`、`AdditionalOutputs=[Luma]`、
+  `AdditionalDefines=[MYPROJ_MODE=1]`を構造化して復元した。
+- 接続は`Constant3Vector → Custom.A`と`Custom.Luma → Multiply.A`の2本。
+- UE生成の`bShowOutputNameOnPin=True`はAdditionalOutputsから決まる派生値と確認し、
+  parserから除外。raw props 0、parse→build→parse canonical一致。
+- offline回帰16件、py_compile、catalog merge、skill quick validationが全成功。
+- UEバージョン: 5.8.0-55116800+++UE5+Release-5.8。
 
 ### 手動結果 01
 
