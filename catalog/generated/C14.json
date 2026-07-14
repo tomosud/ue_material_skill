@@ -1,0 +1,392 @@
+{
+  "ParticleMotionBlurFade": {
+    "class": "/Script/Engine.MaterialExpressionParticleMotionBlurFade",
+    "header": "Materials/MaterialExpressionParticleMotionBlurFade.h",
+    "desc": "パーティクルのモーションブラーフェード値を公開",
+    "inputs": [],
+    "prop_pins": [],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "props": {},
+    "notes": "ExternalCodeBase派生、入力なし、出力1本",
+    "verified": false
+  },
+  "ParticlePositionWS": {
+    "class": "/Script/Engine.MaterialExpressionParticlePositionWS",
+    "header": "Materials/MaterialExpressionParticlePositionWS.h",
+    "desc": "パーティクルのワールド座標位置を取得",
+    "inputs": [],
+    "prop_pins": [
+      {
+        "name": "Origin",
+        "prop": "OriginType",
+        "kind": "Advanced",
+        "type": "enum:EPositionOrigin"
+      }
+    ],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "props": {
+      "OriginType": {
+        "type": "enum:EPositionOrigin",
+        "default": ""
+      }
+    },
+    "notes": "OriginTypeはShowAsInputPin=Advanced",
+    "verified": false
+  },
+  "ParticleRadius": {
+    "class": "/Script/Engine.MaterialExpressionParticleRadius",
+    "header": "Materials/MaterialExpressionParticleRadius.h",
+    "desc": "パーティクルの半径を取得",
+    "inputs": [],
+    "prop_pins": [],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "props": {},
+    "notes": "",
+    "verified": false
+  },
+  "ParticleRandom": {
+    "class": "/Script/Engine.MaterialExpressionParticleRandom",
+    "header": "Materials/MaterialExpressionParticleRandom.h",
+    "desc": "パーティクルのランダム値を取得",
+    "inputs": [],
+    "prop_pins": [],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "props": {},
+    "notes": "",
+    "verified": false
+  },
+  "ParticleRelativeTime": {
+    "class": "/Script/Engine.MaterialExpressionParticleRelativeTime",
+    "header": "Materials/MaterialExpressionParticleRelativeTime.h",
+    "desc": "パーティクルの相対時間を取得",
+    "inputs": [],
+    "prop_pins": [],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "props": {},
+    "notes": "",
+    "verified": false
+  },
+  "ParticleSize": {
+    "class": "/Script/Engine.MaterialExpressionParticleSize",
+    "header": "Materials/MaterialExpressionParticleSize.h",
+    "desc": "パーティクルのサイズを取得",
+    "inputs": [],
+    "prop_pins": [],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "props": {},
+    "notes": "",
+    "verified": false
+  },
+  "ParticleSpeed": {
+    "class": "/Script/Engine.MaterialExpressionParticleSpeed",
+    "header": "Materials/MaterialExpressionParticleSpeed.h",
+    "desc": "パーティクルの速度を取得",
+    "inputs": [],
+    "prop_pins": [],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "props": {},
+    "notes": "",
+    "verified": false
+  },
+  "ParticleSpriteRotation": {
+    "class": "/Script/Engine.MaterialExpressionParticleSpriteRotation",
+    "header": "Materials/MaterialExpressionParticleSpriteRotation.h",
+    "desc": "パーティクルのスプライト回転を取得",
+    "inputs": [],
+    "prop_pins": [],
+    "outputs": [
+      {
+        "name": "Rad"
+      },
+      {
+        "name": "Deg"
+      }
+    ],
+    "props": {},
+    "notes": "コンストラクタで2つの出力を定義: Rad(ラジアン)とDeg(度数法)",
+    "verified": false
+  },
+  "ParticleSubUV": {
+    "class": "/Script/Engine.MaterialExpressionParticleSubUV",
+    "header": "Materials/MaterialExpressionParticleSubUV.h",
+    "desc": "パーティクルのサブUVテクスチャをサンプリング",
+    "inputs": [],
+    "prop_pins": [],
+    "outputs": [
+      {
+        "name": "RGB",
+        "mask": "RGB"
+      },
+      {
+        "name": "R",
+        "mask": "R"
+      },
+      {
+        "name": "G",
+        "mask": "G"
+      },
+      {
+        "name": "B",
+        "mask": "B"
+      },
+      {
+        "name": "A",
+        "mask": "A"
+      },
+      {
+        "name": "RGBA",
+        "mask": "RGBA"
+      }
+    ],
+    "props": {
+      "bBlend": {
+        "type": "bool",
+        "default": true
+      }
+    },
+    "notes": "TextureSampleを継承、6つの出力ピン、ブレンド設定あり",
+    "verified": false
+  },
+  "ParticleSubUVProperties": {
+    "class": "/Script/Engine.MaterialExpressionParticleSubUVProperties",
+    "header": "Materials/MaterialExpressionParticleSubUVProperties.h",
+    "desc": "パーティクルのSubUVプロパティへのダイレクトアクセス",
+    "inputs": [],
+    "prop_pins": [],
+    "outputs": [
+      {
+        "name": "TextureCoordinate0"
+      },
+      {
+        "name": "TextureCoordinate1"
+      },
+      {
+        "name": "Blend"
+      }
+    ],
+    "props": {},
+    "notes": "コンストラクタで3つの出力を定義",
+    "verified": false
+  },
+  "PathTracingBufferTexture": {
+    "class": "/Script/Engine.MaterialExpressionPathTracingBufferTexture",
+    "header": "Materials/MaterialExpressionPathTracingBufferTexture.h",
+    "desc": "パストレーシングバッファテクスチャをルックアップ",
+    "inputs": [
+      {
+        "name": "Coordinates",
+        "prop": "Coordinates",
+        "required": false,
+        "default_prop": null,
+        "note": "未接続時は無視される"
+      }
+    ],
+    "prop_pins": [],
+    "outputs": [
+      {
+        "name": "RGBA",
+        "mask": "RGBA"
+      },
+      {
+        "name": "RGB",
+        "mask": "RGB"
+      },
+      {
+        "name": "A",
+        "mask": "A"
+      }
+    ],
+    "props": {
+      "PathTracingBufferTextureId": {
+        "type": "enum:EPathTracingBufferTextureId",
+        "default": "PTBT_Radiance"
+      }
+    },
+    "notes": "コンストラクタで3つの出力を定義、ポストプロセスマテリアル専用",
+    "verified": false
+  },
+  "PathTracingQualitySwitch": {
+    "class": "/Script/Engine.MaterialExpressionPathTracingQualitySwitch",
+    "header": "Materials/MaterialExpressionPathTracingQualitySwitch.h",
+    "desc": "パストレーシング品質に応じて値を切り替え",
+    "inputs": [
+      {
+        "name": "Normal",
+        "prop": "Normal",
+        "required": false
+      },
+      {
+        "name": "PathTraced",
+        "prop": "PathTraced",
+        "required": false
+      }
+    ],
+    "prop_pins": [],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "props": {},
+    "notes": "非パストレーシング用とパストレーサー用の2つの入力",
+    "verified": false
+  },
+  "PathTracingRayTypeSwitch": {
+    "class": "/Script/Engine.MaterialExpressionPathTracingRayTypeSwitch",
+    "header": "Materials/MaterialExpressionPathTracingRayTypeSwitch.h",
+    "desc": "パストレーシングのレイタイプに応じて値を切り替え",
+    "inputs": [
+      {
+        "name": "Main",
+        "prop": "Main",
+        "required": false
+      },
+      {
+        "name": "Shadow",
+        "prop": "Shadow",
+        "required": false
+      },
+      {
+        "name": "IndirectDiffuse",
+        "prop": "IndirectDiffuse",
+        "required": false
+      },
+      {
+        "name": "IndirectSpecular",
+        "prop": "IndirectSpecular",
+        "required": false
+      },
+      {
+        "name": "IndirectVolume",
+        "prop": "IndirectVolume",
+        "required": false
+      }
+    ],
+    "prop_pins": [],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "props": {},
+    "notes": "5つのレイタイプに対応した入力（カメラ、シャドウ、間接拡散、間接鏡面反射、間接ボリューム）",
+    "verified": false
+  },
+  "PerInstanceCustomData3Vector": {
+    "class": "/Script/Engine.MaterialExpressionPerInstanceCustomData3Vector",
+    "header": "Materials/MaterialExpressionPerInstanceCustomData.h",
+    "desc": "インスタンスカスタムデータ(3Dベクトル)を取得",
+    "inputs": [
+      {
+        "name": "DefaultValue",
+        "prop": "DefaultValue",
+        "required": false,
+        "default_prop": "ConstDefaultValue"
+      }
+    ],
+    "prop_pins": [
+      {
+        "name": "DataIndex",
+        "prop": "DataIndex",
+        "kind": "Advanced",
+        "type": "uint32"
+      }
+    ],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "props": {
+      "ConstDefaultValue": {
+        "type": "FLinearColor",
+        "default": "(R=0.0, G=0.0, B=0.0)"
+      },
+      "DataIndex": {
+        "type": "uint32",
+        "default": 0
+      }
+    },
+    "notes": "FLinearColorのDefaultValue。DataIndexはAdvanced入力ピン",
+    "verified": false
+  },
+  "PostVolumeUserFlagTest": {
+    "class": "/Script/Engine.MaterialExpressionPostVolumeUserFlagTest",
+    "header": "Materials/MaterialExpressionPostVolumeUserFlagTest.h",
+    "desc": "ポストボリュームユーザーフラグをテスト",
+    "inputs": [
+      {
+        "name": "BitIndex",
+        "prop": "BitIndex",
+        "required": false,
+        "default_prop": "ConstBitIndex"
+      }
+    ],
+    "prop_pins": [],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "props": {
+      "ConstBitIndex": {
+        "type": "int32",
+        "default": 0
+      }
+    },
+    "notes": "BitIndexはToolTipで'ConstBitIndex'をデフォルト値として参照",
+    "verified": false
+  },
+  "PreSkinnedLocalBounds": {
+    "class": "/Script/Engine.MaterialExpressionPreSkinnedLocalBounds",
+    "header": "Materials/MaterialExpressionPreSkinnedLocalBounds.h",
+    "desc": "スキニング前のローカルバウンディングボックス情報を取得",
+    "inputs": [],
+    "prop_pins": [],
+    "outputs": [
+      {
+        "name": "Half Extents"
+      },
+      {
+        "name": "Extents"
+      },
+      {
+        "name": "Min"
+      },
+      {
+        "name": "Max"
+      }
+    ],
+    "props": {},
+    "notes": "コンストラクタで4つの出力を定義。スケルタルメッシュのバウンドボックス情報を提供",
+    "verified": false
+  }
+}

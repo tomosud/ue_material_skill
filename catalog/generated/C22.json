@@ -1,0 +1,71 @@
+{
+  "PhysicalMaterialOutput": {
+    "class": "/Script/RenderTrace.UMaterialExpressionPhysicalMaterialOutput",
+    "header": "Engine\\Plugins\\Runtime\\RenderTrace\\Source\\Private\\Materials\\MaterialExpressionPhysicalMaterialOutput.h",
+    "desc": "物理マテリアルの重みを出力するカスタム出力ノード。複数の物理マテリアルと入力値の配列で構成",
+    "inputs": [],
+    "prop_pins": [],
+    "outputs": [],
+    "props": {
+      "Inputs": {
+        "type": "array:FPhysicalMaterialTraceInput",
+        "default": []
+      }
+    },
+    "notes": "RenderTrace プラグイン有効時のみペースト可能。CustomOutput派生。入力は Inputs 配列の各要素の Input フィールドで、GetInputsView() により動的に列挙される。GetInputName() で PhysicalMaterial の名前を返す。出力数は Inputs.Num()。GetInputValueType() は MCT_Float を返す",
+    "verified": false
+  },
+  "SpriteTextureSampler": {
+    "class": "/Script/Paper2D.UMaterialExpressionSpriteTextureSampler",
+    "header": "Engine\\Plugins\\2D\\Paper2D\\Source\\Paper2D\\Public\\MaterialExpressionSpriteTextureSampler.h",
+    "desc": "2D スプライト用のテクスチャサンプラー。SourceTexture またはペーパー2D スプライトの AdditionalSourceTextures をサンプリング",
+    "inputs": [
+      {"name": "Coordinates", "prop": "Coordinates", "required": false},
+      {"name": "TextureObject", "prop": "TextureObject", "required": false},
+      {"name": "MipValue", "prop": "MipValue", "required": false},
+      {"name": "CoordinatesDX", "prop": "CoordinatesDX", "required": false},
+      {"name": "CoordinatesDY", "prop": "CoordinatesDY", "required": false},
+      {"name": "AutomaticViewMipBiasValue", "prop": "AutomaticViewMipBiasValue", "required": false}
+    ],
+    "prop_pins": [
+      {"name": "MipValueMode", "prop": "MipValueMode"},
+      {"name": "SamplerSource", "prop": "SamplerSource"}
+    ],
+    "outputs": [
+      {"name": ""}
+    ],
+    "props": {
+      "Texture": {
+        "type": "asset:UTexture2D",
+        "default": null
+      },
+      "ParameterName": {
+        "type": "FName",
+        "default": "SpriteTexture"
+      },
+      "bSampleAdditionalTextures": {
+        "type": "bool",
+        "default": false
+      },
+      "AdditionalSlotIndex": {
+        "type": "int32",
+        "default": 0
+      },
+      "SlotDisplayName": {
+        "type": "FText",
+        "default": ""
+      },
+      "Group": {
+        "type": "FName",
+        "default": ""
+      },
+      "SortPriority": {
+        "type": "int32",
+        "default": 32
+      }
+    },
+    "notes": "Paper2D プラグイン有効時のみペースト可能。UMaterialExpressionTextureSampleParameter2D 派生。is_parameter: true。ParameterName は読み取り専用（CanRenameNode() は false を返す）。ParameterName は SpriteTexture または SpriteAdditionalTexture_N で自動設定。MipValueMode と SamplerSource は親クラスの prop_pins",
+    "verified": false,
+    "is_parameter": true
+  }
+}

@@ -1,0 +1,531 @@
+{
+  "EvalPhysicsScalarField": {
+    "class": "/Script/Engine.MaterialExpressionEvalPhysicsScalarField",
+    "header": "Materials/MaterialExpressionSamplePhysicsField.h",
+    "desc": "グローバルフィジクスフィールドからスカラー値をサンプリング",
+    "inputs": [
+      {
+        "name": "WorldPosition",
+        "prop": "WorldPosition",
+        "required": false
+      },
+      {
+        "name": "Target Type",
+        "prop": "FieldTarget",
+        "kind": "Advanced",
+        "type": "EFieldScalarType"
+      }
+    ],
+    "prop_pins": [
+      {
+        "name": "Target Type",
+        "prop": "FieldTarget",
+        "kind": "Advanced",
+        "type": "EFieldScalarType"
+      }
+    ],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "props": {
+      "WorldPositionOriginType": {
+        "type": "enum:EPositionOrigin",
+        "default": "Absolute"
+      },
+      "FieldTarget": {
+        "type": "enum:EFieldScalarType",
+        "default": "Scalar_DynamicConstraint"
+      }
+    },
+    "notes": "GetInputName override handles WorldPosition naming based on WorldPositionOriginType",
+    "verified": false
+  },
+  "EvalPhysicsVectorField": {
+    "class": "/Script/Engine.MaterialExpressionEvalPhysicsVectorField",
+    "header": "Materials/MaterialExpressionSamplePhysicsField.h",
+    "desc": "グローバルフィジクスフィールドからベクトル値をサンプリング",
+    "inputs": [
+      {
+        "name": "WorldPosition",
+        "prop": "WorldPosition",
+        "required": false
+      },
+      {
+        "name": "Target Type",
+        "prop": "FieldTarget",
+        "kind": "Advanced",
+        "type": "EFieldVectorType"
+      }
+    ],
+    "prop_pins": [
+      {
+        "name": "Target Type",
+        "prop": "FieldTarget",
+        "kind": "Advanced",
+        "type": "EFieldVectorType"
+      }
+    ],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "props": {
+      "WorldPositionOriginType": {
+        "type": "enum:EPositionOrigin",
+        "default": "Absolute"
+      },
+      "FieldTarget": {
+        "type": "enum:EFieldVectorType",
+        "default": ""
+      }
+    },
+    "notes": "GetInputName override handles WorldPosition naming based on WorldPositionOriginType",
+    "verified": false
+  },
+  "ExternalCodeBase": {
+    "abstract": true,
+    "class": "/Script/Engine.MaterialExpressionExternalCodeBase",
+    "header": "Materials/MaterialExpressionExternalCodeBase.h",
+    "desc": "外部HLSLコードを挿入するベースクラス",
+    "notes": "Abstract base class - no direct instantiation",
+    "verified": false
+  },
+  "EyeAdaptationInverse": {
+    "class": "/Script/Engine.MaterialExpressionEyeAdaptationInverse",
+    "header": "Materials/MaterialExpressionEyeAdaptationInverse.h",
+    "desc": "EyeAdaptation逆変換を適用",
+    "inputs": [
+      {
+        "name": "LightValueInput",
+        "prop": "LightValueInput",
+        "required": false
+      },
+      {
+        "name": "AlphaInput",
+        "prop": "AlphaInput",
+        "required": false
+      }
+    ],
+    "prop_pins": [],
+    "outputs": [
+      {
+        "name": "EyeAdaptationInverse"
+      }
+    ],
+    "props": {},
+    "notes": "LightValueInput defaults to (1,1,1), AlphaInput defaults to 1.0",
+    "verified": false
+  },
+  "FeatureLevelSwitch": {
+    "class": "/Script/Engine.MaterialExpressionFeatureLevelSwitch",
+    "header": "Materials/MaterialExpressionFeatureLevelSwitch.h",
+    "desc": "フィーチャーレベルに応じて異なる入力を選択",
+    "inputs": [
+      {
+        "name": "Default",
+        "prop": "Default",
+        "required": false
+      },
+      {
+        "name": "SM5",
+        "prop": "Inputs[0]",
+        "required": false
+      },
+      {
+        "name": "SM4_REMOVED",
+        "prop": "Inputs[1]",
+        "required": false
+      },
+      {
+        "name": "ES3_1",
+        "prop": "Inputs[2]",
+        "required": false
+      },
+      {
+        "name": "ES3_1_REMOVED",
+        "prop": "Inputs[3]",
+        "required": false
+      },
+      {
+        "name": "MAX",
+        "prop": "Inputs[4]",
+        "required": false
+      }
+    ],
+    "prop_pins": [],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "props": {},
+    "notes": "Default input (index 0) is required. GetInputName overrides index names based on ERHIFeatureLevel. Array size follows ERHIFeatureLevel::Num",
+    "verified": false
+  },
+  "FirstPersonOutput": {
+    "class": "/Script/Engine.MaterialExpressionFirstPersonOutput",
+    "header": "Materials/MaterialExpressionFirstPersonOutput.h",
+    "desc": "一人称視点レンダリング用のカスタム出力",
+    "inputs": [
+      {
+        "name": "FirstPersonInterpolationAlpha",
+        "prop": "FirstPersonInterpolationAlpha",
+        "required": false,
+        "default_prop": "ConstFirstPersonInterpolationAlpha"
+      }
+    ],
+    "prop_pins": [],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "props": {
+      "ConstFirstPersonInterpolationAlpha": {
+        "type": "float",
+        "default": 1.0
+      }
+    },
+    "notes": "CustomOutput derived. GetNumOutputs() returns 1. Requires explicit material output connection",
+    "verified": false
+  },
+  "FloatToUInt": {
+    "class": "/Script/Engine.MaterialExpressionFloatToUInt",
+    "header": "Materials/MaterialExpressionFloatToUInt.h",
+    "desc": "浮動小数点数を符号なし整数に変換",
+    "inputs": [
+      {
+        "name": "Input",
+        "prop": "Input",
+        "required": false
+      }
+    ],
+    "prop_pins": [],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "props": {
+      "Mode": {
+        "type": "enum:EFloatToIntMode",
+        "default": "Truncate"
+      }
+    },
+    "notes": "Supports Truncate, Floor, Round, Ceil modes",
+    "verified": false
+  },
+  "FontSample": {
+    "class": "/Script/Engine.MaterialExpressionFontSample",
+    "header": "Materials/MaterialExpressionFontSample.h",
+    "desc": "フォントテクスチャをサンプリング",
+    "inputs": [],
+    "prop_pins": [],
+    "outputs": [
+      {
+        "name": ""
+      },
+      {
+        "name": ""
+      },
+      {
+        "name": ""
+      },
+      {
+        "name": ""
+      },
+      {
+        "name": ""
+      }
+    ],
+    "props": {
+      "Font": {
+        "type": "asset:UFont",
+        "default": null
+      },
+      "FontTexturePage": {
+        "type": "int32",
+        "default": 0
+      }
+    },
+    "notes": "5 outputs for RGBA and combined channels. Requires Font and FontTexturePage properties",
+    "verified": false
+  },
+  "FontSampleParameter": {
+    "class": "/Script/Engine.MaterialExpressionFontSampleParameter",
+    "header": "Materials/MaterialExpressionFontSampleParameter.h",
+    "desc": "パラメータ化されたフォントテクスチャサンプリング",
+    "inputs": [],
+    "prop_pins": [],
+    "outputs": [
+      {
+        "name": ""
+      },
+      {
+        "name": ""
+      },
+      {
+        "name": ""
+      },
+      {
+        "name": ""
+      },
+      {
+        "name": ""
+      }
+    ],
+    "props": {
+      "Font": {
+        "type": "asset:UFont",
+        "default": null
+      },
+      "FontTexturePage": {
+        "type": "int32",
+        "default": 0
+      },
+      "ParameterName": {
+        "type": "FName",
+        "default": ""
+      },
+      "Group": {
+        "type": "FName",
+        "default": ""
+      },
+      "SortPriority": {
+        "type": "int32",
+        "default": 32
+      }
+    },
+    "notes": "Inherits from FontSample. Adds parameter support for material instances",
+    "is_parameter": true,
+    "verified": false
+  },
+  "FontSignedDistance": {
+    "class": "/Script/Engine.MaterialExpressionFontSignedDistance",
+    "header": "Materials/MaterialExpressionFontSignedDistance.h",
+    "desc": "フォント署名距離フィールドのサンプリング",
+    "inputs": [],
+    "prop_pins": [],
+    "outputs": [
+      {
+        "name": "Signed Distance",
+        "mask": "R"
+      },
+      {
+        "name": "Smooth Signed Distance",
+        "mask": "G"
+      },
+      {
+        "name": "Pixel Distance Factor",
+        "mask": "B"
+      },
+      {
+        "name": "Implicit Opacity",
+        "mask": "A"
+      }
+    ],
+    "props": {},
+    "notes": "Inherits from ExternalCodeBase. 4 signed distance outputs",
+    "verified": false
+  },
+  "GIReplace": {
+    "class": "/Script/Engine.MaterialExpressionGIReplace",
+    "header": "Materials/MaterialExpressionGIReplace.h",
+    "desc": "GI計算方式によって異なる入力を選択",
+    "inputs": [
+      {
+        "name": "Default",
+        "prop": "Default",
+        "required": false
+      },
+      {
+        "name": "StaticIndirect",
+        "prop": "StaticIndirect",
+        "required": false
+      },
+      {
+        "name": "DynamicIndirect",
+        "prop": "DynamicIndirect",
+        "required": false
+      }
+    ],
+    "prop_pins": [],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "props": {},
+    "notes": "Default for direct lighting, StaticIndirect for baked (Lightmass), DynamicIndirect for dynamic GI (LPV)",
+    "verified": false
+  },
+  "GenericConstant": {
+    "abstract": true,
+    "class": "/Script/Engine.MaterialExpressionGenericConstant",
+    "header": "Materials/MaterialExpressionGenericConstant.h",
+    "desc": "汎用定数値ベースクラス",
+    "notes": "Abstract base class with pure virtual GetConstantValue method",
+    "verified": false
+  },
+  "HairAttributes": {
+    "class": "/Script/Engine.MaterialExpressionHairAttributes",
+    "header": "Materials/MaterialExpressionHairAttributes.h",
+    "desc": "髪属性へのアクセス",
+    "inputs": [],
+    "prop_pins": [],
+    "outputs": [
+      {
+        "name": "U",
+        "mask": "R"
+      },
+      {
+        "name": "V",
+        "mask": "G"
+      },
+      {
+        "name": "Length",
+        "mask": "R"
+      },
+      {
+        "name": "Radius",
+        "mask": "G"
+      },
+      {
+        "name": "Seed",
+        "mask": "R"
+      },
+      {
+        "name": "Tangent",
+        "mask": "RGB"
+      },
+      {
+        "name": "Root UV",
+        "mask": "RG"
+      },
+      {
+        "name": "BaseColor",
+        "mask": "RGB"
+      },
+      {
+        "name": "Roughness",
+        "mask": "R"
+      },
+      {
+        "name": "Depth",
+        "mask": "R"
+      },
+      {
+        "name": "Coverage",
+        "mask": "R"
+      },
+      {
+        "name": "AuxilaryData",
+        "mask": "RGBA"
+      },
+      {
+        "name": "AtlasUVs",
+        "mask": "RG"
+      },
+      {
+        "name": "Group Index",
+        "mask": "R"
+      },
+      {
+        "name": "AO",
+        "mask": "R"
+      },
+      {
+        "name": "Clump ID",
+        "mask": "R"
+      }
+    ],
+    "props": {
+      "bUseTangentSpace": {
+        "type": "bool",
+        "default": true
+      }
+    },
+    "notes": "16 outputs for various hair strand attributes. bUseTangentSpace controls coordinate space",
+    "verified": false
+  },
+  "HairColor": {
+    "class": "/Script/Engine.MaterialExpressionHairColor",
+    "header": "Materials/MaterialExpressionHairColor.h",
+    "desc": "メラニン濃度から髪色を生成",
+    "inputs": [
+      {
+        "name": "Melanin",
+        "prop": "Melanin",
+        "required": false
+      },
+      {
+        "name": "Redness",
+        "prop": "Redness",
+        "required": false
+      },
+      {
+        "name": "DyeColor",
+        "prop": "DyeColor",
+        "required": false
+      }
+    ],
+    "prop_pins": [],
+    "outputs": [
+      {
+        "name": "Color"
+      }
+    ],
+    "props": {},
+    "notes": "Melanin defaults to 0.5, Redness to 0.0, DyeColor to (1,1,1). Values are normalized over human hair range",
+    "verified": false
+  },
+  "IfThenElse": {
+    "class": "/Script/Engine.MaterialExpressionIfThenElse",
+    "header": "Materials/MaterialExpressionIfThenElse.h",
+    "desc": "条件によって異なる値を選択",
+    "inputs": [
+      {
+        "name": "Condition",
+        "prop": "Condition",
+        "required": false
+      },
+      {
+        "name": "True",
+        "prop": "True",
+        "required": false
+      },
+      {
+        "name": "False",
+        "prop": "False",
+        "required": false
+      }
+    ],
+    "prop_pins": [],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "props": {},
+    "notes": "Condition > 0 selects True, otherwise False. Supports unknown value types",
+    "verified": false
+  },
+  "IsFirstPerson": {
+    "class": "/Script/Engine.MaterialExpressionIsFirstPerson",
+    "header": "Materials/MaterialExpressionIsFirstPerson.h",
+    "desc": "一人称視点かどうかを判定",
+    "inputs": [],
+    "prop_pins": [],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "props": {},
+    "notes": "Inherits from ExternalCodeBase. Returns boolean indicating first person rendering",
+    "verified": false
+  }
+}

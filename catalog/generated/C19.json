@@ -1,0 +1,712 @@
+{
+  "UMaterialExpressionSubstrateAdd": {
+    "class": "UMaterialExpressionSubstrateAdd",
+    "desc": "",
+    "inputs": [
+      {
+        "name": "A"
+      },
+      {
+        "name": "B"
+      }
+    ],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "verified": false,
+    "notes": "Requires Substrate material engine feature (unavailable in non-Substrate environments)."
+  },
+  "UMaterialExpressionSubstrateBSDF": {
+    "class": "UMaterialExpressionSubstrateBSDF",
+    "desc": "",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "verified": false,
+    "notes": "Requires Substrate material engine feature (unavailable in non-Substrate environments).",
+    "abstract": true
+  },
+  "UMaterialExpressionSubstrateConvertMaterialAttributes": {
+    "class": "UMaterialExpressionSubstrateConvertMaterialAttributes",
+    "desc": "",
+    "inputs": [
+      {
+        "name": "WaterScatteringCoefficients"
+      },
+      {
+        "name": "WaterAbsorptionCoefficients"
+      },
+      {
+        "name": "WaterPhaseG"
+      },
+      {
+        "name": "ColorScaleBehindWater"
+      }
+    ],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "verified": false,
+    "notes": "Requires Substrate material engine feature (unavailable in non-Substrate environments)."
+  },
+  "UMaterialExpressionSubstrateConvertToDecal": {
+    "class": "UMaterialExpressionSubstrateConvertToDecal",
+    "desc": "",
+    "inputs": [
+      {
+        "name": "DecalMaterial"
+      },
+      {
+        "name": "Coverage"
+      }
+    ],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "verified": false,
+    "notes": "Requires Substrate material engine feature (unavailable in non-Substrate environments)."
+  },
+  "UMaterialExpressionSubstrateEyeBSDF": {
+    "class": "UMaterialExpressionSubstrateEyeBSDF",
+    "desc": "",
+    "inputs": [
+      {
+        "name": "DiffuseColor"
+      },
+      {
+        "name": "Roughness"
+      },
+      {
+        "name": "CorneaNormal"
+      },
+      {
+        "name": "IrisNormal"
+      },
+      {
+        "name": "IrisPlaneNormal"
+      },
+      {
+        "name": "IrisMask"
+      },
+      {
+        "name": "IrisDistance"
+      },
+      {
+        "name": "EmissiveColor"
+      }
+    ],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "verified": false,
+    "notes": "Requires Substrate material engine feature (unavailable in non-Substrate environments)."
+  },
+  "UMaterialExpressionSubstrateHairBSDF": {
+    "class": "UMaterialExpressionSubstrateHairBSDF",
+    "desc": "",
+    "inputs": [
+      {
+        "name": "BaseColor"
+      },
+      {
+        "name": "Scatter"
+      },
+      {
+        "name": "Specular"
+      },
+      {
+        "name": "Roughness"
+      },
+      {
+        "name": "Backlit"
+      },
+      {
+        "name": "Tangent"
+      },
+      {
+        "name": "EmissiveColor"
+      }
+    ],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "verified": false,
+    "notes": "Requires Substrate material engine feature (unavailable in non-Substrate environments)."
+  },
+  "UMaterialExpressionSubstrateHazinessToSecondaryRoughness": {
+    "class": "UMaterialExpressionSubstrateHazinessToSecondaryRoughness",
+    "desc": "",
+    "inputs": [
+      {
+        "name": "BaseRoughness"
+      },
+      {
+        "name": "Haziness"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Second Roughness"
+      },
+      {
+        "name": "Second Roughness Weight"
+      }
+    ],
+    "verified": false,
+    "notes": "Requires Substrate material engine feature (unavailable in non-Substrate environments)."
+  },
+  "UMaterialExpressionSubstrateHorizontalMixing": {
+    "class": "UMaterialExpressionSubstrateHorizontalMixing",
+    "desc": "",
+    "inputs": [
+      {
+        "name": "Background"
+      },
+      {
+        "name": "Foreground"
+      },
+      {
+        "name": "Mix"
+      }
+    ],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "verified": false,
+    "notes": "Requires Substrate material engine feature (unavailable in non-Substrate environments)."
+  },
+  "UMaterialExpressionSubstrateLightFunction": {
+    "class": "UMaterialExpressionSubstrateLightFunction",
+    "desc": "",
+    "inputs": [
+      {
+        "name": "Color"
+      }
+    ],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "verified": false,
+    "notes": "Requires Substrate material engine feature (unavailable in non-Substrate environments)."
+  },
+  "UMaterialExpressionSubstrateMetalnessToDiffuseAlbedoF0": {
+    "class": "UMaterialExpressionSubstrateMetalnessToDiffuseAlbedoF0",
+    "desc": "",
+    "inputs": [
+      {
+        "name": "BaseColor"
+      },
+      {
+        "name": "Metallic"
+      },
+      {
+        "name": "Specular"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "DiffuseAlbedo"
+      },
+      {
+        "name": "F0"
+      }
+    ],
+    "verified": false,
+    "notes": "Requires Substrate material engine feature (unavailable in non-Substrate environments)."
+  },
+  "UMaterialExpressionSubstratePostProcess": {
+    "class": "UMaterialExpressionSubstratePostProcess",
+    "desc": "",
+    "inputs": [
+      {
+        "name": "Color"
+      },
+      {
+        "name": "Opacity"
+      }
+    ],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "verified": false,
+    "notes": "Requires Substrate material engine feature (unavailable in non-Substrate environments)."
+  },
+  "UMaterialExpressionSubstrateSelect": {
+    "class": "UMaterialExpressionSubstrateSelect",
+    "desc": "",
+    "inputs": [
+      {
+        "name": "A"
+      },
+      {
+        "name": "B"
+      },
+      {
+        "name": "SelectValue"
+      }
+    ],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "verified": false,
+    "notes": "Requires Substrate material engine feature (unavailable in non-Substrate environments)."
+  },
+  "UMaterialExpressionSubstrateShadingModels": {
+    "class": "UMaterialExpressionSubstrateShadingModels",
+    "desc": "",
+    "inputs": [
+      {
+        "name": "BaseColor"
+      },
+      {
+        "name": "Metallic"
+      },
+      {
+        "name": "Specular"
+      },
+      {
+        "name": "Roughness"
+      },
+      {
+        "name": "Anisotropy"
+      },
+      {
+        "name": "EmissiveColor"
+      },
+      {
+        "name": "Normal"
+      },
+      {
+        "name": "Tangent"
+      },
+      {
+        "name": "SubSurfaceColor"
+      },
+      {
+        "name": "ClearCoat"
+      },
+      {
+        "name": "ClearCoatRoughness"
+      },
+      {
+        "name": "Opacity"
+      },
+      {
+        "name": "TransmittanceColor"
+      },
+      {
+        "name": "WaterScatteringCoefficients"
+      },
+      {
+        "name": "WaterAbsorptionCoefficients"
+      },
+      {
+        "name": "WaterPhaseG"
+      },
+      {
+        "name": "ColorScaleBehindWater"
+      },
+      {
+        "name": "ClearCoatNormal"
+      },
+      {
+        "name": "CustomTangent"
+      },
+      {
+        "name": "ThinTranslucentSurfaceCoverage"
+      }
+    ],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "verified": false,
+    "notes": "Requires Substrate material engine feature (unavailable in non-Substrate environments)."
+  },
+  "UMaterialExpressionSubstrateSimpleClearCoatBSDF": {
+    "class": "UMaterialExpressionSubstrateSimpleClearCoatBSDF",
+    "desc": "",
+    "inputs": [
+      {
+        "name": "DiffuseAlbedo"
+      },
+      {
+        "name": "F0"
+      },
+      {
+        "name": "Roughness"
+      },
+      {
+        "name": "ClearCoatCoverage"
+      },
+      {
+        "name": "ClearCoatRoughness"
+      },
+      {
+        "name": "Normal"
+      },
+      {
+        "name": "EmissiveColor"
+      },
+      {
+        "name": "BottomNormal"
+      }
+    ],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "verified": false,
+    "notes": "Requires Substrate material engine feature (unavailable in non-Substrate environments)."
+  },
+  "UMaterialExpressionSubstrateSingleLayerWaterBSDF": {
+    "class": "UMaterialExpressionSubstrateSingleLayerWaterBSDF",
+    "desc": "",
+    "inputs": [
+      {
+        "name": "BaseColor"
+      },
+      {
+        "name": "Metallic"
+      },
+      {
+        "name": "Specular"
+      },
+      {
+        "name": "Roughness"
+      },
+      {
+        "name": "Normal"
+      },
+      {
+        "name": "EmissiveColor"
+      },
+      {
+        "name": "TopMaterialOpacity"
+      },
+      {
+        "name": "WaterAlbedo"
+      },
+      {
+        "name": "WaterExtinction"
+      },
+      {
+        "name": "WaterPhaseG"
+      },
+      {
+        "name": "ColorScaleBehindWater"
+      }
+    ],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "verified": false,
+    "notes": "Requires Substrate material engine feature (unavailable in non-Substrate environments)."
+  },
+  "UMaterialExpressionSubstrateSlabBSDF": {
+    "class": "UMaterialExpressionSubstrateSlabBSDF",
+    "desc": "",
+    "inputs": [
+      {
+        "name": "DiffuseAlbedo"
+      },
+      {
+        "name": "F0"
+      },
+      {
+        "name": "F90"
+      },
+      {
+        "name": "Roughness"
+      },
+      {
+        "name": "Anisotropy"
+      },
+      {
+        "name": "Normal"
+      },
+      {
+        "name": "Tangent"
+      },
+      {
+        "name": "SSSMFP"
+      },
+      {
+        "name": "SSSMFPScale"
+      },
+      {
+        "name": "SSSPhaseAnisotropy"
+      },
+      {
+        "name": "EmissiveColor"
+      },
+      {
+        "name": "SecondRoughness"
+      },
+      {
+        "name": "SecondRoughnessWeight"
+      },
+      {
+        "name": "FuzzRoughness"
+      },
+      {
+        "name": "FuzzAmount"
+      },
+      {
+        "name": "FuzzColor"
+      },
+      {
+        "name": "GlintValue"
+      },
+      {
+        "name": "GlintUV"
+      }
+    ],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "verified": false,
+    "notes": "Requires Substrate material engine feature (unavailable in non-Substrate environments)."
+  },
+  "UMaterialExpressionSubstrateThinFilm": {
+    "class": "UMaterialExpressionSubstrateThinFilm",
+    "desc": "",
+    "inputs": [
+      {
+        "name": "Normal"
+      },
+      {
+        "name": "F0"
+      },
+      {
+        "name": "F90"
+      },
+      {
+        "name": "Thickness"
+      },
+      {
+        "name": "IOR"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Specular Color"
+      },
+      {
+        "name": "Edge Specular Color"
+      }
+    ],
+    "verified": false,
+    "notes": "Requires Substrate material engine feature (unavailable in non-Substrate environments)."
+  },
+  "UMaterialExpressionSubstrateToonBSDF": {
+    "class": "UMaterialExpressionSubstrateToonBSDF",
+    "desc": "",
+    "inputs": [
+      {
+        "name": "BaseColor"
+      },
+      {
+        "name": "Metallic"
+      },
+      {
+        "name": "Specular"
+      },
+      {
+        "name": "Roughness"
+      },
+      {
+        "name": "Normal"
+      },
+      {
+        "name": "EmissiveColor"
+      },
+      {
+        "name": "PatternUVs"
+      },
+      {
+        "name": "Anisotropy"
+      },
+      {
+        "name": "Tangent"
+      }
+    ],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "verified": false,
+    "notes": "Requires Substrate material engine feature (unavailable in non-Substrate environments)."
+  },
+  "UMaterialExpressionSubstrateTransmittanceToMFP": {
+    "class": "UMaterialExpressionSubstrateTransmittanceToMFP",
+    "desc": "",
+    "inputs": [
+      {
+        "name": "TransmittanceColor"
+      },
+      {
+        "name": "Thickness"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "MFP"
+      },
+      {
+        "name": "Thickness"
+      }
+    ],
+    "verified": false,
+    "notes": "Requires Substrate material engine feature (unavailable in non-Substrate environments).",
+    "abstract": true
+  },
+  "UMaterialExpressionSubstrateUI": {
+    "class": "UMaterialExpressionSubstrateUI",
+    "desc": "",
+    "inputs": [
+      {
+        "name": "Color"
+      },
+      {
+        "name": "Opacity"
+      }
+    ],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "verified": false,
+    "notes": "Requires Substrate material engine feature (unavailable in non-Substrate environments)."
+  },
+  "UMaterialExpressionSubstrateUnlitBSDF": {
+    "class": "UMaterialExpressionSubstrateUnlitBSDF",
+    "desc": "",
+    "inputs": [
+      {
+        "name": "EmissiveColor"
+      },
+      {
+        "name": "TransmittanceColor"
+      },
+      {
+        "name": "Normal"
+      }
+    ],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "verified": false,
+    "notes": "Requires Substrate material engine feature (unavailable in non-Substrate environments)."
+  },
+  "UMaterialExpressionSubstrateUtilityBase": {
+    "class": "UMaterialExpressionSubstrateUtilityBase",
+    "desc": "",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "verified": false,
+    "notes": "Requires Substrate material engine feature (unavailable in non-Substrate environments).",
+    "abstract": true
+  },
+  "UMaterialExpressionSubstrateVerticalLayering": {
+    "class": "UMaterialExpressionSubstrateVerticalLayering",
+    "desc": "",
+    "inputs": [
+      {
+        "name": "Top"
+      },
+      {
+        "name": "Base"
+      },
+      {
+        "name": "Thickness"
+      }
+    ],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "verified": false,
+    "notes": "Requires Substrate material engine feature (unavailable in non-Substrate environments)."
+  },
+  "UMaterialExpressionSubstrateVolumetricFogCloudBSDF": {
+    "class": "UMaterialExpressionSubstrateVolumetricFogCloudBSDF",
+    "desc": "",
+    "inputs": [
+      {
+        "name": "Albedo"
+      },
+      {
+        "name": "Extinction"
+      },
+      {
+        "name": "EmissiveColor"
+      },
+      {
+        "name": "AmbientOcclusion"
+      }
+    ],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "verified": false,
+    "notes": "Requires Substrate material engine feature (unavailable in non-Substrate environments)."
+  },
+  "UMaterialExpressionSubstrateWeight": {
+    "class": "UMaterialExpressionSubstrateWeight",
+    "desc": "",
+    "inputs": [
+      {
+        "name": "A"
+      },
+      {
+        "name": "Weight"
+      }
+    ],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "verified": false,
+    "notes": "Requires Substrate material engine feature (unavailable in non-Substrate environments)."
+  }
+}

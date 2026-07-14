@@ -1,0 +1,1055 @@
+{
+  "Append3Vector": {
+    "class": "/Script/InterchangeRuntime.UMaterialExpressionMaterialXAppend3Vector",
+    "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionAppend3Vector.h",
+    "desc": "A material expression that allows combining 3 channels together to create a vector with more channel than the original",
+    "inputs": [
+      {
+        "name": "A",
+        "prop": "A"
+      },
+      {
+        "name": "B",
+        "prop": "B"
+      },
+      {
+        "name": "C",
+        "prop": "C"
+      }
+    ],
+    "prop_pins": [],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "props": {},
+    "notes": "Interchange plugin にて有効化時のみ使用可能なノード。",
+    "verified": false
+  },
+  "Append4Vector": {
+    "class": "/Script/InterchangeRuntime.UMaterialExpressionMaterialXAppend4Vector",
+    "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionAppend4Vector.h",
+    "desc": "A material expression that allows combining 4 channels together to create a vector with more channel than the original",
+    "inputs": [
+      {
+        "name": "A",
+        "prop": "A"
+      },
+      {
+        "name": "B",
+        "prop": "B"
+      },
+      {
+        "name": "C",
+        "prop": "C"
+      },
+      {
+        "name": "D",
+        "prop": "D"
+      }
+    ],
+    "prop_pins": [],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "props": {},
+    "notes": "Interchange plugin にて有効化時のみ使用可能なノード。",
+    "verified": false
+  },
+  "Burn": {
+    "class": "/Script/InterchangeRuntime.UMaterialExpressionMaterialXBurn",
+    "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionBurn.h",
+    "desc": "Blend nodes take two 1-4 channel inputs and apply the same operator to all channels. Blend nodes support an optional float input mix , which can be used to mix the original B value with the result of ",
+    "inputs": [
+      {
+        "name": "A",
+        "prop": "A"
+      },
+      {
+        "name": "B",
+        "prop": "B"
+      },
+      {
+        "name": "Alpha",
+        "prop": "Alpha",
+        "required": false,
+        "default_prop": "ConstAlpha"
+      }
+    ],
+    "prop_pins": [],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "props": {
+      "ConstAlpha": {
+        "type": "float",
+        "default": 1.0
+      }
+    },
+    "notes": "Interchange plugin にて有効化時のみ使用可能なノード。",
+    "verified": false
+  },
+  "Contrast": {
+    "class": "/Script/InterchangeRuntime.UMaterialExpressionMaterialXContrast",
+    "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionContrast.h",
+    "desc": "A material expression that increases or decreases contrast of a float/color value using a linear slope multiplier.",
+    "inputs": [
+      {
+        "name": "Input",
+        "prop": "Input"
+      },
+      {
+        "name": "Amount",
+        "prop": "Amount",
+        "default_prop": "ConstPivot"
+      },
+      {
+        "name": "Pivot",
+        "prop": "Pivot"
+      }
+    ],
+    "prop_pins": [],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "props": {
+      "ConstAmount": {
+        "type": "float",
+        "default": 1.0
+      },
+      "ConstPivot": {
+        "type": "float"
+      }
+    },
+    "notes": "Interchange plugin にて有効化時のみ使用可能なノード。",
+    "verified": false
+  },
+  "Difference": {
+    "class": "/Script/InterchangeRuntime.UMaterialExpressionMaterialXDifference",
+    "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionDifference.h",
+    "desc": "Blend nodes take two 1-4 channel inputs and apply the same operator to all channels. Blend nodes support an optional float input mix , which can be used to mix the original B value with the result of ",
+    "inputs": [
+      {
+        "name": "A",
+        "prop": "A"
+      },
+      {
+        "name": "B",
+        "prop": "B"
+      },
+      {
+        "name": "Alpha",
+        "prop": "Alpha",
+        "required": false,
+        "default_prop": "ConstAlpha"
+      }
+    ],
+    "prop_pins": [],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "props": {
+      "ConstAlpha": {
+        "type": "float",
+        "default": 1.0
+      }
+    },
+    "notes": "Interchange plugin にて有効化時のみ使用可能なノード。",
+    "verified": false
+  },
+  "DisjointOver": {
+    "class": "/Script/InterchangeRuntime.UMaterialExpressionMaterialXDisjointOver",
+    "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionDisjointOver.h",
+    "desc": "Merge nodes take two 4-channel (color4) inputs and use the built-in alpha channel(s) to control the compositing of the A and B inputs. \"A\" and \"B\" refer to the non-alpha channels of the A and B inputs",
+    "inputs": [
+      {
+        "name": "A",
+        "prop": "A"
+      },
+      {
+        "name": "B",
+        "prop": "B"
+      },
+      {
+        "name": "Alpha",
+        "prop": "Alpha",
+        "required": false,
+        "default_prop": "ConstAlpha"
+      }
+    ],
+    "prop_pins": [],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "props": {
+      "ConstAlpha": {
+        "type": "float",
+        "default": 1.0
+      }
+    },
+    "notes": "Interchange plugin にて有効化時のみ使用可能なノード。",
+    "verified": false
+  },
+  "Dodge": {
+    "class": "/Script/InterchangeRuntime.UMaterialExpressionMaterialXDodge",
+    "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionDodge.h",
+    "desc": "Blend nodes take two 1-4 channel inputs and apply the same operator to all channels. Blend nodes support an optional float input mix , which can be used to mix the original B value with the result of ",
+    "inputs": [
+      {
+        "name": "A",
+        "prop": "A"
+      },
+      {
+        "name": "B",
+        "prop": "B"
+      },
+      {
+        "name": "Alpha",
+        "prop": "Alpha",
+        "required": false,
+        "default_prop": "ConstAlpha"
+      }
+    ],
+    "prop_pins": [],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "props": {
+      "ConstAlpha": {
+        "type": "float",
+        "default": 1.0
+      }
+    },
+    "notes": "Interchange plugin にて有効化時のみ使用可能なノード。",
+    "verified": false
+  },
+  "Fractal": {
+    "class": "/Script/InterchangeRuntime.UMaterialExpressionMaterialXFractal",
+    "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionFractal.h",
+    "desc": "Zero-centered 2D or 3D Fractal noise in 1, 2, 3 or 4 channels, created by summing several octaves of 2D or 3D Perlin noise, increasing the frequency and decreasing the amplitude at each octave. Defaul",
+    "inputs": [
+      {
+        "name": "Position",
+        "prop": "Position"
+      },
+      {
+        "name": "Amplitude",
+        "prop": "Amplitude",
+        "required": false,
+        "default_prop": "ConstDiminish"
+      },
+      {
+        "name": "Octaves",
+        "prop": "Octaves",
+        "required": false
+      },
+      {
+        "name": "Lacunarity",
+        "prop": "Lacunarity",
+        "required": false
+      },
+      {
+        "name": "Diminish",
+        "prop": "Diminish",
+        "required": false
+      }
+    ],
+    "prop_pins": [],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "props": {
+      "ConstAmplitude": {
+        "type": "float",
+        "default": 1.0
+      },
+      "ConstOctaves": {
+        "type": "int32"
+      },
+      "ConstLacunarity": {
+        "type": "float"
+      },
+      "ConstDiminish": {
+        "type": "float"
+      }
+    },
+    "notes": "Interchange plugin にて有効化時のみ使用可能なノード。",
+    "verified": false
+  },
+  "In": {
+    "class": "/Script/InterchangeRuntime.UMaterialExpressionMaterialXIn",
+    "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionIn.h",
+    "desc": "Merge nodes take two 4-channel (color4) inputs and use the built-in alpha channel(s) to control the compositing of the A and B inputs. \"A\" and \"B\" refer to the non-alpha channels of the A and B inputs",
+    "inputs": [
+      {
+        "name": "A",
+        "prop": "A"
+      },
+      {
+        "name": "B",
+        "prop": "B"
+      },
+      {
+        "name": "Alpha",
+        "prop": "Alpha",
+        "required": false,
+        "default_prop": "ConstAlpha"
+      }
+    ],
+    "prop_pins": [],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "props": {
+      "ConstAlpha": {
+        "type": "float",
+        "default": 1.0
+      }
+    },
+    "notes": "Interchange plugin にて有効化時のみ使用可能なノード。",
+    "verified": false
+  },
+  "Luminance": {
+    "class": "/Script/InterchangeRuntime.UMaterialExpressionMaterialXLuminance",
+    "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionLuminance.h",
+    "desc": "A material expression that outputs a grayscale image containing the luminance of the incoming RGB color in all color channels; the alpha channel is left unchanged if present.",
+    "inputs": [
+      {
+        "name": "Input",
+        "prop": "Input"
+      }
+    ],
+    "prop_pins": [],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "props": {
+      "LuminanceFactors": {
+        "type": "FLinearColor"
+      },
+      "LuminanceMode": {
+        "type": "EMaterialXLuminanceMode"
+      }
+    },
+    "notes": "Interchange plugin にて有効化時のみ使用可能なノード。",
+    "verified": false
+  },
+  "Mask": {
+    "class": "/Script/InterchangeRuntime.UMaterialExpressionMaterialXMask",
+    "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionMask.h",
+    "desc": "Merge nodes take two 4-channel (color4) inputs and use the built-in alpha channel(s) to control the compositing of the A and B inputs. \"A\" and \"B\" refer to the non-alpha channels of the A and B inputs",
+    "inputs": [
+      {
+        "name": "A",
+        "prop": "A"
+      },
+      {
+        "name": "B",
+        "prop": "B"
+      },
+      {
+        "name": "Alpha",
+        "prop": "Alpha",
+        "required": false,
+        "default_prop": "ConstAlpha"
+      }
+    ],
+    "prop_pins": [],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "props": {
+      "ConstAlpha": {
+        "type": "float",
+        "default": 1.0
+      }
+    },
+    "notes": "Interchange plugin にて有効化時のみ使用可能なノード。",
+    "verified": false
+  },
+  "Matte": {
+    "class": "/Script/InterchangeRuntime.UMaterialExpressionMaterialXMatte",
+    "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionMatte.h",
+    "desc": "Merge nodes take two 4-channel (color4) inputs and use the built-in alpha channel(s) to control the compositing of the A and B inputs. \"A\" and \"B\" refer to the non-alpha channels of the A and B inputs",
+    "inputs": [
+      {
+        "name": "A",
+        "prop": "A"
+      },
+      {
+        "name": "B",
+        "prop": "B"
+      },
+      {
+        "name": "Alpha",
+        "prop": "Alpha",
+        "required": false,
+        "default_prop": "ConstAlpha"
+      }
+    ],
+    "prop_pins": [],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "props": {
+      "ConstAlpha": {
+        "type": "float",
+        "default": 1.0
+      }
+    },
+    "notes": "Interchange plugin にて有効化時のみ使用可能なノード。",
+    "verified": false
+  },
+  "Minus": {
+    "class": "/Script/InterchangeRuntime.UMaterialExpressionMaterialXMinus",
+    "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionMinus.h",
+    "desc": "Blend nodes take two 1-4 channel inputs and apply the same operator to all channels. Blend nodes support an optional float input mix , which can be used to mix the original B value with the result of ",
+    "inputs": [
+      {
+        "name": "A",
+        "prop": "A"
+      },
+      {
+        "name": "B",
+        "prop": "B"
+      },
+      {
+        "name": "Alpha",
+        "prop": "Alpha",
+        "required": false,
+        "default_prop": "ConstAlpha"
+      }
+    ],
+    "prop_pins": [],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "props": {
+      "ConstAlpha": {
+        "type": "float",
+        "default": 1.0
+      }
+    },
+    "notes": "Interchange plugin にて有効化時のみ使用可能なノード。",
+    "verified": false
+  },
+  "Mod": {
+    "class": "/Script/InterchangeRuntime.UMaterialExpressionMaterialXMod",
+    "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionMod.h",
+    "desc": "The remaining fraction after dividing an incoming input by a value and subtracting the integer portion. Unlike UE FMod or Modulo expressions, Mod always returns a non-negative result, matching the int",
+    "inputs": [
+      {
+        "name": "A",
+        "prop": "A"
+      },
+      {
+        "name": "B",
+        "prop": "B",
+        "required": false,
+        "default_prop": "ConstB"
+      }
+    ],
+    "prop_pins": [],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "props": {
+      "ConstB": {
+        "type": "float",
+        "default": 1.0
+      }
+    },
+    "notes": "Interchange plugin にて有効化時のみ使用可能なノード。",
+    "verified": false
+  },
+  "Out": {
+    "class": "/Script/InterchangeRuntime.UMaterialExpressionMaterialXOut",
+    "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionOut.h",
+    "desc": "Merge nodes take two 4-channel (color4) inputs and use the built-in alpha channel(s) to control the compositing of the A and B inputs. \"A\" and \"B\" refer to the non-alpha channels of the A and B inputs",
+    "inputs": [
+      {
+        "name": "A",
+        "prop": "A"
+      },
+      {
+        "name": "B",
+        "prop": "B"
+      },
+      {
+        "name": "Alpha",
+        "prop": "Alpha",
+        "required": false,
+        "default_prop": "ConstAlpha"
+      }
+    ],
+    "prop_pins": [],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "props": {
+      "ConstAlpha": {
+        "type": "float",
+        "default": 1.0
+      }
+    },
+    "notes": "Interchange plugin にて有効化時のみ使用可能なノード。",
+    "verified": false
+  },
+  "Over": {
+    "class": "/Script/InterchangeRuntime.UMaterialExpressionMaterialXOver",
+    "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionOver.h",
+    "desc": "Merge nodes take two 4-channel (color4) inputs and use the built-in alpha channel(s) to control the compositing of the A and B inputs. \"A\" and \"B\" refer to the non-alpha channels of the A and B inputs",
+    "inputs": [
+      {
+        "name": "A",
+        "prop": "A"
+      },
+      {
+        "name": "B",
+        "prop": "B"
+      },
+      {
+        "name": "Alpha",
+        "prop": "Alpha",
+        "required": false,
+        "default_prop": "ConstAlpha"
+      }
+    ],
+    "prop_pins": [],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "props": {
+      "ConstAlpha": {
+        "type": "float",
+        "default": 1.0
+      }
+    },
+    "notes": "Interchange plugin にて有効化時のみ使用可能なノード。",
+    "verified": false
+  },
+  "Overlay": {
+    "class": "/Script/InterchangeRuntime.UMaterialExpressionMaterialXOverlay",
+    "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionOverlay.h",
+    "desc": "Blend nodes take two 1-4 channel inputs and apply the same operator to all channels. Blend nodes support an optional float input mix , which can be used to mix the original B value with the result of ",
+    "inputs": [
+      {
+        "name": "A",
+        "prop": "A"
+      },
+      {
+        "name": "B",
+        "prop": "B"
+      },
+      {
+        "name": "Alpha",
+        "prop": "Alpha",
+        "required": false,
+        "default_prop": "ConstAlpha"
+      }
+    ],
+    "prop_pins": [],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "props": {
+      "ConstAlpha": {
+        "type": "float",
+        "default": 1.0
+      }
+    },
+    "notes": "Interchange plugin にて有効化時のみ使用可能なノード。",
+    "verified": false
+  },
+  "Plus": {
+    "class": "/Script/InterchangeRuntime.UMaterialExpressionMaterialXPlus",
+    "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionPlus.h",
+    "desc": "Blend nodes take two 1-4 channel inputs and apply the same operator to all channels. Blend nodes support an optional float input mix , which can be used to mix the original B value with the result of ",
+    "inputs": [
+      {
+        "name": "A",
+        "prop": "A"
+      },
+      {
+        "name": "B",
+        "prop": "B"
+      },
+      {
+        "name": "Alpha",
+        "prop": "Alpha",
+        "required": false,
+        "default_prop": "ConstAlpha"
+      }
+    ],
+    "prop_pins": [],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "props": {
+      "ConstAlpha": {
+        "type": "float",
+        "default": 1.0
+      }
+    },
+    "notes": "Interchange plugin にて有効化時のみ使用可能なノード。",
+    "verified": false
+  },
+  "Premult": {
+    "class": "/Script/InterchangeRuntime.UMaterialExpressionMaterialXPremult",
+    "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionPremult.h",
+    "desc": "Multiply the RGB channels of the input by the Alpha channel of the input. Input must be of type float4",
+    "inputs": [
+      {
+        "name": "Input",
+        "prop": "Input"
+      }
+    ],
+    "prop_pins": [],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "props": {},
+    "notes": "Interchange plugin にて有効化時のみ使用可能なノード。",
+    "verified": false
+  },
+  "Ramp4": {
+    "class": "/Script/InterchangeRuntime.UMaterialExpressionMaterialXRamp4",
+    "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionRamp4.h",
+    "desc": "A material expression that computes a 4-corner bilinear value ramp..",
+    "inputs": [
+      {
+        "name": "Coordinates",
+        "prop": "Coordinates",
+        "required": false,
+        "default_prop": "ConstCoordinate"
+      },
+      {
+        "name": "A",
+        "prop": "A"
+      },
+      {
+        "name": "B",
+        "prop": "B"
+      },
+      {
+        "name": "C",
+        "prop": "C"
+      },
+      {
+        "name": "D",
+        "prop": "D"
+      }
+    ],
+    "prop_pins": [],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "props": {
+      "ConstCoordinate": {
+        "type": "uint8"
+      }
+    },
+    "notes": "Interchange plugin にて有効化時のみ使用可能なノード。",
+    "verified": false
+  },
+  "RampLeftRight": {
+    "class": "/Script/InterchangeRuntime.UMaterialExpressionMaterialXRampLeftRight",
+    "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionRampLeftRight.h",
+    "desc": "A material expression that computes a left-to-right bilinear value ramp.",
+    "inputs": [
+      {
+        "name": "Coordinates",
+        "prop": "Coordinates",
+        "required": false,
+        "default_prop": "ConstCoordinate"
+      },
+      {
+        "name": "A",
+        "prop": "A"
+      },
+      {
+        "name": "B",
+        "prop": "B"
+      }
+    ],
+    "prop_pins": [],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "props": {
+      "ConstCoordinate": {
+        "type": "uint8"
+      }
+    },
+    "notes": "Interchange plugin にて有効化時のみ使用可能なノード。",
+    "verified": false
+  },
+  "RampTopBottom": {
+    "class": "/Script/InterchangeRuntime.UMaterialExpressionMaterialXRampTopBottom",
+    "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionRampTopBottom.h",
+    "desc": "A material expression that computes a top-to-bottom bilinear value ramp.",
+    "inputs": [
+      {
+        "name": "Coordinates",
+        "prop": "Coordinates",
+        "required": false,
+        "default_prop": "ConstCoordinate"
+      },
+      {
+        "name": "A",
+        "prop": "A"
+      },
+      {
+        "name": "B",
+        "prop": "B"
+      }
+    ],
+    "prop_pins": [],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "props": {
+      "ConstCoordinate": {
+        "type": "uint8"
+      }
+    },
+    "notes": "Interchange plugin にて有効化時のみ使用可能なノード。",
+    "verified": false
+  },
+  "Range": {
+    "class": "/Script/InterchangeRuntime.UMaterialExpressionMaterialXRange",
+    "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionRange.h",
+    "desc": "A material expression that Remap a value from one range to another, optionally applying a gamma correction in the middle, and optionally clamping output values.",
+    "inputs": [
+      {
+        "name": "Input",
+        "prop": "Input"
+      },
+      {
+        "name": "InputLow",
+        "prop": "InputLow",
+        "required": false,
+        "default_prop": "bConstClamp"
+      },
+      {
+        "name": "InputHigh",
+        "prop": "InputHigh",
+        "required": false
+      },
+      {
+        "name": "TargetLow",
+        "prop": "TargetLow",
+        "required": false
+      },
+      {
+        "name": "TargetHigh",
+        "prop": "TargetHigh",
+        "required": false
+      },
+      {
+        "name": "Gamma",
+        "prop": "Gamma",
+        "required": false
+      },
+      {
+        "name": "Clamp",
+        "prop": "Clamp",
+        "required": false
+      }
+    ],
+    "prop_pins": [],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "props": {
+      "ConstInputLow": {
+        "type": "float"
+      },
+      "ConstInputHigh": {
+        "type": "float"
+      },
+      "ConstTargetLow": {
+        "type": "float"
+      },
+      "ConstTargetHigh": {
+        "type": "float"
+      },
+      "ConstGamma": {
+        "type": "float"
+      },
+      "bConstClamp": {
+        "type": "bool"
+      }
+    },
+    "notes": "Interchange plugin にて有効化時のみ使用可能なノード。",
+    "verified": false
+  },
+  "Remap": {
+    "class": "/Script/InterchangeRuntime.UMaterialExpressionMaterialXRemap",
+    "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionRemap.h",
+    "desc": "A material expression that Remap a value from one range to another.",
+    "inputs": [
+      {
+        "name": "Input",
+        "prop": "Input"
+      },
+      {
+        "name": "InputLow",
+        "prop": "InputLow",
+        "required": false,
+        "default_prop": "TargetHighDefault"
+      },
+      {
+        "name": "InputHigh",
+        "prop": "InputHigh",
+        "required": false
+      },
+      {
+        "name": "TargetLow",
+        "prop": "TargetLow",
+        "required": false
+      },
+      {
+        "name": "TargetHigh",
+        "prop": "TargetHigh",
+        "required": false
+      }
+    ],
+    "prop_pins": [],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "props": {
+      "InputLowDefault": {
+        "type": "float"
+      },
+      "InputHighDefault": {
+        "type": "float"
+      },
+      "TargetLowDefault": {
+        "type": "float"
+      },
+      "TargetHighDefault": {
+        "type": "float"
+      }
+    },
+    "notes": "Interchange plugin にて有効化時のみ使用可能なノード。",
+    "verified": false
+  },
+  "Screen": {
+    "class": "/Script/InterchangeRuntime.UMaterialExpressionMaterialXScreen",
+    "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionScreen.h",
+    "desc": "Blend nodes take two 1-4 channel inputs and apply the same operator to all channels. Blend nodes support an optional float input mix , which can be used to mix the original B value with the result of ",
+    "inputs": [
+      {
+        "name": "A",
+        "prop": "A"
+      },
+      {
+        "name": "B",
+        "prop": "B"
+      },
+      {
+        "name": "Alpha",
+        "prop": "Alpha",
+        "required": false,
+        "default_prop": "ConstAlpha"
+      }
+    ],
+    "prop_pins": [],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "props": {
+      "ConstAlpha": {
+        "type": "float",
+        "default": 1.0
+      }
+    },
+    "notes": "Interchange plugin にて有効化時のみ使用可能なノード。",
+    "verified": false
+  },
+  "SplitLeftRight": {
+    "class": "/Script/InterchangeRuntime.UMaterialExpressionMaterialXSplitLeftRight",
+    "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionSplitLeftRight.h",
+    "desc": "A material expression that computes a left-right split matte, split at a specified u value.",
+    "inputs": [
+      {
+        "name": "Coordinates",
+        "prop": "Coordinates",
+        "required": false
+      },
+      {
+        "name": "A",
+        "prop": "A"
+      },
+      {
+        "name": "B",
+        "prop": "B"
+      },
+      {
+        "name": "Center",
+        "prop": "Center",
+        "required": false,
+        "default_prop": "ConstCoordinate"
+      }
+    ],
+    "prop_pins": [],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "props": {
+      "ConstCenter": {
+        "type": "float"
+      },
+      "ConstCoordinate": {
+        "type": "uint8"
+      }
+    },
+    "notes": "Interchange plugin にて有効化時のみ使用可能なノード。",
+    "verified": false
+  },
+  "SplitTopBottom": {
+    "class": "/Script/InterchangeRuntime.UMaterialExpressionMaterialXSplitTopBottom",
+    "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionSplitTopBottom.h",
+    "desc": "A material expression that computes a top-bottom split matte, split at a specified v value.",
+    "inputs": [
+      {
+        "name": "Coordinates",
+        "prop": "Coordinates",
+        "required": false
+      },
+      {
+        "name": "A",
+        "prop": "A"
+      },
+      {
+        "name": "B",
+        "prop": "B"
+      },
+      {
+        "name": "Center",
+        "prop": "Center",
+        "required": false,
+        "default_prop": "ConstCoordinate"
+      }
+    ],
+    "prop_pins": [],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "props": {
+      "ConstCenter": {
+        "type": "float"
+      },
+      "ConstCoordinate": {
+        "type": "uint8"
+      }
+    },
+    "notes": "Interchange plugin にて有効化時のみ使用可能なノード。",
+    "verified": false
+  },
+  "TextureSampleParameterBlur": {
+    "class": "/Script/InterchangeRuntime.UMaterialExpressionMaterialXTextureSampleParameterBlur",
+    "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Public/MaterialX/MaterialExpressions/MaterialExpressionTextureSampleParameterBlur.h",
+    "desc": "The size of the blur kernel, relative to 0-1 UV space.",
+    "inputs": [],
+    "prop_pins": [],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "props": {
+      "KernelSize": {
+        "type": "EMAterialXTextureSampleBlurKernel"
+      },
+      "FilterSize": {
+        "type": "float",
+        "default": 1.0
+      },
+      "FilterOffset": {
+        "type": "float",
+        "default": 0.0
+      },
+      "Filter": {
+        "type": "EMaterialXTextureSampleBlurFilter"
+      }
+    },
+    "notes": "Interchange plugin にて有効化時のみ使用可能なノード。",
+    "verified": false
+  },
+  "Unpremult": {
+    "class": "/Script/InterchangeRuntime.UMaterialExpressionMaterialXUnpremult",
+    "header": "Engine/Plugins/Interchange/Runtime/Source/Import/Private/MaterialX/MaterialExpressions/MaterialExpressionUnpremult.h",
+    "desc": "Divide the RGB channels of the input by the Alpha channel of the input. If the Alpha value is zero, the original color4 input value is passed through unchanged. Input must be of type float4",
+    "inputs": [
+      {
+        "name": "Input",
+        "prop": "Input"
+      }
+    ],
+    "prop_pins": [],
+    "outputs": [
+      {
+        "name": ""
+      }
+    ],
+    "props": {},
+    "notes": "Interchange plugin にて有効化時のみ使用可能なノード。",
+    "verified": false
+  }
+}

@@ -1,0 +1,498 @@
+{
+ "SamplePhysicsVectorField": {
+  "class": "/Script/Engine.UMaterialExpressionSamplePhysicsVectorField",
+  "header": "Materials/MaterialExpressionSamplePhysicsField.h",
+  "desc": "物理フィールドベクトル値をサンプリング",
+  "inputs": [
+   {
+    "name": "WorldPosition",
+    "type": "FExpressionInput",
+    "required": false,
+    "tooltip": "Defaults to current world position if not specified"
+   }
+  ],
+  "prop_pins": [
+   {
+    "name": "FieldTarget",
+    "prop": "FieldTarget",
+    "kind": "Advanced",
+    "type": "enum:EFieldVectorType"
+   },
+   {
+    "name": "WorldPositionOriginType",
+    "prop": "WorldPositionOriginType",
+    "kind": "Advanced",
+    "type": "enum:EPositionOrigin"
+   }
+  ],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {
+   "WorldPositionOriginType": {
+    "type": "enum:EPositionOrigin",
+    "default": "Absolute"
+   },
+   "FieldTarget": {
+    "type": "enum:EFieldVectorType",
+    "default": ""
+   }
+  },
+  "notes": "",
+  "verified": false
+ },
+ "ScalarBlueNoise": {
+  "class": "/Script/Engine.UMaterialExpressionScalarBlueNoise",
+  "header": "Materials/MaterialExpressionNoise.h",
+  "desc": "スカラーブルーノイズをサンプリング",
+  "inputs": [],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {},
+  "notes": "",
+  "verified": false
+ },
+ "SceneDepthWithoutWater": {
+  "class": "/Script/Engine.UMaterialExpressionSceneDepthWithoutWater",
+  "header": "Materials/MaterialExpressionSceneDepthWithoutWater.h",
+  "desc": "水を除いたシーン深度値を取得",
+  "inputs": [
+   {
+    "name": "Input",
+    "type": "FExpressionInput",
+    "required": false,
+    "tooltip": "Defaults to 'ConstInput' if not specified"
+   }
+  ],
+  "prop_pins": [
+   {
+    "name": "InputMode",
+    "prop": "InputMode",
+    "kind": "Advanced",
+    "type": "enum:EMaterialSceneAttributeInputMode::Type"
+   },
+   {
+    "name": "FallbackDepth",
+    "prop": "FallbackDepth",
+    "kind": "Advanced",
+    "type": "float"
+   }
+  ],
+  "outputs": [
+   {
+    "name": "",
+    "r": 1,
+    "g": 1,
+    "b": 0,
+    "a": 0
+   }
+  ],
+  "props": {
+   "InputMode": {
+    "type": "enum:EMaterialSceneAttributeInputMode::Type",
+    "default": ""
+   },
+   "ConstInput": {
+    "type": "FVector2D",
+    "default": "0.0, 0.0"
+   },
+   "FallbackDepth": {
+    "type": "float",
+    "default": 1000000.0
+   }
+  },
+  "notes": "",
+  "verified": false
+ },
+ "ShaderStageSwitch": {
+  "class": "/Script/Engine.UMaterialExpressionShaderStageSwitch",
+  "header": "Materials/MaterialExpressionShaderStageSwitch.h",
+  "desc": "ピクセル/頂点シェーダステージで異なる入力を選択",
+  "inputs": [
+   {
+    "name": "PixelShader",
+    "type": "FExpressionInput",
+    "required": true,
+    "tooltip": "Input will be used in pixel (or compute) shader stages"
+   },
+   {
+    "name": "VertexShader",
+    "type": "FExpressionInput",
+    "required": true,
+    "tooltip": "Input will be in vertex (or tessellation) shader stages"
+   }
+  ],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {},
+  "notes": "",
+  "verified": false
+ },
+ "ShadingModel": {
+  "class": "/Script/Engine.UMaterialExpressionShadingModel",
+  "header": "Materials/MaterialExpressionShadingModel.h",
+  "desc": "シェーディングモデルを指定",
+  "inputs": [],
+  "prop_pins": [
+   {
+    "name": "ShadingModel",
+    "prop": "ShadingModel",
+    "kind": "Primary",
+    "type": "enum:EMaterialShadingModel"
+   }
+  ],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {
+   "ShadingModel": {
+    "type": "enum:EMaterialShadingModel",
+    "default": "MSM_DefaultLit"
+   }
+  },
+  "notes": "",
+  "verified": false
+ },
+ "ShadingPathSwitch": {
+  "class": "/Script/Engine.UMaterialExpressionShadingPathSwitch",
+  "header": "Materials/MaterialExpressionShadingPathSwitch.h",
+  "desc": "シェーディングパスに応じて異なる入力を選択",
+  "inputs": [
+   {
+    "name": "Default",
+    "type": "FExpressionInput",
+    "required": false,
+    "tooltip": "Default connection, used when a specific shading type input is missing"
+   }
+  ],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {},
+  "notes": "Inputs array (ERHIShadingPath::Num) is handled dynamically",
+  "verified": false
+ },
+ "ShadowReplace": {
+  "class": "/Script/Engine.UMaterialExpressionShadowReplace",
+  "header": "Materials/MaterialExpressionShadowReplace.h",
+  "desc": "影マップレンダリング時に別の入力を使用",
+  "inputs": [
+   {
+    "name": "Default",
+    "type": "FExpressionInput",
+    "required": true,
+    "tooltip": "Input will be used when rendering into non-ShadowMap passes"
+   },
+   {
+    "name": "Shadow",
+    "type": "FExpressionInput",
+    "required": true,
+    "tooltip": "Input will be used when rendering into ShadowMap"
+   }
+  ],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {},
+  "notes": "",
+  "verified": false
+ },
+ "SingleLayerWaterMaterialOutput": {
+  "class": "/Script/Engine.UMaterialExpressionSingleLayerWaterMaterialOutput",
+  "header": "Materials/MaterialExpressionSingleLayerWaterMaterialOutput.h",
+  "desc": "単層水マテリアル出力",
+  "inputs": [
+   {
+    "name": "ScatteringCoefficients",
+    "type": "FExpressionInput",
+    "required": false,
+    "tooltip": "Scattering coefficient describing how light scatter around and is absorbed"
+   },
+   {
+    "name": "AbsorptionCoefficients",
+    "type": "FExpressionInput",
+    "required": false,
+    "tooltip": "Scattering coefficient describing how light bounce is absorbed"
+   },
+   {
+    "name": "PhaseG",
+    "type": "FExpressionInput",
+    "required": false,
+    "tooltip": "Phase function 'g' parameter"
+   },
+   {
+    "name": "ColorScaleBehindWater",
+    "type": "FExpressionInput",
+    "required": false,
+    "tooltip": "Custom color multiplier for scene color behind water"
+   }
+  ],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   },
+   {
+    "name": ""
+   },
+   {
+    "name": ""
+   },
+   {
+    "name": ""
+   }
+  ],
+  "props": {},
+  "notes": "CustomOutput subclass with 4 outputs",
+  "verified": false
+ },
+ "SkyAtmosphereAerialPerspective": {
+  "class": "/Script/Engine.UMaterialExpressionSkyAtmosphereAerialPerspective",
+  "header": "Materials/MaterialExpressionSkyAtmosphereLightIlluminance.h",
+  "desc": "大気エアリアルパースペクティブをサンプリング",
+  "inputs": [
+   {
+    "name": "WorldPosition",
+    "type": "FExpressionInput",
+    "required": false,
+    "tooltip": "World position of the sample"
+   }
+  ],
+  "prop_pins": [
+   {
+    "name": "WorldPositionOriginType",
+    "prop": "WorldPositionOriginType",
+    "kind": "Advanced",
+    "type": "enum:EPositionOrigin"
+   }
+  ],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {
+   "WorldPositionOriginType": {
+    "type": "enum:EPositionOrigin",
+    "default": "Absolute"
+   }
+  },
+  "notes": "",
+  "verified": false
+ },
+ "SkyAtmosphereDistantLightScatteredLuminance": {
+  "class": "/Script/Engine.UMaterialExpressionSkyAtmosphereDistantLightScatteredLuminance",
+  "header": "Materials/MaterialExpressionSkyAtmosphereLightIlluminance.h",
+  "desc": "大気遠距離光の散乱ルミナンス",
+  "inputs": [],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {},
+  "notes": "",
+  "verified": false
+ },
+ "SkyAtmosphereLightDirection": {
+  "class": "/Script/Engine.UMaterialExpressionSkyAtmosphereLightDirection",
+  "header": "Materials/MaterialExpressionSkyAtmosphereLightDirection.h",
+  "desc": "大気光の方向を取得",
+  "inputs": [],
+  "prop_pins": [
+   {
+    "name": "LightIndex",
+    "prop": "LightIndex",
+    "kind": "Primary",
+    "type": "int32"
+   }
+  ],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {
+   "LightIndex": {
+    "type": "int32",
+    "default": "0"
+   }
+  },
+  "notes": "",
+  "verified": false
+ },
+ "SkyAtmosphereLightDiskLuminance": {
+  "class": "/Script/Engine.UMaterialExpressionSkyAtmosphereLightDiskLuminance",
+  "header": "Materials/MaterialExpressionSkyAtmosphereLightIlluminance.h",
+  "desc": "大気光ディスクのルミナンス",
+  "inputs": [
+   {
+    "name": "DiskAngularDiameterOverride",
+    "type": "FExpressionInput",
+    "required": false,
+    "tooltip": "Override the angular diameter of the disk in degree"
+   }
+  ],
+  "prop_pins": [
+   {
+    "name": "LightIndex",
+    "prop": "LightIndex",
+    "kind": "Primary",
+    "type": "int32"
+   }
+  ],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {
+   "LightIndex": {
+    "type": "int32",
+    "default": "0"
+   }
+  },
+  "notes": "",
+  "verified": false
+ },
+ "SkyAtmosphereLightIlluminance": {
+  "class": "/Script/Engine.UMaterialExpressionSkyAtmosphereLightIlluminance",
+  "header": "Materials/MaterialExpressionSkyAtmosphereLightIlluminance.h",
+  "desc": "大気光の照度",
+  "inputs": [
+   {
+    "name": "WorldPosition",
+    "type": "FExpressionInput",
+    "required": false,
+    "tooltip": "World position of the sample"
+   }
+  ],
+  "prop_pins": [
+   {
+    "name": "LightIndex",
+    "prop": "LightIndex",
+    "kind": "Primary",
+    "type": "int32"
+   },
+   {
+    "name": "WorldPositionOriginType",
+    "prop": "WorldPositionOriginType",
+    "kind": "Advanced",
+    "type": "enum:EPositionOrigin"
+   }
+  ],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {
+   "LightIndex": {
+    "type": "int32",
+    "default": "0"
+   },
+   "WorldPositionOriginType": {
+    "type": "enum:EPositionOrigin",
+    "default": "Absolute"
+   }
+  },
+  "notes": "",
+  "verified": false
+ },
+ "SkyAtmosphereLightIlluminanceOnGround": {
+  "class": "/Script/Engine.UMaterialExpressionSkyAtmosphereLightIlluminanceOnGround",
+  "header": "Materials/MaterialExpressionSkyAtmosphereLightIlluminance.h",
+  "desc": "地上の大気光照度",
+  "inputs": [],
+  "prop_pins": [
+   {
+    "name": "LightIndex",
+    "prop": "LightIndex",
+    "kind": "Primary",
+    "type": "int32"
+   }
+  ],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {
+   "LightIndex": {
+    "type": "int32",
+    "default": "0"
+   }
+  },
+  "notes": "",
+  "verified": false
+ },
+ "SkyAtmosphereViewLuminance": {
+  "class": "/Script/Engine.UMaterialExpressionSkyAtmosphereViewLuminance",
+  "header": "Materials/MaterialExpressionSkyAtmosphereViewLuminance.h",
+  "desc": "ビュー方向での大気ルミナンス",
+  "inputs": [
+   {
+    "name": "WorldDirection",
+    "type": "FExpressionInput",
+    "required": false,
+    "tooltip": "Sample the sky atmosphere using WorldDirection instead of the default camera-to-pixel V direction"
+   }
+  ],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {},
+  "notes": "",
+  "verified": false
+ },
+ "SkyLightEnvMapSample": {
+  "class": "/Script/Engine.UMaterialExpressionSkyLightEnvMapSample",
+  "header": "Materials/MaterialExpressionSkyLightEnvMapSample.h",
+  "desc": "スカイライトキューブマップをサンプリング",
+  "inputs": [
+   {
+    "name": "Direction",
+    "type": "FExpressionInput",
+    "required": true,
+    "tooltip": "The direction to sample the cubemap from"
+   },
+   {
+    "name": "Roughness",
+    "type": "FExpressionInput",
+    "required": false,
+    "tooltip": "The roughness used to specifiy the sharpness of the sample"
+   }
+  ],
+  "prop_pins": [],
+  "outputs": [
+   {
+    "name": ""
+   }
+  ],
+  "props": {},
+  "notes": "",
+  "verified": false
+ }
+}
