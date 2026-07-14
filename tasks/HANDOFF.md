@@ -7,6 +7,15 @@
 この欄を再開時の正本とする。個別タスクの完了判定は各 task md の `status:` と成果物を
 優先し、古い一覧表の status は参考にしない。
 
+完成後の追加精査、残存risk、優先順位付き改善案は
+[`tasks/MAIN-AI-REVIEW.md`](MAIN-AI-REVIEW.md)を参照。次段階を始めるメインAIは、まず同文書の
+P0と「メインAIへの具体的な次の発注」を読むこと。
+
+Customノードの利用可能関数とUE 5.8 source調査は
+[`tasks/CUSTOM-NODE-SOURCE-RESEARCH.md`](CUSTOM-NODE-SOURCE-RESEARCH.md)に記録した。
+旧translator/MIR差、32引数上限、texture sampler、SceneTexture、`/Project` include、
+Engine private APIの危険度を含む。Custom対応に着手するAIは必読。
+
 ### 完了済み
 
 - T01: `skill/references/format.md`。ユーザー提供 `example/sample.txt` の実 T3D を反映済み。
@@ -16,6 +25,9 @@
 
 ### 現在実行中
 
+- 追加精査としてCustomノードのUE 5.8 source調査を完了し、
+  `tasks/CUSTOM-NODE-SOURCE-RESEARCH.md`へ記録した。これは調査・設計報告であり、
+  CustomのMGJSON構造化実装自体は未着手。次の実装AIはMAIN-AI-REVIEW P0-1と同時に扱う。
 - T02 完了: `skill/references/mgjson.md` と `tasks/T02-mgjson-spec.md` を更新済み。
 - M01 完了: `skill/references/mf-call.md`、task md、`INSTRUCTIONS-mf.md` を更新済み。
 - T06 完了: 359/359ノードと82 MFを `skill/catalog/` に統合し、逆引き索引を生成済み。
