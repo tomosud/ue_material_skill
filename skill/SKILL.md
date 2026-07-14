@@ -11,11 +11,11 @@ create and consume verbose T3D; do not hand-author GUIDs, Pin records, or T3D in
 ## Non-negotiable rules
 
 - Run `scripts/validate.py` before every build. Do not build when it reports an error.
-- Use only source-audited class, property, and Pin facts for generation. Run `scripts/search_catalog.py` for
-  discovery; `references/nodes-index.md` is the compact generation-ready overview. Pending catalog schema is
-  parsing support, not a safe recommendation.
-- Read `references/source-verification.md` before making factual node claims or using an unaudited class.
-  Inspect the configured UE source root instead of inferring behavior from a class name.
+- Run `scripts/search_catalog.py` for broad discovery across every declared class, schema, source symbol, and
+  legacy phrase. It returns each node as one record with field-level provenance; audit status is not a catalog
+  partition or an exclusion rule.
+- Read `references/source-verification.md` and inspect the configured UE source root before every factual node
+  explanation or graph-generation decision. Never infer behavior from a class name or catalog prose alone.
 - Preserve node object order when a stable layout matters.
 - Never create or connect the Material Root node. After paste, tell the user which final output to connect
   manually to Base Color, Roughness, Normal, Emissive Color, or another Root input.
@@ -32,8 +32,8 @@ create and consume verbose T3D; do not hand-author GUIDs, Pin records, or T3D in
 ### Generate a new graph
 
 1. Read `references/mgjson.md` when the request needs syntax beyond the summary below. Run
-   `python scripts/search_catalog.py <terms> --generation-ready`. If no suitable audited class exists, inspect
-   source before using a pending entry and do not fill gaps from memory.
+   `python scripts/search_catalog.py <terms>`, then inspect the returned source references in the configured UE
+   source root. Do not fill gaps from memory, regardless of the recorded provenance state.
 2. Write MGJSON to a temporary or user-requested `.json` file.
 3. Validate it:
 
@@ -128,9 +128,11 @@ The top level is `{"nodes": {...}, "links": [...], "pos": {...}}`. Only `nodes` 
 ## Node and function discovery
 
 Use `scripts/search_catalog.py` to search source symbols, exact Pins, properties, plugins, and evidence states
-without loading the complete catalog. `references/nodes-index.md` lists only generation-ready nodes. For a
-Material Function call, read `references/mf-call.md` and require separate asset or Editor evidence before
-building.
+without loading the complete catalog. Search includes structural data and legacy wording by default and returns
+them in one node record. Use field-level `provenance` to choose which claims need closer inspection, but inspect
+source before every node explanation or use. `references/nodes-index.md` is the compact entry point to the full
+catalog. For a Material Function call, read `references/mf-call.md` and require separate asset or Editor evidence
+before building.
 
 ## Boundaries and recovery
 

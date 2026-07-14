@@ -1,7 +1,7 @@
 # Source Verification
 
-Use this reference before making factual claims about a Material Expression, changing a catalog entry,
-or recommending a node that lacks explicit evidence.
+Use this reference before making factual claims about any Material Expression, changing a catalog entry,
+or using a node in a generated graph.
 
 ## Contents
 
@@ -128,13 +128,13 @@ function entries quarantined from default selection.
 At the baseline revision:
 
 - the merged node catalog contains 359 entries;
-- 334 entries have a non-empty header field;
-- 25 Substrate entries have no header field in the merged catalog;
-- the legacy `verified` flag is true for 6 node entries;
+- all 359 entries have a non-empty, source-resolved header field;
+- 6 entries currently have recorded source verification for schema and description;
+- the remaining entries stay in the same searchable catalog with their current provenance state;
 - the function catalog contains 82 entries;
-- one function entry has the legacy `verified` flag;
 - 20 function paths are marked uncertain;
-- most descriptions and notes have no field-level source provenance.
+- legacy descriptions and notes for 337 nodes remain searchable, but most still need source-backed English
+  replacement.
 
 Recorded Editor evidence is narrower than the legacy flag suggests:
 
@@ -147,13 +147,9 @@ Recorded Editor evidence is narrower than the legacy flag suggests:
 ## Known gaps
 
 - Catalog descriptions and notes still require source audit and English migration.
-- Header paths are not normalized.
-- The 25 missing Substrate header fields require manifest/source reconciliation.
 - Generated catalog fragments contain normalization debt that the merged catalog currently hides.
 - Named Reroute generation and collision behavior still require Editor round-trip fixtures.
 - Custom `IncludeFilePaths` lacks Editor copy-back evidence.
 - Custom shader compilation across legacy translation, Material IR, domains, stages, and platforms remains
   unverified.
-- The current environment has no installed Python interpreter, so the previously passing offline suite could
-  not be rerun during this refactor baseline.
-
+- The local offline `uv` CPython runtime is available; the current 25-test suite passes without Unreal Editor.

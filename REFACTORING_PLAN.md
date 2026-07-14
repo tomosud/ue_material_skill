@@ -253,7 +253,7 @@ from `SKILL.md` with an explicit read condition.
 `nodes-index.md` should not remain a manually maintained duplicate of `nodes.json`. Replace it with one of:
 
 1. a generated, deterministic English index split into directly linked domains; or
-2. a catalog query command that returns a small set of source-audited entries.
+2. a catalog query command that returns a small set of entries with field-level provenance.
 
 Prefer the query approach if it reduces context use without harming discoverability.
 
@@ -308,7 +308,7 @@ Deliverables:
 - Replace the single `verified` concept with explicit source, offline, and Editor evidence dimensions.
 - Normalize source-relative path format and separators.
 - Record engine version and branch in generated artifacts.
-- Define a validation error for any description without acceptable evidence.
+- Define provenance states for descriptions without recorded source evidence.
 
 Exit gate:
 
@@ -322,13 +322,13 @@ Deliverables:
 - Mark every existing description and note as audited, unresolved, or quarantined.
 - Resolve the 25 missing Substrate header paths from the source manifest or remove unsupported entries.
 - Identify inconsistent, incomplete, inherited, and dynamic Pin schemas.
-- Prevent unaudited entries from being recommended as safe generation targets.
-- Keep parsing support distinct from safe generation support.
+- Keep every entry discoverable and require direct source inspection before explanation or generation.
+- Preserve provenance without turning the small audited subset into a separate catalog tier.
 
 Exit gate:
 
 - No unaudited description is presented as factual.
-- Every available generation entry has a resolvable declaration path and minimum schema evidence.
+- Every catalog entry has a resolvable declaration path for per-use source inspection.
 
 ### Phase 4: Source-audit nodes in bounded batches
 
@@ -380,13 +380,14 @@ Deliverables:
 
 - Provide deterministic catalog search by canonical class, source symbol, Pin, property, category, plugin,
   evidence state, and English description terms.
-- Generate any human-readable index from audited catalog data only.
+- Generate a compact human-readable entry point for the complete searchable catalog.
 - Split generated indexes by domain only when query-based discovery is insufficient.
 - Ensure search results show evidence state and unresolved caveats.
 
 Exit gate:
 
-- An agent can find a suitable audited node without loading the entire catalog or a 359-row Markdown table.
+- An agent can find any declared node and its provenance without loading the entire catalog or a 359-row
+  Markdown table.
 
 ### Phase 7: Validate and forward-test
 
@@ -501,8 +502,8 @@ Keep these items visible after the old task and handoff documents are removed:
 - Source-audited the `Custom` expression across its declaration, compile paths, dynamic outputs, MIR path,
   HLSL generation, Scene Texture fixup, and include-path mappings.
 - Added `tools/gen_node_evidence.py` and made `catalog_merge.py` require complete, valid evidence coverage.
-- Changed the generated node index to expose descriptions and Pin names only after the corresponding source
-  audit is verified.
+- Recorded source-audit states for index and search output; the later unified-search correction stopped using
+  those states as visibility gates.
 - Changed MGJSON validation to report source-audit and Unreal Editor evidence separately instead of relying
   on the legacy `verified` boolean.
 - Added provenance regression tests. All 18 unit tests pass with the offline `uv` Python runtime.
@@ -512,13 +513,12 @@ Keep these items visible after the old task and handoff documents are removed:
 - Moved unaudited legacy descriptions, notes, and nested field notes for 337 nodes to
   `catalog/quarantine/legacy-node-prose.json`. The quarantine is inactive review data and cannot be restored
   by translation alone.
-- Added an active-prose merge gate: a description, note, or field note now fails catalog generation unless
-  its corresponding source evidence dimension is verified.
+- Initially added an active-prose merge gate; the later unified-search correction removed it in favor of
+  field-level provenance and mandatory per-use source inspection.
 - Removed the legacy per-node `verified` boolean from generated and merged node catalogs.
 - Rebuilt the manifest from the source checkout, corrected 38 plugin runtime module names, and resolved all
   25 previously missing Substrate header paths. The merged catalog now has zero missing headers.
-- Made source-pending catalog schema parsing-only in `SKILL.md`; the generated index no longer presents it as
-  safe generation guidance.
+- Kept source-pending schema discoverable with provenance and required source inspection before using it.
 - Removed the unsupported frequent-node Pin table from `SKILL.md` and replaced its example with the audited
   `Custom` node.
 - Removed the obsolete one-off output QA script and malformed `catalog/generated/test.json` artifact.
@@ -551,18 +551,29 @@ Keep these items visible after the old task and handoff documents are removed:
 ### Phase 6 completed on 2026-07-14
 
 - Added `skill/scripts/search_catalog.py` for deterministic search by class, free text, source path/symbol, Pin,
-  property, plugin origin, evidence state, and generation readiness.
-- Search results expose source audit and Editor round-trip states separately and hide unaudited descriptions,
-  Pins, and properties.
-- Replaced the 359-row Markdown node table with a 6-row generation-ready index and explicit coverage summary.
+  property, plugin origin, and evidence state.
+- Search results return all descriptions, Pins, and properties in one node record with source and Editor
+  provenance.
+- Replaced the 359-row Markdown node table with a compact searchable-catalog entry point and coverage summary.
 - Verified manifest, evidence, merged nodes, merged functions, and the compact index regenerate byte-for-byte.
+
+### Phase 6 unified-search correction completed on 2026-07-14
+
+- Kept the Markdown index compact while restoring default search across all 359 declared classes, Pin/property
+  data, source symbols, and quarantined legacy wording.
+- Removed the generation-ready catalog partition and filter. Search now returns description, Pins, properties,
+  notes, references, and Editor evidence together in one node record, with field-level provenance metadata.
+- Made source inspection a per-use requirement for every node instead of treating the small pre-audited subset
+  as the only discoverable or usable catalog.
+- Added regression coverage for Japanese semantic lookup, unified schema visibility, all-class coverage,
+  source-symbol lookup, and the shared result shape.
 
 ### Phase 7 automated gate run on 2026-07-14
 
 - Python syntax checks pass for every maintenance and bundled skill script.
 - The active-skill English lint passes with zero CJK debt.
 - Catalog merge outputs are deterministic and `git diff --check` passes.
-- All 20 offline unit and semantic round-trip tests pass.
+- All 25 offline unit, catalog-search, and semantic round-trip tests pass.
 - The standard skill `quick_validate.py` could not import its external `PyYAML` dependency in the offline
   runtime; its complete frontmatter checks were inspected and run equivalently with the available shell.
 - Unreal Editor smoke tests remain required for the corrected `Constant2Vector`/`Constant3Vector` component
