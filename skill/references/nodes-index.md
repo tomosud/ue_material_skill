@@ -182,8 +182,8 @@
 | `MotionVectorWorldOffsetOutput` | モーションベクトル世界オフセット出力。ピクセル単位のモーションベクトルオフセット | Input | - | - |
 | `Multiply` | A * B。float/vector対応 | A, B | Output | - |
 | `NamedRerouteBase` | 名前付き Reroute の基底クラス | - | Output | abstract |
-| `NamedRerouteDeclaration` | 名前付き変数を宣言するノード | Input | Output | - |
-| `NamedRerouteUsage` | 名前付き変数の使用側ノード | - | Output | - |
+| `NamedRerouteDeclaration` | 名前付き変数を宣言するノード | Input | Output | verified |
+| `NamedRerouteUsage` | 名前付き変数の使用側ノード | - | Output | verified |
 | `NaniteReplace` | ナナイトレンダリング時の置き換え。デフォルト/ナナイト入力で切り替え | Default, Nanite | Output | - |
 | `NeuralNetworkInput` | ニューラルネットワーク入力ノード。ニューラルポストプロセスの入力 | Coordinates, Input0, Mask | - | - |
 | `NeuralNetworkOutput` | ニューラルネットワーク出力ノード。ニューラルポストプロセスの出力 | Coordinates | RGBA | - |

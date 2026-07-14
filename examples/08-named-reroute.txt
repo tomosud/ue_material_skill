@@ -1,0 +1,37 @@
+Begin Object Class=/Script/UnrealEd.MaterialGraphNode Name="MaterialGraphNode_37" ExportPath="/Script/UnrealEd.MaterialGraphNode'/Engine/Transient.NewMaterial:MaterialGraph_0.MaterialGraphNode_37'"
+   Begin Object Class=/Script/Engine.MaterialExpressionNamedRerouteDeclaration Name="MaterialExpressionNamedRerouteDeclaration_0" ExportPath="/Script/Engine.MaterialExpressionNamedRerouteDeclaration'/Engine/Transient.NewMaterial:MaterialGraph_0.MaterialGraphNode_37.MaterialExpressionNamedRerouteDeclaration_0'"
+   End Object
+   Begin Object Name="MaterialExpressionNamedRerouteDeclaration_0" ExportPath="/Script/Engine.MaterialExpressionNamedRerouteDeclaration'/Engine/Transient.NewMaterial:MaterialGraph_0.MaterialGraphNode_37.MaterialExpressionNamedRerouteDeclaration_0'"
+      Name="test"
+      NodeColor=(R=0.664062,G=1.000000,B=0.000000,A=1.000000)
+      VariableGuid=D6261DA040D5D14C765FDE87E64634CE
+      MaterialExpressionEditorX=-1296
+      MaterialExpressionEditorY=528
+      MaterialExpressionGuid=0A4C892E482C67D6B5AB9D9F5AE09398
+      Material="/Script/UnrealEd.PreviewMaterial'/Engine/Transient.NewMaterial'"
+   End Object
+   MaterialExpression="/Script/Engine.MaterialExpressionNamedRerouteDeclaration'MaterialExpressionNamedRerouteDeclaration_0'"
+   NodePosX=-1296
+   NodePosY=528
+   bCanRenameNode=True
+   NodeGuid=E0F9E5434137E86B4456209F3BFB7DD8
+   CustomProperties Pin (PinId=F2B1AA5946478DE73195BCA9889E3050,PinName="Input",PinFriendlyName=NSLOCTEXT("MaterialGraphNode", "Space", " "),PinType.PinCategory="required",PinType.PinSubCategory="",PinType.PinSubCategoryObject=None,PinType.PinSubCategoryMemberReference=(),PinType.PinValueType=(),PinType.ContainerType=None,PinType.bIsReference=False,PinType.bIsConst=False,PinType.bIsWeakPointer=False,PinType.bIsUObjectWrapper=False,PinType.bSerializeAsSinglePrecisionFloat=False,LinkedTo=(MaterialGraphNode_35 9C1FB5AA4A379C0E5E98DA9ED4654CA5,),PersistentGuid=00000000000000000000000000000000,bHidden=False,bNotConnectable=False,bDefaultValueIsReadOnly=False,bDefaultValueIsIgnored=False,bAdvancedView=False,bOrphanedPin=False,)
+   CustomProperties Pin (PinId=E85F75D0456D04F04E8D9A996D9EBD9C,PinName="Output",PinFriendlyName=NSLOCTEXT("MaterialGraphNode", "Space", " "),Direction="EGPD_Output",PinType.PinCategory="",PinType.PinSubCategory="",PinType.PinSubCategoryObject=None,PinType.PinSubCategoryMemberReference=(),PinType.PinValueType=(),PinType.ContainerType=None,PinType.bIsReference=False,PinType.bIsConst=False,PinType.bIsWeakPointer=False,PinType.bIsUObjectWrapper=False,PinType.bSerializeAsSinglePrecisionFloat=False,PersistentGuid=00000000000000000000000000000000,bHidden=False,bNotConnectable=False,bDefaultValueIsReadOnly=False,bDefaultValueIsIgnored=False,bAdvancedView=False,bOrphanedPin=False,)
+End Object
+Begin Object Class=/Script/UnrealEd.MaterialGraphNode Name="MaterialGraphNode_38" ExportPath="/Script/UnrealEd.MaterialGraphNode'/Engine/Transient.NewMaterial:MaterialGraph_0.MaterialGraphNode_38'"
+   Begin Object Class=/Script/Engine.MaterialExpressionNamedRerouteUsage Name="MaterialExpressionNamedRerouteUsage_0" ExportPath="/Script/Engine.MaterialExpressionNamedRerouteUsage'/Engine/Transient.NewMaterial:MaterialGraph_0.MaterialGraphNode_38.MaterialExpressionNamedRerouteUsage_0'"
+   End Object
+   Begin Object Name="MaterialExpressionNamedRerouteUsage_0" ExportPath="/Script/Engine.MaterialExpressionNamedRerouteUsage'/Engine/Transient.NewMaterial:MaterialGraph_0.MaterialGraphNode_38.MaterialExpressionNamedRerouteUsage_0'"
+      Declaration="/Script/Engine.MaterialExpressionNamedRerouteDeclaration'MaterialGraphNode_37.MaterialExpressionNamedRerouteDeclaration_0'"
+      DeclarationGuid=D6261DA040D5D14C765FDE87E64634CE
+      MaterialExpressionEditorX=-1184
+      MaterialExpressionEditorY=528
+      MaterialExpressionGuid=D0912FAB4C35622502CF51BDAA0321DA
+      Material="/Script/UnrealEd.PreviewMaterial'/Engine/Transient.NewMaterial'"
+   End Object
+   MaterialExpression="/Script/Engine.MaterialExpressionNamedRerouteUsage'MaterialExpressionNamedRerouteUsage_0'"
+   NodePosX=-1184
+   NodePosY=528
+   NodeGuid=8B8F6D314F2598CDE6A125BA93D85027
+   CustomProperties Pin (PinId=53D64A464A2442CCD8CB5D9F67E8DEA8,PinName="Output",PinFriendlyName=NSLOCTEXT("MaterialGraphNode", "Space", " "),Direction="EGPD_Output",PinType.PinCategory="",PinType.PinSubCategory="",PinType.PinSubCategoryObject=None,PinType.PinSubCategoryMemberReference=(),PinType.PinValueType=(),PinType.ContainerType=None,PinType.bIsReference=False,PinType.bIsConst=False,PinType.bIsWeakPointer=False,PinType.bIsUObjectWrapper=False,PinType.bSerializeAsSinglePrecisionFloat=False,LinkedTo=(MaterialGraphNode_36 49D309644E55D47CA8C3488F617AFB88,),PersistentGuid=00000000000000000000000000000000,bHidden=False,bNotConnectable=False,bDefaultValueIsReadOnly=False,bDefaultValueIsIgnored=False,bAdvancedView=False,bOrphanedPin=False,)
+End Object

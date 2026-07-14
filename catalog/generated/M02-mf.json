@@ -1,6 +1,6 @@
 {
   "BlendAngleCorrectedNormals": {
-    "path": "/Engine/Functions/Engine_MaterialFunctions01/Texturing/BlendAngleCorrectedNormals.BlendAngleCorrectedNormals",
+    "path": "/Engine/Functions/Engine_MaterialFunctions02/Utility/BlendAngleCorrectedNormals.BlendAngleCorrectedNormals",
     "desc": "2つのノーマルマップを角度補正付きで合成する",
     "inputs": [
       {"name": "BaseNormal", "type": "V3"},
@@ -8,7 +8,7 @@
     ],
     "outputs": [{"name": "Result", "type": "V3"}],
     "usage": "ディテールノーマルの重ね合わせの定番",
-    "verified": false,
+    "verified": true,
     "path_uncertain": false
   },
   "FlattenNormal": {

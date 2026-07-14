@@ -363,6 +363,8 @@ MaterialExpressionComment_0
 4. GraphNode の `MaterialExpression` / `MaterialExpressionComment` 参照で主たる子を確定する。
 5. `CustomProperties Pin` の outer `(...)` を、引用符と括弧 depth を追跡して field に分解する。
 6. 全 Pin を読み終えてから `(node name, PinId)` table を作り、`LinkedTo` を解決する。
+   実clipboardでは異なるノード間で同じPinIdが再利用される場合があるため、PinId単独を
+   document全体のkeyにしてはならない。
    選択外ノードを指す参照は実 clipboard に現れ得るため、未解決外部 link は警告可能な
    破棄対象とし、構文エラーにしない。
 7. link は output/input の direction と Pin の登場 index から正規化し、両側記載を重複除去する。

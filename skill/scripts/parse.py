@@ -468,7 +468,12 @@ def convert_t3d(
         if position:
             positions[node_id] = position
 
-    pin_by_id: dict[str, PinRecord] = {}
+    # UE normally generates unique PinIds, but real clipboard text can reuse a
+    # PinId on different graph nodes (examples/02 does this for two Constants).
+    # LinkedTo already carries the owner node name, so the actual identity is
+    # (owner, PinId), not PinId alone.
+    pin_by_key: dict[tuple[str, str], PinRecord] = {}
+    all_pins: list[PinRecord] = []
     pins_by_owner: dict[str, list[PinRecord]] = defaultdict(list)
     for graph in graph_blocks:
         owner = graph.headers.get("Name")
@@ -481,7 +486,8 @@ def convert_t3d(
                 owner, raw_pin["id"], output, raw_pin["name"], direction_counts[output], raw_pin["linked"]
             )
             direction_counts[output] += 1
-            pin_by_id[record.pin_id] = record
+            pin_by_key[(record.owner, record.pin_id)] = record
+            all_pins.append(record)
             pins_by_owner[owner].append(record)
 
     def pin_name(pin: PinRecord) -> str:
@@ -500,16 +506,18 @@ def convert_t3d(
         return mgvalidate.effective_pin_name(schema[pin.index], pin.index, pin.output)
 
     links: list[str] = []
-    seen_connections: set[tuple[str, str]] = set()
-    for pin in pin_by_id.values():
+    seen_connections: set[tuple[tuple[str, str], tuple[str, str]]] = set()
+    for pin in all_pins:
         for linked_owner, linked_id in pin.linked:
-            other = pin_by_id.get(linked_id)
-            if not other or other.owner != linked_owner or pin.output == other.output:
+            other = pin_by_key.get((linked_owner, linked_id))
+            if not other or pin.output == other.output:
                 continue
             output_pin, input_pin = (pin, other) if pin.output else (other, pin)
             if output_pin.owner not in graph_to_node or input_pin.owner not in graph_to_node:
                 continue
-            key = tuple(sorted((output_pin.pin_id, input_pin.pin_id)))
+            key = tuple(sorted(
+                ((output_pin.owner, output_pin.pin_id), (input_pin.owner, input_pin.pin_id))
+            ))
             if key in seen_connections:
                 continue
             seen_connections.add(key)

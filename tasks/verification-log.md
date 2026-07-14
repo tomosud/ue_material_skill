@@ -9,11 +9,12 @@
 - 対象ソース: UE 5.8 checkout
 - 実際に使うEditor: **Unreal Editor 5.8.0-55116800+++UE5+Release-5.8**
 - OS表示: Windows 11 (25H2) [10.0.26200.8655] (x86_64)
-- catalog `verified`: `Constant` / `OneMinus` / `Comment` の3 classを実round-tripにより昇格。
+- catalog `verified`: `Constant` / `OneMinus` / `Comment`を実round-tripで昇格し、
+  `NamedRerouteDeclaration` / `NamedRerouteUsage`を実機copyで昇格。
 
-`example/sample.txt` はユーザー提供の実Editor T3Dとして解析済みだが、要求されていたE01の
-9種類別sampleは未収集である。従ってparse実入力の根拠には使えるが、
-build生成物のCtrl+V成功を示すものではない。
+`example/sample.txt`に加え、E01の01〜09をすべて実Editor T3Dとして収集済み。
+07の実測でMaterialFunction pathを修正し、08でNamedRerouteの`VariableGuid`、09でCustomの
+`ShowCode`をカタログへ補完した。
 
 ## 自動検証結果
 
@@ -40,6 +41,8 @@ build生成物のCtrl+V成功を示すものではない。
 - catalog無しparse: `inN`/`outN` linkで4 nodes / 3 links、raw props保持。
 - clipboard: Windows PowerShellのSet-Clipboard→Get-Clipboard再読込OK。
 - skill-creator `quick_validate.py`: `Skill is valid!`。
+- E01 `02-math-chain.txt`: 異なるConstant間の重複PinIdをowner名との複合keyで解決し、
+  Constant×2 → Multiply → Addの3接続を復元。
 
 ## Editor手動検証の実行方法
 

@@ -25,7 +25,7 @@ output: `skill/scripts/parse.py`
   - Begin/End Objectのネストパーサ(行指向で十分)
   - ノード名→短ID変換(`MaterialGraphNode_5` → `mul1` 等、クラス名から採番)
   - 接続の抽出: CustomProperties Pin の LinkedTo から(Expression入力プロパティは使わない)
-  - PinId→(ノード, ピン名/インデックス)の解決。カタログがあればピン名を復元、
+  - (ノード名, PinId)→(ノード, ピン名/インデックス)の解決。カタログがあればピン名を復元、
     無くても `in0`/`out2` のようなインデックス表記で出力(カタログ非依存で動くこと)
   - props: Expressionブロックのプロパティのうち位置(MaterialExpressionEditorX/Y)、
     GUID類、Material=等の環境依存参照を除いたものを出力
@@ -49,3 +49,6 @@ output: `skill/scripts/parse.py`
 - カタログ無しでは link Pinが `in0` / `outN` になり、unknown class/raw propsを捨てずに動作。
 - compactness例: 3ノードT3D 3,070文字 → MGJSON 184文字（概算46 token）。5ノードComment
   付き7,254文字 → 585文字。canonical round-trip完全一致、MF round-tripも確認した。
+- E01全件監査で、UEが異なるConstantノードへ同一PinIdを再利用した実sampleを確認した。
+  PinId単独の表を`(owner node name, PinId)`複合キーへ修正し、02の3接続をすべて復元する
+  回帰確認を追加した。これは当初のT01解析規約とも一致する。

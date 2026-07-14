@@ -1,8 +1,8 @@
 # MaterialFunctionCall T3D 仕様
 
 `UMaterialExpressionMaterialFunctionCall` を MGJSON / T3D から生成するための仕様。
-UE 5.8.0 ソースで確認した。Engine/Content と function-call の実機 clipboard sample は
-ないため、asset path と実 Pin 表示は T08 で最終確認する。
+UE 5.8.0 ソースで確認した。`BlendAngleCorrectedNormals` は実機clipboard sampleで
+asset path、FunctionInputs / FunctionOutputs、型suffix付きPin表示を確認済み。
 
 ## 結論
 
@@ -87,7 +87,7 @@ Begin Object Class=/Script/UnrealEd.MaterialGraphNode Name="MaterialGraphNode_0"
    Begin Object Class=/Script/Engine.MaterialExpressionMaterialFunctionCall Name="MaterialExpressionMaterialFunctionCall_0"
    End Object
    Begin Object Name="MaterialExpressionMaterialFunctionCall_0"
-      MaterialFunction="/Script/Engine.MaterialFunction'/Engine/Functions/Engine_MaterialFunctions01/Texturing/BlendAngleCorrectedNormals.BlendAngleCorrectedNormals'"
+      MaterialFunction="/Script/Engine.MaterialFunction'/Engine/Functions/Engine_MaterialFunctions02/Utility/BlendAngleCorrectedNormals.BlendAngleCorrectedNormals'"
       FunctionInputs(0)=(ExpressionInputId=11111111111111111111111111111111,Input=(OutputIndex=-1,InputName="BaseNormal"))
       FunctionInputs(1)=(ExpressionInputId=22222222222222222222222222222222,Input=(OutputIndex=-1,InputName="AdditionalNormal"))
       FunctionOutputs(0)=(ExpressionOutputId=33333333333333333333333333333333,Output=(OutputName="Result"))
@@ -128,7 +128,7 @@ Graph Pin を空にする（`MaterialEditor.cpp:6552-6558`）。結果は pinles
     "mf": {
       "class": "MaterialFunctionCall",
       "props": {
-        "MaterialFunction": "/Engine/Functions/Engine_MaterialFunctions01/Texturing/BlendAngleCorrectedNormals.BlendAngleCorrectedNormals"
+        "MaterialFunction": "/Engine/Functions/Engine_MaterialFunctions02/Utility/BlendAngleCorrectedNormals.BlendAngleCorrectedNormals"
       }
     }
   }
@@ -169,5 +169,5 @@ build に必要な本質的最小セットは `path` と、順序付きの input
 - 実 asset の正確な `SortPriority`、input の preview-default 必須性、永続 GUID は
   Engine/Content または function-call clipboard sample がないと確認できない。
 - template の最小 field 削減（`FunctionOutputs` を省略できるか等）は T08 で検証する。
-- M02〜M04 はモデル知識ベースで、全 entry `verified: false`。確証のない path は
-  `path_uncertain: true` のまま扱う。
+- M02〜M04 は原則モデル知識ベース。実機確認済みentryだけ`verified: true`へ昇格し、
+  確証のない path は `path_uncertain: true` のまま扱う。

@@ -22,3 +22,9 @@ Texturing/UV操作/プロシージャル系の有名なエンジン組み込みM
 
 ## 完了条件
 INSTRUCTIONS-mf.md の共通完了条件
+
+## 実施メモ
+
+- 2026-07-14、UE 5.8実機コピーで `BlendAngleCorrectedNormals` の正確なpathが
+  `/Engine/Functions/Engine_MaterialFunctions02/Utility/BlendAngleCorrectedNormals.BlendAngleCorrectedNormals`
+  と判明。BaseNormal / AdditionalNormal / Result Pinも確認し、entryを`verified: true`へ更新した。

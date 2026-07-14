@@ -117,10 +117,14 @@
    "NodeColor": {
     "type": "FLinearColor",
     "default": null
+   },
+   "VariableGuid": {
+    "type": "FGuid",
+    "default": null
    }
   },
-  "notes": "VariableGuid で同一変数を追跡",
-  "verified": false
+  "notes": "VariableGuid で同一変数を追跡。UE 5.8実機sampleでName/NodeColor/VariableGuidを確認",
+  "verified": true
  },
  "NamedRerouteUsage": {
   "class": "/Script/Engine.UMaterialExpressionNamedRerouteUsage",
@@ -143,8 +147,8 @@
     "default": null
    }
   },
-  "notes": "meta=(MIR_OnDemandInputRequest)",
-  "verified": false
+  "notes": "meta=(MIR_OnDemandInputRequest)。UE 5.8実機sampleでDeclaration/DeclarationGuidを確認",
+  "verified": true
  },
  "Composite": {
   "class": "/Script/Engine.UMaterialExpressionComposite",
@@ -294,6 +298,10 @@
     "type": "FString",
     "default": ""
    },
+   "ShowCode": {
+    "type": "bool",
+    "default": false
+   },
    "OutputType": {
     "type": "enum:ECustomMaterialOutputType",
     "default": "CMOT_Float1"
@@ -323,7 +331,7 @@
     "default": "CMCI_Search"
    }
   },
-  "notes": "Inputs 配列で動的にピンが追加される。GetInputsView/GetInput/GetInputName をオーバーライド。AdditionalOutputs で出力ピンが追加される",
+  "notes": "Inputs 配列で動的にピンが追加される。GetInputsView/GetInput/GetInputName をオーバーライド。AdditionalOutputs で出力ピンが追加される。UE 5.8実機sampleでCode、Inputs(0..1)、ShowCode、A/B/Output Pinを確認（索引付きInputsはMGJSON raw_props保持）",
   "verified": false
  },
  "GetMaterialAttributes": {

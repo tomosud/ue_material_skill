@@ -1,0 +1,57 @@
+Begin Object Class=/Script/UnrealEd.MaterialGraphNode Name="MaterialGraphNode_0" ExportPath="/Script/UnrealEd.MaterialGraphNode'/Engine/Transient.NewMaterial:MaterialGraph_0.MaterialGraphNode_0'"
+   Begin Object Class=/Script/Engine.MaterialExpressionConstant Name="MaterialExpressionConstant_11" ExportPath="/Script/Engine.MaterialExpressionConstant'/Engine/Transient.NewMaterial:MaterialGraph_0.MaterialGraphNode_0.MaterialExpressionConstant_11'"
+   End Object
+   Begin Object Name="MaterialExpressionConstant_11" ExportPath="/Script/Engine.MaterialExpressionConstant'/Engine/Transient.NewMaterial:MaterialGraph_0.MaterialGraphNode_0.MaterialExpressionConstant_11'"
+      R=0.400000
+      MaterialExpressionEditorX=-1328
+      MaterialExpressionEditorY=384
+      MaterialExpressionGuid=9FD1A04B4BAED7138914FFAB30FFCDD2
+      Material="/Script/UnrealEd.PreviewMaterial'/Engine/Transient.NewMaterial'"
+   End Object
+   MaterialExpression="/Script/Engine.MaterialExpressionConstant'MaterialExpressionConstant_11'"
+   NodePosX=-1328
+   NodePosY=384
+   NodeGuid=7C5832D54ED417678D15049A0077477B
+   CustomProperties Pin (PinId=6923AEB144865E4391FD73C251966D66,PinName="Value",PinType.PinCategory="optional",PinType.PinSubCategory="red",PinType.PinSubCategoryObject=None,PinType.PinSubCategoryMemberReference=(),PinType.PinValueType=(),PinType.ContainerType=None,PinType.bIsReference=False,PinType.bIsConst=False,PinType.bIsWeakPointer=False,PinType.bIsUObjectWrapper=False,PinType.bSerializeAsSinglePrecisionFloat=False,DefaultValue="0.4",PersistentGuid=00000000000000000000000000000000,bHidden=False,bNotConnectable=True,bDefaultValueIsReadOnly=False,bDefaultValueIsIgnored=False,bAdvancedView=False,bOrphanedPin=False,)
+   CustomProperties Pin (PinId=412340596F1A56CCBC37D817073D6953,PinName="Output",PinFriendlyName=NSLOCTEXT("MaterialGraphNode", "Space", " "),Direction="EGPD_Output",PinType.PinCategory="",PinType.PinSubCategory="",PinType.PinSubCategoryObject=None,PinType.PinSubCategoryMemberReference=(),PinType.PinValueType=(),PinType.ContainerType=None,PinType.bIsReference=False,PinType.bIsConst=False,PinType.bIsWeakPointer=False,PinType.bIsUObjectWrapper=False,PinType.bSerializeAsSinglePrecisionFloat=False,LinkedTo=(MaterialGraphNode_1 3312CB12B30B51CD9055863EA52D48EA,),PersistentGuid=00000000000000000000000000000000,bHidden=False,bNotConnectable=False,bDefaultValueIsReadOnly=False,bDefaultValueIsIgnored=False,bAdvancedView=False,bOrphanedPin=False,)
+End Object
+Begin Object Class=/Script/UnrealEd.MaterialGraphNode Name="MaterialGraphNode_1" ExportPath="/Script/UnrealEd.MaterialGraphNode'/Engine/Transient.NewMaterial:MaterialGraph_0.MaterialGraphNode_1'"
+   Begin Object Class=/Script/Engine.MaterialExpressionOneMinus Name="MaterialExpressionOneMinus_2" ExportPath="/Script/Engine.MaterialExpressionOneMinus'/Engine/Transient.NewMaterial:MaterialGraph_0.MaterialGraphNode_1.MaterialExpressionOneMinus_2'"
+   End Object
+   Begin Object Name="MaterialExpressionOneMinus_2" ExportPath="/Script/Engine.MaterialExpressionOneMinus'/Engine/Transient.NewMaterial:MaterialGraph_0.MaterialGraphNode_1.MaterialExpressionOneMinus_2'"
+      Input=(Expression="/Script/Engine.MaterialExpressionConstant'MaterialGraphNode_0.MaterialExpressionConstant_11'")
+      MaterialExpressionEditorX=-1024
+      MaterialExpressionEditorY=384
+      MaterialExpressionGuid=18538AC94E1DB44234D32C8408D8615F
+      Material="/Script/UnrealEd.PreviewMaterial'/Engine/Transient.NewMaterial'"
+   End Object
+   MaterialExpression="/Script/Engine.MaterialExpressionOneMinus'MaterialExpressionOneMinus_2'"
+   NodePosX=-1024
+   NodePosY=384
+   NodeGuid=2CCE2E2B4B7EBEB301954798D0794BDF
+   CustomProperties Pin (PinId=3312CB12B30B51CD9055863EA52D48EA,PinName="Input",PinFriendlyName=NSLOCTEXT("MaterialGraphNode", "Space", " "),PinType.PinCategory="required",PinType.PinSubCategory="",PinType.PinSubCategoryObject=None,PinType.PinSubCategoryMemberReference=(),PinType.PinValueType=(),PinType.ContainerType=None,PinType.bIsReference=False,PinType.bIsConst=False,PinType.bIsWeakPointer=False,PinType.bIsUObjectWrapper=False,PinType.bSerializeAsSinglePrecisionFloat=False,LinkedTo=(MaterialGraphNode_0 412340596F1A56CCBC37D817073D6953,),PersistentGuid=00000000000000000000000000000000,bHidden=False,bNotConnectable=False,bDefaultValueIsReadOnly=False,bDefaultValueIsIgnored=False,bAdvancedView=False,bOrphanedPin=False,)
+   CustomProperties Pin (PinId=C7C6B00A31CB5459B4E21C4285FF2FE1,PinName="Output",PinFriendlyName=NSLOCTEXT("MaterialGraphNode", "Space", " "),Direction="EGPD_Output",PinType.PinCategory="",PinType.PinSubCategory="",PinType.PinSubCategoryObject=None,PinType.PinSubCategoryMemberReference=(),PinType.PinValueType=(),PinType.ContainerType=None,PinType.bIsReference=False,PinType.bIsConst=False,PinType.bIsWeakPointer=False,PinType.bIsUObjectWrapper=False,PinType.bSerializeAsSinglePrecisionFloat=False,PersistentGuid=00000000000000000000000000000000,bHidden=False,bNotConnectable=False,bDefaultValueIsReadOnly=False,bDefaultValueIsIgnored=False,bAdvancedView=False,bOrphanedPin=False,)
+End Object
+Begin Object Class=/Script/UnrealEd.MaterialGraphNode_Comment Name="MaterialGraphNode_2" ExportPath="/Script/UnrealEd.MaterialGraphNode_Comment'/Engine/Transient.NewMaterial:MaterialGraph_0.MaterialGraphNode_2'"
+   Begin Object Class=/Script/Engine.MaterialExpressionComment Name="MaterialExpressionComment_1" ExportPath="/Script/Engine.MaterialExpressionComment'/Engine/Transient.NewMaterial:MaterialGraph_0.MaterialGraphNode_2.MaterialExpressionComment_1'"
+   End Object
+   Begin Object Name="MaterialExpressionComment_1" ExportPath="/Script/Engine.MaterialExpressionComment'/Engine/Transient.NewMaterial:MaterialGraph_0.MaterialGraphNode_2.MaterialExpressionComment_1'"
+      SizeX=700
+      SizeY=280
+      Text="Comment Sample"
+      CommentColor=(R=0.100000,G=0.200000,B=0.500000,A=1.000000)
+      bCommentBubbleVisible_InDetailsPanel=True
+      MaterialExpressionEditorX=-1408
+      MaterialExpressionEditorY=304
+      MaterialExpressionGuid=B682CE054F0C8593AFB388B41B3613AD
+      Material="/Script/UnrealEd.PreviewMaterial'/Engine/Transient.NewMaterial'"
+   End Object
+   MaterialExpressionComment="/Script/Engine.MaterialExpressionComment'MaterialExpressionComment_1'"
+   CommentColor=(R=0.100000,G=0.200000,B=0.500000,A=1.000000)
+   NodePosX=-1408
+   NodePosY=304
+   NodeWidth=700
+   NodeHeight=280
+   NodeComment="Comment Sample"
+   NodeGuid=FE34B0BC4C7E9081D9580EB09DCE4763
+End Object

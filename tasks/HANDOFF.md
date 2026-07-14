@@ -27,10 +27,26 @@
 - T08 完了: offline QAとEditor steps 1〜9が全てOK。実copy→parse→build→再paste同型、
   PinType全省略も成功。結果は`tasks/verification-log.md`。Editorは
   `5.8.0-55116800+++UE5+Release-5.8`（Windows 11 build 26200.8655）。
+- E01 完了: `examples/01-single-constant.txt` に実機コピーの色変更済み Constant3Vector
+  （RGB=`1.0,0.644811,0.532869`）を保存。02はConstant×2 → Multiply → Addの4ノード・
+  3接続、03は通常Texture SampleとTexCoord・割り当てTexture2D・UV接続、04はTextureSample
+  G出力→Multiply A、05は設定済みScalarParameter + VectorParameterを保存。06はComment枠＋
+  2ノードを生成・実機往復し、2 nodes / 1 Comment / 1 link、unknown/raw 0を確認。
+  07は`BlendAngleCorrectedNormals` MaterialFunctionCallの生成時に旧pathで`Unspecified Function`
+  となったため、手動配置された実機コピーを再受領し、
+  `examples/07-function-call.txt` に保存済み。
+  正しいpathが`Engine_MaterialFunctions02/Utility`と判明したため、M02元カタログとMF仕様例を
+  修正し、BaseNormal / AdditionalNormal / Resultを実機確認済み。08は通常Rerouteを
+  `Convert to Named Reroute`で宣言＋使用へ変換した実機コピーを受領し、
+  `examples/08-named-reroute.txt` に保存済み。共有GUID一致を確認し、未収載VariableGuidを
+  C08へ追加、両classをverifiedへ更新。09は入力A/Bと`return A + B;`を持つCustomを受領し、
+  `examples/09-custom.txt`へ保存。未収載の`ShowCode: bool`をC08へ追加した。索引付きInputsは
+  MGJSONの`raw_props`へ可逆保持される。これで01〜09の実機sampleを全件収集済み。
 
 ### 監査結果と注意
 
-- 基盤T01〜T08、C01〜C22、M01〜M04は完了。未完了は追加sample収集E01のみ。
+- 基盤T01〜T08、C01〜C22、M01〜M04、追加sample収集E01はすべて完了。
+  E01は最低要件01〜05に加え、任意追加06〜09も実機収集済み。
 - `catalog/generated/*.json` は 26 ファイルすべて JSON syntax OK。
 - `tools/qa_outputs.py` の候補20 classを照合し、明確な差分だった ViewProperty を
   `Property` / `InvProperty` の2出力へ修正した。他は無名出力、機能フラグ条件、または
@@ -47,9 +63,14 @@
 - step 8実copy-backでComment geometryが完全一致しないことを確認し、`parse.py` の包含推定を
   各辺0〜200pxのtight-enclosure判定へ修正。修正版の実round-tripは同型を確認済み。
 - clipboard試験はWindows PowerShell経路で成功。step 9でPinType field全省略も実機確認済み。
+- E01全件監査で02の異なるConstant出力が同じPinIdを持つことを確認。`parse.py`のPin解決を
+  PinId単独から`(owner node name, PinId)`へ修正し、3接続すべての復元を確認済み。
+- 最終QA: 01〜09は全T3DのBegin/End均衡、parse成功、unknown class 0。09だけは索引付きInputs
+  2件を設計どおり`raw_props`保持。Python compile、catalog merge、generated + merged JSON
+  28ファイル、`git diff --check`、全task `status: DONE`を確認済み。
 - 実行環境では `python` が PATH から見えず、`py` に登録 interpreter もなかった。
   検証用 Python 3.12.11を `.uv-python/` へ一時配置してEditor検証と最終QAに使用し、
-  T08完了後に`.uv-python/` / `.uv-cache/` / `__pycache__`を削除済み。
+  最終QA後に`.uv-python/` / `.uv-cache/` / `__pycache__`を削除済み。
 - ユーザー所有の未追跡 `.claude/settings.local.json` には触れない。
 
 ### 中断時の再開手順
