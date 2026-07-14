@@ -1,0 +1,1244 @@
+{
+  "schema_version": 1,
+  "status": "inactive_review_only",
+  "policy": "Do not translate or restore these strings directly. Replace a claim only after recording source evidence and writing a new concise English description.",
+  "source_evidence": "catalog/node-evidence.json",
+  "nodes": {
+    "Abs": {
+      "desc": "abs(Input)。絶対値"
+    },
+    "AbsorptionMediumMaterialOutput": {
+      "desc": "パストレーサー用固体屈折性ガラスの吸収特性を設定する出力。透光距離100単位時の透光色を入力",
+      "notes": "CustomOutput。Outputs.Reset()で出力ピンなし。GetNumOutputs()は1を返すがエディタ上では非表示"
+    },
+    "ActorPositionWS": {
+      "desc": "アクタのワールド座標"
+    },
+    "Add": {
+      "desc": "A + B。float/vector対応、次元は大きい方に合わせられる"
+    },
+    "Aggregate": {
+      "desc": "マテリアル属性またはユーザー定義アグリゲートの複数入力をまとめて1つの出力に",
+      "notes": "Outputs.Empty(); Outputs.Emplace()で初期化。Entriesは動的に生成される"
+    },
+    "AntialiasedTextureMask": {
+      "desc": "アンチエイリアスされたテクスチャマスク。単一チャンネルの高精度マスク出力"
+    },
+    "AppendVector": {
+      "desc": "2つのベクトル・スカラーを結合して高次元ベクトルを作成"
+    },
+    "AtmosphericFogColor": {
+      "desc": "大気フォグの色を計算（非推奨：Atmosphereプラグイン推奨）",
+      "notes": "GetInputName()オーバーライドで入力名を動的に設定。deprecated"
+    },
+    "AtmosphericLightColor": {
+      "desc": "大気中の太陽光の地表照度を計算（DisplayName: Atmosphere Sun Light Illuminance On Ground）",
+      "notes": "UMaterialExpressionExternalCodeBase継承。入力ピンなし"
+    },
+    "AtmosphericLightVector": {
+      "desc": "大気中の太陽光ベクトルを計算（DisplayName: Atmosphere Sun Light Vector）",
+      "notes": "UMaterialExpressionExternalCodeBase継承。入力ピンなし"
+    },
+    "BentNormalCustomOutput": {
+      "desc": "ベント法線のカスタム出力。パストレーサー用の湾曲法線情報を設定",
+      "notes": "CustomOutput。Outputs.Reset()で出力ピンなし。GetNumOutputs()は1を返すがエディタ上では非表示"
+    },
+    "BindlessSwitch": {
+      "desc": "バインドレス対応とデフォルト実装を条件分岐。バインドレス対応時はBindless入力、非対応時はDefault入力を選択",
+      "notes": "IsInputConnectionRequired()をオーバーライド。両入力は必須",
+      "field_notes": {
+        "inputs[0].note": "バインドレス非対応時に使用",
+        "inputs[1].note": "バインドレス対応時に使用"
+      }
+    },
+    "BlackBody": {
+      "desc": "温度から黒体放射の色を計算。物理的に正確な色温度表現"
+    },
+    "Blend": {
+      "desc": "マテリアル属性（ピクセル/頂点）を2つの入力間でAlphaにより線形補間",
+      "notes": "マテリアル属性専用ノード。EMaterialExpressionBlendMode: Blend/UseA/UseB"
+    },
+    "BlendMaterialAttributes": {
+      "desc": "2つの MaterialAttributes を指定比率で混合",
+      "notes": "IsResultMaterialAttributes(0) = true。GetInput オーバーライドで A/B/Alpha を返す"
+    },
+    "Bounds": {
+      "desc": "メッシュのバウンディングボックス情報（ローカル座標）を出力。タイプにより出力が異なる",
+      "notes": "4つの出力：Half Extents(幅奥行き高さの半分)、Extents(全幅)、Min(最小点3D)、Max(最大点3D)。すべてローカル座標"
+    },
+    "BreakMaterialAttributes": {
+      "desc": "MaterialAttributes 構造体を個別の属性に分解",
+      "notes": "PropertyToIOIndexMap により出力ピン数が固定される。GetInputName で各出力の名前を取得"
+    },
+    "BumpOffset": {
+      "desc": "バンプオフセット。高さマップに基づいて座標をシフト（視差マッピング効果）"
+    },
+    "CameraPositionWS": {
+      "desc": "カメラのワールド座標"
+    },
+    "CameraVectorWS": {
+      "desc": "カメラから現在のピクセルへの方向ベクトル",
+      "notes": "MaterialExpressionExternalCodeBaseを継承"
+    },
+    "Ceil": {
+      "desc": "ceil(Input)。天井関数(切り上げ)"
+    },
+    "ChannelMaskParameter": {
+      "desc": "チャネルマスクパラメータ（R/G/B/A チャネルを選択して出力）",
+      "notes": "UMaterialExpressionVectorParameter を継承。Input が必須（IsInputConnectionRequired=true）"
+    },
+    "Clamp": {
+      "desc": "clamp(Input, Min, Max)。値を範囲内に制限"
+    },
+    "ClearCoatNormalCustomOutput": {
+      "desc": "クリアコート底面法線のカスタム出力",
+      "notes": "CustomOutput。Outputs.Reset()で出力ピンなし"
+    },
+    "CloudSampleAttribute": {
+      "desc": "クラウドレイヤーのサンプル属性を取得（高度、レイヤー内位置、正規化高度、シャドウ距離）",
+      "notes": "4つの出力ピン。UMaterialExpressionExternalCodeBase継承"
+    },
+    "CollectionParameter": {
+      "desc": "マテリアルパラメータコレクションの単一パラメータを参照",
+      "notes": "パラメータノード。HasAParameterName()=true。パラメータ名変更時はParameterIdで追跡"
+    },
+    "CollectionTransform": {
+      "desc": "マテリアルパラメータコレクション内の連続5ベクトル要素を変換行列として使用",
+      "notes": "パラメータノード。TransformType: Position(4x4位置行列)/Vector(3x3回転行列)/Projection(4x4射影行列)/LocalToWorld/WorldToLocal"
+    },
+    "ColorRamp": {
+      "desc": "入力値に基づいて曲線からリニアカラーをサンプリング",
+      "notes": "Constructorで白→黒グラデーションの初期カラーカーブを作成。ConstInputはOverridingInputProperty"
+    },
+    "Comment": {
+      "desc": "コメント用ノード。マテリアルグラフの整理に使用",
+      "notes": "MaterialExpression単体はIsAllowedIn()でfalse。MaterialGraphNode_Comment経由のclipboard生成・往復をUE 5.8で確認済み"
+    },
+    "ComponentMask": {
+      "desc": "ベクトルの特定のコンポーネント(R/G/B/A)を選択出力"
+    },
+    "Composite": {
+      "desc": "サブグラフを組み込むノード。入出力はピンベースで管理される",
+      "notes": "InputExpressions と OutputExpressions でピンを管理。GetInputsView/GetOutputs をオーバーライド | ctor確認済: Outputs.Reset()のみ。出力はPinBase経由で動的"
+    },
+    "Constant": {
+      "desc": "定数値（float）を出力する"
+    },
+    "Constant2Vector": {
+      "desc": "2要素ベクトル定数（X, Y）を出力"
+    },
+    "Constant3Vector": {
+      "desc": "3要素ベクトル定数（RGB）を出力",
+      "notes": "meta に HideAlphaChannel が指定されている"
+    },
+    "Constant4Vector": {
+      "desc": "4要素ベクトル定数（RGBA）を出力",
+      "notes": "出力ピンに名前を表示（bShowOutputNameOnPin=true）"
+    },
+    "ConstantBiasScale": {
+      "desc": "入力に Bias と Scale を適用: (Bias + Input) * Scale"
+    },
+    "ConstantDouble": {
+      "desc": "倍精度浮動小数点定数値を出力",
+      "notes": "UMaterialExpressionGenericConstant継承（abstract）。ValueはShowAsInputPin=Primary"
+    },
+    "Convert": {
+      "desc": "動的入出力型コンバージョンノード。複数の型変換と成分マッピングに対応",
+      "notes": "入出力が動的。CountInputs()/GetOutputs()をオーバーライド。PostEditChangePropertyで入出力を再生成。RecreateOutputs()で出力を更新"
+    },
+    "CrossProduct": {
+      "desc": "2つのベクトルの外積を計算"
+    },
+    "CurveAtlasRowParameter": {
+      "desc": "スカラーパラメータを曲線アトラスの行位置として使用し、時間入力で値をサンプリングする",
+      "notes": "継承元UMaterialExpressionScalarParameterのDefaultValueはShowAsInputPin=Primaryに設定されている"
+    },
+    "CustomOutput": {
+      "desc": "カスタム出力の基底クラス(抽象)"
+    },
+    "DBufferTexture": {
+      "desc": "DBuffer テクスチャから値を取得する。A/B/C のいずれかを選択してサンプリング"
+    },
+    "DDX": {
+      "desc": "入力値の水平方向の偏微分(ddx)を計算する"
+    },
+    "DDY": {
+      "desc": "入力値の垂直方向の偏微分(ddy)を計算する"
+    },
+    "DataDrivenShaderPlatformInfoSwitch": {
+      "desc": "シェーダプラットフォーム情報に基づいて条件分岐し、2つの入力から選択する",
+      "notes": "GetInputNameで動的に条件文字列を組立てて入力名を決定する"
+    },
+    "DecalColor": {
+      "desc": "デカール受信サーフェスのベースカラーを取得する",
+      "notes": "UMaterialExpressionExternalCodeBaseを継承(実装コード生成型)"
+    },
+    "DecalDerivative": {
+      "desc": "デカール受信サーフェスの偏微分(DDX, DDY)を取得する",
+      "notes": "FExpressionOutput(TEXT(\"...\"))形式で名前のみ、マスク情報なし"
+    },
+    "DecalLifetimeOpacity": {
+      "desc": "デカールのライフタイムに基づいた不透明度を取得する",
+      "notes": "UMaterialExpressionExternalCodeBaseを継承"
+    },
+    "DecalMipmapLevel": {
+      "desc": "テクスチャサイズからミップマップレベルを計算する",
+      "notes": "ConstWidthとConstHeightはOverridingInputProperty=TextureSize。UMaterialExpressionExternalCodeBaseを継承"
+    },
+    "DeltaTime": {
+      "desc": "前フレームからの経過時間を出力"
+    },
+    "DepthFade": {
+      "desc": "シーン深度に基づいて半透明のフェードを適用。オブジェクトが別のオブジェクトに接近時に透明化",
+      "notes": "GetInputName オーバーライド有り。InputIndex == 0 で 'Opacity' を返す"
+    },
+    "DepthOfFieldFunction": {
+      "desc": "深度から被写界深度関連の値を計算する(ピント、近景、遠景、円盤の混乱など)",
+      "notes": "UMaterialExpressionExternalCodeBaseを継承"
+    },
+    "DeriveNormalZ": {
+      "desc": "法線XY成分からZ成分を復元(法線圧縮用)"
+    },
+    "Desaturation": {
+      "desc": "色を彩度を下げて灰色化(グレースケール変換)"
+    },
+    "Distance": {
+      "desc": "2点間の距離を計算"
+    },
+    "DistanceCullFade": {
+      "desc": "カメラからの距離に基づいてフェード。遠距離カリングに使用"
+    },
+    "DistanceFieldApproxAO": {
+      "desc": "ディスタンスフィールドを用いた環境遮蔽(AO)を近似計算する",
+      "notes": "NumStepsはShowAsInputPin=Primary、StepScaleDefaultはShowAsInputPin=Advanced"
+    },
+    "DistanceFieldGradient": {
+      "desc": "ディスタンスフィールドの勾配(法線)を取得する",
+      "notes": "Positionの入力名はGetInputNameでWorldPositionOriginTypeに基づいて動的に決定される"
+    },
+    "DistanceFieldsRenderingSwitch": {
+      "desc": "ディスタンスフィールドレンダリングがサポートされているかで条件分岐する",
+      "notes": "meta=(MIR_OnDemandInputRequest)で動的に入力が決定される"
+    },
+    "DistanceToNearestSurface": {
+      "desc": "最も近いサーフェスまでの距離を取得する",
+      "notes": "Positionの入力名はGetInputNameでWorldPositionOriginTypeに基づいて動的に決定される"
+    },
+    "Divide": {
+      "desc": "A / B。float/vector対応"
+    },
+    "DotProduct": {
+      "desc": "2つのベクトルの内積を計算"
+    },
+    "DoubleVectorParameter": {
+      "desc": "ダブル精度ベクトルパラメータ（XYZ/XYZW）"
+    },
+    "DynamicParameter": {
+      "desc": "パーティクルシステムからの動的パラメータを受け取る。4つまでのベクトルを出力可能",
+      "notes": "GetOutputs() オーバーライド有り。動的に出力ピンを生成 | ctor確認済: 出力6本(R,G,B,A,RGB,RGBA)。GetOutputsでParamNames由来の動的名になる場合あり"
+    },
+    "EvalPhysicsIntegerField": {
+      "desc": "グローバルフィジックスフィールドから整数値をサンプリングする",
+      "notes": "UMaterialExpressionSamplePhysicsIntegerFieldを継承。FieldTargetはShowAsInputPin=Advanced。WorldPositionの入力名はGetInputNameで動的に決定される"
+    },
+    "EvalPhysicsScalarField": {
+      "desc": "グローバルフィジクスフィールドからスカラー値をサンプリング",
+      "notes": "GetInputName override handles WorldPosition naming based on WorldPositionOriginType"
+    },
+    "EvalPhysicsVectorField": {
+      "desc": "グローバルフィジクスフィールドからベクトル値をサンプリング",
+      "notes": "GetInputName override handles WorldPosition naming based on WorldPositionOriginType"
+    },
+    "ExternalCodeBase": {
+      "desc": "外部HLSLコードを挿入するベースクラス",
+      "notes": "Abstract base class - no direct instantiation"
+    },
+    "EyeAdaptation": {
+      "desc": "目の順応(露出補正)の現在値を参照"
+    },
+    "EyeAdaptationInverse": {
+      "desc": "EyeAdaptation逆変換を適用",
+      "notes": "LightValueInput defaults to (1,1,1), AlphaInput defaults to 1.0"
+    },
+    "FeatureLevelSwitch": {
+      "desc": "フィーチャーレベルに応じて異なる入力を選択",
+      "notes": "Default input (index 0) is required. GetInputName overrides index names based on ERHIFeatureLevel. Array size follows ERHIFeatureLevel::Num"
+    },
+    "FirstPersonOutput": {
+      "desc": "一人称視点レンダリング用のカスタム出力",
+      "notes": "CustomOutput derived. GetNumOutputs() returns 1. Requires explicit material output connection"
+    },
+    "FloatToUInt": {
+      "desc": "浮動小数点数を符号なし整数に変換",
+      "notes": "Supports Truncate, Floor, Round, Ceil modes"
+    },
+    "Floor": {
+      "desc": "floor(Input)。床関数(切り下げ)"
+    },
+    "Fmod": {
+      "desc": "A fmod B。浮動小数点数のモジュロ"
+    },
+    "FontSample": {
+      "desc": "フォントテクスチャをサンプリング",
+      "notes": "5 outputs for RGBA and combined channels. Requires Font and FontTexturePage properties"
+    },
+    "FontSampleParameter": {
+      "desc": "パラメータ化されたフォントテクスチャサンプリング",
+      "notes": "Inherits from FontSample. Adds parameter support for material instances"
+    },
+    "FontSignedDistance": {
+      "desc": "フォント署名距離フィールドのサンプリング",
+      "notes": "Inherits from ExternalCodeBase. 4 signed distance outputs"
+    },
+    "Frac": {
+      "desc": "frac(Input)。小数部取得"
+    },
+    "Fresnel": {
+      "desc": "フレネル効果を計算、視点角度による鏡面反射率を算出"
+    },
+    "FunctionInput": {
+      "desc": "マテリアル関数の入力ピン定義",
+      "notes": "meta=(MIR_OnDemandInputRequest)。IsAllowedIn() により MaterialFunction のみ"
+    },
+    "FunctionOutput": {
+      "desc": "マテリアル関数の出力ピン定義",
+      "notes": "IsAllowedIn() により MaterialFunction のみ。GetInputName は NAME_None を返す"
+    },
+    "GIReplace": {
+      "desc": "GI計算方式によって異なる入力を選択",
+      "notes": "Default for direct lighting, StaticIndirect for baked (Lightmass), DynamicIndirect for dynamic GI (LPV)"
+    },
+    "GenericConstant": {
+      "desc": "汎用定数値ベースクラス",
+      "notes": "Abstract base class with pure virtual GetConstantValue method"
+    },
+    "GetMaterialAttributes": {
+      "desc": "MaterialAttributes 構造体から属性を抽出",
+      "notes": "AttributeGetTypes により動的に出力ピンが追加される。出力ピン数はこの配列のサイズに応じて変わる"
+    },
+    "HairAttributes": {
+      "desc": "髪属性へのアクセス",
+      "notes": "16 outputs for various hair strand attributes. bUseTangentSpace controls coordinate space"
+    },
+    "HairColor": {
+      "desc": "メラニン濃度から髪色を生成",
+      "notes": "Melanin defaults to 0.5, Redness to 0.0, DyeColor to (1,1,1). Values are normalized over human hair range"
+    },
+    "HeightfieldMinMaxTexture": {
+      "desc": "UHeightfieldMinMaxTextureオブジェクトに含まれるテクスチャを出力。SamplerTypeはMinMaxTextureから自動選択される",
+      "notes": "VirtualHeightfieldMeshプラグイン有効時のみ使用可能"
+    },
+    "HsvToRgb": {
+      "desc": "HSV色空間からRGB色空間に変換"
+    },
+    "IfThenElse": {
+      "desc": "条件によって異なる値を選択",
+      "notes": "Condition > 0 selects True, otherwise False. Supports unknown value types"
+    },
+    "IsFirstPerson": {
+      "desc": "一人称視点かどうかを判定",
+      "notes": "Inherits from ExternalCodeBase. Returns boolean indicating first person rendering"
+    },
+    "IsOrthographic": {
+      "desc": "現在のカメラが正投影かどうかを出力(1=正投影、0=透視投影)",
+      "notes": "ExternalCodeBase派生。入力なし"
+    },
+    "LandscapeGrassOutput": {
+      "desc": "ランドスケープ上の草タイプごとの密度を出力",
+      "notes": "CustomOutput派生。入力は GrassTypes 配列の各要素の Input フィールドで、GetInputsView()により動的に列挙される。出力数は GrassTypes.Num()。GetInputName() オーバーライドあり"
+    },
+    "LandscapeLayerBlend": {
+      "desc": "複数のランドスケープレイヤーをブレンド",
+      "notes": "Layers 配列に応じた動的入力。GetInputsView() で LayerInput と HeightInput(BlendType==LB_HeightBlendの場合のみ)を返す。GetInputName() オーバーライドあり"
+    },
+    "LandscapeLayerCoords": {
+      "desc": "ランドスケープレイヤーのテクスチャ座標を取得",
+      "notes": "入力なし。プロパティベースの設定で座標を生成"
+    },
+    "LandscapeLayerSample": {
+      "desc": "指定ランドスケープレイヤーのウェイト値をサンプリング",
+      "notes": "is_parameter: true。入力なし。ParameterName で指定されたレイヤーの重みを返す"
+    },
+    "LandscapeLayerSwitch": {
+      "desc": "ランドスケープレイヤーが使用されているかで出力を切り替え",
+      "notes": "is_parameter: true。MaterialAttributes対応（IsResultMaterialAttributes オーバーライドあり）"
+    },
+    "LandscapeLayerWeight": {
+      "desc": "ランドスケープレイヤーの重みに応じて Base から Layer にブレンド",
+      "notes": "is_parameter: true。MaterialAttributes対応。Base未接続時は ConstBase を使用"
+    },
+    "LandscapePhysicalMaterialOutput": {
+      "desc": "ランドスケープ上の各位置での物理マテリアルを出力",
+      "notes": "CustomOutput派生。入力は Inputs 配列の各要素の Input フィールドで、GetInputsView()により動的に列挙される。出力数は Inputs.Num()。GetInputName()で PhysicalMaterial の名前を返す"
+    },
+    "LandscapeVisibilityMask": {
+      "desc": "ランドスケープの可視性マスク（非表示レイヤーを検出）",
+      "notes": "入力なし。ParameterName は static で '__LANDSCAPE_VISIBILITY__' に固定"
+    },
+    "LayerStack": {
+      "desc": "マテリアルレイヤー関数スタックを処理（実験的機能）",
+      "notes": "Experimental。MaterialAttributeLayers派生。LayerInputs は動的入力。GetInputName() と GetInput() オーバーライドあり"
+    },
+    "LegacyBlendMaterialAttributes": {
+      "desc": "マテリアル属性のレガシーブレンド（廃止予定）",
+      "notes": "deprecated: true。BlendMaterialAttributes 派生。4つの追加入力を持つ"
+    },
+    "Length": {
+      "desc": "ベクトルの長さ・大きさを計算"
+    },
+    "LightVector": {
+      "desc": "ライト方向ベクトルを出力",
+      "notes": "ExternalCodeBase派生。入力なし"
+    },
+    "LightmapUVs": {
+      "desc": "ライトマップのUV座標を出力",
+      "notes": "ExternalCodeBase派生。入力なし。出力マスク RG (FExpressionOutput(TEXT(\"\"), 1, 1, 1, 0, 0))"
+    },
+    "LightmassReplace": {
+      "desc": "ライトマスレンダリング時と実行時で異なる値を使用",
+      "notes": "入力は両方とも optional。GetInputName() オーバーライドなし"
+    },
+    "LocalPosition": {
+      "desc": "ローカル座標系でのピクセル位置"
+    },
+    "MainDirectionalLight": {
+      "desc": "メインの指向性ライトの情報を出力（照度と方向ベクトル）",
+      "notes": "入力なし。出力2本（Illuminance, Direction）。GetOutputValueType() オーバーライドあり"
+    },
+    "MakeMaterialAttributes": {
+      "desc": "個別の属性入力から MaterialAttributes を構築",
+      "notes": "IsResultMaterialAttributes(0) = true。全入力ピンは任意。GetExpressionInput() で EMaterialProperty から入力ピンを取得"
+    },
+    "MapARPassthroughCameraUV": {
+      "desc": "ビューポートUVをAR透視カメラUVにマッピング（アスペクト比とデバイス回転を考慮）",
+      "notes": "入力は required=true。AR向けの座標変換"
+    },
+    "MaterialAttributeLayers": {
+      "desc": "マテリアル属性レイヤーの構成と合成。複数のレイヤーとブレンド関数を使用して属性を結合",
+      "notes": "FMaterialAttributesInput タイプの単一入力。IsResultMaterialAttributes()==true"
+    },
+    "MaterialCache": {
+      "desc": "マテリアルキャッシュの読み書き。キャッシュタグと属性レイアウトの動的管理",
+      "notes": "出力は ConstructOutputs() で動的に生成される。GetOutputs() をオーバーライドして TArray を返す"
+    },
+    "MaterialFunctionCall": {
+      "desc": "マテリアル関数を呼び出すノード",
+      "notes": "FunctionInputs 配列により動的にピン数が変わる。GetInputsView/GetInputName をオーバーライド。meta=(MIR_OnDemandInputRequest)"
+    },
+    "MaterialLayerOutput": {
+      "desc": "マテリアルレイヤー出力。レイヤーグラフの終端ノード",
+      "notes": "UMaterialExpressionFunctionOutput を継承。コンストラクタで OutputName を設定"
+    },
+    "MaterialProxyReplace": {
+      "desc": "リアルタイム/マテリアルプロキシの切り替え。IsResultMaterialAttributes() == true",
+      "notes": "出力値タイプは MCT_Unknown。Build()/Compile() で処理"
+    },
+    "MaterialSample": {
+      "desc": "別のマテリアルの機能出力を参照。プロトタイプ段階（ENABLE_MATERIAL_SAMPLE_PROTOTYPE=0）",
+      "notes": "ENABLE_MATERIAL_SAMPLE_PROTOTYPE フラグが 0 の状態では Compile は実装されていない"
+    },
+    "MaterialXAppend3Vector": {
+      "desc": "A material expression that allows combining 3 channels together to create a vector with more channel than the original",
+      "notes": "Interchange plugin にて有効化時のみ使用可能なノード。"
+    },
+    "MaterialXAppend4Vector": {
+      "desc": "A material expression that allows combining 4 channels together to create a vector with more channel than the original",
+      "notes": "Interchange plugin にて有効化時のみ使用可能なノード。"
+    },
+    "MaterialXBurn": {
+      "desc": "Blend nodes take two 1-4 channel inputs and apply the same operator to all channels. Blend nodes support an optional float input mix , which can be used to mix the original B value with the result of ",
+      "notes": "Interchange plugin にて有効化時のみ使用可能なノード。"
+    },
+    "MaterialXContrast": {
+      "desc": "A material expression that increases or decreases contrast of a float/color value using a linear slope multiplier.",
+      "notes": "Interchange plugin にて有効化時のみ使用可能なノード。"
+    },
+    "MaterialXDifference": {
+      "desc": "Blend nodes take two 1-4 channel inputs and apply the same operator to all channels. Blend nodes support an optional float input mix , which can be used to mix the original B value with the result of ",
+      "notes": "Interchange plugin にて有効化時のみ使用可能なノード。"
+    },
+    "MaterialXDisjointOver": {
+      "desc": "Merge nodes take two 4-channel (color4) inputs and use the built-in alpha channel(s) to control the compositing of the A and B inputs. \"A\" and \"B\" refer to the non-alpha channels of the A and B inputs",
+      "notes": "Interchange plugin にて有効化時のみ使用可能なノード。"
+    },
+    "MaterialXDodge": {
+      "desc": "Blend nodes take two 1-4 channel inputs and apply the same operator to all channels. Blend nodes support an optional float input mix , which can be used to mix the original B value with the result of ",
+      "notes": "Interchange plugin にて有効化時のみ使用可能なノード。"
+    },
+    "MaterialXFractal": {
+      "desc": "Zero-centered 2D or 3D Fractal noise in 1, 2, 3 or 4 channels, created by summing several octaves of 2D or 3D Perlin noise, increasing the frequency and decreasing the amplitude at each octave. Defaul",
+      "notes": "Interchange plugin にて有効化時のみ使用可能なノード。"
+    },
+    "MaterialXIn": {
+      "desc": "Merge nodes take two 4-channel (color4) inputs and use the built-in alpha channel(s) to control the compositing of the A and B inputs. \"A\" and \"B\" refer to the non-alpha channels of the A and B inputs",
+      "notes": "Interchange plugin にて有効化時のみ使用可能なノード。"
+    },
+    "MaterialXLuminance": {
+      "desc": "A material expression that outputs a grayscale image containing the luminance of the incoming RGB color in all color channels; the alpha channel is left unchanged if present.",
+      "notes": "Interchange plugin にて有効化時のみ使用可能なノード。"
+    },
+    "MaterialXMask": {
+      "desc": "Merge nodes take two 4-channel (color4) inputs and use the built-in alpha channel(s) to control the compositing of the A and B inputs. \"A\" and \"B\" refer to the non-alpha channels of the A and B inputs",
+      "notes": "Interchange plugin にて有効化時のみ使用可能なノード。"
+    },
+    "MaterialXMatte": {
+      "desc": "Merge nodes take two 4-channel (color4) inputs and use the built-in alpha channel(s) to control the compositing of the A and B inputs. \"A\" and \"B\" refer to the non-alpha channels of the A and B inputs",
+      "notes": "Interchange plugin にて有効化時のみ使用可能なノード。"
+    },
+    "MaterialXMinus": {
+      "desc": "Blend nodes take two 1-4 channel inputs and apply the same operator to all channels. Blend nodes support an optional float input mix , which can be used to mix the original B value with the result of ",
+      "notes": "Interchange plugin にて有効化時のみ使用可能なノード。"
+    },
+    "MaterialXMod": {
+      "desc": "The remaining fraction after dividing an incoming input by a value and subtracting the integer portion. Unlike UE FMod or Modulo expressions, Mod always returns a non-negative result, matching the int",
+      "notes": "Interchange plugin にて有効化時のみ使用可能なノード。"
+    },
+    "MaterialXOut": {
+      "desc": "Merge nodes take two 4-channel (color4) inputs and use the built-in alpha channel(s) to control the compositing of the A and B inputs. \"A\" and \"B\" refer to the non-alpha channels of the A and B inputs",
+      "notes": "Interchange plugin にて有効化時のみ使用可能なノード。"
+    },
+    "MaterialXOver": {
+      "desc": "Merge nodes take two 4-channel (color4) inputs and use the built-in alpha channel(s) to control the compositing of the A and B inputs. \"A\" and \"B\" refer to the non-alpha channels of the A and B inputs",
+      "notes": "Interchange plugin にて有効化時のみ使用可能なノード。"
+    },
+    "MaterialXOverlay": {
+      "desc": "Blend nodes take two 1-4 channel inputs and apply the same operator to all channels. Blend nodes support an optional float input mix , which can be used to mix the original B value with the result of ",
+      "notes": "Interchange plugin にて有効化時のみ使用可能なノード。"
+    },
+    "MaterialXPlus": {
+      "desc": "Blend nodes take two 1-4 channel inputs and apply the same operator to all channels. Blend nodes support an optional float input mix , which can be used to mix the original B value with the result of ",
+      "notes": "Interchange plugin にて有効化時のみ使用可能なノード。"
+    },
+    "MaterialXPremult": {
+      "desc": "Multiply the RGB channels of the input by the Alpha channel of the input. Input must be of type float4",
+      "notes": "Interchange plugin にて有効化時のみ使用可能なノード。"
+    },
+    "MaterialXRamp4": {
+      "desc": "A material expression that computes a 4-corner bilinear value ramp..",
+      "notes": "Interchange plugin にて有効化時のみ使用可能なノード。"
+    },
+    "MaterialXRampLeftRight": {
+      "desc": "A material expression that computes a left-to-right bilinear value ramp.",
+      "notes": "Interchange plugin にて有効化時のみ使用可能なノード。"
+    },
+    "MaterialXRampTopBottom": {
+      "desc": "A material expression that computes a top-to-bottom bilinear value ramp.",
+      "notes": "Interchange plugin にて有効化時のみ使用可能なノード。"
+    },
+    "MaterialXRange": {
+      "desc": "A material expression that Remap a value from one range to another, optionally applying a gamma correction in the middle, and optionally clamping output values.",
+      "notes": "Interchange plugin にて有効化時のみ使用可能なノード。"
+    },
+    "MaterialXRemap": {
+      "desc": "A material expression that Remap a value from one range to another.",
+      "notes": "Interchange plugin にて有効化時のみ使用可能なノード。"
+    },
+    "MaterialXScreen": {
+      "desc": "Blend nodes take two 1-4 channel inputs and apply the same operator to all channels. Blend nodes support an optional float input mix , which can be used to mix the original B value with the result of ",
+      "notes": "Interchange plugin にて有効化時のみ使用可能なノード。"
+    },
+    "MaterialXSplitLeftRight": {
+      "desc": "A material expression that computes a left-right split matte, split at a specified u value.",
+      "notes": "Interchange plugin にて有効化時のみ使用可能なノード。"
+    },
+    "MaterialXSplitTopBottom": {
+      "desc": "A material expression that computes a top-bottom split matte, split at a specified v value.",
+      "notes": "Interchange plugin にて有効化時のみ使用可能なノード。"
+    },
+    "MaterialXTextureSampleParameterBlur": {
+      "desc": "The size of the blur kernel, relative to 0-1 UV space.",
+      "notes": "Interchange plugin にて有効化時のみ使用可能なノード。"
+    },
+    "MaterialXUnpremult": {
+      "desc": "Divide the RGB channels of the input by the Alpha channel of the input. If the Alpha value is zero, the original color4 input value is passed through unchanged. Input must be of type float4",
+      "notes": "Interchange plugin にて有効化時のみ使用可能なノード。"
+    },
+    "Max": {
+      "desc": "max(A, B)。最大値"
+    },
+    "MeshPaintTextureCoordinateIndex": {
+      "desc": "メッシュペイント用テクスチャ座標インデックス。External Code Base のラッパー",
+      "notes": "コンストラクタで Outputs.Reset() して 1 つの空出力を追加"
+    },
+    "MeshPaintTextureObject": {
+      "desc": "メッシュペイント用テクスチャオブジェクト。External Code Base のラッパー",
+      "notes": "コンストラクタで Outputs.Reset() して 1 つの空出力を追加。GetOutputValueType() をオーバーライド"
+    },
+    "MeshPaintTextureReplace": {
+      "desc": "メッシュペイントテクスチャの切り替え。デフォルト/メッシュペイント入力",
+      "notes": "コンストラクタで Outputs.Reset() して 1 つの空出力を追加"
+    },
+    "MeshPartitionChannelSample": {
+      "desc": "MeshPartitionDefinitionで指定されたチャネルをテクスチャ座標から取得",
+      "notes": "MeshPartitionプラグイン有効時のみ使用可能。Channel入力はMeshPartitionResourceから接続必須"
+    },
+    "MeshPartitionChannelSampleIndex": {
+      "desc": "インデックスで指定されたMeshPartitionチャネルをテクスチャ座標から取得",
+      "notes": "MeshPartitionプラグイン有効時のみ使用可能。Channel Textureはリソースから、Channel IndexはConstChannelIndexがデフォルト"
+    },
+    "MeshPartitionInspector": {
+      "desc": "MeshPartitionチャネルの検査・可視化用。全チャネルをランダムカラーで表示",
+      "notes": "MeshPartitionプラグイン有効時のみ使用可能。デバッグ用の検査・可視化ノード"
+    },
+    "MeshPartitionResource": {
+      "desc": "MeshPartitionの共有テクスチャリソースパラメータ。他のMeshPartition表現式から参照される",
+      "notes": "MeshPartitionプラグイン有効時のみ使用可能。他のMeshPartitionノードで参照される共有リソース"
+    },
+    "MeshPartitionTexcoord": {
+      "desc": "MeshPartitionチャネルのテクスチャ座標を出力。uvとunit単位の2つの出力を提供",
+      "notes": "MeshPartitionプラグイン有効時のみ使用可能"
+    },
+    "Min": {
+      "desc": "min(A, B)。最小値"
+    },
+    "Modulo": {
+      "desc": "A mod B。整数演算のモジュロ"
+    },
+    "MotionVectorWorldOffsetOutput": {
+      "desc": "モーションベクトル世界オフセット出力。ピクセル単位のモーションベクトルオフセット",
+      "notes": "UMaterialExpressionCustomOutput を継承。GetNumOutputs() =0。コンストラクタで Outputs.Reset()"
+    },
+    "Multiply": {
+      "desc": "A * B。float/vector対応"
+    },
+    "NamedRerouteBase": {
+      "desc": "名前付き Reroute の基底クラス",
+      "notes": "抽象クラス"
+    },
+    "NamedRerouteDeclaration": {
+      "desc": "名前付き変数を宣言するノード",
+      "notes": "VariableGuid で同一変数を追跡。UE 5.8実機sampleでName/NodeColor/VariableGuidを確認"
+    },
+    "NamedRerouteUsage": {
+      "desc": "名前付き変数の使用側ノード",
+      "notes": "meta=(MIR_OnDemandInputRequest)。UE 5.8実機sampleでDeclaration/DeclarationGuidを確認"
+    },
+    "NaniteReplace": {
+      "desc": "ナナイトレンダリング時の置き換え。デフォルト/ナナイト入力で切り替え",
+      "notes": "コンストラクタで Outputs を明示的に修正しない（デフォルト出力 1 本）"
+    },
+    "NeuralNetworkInput": {
+      "desc": "ニューラルネットワーク入力ノード。ニューラルポストプロセスの入力",
+      "notes": "UMaterialExpressionCustomOutput を継承。GetNumOutputs() で動的に出力数を返す。コンストラクタで Outputs.Reset()"
+    },
+    "NeuralNetworkOutput": {
+      "desc": "ニューラルネットワーク出力ノード。ニューラルポストプロセスの出力",
+      "notes": "UMaterialExpression を直接継承。コンストラクタで Outputs を RGBA に設定"
+    },
+    "Noise": {
+      "desc": "パーリンノイズやシンプレックスノイズなど複数の手法でノイズを生成。3次元位置から自動生成",
+      "notes": "GetInputName オーバーライド有り。FilterWidth のピン名は Levels パラメータに依存"
+    },
+    "Normalize": {
+      "desc": "ベクトルを正規化(単位ベクトル化)"
+    },
+    "ObjectBounds": {
+      "desc": "オブジェクトのバウンディングボックス情報",
+      "notes": "MaterialExpressionExternalCodeBaseを継承"
+    },
+    "ObjectLocalBounds": {
+      "desc": "オブジェクトのローカル座標系バウンディングボックス情報",
+      "notes": "MaterialExpressionExternalCodeBaseを継承"
+    },
+    "ObjectOrientation": {
+      "desc": "オブジェクトの向きを示すベクトル",
+      "notes": "MaterialExpressionExternalCodeBaseを継承"
+    },
+    "ObjectPositionWS": {
+      "desc": "オブジェクトのワールド座標"
+    },
+    "ObjectRadius": {
+      "desc": "オブジェクトのバウンディングスフィアの半径",
+      "notes": "MaterialExpressionExternalCodeBaseを継承"
+    },
+    "OneMinus": {
+      "desc": "1 - Input。補数"
+    },
+    "Operator": {
+      "desc": "演算ノード。単項/二項/三項演算を動的にサポート",
+      "notes": "GetInputName() は A-Z で入力名を生成。CountInputs()/GetInput() をオーバーライド。GetInputName で A-Z, Input1-N のように可変対応"
+    },
+    "Panner": {
+      "desc": "UV座標をパン（移動）。時間に基づいて座標をシフト",
+      "field_notes": {
+        "inputs[2].note": "OverridingInputProperty: Speed"
+      }
+    },
+    "Parameter": {
+      "desc": "パラメータの基底クラス",
+      "notes": "IsAllowedIn() でサブクラスのみを許可（自身は使用不可）"
+    },
+    "ParticleColor": {
+      "desc": "パーティクルカラー。RGB/R/G/B/A/RGBA 出力",
+      "notes": "External Code Base を継承。コンストラクタで 6 つの出力を設定（WITH_EDITORONLY_DATA ブロック内）"
+    },
+    "ParticleDirection": {
+      "desc": "パーティクル方向。パーティクルの移動方向ベクトル",
+      "notes": "External Code Base を継承。コンストラクタで出力を明示的に修正しない（デフォルト出力 1 本）"
+    },
+    "ParticleMacroUV": {
+      "desc": "パーティクルマクロUV。パーティクルシステムの MacroUVPosition/Radius を使用した UV 座標生成",
+      "notes": "External Code Base を継承。コンストラクタで出力を明示的に修正しない（デフォルト出力 1 本）"
+    },
+    "ParticleMotionBlurFade": {
+      "desc": "パーティクルのモーションブラーフェード値を公開",
+      "notes": "ExternalCodeBase派生、入力なし、出力1本"
+    },
+    "ParticlePositionWS": {
+      "desc": "パーティクルのワールド座標位置を取得",
+      "notes": "OriginTypeはShowAsInputPin=Advanced"
+    },
+    "ParticleRadius": {
+      "desc": "パーティクルの半径を取得"
+    },
+    "ParticleRandom": {
+      "desc": "パーティクルのランダム値を取得"
+    },
+    "ParticleRelativeTime": {
+      "desc": "パーティクルの相対時間を取得"
+    },
+    "ParticleSize": {
+      "desc": "パーティクルのサイズを取得"
+    },
+    "ParticleSpeed": {
+      "desc": "パーティクルの速度を取得"
+    },
+    "ParticleSpriteRotation": {
+      "desc": "パーティクルのスプライト回転を取得",
+      "notes": "コンストラクタで2つの出力を定義: Rad(ラジアン)とDeg(度数法)"
+    },
+    "ParticleSubUV": {
+      "desc": "パーティクルのサブUVテクスチャをサンプリング",
+      "notes": "TextureSampleを継承、6つの出力ピン、ブレンド設定あり"
+    },
+    "ParticleSubUVProperties": {
+      "desc": "パーティクルのSubUVプロパティへのダイレクトアクセス",
+      "notes": "コンストラクタで3つの出力を定義"
+    },
+    "PathTracingBufferTexture": {
+      "desc": "パストレーシングバッファテクスチャをルックアップ",
+      "notes": "コンストラクタで3つの出力を定義、ポストプロセスマテリアル専用",
+      "field_notes": {
+        "inputs[0].note": "未接続時は無視される"
+      }
+    },
+    "PathTracingQualitySwitch": {
+      "desc": "パストレーシング品質に応じて値を切り替え",
+      "notes": "非パストレーシング用とパストレーサー用の2つの入力"
+    },
+    "PathTracingRayTypeSwitch": {
+      "desc": "パストレーシングのレイタイプに応じて値を切り替え",
+      "notes": "5つのレイタイプに対応した入力（カメラ、シャドウ、間接拡散、間接鏡面反射、間接ボリューム）"
+    },
+    "PerInstanceCustomData": {
+      "desc": "インスタンスごとのカスタムデータを参照。float値を出力"
+    },
+    "PerInstanceCustomData3Vector": {
+      "desc": "インスタンスカスタムデータ(3Dベクトル)を取得",
+      "notes": "FLinearColorのDefaultValue。DataIndexはAdvanced入力ピン"
+    },
+    "PerInstanceFadeAmount": {
+      "desc": "インスタンスごとのフェード量を出力"
+    },
+    "PerInstanceRandom": {
+      "desc": "インスタンスごとのランダム値を出力"
+    },
+    "PhysicalMaterialOutput": {
+      "desc": "物理マテリアルの重みを出力するカスタム出力ノード。複数の物理マテリアルと入力値の配列で構成",
+      "notes": "RenderTrace プラグイン有効時のみペースト可能。CustomOutput派生。入力は Inputs 配列の各要素の Input フィールドで、GetInputsView() により動的に列挙される。GetInputName() で PhysicalMaterial の名前を返す。出力数は Inputs.Num()。GetInputValueType() は MCT_Float を返す"
+    },
+    "PinBase": {
+      "desc": "ピン集約ノード。複数の Reroute ピンを管理",
+      "notes": "IsAllowedIn() で false を返すため、マテリアルでは使用不可。Composite の子要素用 | ctor確認済: Outputs.Reset()のみ。出力はピン構成で動的"
+    },
+    "PixelDepth": {
+      "desc": "現在のピクセルの深度値",
+      "notes": "MaterialExpressionExternalCodeBaseを継承"
+    },
+    "PixelNormalWS": {
+      "desc": "現在のピクセルの表面法線(ワールド座標)"
+    },
+    "PostVolumeUserFlagTest": {
+      "desc": "ポストボリュームユーザーフラグをテスト",
+      "notes": "BitIndexはToolTipで'ConstBitIndex'をデフォルト値として参照"
+    },
+    "Power": {
+      "desc": "Base ^ Exponent。べき乗"
+    },
+    "PreSkinnedLocalBounds": {
+      "desc": "スキニング前のローカルバウンディングボックス情報を取得",
+      "notes": "コンストラクタで4つの出力を定義。スケルタルメッシュのバウンドボックス情報を提供"
+    },
+    "PreSkinnedNormal": {
+      "desc": "スキニング前のローカル法線を返す。スケルタルメッシュの頂点シェーダでのみ使用可能"
+    },
+    "PreSkinnedPosition": {
+      "desc": "スキニング前のローカル位置を返す（非推奨、'Local Position'にマージされた）"
+    },
+    "PrecomputedAOMask": {
+      "desc": "Lightmass World設定で生成された事前計算AOマスクにアクセス"
+    },
+    "PreviousFrameSwitch": {
+      "desc": "現在フレームと前フレームのいずれかを選択するスイッチ"
+    },
+    "QualitySwitch": {
+      "desc": "品質レベルに基づいて異なる入力を選択するスイッチ",
+      "notes": "Inputs配列の要素数はEMaterialQualityLevel::Numで定義。IsInputConnectionRequired(InputIndex==0)でDefault必須"
+    },
+    "RayTracingQualitySwitch": {
+      "desc": "レイトレーシング対応かどうかに基づいて異なる入力を選択するスイッチ"
+    },
+    "RecordTextureStreamingInfo": {
+      "desc": "テクスチャのUVスケール情報を自動ストリーミングシステム用に記録",
+      "notes": "GetInput()でInputIndexを処理。GetInputValueType()でMCT_Texture2D, MCT_Float2を返す"
+    },
+    "ReflectionCapturePassSwitch": {
+      "desc": "リフレクションキャプチャレンダリング時の特殊な挙動を定義するスイッチ"
+    },
+    "ReflectionVectorWS": {
+      "desc": "反射ベクトル",
+      "field_notes": {
+        "inputs[0].note": "未指定時はピクセル法線を使用"
+      }
+    },
+    "RequiredSamplersSwitch": {
+      "desc": "プラットフォームのサンプラー数制限に基づいてロジックを切り替えるスイッチ",
+      "notes": "GetInputName()で入力ピン名を返す。IsInputConnectionRequired()でfalse"
+    },
+    "Reroute": {
+      "desc": "入力をそのまま出力に通す。グラフの結線を整理するために使用"
+    },
+    "RerouteBase": {
+      "desc": "Reroute 系の基底クラス。複数の入力値を通す機能を提供",
+      "notes": "抽象クラス"
+    },
+    "RgbToHsv": {
+      "desc": "RGB色空間からHSV色空間に変換"
+    },
+    "RotateAboutAxis": {
+      "desc": "任意の軸周りにベクトルを回転"
+    },
+    "Rotator": {
+      "desc": "UV座標を回転。中心点を基準に時間に基づいて回転"
+    },
+    "Round": {
+      "desc": "round(Input)。四捨五入"
+    },
+    "RuntimeVirtualTextureCustomData": {
+      "desc": "ランタイム仮想テクスチャのカスタムデータにアクセス"
+    },
+    "RuntimeVirtualTextureOutput": {
+      "desc": "ランタイム仮想テクスチャへ複数のマテリアル属性を出力",
+      "notes": "CustomOutputノード。GetNumOutputs()で動的に出力数を決定。Compile()でOutputIndexごとに異なる処理"
+    },
+    "RuntimeVirtualTextureReplace": {
+      "desc": "仮想テクスチャレンダリングパス時のロジック切り替え",
+      "notes": "IsInRuntimeVirtualTextureOutput()により入力を選択"
+    },
+    "RuntimeVirtualTextureSample": {
+      "desc": "ランタイム仮想テクスチャからサンプリング。複数の出力ピンを持つ",
+      "notes": "InitOutputs()で出力ピンを動的に生成。GetInput()でInputIndexを処理。MipValueModeにより入力ピンが変動可能"
+    },
+    "RuntimeVirtualTextureSampleParameter": {
+      "desc": "ランタイム仮想テクスチャサンプリングのパラメータ版",
+      "notes": "UMaterialExpressionRuntimeVirtualTextureSampleを継承。パラメータ版なので参照用プロパティを追加"
+    },
+    "SRGBColorToWorkingColorSpace": {
+      "desc": "sRGB色空間からワーキング色空間に変換"
+    },
+    "SamplePhysicsIntegerField": {
+      "desc": "グローバルフィジックスフィールドの整数値をサンプリング",
+      "notes": "GetInputName()でWorldPositionの表示名を動的に生成。WorldPositionOriginTypeで変更可能"
+    },
+    "SamplePhysicsScalarField": {
+      "desc": "グローバルフィジックスフィールドのスカラー値をサンプリング",
+      "notes": "GetInputName()でWorldPositionの表示名を動的に生成。WorldPositionOriginTypeで変更可能"
+    },
+    "SamplePhysicsVectorField": {
+      "desc": "物理フィールドベクトル値をサンプリング"
+    },
+    "Saturate": {
+      "desc": "saturate(Input)。[0,1]に制限"
+    },
+    "ScalarBlueNoise": {
+      "desc": "スカラーブルーノイズをサンプリング"
+    },
+    "ScalarParameter": {
+      "desc": "スカラー値のパラメータ"
+    },
+    "SceneColor": {
+      "desc": "画面座標からシーンカラーをサンプリング",
+      "notes": "GetInputName オーバーライド有り。InputMode により入力の解釈が変わる | ctor確認済: 出力2本"
+    },
+    "SceneDepth": {
+      "desc": "シーンの深度値をサンプリング",
+      "notes": "GetInputNameオーバーライドあり - InputModeのenum値を表示",
+      "field_notes": {
+        "inputs[0].note": "入力モードによって名前が変わる(GetInputName参照)"
+      }
+    },
+    "SceneDepthWithoutWater": {
+      "desc": "水を除いたシーン深度値を取得"
+    },
+    "SceneTexelSize": {
+      "desc": "シーンテクスチャのテクセルサイズ"
+    },
+    "SceneTexture": {
+      "desc": "画面配置テクスチャ(深度、法線など)をサンプリング",
+      "notes": "ctor確認済: 出力3本"
+    },
+    "ScreenPosition": {
+      "desc": "スクリーン座標系でのピクセル位置",
+      "notes": "MaterialExpressionExternalCodeBaseを継承"
+    },
+    "SetMaterialAttributes": {
+      "desc": "複数の属性を MaterialAttributes 構造体に組み込む",
+      "notes": "Inputs 配列で動的にピンが追加される。AttributeSetTypes により入力ピン数が変わる。GetInputsView/GetInput/GetInputName をオーバーライド"
+    },
+    "ShaderStageSwitch": {
+      "desc": "ピクセル/頂点シェーダステージで異なる入力を選択"
+    },
+    "ShadingModel": {
+      "desc": "シェーディングモデルを指定"
+    },
+    "ShadingPathSwitch": {
+      "desc": "シェーディングパスに応じて異なる入力を選択",
+      "notes": "Inputs array (ERHIShadingPath::Num) is handled dynamically"
+    },
+    "ShadowReplace": {
+      "desc": "影マップレンダリング時に別の入力を使用"
+    },
+    "Sign": {
+      "desc": "sign(Input)。符号(-1/0/1)"
+    },
+    "SingleLayerWaterMaterialOutput": {
+      "desc": "単層水マテリアル出力",
+      "notes": "CustomOutput subclass with 4 outputs"
+    },
+    "SkyAtmosphereAerialPerspective": {
+      "desc": "大気エアリアルパースペクティブをサンプリング"
+    },
+    "SkyAtmosphereDistantLightScatteredLuminance": {
+      "desc": "大気遠距離光の散乱ルミナンス"
+    },
+    "SkyAtmosphereLightDirection": {
+      "desc": "大気光の方向を取得"
+    },
+    "SkyAtmosphereLightDiskLuminance": {
+      "desc": "大気光ディスクのルミナンス"
+    },
+    "SkyAtmosphereLightIlluminance": {
+      "desc": "大気光の照度"
+    },
+    "SkyAtmosphereLightIlluminanceOnGround": {
+      "desc": "地上の大気光照度"
+    },
+    "SkyAtmosphereViewLuminance": {
+      "desc": "ビュー方向での大気ルミナンス"
+    },
+    "SkyLightEnvMapSample": {
+      "desc": "スカイライトキューブマップをサンプリング"
+    },
+    "Sobol": {
+      "desc": "Sobol準ランダム数列サンプラー。2D格子セルと点番号から準ランダム座標を生成"
+    },
+    "SparseVolumeTextureBase": {
+      "desc": "スパースボリュームテクスチャのベースクラス"
+    },
+    "SparseVolumeTextureObject": {
+      "desc": "スパースボリュームテクスチャオブジェクトを出力",
+      "notes": "コンストラクタで出力を明示的に1つ設定"
+    },
+    "SparseVolumeTextureObjectParameter": {
+      "desc": "スパースボリュームテクスチャオブジェクトパラメータ",
+      "notes": "SparseVolumeTextureSampleParameterを継承して出力を1つに制限"
+    },
+    "SparseVolumeTextureSample": {
+      "desc": "スパースボリュームテクスチャをサンプリング。2つの属性出力を持つ",
+      "notes": "MipValueMode によって入力ピンが変わる(GetInputName参照)。CoordinatesDX/DY は MipValueMode==TMVM_Derivative でのみ有効",
+      "field_notes": {
+        "inputs[0].note": "未接続時は0",
+        "inputs[1].note": "Defaults to 'SparseVolumeTexture'"
+      }
+    },
+    "SparseVolumeTextureSampleParameter": {
+      "desc": "スパースボリュームテクスチャサンプリングパラメータ",
+      "notes": "SparseVolumeTextureSampleを継承。パラメータ化されたバージョン"
+    },
+    "SpeedTree": {
+      "desc": "SpeedTreeアセット用のジオメトリ・風・LOD制御",
+      "field_notes": {
+        "inputs[0].note": "Defaults to 'GeometryType'",
+        "inputs[1].note": "Defaults to 'WindType'",
+        "inputs[2].note": "Defaults to 'LODType'"
+      }
+    },
+    "SphereMask": {
+      "desc": "球体との距離に基づいてマスク値を生成"
+    },
+    "SphericalParticleOpacity": {
+      "desc": "球形パーティクルの不透明度を計算"
+    },
+    "SpriteTextureSampler": {
+      "desc": "2D スプライト用のテクスチャサンプラー。SourceTexture またはペーパー2D スプライトの AdditionalSourceTextures をサンプリング",
+      "notes": "Paper2D プラグイン有効時のみペースト可能。UMaterialExpressionTextureSampleParameter2D 派生。is_parameter: true。ParameterName は読み取り専用（CanRenameNode() は false を返す）。ParameterName は SpriteTexture または SpriteAdditionalTexture_N で自動設定。MipValueMode と SamplerSource は親クラスの prop_pins"
+    },
+    "SquareRoot": {
+      "desc": "sqrt(Input)。平方根"
+    },
+    "StaticBool": {
+      "desc": "静的ブール定数（コンパイル時定数）"
+    },
+    "StaticBoolParameter": {
+      "desc": "静的ブールパラメータ（DynamicBranch で動的に変更可）",
+      "notes": "DynamicBranch=true で MCT_Bool 出力（デフォルト MCT_StaticBool）"
+    },
+    "StaticComponentMaskParameter": {
+      "desc": "静的成分マスクパラメータ（R/G/B/A から選択）"
+    },
+    "StaticSwitch": {
+      "desc": "静的条件分岐（DefaultValue が True なら A、False なら B を出力）",
+      "notes": "GetInputName で「True」「False」「Value」に名前付け。meta に MIR_OnDemandInputRequest が指定",
+      "field_notes": {
+        "inputs[2].note": "未接続時は DefaultValue を使用"
+      }
+    },
+    "StaticSwitchParameter": {
+      "desc": "静的条件分岐パラメータ（DefaultValue で True/False 分岐）",
+      "notes": "UMaterialExpressionStaticBoolParameter を継承。GetInputName で「True」「False」に名前付け"
+    },
+    "SubstrateAdd": {
+      "notes": "Requires Substrate material engine feature (unavailable in non-Substrate environments)."
+    },
+    "SubstrateBSDF": {
+      "notes": "Requires Substrate material engine feature (unavailable in non-Substrate environments)."
+    },
+    "SubstrateConvertMaterialAttributes": {
+      "notes": "Requires Substrate material engine feature (unavailable in non-Substrate environments)."
+    },
+    "SubstrateConvertToDecal": {
+      "notes": "Requires Substrate material engine feature (unavailable in non-Substrate environments)."
+    },
+    "SubstrateEyeBSDF": {
+      "notes": "Requires Substrate material engine feature (unavailable in non-Substrate environments)."
+    },
+    "SubstrateHairBSDF": {
+      "notes": "Requires Substrate material engine feature (unavailable in non-Substrate environments)."
+    },
+    "SubstrateHazinessToSecondaryRoughness": {
+      "notes": "Requires Substrate material engine feature (unavailable in non-Substrate environments)."
+    },
+    "SubstrateHorizontalMixing": {
+      "notes": "Requires Substrate material engine feature (unavailable in non-Substrate environments)."
+    },
+    "SubstrateLightFunction": {
+      "notes": "Requires Substrate material engine feature (unavailable in non-Substrate environments)."
+    },
+    "SubstrateMetalnessToDiffuseAlbedoF0": {
+      "notes": "Requires Substrate material engine feature (unavailable in non-Substrate environments)."
+    },
+    "SubstratePostProcess": {
+      "notes": "Requires Substrate material engine feature (unavailable in non-Substrate environments)."
+    },
+    "SubstrateSelect": {
+      "notes": "Requires Substrate material engine feature (unavailable in non-Substrate environments)."
+    },
+    "SubstrateShadingModels": {
+      "notes": "Requires Substrate material engine feature (unavailable in non-Substrate environments)."
+    },
+    "SubstrateSimpleClearCoatBSDF": {
+      "notes": "Requires Substrate material engine feature (unavailable in non-Substrate environments)."
+    },
+    "SubstrateSingleLayerWaterBSDF": {
+      "notes": "Requires Substrate material engine feature (unavailable in non-Substrate environments)."
+    },
+    "SubstrateSlabBSDF": {
+      "notes": "Requires Substrate material engine feature (unavailable in non-Substrate environments)."
+    },
+    "SubstrateThinFilm": {
+      "notes": "Requires Substrate material engine feature (unavailable in non-Substrate environments)."
+    },
+    "SubstrateToonBSDF": {
+      "notes": "Requires Substrate material engine feature (unavailable in non-Substrate environments)."
+    },
+    "SubstrateTransmittanceToMFP": {
+      "notes": "Requires Substrate material engine feature (unavailable in non-Substrate environments)."
+    },
+    "SubstrateUI": {
+      "notes": "Requires Substrate material engine feature (unavailable in non-Substrate environments)."
+    },
+    "SubstrateUnlitBSDF": {
+      "notes": "Requires Substrate material engine feature (unavailable in non-Substrate environments)."
+    },
+    "SubstrateUtilityBase": {
+      "notes": "Requires Substrate material engine feature (unavailable in non-Substrate environments)."
+    },
+    "SubstrateVerticalLayering": {
+      "notes": "Requires Substrate material engine feature (unavailable in non-Substrate environments)."
+    },
+    "SubstrateVolumetricFogCloudBSDF": {
+      "notes": "Requires Substrate material engine feature (unavailable in non-Substrate environments)."
+    },
+    "SubstrateWeight": {
+      "notes": "Requires Substrate material engine feature (unavailable in non-Substrate environments)."
+    },
+    "SubsurfaceMediumMaterialOutput": {
+      "desc": "サブサーフェス媒質の平均自由光路と散乱分布を設定（パストレーサー専用）",
+      "notes": "カスタムアウトプット。出力ピンなし"
+    },
+    "Subtract": {
+      "desc": "A - B。float/vector対応"
+    },
+    "Switch": {
+      "desc": "条件値に基づいて複数の入力から1つを選択",
+      "notes": "動的入力配列を持つ。GetInputName/GetInputsViewで動的に処理される。RebuildOutputs()で出力が1つに設定される"
+    },
+    "TangentOutput": {
+      "desc": "カスタムアイタンジェント出力",
+      "notes": "カスタムアウトプット。出力ピンなし（Outputs.Reset()）"
+    },
+    "TemporalResponsivenessOutput": {
+      "desc": "テンポラルアキュムレーションの応答性を制御（実験的）",
+      "notes": "カスタムアウトプット。出力ピンなし（Outputs.Reset()）。Naniteは基本パスのみサポート"
+    },
+    "TemporalSobol": {
+      "desc": "テンポラル対応Sobol準ランダム数列サンプラー"
+    },
+    "TextureBase": {
+      "desc": "テクスチャサンプル・テクスチャオブジェクトの基底クラス"
+    },
+    "TextureCollection": {
+      "desc": "テクスチャコレクションを参照。テクスチャコレクションオブジェクトと数を出力",
+      "notes": "コンストラクタで2つの出力を明示的に設定"
+    },
+    "TextureCollectionParameter": {
+      "desc": "テクスチャコレクションパラメータ",
+      "notes": "TextureCollectionを継承。パラメータ化されたバージョン"
+    },
+    "TextureCoordinate": {
+      "desc": "テクスチャ座標（UV）出力。タイリングやミラーリング設定対応"
+    },
+    "TextureObject": {
+      "desc": "テクスチャオブジェクト出力（サンプリングなし）。マテリアル関数用プレビュー値"
+    },
+    "TextureObjectFromCollection": {
+      "desc": "テクスチャコレクションからテクスチャオブジェクトを取得"
+    },
+    "TextureObjectParameter": {
+      "desc": "テクスチャオブジェクトパラメータ（サンプリングなし）"
+    },
+    "TextureProperty": {
+      "desc": "テクスチャプロパティ出力（テクスチャサイズなど）"
+    },
+    "TextureSample": {
+      "desc": "テクスチャをサンプリング。RGB/R/G/B/A/RGBA複数出力対応",
+      "notes": "MipValueModeが TMVM_MipLevel/MipBias/Derivative に応じて入力ピンが変動。GetInputName でダイナミックに返される",
+      "field_notes": {
+        "inputs[0].note": "デフォルト: ConstCoordinate",
+        "inputs[3].note": "MipValueMode=TMVM_Derivative時のみ",
+        "inputs[4].note": "MipValueMode=TMVM_Derivative時のみ"
+      }
+    },
+    "TextureSampleParameter": {
+      "desc": "テクスチャサンプルパラメータの基底クラス"
+    },
+    "TextureSampleParameter2D": {
+      "desc": "テクスチャパラメータ(2D)。TextureSampleParameterの2D専用版"
+    },
+    "TextureSampleParameter2DArray": {
+      "desc": "テクスチャ配列(2D配列)をサンプリング。パラメータ化可能"
+    },
+    "TextureSampleParameterCube": {
+      "desc": "キューブマップテクスチャパラメータ（サンプリング）"
+    },
+    "TextureSampleParameterCubeArray": {
+      "desc": "キューブマップ配列をサンプリング。パラメータ化可能"
+    },
+    "TextureSampleParameterSubUV": {
+      "desc": "SubUVアニメーション対応の2Dテクスチャをサンプリング。パラメータ化可能"
+    },
+    "TextureSampleParameterVolume": {
+      "desc": "ボリュームテクスチャをサンプリング。パラメータ化可能"
+    },
+    "ThinTranslucentMaterialOutput": {
+      "desc": "薄型透光材料の透過率と表面被覆率を出力",
+      "notes": "CustomOutput ベース。出力は GetNumOutputs() = 2"
+    },
+    "Time": {
+      "desc": "時間値を出力。Period で時刻をループさせることが可能。bIgnorePause で一時停止を無視可能"
+    },
+    "Transform": {
+      "desc": "ベクトルをある座標系から別の座標系に変換"
+    },
+    "TransformPosition": {
+      "desc": "位置座標をある座標系から別の座標系に変換"
+    },
+    "Truncate": {
+      "desc": "trunc(Input)。小数部切り捨て"
+    },
+    "TruncateLWC": {
+      "desc": "LWC(Large World Coordinate)値の整数部を抽出"
+    },
+    "TwoSidedSign": {
+      "desc": "両面マテリアル時の表裏判定値",
+      "notes": "MaterialExpressionExternalCodeBaseを継承"
+    },
+    "UIntToFloat": {
+      "desc": "uint32値をfloatに変換"
+    },
+    "UserSceneTexture": {
+      "desc": "ユーザー指定のシーンテクスチャをサンプリング"
+    },
+    "VectorNoise": {
+      "desc": "3次元ベクトルとしてノイズを出力。セルノイズ、パーリンノイズ勾配など対応",
+      "notes": "GetInputName オーバーライド有り"
+    },
+    "VectorParameter": {
+      "desc": "ベクトル値のパラメータ（RGB/RGBA）"
+    },
+    "VertexColor": {
+      "desc": "メッシュの頂点カラーを出力",
+      "notes": "ctor確認済: 出力5本(RGB,R,G,B,A)"
+    },
+    "VertexInterpolator": {
+      "desc": "頂点シェーダーの値をピクセルシェーダーに補間転送",
+      "notes": "CustomOutput ベース。GetInputName() で Input を 'VS' に表示"
+    },
+    "VertexNormalWS": {
+      "desc": "頂点の法線(ワールド座標)",
+      "notes": "MaterialExpressionExternalCodeBaseを継承"
+    },
+    "VertexTangentWS": {
+      "desc": "頂点の接線(ワールド座標)",
+      "notes": "MaterialExpressionExternalCodeBaseを継承"
+    },
+    "ViewProperty": {
+      "desc": "ビュー関連のプロパティ(解像度、FOV、カメラ位置等)を取得"
+    },
+    "ViewSize": {
+      "desc": "ビューのサイズ(幅と高さ)"
+    },
+    "VirtualTextureFeatureSwitch": {
+      "desc": "仮想テクスチャサポートの有無で分岐",
+      "notes": "meta=(MIR_OnDemandInputRequest) により条件分岐で入力ピン選択"
+    },
+    "VolumetricAdvancedMaterialInput": {
+      "desc": "ボリューメトリッククラウド詳細材質入力"
+    },
+    "VolumetricAdvancedMaterialOutput": {
+      "desc": "ボリューメトリッククラウド詳細材質出力。位相関数、散乱パラメータ等を設定",
+      "notes": "CustomOutput ベース。GetNumOutputs() = 7"
+    },
+    "VolumetricCloudEmptySpaceSkippingInput": {
+      "desc": "ボリューメトリッククラウド空白スキップ用の球体情報(中心、半径)を出力",
+      "notes": "Experimental. ExternalCodeBase ベース"
+    },
+    "VolumetricCloudEmptySpaceSkippingOutput": {
+      "desc": "ボリューメトリッククラウド空白スキップ出力。物質が存在するか否かを示す",
+      "notes": "Experimental. CustomOutput ベース。GetNumOutputs() = 1"
+    },
+    "WorldPosition": {
+      "desc": "ワールド座標系での現在のピクセル位置を出力"
+    }
+  }
+}

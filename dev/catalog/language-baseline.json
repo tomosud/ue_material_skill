@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "policy": "CJK text is forbidden in active skill content. Counts record temporary refactoring debt and must only decrease through reviewed English conversions.",
+  "scope": "skills/ue-material/**/*.{json,md,py,yaml,yml}",
+  "exemptions": [
+    "skills/ue-material/catalog/legacy-node-prose.json"
+  ],
+  "files": {}
+}
