@@ -28,6 +28,9 @@ $CODEX_HOME/skills/ue-material/SKILL.md
 
 Then invoke it as `$ue-material` or ask Codex to create, inspect, or modify Unreal Material Editor nodes.
 
+For a shared junction-based setup across multiple AI tools and for resolving the Unreal Engine source root,
+see `SETUP.md`.
+
 ## Basic usage
 
 Run commands from the installed `ue-material` skill directory. The scripts use only the Python standard
@@ -69,9 +72,10 @@ python scripts/parse.py material-nodes.t3d
   a function's internal graph.
 - Custom expressions have version-specific input, output, include, define, and shader-compilation constraints.
 - Catalog prose and provenance help discovery, but every factual node explanation and generation decision must
-  be checked against the configured Unreal Engine source checkout.
-- Set `UE_SOURCE_ROOT` to the read-only Unreal Engine checkout used for source inspection. Catalog source paths
-  are relative to that root.
+  be checked against the resolved Unreal Engine source checkout.
+- Resolve the source root in order: `.ue-material/settings.json` (`ueSourceRoot`), then `UE_SOURCE_ROOT`, then
+  a user-directed limited scan of a user-provided folder. Do not scan whole drives by default. Catalog source
+  paths are relative to that root. See `skills/ue-material/references/source-verification.md`.
 
 Detailed specifications live in the distributable skill:
 

@@ -6,6 +6,7 @@ or using a node in a generated graph.
 ## Contents
 
 - [Reference baseline](#reference-baseline)
+- [Resolving the source root](#resolving-the-source-root)
 - [Canonical terminology](#canonical-terminology)
 - [Evidence dimensions](#evidence-dimensions)
 - [Required audit workflow](#required-audit-workflow)
@@ -17,7 +18,8 @@ or using a node in a generated graph.
 
 ## Reference baseline
 
-- Source root: the read-only checkout configured by `UE_SOURCE_ROOT`
+- Source root: a read-only Unreal Engine checkout resolved as described in
+  [Resolving the source root](#resolving-the-source-root)
 - Engine version: 5.8.0
 - Source branch recorded by `Engine/Build/Build.version`: `UE5`
 - Repository baseline: `307eb76854c40b13bbad0ce293b9e5eae8996805`
@@ -25,6 +27,54 @@ or using a node in a generated graph.
 
 Treat this baseline as version-specific. Do not broaden a source finding into a compatibility claim for
 another Unreal Engine revision.
+
+## Resolving the source root
+
+The bundled Python tools never read Unreal source; they operate only on the packaged catalog. The source
+root is required only for manual source verification. Resolve it in this order and stop at the first match:
+
+1. **Skill-local setting file.** Read `.ue-material/settings.json` at the working-project root and use its
+   `ueSourceRoot`.
+2. **Environment variable.** Use `UE_SOURCE_ROOT`.
+3. **User-directed limited scan.** Ask the user for the folder that holds their Unreal installation and scan
+   only under it. Rank candidates by engine version and branch, let the user choose, then save the choice to
+   the setting file.
+
+Never scan whole drives by default. A recursive whole-drive walk is slow, can trigger access-denied on
+protected paths, and may be flagged by endpoint security. Broaden the scope only with explicit user opt-in.
+
+Run the limited scan depth-bounded and tolerant of permission errors, using the user-provided start folder:
+
+```powershell
+param([string]$Root = "E:\UE")   # user-provided start folder
+Get-ChildItem -Path $Root -Recurse -Filter "Build.version" -Depth 6 -ErrorAction SilentlyContinue |
+  Where-Object { $_.FullName -match 'Engine\\Build\\Build\.version' }
+```
+
+Persist only the resolved selection, not the candidate list. Write it to `.ue-material/settings.json` at the
+working-project root and keep that file out of version control; it is environment-specific and non-shared:
+
+```jsonc
+{
+  "$comment": "ue-material skill local setting (environment-specific, gitignored)",
+  "ueSourceRoot": "E:/UE/UE_5.8",
+  "resolvedAt": "2026-07-15",
+  "baseline": { "version": "5.8.0", "branch": "UE5" },
+  "verified": { "materialsHeaders": true, "privateCpp": true, "gitCommitMatch": false }
+}
+```
+
+Add the setting path to the working project's `.gitignore`:
+
+```gitignore
+# ue-material skill local setting (environment-specific, non-shared)
+.ue-material/
+```
+
+Before using a resolved root, confirm it matches the baseline version and branch. A promoted or launcher
+build has no `.git`, so exact baseline-commit matching may be unavailable; a version and branch match read
+from `Engine/Build/Build.version` is an acceptable substitute for development testing. Plugin-owned nodes
+(Substrate, MaterialX, and similar) live under `Engine/Plugins/.../Source/...` in the same checkout.
 
 ## Canonical terminology
 

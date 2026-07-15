@@ -14,8 +14,10 @@ create and consume verbose T3D; do not hand-author GUIDs, Pin records, or T3D in
 - Run `scripts/search_catalog.py` for broad discovery across every declared class, schema, source symbol, and
   legacy phrase. It returns each node as one record with field-level provenance; audit status is not a catalog
   partition or an exclusion rule.
-- Read `references/source-verification.md` and inspect the configured UE source root before every factual node
-  explanation or graph-generation decision. Never infer behavior from a class name or catalog prose alone.
+- Read `references/source-verification.md` and inspect the resolved UE source root before every factual node
+  explanation or graph-generation decision. Resolve the source root by its documented order
+  (`.ue-material/settings.json` → `UE_SOURCE_ROOT` → user-directed limited scan); never scan whole drives by
+  default. Never infer behavior from a class name or catalog prose alone.
 - Preserve node object order when a stable layout matters.
 - Never create or connect the Material Root node. After paste, tell the user which final output to connect
   manually to Base Color, Roughness, Normal, Emissive Color, or another Root input.
@@ -32,7 +34,7 @@ create and consume verbose T3D; do not hand-author GUIDs, Pin records, or T3D in
 ### Generate a new graph
 
 1. Read `references/mgjson.md` when the request needs syntax beyond the summary below. Run
-   `python scripts/search_catalog.py <terms>`, then inspect the returned source references in the configured UE
+   `python scripts/search_catalog.py <terms>`, then inspect the returned source references in the resolved UE
    source root. Do not fill gaps from memory, regardless of the recorded provenance state.
 2. Write MGJSON to a temporary or user-requested `.json` file.
 3. Validate it:
