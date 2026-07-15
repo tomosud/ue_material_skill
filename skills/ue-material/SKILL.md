@@ -17,7 +17,8 @@ create and consume verbose T3D; do not hand-author GUIDs, Pin records, or T3D in
 - Read `references/source-verification.md` and inspect the resolved UE source root before every factual node
   explanation or graph-generation decision. Resolve the source root by its documented order
   (`.ue-material/settings.json` → `UE_SOURCE_ROOT` → user-directed limited scan); never scan whole drives by
-  default. Never infer behavior from a class name or catalog prose alone.
+  default. Run `python scripts/source_fingerprint.py` to confirm the resolved root matches the catalog
+  baseline before trusting catalog facts. Never infer behavior from a class name or catalog prose alone.
 - Preserve node object order when a stable layout matters.
 - Never create or connect the Material Root node. After paste, tell the user which final output to connect
   manually to Base Color, Roughness, Normal, Emissive Color, or another Root input.

@@ -10,7 +10,9 @@
       "patch": 0,
       "branch": "UE5",
       "changelist": 0
-    }
+    },
+    "git_commit": "307eb76854c40b13bbad0ce293b9e5eae8996805",
+    "fingerprint": "5.8.0|UE5"
   },
   "audit_states": [
     "not_applicable",

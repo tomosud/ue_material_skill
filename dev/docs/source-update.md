@@ -36,6 +36,12 @@ Run these commands from the repository root.
    This step proves declarations only. It does not promote schema, description, restriction, compile, or
    Editor claims. Those require direct source inspection and, where applicable, an Editor fixture.
 
+   This step also stamps the baseline into `node-evidence.json` from `Engine/Build/Build.version` and the
+   checkout's `.git`: `source.version`, `source.git_commit`, and a `source.fingerprint` (`version|branch`).
+   The `BranchName` is normalized to its engine stream (for example `++UE5+Release-5.8` becomes `UE5`) so the
+   fingerprint matches both GitHub source and launcher promoted builds of the same release. Consumers compare
+   this baseline with `skills/ue-material/scripts/source_fingerprint.py`.
+
 3. Merge the existing generated catalog fragments into the distributable catalog and regenerate the compact
    node index:
 
@@ -73,3 +79,17 @@ when intentionally moving unsupported prose out of generated fragments.
 Record unresolved facts instead of guessing. Dynamic Pins, inherited behavior, Material Function assets,
 Named Reroutes, Composite graphs, Substrate nodes, plugins, clipboard reconstruction, and shader compilation
 may need focused source review or a versioned Unreal Editor sample after a source update.
+
+## Capturing new source-verified facts
+
+When source inspection establishes a new fact, record it in the maintained catalog rather than in a local,
+per-machine file. This keeps every verified fact fingerprinted, reviewed, and shared through the distribution.
+
+1. Add or update a bounded override under `dev/catalog/audits/` for the class. Each entry needs an `audit`
+   block (`declaration`/`schema`/`description`/`restrictions` set to a valid state) and a `references` list of
+   `{ "path": <source-relative>, "symbol": <exact symbol>, "claims": [...] }`. `gen_node_evidence.py` verifies
+   that every referenced symbol exists in the resolved source before writing.
+2. For merged schema, Pins, defaults, or descriptions, update the corresponding fragment under
+   `dev/catalog/generated/` so `catalog_merge.py` folds it into `nodes.json`.
+3. Regenerate (`gen_node_evidence.py`, `catalog_merge.py`) and run the offline gates above. Review every
+   generated difference against source before committing.

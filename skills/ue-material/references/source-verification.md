@@ -76,6 +76,24 @@ build has no `.git`, so exact baseline-commit matching may be unavailable; a ver
 from `Engine/Build/Build.version` is an acceptable substitute for development testing. Plugin-owned nodes
 (Substrate, MaterialX, and similar) live under `Engine/Plugins/.../Source/...` in the same checkout.
 
+Confirm this mechanically instead of by eye. `catalog/node-evidence.json` records the baseline as a
+`source.fingerprint` (`version|branch`) plus `source.git_commit`. Run the bundled check after resolving a
+root:
+
+```powershell
+python scripts/source_fingerprint.py            # uses .ue-material/settings.json or UE_SOURCE_ROOT
+python scripts/source_fingerprint.py --ue-root E:\UE\UE_5.8
+```
+
+`COMPATIBLE` (exit 0) means the resolved root is the same engine line as the catalog. A `WARNING` (exit 2)
+means the version or branch differs, so catalog facts must be re-audited against that source before use.
+Changelist and commit legitimately differ between a GitHub source release and a launcher promoted build of the
+same version; they are reported for audit but do not gate the result.
+
+The catalog is the durable, reviewed store of source-verified facts. When source inspection establishes a new
+fact, contribute it back to the maintained catalog evidence rather than keeping it only in a local file, so it
+stays fingerprinted, reviewed, and shared. Do not treat a local, per-machine note as an authority.
+
 ## Canonical terminology
 
 Use exact source identifiers in this order:

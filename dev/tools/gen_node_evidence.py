@@ -48,6 +48,16 @@ def load_object(path: Path) -> dict[str, Any]:
     return value
 
 
+def normalize_branch(name: Any) -> Any:
+    """Reduce a Build.version BranchName to its engine stream (e.g. ++UE5+Release-5.8 -> UE5)."""
+    if not isinstance(name, str) or not name:
+        return name
+    text = name.strip()
+    if text.startswith("++"):
+        text = text[2:]
+    return text.split("+", 1)[0]
+
+
 def source_version(ue_root: Path) -> dict[str, Any]:
     version_path = ue_root / "Engine" / "Build" / "Build.version"
     value = load_object(version_path)
@@ -55,9 +65,48 @@ def source_version(ue_root: Path) -> dict[str, Any]:
         "major": value.get("MajorVersion"),
         "minor": value.get("MinorVersion"),
         "patch": value.get("PatchVersion"),
-        "branch": value.get("BranchName"),
+        "branch": normalize_branch(value.get("BranchName")),
         "changelist": value.get("Changelist"),
     }
+
+
+def build_fingerprint(version: dict[str, Any]) -> str | None:
+    """Mechanical version|branch key used to detect a different engine line."""
+    major, minor, patch = version.get("major"), version.get("minor"), version.get("patch")
+    branch = version.get("branch")
+    if None in (major, minor, patch) or not branch:
+        return None
+    return f"{major}.{minor}.{patch}|{branch}"
+
+
+def git_commit(ue_root: Path) -> str | None:
+    """Best-effort HEAD commit of the checkout; None for promoted/launcher builds without .git."""
+    git_dir = ue_root / ".git"
+    try:
+        if git_dir.is_file():
+            pointer = git_dir.read_text(encoding="utf-8").strip()
+            if pointer.startswith("gitdir:"):
+                git_dir = (ue_root / pointer.split(":", 1)[1].strip()).resolve()
+        if not git_dir.is_dir():
+            return None
+        head = (git_dir / "HEAD").read_text(encoding="utf-8").strip()
+        if not head.startswith("ref:"):
+            return head or None
+        ref = head.split(":", 1)[1].strip()
+        ref_path = git_dir / ref
+        if ref_path.is_file():
+            return ref_path.read_text(encoding="utf-8").strip() or None
+        packed = git_dir / "packed-refs"
+        if packed.is_file():
+            for line in packed.read_text(encoding="utf-8").splitlines():
+                if line.startswith(("#", "^")):
+                    continue
+                sha, _, name = line.partition(" ")
+                if name.strip() == ref:
+                    return sha.strip() or None
+        return None
+    except OSError:
+        return None
 
 
 def declaration_is_present(path: Path, symbol: str) -> bool:
@@ -199,13 +248,16 @@ def main() -> int:
     if unknown_audits:
         raise ValueError(f"audit fragments contain unknown classes: {unknown_audits}")
     records = build_records(ue_root, manifest, existing_nodes, audit_overrides)
+    version = source_version(ue_root)
     document = {
         "schema_version": 1,
         "source": {
             "root_env": "UE_SOURCE_ROOT",
             "paths": "source_relative",
             "read_only": True,
-            "version": source_version(ue_root),
+            "version": version,
+            "git_commit": git_commit(ue_root),
+            "fingerprint": build_fingerprint(version),
         },
         "audit_states": sorted(AUDIT_STATES),
         "nodes": records,

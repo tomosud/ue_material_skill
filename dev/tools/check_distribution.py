@@ -22,6 +22,7 @@ REQUIRED_FILES = {
     "scripts/build.py",
     "scripts/parse.py",
     "scripts/search_catalog.py",
+    "scripts/source_fingerprint.py",
     "scripts/validate.py",
 }
 FORBIDDEN_SUFFIXES = {".pyc", ".pyo"}

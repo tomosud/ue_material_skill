@@ -92,7 +92,15 @@ Save only the chosen result to `.ue-material/settings.json` and gitignore it:
 The skill baseline is Unreal Engine 5.8.0, branch `UE5`. Confirm a resolved root matches this version and
 branch (read from `Engine/Build/Build.version`). A promoted or launcher build has no `.git`, so exact
 baseline-commit matching may be unavailable; a version and branch match is acceptable for development testing.
-See `skills/ue-material/references/source-verification.md` for the full policy.
+Verify it mechanically with the bundled check:
+
+```powershell
+python scripts/source_fingerprint.py --ue-root E:\UE\UE_5.8
+```
+
+`COMPATIBLE` means the root is the same engine line as the catalog; a `WARNING` means the version or branch
+differs and catalog facts must be re-audited. See `skills/ue-material/references/source-verification.md` for
+the full policy.
 
 ## 3. Verify the setup
 
@@ -101,7 +109,9 @@ Run from the installed or linked `ue-material` skill directory (Python 3.12+):
 ```powershell
 python scripts/search_catalog.py Multiply
 python scripts/validate.py --help
+python scripts/source_fingerprint.py --ue-root E:\UE\UE_5.8
 ```
 
-The catalog search should return provenance-annotated matches, and the validator should print its usage with
-exit code 0. Once both respond, the skill is usable from the configured tools.
+The catalog search should return provenance-annotated matches, the validator should print its usage with
+exit code 0, and the fingerprint check should report `COMPATIBLE` for a baseline-matching engine. Once these
+respond, the skill is usable from the configured tools.
