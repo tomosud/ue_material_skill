@@ -94,6 +94,25 @@ The catalog is the durable, reviewed store of source-verified facts. When source
 fact, contribute it back to the maintained catalog evidence rather than keeping it only in a local file, so it
 stays fingerprinted, reviewed, and shared. Do not treat a local, per-machine note as an authority.
 
+### When the source root cannot be resolved
+
+`source_fingerprint.py` exits non-zero and prints `no source root resolved` when no setting file, environment
+variable, or `--ue-root` supplies a checkout. This is a gate on source-backed claims, not a warning to step
+past. The bundled tools (`parse.py`, `validate.py`, `build.py`, `search_catalog.py`) still work offline;
+only factual claims about node behavior, types, defaults, and compilation are gated.
+
+When a turn needs a source-backed fact and the root is unresolved, take exactly one of these branches:
+
+1. **Resolve first (default).** Ask the user for the folder that holds their Unreal install or source, run the
+   limited scan, save the selection, re-run `source_fingerprint.py`, then inspect the relevant classes.
+2. **Proceed unverified, but say so.** Only if the user states source confirmation is not needed, continue and
+   label the result explicitly as a non-source-backed diagnosis drawn from the clipboard, the compiler
+   message, or general knowledge. Name the exact classes and source-relative paths a later audit must confirm.
+
+Never present fallback reasoning as source-verified. A source-backed claim must cite the exact source-relative
+path and symbol it rests on; if you cannot cite one, state that the claim is unverified. A resolved but
+`WARNING` (mismatched) root is also unverified for that engine line until the affected classes are re-audited.
+
 ## Canonical terminology
 
 Use exact source identifiers in this order:

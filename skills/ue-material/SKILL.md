@@ -18,7 +18,11 @@ create and consume verbose T3D; do not hand-author GUIDs, Pin records, or T3D in
   explanation or graph-generation decision. Resolve the source root by its documented order
   (`.ue-material/settings.json` → `UE_SOURCE_ROOT` → user-directed limited scan); never scan whole drives by
   default. Run `python scripts/source_fingerprint.py` to confirm the resolved root matches the catalog
-  baseline before trusting catalog facts. Never infer behavior from a class name or catalog prose alone.
+  baseline before trusting catalog facts. If it prints `no source root resolved` (or a `WARNING` mismatch),
+  treat that as a gate, not a warning: follow the Preflight below and ask the user first, before starting the
+  work. Only proceed unverified after the user explicitly declines source verification, and then label the
+  answer as a non-source-backed diagnosis. Never infer behavior from a class name or catalog prose alone, and
+  never present fallback reasoning as source-verified.
 - Preserve node object order when a stable layout matters.
 - Never create or connect the Material Root node. After paste, tell the user which final output to connect
   manually to Base Color, Roughness, Normal, Emissive Color, or another Root input.
@@ -31,6 +35,25 @@ create and consume verbose T3D; do not hand-author GUIDs, Pin records, or T3D in
   `.txt`/`.t3d` file.
 
 ## Choose the workflow
+
+### Preflight: confirm the source root first (ask before working)
+
+Do this as the very first step of any request that explains, generates, or modifies a Material graph, before
+running catalog searches, authoring MGJSON, or describing nodes:
+
+1. Run `python scripts/source_fingerprint.py`.
+2. If it prints `COMPATIBLE`, continue with the workflow below.
+3. If it prints `no source root resolved` or a `WARNING` mismatch, **stop and ask the user first, as your
+   opening message**. Do not start the substantive work yet. Ask them to either point to the folder holding
+   their Unreal install or source (for a limited scan), or to confirm explicitly that they want to proceed
+   without source verification.
+   - If they give a location: resolve it, save the selection, re-run the check, then continue.
+   - Only if they explicitly decline source verification: continue, but label every node-behavior,
+     type, default, and compile statement as a non-source-backed diagnosis, and name the exact classes and
+     paths a later audit must confirm.
+
+Choosing which nodes, Pins, and types to generate is a source-backed decision, so it is gated the same way.
+Producing a graph that merely passes `validate.py` does not exempt it from this preflight.
 
 ### Generate a new graph
 
