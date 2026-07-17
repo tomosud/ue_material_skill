@@ -1,6 +1,6 @@
 # ue-material スキル 現状実装まとめとアップデート耐性リファクタリング方針
 
-作成日: 2026-07-17
+作成日: 2026-07-17(同日更新: 設計議論の結論を §6〜§8 に反映)
 対象コミット: `65c3891`(ブランチ `refact_01`)
 現行ベースライン: Unreal Engine 5.8.0 / branch `UE5` / fingerprint `5.8.0|UE5`
 関連文書: `dev/docs/improvement-plan.md`(Phase A–G 実行計画)、`dev/docs/source-update.md`(現行の更新手順)、
@@ -159,8 +159,22 @@ fingerprint 付きで配布物に乗る。
 
 ## 6. 方針 1: 複数 UE バージョン対応・アップデート耐性
 
-基本コンセプトは「**カタログ = (UE バージョン, ソースハッシュ) に対する再現可能なビルド成果物**」
-にすることである。improvement-plan.md の Phase A / F と整合する。
+### 6-0. 設計思想: 一次情報はソース、DB は効率化のための導出キャッシュ
+
+検証の結果、時間とトークンを惜しまなければカタログ DB なしでも大半の問いはソース直読で
+答えられることが確認できた(参照範囲は Materials 系に閉じており約 3MB。「なぜ」の問いも
+翻訳層 + 数ファイルの狙い読みで解決する)。したがって DB の存在理由は**効率化**に一本化する:
+
+- **一次情報(真実)は UE ソース**。カタログはそこから**機械的に導出されたキャッシュ**であり、
+  手保守のデータベースではない。
+- 導出キャッシュである以上、「(UE バージョン, ソースハッシュ)に対する再現可能なビルド成果物」
+  でなければならない。同じソースからは同じカタログが出る(決定論)。
+- **例外 = ソースから導出できない一次情報**は次の 3 つだけで、これらは現行機構をそのまま残す:
+  1. 監査結果(`dev/catalog/audits/` の bounded override)
+  2. Editor 実証(`editor-evidence.json`、クリップボード実測・コンパイル実証)
+  3. 検索 alias(和文クエリ対応など、ソースに存在しない索引情報)
+
+improvement-plan.md の Phase A / F と整合する。
 
 ### 6-1. バージョンをデータに刻む(Phase A 相当・一部実装済み)
 
@@ -172,16 +186,25 @@ fingerprint 付きで配布物に乗る。
 - ハッシュがあれば、UE 更新時の再監査対象を「変わったクラスだけ」に機械的に絞れる。
   変わっていないクラスの `verified` は持ち越し、変わったものだけ `stale` に自動降格する。
 
-### 6-2. 複数バージョンの持ち方(提案)
+### 6-2. 複数バージョンの持ち方: 抽出ツール同梱 + その場再生成(採用方針)
 
-- **1 バージョン = 1 カタログセット**を基本とする。単一カタログ内に per-node のバージョン
-  レンジを持たせる案は、監査状態 4 軸との掛け算で複雑化するため採らない。
-- レイアウト案: `skills/ue-material/catalog/` を現行バージョン(既定)とし、追加バージョンは
-  `catalog/versions/<fingerprint>/` に同一スキーマで併置。`source_fingerprint.py` の照合結果で
-  スクリプト群が読むカタログを切り替える。
-- 生成側は「同じパイプラインに別の `UE_SOURCE_ROOT` を与えると別バージョンのカタログが出る」
-  形を保つ。バージョン間の差分は `catalog_diff.py` の出力そのものがリリースノートになる。
-- 配布サイズが問題になるまでは全バージョン同梱でよい。問題になったら既定 + 差分形式を検討する。
+バージョン別カタログの併置配布ではなく、**構造抽出ツールをスキル本体に同梱し、
+カタログを「出荷時に焼いたキャッシュ + 実行時に再導出できるもの」にする**:
+
+- 抽出ツール(§7-2)を `skills/ue-material/scripts/` に置き、開発側のカタログビルドと
+  実行時の再生成を**単一実装**にする(二重メンテを避ける)。
+- **平常時**: 同梱カタログ(= fingerprint 一致のビルド済みキャッシュ)を使う。速く、
+  オフラインで、開発時ゲート済み。
+- **fingerprint 不一致時**: 現行の「止まってユーザーに確認」に代えて、抽出ツールを
+  ユーザーのソースにその場で走らせ、構造カタログをローカル再生成できる。構造(Pin・props・
+  使用条件)は即座に新バージョンへ追従し、AI 抽出の意味情報・監査状態だけ `stale` 表示にする。
+- これによりバージョン別カタログを配布しなくても、ユーザーの手元にあるどのバージョンにも
+  構造レベルで追従できる。1 バージョン = 1 カタログセットの原則は維持(per-node バージョン
+  レンジ案は監査 4 軸との掛け算で複雑化するため採らない)。
+- バージョン間の差分は `catalog_diff.py` の出力そのものがリリースノートになる。
+- 留意点: ライブ再生成はパーサの破綻がユーザーの会話中に顕在化しうる。再生成結果には
+  抽出信頼度(§7-2)を必ず付け、`manual_required` が出たクラスは Editor サンプル採取
+  (既存の unknown-node フロー)へ誘導する。
 
 ### 6-3. 更新フローの目標形
 
@@ -210,14 +233,22 @@ UE 新バージョン取得
 | デフォルト出力(Outputs 無宣言) | 基底 `UMaterialExpression` の既定(単一無名出力) | **可**: Outputs 操作が無いクラスに既定を適用 |
 | プロパティ(props)と既定値 | header の UPROPERTY フィールド + コンストラクタ初期化 | **可**(型と既定値の対応表が必要) |
 | プロパティ駆動 Pin(prop_pins)・動的 Pin | `RebuildOutputs()` / Custom ノードの `Inputs` 配列など実行時決定 | **不可 → 検出のみ**: `RebuildOutputs` 等の存在を検出して `dynamic_pins` フラグを立て、Editor サンプル(parse.py --no-catalog)で補完 |
-| 説明・制約・Compile 挙動 | `GetCaption()` / `Compile()` / コメント | **半自動**: Caption は取れるが、説明文の合成と制約は監査対象のまま(improvement-plan.md Phase C の構造化スキーマで扱う) |
+| Root 入力の使用条件(ドメイン/ブレンド/シェーディングモデル別の有効・無効) | `Material.cpp` の `IsPropertyActive_Internal()`(単一の純関数、UE 5.8 では 7768 行目〜) | **可**: 純関数なのでバージョンごとに決定表(domain × blendmode × shadingmodel → 有効 Root 入力)として導出できる |
+| ノード単位の使用条件(例: SceneTexture は PostProcess 系のみ、SkyLightEnvMapSample は Surface のみ) | `HLSLMaterialTranslator.cpp` の `Errorf` 群 + 各ノード `Compile()` 内のドメイン分岐 | **半自動**: `Errorf` 文字列と `GetMaterialDomain()` 比較の grep で候補を機械列挙し、条件の意味づけは AI 抽出(根拠付き)で `restrictions` フィールドに落とす |
+| 表示名・検索語 | `GetCaption()` / `GetKeywords()` | **可**: 定型オーバーライドの列挙 |
+| 説明・Compile 挙動 | `Compile()` / コメント | **半自動**: 説明文の合成と制約は §7-5 の構造化スキーマで扱う |
 
-### 7-2. 提案ツール: `gen_node_schema.py`(dev/tools/ 新設)
+### 7-2. 提案ツール: `extract_schema.py`(`skills/ue-material/scripts/` 新設)
 
-- 入力: `UE_SOURCE_ROOT` + `manifest.json`。出力: `dev/catalog/generated/auto/<class>.json`
-  (現行フラグメントと同一スキーマ + 抽出メタデータ)。
+- **配置はスキル本体**。開発側のカタログビルド(dev/tools からの呼び出し)と、実行時の
+  fingerprint 不一致時のローカル再生成(§6-2)を同一実装で担う。標準ライブラリのみ。
+- 入力: 解決済みソースルート + `manifest.json`。出力: `dev/catalog/generated/auto/<class>.json`
+  (現行フラグメントと同一スキーマ + 抽出メタデータ)。実行時再生成ではローカルの
+  `.ue-material/` 配下に同形式で出力する。
 - 各クラスについて header と対応 .cpp(`Private/Materials/MaterialExpressions.cpp` 集約分と
-  クラス別 cpp の両方)を対象に、上表の「可」項目を抽出する。
+  クラス別 cpp の両方)を対象に、上表の「可」項目を抽出する。使用条件の抽出対象として
+  `Material.cpp` と `HLSLMaterialTranslator.cpp` を参照範囲に加える(参照全集合は
+  約 2.7MB → 約 3MB に増える程度)。
 - **各抽出値に `extraction: {method, confidence, source_hash}` を付ける**。定型パターンに
   完全一致したら `high`、ヒューリスティックを要したら `low`、パース不能・動的 Pin 検出時は
   `manual_required`。`low`/`manual_required` だけが人手監査キューに乗る。
@@ -238,22 +269,74 @@ UE 新バージョン取得
    `parse.py --from-clipboard --no-catalog`」フローを、そのまま監査証拠
    (`editor-evidence.json`)への記録に接続する。
 
-### 7-4. 実施順(improvement-plan.md への組み込み)
+### 7-4. 要約(意味情報)の作り方: 2 階建て + AI は「抽出者」であって「作文者」ではない
+
+効率化のためには各ノードの役割要約が必要だが、AI の自由英作文は揺らぎ・監査不能・
+再現不能の三重苦になる(現行の和文プロースが実例)。次の 2 階建てとする:
+
+- **1 階(機械・コストゼロで再生成可)**:
+  - `GetCaption()` / `GetKeywords()` から表示名・検索語を機械抽出する。
+  - 構造データから骨格文を決定論的に合成する(例: inputs/outputs/props の列挙文)。
+- **2 階(AI・差分駆動)**:
+  - 「何をするか」「条件付き挙動」「使用条件の理由」は、AI が `Compile()` 等を読み、
+    **スキーマで定義された構造化フィールドにのみ**記録する。各事実に根拠
+    `{path, symbol, source_hash}` を必ず付ける。自由記述の逃げ場は `notes` 1 箇所に限定し、
+    常に unverified 扱いとする。
+  - 配布用の英文 desc は構造化フィールドから**テンプレートで機械合成**する。
+    同じ事実からは同じ文が出る(決定論)。事実が変わったときだけ文が変わるので、
+    バージョン間 diff がそのままレビュー対象になる。
+  - UE 更新時はソースハッシュが変わったクラスだけ AI 再抽出する。**AI コストは差分に比例**し、
+    全件再作文は発生しない。ハッシュが変わった事実は `stale` に自動降格する。
+
+イメージ(TextureSample):
+
+```json
+"semantics": {
+  "op": "Samples a texture at UV coordinates",
+  "conditional": [
+    {"when": "MipValueMode == TMVM_Derivative",
+     "effect": "CoordinatesDX/CoordinatesDY inputs become required",
+     "evidence": {"path": ".../MaterialExpressions.cpp", "symbol": "GetInputName", "source_hash": "..."}}
+  ]
+}
+```
+
+→ 合成結果: "Samples a texture at UV coordinates. When MipValueMode is TMVM_Derivative,
+CoordinatesDX/DY become required."
+
+AI 抽出結果はフィールド単位で機械抽出(§7-2)や Editor 実測と突合できるため、読み違いは
+検出可能になる(過去の出力 Pin 取り違えはまさにこの種の突合で発見された)。
+
+### 7-5. 変えないもの: 監査と Editor 実証
+
+監査結果(`dev/catalog/audits/`)と Editor 実証(`editor-evidence.json`)は**ソースから
+導出できない一次情報**であり、現行機構をそのまま残す。機械抽出・AI 抽出の結果は常に
+これらのオーバーレイの**下**に置かれ、監査 override が最優先である点も変えない
+(現行 `catalog_merge.py` の優先順位をそのまま使う)。
+
+### 7-6. 実施順(improvement-plan.md への組み込み)
 
 improvement-plan.md の推奨順 **A → B → C → D → E → F** に対し、本方針は:
 
 - §6-1(ハッシュ・diff)= Phase A そのもの。**最初に着手**。
-- §7-2 `gen_node_schema.py` は Phase D(量産監査)の**前**に挟む。353 クラスの pending を
+- §7-2 `extract_schema.py` は Phase D(量産監査)の**前**に挟む。353 クラスの pending を
   人手で潰す前に機械抽出で下敷きを作る方が、監査コストが桁で下がる。
   位置づけとしては「Phase C.5」または Phase D の前提ツールとして発注する。
+  §7-4 の構造化 semantics スキーマは Phase C(構造化スキーマ設計)の具体化であり、
+  AI 抽出バッチ(2 階)は Phase D の作業内容そのものになる。
 - §6-2(複数バージョン)は Phase F(自動アップデート)と同時期でよい。単一バージョンで
   パイプラインが機械化されていれば、複数化は主にレイアウトと切り替えの問題になる。
 
 ## 8. 変わらない原則(リファクタリング後も維持)
 
+- **一次情報は UE ソース。カタログは機械導出されたバージョン刻印付きキャッシュ**であり、
+  ソースと矛盾したらソースが勝つ。ソースから導出できない一次情報は
+  監査(`audits/`)・Editor 実証(`editor-evidence.json`)・検索 alias の 3 つだけで、
+  これらの永続化機構は現行のまま残す。
 - 配布物は英語のみ・Python 標準ライブラリのみ・`dev/` 非依存・オフライン動作。
 - UE チェックアウトは読み取り専用。ソースで証明できない事実は書かない。
-- 機械抽出であっても「根拠(path + symbol + hash)を持たないデータを verified にしない」。
-  機械化されるのは**抽出と差分検出**であり、監査状態の語彙と昇格規則は変えない。
+- 機械抽出・AI 抽出であっても「根拠(path + symbol + hash)を持たないデータを verified に
+  しない」。機械化されるのは**抽出と差分検出と英文合成**であり、監査状態の語彙と昇格規則は
+  変えない。AI は構造化フィールドへの抽出者であり、自由作文はしない。
 - オフラインゲート(unittest / check_english / check_distribution / catalog_merge の決定論性)を
   全変更で通す。
