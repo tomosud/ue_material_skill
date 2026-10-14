@@ -85,10 +85,17 @@ python scripts/source_fingerprint.py            # uses .ue-material/settings.jso
 python scripts/source_fingerprint.py --ue-root E:\UE\UE_5.8
 ```
 
-`COMPATIBLE` (exit 0) means the resolved root is the same engine line as the catalog. A `WARNING` (exit 2)
-means the version or branch differs, so catalog facts must be re-audited against that source before use.
-Changelist and commit legitimately differ between a GitHub source release and a launcher promoted build of the
-same version; they are reported for audit but do not gate the result.
+The engine line is `major.minor|branch`. `COMPATIBLE` (exit 0) means the resolved root is the same engine
+line as the catalog. A `WARNING` (exit 2) means the major version, minor version, or branch differs, so
+catalog facts must be re-audited against that source before use.
+
+A patch-only difference (for example `5.8.2|UE5` against the `5.8.0|UE5` baseline) is still `COMPATIBLE`; the
+tool adds a `patch version differs` note. Proceed without asking the user, but inspect the resolved source for
+every class an answer or generated graph depends on, as the general workflow already requires; the resolved
+source is authoritative where it differs from the catalog. A `licensee build` note
+(`IsLicenseeVersion` is set) means the checkout may carry local engine modifications; treat it the same way.
+Changelist and commit legitimately differ between a GitHub source release, a launcher promoted build, and a
+licensee branch of the same line; they are reported for audit but do not gate the result.
 
 The catalog is the durable, reviewed store of source-verified facts. When source inspection establishes a new
 fact, contribute it back to the maintained catalog evidence rather than keeping it only in a local file, so it

@@ -5,11 +5,14 @@ The bundled catalog was source-verified against one engine baseline. This tool r
 Engine/Build/Build.version from the resolved source root, derives a version|branch
 fingerprint, and compares it with the baseline recorded in catalog/node-evidence.json.
 
-The check is advisory. A version or branch mismatch means the resolved root is a
-different engine line, so catalog facts must be re-audited against that source before
-they are trusted. Changelist and git commit differ legitimately between a GitHub source
-release and a launcher promoted build of the same version, so they are reported for
-audit but do not gate the result.
+The check is advisory. The engine line is major.minor plus branch. A major, minor, or
+branch mismatch means the resolved root is a different engine line, so catalog facts
+must be re-audited against that source before they are trusted. A patch-only difference
+(for example 5.8.2 against a 5.8.0 baseline) stays on the same engine line: it is
+reported as COMPATIBLE with a note, because hotfix releases do not change the Material
+Expression schema the catalog records. Changelist, git commit, and the licensee flag
+differ legitimately between source releases, launcher builds, and licensee branches, so
+they are reported for audit but do not gate the result.
 """
 
 from __future__ import annotations
@@ -52,6 +55,7 @@ def read_build_version(ue_root: Path) -> dict[str, Any]:
         "patch": value.get("PatchVersion"),
         "branch": normalize_branch(value.get("BranchName")),
         "changelist": value.get("Changelist"),
+        "licensee": bool(value.get("IsLicenseeVersion")),
     }
 
 
@@ -62,6 +66,17 @@ def fingerprint(version: dict[str, Any]) -> str | None:
     if None in (major, minor, patch) or not branch:
         return None
     return f"{major}.{minor}.{patch}|{branch}"
+
+
+def engine_line(fingerprint_text: str | None) -> str | None:
+    """Reduce a version|branch fingerprint to its major.minor|branch engine line."""
+    if not fingerprint_text or "|" not in fingerprint_text:
+        return None
+    version, branch = fingerprint_text.split("|", 1)
+    parts = version.split(".")
+    if len(parts) < 2 or not branch:
+        return None
+    return f"{parts[0]}.{parts[1]}|{branch}"
 
 
 def resolve_root(args_root: Path | None) -> Path | None:
@@ -111,11 +126,10 @@ def main(argv: list[str] | None = None) -> int:
 
     version = read_build_version(root)
     resolved_fingerprint = fingerprint(version)
-    compatible = (
-        resolved_fingerprint is not None
-        and base_fingerprint is not None
-        and resolved_fingerprint == base_fingerprint
-    )
+    base_line = engine_line(base_fingerprint)
+    resolved_line = engine_line(resolved_fingerprint)
+    compatible = resolved_line is not None and base_line is not None and resolved_line == base_line
+    patch_differs = compatible and resolved_fingerprint != base_fingerprint
 
     report = {
         "root": str(root),
@@ -123,7 +137,9 @@ def main(argv: list[str] | None = None) -> int:
         "baseline_git_commit": source.get("git_commit"),
         "resolved_fingerprint": resolved_fingerprint,
         "resolved_changelist": version.get("changelist"),
+        "resolved_licensee": version.get("licensee"),
         "compatible": compatible,
+        "patch_differs": patch_differs,
     }
     if args.json:
         print(json.dumps(report, ensure_ascii=False, indent=2))
@@ -133,10 +149,20 @@ def main(argv: list[str] | None = None) -> int:
         print(f"resolved  {resolved_fingerprint}  (CL {version.get('changelist')})")
         if compatible:
             print("result    COMPATIBLE: engine line matches the catalog baseline")
+            if patch_differs:
+                print(
+                    "note      patch version differs from the baseline; inspect the resolved source "
+                    "for any class whose behavior the answer depends on"
+                )
         else:
             print(
                 "result    WARNING: engine line differs from the catalog baseline; "
                 "re-audit source before trusting catalog facts"
+            )
+        if version.get("licensee"):
+            print(
+                "note      licensee build: local engine modifications may differ from the catalog; "
+                "the resolved source is authoritative"
             )
     return 0 if compatible else 2
 

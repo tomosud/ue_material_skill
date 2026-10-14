@@ -20,7 +20,42 @@ $CODEX_HOME/skills/ue-material/SKILL.md
 
 Then invoke it as `$ue-material` or ask the tool to create, inspect, or modify Unreal Material Editor nodes.
 
-### B. Shared junction setup (test / multi-tool)
+### B. Claude Code personal install (all projects)
+
+Claude Code loads personal skills from `%USERPROFILE%\.claude\skills\<name>\SKILL.md`. Link that folder to
+the skill source with a junction so every Claude Code project sees the same skill and source edits apply
+immediately:
+
+```powershell
+$Skill = "D:\Work\Tool\ue_material_skill\skills\ue-material"   # skill source checkout
+New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\.claude\skills" | Out-Null
+cmd /c mklink /J "$env:USERPROFILE\.claude\skills\ue-material" "$Skill"
+```
+
+Set the Unreal Engine source root once in the Claude Code user settings
+(`%USERPROFILE%\.claude\settings.json`). Merge the `env` key into an existing file instead of replacing it:
+
+```json
+{
+  "env": {
+    "UE_SOURCE_ROOT": "D:/MVS/Dev/MVS_RandD"
+  }
+}
+```
+
+Prefer `UE_SOURCE_ROOT` over `.ue-material/settings.json` for Claude Code. `source_fingerprint.py` reads the
+setting file relative to the current working directory, and the skill runs its scripts from the skill
+directory, so a setting file in a consuming project is not found there. The environment variable works from
+any directory. Settings changes apply to new Claude Code sessions only.
+
+In Claude Code, invoke the skill as `/ue-material`, or describe a Material Editor task and let Claude select it
+from the skill description. The `$ue-material` syntax and `agents/openai.yaml` are Codex-specific; Claude Code
+ignores the YAML file.
+
+To remove the install, delete only the junction (`cmd /c rmdir "%USERPROFILE%\.claude\skills\ue-material"`);
+this does not touch the skill source.
+
+### C. Shared junction setup (test / multi-tool)
 
 When you want several AI tools to use the *same* skill source (so improvements land in one place), link each
 tool's skills directory to the skill source with a Windows **directory junction**. Junctions need no admin
@@ -89,8 +124,8 @@ Save only the chosen result to `.ue-material/settings.json` and gitignore it:
 .ue-material/
 ```
 
-The skill baseline is Unreal Engine 5.8.0, branch `UE5`. Confirm a resolved root matches this version and
-branch (read from `Engine/Build/Build.version`). A promoted or launcher build has no `.git`, so exact
+The skill baseline is Unreal Engine 5.8.0, branch `UE5`. Confirm a resolved root is on the same engine line
+(`major.minor|branch`, read from `Engine/Build/Build.version`). A promoted or launcher build has no `.git`, so exact
 baseline-commit matching may be unavailable; a version and branch match is acceptable for development testing.
 Verify it mechanically with the bundled check:
 
@@ -98,8 +133,10 @@ Verify it mechanically with the bundled check:
 python scripts/source_fingerprint.py --ue-root E:\UE\UE_5.8
 ```
 
-`COMPATIBLE` means the root is the same engine line as the catalog; a `WARNING` means the version or branch
-differs and catalog facts must be re-audited. See `skills/ue-material/references/source-verification.md` for
+`COMPATIBLE` means the root is the same engine line as the catalog; a `WARNING` means the major version,
+minor version, or branch differs and catalog facts must be re-audited. A patch-only difference (for example
+5.8.2) stays `COMPATIBLE` with a `patch version differs` note, and a licensee build adds a `licensee build`
+note; in both cases the resolved source is authoritative where it differs from the catalog. See `skills/ue-material/references/source-verification.md` for
 the full policy.
 
 ## 3. Verify the setup
@@ -115,3 +152,27 @@ python scripts/source_fingerprint.py --ue-root E:\UE\UE_5.8
 The catalog search should return provenance-annotated matches, the validator should print its usage with
 exit code 0, and the fingerprint check should report `COMPATIBLE` for a baseline-matching engine. Once these
 respond, the skill is usable from the configured tools.
+
+## 4. Reference workstation setup
+
+The maintainer workstation uses this configuration. Adjust the paths for another machine.
+
+| Item | Value |
+| --- | --- |
+| Skill source | `D:\Work\Tool\ue_material_skill\skills\ue-material` |
+| Claude Code link | `%USERPROFILE%\.claude\skills\ue-material` (junction to the skill source) |
+| `UE_SOURCE_ROOT` | `D:/MVS/Dev/MVS_RandD`, set in `%USERPROFILE%\.claude\settings.json` under `env` |
+| Engine | 5.8.2, `BranchName` `++UE5+UE5.8-Dev`, licensee build, Perforce (no `.git`) |
+| Fingerprint result | `COMPATIBLE` with `patch version differs` and `licensee build` notes |
+| Python | 3.12 (`python` on `PATH`) |
+
+This checkout also contains `Engine/Content`, so packaged Material Function assets can be inspected there
+when recording function evidence (see `skills/ue-material/references/mf-call.md`).
+
+Verify from the linked skill directory in a new Claude Code session:
+
+```powershell
+cd "$env:USERPROFILE\.claude\skills\ue-material"
+python scripts/source_fingerprint.py
+python scripts/search_catalog.py Multiply
+```

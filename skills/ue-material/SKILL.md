@@ -42,7 +42,9 @@ Do this as the very first step of any request that explains, generates, or modif
 running catalog searches, authoring MGJSON, or describing nodes:
 
 1. Run `python scripts/source_fingerprint.py`.
-2. If it prints `COMPATIBLE`, continue with the workflow below.
+2. If it prints `COMPATIBLE`, continue with the workflow below. A `patch version differs` or `licensee build`
+   note is not a gate: continue, and treat the resolved source as authoritative where it differs from the
+   catalog.
 3. If it prints `no source root resolved` or a `WARNING` mismatch, **stop and ask the user first, as your
    opening message**. Do not start the substantive work yet. Ask them to either point to the folder holding
    their Unreal install or source (for a limited scan), or to confirm explicitly that they want to proceed

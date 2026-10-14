@@ -40,7 +40,8 @@ Run these commands from the repository root.
    checkout's `.git`: `source.version`, `source.git_commit`, and a `source.fingerprint` (`version|branch`).
    The `BranchName` is normalized to its engine stream (for example `++UE5+Release-5.8` becomes `UE5`) so the
    fingerprint matches both GitHub source and launcher promoted builds of the same release. Consumers compare
-   this baseline with `skills/ue-material/scripts/source_fingerprint.py`.
+   this baseline with `skills/ue-material/scripts/source_fingerprint.py`, which gates only on the engine line
+   (`major.minor|branch`) and reports a patch-only difference as a compatible note.
 
 3. Merge the existing generated catalog fragments into the distributable catalog and regenerate the compact
    node index:

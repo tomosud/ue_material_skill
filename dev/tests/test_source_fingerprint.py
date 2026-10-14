@@ -57,6 +57,43 @@ class FingerprintTests(unittest.TestCase):
             self.assertEqual(code, 0)
             self.assertIn("COMPATIBLE", text)
 
+    def test_engine_line_drops_patch(self):
+        self.assertEqual(source_fingerprint.engine_line("5.8.2|UE5"), "5.8|UE5")
+        self.assertIsNone(source_fingerprint.engine_line(None))
+
+    def test_patch_only_difference_is_compatible_with_note(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            write_build_version(
+                root,
+                MajorVersion=5,
+                MinorVersion=8,
+                PatchVersion=2,
+                BranchName="++UE5+UE5.8-Dev",
+                Changelist=445,
+                IsLicenseeVersion=1,
+            )
+            code, text = run("--ue-root", str(root))
+            self.assertEqual(code, 0)
+            self.assertIn("COMPATIBLE", text)
+            self.assertIn("patch version differs", text)
+            self.assertIn("licensee build", text)
+
+    def test_different_branch_warns(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            write_build_version(
+                root,
+                MajorVersion=5,
+                MinorVersion=8,
+                PatchVersion=0,
+                BranchName="++Fortnite+Main",
+                Changelist=1,
+            )
+            code, text = run("--ue-root", str(root))
+            self.assertEqual(code, 2)
+            self.assertIn("WARNING", text)
+
     def test_different_engine_line_warns(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
